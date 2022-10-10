@@ -403,6 +403,79 @@ Entonces:
         \end{cases}$$
 \end{example}
 
+\begin{exercise}
+    Sean $X$ y $Y$ variables aleatorias con funciones de distribución:
+    $$F_X(x) = \begin{cases}
+            0             & \text{si } x < -1        \\
+            \frac{x+1}{3} & \text{si } -1 \leq x < 1 \\
+            1             & \text{si } x > 1
+        \end{cases}, \quad
+        F_Y(y) = \begin{cases}
+            0            & \text{si } y < 0        \\
+            \frac{2y}{7} & \text{si } 0 \leq y < 2 \\
+            \frac{5}{7}  & \text{si } 2 \leq y < 4 \\
+            1            & \text{si } y \geq 4
+        \end{cases}$$
+    Observamos que $X$ es una variable aleatoria mixta con funciones de pseudodensidad y de masa:
+    $$f_X(x) = \begin{cases}
+            \frac{1}{3} & \text{si } -1 \leq x < 1 \\
+            0           & \text{en el resto}
+        \end{cases}, \quad
+        p_X(x) = \begin{cases}
+            \frac{1}{3} & \text{si } x = 1   \\
+            0           & \text{en el resto}
+        \end{cases}$$
+    $Y$ también es mixta con pseudodensidad y masa:
+    $$f_Y(y) = \begin{cases}
+            \frac{2}{7} & \text{si } 0 \leq y < 2 \\
+            0           & \text{en el resto}
+        \end{cases}, \quad
+        p_Y(y) = \begin{cases}
+            \frac{1}{7} & \text{si } y = 2   \\
+            \frac{2}{7} & \text{si } y = 4   \\
+            0           & \text{en el resto}
+        \end{cases}$$
+    Sea $Z = X+Y$, queremos calcular $F_Z$.
+    Observamos que $S_X = [-1,1) \cup \{1\} = [-1,1]$ y $S_Y = [0,2) \cup \{2\} \cup \{4\} = [0,2] \cup \{4\}$.
+    Por tanto, $S_Z = [-1, 5]$.
+    Calculamos:
+    $$F_Z = \int_{-\infty}^\infty F_Y(z-x)dF_x(x) = \int_{-1}^1 F_Y(z-x)f_X(x)dx + F_Y(z-1)p_X(1)$$
+    Consideramos los casos:
+    \begin{itemize}
+        \item Si $z < -1$, $F_Z(z) = 0$.
+        \item Si $-1 \leq z < 1$, consideramos tres casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z$ entonces $0 \leq z-x < 2$, luego $F_Y(z-x) = \frac{2(z-x)}{7}$.
+                  \item Si $z \leq x < 1$ entonces $z-x < 0$, así que $F_Z(z) = 0$.
+                  \item Si $x = 1$ entonces $z-1 < 0$, luego $F_Z(z) = 0$.
+              \end{itemize}
+              $$F_Z(z) = \int_{-1}^z \frac{2(z-x)}{7}\frac{1}{3}dx = \frac{(z+1)^2}{21}$$
+        \item Si $1 \leq z < 3$, consideramos tres casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z-2$ entonces $2 \leq z-x < 4$, así que $F_Y(z-x) = \frac{5}{7}$.
+                  \item Si $z-2 \leq x < 1$ entonces $0 \leq z-x < 2$, luego $F_Y(z-x) = \frac{2(z-x)}{7}$.
+                  \item Si $x = 1$ entonces $0 \leq z-1 < 2$, así que $F_Y(z-1) = \frac{2(z-1)}{z}$.
+              \end{itemize}
+              $$F_Z(z) = \int_{-1}^{z-2} \frac{5}{7}\frac{1}{3}dx + \int_{z-2}^1 \frac{2(z-x)}{7}\frac{1}{3} + \frac{2(z-1)}{7}\frac{1}{3} = \frac{-z^2+9z-4}{21}$$
+        \item Si $3 \leq z < 5$, consideramos tres casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z-4$ entonces $z-x \geq 4$, luego $F_Y(z-x) = 1$.
+                  \item Si $z-4 \leq x < 1$ entonces $2 \leq z-x < 4$, así que $F_Y(z-x) = \frac{5}{7}$.
+                  \item Si $x = 1$ entonces $2 \leq z-1 < 4$, luego $F_Y(z-x) = \frac{5}{7}$.
+              \end{itemize}
+              $$F_Z(z) = \int_{-1}^{z-4} 1 \frac{1}{3}dx + \int_{z-4}^1 \frac{5}{7}\frac{1}{3}dx + \frac{5}{7}\frac{1}{3} = \frac{2z+9}{21}$$
+        \item Si $z \geq 5$, $F_Z(z) = 1$.
+    \end{itemize}
+    Por tanto:
+    $$F_Z(z) = \begin{cases}
+            0                    & \text{si } z < -1        \\
+            \frac{(z+1)^2}{21}   & \text{si } -1 \leq z < 1 \\
+            \frac{-z^2+9z-4}{21} & \text{si } 1 \leq z < 3  \\
+            \frac{2z+9}{21}      & \text{si } 3 \leq z < 5  \\
+            1                    & \text{si } z \geq 5
+        \end{cases}$$
+\end{exercise}
+
 \section{Convergencia en distribución}
 
 Sea $n \in \mathbb{N}$ y sea $X_n$ una variable aleatoria en $(\Omega_n, \mathcal{A}_n, P_n)$.
@@ -698,18 +771,22 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
 \end{definition}
 
 \begin{definition}
-    Sea $\{F_n\}$ una sucesión de funciones de distribución y sea $F$ una función de distribución impropia.
+    Sea $\{F_n\}$ una sucesión de funciones de distribución y sea $F$ una función de distribución propia o impropia.
     Decimos que $\{F_n\}$ converge de forma vaga o vagamente a $F$ si:
     $$\lim\limits_{n \to \infty} F_n(x) = F(x), \quad \forall x \in C(F)$$
     Se escribe $F_n \xrightarrow{v} F$.
 \end{definition}
 
+\begin{remark}
+    Convergencia débil implica convergencia vaga.
+\end{remark}
+
 \begin{example}
     Sea $n \in \mathbb{N}$, consideramos la función de distribución:
     $$F_n(x) = \begin{cases}
-            0                         & \text{si } x < 0        \\
-            \frac{1}{2} + \frac{x}{n} & \text{si } 0 \leq x < n \\
-            1                         & \text{si } x \geq n
+            0                          & \text{si } x < 0        \\
+            \frac{1}{2} + \frac{x}{2n} & \text{si } 0 \leq x < n \\
+            1                          & \text{si } x \geq n
         \end{cases}$$
     El límite puntual de $\{F_n\}$ es:
     $$G(x) = \begin{cases}
@@ -719,5 +796,63 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
     $G$ es una función de distribución impropia.
     Por tanto, $F_n \xrightarrow{v} G$.
 \end{example}
+
+\begin{example}
+    Consideramos la función de distribución:
+    $$F_0(x) = \begin{cases}
+            0 & \text{si } x < 2    \\
+            1 & \text{si } x \geq 2
+        \end{cases}$$
+    Definimos:
+    $$F_n(x) = F_0(x+n) = \begin{cases}
+            0 & \text{si } x+n < 2    \\
+            1 & \text{si } x+n \geq 2
+        \end{cases}$$
+    El límite puntual de $F_n(x)$ es $F(x) = 1$, que es una función de distribución impropia.
+    Por tanto, $F_n \xrightarrow{v} F$.
+\end{example}
+
+\begin{exercise}
+    Sea $(\Omega, \mathcal{A}, P)$ espacio de probabilidad con:
+    $$\Omega = \mathbb{N} \cup \{0\}, \quad \mathcal{A} = \mathcal{P}(\Omega), \quad P(\omega) = e^{-\lambda} \frac{\lambda^\omega}{w!}, \quad w \in \mathbb{R}, \lambda > 0$$
+    Consideramos la sucesión de variables aleatorias:
+    $$X_n: \Omega \to \mathbb{R}, \quad X_n(\omega) = e^{n\omega}$$
+    Observamos que $x = e^{n\omega} \Leftrightarrow \omega = -\frac{\log(x)}{n}$, con $x > 0$.
+    $$P(X_n^{-1}(x)) = P\left(-\frac{\log(x)}{n}\right) = \begin{cases}
+            e^{-\lambda} \frac{\lambda^{-\frac{\log(x)}{n}}}{\left(-\frac{\log(x)}{n}\right)!} & \text{si } \frac{-\log(x)}{n} \in \mathbb{N} \cup \{0\} \\
+            0                                                                                  & \text{en el resto}
+        \end{cases}$$
+    Calculamos la función de distribución de $X_n$:
+    \begin{align*}
+        F_n(x) & = P(X_n^{-1}((-\infty,x])) = P(X_n^{-1}([0,x])) = P(X_n^{-1}([0,e^{-nk}])) =                                                                                        \\
+               & = P(\{ \omega \in \Omega : \omega \geq k \}) = 1 - P(\{ \omega \in \Omega : \omega < k \}) = 1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} = \\
+               & = \begin{cases}
+                       0                                                                    & \text{si } x <= 0                                              \\
+                       1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} & \text{si } e^{-nk} \leq x < e^{-n(k-1)}, \quad k = 1, 2, \dots \\
+                       1                                                                    & \text{si } x \geq 1
+                   \end{cases}                             \\
+               & = \begin{cases}
+                       0                           & \text{si } x <= 0                  \\
+                       \vdots                                                           \\
+                       1 - e^{-\lambda}(1+\lambda) & \text{si } e^{-2n} \leq x < e^{-n} \\
+                       1 - e^{-\lambda}            & \text{si } e^{-n} \leq x < 1       \\
+                       1                           & \text{si } x \geq 1
+                   \end{cases}
+    \end{align*}
+    Observamos que $F_n(x)$ tiene como límite puntual:
+    $$G(x) = \begin{cases}
+            0              & \text{si } x <= 0    \\
+            1-e^{-\lambda} & \text{si } 0 < x < 1 \\
+            1              & \text{si } x \geq 1
+        \end{cases}$$
+    $G$ no es función de distribución.
+    Podemos definir:
+    $$F(x) = \begin{cases}
+            0              & \text{si } x < 0      \\
+            1-e^{-\lambda} & \text{si } 0 <= x < 1 \\
+            1              & \text{si } x \geq 1
+        \end{cases}$$
+    Como $F$ sí es función de distribución, $F_n \xrightarrow[d]{} F$.
+\end{exercise}
 
 \end{document}
