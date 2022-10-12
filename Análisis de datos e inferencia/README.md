@@ -17,7 +17,7 @@ Estos apuntes están abiertos a correcciones y mejoras:
 
 ## 📖 Índice
 
-### 1. Modelos de regresión lineal simple
+### 1. Modelo de regresión lineal simple
 
 1. Introducción
 2. Modelo e hipótesis
@@ -34,3 +34,9 @@ Estos apuntes están abiertos a correcciones y mejoras:
     - Predicción de una observación futura
 9. Análisis de residuos y observaciones atípicas e influyentes
 10. Transformaciones
+
+### 2. Modelos de regresión lineal múltiple
+
+1. Modelo e hipótesis
+2. Estimación de los parámetros
+3. Propiedades de los estimadores

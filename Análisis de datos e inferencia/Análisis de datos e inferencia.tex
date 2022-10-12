@@ -22,13 +22,12 @@
 \theoremstyle{definition}
 \newtheorem*{properties}{Propiedades}
 \theoremstyle{definition}
-%\newtheorem*{example}{Ejemplo}
 
 \begin{document}
 \maketitle
 \tableofcontents
 
-\chapter{Modelos de regresión lineal simple}
+\chapter{Modelo de regresión lineal simple}
 \section{Introducción}
 
 La regresión lineal es un modelo matemático que nos permite establecer la relación de dependencia entre una variable dependiente $Y$ y una variable independiente $X$.
@@ -39,7 +38,7 @@ con $\beta_0$ y $\beta_1$ parámetros.
 Llamamos intercepto a $\beta_0$ y pendiente a $\beta_1$.
 
 \section{Modelo e hipótesis}
-Sea $X$ unavariable aleatoria cuantitativa, $Y$ una variable aleatoria continua y $(x_1, y_1), (x_2, y_2), \dots (x_n, y_n)$ un conjunto de datos.
+Sea $X$ una variable aleatoria cuantitativa, $Y$ una variable aleatoria continua y $(x_1, y_1), (x_2, y_2), \dots (x_n, y_n)$ un conjunto de datos.
 Entonces el modelo de regresión lineal simple es
 $$y_i = \beta_0 + \beta_1x_i + u_i, \quad i = 1, \dots n$$
 
@@ -143,7 +142,6 @@ Podemos calcular:
     \item $E(\hat{\beta_1}) = \beta_1$ (estimador insesgado)
     \item $V(\hat{\beta_1}) = \frac{\sigma^2}{ns_X^2}$
 \end{itemize}
-
 Por tanto, $\hat{\beta_1} \sim N(\beta_1, \frac{\sigma^2}{ns_X^2})$.
 
 De forma análoga, podemos escribir:
@@ -155,7 +153,6 @@ Calculamos:
     \item $E(\hat{\beta_0}) = \beta_0$ (estimador insesgado)
     \item $V(\hat{\beta_0}) = \frac{\sigma^2}{n} (1 + \frac{\bar{x}^2}{s_X^2})$
 \end{itemize}
-
 Por tanto, $\hat{\beta_0} \sim N(\beta_0, \frac{\sigma^2}{n} (1 + \frac{\bar{x}^2}{s_X^2}))$.
 
 En cuanto a $s_R^2$, sabemos que $\frac{1}{\sigma^2} \sum_{i_1}^n e_i^2 \sim \chi^2_{n-2}$.
@@ -395,5 +392,111 @@ Estos tienen la capacidad de alterar en gran medida la recta de regresión.
 
 \section{Transformaciones}
 Cuando el diagrama de dispersión entre las dos variables o el de los residuos presenta indicios de incumplimiento de alguna hipótesis básica, entonces hay que abandonar el modelo inicial por uno menos simple o bien aplicar alguna transformación a los datos.
+
+\chapter{Modelo de regresión lineal múltiple}
+\section{Modelo e hipótesis}
+Sean $X_1, \dots, X_n$ variables explicativas, $Y$ una variable aleatoria continua y $(x_{11}, x_{21}, \dots, x_{k1}, y_1), \dots, (x_{1n}, x_{2n}, \dots, x_{kn}, y_n)$ un conjunto de datos.
+Entonces el modelo de regresión lineal múltiple es:
+$$y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \dots + \beta_k x_{ki} + u_i, \quad i = 1, \dots, n$$
+
+\subsection*{Hipótesis del modelo}
+\begin{itemize}
+    \item $E(u_i) = 0, \quad \forall i = 1, \dots n$.
+    \item $Var(u_i) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
+    \item $u_i \sim N(0, \sigma^2), \quad \forall i = 1, \dots n$ (normalidad)
+    \item $E(u_i u_j) = 0, \quad \forall i \neq j$ (independencia)
+    \item $n > k+1$
+    \item No existen relaciones lineales entre los $X_i$ (ausencia de multicolinealidad)
+\end{itemize}
+El modelo se puede escribir de forma matricial.
+Definimos:
+$$\vec{y} = \begin{pmatrix}
+        y_1 \\ \vdots \\ y_n
+    \end{pmatrix} \in \mathbb{R}^n, \quad
+    \vec{\beta} = \begin{pmatrix}
+        \beta_0 \\ \vdots \\ \beta_k
+    \end{pmatrix} \in \mathbb{R}^{k+1}, \quad
+    \vec{u} = \begin{pmatrix}
+        u_1 \\ \vdots \\ u_n
+    \end{pmatrix} \in \mathbb{R}^n$$
+$$X = \begin{pmatrix}
+        1      & x_{11} & x_{21} & \dots & x_{k1} \\
+        1      & x_{12} & x_{22} & \dots & x_{k2} \\
+        \vdots & \vdots & \vdots &       & \vdots \\
+        1      & x_{1n} & x_{2n} & \dots & x_{kn}
+    \end{pmatrix} \in \mathcal{M}_{n \times (k+1)}$$
+Entonces el modelo es equivalente a:
+$$\vec{y} = X\vec{\beta} + \vec{u}$$
+Las hipótesis del modelo se pueden reescribir como:
+\begin{itemize}
+    \item $\vec{u} \sim N_n(\vec{0}, \sigma^2 I_n)$
+    \item $n > k+1$
+    \item Ausencia de multicolinealidad.
+\end{itemize}
+Podemos escribir las mismas hipótesis iniciales en términos de $y_i, \quad \forall 1, \dots, n$.
+\begin{enumerate}
+    \item $E(y_i | x_{1i}, \dots, x_{ki}) = \beta_0 + \beta_1x_{1i} + \dots + \beta_kx_{ki}, \quad \forall i = 1, \dots n$ (linealidad)
+    \item $Var(y_i | x_{1i}, \dots, x_{ki}) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
+    \item $y_i | x_{1i}, \dots, x_{ki} \sim N(\beta_0 + \beta_1x_{1i} + \dots + \beta_kx{ki}, \sigma^2), \quad \forall i = 1, \dots n$ (normalidad)
+    \item $Cov(y_i, y_j) = 0, \quad \forall i \neq j$ (independencia)
+    \item $n > k+1$
+    \item No existen relaciones lineales entre los $X_i$ (ausencia de multicolinealidad)
+\end{enumerate}
+Escritas para el modelo en forma matricial quedan:
+\begin{itemize}
+    \item $\vec{y} \sim N_n(\vec{x}\vec{\beta}, \sigma^2 I_n)$
+    \item $n > k+1$
+    \item $rg(X) = k+1$
+\end{itemize}
+
+\section{Estimación de los parámetros}
+Queremos estimar $\beta_0, \beta_1, \dots, \beta_k$, o análogamente $\hat{\vec{\beta}}$, y $\sigma^2$.
+Con los estimadores $\hat{\beta_0}, \hat{\beta_1}, \dots, \hat{\beta_k}$ podemos estimar $$\hat{E(y_i | x_{1i}, \dots, x_{ki})} = \hat{\beta_0} + \hat{\beta_1}x_{1i} + \dots + \hat{\beta_k}x_{ki}, \quad i = 1, \dots n$$.
+
+Procedemos mediante el método de mínimos cuadrados.
+La función a minimizar es:
+$$M(\beta_0, \dots, \beta_k) = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_{1i} - \dots - \beta_kx_{ki})^2$$
+Planteamos las ecuaciones:
+$$\begin{cases}
+        \frac{\partial M}{\partial \beta_0} (\beta_0, \dots, \beta_k) = -2\sum_{i=1}^n (y_i - \beta_0 - \beta_1x_{1i} - \dots - \beta_kx_{ki}) \\
+        \frac{\partial M}{\partial \beta_k} (\beta_0, \dots, \beta_k) = -2\sum_{i=1}^n x_{ji}(y_i - \beta_0 - \beta_1x_{1i} - \dots - \beta_kx_{ki}), \quad k \geq 1
+    \end{cases}$$
+Estas son las ecuaciones normales de la regresión.
+
+Resolviendo este sistema, llegamos a que $M$ alcanza el mínimo si:
+$$X^t\vec{y} = X^tX\hat{\vec{\beta}}$$
+
+Por la hipótesis 6, $X^tX$ tiene inversa así que podemos escribir:
+$$\hat{\vec{\beta}} = (X^tX)^{-1}X^t\vec{y}$$
+
+Para estimar la varianza $\sigma^2$ usaremos la varianza residual:
+$$s_R^2 = \frac{e_i^2}{n-k-1}$$
+
+\begin{note}
+    $$\frac{\sum_{i=1}^n e_i^2}{\sigma^2} \sim \chi^2_{n-(k+1)}$$
+\end{note}
+
+\section{Propiedades de los estimadores}
+Sobre el estimador $\hat{\vec{\beta}}$, sabemos que:
+$$\begin{cases}
+        \hat{\vec{\beta}} = (X^tX)^{-1}X^t\vec{y} \\
+        \hat{y} \sim N_n(X\vec{\beta}, \sigma^2 I_n)
+    \end{cases} \Rightarrow \hat{\vec{\beta}} \sim N_{k+1}(\vec{\beta}, \sigma^2(X^tX)^{-1})$$
+
+\begin{note}
+    $$\begin{cases}
+            \vec{x} \sim N_n(\vec{\mu}, \Sigma) \\
+            \vec{y} = A\vec{x}
+        \end{cases} \Rightarrow \vec{y} \sim N_k(A\vec{\mu}, A\Sigma A^t)$$
+\end{note}
+
+En cuanto a $s_R^2$,
+$$\begin{cases}
+        E(\frac{\sum_{i=1}^n e_i^2}{\sigma^2}) = n-k-1 \\
+        Var(\frac{\sum_{i=1}^n e_i^2}{\sigma^2}) = 2(n-k-1)
+    \end{cases} \Rightarrow \begin{cases}
+        E(s_R^2) = \sigma^2 \\
+        Var(s_R^2) = \frac{2(\sigma^2)^2}{n-k-1}
+    \end{cases}$$
 
 \end{document}
