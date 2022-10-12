@@ -35,7 +35,7 @@ Estos apuntes están abiertos a correcciones y mejoras:
 9. Análisis de residuos y observaciones atípicas e influyentes
 10. Transformaciones
 
-### 2. Modelos de regresión lineal múltiple
+### 2. Modelo de regresión lineal múltiple
 
 1. Modelo e hipótesis
 2. Estimación de los parámetros
