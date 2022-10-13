@@ -855,4 +855,40 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
     Como $F$ sí es función de distribución, $F_n \xrightarrow[d]{} F$.
 \end{exercise}
 
+\begin{theorem}
+    Supongamos que $F_n \xrightarrow[v]{} F$ con $F$ función de distribución impropia.
+    Sea $g$ real y continua en $[a, b]$, con $a, b \in C(F)$. Entonces:
+    $$\lim\limits_{n \to \infty} \int_{[a,b]} g(x)dF_n(x) = \int_{[a,b]} g(x)dF(x)$$
+\end{theorem}
+
+\begin{theorem}
+    Supongamos que $F_n \xrightarrow[v]{} F$ con $F$ función de distribución impropia.
+    Sea $g$ real y continua con $g(\infty) = g(-\infty) = 0$. Entonces:
+    $$\lim\limits_{n \to \infty} \int_\mathbb{R} g(x)dF_n(x) = \int_\mathbb{R} g(x)dF(x)$$
+\end{theorem}
+
+\begin{lemma}
+    Una sucesión $\{F_n\}_n$ converge vagamente si y solo si converge en algún conjunto denso $D \subset \mathbb{R}$.
+\end{lemma}
+
+\begin{theorem}[Principio de selección de Helly]
+    Toda sucesión $\{F_n\}_n$ de funciones de distribución tiene una subsucesión que converge vagamente.
+\end{theorem}
+
+\begin{definition}
+    Sea $\mathcal{H}$ una familia de funciones de distribución.
+    $\mathcal{H}$ es ajustada si para todo $\varepsilon>0$ existe $a>0$ tal que:
+    $$P_F((-a,a]) > 1-\varepsilon, \quad \forall F \in \mathcal{H}$$
+    Equivalentemente,
+    $$P_F((-\infty,-a] \cup (a,\infty)) < \varepsilon, \quad \forall F \in \mathcal{H}$$
+\end{definition}
+
+\begin{definition}
+    $\mathcal{H}$ es relativamente compacta si cada $\{F_n\}_n$ con $F_n \in \mathcal{H}$ tiene una subsucesión convergente.
+\end{definition}
+
+\begin{theorem}[Prokhorov]
+    $\mathcal{H}$ es relativamente compacta si y solo si es ajustada.
+\end{theorem}
+
 \end{document}
