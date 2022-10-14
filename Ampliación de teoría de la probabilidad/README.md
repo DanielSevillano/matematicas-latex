@@ -14,11 +14,13 @@ Estos apuntes están abiertos a correcciones y mejoras:
 
 -   Correcciones de erratas, expresiones y enunciados.
 -   Nuevas demostraciones de resultados importantes.
+-   Nuevas gráficas.
 
 ## 📖 Índice
 
 ### 1. Función de distribución
 
-1. Propiedades
-2. Convolución de funciones de distribución
-3. Convergencia en distribución
+1. Introducción
+2. Propiedades
+3. Convolución de funciones de distribución
+4. Convergencia en distribución
