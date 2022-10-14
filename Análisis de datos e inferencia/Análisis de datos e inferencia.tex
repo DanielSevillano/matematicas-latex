@@ -74,9 +74,9 @@ Podemos dar un significado real a $\beta_0$ y $\beta_1$:
 
 \section{Estimación de los parámetros}
 Queremos estimar $\beta_0$, $\beta_1$ y $\sigma^2$.
-Con los estimadores $\hat{\beta_0}$ y $\hat{\beta_1}$ podemos estimar $$\hat{E(y_i | x_i)} = \hat{\beta_0} + \hat{\beta_1}x_i, \quad i = 1, \dots n$$.
+Con los estimadores $\hat{\beta_0}$ y $\hat{\beta_1}$ podemos estimar $$\hat{E(y_i | x_i)} = \hat{\beta_0} + \hat{\beta_1}x_i, \quad i = 1, \dots n$$
 
-\subsection{Método de máxima verosimilitud}
+\subsection*{Método de máxima verosimilitud}
 $y_i | x_i \sim N(\beta_0 + \beta_1x_i, \sigma^2), \quad i = 1, \dots, n$, así que podemos encontrar estimadores de máxima verosimilitud para los parámetros y para $\sigma^2$.
 
 Usando el método de máxima verosimilitud llegamos las ecuaciones normales de la regresión:
@@ -105,7 +105,7 @@ Resolviendo este sistema, obtenemos los estimadores:
 La ecuación de la recta resultante es:
 $$\hat{y_i} = \bar{y} + \frac{s_{XY}}{s_X^2}(x_i - \bar{x})$$
 
-\subsection{Estimación por mínimos cuadrados}
+\subsection*{Estimación por mínimos cuadrados}
 Queremos minimizar la suma de los cuadrados de los errores $\sum_{i=1}^n e_i^2$, donde $e_i = y_i - \hat{y_i}$.
 Para ello minimizamos la función $M(\beta_0, \beta_1) = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i)^2$.
 $$\begin{cases}
@@ -116,7 +116,7 @@ $$\begin{cases}
 Simplificando obtenemos las ecuaciones normales de la regresión, como antes.
 Así que los estimadores de $\beta_0$ y $\beta_1$ por máxima verosimilitud coinciden con los estimadores por mínimos cuadrados.
 
-\subsection{Estimación de la varianza}
+\subsection*{Estimación de la varianza}
 Partiendo del estimador $\bar{\sigma^2} = \frac{1}{n} \sum_{i=1}^n e_i^2$ obtenido previamente, podemos llegar a una expresión equivalente:
 $$\hat{\sigma^2} = s_Y^2 - \frac{s_{XY}^2}{s_X^2}$$
 
@@ -323,7 +323,7 @@ $$R^2 = \frac{VE}{VT}, \quad 0 \leq R^2 \leq 1$$
 
 \section{Predicción}
 
-\subsection{Estimación de las medias condicionadas}
+\subsection*{Estimación de las medias condicionadas}
 Llamamos $m_0 = E(y | x=x_0) = \beta_0 + \beta_1x_0$.
 Observamos que $m_0$ es un parámetro que podemos estimar de la forma:
 $$\hat{m_0} = \hat{E(y | x=x_0)} = \hat{\beta_0} + \hat{\beta_1}x_0$$
@@ -341,7 +341,7 @@ $$\left( \hat{m_0} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \sqrt{1 + \f
 Si $\sigma^2$ es desconocida,
 $$\left( \hat{m_0} - t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}}, \hat{m_0} + t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)$$
 
-\subsection{Predicción de una observación futura}
+\subsection*{Predicción de una observación futura}
 Dado un conjunto de datos $(x_1, y_1), \dots, (x_n, y_n)$ y dado $x_0$ queremos predecir:
 $$y_0 = \beta_0 + \beta_1 x_0 + u_0$$
 $u_0$ es una variable aleatoria independiente de $u_1, \dots, u_n$ con $u_0 \sim N(0, \sigma^2)$.
@@ -466,7 +466,7 @@ Estas son las ecuaciones normales de la regresión.
 Resolviendo este sistema, llegamos a que $M$ alcanza el mínimo si:
 $$X^t\vec{y} = X^tX\hat{\vec{\beta}}$$
 
-Por la hipótesis 6, $X^tX$ tiene inversa así que podemos escribir:
+Por la hipótesis de ausencia de multicolinealidad $X^tX$ tiene inversa, así que podemos escribir:
 $$\hat{\vec{\beta}} = (X^tX)^{-1}X^t\vec{y}$$
 
 Para estimar la varianza $\sigma^2$ usaremos la varianza residual:
@@ -490,6 +490,16 @@ $$\begin{cases}
         \end{cases} \Rightarrow \vec{y} \sim N_k(A\vec{\mu}, A\Sigma A^t)$$
 \end{note}
 
+Tenemos además que:
+$$Cov(\hat{\vec{\beta}}) = \sigma^2(X^tX)^{-1} = \begin{pmatrix}
+        V(\hat{\beta_0})                  & Cov(\hat{\beta_0}, \hat{\beta_1}) & \dots  & Cov(\hat{\beta_0}, \hat{\beta_k}) \\
+        Cov(\hat{\beta_1}, \hat{\beta_0}) & V(\hat{\beta_1})                  & \dots  & Cov(\hat{\beta_1}, \hat{\beta_k}) \\
+        \vdots                            & \vdots                            & \ddots & \vdots                            \\
+        Cov(\hat{\beta_k}, \hat{\beta_0}) & Cov(\hat{\beta_k}, \hat{\beta_1}) & \dots  & V(\hat{\beta_k})
+    \end{pmatrix}$$
+Así que $\hat{\beta_j} \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$ para $j = 0, \dots, k$, donde $q_{j+1, j+1}$ es el elemento $(j+1, j+1)$ de $(X^tX)^{-1}$.
+Equivalentemente, es el elemento $(j+1)$-ésimo de la diagonal principal de $(X^tX)^{-1}$.
+
 En cuanto a $s_R^2$,
 $$\begin{cases}
         E(\frac{\sum_{i=1}^n e_i^2}{\sigma^2}) = n-k-1 \\
@@ -498,5 +508,130 @@ $$\begin{cases}
         E(s_R^2) = \sigma^2 \\
         Var(s_R^2) = \frac{2(\sigma^2)^2}{n-k-1}
     \end{cases}$$
+
+\section{Intervalos de confianza para los parámetros}
+\subsection*{Intervalos de confianza para $\beta_j$, $j = 0, \dots, k$}
+Supondremos $\sigma^2$ desconocida.
+
+Sea $j \in \{0, \dots, k\}$, sabemos que $\hat{\beta_j} \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$.
+Así que:
+$$\begin{cases}
+        \frac{\hat{\beta_j} - \beta_j}{\sigma \sqrt{q_{j+1, j+1}}} \sim N(0, 1) \\
+        \frac{(n-k-1)s_R^2}{\sigma^2} \sim \chi^2_{n-k-1}
+    \end{cases} \Rightarrow \frac{\hat{\beta_j} - \beta_j}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$$
+
+Luego el intervalo de confianza para $\beta_j$ a nivel de significación $\alpha$ es:
+$$IC_{1-\alpha}(\beta_j) = \left( \hat{\beta_j} - t_{n-k-1, 1-\frac{\alpha}{2}} s_R \sqrt{q_{j+1, j+1}}, \hat{\beta_j} + t_{n-k-1, 1-\frac{\alpha}{2}} s_R \sqrt{q_{j+1, j+1}} \right)$$
+
+\subsection*{Intervalos de confianza para $\sigma^2$}
+Sabemos que $\frac{(n-k-1)s_R^2}{\sigma^2} \sim \chi^2_{n-k-1}$.
+Usando un desarrollo análogo al que hicimos para el modelo de regresión lineal simple, llegamos a que el intervalo de confianza para $\sigma^2$ a nivel de significación $\alpha$ es:
+$$IC_{1-\alpha}(\sigma^2) = \left( \frac{(n-k-1)s_R^2}{\chi^2_{n-k-1, 1-\frac{\alpha}{2}}}, \frac{(n-k-1)s_R^2}{\chi^2_{n-k-1, \frac{\alpha}{2}}} \right)$$
+
+\section{Contrastes de hipótesis para los coeficientes de regresión}
+\subsection*{Contrastes de significación individuales}
+Consideramos el contraste de hipótesis:
+$$\begin{cases}
+        H_0: \beta_j = 0 \\
+        H_1: \beta_j \neq 0
+    \end{cases} \quad j = 1, \dots, k$$
+Este contraste indica si hay suficiente evidencia en la muestra para afirmar que $X_j$ tiene una influencia lineal significativa en el modelo.
+
+Fijamos el nivel de significación $\alpha$.
+Hay tres formas de resolver  el contraste.
+
+\subsubsection*{Intervalos de confianza}
+Sea $IC_{1-\alpha}(\beta_j)$ el intervalo de confianza para $\beta_j$ a nivel de significación $\alpha$.
+Entonces:
+\begin{itemize}
+    \item Aceptamos $H_0$ a nivel de significación $\alpha$ si $0 \in IC_{1-\alpha}(\beta_j)$.
+    \item Rechazamos $H_0$ a nivel de significación $\alpha$ en caso contrario.
+\end{itemize}
+
+\subsubsection*{Estadístico $T$}
+Sabemos que $\frac{\hat{\beta_j} - \beta_j}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$.
+Entonces $T = \frac{\hat{\beta_j}}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$ si $H_0$ es cierto.
+Tomamos un $t_{exp}$.
+\begin{itemize}
+    \item Si $|t_{exp}| \leq t_{n-k-1, 1-\frac{\alpha}{2}}$, aceptamos $H_0$ a nivel de significación $\alpha$.
+    \item En caso contrario, rechazamos $H_0$ a nivel de significación $\alpha$.
+\end{itemize}
+
+\subsubsection*{Valor $p$}
+Sea $p$ el $p$-valor de la distribución. Entonces:
+\begin{itemize}
+    \item Si $p \geq \alpha$, aceptamos $H_0$ a nivel de significación $\alpha$.
+    \item En caso contrario, rechazamos $H_0$ a nivel de significación $\alpha$.
+\end{itemize}
+
+\subsection*{Contraste de regresión}
+Consideramos ahora el contraste de hipótesis:
+$$\begin{cases}
+        H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0 \\
+        H_1: \exists i \in \{1, \dots, k\} : \beta_i \neq 0
+    \end{cases}$$
+Este contraste indica si hay suficiente evidencia en la muestra para afirmar que el modelo es globalmente o conjuntamente válido.
+
+Recordamos que:
+\begin{align*}
+    \sum_{i=1}^n (y_i - \bar{y})^2 & = \sum_{i=1}^n (y_i - \hat{y_i})^2 + \sum_{i=1}^n (\hat{y_i} - \bar{y})^2 \\
+    VT                             & = VNE + VE
+\end{align*}
+
+Observamos que:
+$$\frac{VNE}{\sigma^2} = \frac{\sum_{i=1}^n e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}$$
+Se verifica que $\frac{VE}{\sigma^2} \sim \chi^2_k$ si $H_0$ es cierta.
+Así que $\frac{VT}{\sigma^2} \sim \chi^2_{n-1}$ si $H_0$ es cierta.
+
+Consideramos entonces el estadístico de contraste:
+$$F = \frac{\frac{VE}{\sigma^2} / k}{\frac{VNE}{\sigma^2} / (n-k-1)} = \frac{(n-k-1)VE}{ks_R^2}$$
+Observamos que $F \sim F_{k, n-k-1}$ si $H_0$ es cierta.
+
+Tomamos un $F_{exp}$.
+\begin{itemize}
+    \item Aceptamos $H_0$ a nivel de significación $\alpha$ si $F_{exp} \leq F_{k, n-k-1, 1-\alpha}$.
+    \item En caso contrario, rechazamos $H_0$ a nivel de significación $\alpha$.
+\end{itemize}
+
+La tabla ANOVA es de la forma:
+\begin{center}
+    \begin{tabular}{ c | c | c | c }
+        Fuentes & Suma de cuadrados                   & Grados de libertad & Cocientes           \\
+        \hline
+        $VE$    & $\sum_{i=1}^n(\hat{y_i}-\bar{y})^2$ & $k$                & $\frac{VE}{k}$      \\
+        $VNE$   & $\sum_{i=1}^n(y_i - \hat{y_i})^2$   & $n-k-1$            & $\frac{VNE}{n-k-1}$ \\
+        $VT$    & $\sum_{i=1}^n(y_i - \bar{y})^2$     & $n-1$
+    \end{tabular}
+\end{center}
+También se incluyen columnas para $F_{exp}$ y $p$-valor.
+
+\subsection*{Interpretación de los contrastes sobre los coeficientes de regresión}
+Los casos que se pueden presentar al realizar contrastes de hipótesis en un modelo de regresión son los siguientes:
+\begin{center}
+    \begin{tabular}{ c | c | c }
+        Casos & Contraste conjunto & Contraste individual   \\
+        \hline
+        1     & Significativo      & Todos significativos   \\
+        2     & Significativo      & Algunos significativos \\
+        3     & Significativo      & Ninguno significativo  \\
+        4     & No significativo   & Todos significativos   \\
+        5     & No significativo   & Algunos significativos \\
+        6     & No significativo   & Ninguno significativo  \\
+    \end{tabular}
+\end{center}
+Significativo indica que se rechaza la hipótesis $H_0$ de que el parámetro o parámetros a los que se refiere la hipótesis sea 0.
+
+Analicemos cada uno de los casos:
+\begin{itemize}
+    \item El caso 1 indica que todas las variables explicativas influyen.
+    \item El caso 2 indica que solo influyen algunas variables explicativas, por lo que en principio se deberían eliminar las no significativas del modelo.
+          Esto no debe hacerse mecánicamente, sino estudiando en profundidad cuál sería el modelo que se seleccionaría.
+    \item El caso 3 corresponde al caso en que las $x$ son muy dependientes entre sí y, aunque conjuntamente infuyen, individualmente no son significativas.
+          Es decir, se tiene multicolinealidad.
+    \item El caso 4 es poco frecuente y es un tipo de multicolinealidad especial.
+          Si dos variables influyen sobre $y$ pero en sentido contrario, su efecto conjunto puede ser no significativo aunque sus efectos individuales sí lo sean.
+    \item El caso 5 es análogo al 4.
+    \item En el caso 6 ninguna de las variables parece tener efecto sobre $y$ pero solo podremos decir que sus efectos no se detectan en la muestra considerada.
+\end{itemize}
 
 \end{document}

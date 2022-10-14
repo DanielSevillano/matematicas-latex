@@ -22,16 +22,11 @@ Estos apuntes están abiertos a correcciones y mejoras:
 1. Introducción
 2. Modelo e hipótesis
 3. Estimación de los parámetros
-    - Método de máxima verosimilitud
-    - Estimación por mínimos cuadrados
-    - Estimación de la varianza
 4. Propiedades de los estimadores
 5. Intervalos de confianza para los parámetros
 6. Contraste de regresión
 7. Evaluación del ajuste
 8. Predicción
-    - Estimación de las medias condicionadas
-    - Predicción de una observación futura
 9. Análisis de residuos y observaciones atípicas e influyentes
 10. Transformaciones
 
@@ -40,3 +35,5 @@ Estos apuntes están abiertos a correcciones y mejoras:
 1. Modelo e hipótesis
 2. Estimación de los parámetros
 3. Propiedades de los estimadores
+4. Intervalos de confianza para los parámetros
+5. Contrastes de hipótesis para los coeficientes de regresión
