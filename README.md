@@ -11,10 +11,10 @@ Una recopilación de apuntes del grado en Matemáticas escritos en $\LaTeX$.
 
 ### En desarrollo
 
+-   [Ecuaciones diferenciales II](https://github.com/DanielSevillano/matematicas-latex/tree/main/Ecuaciones%20diferenciales%20II)
 -   [Ampliación de teoría de la probabilidad](https://github.com/DanielSevillano/matematicas-latex/tree/main/Ampliación%20de%20teoría%20de%20la%20probabilidad)
 -   [Análisis de datos e inferencia](https://github.com/DanielSevillano/matematicas-latex/tree/main/Análisis%20de%20datos%20e%20inferencia)
 
 ### Próximamente
 
--   Ecuaciones diferenciales II
 -   Optimización

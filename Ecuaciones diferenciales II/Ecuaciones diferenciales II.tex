@@ -1,0 +1,413 @@
+\documentclass{report}
+\usepackage[spanish]{babel}
+\usepackage{amssymb, amsmath, amsthm, hyperref}
+
+\title{Ecuaciones diferenciales II}
+\author{}
+
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{corollary}[theorem]{Corolario}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposición}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Observación}
+\theoremstyle{remark}
+\newtheorem*{note}{Nota}
+\theoremstyle{remark}
+\newtheorem*{notation}{Notación}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
+\theoremstyle{definition}
+\newtheorem*{properties}{Propiedades}
+\theoremstyle{definition}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Teoremas de existencia y unicidad global}
+\begin{theorem}
+    Consideramos el problema de Cauchy:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$ es continua en $D \subset \mathbb{R} \times \mathbb{R}^n$, $n \geq 1$ y $(t_0, x^0) \in D$.
+    Sea $I$ un intervalo en $\mathbb{R}$ tal que $t_0 \in I$ y $x: I \to \mathbb{R^n}$ una función cuya gráfica está contenida en $D$:
+
+    Entonces, las siguientes afirmaciones son equivalentes:
+    \begin{itemize}
+        \item $x: I \to \mathbb{R}^n$ es solución de $(P)$.
+        \item $x$ es una función continua en $I$ que verifica:
+              $$x(t) = x^0 + \int_{t_0}^t f(s, x(s))ds, \quad \forall t \in I$$
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}
+    Sea $D \subset \mathbb{R}^2$.
+    Una función $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, se dice que es lipschitziana en $D$ respecto de la segunda variable $x$ cuando existe una constante $L > 0$ tal que:
+    $$|f(t, x) - f(t, y)| \leq L|x-y|, \quad (t, x), (t, y) \in D$$
+    En tal caso se escribe $f \in Lip(x, D)$ y se dice que $L$ es una constante de Lipschitz para $f$ en $D$ respecto a la segunda variable.
+\end{definition}
+
+\begin{definition}
+    Sean $n > 1$, $||.||$ una norma en $\mathbb{R}^n$ y $D \subset \mathbb{R} \times \mathbb{R}^n$.
+    \begin{itemize}
+        \item Una función $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, se dice que es lipschitziana en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una constante $L > 0$ tal que:
+              $$||f(t, x) - f(t, y)|| \leq L||x-y||, \quad (t, x), (t, y) \in D$$
+        \item Una función $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, se dice que es lipschitziana en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una constante $L > 0$ tal que:
+              $$|f(t, x) - f(t, y)| \leq L||x-y||, \quad (t, x), (t, y) \in D$$
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    Sean $n > 1$, $D \subset \mathbb{R} \times \mathbb{R}^n$ y $f: D \to \mathbb{R}^n$ con $f = (f_1, \dots, f_n)$.
+    Se verifica:
+    $$f \in Lip(x, D) \Leftrightarrow f_k \in Lip(x, D), \quad \forall k \in \{1, \dots, n\}$$
+\end{proposition}
+
+\begin{proposition}[Caracterización de la condición de Lipschitz]
+    Si $D$ es un conjunto convexo en $\mathbb{R}^2$ y $f: D \to \mathbb{R}$ es una función tal que existe $\frac{\partial f}{\partial x}: D \to \mathbb{R}$, entonces:
+    $$f \in Lip(x, D) \Leftrightarrow \frac{\partial f}{\partial x} \text{ es acotada en } D$$
+\end{proposition}
+
+\begin{remark}
+    Si $K$ es un conjunto convexo y compacto en $\mathbb{R}^2$ y existe $\frac{\partial f}{\partial x}$ y es continua sobre $K$, entonces $f \in Lip(x, K)$.
+\end{remark}
+
+\begin{definition}
+    Sea $I$ cualquier intervalo en $\mathbb{R}$.
+    Se dice que una función $f: D = I \times \mathbb{R} \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, satisface una condición de Lipschitz generalizada en $D$ respecto de la segunda variable $x$ cuando existe una función $L: I \to \mathbb{R}$ continua en $I$ y no negativa tal que:
+    $$|f(t, x) - f(t, y)| \leq L(t) |x-y|, \quad \forall (t, x), (t, y) \in D$$
+    En tal caso se escribe $f \in LipG(x, D)$.
+\end{definition}
+
+\begin{definition}
+    Sean $n > 1$, $||.||$ una norma en $\mathbb{R}^n$, $I$ un intervalo en $\mathbb{R}$ y $D = I \times \mathbb{R}n$.
+    \begin{itemize}
+        \item Se dice que la función vectorial $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, satisface una condición de Lipschitz generalizada en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una función $L: I \to \mathbb{R}^+$ continua en $I$ tal que:
+              $$||f(t, x) - f(t, y)|| \leq L(t)||x-y||, \quad (t, x), (t, y) \in D$$
+        \item Se dice que la función vectorial $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, satisface una condición de Lipschitz generalizada en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una función $L: I \to \mathbb{R}^+$ continua en $I$ tal que:
+              $$|f(t, x) - f(t, y)| \leq L(t)||x-y||, \quad (t, x), (t, y) \in D$$
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    Sean $n > 1$, $I$ un intervalo en $\mathbb{R}$ y $f: D = I \times \mathbb{R}^n \to \mathbb{R}^n$ con $f = (f_1, \dots, f_n)$.
+    Se verifica:
+    $$f \in LipG(x, D) \Leftrightarrow f_k \in LipG(x, D), \quad \forall k \in \{1, \dots, n\}$$
+\end{proposition}
+
+\begin{proposition}[Caracterización de la condición de Lipschitz generalizada]
+    Sean $I$ un intervalo de $\mathbb{R}$ y $f: D = I \times \mathbb{R} \to \mathbb{R}$, tal que existe la función derivada parcial $\frac{\partial f}{\partial x}: D \to \mathbb{R}$.
+    Las dos siguientes condiciones son equivalentes:
+    \begin{itemize}
+        \item $f \in LipG(x, D)$.
+        \item Existe una función $L: I \to \mathbb{R}^+$ continua en $I$ tal que:
+              $$|\frac{\partial f}{\partial x}(t, x)| \leq L(t), \quad \forall (t, x) \in D$$
+    \end{itemize}
+\end{proposition}
+
+\begin{theorem}[Teorema de existencia y unicidad global]
+    Sea $n \geq 1$ y supongamos las tres siguientes condiciones:
+    \begin{enumerate}
+        \item $D = I \times \mathbb{R}^n$ donde $I$ es un intervalo no degenerado en $\mathbb{R}$.
+        \item La función $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, es continua en $D$.
+        \item $f \in LipG(x, D)$.
+    \end{enumerate}
+    En tal situación, para cada $(t_0, x^0) \in D$ el problema de Cauchy:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    tiene una única solución definida en el intervalo $I$.
+\end{theorem}
+
+\chapter{Teoremas de existencia y unicidad local}
+\begin{theorem}[Teorema de existencia y unicidad local]
+    Sean $n \geq 1$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Sea el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, $D \subset \mathbb{R} \times \mathbb{R}^n$ y $(t_0, x^0) \in D$.
+
+    Supongamos que existen $a > 0$ y $b > 0$ tales que:
+    $$Q = [t_0 - a, t_0 + a] \times \bar{B}(x^0; b) \subset D$$
+    y la función $f$ verifica las dos siguientes condiciones:
+    \begin{enumerate}
+        \item $f$ es continua en $Q$.
+        \item $f \in Lip(x, Q)$.
+    \end{enumerate}
+    Entonces, existen intervalos $I = [t_0 - h, t_0 + h]$, siendo $0 < h \leq a$, tales que $(P)$ posee una única solución $x: I \to \mathbb{R}^n$.
+    Esto sucede si:
+    $$0 < h \leq \min\{a, \frac{b}{M}\}, \quad \text{siendo } M \geq \max_{(t, x) \in Q} ||f(t, x)||$$
+\end{theorem}
+
+\begin{remark}
+    Existen versiones laterales del teorema local:
+    \begin{itemize}
+        \item Tomando $Q = [t_0, t_0 + a] \times \bar{B}(x^0; b)$, para obtener una única solución $x: [t_0, t_0 + h] \to \mathbb{R}^n$ del problema $(P)$ (solución lateral a la derecha).
+        \item Tomando $Q = [t_0 - a, t_0] \times \bar{B}(x^0; b)$, para obtener una única solución $x: [t_0 - h, t_0] \to \mathbb{R}^n$ del problema $(P)$ (solución lateral a la izquierda).
+    \end{itemize}
+\end{remark}
+
+\begin{corollary}
+    Supongamos que se verifican las siguientes condiciones:
+    \begin{itemize}
+        \item $D$ es un subconjunto de $\mathbb{R}^2$ con interior $\dot{D}$ no vacío.
+        \item La función $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, es continua en $D$.
+        \item Existe la función derivada parcial $\frac{\partial f}{\partial x}: D \to \mathbb{R}$ y es continua en $D$.
+    \end{itemize}
+    En tal situación, para cualquier punto $(t_0, x^0) \in \dot{D}$ existen intervalos $I = [t_0 - h, t_0 + h]$, siendo $h > 0$, tales que el problema de Cauchy:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    tiene una única solución $x: I \to \mathbb{R}$.
+\end{corollary}
+
+\begin{remark}
+    Si $D$ es un abierto de $\mathbb{R}^2$ y $f \in \mathcal{C}^1(D, \mathbb{R})$, entonces $f$ satisface las condiciones del teorema de existencia y unicidad local.
+\end{remark}
+
+\chapter{Resultados de unicidad}
+\begin{definition}[Propiedad de unicidad global]
+    Sean $n \geq 1$, y $f: \Omega \to \mathbb{R}^n$, donde $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
+    Se dice que la ecuación diferencial $x'(t) = f(t, x(t))$ tiene la propiedad de unicidad global en una región $D \subset \Omega$ cuando, dadas dos soluciones $x: I \to \mathbb{R}^n$, $y: J \to \mathbb{R}^n$ con gráficas contenidas en $D$, sucede que si existe $t_0 \in I \cap J$ tal que $x(t_0) = y(t_0)$ entonces $x(t) = y(t)$ para cada $t \in I \cap J$.
+\end{definition}
+
+\begin{definition}
+    Sean $n \geq 1$ y $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
+    Una función $f: \Omega \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, se dice que es localmente lipschitziana en la región $D \subset \Omega$ respecto de la variable $x$ cuando para cada punto $(t_0, x^0) \in D$ existe un entorno $U$ de $(t_0, x^0)$ tal que $f \in Lip(x, U \cap D)$.
+    Cuando esto sucede escribiremos $f \in Lip_{Loc}(x, D)$.
+\end{definition}
+
+\begin{definition}
+    Sean $n > 1$ y $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
+    Una función $f: \Omega \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, se dice que es localmente lipschitziana en la región $D \subset \Omega$ respecto de la variable $x$ cuando para cada punto $(t_0, x^0) \in D$ existe un entorno $U$ de $(t_0, x^0)$ tal que $f \in Lip(x, U \cap D)$.
+\end{definition}
+
+\begin{proposition}
+    Sean $n > 1$, $\Omega \subset \mathbb{R} \times \mathbb{R}^n$ y $f: \Omega \to \mathbb{R}^n$ con $f = (f_1, \dots, f_n)$.
+    Sea $D \subset \Omega$.
+    Se verifica:
+    $$f \in Lip_{Loc}(x, D) \Leftrightarrow f_i \in Lip_{Loc}(x, D), \quad \forall i = 1, \dots, n$$
+\end{proposition}
+
+\begin{proposition}[Condición suficiente para la condición de Lipschitz local]
+    Supongamos:
+    \begin{itemize}
+        \item $n \geq 1$ y $A$ un abierto en $\mathbb{R} \times \mathbb{R}^n$.
+        \item $f: A \to \mathbb{R}$, $(t, x) = (t, x_1, \dots, x_n) \mapsto f(t, x_1, \dots, x_n)$, una función tal que, para cada $k \in \{1, \dots, n\}$, existe la función derivada parcial $\frac{\partial f}{\partial x_k}: A \to \mathbb{R}$ y es continua en $A$.
+    \end{itemize}
+    Entonces $f \in Lip_{Loc}(x, A)$, siendo $x = (x_1, \dots, x_n)$.
+\end{proposition}
+
+\begin{theorem}[Caracterización de la condición de Lipschitz local]
+    Sean $n \geq 1$, $D$ un abierto en $\mathbb{R} \times \mathbb{R}^n$ y $f: D \to \mathbb{R}^n$ continua en $D$.
+    Entonces:
+    $$f \in Lip_{Loc}(x, D) \Leftrightarrow f \in Lip(x, K), \quad \forall K \subset D \text{ compacto}$$
+\end{theorem}
+
+\begin{proposition}[Lema de Gronwall]
+    Sean $k$ una constante no negativa, $u, v: I \to \mathbb{R}^+$ dos funciones continuas en el intervalo $I$ y $t_0 \in I$ tales que:
+    $$u(t) \leq k + \left| \int_{t_0}^t v(s)u(s)ds \right|, \quad \forall t \in I$$
+    Entonces, se verifica:
+    $$u(t) \leq k\exp\left| \int_{t_0}^t v(s)ds \right|, \quad \forall t \in I$$
+\end{proposition}
+
+\begin{theorem}[Estimación de la diferencia entre dos soluciones]
+    Sean $n \geq 1$, $||.||$ una norma en $\mathbb{R}^n$, $x: I \to \mathbb{R}^n$ e $y: I \to \mathbb{R}^n$ dos soluciones de la ecuación diferencial $x'(t) = f(t, x(t))$ con gráficas contenidas en una región $D \subset \mathbb{R} \times \mathbb{R}^n$ y sea $t_0 \in I$.
+    \begin{enumerate}
+        \item Si $f \in \mathcal{C}(D, \mathbb{R}^n) \cap Lip(x, D)$ con constante de Lipschitz $L$, se tiene la siguiente estimación:
+              $$||x(t) - y(t)|| \leq ||x(t_0) - y(t_0)|| e^{L|t-t_0|}, \quad \forall t \in I$$
+        \item Si $D = J \times \mathbb{R}^n$, donde $J$ es un intervalo en $\mathbb{R}$, y $f \in \mathcal{C}(D, \mathbb{R}^n) \cap LipG(x, D)$ con función de Lipschitz $L: J \to \mathbb{R}$, $t \mapsto L(t)$, entonces:
+              $$||x(t) - y(t)|| \leq ||x(t_0) - y(t_0)|| \exp\left| \int_{t_0}^t L(s)ds \right|, \quad \forall t \in I$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Teorema de unicidad global]
+    Sean $n \geq 1$ y $f: \Omega \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, donde $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
+    Supongamos que existe $D \subset \Omega$ tal que:
+    $$f \in \mathcal{C}(D, \mathbb{R}^n) \cap Lip_{Loc}(x, D)$$
+    Entonces, la ecuación diferencial $x'(t) = f(t, x(t))$ tiene la propiedad de unicidad global en $D$.
+\end{theorem}
+
+\begin{remark}
+    Si $D$ es abierto y $f \in \mathcal{C}^1(D, \mathbb{R}^n)$, entonces $f$ satisface las condiciones del teorema de unicidad global.
+    Recordamos que satisface además las condiciones del teorema de existencia y unicidad local.
+\end{remark}
+
+\begin{proposition}[Criterio de unicidad de Peano]
+    Sean $J$ y $K$ intervalos en $\mathbb{R}$ y consideramos el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D = J \times K \to \mathbb{R}$ y $(t_0, x^0) \in D$.
+
+    Por otra parte, sea $I$ un intervalo tal que $t_0 \in I \subset J$ y consideramos:
+    $$I^- = \{t \in I: t \leq t_0\}, \quad I^+ = \{t \in I: t \geq t_0\}$$
+    suponiendo que los intervalos $I^-$ e $I^+$ no sean degenerados.
+    \begin{enumerate}
+        \item Unicidad a la izquierda. Si para cada $t \in I^-$ la función $f_t: K \to \mathbb{R}$, $x \mapsto f_t(x) = f(t, x)$ es creciente, entonces $(P)$ tiene a lo sumo una solución definida en $I^-$.
+        \item Unicidad a la derecha. Si para cada $t \in I^+$ la función $f_t: K \to \mathbb{R}$, $x \mapsto f_t(x) = f(t, x)$ es decreciente, entonces $(P)$ tiene a lo sumo una solución definida en $I^+$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Teorema de dependencia continua]
+    Sean $I$ un intervalo acotado en $\mathbb{R}$, $n \geq 1$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Consideramos el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D = I \times \mathbb{R}^n \to \mathbb{R}^n$, $(t_0, x^0) \in D$ y $f \in \mathcal{C}(D, \mathbb{R}^n) \cap Lip(x, D)$.
+
+    Sea $x: I \to \mathbb{R}^n$ la solución de $(P)$ y para cada $v \in \mathbb{R}^n$ sea:
+    $$(P_v) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = v
+        \end{cases}$$
+    Se verifica lo siguiente:
+    \begin{enumerate}
+        \item Dado cualquier $\varepsilon > 0$ existe $\delta = \delta(\varepsilon) > 0$ tal que, si $y^0 \in \mathbb{R}^n$ verifica que $||x^0 - y^0|| < \delta$, entonces la solución $y: I \to \mathbb{R}^n$ del problema $(P_{y^0})$ verifica que:
+              $$||x(t) - y(t)|| < \varepsilon, \quad \forall t \in I$$
+        \item Si $(v_m)$ es una sucesión en $\mathbb{R}^n$ tal que $v_m \to x^0$ en $\mathbb{R}^n$ y $\phi_m: I \to \mathbb{R}^n$, $m = 1, 2, \dots$, es la solución del problema $(P_{v_m})$, entonces la sucesión $(\phi_m)$ converge uniformemente hacia la solución del problema $(P)$ en el intervalo $I$.
+    \end{enumerate}
+\end{theorem}
+
+\chapter{Teoremas de existencia}
+\begin{theorem}[Versión lateral a la derecha del teorema de existencia local de Peano]
+    Sean $n \geq 1$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Sea el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$, $D \subset \mathbb{R} \times \mathbb{R}^n$ y $(t_0, x^0) \in D$.\\
+    Supongamos que existen $a > 0$ y $b > 0$ tales que $Q = [t_0, t_0 + a] \times \bar{B}(x^0; b) \subset D$ y $f$ es continua en $Q$.
+
+    Entonces, $(P)$ tiene al menos una solución definida en el intervalo $I = [t_0, t_0 + h]$, donde:
+    $$h = \min\{a, \frac{b}{M}\}, \quad M \geq \max_{(t, x) \in Q} ||f(t, x)||$$
+\end{theorem}
+
+\begin{remark}
+    La versión lateral a la izquierda del teorema de existencia local de Peano consiste en tomar
+    $$Q = [t_0 - a, t_0] \times \bar{B}(x^0; b) \subset D$$
+    De esta forma, el problema $(P)$ tiene al menos una solución definida en el intervalo $I = [t_0 - h, t_0]$.
+\end{remark}
+
+\begin{corollary}[Versión centrada del teorema de existencia local de Peano]
+    Sean $n \geq 1$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Sea el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$, $D \subset \mathbb{R} \times \mathbb{R}^n$ y $(t_0, x^0) \in D$.
+    Supongamos que existen $a > 0$ y $b > 0$ tales que $Q = [t_0 - a, t_0 + a] \times \bar{B}(x^0; b) \subset D$ y $f$ es continua en $Q$.
+
+    Entonces, $(P)$ tiene al menos una solución definida en el intervalo $I = [t_0 - h, t_0 + h]$, donde:
+    $$h = \min\{a, \frac{b}{M}\}, \quad M \geq \max_{(t, x) \in Q} ||f(t, x)||$$
+\end{corollary}
+
+\begin{theorem}[Teorema de existencia global de Peano]
+    Sean $I$ un intervalo compacto en $\mathbb{R}$, $n \geq 1$ y $f: D = I \times \mathbb{R}^n \to \mathbb{R}^n$ una función continua y acotada en $D$.
+    Entonces, para cada $(t_0, x^0) \in D$, el problema
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    tiene al menos una solución definida en $I$.
+\end{theorem}
+
+\chapter{Prolongaciones de soluciones y soluciones maximales}
+\begin{definition}[Soluciones estrictamente prolongables y soluciones maximales]
+    Una solución $x: I \to \mathbb{R}^n$ de una ecuación diferencial o de un problema de Cauchy se dice que es estrictamente prolongable cuando existe otra solución $y: J \to \mathbb{R}^n$ tal que:
+    $$I \subsetneqq J, \quad y_{|_I} = x$$
+    Cuando esto sucede, se dice que $y: J \to \mathbb{R}^n$ es una prolongación estricta de $x: I \to \mathbb{R}^n$.
+    Una solución que no admite prolongación estricta se dice que es no prolongable o que es maximal.
+\end{definition}
+
+\begin{theorem}[Existencia y unicidad de soluciones no prolongables]
+    Si $f$ es continua en $D$ se verifica:
+    \begin{enumerate}
+        \item Si $(t_0, x^0)$ es un punto interior a $D$, entonces $(P)$ tiene al menos una solución que no es prolongable definida en un intervalo que contiene al punto $t_0$ en el interior.
+              Si además $f \in Lip_{Loc}(x, D)$, esta solución maximal es única.
+        \item Si existen $a > 0$ y $b > 0$ tales que $Q = [t_0, t_0 + a] \times \bar{B}(x^0; b) \subset D$, entonces $(P)$ posee al menos una solución lateral a la derecha que no es prolongable a la derecha.
+        \item Si existen $a > 0$ y $b > 0$ tales que $Q = [t_0 - a, t_0] \times \bar{B}(x^0; b) \subset D$, entonces $(P)$ posee al menos una solución lateral a la izquierda que no es prolongable a la izquierda.
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    Si $D$ es abierto y $f$ es de clase $\mathcal{C}^1$ en $D$, entonces $(P)$ tiene una única solución maximal, que está definida en un intervalo que contiene a $t_0$ en su interior.
+\end{remark}
+
+\begin{theorem}[Soluciones maximales con gráficas contenidas en conjuntos compactos]
+    Sea el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$, $D \subset \mathbb{R} \times \mathbb{R}^n$, $n \geq 1$ y $(t_0, x^0) \in D$.
+    Sea $x: I \to \mathbb{R}^n$ una solución maximal de $(P)$ y sea $\Gamma$ su gráfica.
+
+    Supongamos que existe un conjunto $K$ compacto en $\mathbb{R} \times \mathbb{R}^n$ tal que $\Gamma \subset K \subset D$ y $f$ es continua en $K$.
+    Entonces:
+    \begin{enumerate}
+        \item $I$ es un intervalo compacto, es decir, $I = [a, b]$.
+        \item Los puntos $(a, x(a))$ y $(b, x(b))$ están en la frontera de $K$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}[Puntos límite]
+    Sean $n \geq 1$ y $x: [t_0, t_1) \to \mathbb{R}^n$ una función tal que $t_1 < \infty$.
+    Sea $x^1 \in \mathbb{R}^n$.
+    Se dice que $(t_1, x^1)$ es un punto límite de la gráfica de $x$ para $t \to t_1$ cuando existe una sucesión $(s_m)$ en el intervalo $[t_0, t_1)$ tal que $(s_m, x(s_m)) \to (t_1, x^1)$ en $\mathbb{R} \times \mathbb{R}^n$.
+\end{definition}
+
+\begin{proposition}
+    Sean $n \geq 1$, $t_1 < \infty$, $x: [t_0, t_1) \to \mathbb{R}^n$ una función, $\Gamma$ su gráfica y $||.||$ una norma en $\mathbb{R}^n$.
+    Se verifica una y solamente una de las dos siguientes situaciones:
+    \begin{itemize}
+        \item $\lim\limits_{t \to t_1} ||x(t)|| = \infty$
+        \item $\Gamma$ tiene al menos un punto límite para $t \to t_1$.
+    \end{itemize}
+\end{proposition}
+
+\begin{theorem}[Lema de Wintner]
+    Sea $x: [t_0, t_1) \to \mathbb{R}^n$, siendo $t_1 < \infty$, una solución de la ecuación diferencial $x'(t) = f(t, x(t))$, con gráfica $\Gamma$ contenida en $D \subset \mathbb{R} \times \mathbb{R}^n$ y sea $f: D \to \mathbb{R}^n$ una función continua en $D$.
+    Sea $(t_1, x^1)$ un punto límite de $\Gamma$ para $t \to t_1$ y supongamos que se verifica la siguiente condición:
+    \begin{center}
+        Existe un entorno $U$ de $(t_1, x^1)$ tal que $f$ es acotada de $U \cap D$.
+    \end{center}
+
+    Entonces $\lim\limits_{t \to t_1} x(t) = x^1$.
+\end{theorem}
+
+\begin{theorem}[Soluciones maximales con gráficas contenidas en conjuntos abiertos]
+    Sean $A$ un abierto en $\mathbb{R} \times \mathbb{R}^n$, $n \geq 1$, $f: A \to \mathbb{R}^n$ una función continua en $A$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Si $x: I \to \mathbb{R}^n$ es una solución no prolongable de la ecuación diferencial $x'(t) = f(t, x(t))$ con gráfica $\Gamma$ contenida en $A$, se verifica:
+    \begin{enumerate}
+        \item El intervalo $I$ es abierto.
+        \item Si $I$ tiene un extremo finito $\alpha$, entonces $\lim\limits_{t \to \alpha} ||x(t)|| = \infty$ o bien cualquier punto límite de $\Gamma$ para $t \to \alpha$ está en la frontera de $A$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Teorema fundamental de las ecuaciones autónomas]
+    Supongamos que $g \in \mathcal{C}^1(\mathbb{R}, \mathbb{R})$.
+    Sea $x: I \to \mathbb{R}$ una solución no prolongable de la ecuación $X' = g(x)$ y sea $t_0 \in \dot{I}$.
+    Se verifica lo siguiente:
+    \begin{enumerate}
+        \item El intervalo $I$ es abierto.
+        \item Si $x$ es acotada en $I^+ = [t_0, \infty)$, existe $\lim\limits_{t \to \infty} x(t) = a$, siendo $a \in \mathbb{R}$, y la función constante dada por $y(t) \equiv a$ es solución de la ecuación $x' = g(x)$.
+        \item Si $x$ es acotada en $I^- = (-\infty, t_0]$, existe $\lim\limits_{t \to -\infty} x(t) = b$, siendo $b \in \mathbb{R}$, y la función constante dada por $y(t) \equiv b$ es solución de la ecuación $x' = g(x)$.
+    \end{enumerate}
+\end{theorem}
+
+\end{document}
