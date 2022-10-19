@@ -128,7 +128,7 @@ Entonces:
 
 \begin{theorem}
     Sea $F$ función de distribución.
-    $F$ es absolutamente continua si y solo si existe una funcoón medible $f$ no negativa y finita tal que
+    $F$ es absolutamente continua si y solo si existe una función medible $f$ no negativa y finita tal que
     $$F(b) - F(a) = \int_a^b f(x) dx, \quad \forall a < b$$
     La función $f$ se llama función de densidad.
 \end{theorem}
@@ -889,6 +889,97 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
 
 \begin{theorem}[Prokhorov]
     $\mathcal{H}$ es relativamente compacta si y solo si es ajustada.
+\end{theorem}
+
+\chapter{Función característica}
+\begin{definition}
+    Sea $X$ variable aleatoria en $(\Omega, \mathcal{A}, P)$ con función de distribución $F$.
+    La función característica asociada a $X$ es:
+    $$\varphi_X: \mathbb{R} \to \mathbb{C}$$
+    $$\varphi_X(t) = E(e^{itX}) = \int_\mathbb{R} e^{itx}dF(x)$$
+\end{definition}
+
+\begin{remark}
+    Usando que $e^{ix} = \cos(x) + i\sin(x)$, podemos escribir:
+    $$\varphi_X(t) = \int_\mathbb{R} \cos(tx)dF(x) + i \int_\mathbb{R} \sin(tx)dF(x)$$
+\end{remark}
+
+\begin{example}
+    Sea $X \sim \delta(a)$, con $a \in \mathbb{R}$.
+    Su función característica es:
+    $$\varphi_X(t) = E(e^{itX}) = e^{ita} P(X=a) = e^{ita}$$
+\end{example}
+
+\begin{example}
+    Sea $X \sim Bi(n, p)$, con $n \geq 0$ y $0 \leq p \leq 1$.
+    Su función característica es:
+    \begin{align*}
+        \varphi_X(t) & = \sum_{k=0}^n e^{itk} P(X=k) = \sum_{k=0}^n e^{itk} \binom{n}{k} p^k(1-p)^{n-k} = \\
+                     & = \sum_{k=0}^n \binom{k}{n} (pe^{it})^k(1-p)^{n-k} = (pe^{it} + 1 - p)^n
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Sea $X \sim Po(\lambda)$.
+    Su función característica es:
+    \begin{align*}
+        \varphi_X(t) & = \sum_{k=0}^n e^{itk} P(X=k) = \sum_{k=0}^n e^{itk}e^{-\lambda}\frac{\lambda^k}{k!} = e^{-\lambda} \sum_{k=0}^n \frac{(\lambda e^{it})^k}{k!} = \\
+                     & = e^{-\lambda}e^{\lambda e^{it}} = e^{\lambda(e^{it} - 1)}
+    \end{align*}
+\end{example}
+
+\begin{remark}
+    $$\varphi_{Bi}(x) = (pe^{it} + 1 - p)^n = \left( 1 + \frac{np(e^{it}-1)}{n} \right)^n \xrightarrow[np \to \lambda]{n \to \infty} e^{\lambda(e^{it} - 1)} = \varphi_{Po}(t)$$
+\end{remark}
+
+\begin{example}
+    Sea $X \sim U([0, 1])$.
+    Su función característica es:
+    $$\varphi_X(t) = E(e^{itX}) = \int_\mathbb{R} e^{itx}dF(x) = \int_\mathbb{R} e^{itx}f_X(x)dx = \int_0^1 e^{itx}dx = \frac{e^{it}-1}{it}$$
+\end{example}
+
+\begin{example}
+    Sea $X \sim N(0, 1)$.
+    Su función característica es:
+    \begin{align*}
+        \varphi_X(t) & = \int_\mathbb{R} e^{itx}f_X(x)dx = \int_\mathbb{R} e^{itx} \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx = \frac{1}{\sqrt{2\pi}} \int_\mathbb{R} e^{-\frac{(x^2-2itx)}{2}}dx =                     \\
+                     & = \frac{1}{\sqrt{2\pi}} \int_\mathbb{R} e^{-\frac{t^2}{2}}e^{-\frac{x^2-t^2-2it}{2}}dx = \frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}} \int_\mathbb{R} e^{-\frac{(x-it)^2}{2}}dx = e^{-\frac{t^2}{2}}
+    \end{align*}
+
+    \begin{note}
+        $\int_\mathbb{R} e^{-x^2}dx = \sqrt{\pi}$
+    \end{note}
+\end{example}
+
+\begin{properties}
+    Sea $\varphi$ la función característica de una variable aleatoria $X$.
+    \begin{enumerate}
+        \item $\varphi(0) = 1$
+        \item $|\varphi(t)| \leq 1, \quad \forall t \in \mathbb{R}$
+        \item $\varphi(-t) = \overline{\varphi(t)}$
+        \item $\varphi$ es función definida positiva, es decir,
+              $$\sum_{k,j=1}^n z_k\varphi(t_j-t_k)\overline{z_j} \geq 0, \quad \forall n \geq 1, \quad \forall z \in \mathbb{C}^n$$
+    \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+    $\varphi$ es uniformemente continua en $\mathbb{R}$.
+\end{theorem}
+
+\begin{theorem}[Teorema de inversión]
+    Sea $X$ variable aleatoria en $(\Omega, \mathcal{A}, P)$ con función de distribución $F$ y función característica $\varphi$.
+    Sean $a, b \in \mathbb{R}$ con $a < b$, entonces:
+    $$\frac{F(b)+F(b^-)}{2} - \frac{F(a)+F(a^-)}{2} = \lim\limits_{T \to \infty} \frac{1}{2\pi} \int_{-T}^T \frac{e^{-itb}-e^{-ita}}{-it} \varphi(t)dt$$
+\end{theorem}
+
+\begin{corollary}
+    Sea $X$ variable aleatoria en $(\Omega, \mathcal{A}, P)$ con función de distribución $F$ y función característica $\varphi$.
+    Sean $a, b \in C(F)$ con $a < b$, entonces:
+    $$F(b) - F(a) = \lim\limits_{T \to \infty} \frac{1}{2\pi} \int_{-T}^T \frac{e^{-itb}-e^{-ita}}{-it} \varphi(t)dt$$
+\end{corollary}
+
+\begin{theorem}[Unicidad]
+    $$F_1 = F_2 \Leftrightarrow \varphi_1 = \varphi_2$$
 \end{theorem}
 
 \end{document}

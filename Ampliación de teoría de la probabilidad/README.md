@@ -24,3 +24,5 @@ Estos apuntes están abiertos a correcciones y mejoras:
 2. Propiedades
 3. Convolución de funciones de distribución
 4. Convergencia en distribución
+
+### 2. Función característica
