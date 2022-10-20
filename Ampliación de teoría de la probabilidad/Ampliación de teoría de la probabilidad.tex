@@ -929,7 +929,7 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
 \end{example}
 
 \begin{remark}
-    $$\varphi_{Bi}(x) = (pe^{it} + 1 - p)^n = \left( 1 + \frac{np(e^{it}-1)}{n} \right)^n \xrightarrow[np \to \lambda]{n \to \infty} e^{\lambda(e^{it} - 1)} = \varphi_{Po}(t)$$
+    $$\varphi_{Bi}(x) = (pe^{it} + 1 - p)^n = \left( 1 + \frac{np(e^{it}-1)}{n} \right)^n \xrightarrow[n \to \infty]{np \to \lambda} e^{\lambda(e^{it} - 1)} = \varphi_{Po}(t)$$
 \end{remark}
 
 \begin{example}
@@ -979,7 +979,25 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
 \end{corollary}
 
 \begin{theorem}[Unicidad]
+    Sean $X_1$ y $X_2$ variables aleatorias, con funciones de distribución $F_1$ y $F_2$ y funciones características $\varphi_1$ y $\varphi_2$ respectivamente.
+    Entonces:
     $$F_1 = F_2 \Leftrightarrow \varphi_1 = \varphi_2$$
 \end{theorem}
+
+\begin{theorem}
+    Existe $k \in (0, \infty)$ tal que para todo $a > 0$ y toda medida de probabilidad $P_F$ se tiene que:
+    $$P_F \left(\left[-\frac{1}{a}, \frac{1}{a}\right]^c\right) \leq \frac{k}{a} \int_0^a (1 - Re(\varphi_F(t)))dt$$
+    donde $\varphi_F$ es la función característica asociada a $P_F$.
+\end{theorem}
+
+\begin{corollary}
+    Sea $\{X_n\}_{n \geq 1}$ una sucesión de variables aleatorias $X_n$ con $F_n$, $P_{F_n}$ y $\varphi_{F_n}$.
+    Supongamos que:
+    \begin{enumerate}
+        \item Existe $\delta > 0$ tal que $\varphi_{F_n}(t) \xrightarrow[n \to \infty]{} \varphi(t)$ para todo $t \in [-\delta, \delta]$, siendo $\varphi$ una función.
+        \item $\varphi$ es continua en 0.
+    \end{enumerate}
+    Entonces $\{X_n\}_{n \geq 1}$ es ajustada.
+\end{corollary}
 
 \end{document}
