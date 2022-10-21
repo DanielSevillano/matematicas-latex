@@ -344,8 +344,10 @@ $$\left( \hat{m_0} - t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + 
 \subsection*{Predicción de una observación futura}
 Dado un conjunto de datos $(x_1, y_1), \dots, (x_n, y_n)$ y dado $x_0$ queremos predecir:
 $$y_0 = \beta_0 + \beta_1 x_0 + u_0$$
-$u_0$ es una variable aleatoria independiente de $u_1, \dots, u_n$ con $u_0 \sim N(0, \sigma^2)$.
-Observamos que $y_0$ es una variable aleatoria, a diferencia de la estimación $$\hat{y_0} = \hat{\beta_0} + \hat{\beta_1}x_0 = \hat{m_0}$$
+donde $u_0$ es independiente a $u_1, \dots, u_n$ con $u_0 \sim N(0, \sigma^2)$.
+Observamos que $y_0$ es una variable aleatoria, con estimador $\hat{y_0} = \hat{\beta_0} + \hat{\beta_1}x_0$.
+La estimación puntual es:
+$$\hat{y_0} = \hat{\beta_0} + \hat{\beta_1}x_0 = \hat{m_0}$$
 
 Consideramos el error:
 $$e_0 = y_0 - \hat{y_0} = \beta_0 + \beta_1x_0 + u_0 - (\hat{\beta_0} + \hat{\beta_1}x_0)$$
@@ -464,10 +466,10 @@ $$\begin{cases}
 Estas son las ecuaciones normales de la regresión.
 
 Resolviendo este sistema, llegamos a que $M$ alcanza el mínimo si:
-$$X^t\vec{y} = X^tX\hat{\vec{\beta}}$$
+$$X'\vec{y} = X'X\hat{\vec{\beta}}$$
 
-Por la hipótesis de ausencia de multicolinealidad $X^tX$ tiene inversa, así que podemos escribir:
-$$\hat{\vec{\beta}} = (X^tX)^{-1}X^t\vec{y}$$
+Por la hipótesis de ausencia de multicolinealidad $X'X$ tiene inversa, así que podemos escribir:
+$$\hat{\vec{\beta}} = (X'X)^{-1}X'\vec{y}$$
 
 Para estimar la varianza $\sigma^2$ usaremos la varianza residual:
 $$s_R^2 = \frac{e_i^2}{n-k-1}$$
@@ -479,26 +481,26 @@ $$s_R^2 = \frac{e_i^2}{n-k-1}$$
 \section{Propiedades de los estimadores}
 Sobre el estimador $\hat{\vec{\beta}}$, sabemos que:
 $$\begin{cases}
-        \hat{\vec{\beta}} = (X^tX)^{-1}X^t\vec{y} \\
+        \hat{\vec{\beta}} = (X'X)^{-1}X'\vec{y} \\
         \hat{y} \sim N_n(X\vec{\beta}, \sigma^2 I_n)
-    \end{cases} \Rightarrow \hat{\vec{\beta}} \sim N_{k+1}(\vec{\beta}, \sigma^2(X^tX)^{-1})$$
+    \end{cases} \Rightarrow \hat{\vec{\beta}} \sim N_{k+1}(\vec{\beta}, \sigma^2(X'X)^{-1})$$
 
 \begin{note}
     $$\begin{cases}
             \vec{x} \sim N_n(\vec{\mu}, \Sigma) \\
             \vec{y} = A\vec{x}
-        \end{cases} \Rightarrow \vec{y} \sim N_k(A\vec{\mu}, A\Sigma A^t)$$
+        \end{cases} \Rightarrow \vec{y} \sim N_k(A\vec{\mu}, A\Sigma A')$$
 \end{note}
 
 Tenemos además que:
-$$Cov(\hat{\vec{\beta}}) = \sigma^2(X^tX)^{-1} = \begin{pmatrix}
+$$Cov(\hat{\vec{\beta}}) = \sigma^2(X'X)^{-1} = \begin{pmatrix}
         V(\hat{\beta_0})                  & Cov(\hat{\beta_0}, \hat{\beta_1}) & \dots  & Cov(\hat{\beta_0}, \hat{\beta_k}) \\
         Cov(\hat{\beta_1}, \hat{\beta_0}) & V(\hat{\beta_1})                  & \dots  & Cov(\hat{\beta_1}, \hat{\beta_k}) \\
         \vdots                            & \vdots                            & \ddots & \vdots                            \\
         Cov(\hat{\beta_k}, \hat{\beta_0}) & Cov(\hat{\beta_k}, \hat{\beta_1}) & \dots  & V(\hat{\beta_k})
     \end{pmatrix}$$
-Así que $\hat{\beta_j} \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$ para $j = 0, \dots, k$, donde $q_{j+1, j+1}$ es el elemento $(j+1, j+1)$ de $(X^tX)^{-1}$.
-Equivalentemente, es el elemento $(j+1)$-ésimo de la diagonal principal de $(X^tX)^{-1}$.
+Así que $\hat{\beta_j} \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$ para $j = 0, \dots, k$, donde $q_{j+1, j+1}$ es el elemento $(j+1, j+1)$ de $(X'X)^{-1}$.
+Equivalentemente, es el elemento $(j+1)$-ésimo de la diagonal principal de $(X'X)^{-1}$.
 
 En cuanto a $s_R^2$,
 $$\begin{cases}
@@ -605,6 +607,18 @@ La tabla ANOVA es de la forma:
 \end{center}
 También se incluyen columnas para $F_{exp}$ y $p$-valor.
 
+Veamos algunas expresiones para $VT$, $VNE$ y $VE$.
+\begin{align*}
+    VT  & = \sum (y_i - \bar{y})^2 = \sum y_i^2 + n\bar{y}^2 - 2\bar{y}\sum y_i = \sum y_i^2 + n\bar{y}^2 = \vec{y}'\vec{y} - n\vec{y}^2                     \\
+    VNE & = \sum (y_i - \hat{y_i})^2 = (\vec{y} - \hat{\vec{y}})'(\vec{y} - \hat{\vec{y}}) = (\vec{y} - X\hat{\vec{\beta}})'(\vec{y} - X\hat{\vec{\beta}}) = \\
+        & = \vec{y}'\vec{y} - \hat{\vec{\beta}}X'\vec{y} + (\hat{\vec{\beta}}'X'X - \vec{y}'X)\vec{\beta} = \vec{y}'\vec{y} - \hat{\vec{\beta}}X'\vec{y}     \\
+    VE  & = VT - VNE = \vec{y}'\vec{y} - n\vec{y}^2 - \vec{y}'\vec{y} + \hat{\vec{\beta}}X'\vec{y} = \hat{\vec{\beta}}X'\vec{y} - n\vec{y}^2
+\end{align*}
+
+\begin{note}
+    $$\hat{\beta}'X'X - \vec{y}'X = y'X(X'X)^{-1}X'X - y'X = y'X - y'X = 0$$
+\end{note}
+
 \subsection*{Interpretación de los contrastes sobre los coeficientes de regresión}
 Los casos que se pueden presentar al realizar contrastes de hipótesis en un modelo de regresión son los siguientes:
 \begin{center}
@@ -633,5 +647,322 @@ Analicemos cada uno de los casos:
     \item El caso 5 es análogo al 4.
     \item En el caso 6 ninguna de las variables parece tener efecto sobre $y$ pero solo podremos decir que sus efectos no se detectan en la muestra considerada.
 \end{itemize}
+
+\subsection*{Constrastes de grupos de cocientes}
+Consideramos ahora el contraste de hipótesis:
+$$\begin{cases}
+        H_0: \beta_1 = \beta_2 = \dots = \beta_i = 0 \\
+        H_1: \exists j \in \{1, \dots, i\} : \beta_j \neq 0
+    \end{cases}$$
+
+Definimos:
+\begin{itemize}
+    \item $VE(k)$: variabilidad explicada por el modelo con $x_1, \dots, x_k$ como variables explicativas.
+    \item $VE(k-i)$: variabilidad explicada por el modelo con todas las variables explicativas excepto $x_1, \dots, x_k$.
+    \item $\Delta VE = VE(k) - VE(k-i)$: variabilidad explicada por $x_1, \dots, x_i$.
+    \item $VNE(k)$: variabilidad no explicada por el modelo con $x_1, \dots, x_k$ como variables explicativas.
+\end{itemize}
+
+Consideramos el estadístico de contraste:
+$$F = \frac{\Delta VE / i}{VNE(k) / (n-k-1)} = \frac{(n-k-1)\Delta VE}{iVNE(k)} = \frac{(n-k-1)\Delta VE}{is_R^2(n-k-1)} = \frac{\Delta VE}{is_R^2}$$
+Observamos que $F \sim F_{i, n-k-1}$ si $H_0$ es cierta.
+
+Tomamos un $F_{exp}$.
+\begin{itemize}
+    \item Si $F_{exp} \leq F_{i, n-k-1, 1-\alpha}$, aceptamos $H_0$ a nivel de significación $\alpha$.
+    \item En caso contrario, rechazamos $H_0$ a nivel de significación $\alpha$.
+\end{itemize}
+
+Este constraste se puede utilizar para contrastes individuales:
+$$\begin{cases}
+        H_0: \beta_i = 0 \\
+        H_1: \beta_i \neq 0
+    \end{cases}$$
+En este caso, $F_{exp} = t_{exp}^2$.
+
+\section{Correlación en regresión múltiple}
+\subsection*{Coeficiente de determinación}
+Definimos el coeficiente de determinación como:
+$$R^2 = \frac{VE}{VT} = \frac{VT - VNE}{VT} = 1 - \frac{VNE}{VT} = 1 - \frac{(n-k-1)s_R^2}{VT}, \quad 0 \leq R^2 \leq 1$$
+Observamos que $R^2$ aumenta si el número de variables explicativas aumenta $k$, aunque las variables no sean significativas.
+
+\subsection*{Coeficiente de determinación ajustado}
+Definimos el coeficiente de determinación ajustado o corregido como:
+$$\bar{R}^2 = 1 - \frac{VNE/(n-k-1)}{VT/(n-1)} = 1 - \frac{n-1}{n-k-1}\frac{(n-k-1)s_R^2}{VT} = 1 - (n-1)\frac{s_R^2}{VT}$$
+Observamos que $\bar{R}^2$ aumenta si y solo si $s_R^2$ disminuye.
+
+\begin{note}
+    $\bar{R}^2$ puede ser negativo.
+\end{note}
+
+Veamos qué relación hay entre $R^2$ y $\bar{R}^2$.
+$$R^2 = 1 - \frac{(n-k-1)s_R^2}{VT} \Rightarrow \frac{s_R^2}{VT} = \frac{1-R^2}{n-k-1}$$
+Por tanto,
+$$\bar{R}^2 = 1 - (n-1)\frac{s_R^2}{VT} = 1 - \frac{(n-1)(1-R^2)}{n-k-1} \Rightarrow 1 - \bar{R}^2 = \frac{n-1}{n-k-1}(1 - R^2)$$
+
+Además,
+$$n-k-1 \leq n-1 \Rightarrow \frac{n-1}{n-k-1}(1-R^2) \geq 1 - R^2 \Rightarrow 1-\bar{R}^2 \geq 1-R^2 \Rightarrow \bar{R}^2 \leq R^2$$
+Luego $\bar{R}^2 \leq R^2 \leq 1$.
+
+\section{Predicción}
+\subsection*{Estimación de las medias condicionadas}
+Queremos estimar:
+$$m_0 = E(y|x_{10}, \dots, x_{k0}) = \beta_0 + \beta_1x_{10} + \dots + \beta_kx_{k0} = \vec{x_0}'\vec{\beta}$$
+con $\vec{x_0} = (1, x_{10}, \dots, x_{k0})$.
+Para ello usamos el estimador:
+$$\hat{m_0} = \hat{E}(y|x_{10}, \dots, x_{k0}) = \hat{\beta_0} + \hat{\beta_1}x_{10} + \dots + \hat{\beta_k}x_{k0}$$
+Como $\hat{\vec{\beta}} \sim N_{k+1}(\vec{\beta}, \sigma^2(X'X)^{-1})$,
+$$\hat{m_0} \sim N(\vec{x_0}'\vec{\beta}, \vec{x_0}'V(\hat{\vec{\beta}})\vec{x_0}) \equiv N(m_0, \sigma^2\vec{x_0}'(X'X)^{-1}\vec{x_0})$$
+Observamos  que $\hat{m_0}$ es un estimador insesgado.
+
+Para obtener intervalos de confianza vemos que:
+$$\frac{\hat{m_0}-m_0}{\sigma\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}}} \sim N(0, 1) \Rightarrow \frac{\hat{m_0}-m_0}{s_R\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}}} \sim t_{n-k-1}$$
+Por tanto, el intervalo de confianza para $m_0$ a nivel de significación $\alpha$ es:
+$$\left( \hat{m_0} - t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}}, \hat{m_0} + t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}} \right)$$
+
+\subsection*{Predicción de una nueva observación}
+Queremos predecir la variable aleatoria
+$$y_0 = \beta_0 + \beta_1x_{10} + \dots + \beta_kx_{k0} + u_0 = \vec{x_0}'\vec{\beta} + u_0$$
+Su estimación puntual es:
+$$\hat{y_0} = \hat{\beta_0} + \hat{\beta_1}x_{10} + \dots + \hat{\beta_k}x_{k0} = \vec{x_0}'\hat{\vec{\beta}} = \hat{m_0}$$
+
+Consideramos la variable aleatoria error:
+$$e_0 = y_0 - \hat{y_0}$$
+Sabemos que:
+$$\begin{cases}
+        y_0 \sim N(\vec{x_0}'\hat{\beta}, \sigma^2) \\
+        \vec{y_0} \sim N(m_0, \sigma^2\vec{x_0}'(X'X)^{-1}\vec{x_0})
+    \end{cases}$$
+Como además $y_0$ e $\hat{y_0}$ son independientes, $e_0 \sim N$.
+\begin{align*}
+    E(e_0) & = E(y_0) - E(\hat{y_0}) = \vec{x_0}'\vec{\beta} - m_0 = 0                                                                 \\
+    V(e_0) & = V(y_0) + V(\hat{y_0}) = \sigma^2 + \sigma^2\vec{x_0}'(X'X)^{-1}\vec{x_0} = \sigma^2 (1 + \vec{x_0}'(X'X)^{-1}\vec{x_0})
+\end{align*}
+Por tanto, $e_0 \sim N(0, \sigma^2 (1 + \vec{x_0}'(X'X)^{-1}\vec{x_0}))$.
+
+Para obtener intervalos de pronóstico observamos que:
+$$\frac{e_0}{\sigma\sqrt{1+\vec{x_0}'(X'X)^{-1}\vec{x_0}}} \sim N(0, 1) \Rightarrow \frac{e_0}{s_R\sqrt{1+\vec{x_0}'(X'X)^{-1}\vec{x_0}}} \sim t_{n-k-1}$$
+Así que el intervalo de pronóstico para $y_0$ con contenido probabilístico $1-\alpha$ es:
+$$IP_{1-\alpha}(y_0) = (\hat{y_0} - R, \; \hat{y_0} + R)$$
+donde
+$$R = t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{1+\vec{x_0}'(X'X)^{-1}\vec{x_0}}$$
+
+\section{Diagnosis y validación del modelo}
+\subsection*{Multicolinealidad}
+El primer problema que surge es la dependencia de las variables explicativas entre sí, es decir, la existencia de una o más combinaciones lineales entre las columnas de la matriz:
+$$X = \begin{pmatrix}
+        1      & x_{11} & \dots & x_{k1} \\
+        1      & x_{12} & \dots & x_{k2} \\
+        \vdots & \vdots &       & \vdots \\
+        1      & x_{1n} & \dots & x_{kn}
+    \end{pmatrix}, \quad rang(X) \leq k+1$$
+Esto es equivalente a que $rang(X) < k+q$.
+
+Cuando esto ocurre es difícil separar los efectos de cada variable explicativa y medir la contribución individual, con lo que los estimadores individuales serán inestables y con gran varianza.
+A este problema se le denomina multicolinealidad y consiste en querer extraer de la muestra más información de la que contiene.
+
+Existen dos tipos de multicolinealidad:
+\begin{enumerate}
+    \item \textbf{Multicolinealidad perfecta.}
+          Se da cuando una de las variables explicativas es combinación lineal exacta de las demás.
+          En este caso $rang(X) < k+1$ así que $\det(X'X) = 0$ y no se puede calcular $(X'X)^{-1}$.
+          El sistema de ecuaciones que determina el vector $\hat{\beta}$ no tiene solución única.
+    \item \textbf{Alta multicolinealidad.}
+          Se da cuando alguna o todas las variables explicativas están altamente correlacionadas entre sí pero el coeficiente de correlación no llega a ser 1 ni -1.
+          En este caso las columnas de la matriz $X$ tienen un alto grado de dependencia entre sí pero sí puede calcularse el vector $\hat{\beta}$.
+          Sin embargo, presenta algunos problemas.
+          \begin{itemize}
+              \item Los estimadores $\hat{\beta_j}$ tendrán varianzas muy altas, lo que provocará mucha imprecisión en la estimación de los $\hat{\beta_j}$.
+                    En consecuencia, los intervalos de confianza serán muy anchos.
+              \item Los estimadores $\hat{\beta_j}$ serán muy dependientes entre sí, puesto que tendrán altas covarianzas y habrá poca información sobre lo que ocurre al variar una variable si las demás permanecen constantes.
+          \end{itemize}
+\end{enumerate}
+
+\subsubsection*{Consecuencias de la multicolinealidad}
+\begin{itemize}
+    \item Los estimadores $\hat{\beta_j}$ serán muy sensibles a pequeñas variaciones en el tamaño muestral o la supresión de una variable aparentemente no significativa.
+          A pesar de esto, la predicción no tiene por qué verse afectada ante la multicolinealidad, ni esta afecta al vector de residuos que está siempre bien definido.
+    \item Los coeficientes de regresión pueden ser no significativos individualmente puesto que las varianzas de los $\hat{\beta_j}$ van a ser grandes, aunque el contraste global del modelo sea significativo.
+    \item La multicolinealidad puede afectar mucho a algunos parámetros y nada a otros.
+          Los parámetros que estén asociados a variables explicativas poco correlacionadas con el resto no se verán afectados y podrán estimarse con precisión.
+\end{itemize}
+
+\subsubsection*{Identificación de la multicolinealidad}
+La identificación de variables correlacionadas se realiza de una de las siguientes formas:
+\begin{enumerate}
+    \item Examinando la matriz de correlaciones entre las variables explicativas $R$ y su inversa.
+          La presencia de correlaciones altas entre variables explicativas es un indicio de multicolinealidad.
+          Aun así, es posible que exista una relación perfecta entre una variable y el resto y, sin embargo, sus coeficientes de correlación sean bajos.
+
+          Definimos la matriz de correlaciones como:
+          $$R = \begin{pmatrix}
+                  1      & r_{12} & r_{13} & \dots  & r_{1k} \\
+                  r_{12} & 1      & r_{23} & \dots  & r_{2k} \\
+                  r_{13} & r_{23} & 1      & \dots  & r_{3k} \\
+                  \vdots & \vdots &        & \ddots & \vdots \\
+                  r_{1k} & r_{2k} & r_{3k} & \dots  & 1
+              \end{pmatrix}, \quad r_{ij} = \frac{s_{X_iX_j}}{s_{X_i}s_{X_j}}, \quad -1 \leq r_{ij} \leq 1$$
+          Esta es una matriz de orden $k$, simétrica y con unos en la diagonal.
+
+          La inversa de la matriz de correlaciones:
+          $$R^{-1} = \begin{pmatrix}
+                  \gamma_{11} & \gamma_{12} & \dots  & \gamma_{1k} \\
+                  \gamma_{21} & \gamma_{22} & \dots  & \gamma_{2k} \\
+                  \vdots      & \vdots      & \ddots & \vdots      \\
+                  \gamma_{k1} & \gamma_{k2} & \dots  & \gamma_{kk}
+              \end{pmatrix}$$
+          tiene en cuenta la dependencia conjunta.
+          Los elementos de su diagonal se denominan factores de incremente o de inflación de la variance y verifican:
+          $$\gamma_{ii} = FIV(i) = \frac{1}{1-R^2_{i,r}}, \quad i = 1, \dots, k$$
+          donde $R^2_{i,r}$ es el coeficiente de determinación de la regresión de la variable $X_i$ en función del resto de variables explicativas.
+          Por tanto, si para algún $i$ se tiene que:
+          $$\gamma_{ii} > 10 \Leftrightarrow \frac{1}{1-R^2_{i,r}} > 10 \Leftrightarrow 1 - R^2_{i,r} < 0.1 \Leftrightarrow R^2_{i,r} > 0.9$$
+          es decir, la variable $X_i$ se explica como mínimo en un 90\% por el resto de variables explicativas.
+          Luego estamos en una situación de alta multicolinealidad.
+
+          $R^{-1}$ se calculará con poca precisión cuando $R$ sea casi singular.
+    \item Examinando los autovalores de $X'X$ o de $R$.
+          Las mejores medidas de singularidad de $X'X$ o de $R$ utilizan los autovalores de estas matrices.
+          Un índice de singularidad que se utiliza en cálculo numérico es el índice de condicionamiento.
+
+          Si $M$ es una matriz de orden $k$, simétrica y definida positiva, y $\lambda_1 < \lambda_2 < \dots < \lambda_k$ son sus autovalores, se define el índice de condicionamiento de $M$ como:
+          $$cond(M) = \sqrt{\frac{\lambda_k}{\lambda_1}} \geq 1$$
+          Es más conveniente calcular este índice para $R$ que para $X'X$, con el fin de evitar la influencia de las escalas de medida de los regresores.
+
+          Para saber si existe o no multicolinealidad, calcularemos $cond(R)$ y:
+          \begin{itemize}
+              \item Si $cond(R) > 30$, se tiene alta multicolinealidad.
+              \item Si $10 < cond(R) < 30$, se tiene multicolinealidad moderada.
+              \item Si $cond(R) < 10$, se tiene ausencia de multicolinealidad.
+          \end{itemize}
+\end{enumerate}
+
+\subsubsection*{Tratamiento de la multicolinealidad}
+Cuando la recogida de datos se diseñe a priori, la multicolinealidad puede evitarse tomando las observaciones de manera que la matriz $X'X$ sea diagonal, lo que aumentará la precisión en la estimación.
+
+La multicolinealidad es un problema de la muestra y, por tanto, no tiene solución simple ya que estamos pidiendo a los datos más información de la que contienen.
+Las dos únicas soluciones son:
+\begin{itemize}
+    \item Eliminar regresores, reduciendo el número de parámetros a estimar.
+    \item Incluir información externa a los datos.
+\end{itemize}
+
+\subsection*{Análisis de los residuos}
+Los residuos se definen como:
+$$e_i = y_i - \hat{y_i}, \quad i = 1, \dots, n$$
+Consideramos el vector de residuos:
+\begin{align*}
+    \vec{e} & = \vec{y} - \hat{\vec{y}} = \vec{y} - X\hat{\vec{\beta}} = \vec{y} - X(X'X)^{-1}X'\vec{y} = (I - X(X'X)^{-1}X')\vec{y} = \\
+            & = (I-H)\vec{y} = (I-H)(X\vec{\beta}+\vec{u}) = X\vec{\beta} + \vec{u} - HX\vec{\beta} - H\vec{u} =                       \\
+            & = X\vec{\beta} + \vec{u} - X\vec{\beta} - H\vec{u} = \vec{u} - H\vec{u} = (I-H)\vec{u}
+\end{align*}
+donde $H = X(X'X)^{-1}X'$ es una matriz simétrica e idempotente.
+Veamos esto último:
+$$H^2 = X(X'X)^{-1}X'X(X'X)^{-1}X' = X(X'X)^{-1}X' = H$$
+
+\begin{note}
+    $$HX\vec{\beta} = X(X'X)^{-1}X'X\vec{\beta} = X\vec{\beta}$$
+\end{note}
+
+Como $\vec{u} \sim N_n(\vec{0}, \sigma^2I_n)$, entonces $\vec{e} \sim N_n(\vec{0}, (I-H)'\sigma^2I(I-H))$.
+Obtengamos una expresión más simplificada usando las propiedades de $H$:
+$$(I-H)'\sigma^2I_n(I-H) = \sigma^2(I-H)^2 = \sigma^2(I-H)$$
+Por tanto, $\vec{e} \sim N(\vec{0}, \sigma^2(I-H))$.
+Además, podemos ver que $e_i \sim (0, \sigma^2(1-h_{ii}))$, donde $h_{ii}$ es el elemento $(i,i)$ de la matriz $H$.
+Este resultado es válido para la regresión lineal simple.
+
+Se definen los residuos estandarizados como:
+$$r_i = \frac{e_i}{s_R\sqrt{1-h_{ii}}} \sim t_{n-k-1}$$
+
+\begin{note}
+    $$\begin{cases}
+            \frac{e_i}{\sigma\sqrt{1-h_{ii}}} \sim N(0, 1) \\
+            \frac{(n-k-1)s_R^2}{\sigma^2} = \frac{\sum e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}
+        \end{cases} \Rightarrow
+        \frac{\frac{e_i}{\sigma\sqrt{1-h_{ii}}}}{\sqrt{\frac{(n-k-1)s_R^2}{\sigma^2(n-k-1)}}} = \frac{e_i}{s_R\sqrt{1-h_{ii}}} \sim t_{n-k-1}$$
+\end{note}
+
+Se definen los residuos estudentizados como:
+$$t_i = \frac{e_i}{s_R(i)\sqrt{1-h_{ii}}} \sim t_{n-k-2}$$
+donde $s_R^2(i)$ es la varianza muestral de todos los datos excepto el $i$-ésimo.
+
+\subsubsection*{Análisis gráfico de los residuos}
+\begin{enumerate}
+    \item \textbf{Histograma y gráfico probabilístico normal.}
+          Sirve para detectar si hay normalidad y datos atípicos.
+    \item \textbf{Gráfico de residuos frente a los valores predichos.}
+          Sirve para comprobar si hay linealidad, homocedasticidad y datos atípicos.
+          Se representan los residuos $t_i$ frente a los $\hat{y_i}$.
+    \item \textbf{Gráficos de residuos frente a variables explicativas.}
+          Detectan si hay linealidad, homocedasticidad y datos atípicos en cada variable.
+          Se hacen $k$ gráficos, cada uno representando los residuos $t_i$ frente a cada variable $X_{ji}$, para $j = 1, \dots, k$.
+    \item \textbf{Gráficos parciales de residuos.}
+          Miden la influencia de cada $X_i$ quitando todas las demás variables.
+          Se hacen $k$ gráficos con el siguiente procedimiento para cada $X_i$ con $i = 1, \dots, k$:
+          \begin{enumerate}
+              \item Ajustamos el modelo con todas las variables explicativas salvo $X_i$.
+              \item Calculamos los errores del ajuste anterior $t_j^{(i)}$ y los representamos frente a $X_i$.
+          \end{enumerate}
+    \item \textbf{Gráfico de residuos frente a variables omitidas.}
+          Sirve para comprobar si una variable omitida $X_{k+1}$ debería ser tenida en cuenta en el modelo.
+          Se representan los residuos frente a $X_{k+1}$.
+          Una estructura lineal en esta gráfica indica que hay que tener en cuenta esta variable.
+\end{enumerate}
+
+\subsubsection*{Observaciones atípicas e influyentes}
+La observación $i$-ésima es atípica a nivel de significación $\alpha$ si $|t_i| > t_{n-k-2, 1-\frac{\alpha}{2}}$.
+
+Una observación es influyente si se da alguno de estos casos:
+\begin{itemize}
+    \item Modifica el vector $\hat{\vec{\beta}}$ de parámetros estimado.
+    \item Modifica el vector $\hat{\vec{y}}$ de predicciones.
+    \item Hace que la observación del punto sea muy buena cuando este se incluye en el modelo y mala cuando se excluye.
+\end{itemize}
+En general son puntos palanca.
+
+Definimos la distancia de Cook de la observación $i$-ésima como:
+$$D(i) = \frac{(\hat{\vec{\beta}}-\hat{\vec{\beta}}_{(i)})'X'X(\hat{\vec{\beta}}-\hat{\vec{\beta}}_{(i)})}{(k+1)s_R^2}$$
+donde $\hat{\vec{\beta}}_{(i)}$ es el vector de parámetros estimado sin la observación $i$-ésima.
+
+\begin{note}
+    Recordamos que:
+    $$\begin{cases}
+            \frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} \sim \chi^2_{k+1} \\
+            \frac{(n-k-1s_R^2)}{\sigma^2} = \frac{\sum e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}
+        \end{cases}$$
+    Entonces:
+    $$\frac{\frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} / (k+1)}{\frac{(n-k-1s_R^2)}{\sigma^2} = \frac{\sum e_i^2}{\sigma^2} / (n-k-1)} = \frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{(k+1)s_R^2} \sim F_{k+1, n-k-1}$$
+\end{note}
+
+Usando esta distancia, podemos determinar que la observación $i$-ésima es influyente a nivel de significación $\alpha$ si:
+$$D(i) > F_{k+1, n-k-1, 1-\alpha}$$
+
+\begin{note}
+    Una distancia $D(i) > 1$ suele indicar que la observación es influyente.
+\end{note}
+
+\section{Selección de modelos}
+Distinguimos dos tipos de medidas para la bondad del modelo:
+\begin{enumerate}
+    \item Criterios basados en la bondas de ajuste:
+          \begin{itemize}
+              \item \textbf{Coeficiente de determinación.}
+                    No sirve para comparar modelos en general, porque aquel que tenga más variables explicativas tiene un mayor $R^2$, incluso si no son significativas.
+              \item \textbf{Coeficiente de determinación ajustado.}
+                    Es mejor modelo el que tenga mayor $\bar{R}^2$.
+              \item \textbf{Varianza residual.}
+                    Es mejor modelo el que tenga menor $s_R^2$.
+                    Es equivalente al anterior criterio por la relación que hay entre $\bar{R}^2$ y $s_R^2$.
+          \end{itemize}
+    \item Criterios basados en buscar buenas predicciones.
+          \begin{itemize}
+              \item \textbf{AIC (Akaike Information Criterion).}
+                    Es mejor modelo el que tenga menor AIC.
+              \item \textbf{BIC (Bayesian Information Criterion).}
+                    Es mejor modelo el que tenga menor BIC.
+          \end{itemize}
+\end{enumerate}
+
+Si dos modelos tienen una bondad similar, siempre es preferible el más simple.
 
 \end{document}

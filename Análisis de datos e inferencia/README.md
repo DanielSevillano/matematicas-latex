@@ -37,3 +37,7 @@ Estos apuntes están abiertos a correcciones y mejoras:
 3. Propiedades de los estimadores
 4. Intervalos de confianza para los parámetros
 5. Contrastes de hipótesis para los coeficientes de regresión
+6. Correlación en regresión múltiple
+7. Predicción
+8. Diagnosis y validación del modelo
+9. Selección de modelos
