@@ -866,9 +866,9 @@ $$H^2 = X(X'X)^{-1}X'X(X'X)^{-1}X' = X(X'X)^{-1}X' = H$$
 
 Como $\vec{u} \sim N_n(\vec{0}, \sigma^2I_n)$, entonces $\vec{e} \sim N_n(\vec{0}, (I-H)'\sigma^2I(I-H))$.
 Obtengamos una expresión más simplificada usando las propiedades de $H$:
-$$(I-H)'\sigma^2I_n(I-H) = \sigma^2(I-H)^2 = \sigma^2(I-H)$$
+$$(I-H)'\sigma^2I(I-H) = \sigma^2(I-H)^2 = \sigma^2(I-H)$$
 Por tanto, $\vec{e} \sim N(\vec{0}, \sigma^2(I-H))$.
-Además, podemos ver que $e_i \sim (0, \sigma^2(1-h_{ii}))$, donde $h_{ii}$ es el elemento $(i,i)$ de la matriz $H$.
+Además, podemos ver que $e_i \sim N(0, \sigma^2(1-h_{ii}))$, donde $h_{ii}$ es el elemento $(i,i)$ de la matriz $H$.
 Este resultado es válido para la regresión lineal simple.
 
 Se definen los residuos estandarizados como:
