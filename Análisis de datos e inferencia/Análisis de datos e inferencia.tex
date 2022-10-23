@@ -928,10 +928,10 @@ donde $\hat{\vec{\beta}}_{(i)}$ es el vector de parámetros estimado sin la obse
     Recordamos que:
     $$\begin{cases}
             \frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} \sim \chi^2_{k+1} \\
-            \frac{(n-k-1s_R^2)}{\sigma^2} = \frac{\sum e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}
+            \frac{(n-k-1)s_R^2}{\sigma^2} = \frac{\sum e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}
         \end{cases}$$
     Entonces:
-    $$\frac{\frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} / (k+1)}{\frac{(n-k-1s_R^2)}{\sigma^2} = \frac{\sum e_i^2}{\sigma^2} / (n-k-1)} = \frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{(k+1)s_R^2} \sim F_{k+1, n-k-1}$$
+    $$\frac{\frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} / (k+1)}{\frac{(n-k-1)s_R^2}{\sigma^2} / (n-k-1)} = \frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{(k+1)s_R^2} \sim F_{k+1, n-k-1}$$
 \end{note}
 
 Usando esta distancia, podemos determinar que la observación $i$-ésima es influyente a nivel de significación $\alpha$ si:
@@ -954,7 +954,7 @@ Distinguimos dos tipos de medidas para la bondad del modelo:
                     Es mejor modelo el que tenga menor $s_R^2$.
                     Es equivalente al anterior criterio por la relación que hay entre $\bar{R}^2$ y $s_R^2$.
           \end{itemize}
-    \item Criterios basados en buscar buenas predicciones.
+    \item Criterios basados en buscar buenas predicciones:
           \begin{itemize}
               \item \textbf{AIC (Akaike Information Criterion).}
                     Es mejor modelo el que tenga menor AIC.
