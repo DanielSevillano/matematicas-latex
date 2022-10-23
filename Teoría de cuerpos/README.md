@@ -1,5 +1,8 @@
 # Teoría de cuerpos
 
+-   [**📄 Archivo PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/f24abaf19153f924c395887b58b427bf02553ad1/Teor%C3%ADa%20de%20cuerpos/Teor%C3%ADa%20de%20cuerpos.pdf)
+-   [**✏️ Archivo TeX**](https://github.com/DanielSevillano/matematicas-latex/blob/f24abaf19153f924c395887b58b427bf02553ad1/Teor%C3%ADa%20de%20cuerpos/Teor%C3%ADa%20de%20cuerpos.tex)
+
 ## ✒️ Contenido
 
 -   Teoría
@@ -7,9 +10,9 @@
 
 ## ✉️ Contribuir
 
-Estos apuntes están abiertos a correcciones y mejoras:
+Estos apuntes están abiertos a correcciones y mejoras.
 
--   Correcciones de erratas, expresiones y enunciados.
+-   Correcciones de erratas, expresiones y enunciados
 
 ## 📖 Índice
 
