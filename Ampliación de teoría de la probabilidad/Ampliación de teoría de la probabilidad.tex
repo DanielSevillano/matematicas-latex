@@ -954,9 +954,16 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
 \begin{properties}
     Sea $\varphi$ la función característica de una variable aleatoria $X$.
     \begin{enumerate}
-        \item $\varphi(0) = 1$
-        \item $|\varphi(t)| \leq 1, \quad \forall t \in \mathbb{R}$
-        \item $\varphi(-t) = \overline{\varphi(t)}$
+        \item $\varphi(0) = 1$.
+              $$E(e^{i0X}) = E(1) = 1$$
+        \item $|\varphi(t)| \leq 1$, para todo $t \in \mathbb{R}$.
+              $$|\varphi(t)| = |E(e^{itX})| \leq E|e^{itX}| = E|\cos(tx) + i\sin(tx)| = 1$$
+        \item $\varphi(-t) = \overline{\varphi(t)}$.
+              \begin{align*}
+                  \varphi(-t) & = E(e^{itX}) = E(\cos(-tx) + i\sin(-tx)) =                             \\
+                              & = E(\cos(tx)) - iE(\sin(tx)) = \overline{E(\cos(tx)) + iE(\sin(tx))} = \\
+                              & = \overline{E(\cos(tx)) + i\sin(tx)} = \overline{\varphi(t)}
+              \end{align*}
         \item $\varphi$ es función definida positiva, es decir,
               $$\sum_{k,j=1}^n z_k\varphi(t_j-t_k)\overline{z_j} \geq 0, \quad \forall n \geq 1, \quad \forall z \in \mathbb{C}^n$$
     \end{enumerate}
@@ -997,7 +1004,63 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
         \item Existe $\delta > 0$ tal que $\varphi_{F_n}(t) \xrightarrow[n \to \infty]{} \varphi(t)$ para todo $t \in [-\delta, \delta]$, siendo $\varphi$ una función.
         \item $\varphi$ es continua en 0.
     \end{enumerate}
-    Entonces $\{X_n\}_{n \geq 1}$ es ajustada.
+    Entonces $\{X_n\}_{n \geq 1}$ es una sucesión ajustada.
+    Es decir, $\{F_n\}$ forma una familia ajustada.
 \end{corollary}
+
+\begin{properties}
+    \hfill
+    \begin{itemize}
+        \item $\varphi \in \mathbb{R}^n$ $\Leftrightarrow$ $f$ es simétrica.
+              $$\varphi(-t) = \overline{\varphi(t)} = \varphi(t)$$
+        \item Sea $Y = a + bX$. Entonces:
+              $$\varphi_Y(t) = E(e^{it(a+bX)}) = e^{ita} E(e^{itbX}) = e^{ita} \varphi_X(bt)$$
+    \end{itemize}
+\end{properties}
+
+\begin{exercise}
+    Sea $X$ con función de densidad:
+    $$f(x) = \begin{cases}
+            \frac{1}{a} \left(1 - \frac{|x|}{a}\right) & \text{si } |x| \leq a, \; a > 0 \\
+            0                                          & \text{en otro caso}
+        \end{cases}$$
+    Calculemos su función característica $\varphi$.
+
+    Como $f$ es simétrica, sabemos que $\varphi \in \mathbb{R}$.
+    \begin{align*}
+        \varphi(t) & = E(e^{itX}) = \int_\mathbb{R} e^{itx}dF(x) = \int_\mathbb{R} e^{itx}f(x)dx =                                           \\
+                   & = \int_{-a}^a \cos(tx)f(x)dx + \int_{-a}^a \sin(tx)f(x)dx = 2\int_0^a \cos(tx)\frac{1}{a}\left(1-\frac{x}{a}\right)dx = \\
+                   & = \frac{2(1-\cos(at))}{a^2t^2} = \frac{\sin^2\left(\frac{at}{2}\right)}{\left(\frac{at}{2}\right)^2}
+    \end{align*}
+
+    En el último paso hemos usado que $\sin^2(\frac{\alpha}{2}) = \frac{1-\cos(\alpha)}{2}$.
+\end{exercise}
+
+\begin{exercise}
+    Sea $X$ con función de densidad:
+    $$f(x) = \frac{1}{2\beta}e^{-\frac{|x-\alpha|}{\beta}}, \quad \alpha \in \mathbb{R}, \; \beta > 0$$
+    Calculemos su función característica $\varphi_X$.
+
+    Para facilitar los cálculos, consideramos la variable estandarizada $Y = \frac{X-\alpha}{\beta}$ y calculamos $\varphi_Y$.
+    Para ello, hallamos primero $F_Y$ y $f_Y$:
+    \begin{align*}
+        F_Y(y) & = P(Y \leq y) = P\left(\frac{X-\alpha}{\beta} \leq y\right) = P(X \leq \beta y + \alpha) = F_X(\beta y + \alpha) \\
+        f_Y(y) & = F_Y'(y) = F_X'(\beta y + \alpha)\beta = f_X(\beta y + \alpha)\beta = \frac{1}{2}e^{-|y|}
+    \end{align*}
+    Observamos que $f_Y$ es simétrica, así que $\varphi_Y \in \mathbb{R}$.
+    \begin{align*}
+        \varphi_Y(t) & = \int_\mathbb{R} e^{ity}\frac{1}{2}e^{-|y|}dy = \int_\mathbb{R} (\cos(ty) + i\sin(ty))\frac{1}{2}e^{-|y|}dy = \\
+                     & = \int_0^\infty \cos(ty)e^{-y}dy = \frac{1}{1+t^2}
+    \end{align*}
+    Por tanto:
+    $$\varphi_X(t) = e^{it\alpha}\varphi_Y(\beta t) = \frac{e^{it\alpha}}{1+\beta^2t^2}$$
+
+    También se puede ver que $Y = Y_1 - Y_2$, con $Y_i \sim Exp(1)$ independientes.
+    De esta forma:
+    \begin{align*}
+        \varphi_Y(t) & = E(e^{itY}) = E(e^{it(Y_1-Y_2)}) = E(e^{itY_1})E(e^{-itY_2}) = \varphi_{Y_1}(t)\varphi_{Y_2}(-t) = \\
+                     & = \varphi_{Y_1}(t) \overline{\varphi_{Y_2}(t)} = \frac{1}{1-it}\frac{1}{1+it} = \frac{1}{1+t^2}
+    \end{align*}
+\end{exercise}
 
 \end{document}
