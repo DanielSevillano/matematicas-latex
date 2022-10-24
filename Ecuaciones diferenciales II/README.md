@@ -2,8 +2,8 @@
 
 **Estado:** apuntes en desarrollo.
 
--   [**📄 Archivo PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/f24abaf19153f924c395887b58b427bf02553ad1/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.pdf)
--   [**✏️ Archivo TeX**](https://github.com/DanielSevillano/matematicas-latex/blob/f24abaf19153f924c395887b58b427bf02553ad1/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.tex)
+-   [**📄 Archivo PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.pdf)
+-   [**✏️ Archivo TeX**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.tex)
 
 ## ✒️ Contenido
 

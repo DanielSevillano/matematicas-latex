@@ -2,8 +2,8 @@
 
 **Estado:** apuntes en desarrollo.
 
--   [**📄 Archivo PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/f24abaf19153f924c395887b58b427bf02553ad1/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad.pdf)
--   [**✏️ Archivo TeX**](https://github.com/DanielSevillano/matematicas-latex/blob/f24abaf19153f924c395887b58b427bf02553ad1/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad.tex)
+-   [**📄 Archivo PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad.pdf)
+-   [**✏️ Archivo TeX**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad.tex)
 
 ## ✒️ Contenido
 

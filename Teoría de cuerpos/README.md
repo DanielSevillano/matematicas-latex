@@ -1,7 +1,7 @@
 # Teoría de cuerpos
 
--   [**📄 Archivo PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/f24abaf19153f924c395887b58b427bf02553ad1/Teor%C3%ADa%20de%20cuerpos/Teor%C3%ADa%20de%20cuerpos.pdf)
--   [**✏️ Archivo TeX**](https://github.com/DanielSevillano/matematicas-latex/blob/f24abaf19153f924c395887b58b427bf02553ad1/Teor%C3%ADa%20de%20cuerpos/Teor%C3%ADa%20de%20cuerpos.tex)
+-   [**📄 Archivo PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Teor%C3%ADa%20de%20cuerpos/Teor%C3%ADa%20de%20cuerpos.pdf)
+-   [**✏️ Archivo TeX**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Teor%C3%ADa%20de%20cuerpos/Teor%C3%ADa%20de%20cuerpos.tex)
 
 ## ✒️ Contenido
 
