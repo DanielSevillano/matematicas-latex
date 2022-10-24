@@ -68,7 +68,7 @@ Podemos dar un significado real a $\beta_0$ y $\beta_1$:
 \begin{itemize}
     \item $\beta_0$ es el valor medio de la variable $Y$ cuando $x_i$ toma el valor 0.
           $$E(y_i | x_i = 0) = \beta_0, \quad i = 1, \dots n$$
-    \item $\beta_1$ es la variación media que experimenta la variable $Y$ cuando $x_i$ aumenta en una unidad.
+    \item $\beta_1$ es la variación media que experimenta la variable $Y$ cuando $X_i$ aumenta en una unidad.
           $$E(y_i | x_i+1) - E(y_i | x_i) = \beta_1, \quad i = 1, \dots n$$
 \end{itemize}
 
@@ -448,12 +448,21 @@ Escritas para el modelo en forma matricial quedan:
 \begin{itemize}
     \item $\vec{y} \sim N_n(\vec{x}\vec{\beta}, \sigma^2 I_n)$
     \item $n > k+1$
-    \item $rg(X) = k+1$
+    \item $rang(X) = k+1$
+\end{itemize}
+
+Podemos darle un significado real a $\beta_0$ y $\beta_j$, para $j = 1, \dots k$.
+\begin{itemize}
+    \item $\beta_0$ es el valor medio de la variable $Y$ cuando todas las variables explicativas toman el valor 0.
+          $$E(y_i | x_{1i} = \dots = x_{ki} = 0) = \beta_0$$
+    \item $\beta_j$ es la variación media que experimenta la variable $Y$ cuando $X_j$ aumenta en una unidad y las demás variables explicativas permanecen constantes.
+          $$E(y_i | x_{1i}, \dots, x_{ji} + 1, \dots, x_{ki}) - E(y_i | x_{1i}, \dots, x_{ji}, \dots, x_{ki}) = \beta_j$$
 \end{itemize}
 
 \section{Estimación de los parámetros}
 Queremos estimar $\beta_0, \beta_1, \dots, \beta_k$, o análogamente $\hat{\vec{\beta}}$, y $\sigma^2$.
-Con los estimadores $\hat{\beta_0}, \hat{\beta_1}, \dots, \hat{\beta_k}$ podemos estimar $$\hat{E(y_i | x_{1i}, \dots, x_{ki})} = \hat{\beta_0} + \hat{\beta_1}x_{1i} + \dots + \hat{\beta_k}x_{ki}, \quad i = 1, \dots n$$.
+Con los estimadores $\hat{\beta_0}, \hat{\beta_1}, \dots, \hat{\beta_k}$ podemos estimar:
+$$\hat{E(y_i | x_{1i}, \dots, x_{ki})} = \hat{\beta_0} + \hat{\beta_1}x_{1i} + \dots + \hat{\beta_k}x_{ki}, \quad i = 1, \dots n$$
 
 Procedemos mediante el método de mínimos cuadrados.
 La función a minimizar es:
@@ -812,7 +821,7 @@ La identificación de variables correlacionadas se realiza de una de las siguien
                   \gamma_{k1} & \gamma_{k2} & \dots  & \gamma_{kk}
               \end{pmatrix}$$
           tiene en cuenta la dependencia conjunta.
-          Los elementos de su diagonal se denominan factores de incremente o de inflación de la variance y verifican:
+          Los elementos de su diagonal se denominan factores de incremento o de inflación de la varianza y verifican:
           $$\gamma_{ii} = FIV(i) = \frac{1}{1-R^2_{i,r}}, \quad i = 1, \dots, k$$
           donde $R^2_{i,r}$ es el coeficiente de determinación de la regresión de la variable $X_i$ en función del resto de variables explicativas.
           Por tanto, si para algún $i$ se tiene que:
