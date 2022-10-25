@@ -53,12 +53,12 @@
 \end{definition}
 
 \begin{definition}
-    Sean $n > 1$, $||.||$ una norma en $\mathbb{R}^n$ y $D \subset \mathbb{R} \times \mathbb{R}^n$.
+    Sean $n > 1$, $\|.\|$ una norma en $\mathbb{R}^n$ y $D \subset \mathbb{R} \times \mathbb{R}^n$.
     \begin{itemize}
         \item Una función $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, se dice que es lipschitziana en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una constante $L > 0$ tal que:
-              $$||f(t, x) - f(t, y)|| \leq L||x-y||, \quad (t, x), (t, y) \in D$$
+              $$\|f(t, x) - f(t, y)\| \leq L\|x-y\|, \quad (t, x), (t, y) \in D$$
         \item Una función $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, se dice que es lipschitziana en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una constante $L > 0$ tal que:
-              $$|f(t, x) - f(t, y)| \leq L||x-y||, \quad (t, x), (t, y) \in D$$
+              $$|f(t, x) - f(t, y)| \leq L\|x-y\|, \quad (t, x), (t, y) \in D$$
     \end{itemize}
 \end{definition}
 
@@ -85,12 +85,12 @@
 \end{definition}
 
 \begin{definition}
-    Sean $n > 1$, $||.||$ una norma en $\mathbb{R}^n$, $I$ un intervalo en $\mathbb{R}$ y $D = I \times \mathbb{R}n$.
+    Sean $n > 1$, $\|.\|$ una norma en $\mathbb{R}^n$, $I$ un intervalo en $\mathbb{R}$ y $D = I \times \mathbb{R}^n$.
     \begin{itemize}
         \item Se dice que la función vectorial $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, satisface una condición de Lipschitz generalizada en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una función $L: I \to \mathbb{R}^+$ continua en $I$ tal que:
-              $$||f(t, x) - f(t, y)|| \leq L(t)||x-y||, \quad (t, x), (t, y) \in D$$
+              $$\|f(t, x) - f(t, y)\| \leq L(t)\|x-y\|, \quad (t, x), (t, y) \in D$$
         \item Se dice que la función vectorial $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, satisface una condición de Lipschitz generalizada en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una función $L: I \to \mathbb{R}^+$ continua en $I$ tal que:
-              $$|f(t, x) - f(t, y)| \leq L(t)||x-y||, \quad (t, x), (t, y) \in D$$
+              $$|f(t, x) - f(t, y)| \leq L(t)\|x-y\|, \quad (t, x), (t, y) \in D$$
     \end{itemize}
 \end{definition}
 
@@ -127,7 +127,7 @@
 
 \chapter{Teoremas de existencia y unicidad local}
 \begin{theorem}[Teorema de existencia y unicidad local]
-    Sean $n \geq 1$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Sean $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
     Sea el problema de valor inicial:
     $$(P) \begin{cases}
             x'(t) = f(t, x(t)) \\
@@ -144,7 +144,7 @@
     \end{enumerate}
     Entonces, existen intervalos $I = [t_0 - h, t_0 + h]$, siendo $0 < h \leq a$, tales que $(P)$ posee una única solución $x: I \to \mathbb{R}^n$.
     Esto sucede si:
-    $$0 < h \leq \min\{a, \frac{b}{M}\}, \quad \text{siendo } M \geq \max_{(t, x) \in Q} ||f(t, x)||$$
+    $$0 < h \leq \min\{a, \frac{b}{M}\}, \quad \text{siendo } M \geq \max_{(t, x) \in Q} \|f(t, x)\|$$
 \end{theorem}
 
 \begin{remark}
@@ -221,12 +221,12 @@
 \end{proposition}
 
 \begin{theorem}[Estimación de la diferencia entre dos soluciones]
-    Sean $n \geq 1$, $||.||$ una norma en $\mathbb{R}^n$, $x: I \to \mathbb{R}^n$ e $y: I \to \mathbb{R}^n$ dos soluciones de la ecuación diferencial $x'(t) = f(t, x(t))$ con gráficas contenidas en una región $D \subset \mathbb{R} \times \mathbb{R}^n$ y sea $t_0 \in I$.
+    Sean $n \geq 1$, $\|.\|$ una norma en $\mathbb{R}^n$, $x: I \to \mathbb{R}^n$ e $y: I \to \mathbb{R}^n$ dos soluciones de la ecuación diferencial $x'(t) = f(t, x(t))$ con gráficas contenidas en una región $D \subset \mathbb{R} \times \mathbb{R}^n$ y sea $t_0 \in I$.
     \begin{enumerate}
         \item Si $f \in \mathcal{C}(D, \mathbb{R}^n) \cap Lip(x, D)$ con constante de Lipschitz $L$, se tiene la siguiente estimación:
-              $$||x(t) - y(t)|| \leq ||x(t_0) - y(t_0)|| e^{L|t-t_0|}, \quad \forall t \in I$$
+              $$\|x(t) - y(t)\| \leq \|x(t_0) - y(t_0)\| e^{L|t-t_0|}, \quad \forall t \in I$$
         \item Si $D = J \times \mathbb{R}^n$, donde $J$ es un intervalo en $\mathbb{R}$, y $f \in \mathcal{C}(D, \mathbb{R}^n) \cap LipG(x, D)$ con función de Lipschitz $L: J \to \mathbb{R}$, $t \mapsto L(t)$, entonces:
-              $$||x(t) - y(t)|| \leq ||x(t_0) - y(t_0)|| \exp\left| \int_{t_0}^t L(s)ds \right|, \quad \forall t \in I$$
+              $$\|x(t) - y(t)\| \leq \|x(t_0) - y(t_0)\| \exp\left| \int_{t_0}^t L(s)ds \right|, \quad \forall t \in I$$
     \end{enumerate}
 \end{theorem}
 
@@ -260,7 +260,7 @@
 \end{proposition}
 
 \begin{theorem}[Teorema de dependencia continua]
-    Sean $I$ un intervalo acotado en $\mathbb{R}$, $n \geq 1$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Sean $I$ un intervalo acotado en $\mathbb{R}$, $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
     Consideramos el problema de valor inicial:
     $$(P) \begin{cases}
             x'(t) = f(t, x(t)) \\
@@ -275,15 +275,15 @@
         \end{cases}$$
     Se verifica lo siguiente:
     \begin{enumerate}
-        \item Dado cualquier $\varepsilon > 0$ existe $\delta = \delta(\varepsilon) > 0$ tal que, si $y^0 \in \mathbb{R}^n$ verifica que $||x^0 - y^0|| < \delta$, entonces la solución $y: I \to \mathbb{R}^n$ del problema $(P_{y^0})$ verifica que:
-              $$||x(t) - y(t)|| < \varepsilon, \quad \forall t \in I$$
+        \item Dado cualquier $\varepsilon > 0$ existe $\delta = \delta(\varepsilon) > 0$ tal que, si $y^0 \in \mathbb{R}^n$ verifica que $\|x^0 - y^0\| < \delta$, entonces la solución $y: I \to \mathbb{R}^n$ del problema $(P_{y^0})$ verifica que:
+              $$\|x(t) - y(t)\| < \varepsilon, \quad \forall t \in I$$
         \item Si $(v_m)$ es una sucesión en $\mathbb{R}^n$ tal que $v_m \to x^0$ en $\mathbb{R}^n$ y $\phi_m: I \to \mathbb{R}^n$, $m = 1, 2, \dots$, es la solución del problema $(P_{v_m})$, entonces la sucesión $(\phi_m)$ converge uniformemente hacia la solución del problema $(P)$ en el intervalo $I$.
     \end{enumerate}
 \end{theorem}
 
 \chapter{Teoremas de existencia}
 \begin{theorem}[Versión lateral a la derecha del teorema de existencia local de Peano]
-    Sean $n \geq 1$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Sean $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
     Sea el problema de valor inicial:
     $$(P) \begin{cases}
             x'(t) = f(t, x(t)) \\
@@ -293,7 +293,7 @@
     Supongamos que existen $a > 0$ y $b > 0$ tales que $Q = [t_0, t_0 + a] \times \bar{B}(x^0; b) \subset D$ y $f$ es continua en $Q$.
 
     Entonces, $(P)$ tiene al menos una solución definida en el intervalo $I = [t_0, t_0 + h]$, donde:
-    $$h = \min\{a, \frac{b}{M}\}, \quad M \geq \max_{(t, x) \in Q} ||f(t, x)||$$
+    $$h = \min\{a, \frac{b}{M}\}, \quad M \geq \max_{(t, x) \in Q} \|f(t, x)\|$$
 \end{theorem}
 
 \begin{remark}
@@ -303,7 +303,7 @@
 \end{remark}
 
 \begin{corollary}[Versión centrada del teorema de existencia local de Peano]
-    Sean $n \geq 1$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Sean $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
     Sea el problema de valor inicial:
     $$(P) \begin{cases}
             x'(t) = f(t, x(t)) \\
@@ -313,7 +313,7 @@
     Supongamos que existen $a > 0$ y $b > 0$ tales que $Q = [t_0 - a, t_0 + a] \times \bar{B}(x^0; b) \subset D$ y $f$ es continua en $Q$.
 
     Entonces, $(P)$ tiene al menos una solución definida en el intervalo $I = [t_0 - h, t_0 + h]$, donde:
-    $$h = \min\{a, \frac{b}{M}\}, \quad M \geq \max_{(t, x) \in Q} ||f(t, x)||$$
+    $$h = \min\{a, \frac{b}{M}\}, \quad M \geq \max_{(t, x) \in Q} \|f(t, x)\|$$
 \end{corollary}
 
 \begin{theorem}[Teorema de existencia global de Peano]
@@ -372,10 +372,10 @@
 \end{definition}
 
 \begin{proposition}
-    Sean $n \geq 1$, $t_1 < \infty$, $x: [t_0, t_1) \to \mathbb{R}^n$ una función, $\Gamma$ su gráfica y $||.||$ una norma en $\mathbb{R}^n$.
+    Sean $n \geq 1$, $t_1 < \infty$, $x: [t_0, t_1) \to \mathbb{R}^n$ una función, $\Gamma$ su gráfica y $\|.\|$ una norma en $\mathbb{R}^n$.
     Se verifica una y solamente una de las dos siguientes situaciones:
     \begin{itemize}
-        \item $\lim\limits_{t \to t_1} ||x(t)|| = \infty$
+        \item $\lim\limits_{t \to t_1} \|x(t)\| = \infty$
         \item $\Gamma$ tiene al menos un punto límite para $t \to t_1$.
     \end{itemize}
 \end{proposition}
@@ -391,11 +391,11 @@
 \end{theorem}
 
 \begin{theorem}[Soluciones maximales con gráficas contenidas en conjuntos abiertos]
-    Sean $A$ un abierto en $\mathbb{R} \times \mathbb{R}^n$, $n \geq 1$, $f: A \to \mathbb{R}^n$ una función continua en $A$ y $||.||$ una norma en $\mathbb{R}^n$.
+    Sean $A$ un abierto en $\mathbb{R} \times \mathbb{R}^n$, $n \geq 1$, $f: A \to \mathbb{R}^n$ una función continua en $A$ y $\|.\|$ una norma en $\mathbb{R}^n$.
     Si $x: I \to \mathbb{R}^n$ es una solución no prolongable de la ecuación diferencial $x'(t) = f(t, x(t))$ con gráfica $\Gamma$ contenida en $A$, se verifica:
     \begin{enumerate}
         \item El intervalo $I$ es abierto.
-        \item Si $I$ tiene un extremo finito $\alpha$, entonces $\lim\limits_{t \to \alpha} ||x(t)|| = \infty$ o bien cualquier punto límite de $\Gamma$ para $t \to \alpha$ está en la frontera de $A$.
+        \item Si $I$ tiene un extremo finito $\alpha$, entonces $\lim\limits_{t \to \alpha} \|x(t)\| = \infty$ o bien cualquier punto límite de $\Gamma$ para $t \to \alpha$ está en la frontera de $A$.
     \end{enumerate}
 \end{theorem}
 
