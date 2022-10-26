@@ -45,7 +45,7 @@ $$y_i = \beta_0 + \beta_1x_i + u_i, \quad i = 1, \dots n$$
 \subsection*{Hipótesis del modelo}
 \begin{enumerate}
     \item $E(u_i) = 0, \quad \forall i = 1, \dots n$.
-    \item $Var(u_i) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
+    \item $V(u_i) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
     \item $u_i \sim N(0, \sigma^2), \quad \forall i = 1, \dots n$ (normalidad)
     \item $E(u_i u_j) = 0, \quad \forall i \neq j$ (independencia)
 \end{enumerate}
@@ -59,7 +59,7 @@ $$y_i = \beta_0 + \beta_1x_i + u_i, \quad i = 1, \dots n$$
 Podemos escribir las mismas hipótesis en términos de $y_i, \quad \forall i = 1, \dots n$.
 \begin{enumerate}
     \item $E(y_i | x_i) = E(\beta_0 + \beta_1x_i + u_i) = \beta_0 + \beta_1x_i, \quad \forall i = 1, \dots n$ (linealidad)
-    \item $Var(y_i | x_i) = Var(\beta_0 + \beta_1x_i + u_i) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
+    \item $V(y_i | x_i) = V(\beta_0 + \beta_1x_i + u_i) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
     \item $y_i | x_i \sim N(\beta_0 + \beta_1x_i, \sigma^2), \quad \forall i = 1, \dots n$ (normalidad)
     \item $Cov(y_i, y_j) = 0, \quad \forall i \neq j$ (independencia)
 \end{enumerate}
@@ -74,19 +74,19 @@ Podemos dar un significado real a $\beta_0$ y $\beta_1$:
 
 \section{Estimación de los parámetros}
 Queremos estimar $\beta_0$, $\beta_1$ y $\sigma^2$.
-Con los estimadores $\hat{\beta_0}$ y $\hat{\beta_1}$ podemos estimar $$\hat{E(y_i | x_i)} = \hat{\beta_0} + \hat{\beta_1}x_i, \quad i = 1, \dots n$$
+Con los estimadores $\hat{\beta_0}$ y $\hat{\beta_1}$ podemos estimar $$\hat{E}(y_i | x_i) = \hat{\beta_0} + \hat{\beta_1}x_i, \quad i = 1, \dots n$$
 
 \subsection*{Método de máxima verosimilitud}
 $y_i | x_i \sim N(\beta_0 + \beta_1x_i, \sigma^2), \quad i = 1, \dots, n$, así que podemos encontrar estimadores de máxima verosimilitud para los parámetros y para $\sigma^2$.
 
 Usando el método de máxima verosimilitud llegamos las ecuaciones normales de la regresión:
 $$\begin{cases}
-        \frac{\partial \log{L}}{\partial \beta_0} = \frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i) = 0 \\
-        \frac{\partial \log(L)}{\partial \beta_1} = \frac{1}{\sigma^2} \sum_{i=1}^n x_i(y_i - \beta_0 - \beta_1x_i) = 0
+        \dfrac{\partial \log{L}}{\partial \beta_0} = \frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i) = 0 \\
+        \dfrac{\partial \log(L)}{\partial \beta_1} = \frac{1}{\sigma^2} \sum_{i=1}^n x_i(y_i - \beta_0 - \beta_1x_i) = 0
     \end{cases}$$
 
 \begin{notation}
-    $\hat{y_i} = \hat{E(y_i | x_i)} = \hat{\beta_0} + \hat{\beta_1}x_i$
+    $\hat{y_i} = \hat{E}(y_i | x_i) = \hat{\beta_0} + \hat{\beta_1}x_i$
 \end{notation}
 
 Si definimos el error o residuo como $e_i = y_i - \hat{y_i} = y_i - \hat{\beta_0} - \hat{\beta_1}x_i$, podemos escribir las ecuaciones normales de regresión de la siguiente forma:
@@ -124,7 +124,7 @@ Veamos si este estimador es insesgado calculando su esperanza.
 $$E(\hat{\sigma^2}) = E(\frac{\sum_{i=1}^n e_i^2}{n}) = \frac{1}{n}E(\sum_{i=1}^n e_i^2) = \frac{1}{n}\sigma^2(n-2)$$
 
 \begin{note}
-    $\frac{\sum_{i=1}^n e_i^2}{\sigma^2} \sim \chi^2_{n-2}, \quad E(\frac{\sum_{i=1}^n e_i^2}{\sigma^2}) = n-2$
+    $\frac{1}{\sigma^2} \sum_{i=1}^n e_i^2 \sim \chi^2_{n-2}, \quad E(\frac{1}{\sigma^2} \sum_{i=1}^n e_i^2) = n-2$
 \end{note}
 
 Observamos que este estimador no es insesgado. Consideramos entonces:
@@ -273,12 +273,14 @@ Tomamos un $F_{exp}$.
 
 La tabla ANOVA es de la forma:
 \begin{center}
-    \begin{tabular}{ c | c | c | c }
-        Fuentes & Suma de cuadrados                   & Grados de libertad & Cocientes         \\
+    \begin{tabular}{| c | c | c | c |}
         \hline
-        $VE$    & $\sum_{i=1}^n(\hat{y_i}-\bar{y})^2$ & 1                  & $\frac{VE}{1}$    \\
-        $VNE$   & $\sum_{i=1}^n(y_i - \hat{y_i})^2$   & $n-2$              & $\frac{VNE}{n-2}$ \\
-        $VT$    & $\sum_{i=1}^n(y_i - \bar{y})^2$     & $n-1$
+        Fuentes & Suma de cuadrados                   & Grados de libertad & Cocientes   \\
+        \hline
+        $VE$    & $\sum_{i=1}^n(\hat{y_i}-\bar{y})^2$ & 1                  & $VE/1$      \\
+        $VNE$   & $\sum_{i=1}^n(y_i - \hat{y_i})^2$   & $n-2$              & $VNE/(n-2)$ \\
+        $VT$    & $\sum_{i=1}^n(y_i - \bar{y})^2$     & $n-1$              &             \\
+        \hline
     \end{tabular}
 \end{center}
 También se incluyen columnas para $F_{exp}$ y $p$-valor.
@@ -326,7 +328,7 @@ $$R^2 = \frac{VE}{VT}, \quad 0 \leq R^2 \leq 1$$
 \subsection*{Estimación de las medias condicionadas}
 Llamamos $m_0 = E(y | x=x_0) = \beta_0 + \beta_1x_0$.
 Observamos que $m_0$ es un parámetro que podemos estimar de la forma:
-$$\hat{m_0} = \hat{E(y | x=x_0)} = \hat{\beta_0} + \hat{\beta_1}x_0$$
+$$\hat{m_0} = \hat{E}(y | x=x_0) = \hat{\beta_0} + \hat{\beta_1}x_0$$
 
 \begin{theorem}
     $$\hat{m_0} \sim N\left( m_0, \frac{\sigma^2}{n} \left(1+\frac{(x_0-\bar{x})^2}{s_X^2}\right) \right)$$
@@ -404,7 +406,7 @@ $$y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \dots + \beta_k x_{ki} + u_i
 \subsection*{Hipótesis del modelo}
 \begin{itemize}
     \item $E(u_i) = 0, \quad \forall i = 1, \dots n$.
-    \item $Var(u_i) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
+    \item $V(u_i) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
     \item $u_i \sim N(0, \sigma^2), \quad \forall i = 1, \dots n$ (normalidad)
     \item $E(u_i u_j) = 0, \quad \forall i \neq j$ (independencia)
     \item $n > k+1$
@@ -438,7 +440,7 @@ Las hipótesis del modelo se pueden reescribir como:
 Podemos escribir las mismas hipótesis iniciales en términos de $y_i, \quad \forall 1, \dots, n$.
 \begin{enumerate}
     \item $E(y_i | x_{1i}, \dots, x_{ki}) = \beta_0 + \beta_1x_{1i} + \dots + \beta_kx_{ki}, \quad \forall i = 1, \dots n$ (linealidad)
-    \item $Var(y_i | x_{1i}, \dots, x_{ki}) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
+    \item $V(y_i | x_{1i}, \dots, x_{ki}) = \sigma^2, \quad \forall i = 1, \dots n$ (homocedasticidad)
     \item $y_i | x_{1i}, \dots, x_{ki} \sim N(\beta_0 + \beta_1x_{1i} + \dots + \beta_kx{ki}, \sigma^2), \quad \forall i = 1, \dots n$ (normalidad)
     \item $Cov(y_i, y_j) = 0, \quad \forall i \neq j$ (independencia)
     \item $n > k+1$
@@ -462,7 +464,7 @@ Podemos darle un significado real a $\beta_0$ y $\beta_j$, para $j = 1, \dots k$
 \section{Estimación de los parámetros}
 Queremos estimar $\beta_0, \beta_1, \dots, \beta_k$, o análogamente $\hat{\vec{\beta}}$, y $\sigma^2$.
 Con los estimadores $\hat{\beta_0}, \hat{\beta_1}, \dots, \hat{\beta_k}$ podemos estimar:
-$$\hat{E(y_i | x_{1i}, \dots, x_{ki})} = \hat{\beta_0} + \hat{\beta_1}x_{1i} + \dots + \hat{\beta_k}x_{ki}, \quad i = 1, \dots n$$
+$$\hat{E}(y_i | x_{1i}, \dots, x_{ki}) = \hat{\beta_0} + \hat{\beta_1}x_{1i} + \dots + \hat{\beta_k}x_{ki}, \quad i = 1, \dots n$$
 
 Procedemos mediante el método de mínimos cuadrados.
 La función a minimizar es:
@@ -513,11 +515,11 @@ Equivalentemente, es el elemento $(j+1)$-ésimo de la diagonal principal de $(X'
 
 En cuanto a $s_R^2$,
 $$\begin{cases}
-        E(\frac{\sum_{i=1}^n e_i^2}{\sigma^2}) = n-k-1 \\
-        Var(\frac{\sum_{i=1}^n e_i^2}{\sigma^2}) = 2(n-k-1)
+        E(\frac{1}{\sigma^2} \sum_{i=1}^n e_i^2) = n-k-1 \\
+        V(\frac{1}{\sigma^2} \sum_{i=1}^n e_i^2) = 2(n-k-1)
     \end{cases} \Rightarrow \begin{cases}
         E(s_R^2) = \sigma^2 \\
-        Var(s_R^2) = \frac{2(\sigma^2)^2}{n-k-1}
+        V(s_R^2) = \frac{2(\sigma^2)^2}{n-k-1}
     \end{cases}$$
 
 \section{Intervalos de confianza para los parámetros}
@@ -527,8 +529,8 @@ Supondremos $\sigma^2$ desconocida.
 Sea $j \in \{0, \dots, k\}$, sabemos que $\hat{\beta_j} \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$.
 Así que:
 $$\begin{cases}
-        \frac{\hat{\beta_j} - \beta_j}{\sigma \sqrt{q_{j+1, j+1}}} \sim N(0, 1) \\
-        \frac{(n-k-1)s_R^2}{\sigma^2} \sim \chi^2_{n-k-1}
+        \dfrac{\hat{\beta_j} - \beta_j}{\sigma \sqrt{q_{j+1, j+1}}} \sim N(0, 1) \\
+        \dfrac{(n-k-1)s_R^2}{\sigma^2} \sim \chi^2_{n-k-1}
     \end{cases} \Rightarrow \frac{\hat{\beta_j} - \beta_j}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$$
 
 Luego el intervalo de confianza para $\beta_j$ a nivel de significación $\alpha$ es:
@@ -606,12 +608,14 @@ Tomamos un $F_{exp}$.
 
 La tabla ANOVA es de la forma:
 \begin{center}
-    \begin{tabular}{ c | c | c | c }
-        Fuentes & Suma de cuadrados                   & Grados de libertad & Cocientes           \\
+    \begin{tabular}{| c | c | c | c |}
         \hline
-        $VE$    & $\sum_{i=1}^n(\hat{y_i}-\bar{y})^2$ & $k$                & $\frac{VE}{k}$      \\
-        $VNE$   & $\sum_{i=1}^n(y_i - \hat{y_i})^2$   & $n-k-1$            & $\frac{VNE}{n-k-1}$ \\
-        $VT$    & $\sum_{i=1}^n(y_i - \bar{y})^2$     & $n-1$
+        Fuentes & Suma de cuadrados                   & Grados de libertad & Cocientes     \\
+        \hline
+        $VE$    & $\sum_{i=1}^n(\hat{y_i}-\bar{y})^2$ & $k$                & $VE/k$        \\
+        $VNE$   & $\sum_{i=1}^n(y_i - \hat{y_i})^2$   & $n-k-1$            & $VNE/(n-k-1)$ \\
+        $VT$    & $\sum_{i=1}^n(y_i - \bar{y})^2$     & $n-1$              &               \\
+        \hline
     \end{tabular}
 \end{center}
 También se incluyen columnas para $F_{exp}$ y $p$-valor.
@@ -631,7 +635,8 @@ Veamos algunas expresiones para $VT$, $VNE$ y $VE$.
 \subsection*{Interpretación de los contrastes sobre los coeficientes de regresión}
 Los casos que se pueden presentar al realizar contrastes de hipótesis en un modelo de regresión son los siguientes:
 \begin{center}
-    \begin{tabular}{ c | c | c }
+    \begin{tabular}{| c | c | c |}
+        \hline
         Casos & Contraste conjunto & Contraste individual   \\
         \hline
         1     & Significativo      & Todos significativos   \\
@@ -640,6 +645,7 @@ Los casos que se pueden presentar al realizar contrastes de hipótesis en un mod
         4     & No significativo   & Todos significativos   \\
         5     & No significativo   & Algunos significativos \\
         6     & No significativo   & Ninguno significativo  \\
+        \hline
     \end{tabular}
 \end{center}
 Significativo indica que se rechaza la hipótesis $H_0$ de que el parámetro o parámetros a los que se refiere la hipótesis sea 0.
@@ -885,10 +891,11 @@ $$r_i = \frac{e_i}{s_R\sqrt{1-h_{ii}}} \sim t_{n-k-1}$$
 
 \begin{note}
     $$\begin{cases}
-            \frac{e_i}{\sigma\sqrt{1-h_{ii}}} \sim N(0, 1) \\
-            \frac{(n-k-1)s_R^2}{\sigma^2} = \frac{\sum e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}
-        \end{cases} \Rightarrow
-        \frac{\frac{e_i}{\sigma\sqrt{1-h_{ii}}}}{\sqrt{\frac{(n-k-1)s_R^2}{\sigma^2(n-k-1)}}} = \frac{e_i}{s_R\sqrt{1-h_{ii}}} \sim t_{n-k-1}$$
+            \dfrac{e_i}{\sigma\sqrt{1-h_{ii}}} \sim N(0, 1) \\
+            \dfrac{(n-k-1)s_R^2}{\sigma^2} = \dfrac{\sum e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}
+        \end{cases}$$
+    Por tanto:
+    $$\frac{\dfrac{e_i}{\sigma\sqrt{1-h_{ii}}}}{\sqrt{\dfrac{(n-k-1)s_R^2}{\sigma^2(n-k-1)}}} = \frac{e_i}{s_R\sqrt{1-h_{ii}}} \sim t_{n-k-1}$$
 \end{note}
 
 Se definen los residuos estudentizados como:
@@ -936,11 +943,11 @@ donde $\hat{\vec{\beta}}_{(i)}$ es el vector de parámetros estimado sin la obse
 \begin{note}
     Recordamos que:
     $$\begin{cases}
-            \frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} \sim \chi^2_{k+1} \\
-            \frac{(n-k-1)s_R^2}{\sigma^2} = \frac{\sum e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}
+            \dfrac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} \sim \chi^2_{k+1} \\
+            \dfrac{(n-k-1)s_R^2}{\sigma^2} = \dfrac{\sum e_i^2}{\sigma^2} \sim \chi^2_{n-k-1}
         \end{cases}$$
     Entonces:
-    $$\frac{\frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} / (k+1)}{\frac{(n-k-1)s_R^2}{\sigma^2} / (n-k-1)} = \frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{(k+1)s_R^2} \sim F_{k+1, n-k-1}$$
+    $$\frac{\dfrac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{\sigma^2} / (k+1)}{\dfrac{(n-k-1)s_R^2}{\sigma^2} / (n-k-1)} = \frac{(\hat{\vec{\beta}}-\vec{\beta})'X'X(\hat{\vec{\beta}}-\vec{\beta})}{(k+1)s_R^2} \sim F_{k+1, n-k-1}$$
 \end{note}
 
 Usando esta distancia, podemos determinar que la observación $i$-ésima es influyente a nivel de significación $\alpha$ si:
