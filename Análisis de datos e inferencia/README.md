@@ -44,3 +44,4 @@ Estos apuntes están abiertos a correcciones y mejoras.
 7. Predicción
 8. Diagnosis y validación del modelo
 9. Selección de modelos
+10. Regresión con variables cualitativas

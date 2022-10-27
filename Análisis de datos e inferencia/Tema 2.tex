@@ -64,8 +64,8 @@ Podemos darle un significado real a $\beta_0$ y $\beta_j$, para $j = 1, \dots k$
 
 \section{Estimación de los parámetros}
 Queremos estimar $\beta_0, \beta_1, \dots, \beta_k$, o análogamente $\hat{\vec{\beta}}$, y $\sigma^2$.
-Con los estimadores $\hat{\beta_0}, \hat{\beta_1}, \dots, \hat{\beta_k}$ podemos estimar:
-$$\hat{E}(y_i | x_{1i}, \dots, x_{ki}) = \hat{\beta_0} + \hat{\beta_1}x_{1i} + \dots + \hat{\beta_k}x_{ki}, \quad i = 1, \dots n$$
+Con los estimadores $\hat{\beta}_0, \hat{\beta}_1, \dots, \hat{\beta}_k$ podemos estimar:
+$$\hat{E}(y_i | x_{1i}, \dots, x_{ki}) = \hat{\beta}_0 + \hat{\beta}_1x_{1i} + \dots + \hat{\beta}_kx_{ki}, \quad i = 1, \dots n$$
 
 Procedemos mediante el método de mínimos cuadrados.
 La función a minimizar es:
@@ -106,12 +106,12 @@ $$\begin{cases}
 
 Tenemos además que:
 $$Cov(\hat{\vec{\beta}}) = \sigma^2(X'X)^{-1} = \begin{pmatrix}
-        V(\hat{\beta_0})                  & Cov(\hat{\beta_0}, \hat{\beta_1}) & \dots  & Cov(\hat{\beta_0}, \hat{\beta_k}) \\
-        Cov(\hat{\beta_1}, \hat{\beta_0}) & V(\hat{\beta_1})                  & \dots  & Cov(\hat{\beta_1}, \hat{\beta_k}) \\
+        V(\hat{\beta}_0)                  & Cov(\hat{\beta}_0, \hat{\beta}_1) & \dots  & Cov(\hat{\beta}_0, \hat{\beta}_k) \\
+        Cov(\hat{\beta}_1, \hat{\beta}_0) & V(\hat{\beta}_1)                  & \dots  & Cov(\hat{\beta}_1, \hat{\beta}_k) \\
         \vdots                            & \vdots                            & \ddots & \vdots                            \\
-        Cov(\hat{\beta_k}, \hat{\beta_0}) & Cov(\hat{\beta_k}, \hat{\beta_1}) & \dots  & V(\hat{\beta_k})
+        Cov(\hat{\beta}_k, \hat{\beta}_0) & Cov(\hat{\beta}_k, \hat{\beta}_1) & \dots  & V(\hat{\beta}_k)
     \end{pmatrix}$$
-Así que $\hat{\beta_j} \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$ para $j = 0, \dots, k$, donde $q_{j+1, j+1}$ es el elemento $(j+1, j+1)$ de $(X'X)^{-1}$.
+Así que $\hat{\beta}_j \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$ para $j = 0, \dots, k$, donde $q_{j+1, j+1}$ es el elemento $(j+1, j+1)$ de $(X'X)^{-1}$.
 Equivalentemente, es el elemento $(j+1)$-ésimo de la diagonal principal de $(X'X)^{-1}$.
 
 En cuanto a $s_R^2$,
@@ -127,15 +127,15 @@ $$\begin{cases}
 \subsection*{Intervalos de confianza para $\beta_j$, $j = 0, \dots, k$}
 Supondremos $\sigma^2$ desconocida.
 
-Sea $j \in \{0, \dots, k\}$, sabemos que $\hat{\beta_j} \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$.
+Sea $j \in \{0, \dots, k\}$, sabemos que $\hat{\beta}_j \sim N(\beta_j, \sigma^2 q_{j+1, j+1})$.
 Así que:
 $$\begin{cases}
-        \dfrac{\hat{\beta_j} - \beta_j}{\sigma \sqrt{q_{j+1, j+1}}} \sim N(0, 1) \\
+        \dfrac{\hat{\beta}_j - \beta_j}{\sigma \sqrt{q_{j+1, j+1}}} \sim N(0, 1) \\
         \dfrac{(n-k-1)s_R^2}{\sigma^2} \sim \chi^2_{n-k-1}
-    \end{cases} \Rightarrow \frac{\hat{\beta_j} - \beta_j}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$$
+    \end{cases} \Rightarrow \frac{\hat{\beta}_j - \beta_j}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$$
 
 Luego el intervalo de confianza para $\beta_j$ a nivel de significación $\alpha$ es:
-$$IC_{1-\alpha}(\beta_j) = \left( \hat{\beta_j} - t_{n-k-1, 1-\frac{\alpha}{2}} s_R \sqrt{q_{j+1, j+1}}, \hat{\beta_j} + t_{n-k-1, 1-\frac{\alpha}{2}} s_R \sqrt{q_{j+1, j+1}} \right)$$
+$$IC_{1-\alpha}(\beta_j) = \left( \hat{\beta}_j - t_{n-k-1, 1-\frac{\alpha}{2}} s_R \sqrt{q_{j+1, j+1}}, \hat{\beta}_j + t_{n-k-1, 1-\frac{\alpha}{2}} s_R \sqrt{q_{j+1, j+1}} \right)$$
 
 \subsection*{Intervalos de confianza para $\sigma^2$}
 Sabemos que $\frac{(n-k-1)s_R^2}{\sigma^2} \sim \chi^2_{n-k-1}$.
@@ -163,8 +163,8 @@ Entonces:
 \end{itemize}
 
 \subsubsection*{Estadístico $T$}
-Sabemos que $\frac{\hat{\beta_j} - \beta_j}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$.
-Entonces $T = \frac{\hat{\beta_j}}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$ si $H_0$ es cierto.
+Sabemos que $\frac{\hat{\beta}_j - \beta_j}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$.
+Entonces $T = \frac{\hat{\beta}_j}{s_R \sqrt{q_{j+1, j+1}}} \sim t_{n-k-1}$ si $H_0$ es cierto.
 Tomamos un $t_{exp}$.
 \begin{itemize}
     \item Si $|t_{exp}| \leq t_{n-k-1, 1-\frac{\alpha}{2}}$, aceptamos $H_0$ a nivel de significación $\alpha$.
@@ -326,7 +326,7 @@ Queremos estimar:
 $$m_0 = E(y|x_{10}, \dots, x_{k0}) = \beta_0 + \beta_1x_{10} + \dots + \beta_kx_{k0} = \vec{x_0}'\vec{\beta}$$
 con $\vec{x_0} = (1, x_{10}, \dots, x_{k0})$.
 Para ello usamos el estimador:
-$$\hat{m_0} = \hat{E}(y|x_{10}, \dots, x_{k0}) = \hat{\beta_0} + \hat{\beta_1}x_{10} + \dots + \hat{\beta_k}x_{k0}$$
+$$\hat{m_0} = \hat{E}(y|x_{10}, \dots, x_{k0}) = \hat{\beta}_0 + \hat{\beta}_1x_{10} + \dots + \hat{\beta}_kx_{k0}$$
 Como $\hat{\vec{\beta}} \sim N_{k+1}(\vec{\beta}, \sigma^2(X'X)^{-1})$,
 $$\hat{m_0} \sim N(\vec{x_0}'\vec{\beta}, \vec{x_0}'V(\hat{\vec{\beta}})\vec{x_0}) \equiv N(m_0, \sigma^2\vec{x_0}'(X'X)^{-1}\vec{x_0})$$
 Observamos  que $\hat{m_0}$ es un estimador insesgado.
@@ -340,7 +340,7 @@ $$\left( \hat{m_0} - t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{\vec{x_0}'(X'X)^{-1}
 Queremos predecir la variable aleatoria
 $$y_0 = \beta_0 + \beta_1x_{10} + \dots + \beta_kx_{k0} + u_0 = \vec{x_0}'\vec{\beta} + u_0$$
 Su estimación puntual es:
-$$\hat{y_0} = \hat{\beta_0} + \hat{\beta_1}x_{10} + \dots + \hat{\beta_k}x_{k0} = \vec{x_0}'\hat{\vec{\beta}} = \hat{m_0}$$
+$$\hat{y_0} = \hat{\beta}_0 + \hat{\beta}_1x_{10} + \dots + \hat{\beta}_kx_{k0} = \vec{x_0}'\hat{\vec{\beta}} = \hat{m_0}$$
 
 Consideramos la variable aleatoria error:
 $$e_0 = y_0 - \hat{y_0}$$
@@ -388,17 +388,17 @@ Existen dos tipos de multicolinealidad:
           En este caso las columnas de la matriz $X$ tienen un alto grado de dependencia entre sí pero sí puede calcularse el vector $\hat{\beta}$.
           Sin embargo, presenta algunos problemas.
           \begin{itemize}
-              \item Los estimadores $\hat{\beta_j}$ tendrán varianzas muy altas, lo que provocará mucha imprecisión en la estimación de los $\hat{\beta_j}$.
+              \item Los estimadores $\hat{\beta}_j$ tendrán varianzas muy altas, lo que provocará mucha imprecisión en la estimación de los $\hat{\beta}_j$.
                     En consecuencia, los intervalos de confianza serán muy anchos.
-              \item Los estimadores $\hat{\beta_j}$ serán muy dependientes entre sí, puesto que tendrán altas covarianzas y habrá poca información sobre lo que ocurre al variar una variable si las demás permanecen constantes.
+              \item Los estimadores $\hat{\beta}_j$ serán muy dependientes entre sí, puesto que tendrán altas covarianzas y habrá poca información sobre lo que ocurre al variar una variable si las demás permanecen constantes.
           \end{itemize}
 \end{enumerate}
 
 \subsubsection*{Consecuencias de la multicolinealidad}
 \begin{itemize}
-    \item Los estimadores $\hat{\beta_j}$ serán muy sensibles a pequeñas variaciones en el tamaño muestral o la supresión de una variable aparentemente no significativa.
+    \item Los estimadores $\hat{\beta}_j$ serán muy sensibles a pequeñas variaciones en el tamaño muestral o la supresión de una variable aparentemente no significativa.
           A pesar de esto, la predicción no tiene por qué verse afectada ante la multicolinealidad, ni esta afecta al vector de residuos que está siempre bien definido.
-    \item Los coeficientes de regresión pueden ser no significativos individualmente puesto que las varianzas de los $\hat{\beta_j}$ van a ser grandes, aunque el contraste global del modelo sea significativo.
+    \item Los coeficientes de regresión pueden ser no significativos individualmente puesto que las varianzas de los $\hat{\beta}_j$ van a ser grandes, aunque el contraste global del modelo sea significativo.
     \item La multicolinealidad puede afectar mucho a algunos parámetros y nada a otros.
           Los parámetros que estén asociados a variables explicativas poco correlacionadas con el resto no se verán afectados y podrán estimarse con precisión.
 \end{itemize}
@@ -581,3 +581,79 @@ Distinguimos dos tipos de medidas para la bondad del modelo:
 \end{enumerate}
 
 Si dos modelos tienen una bondad similar, siempre es preferible el más simple.
+
+\section{Regresión con variables cualitativas}
+Consideramos un conjunto de datos $\{(x_{1i}, \dots, x_{ki})\}$ proveniente de dos poblaciones $A$ y $B$.
+Hay dos modelos de regresión para estos datos que no son muy recomendables:
+\begin{enumerate}
+    \item \textbf{Modelo conjunto.}
+          Se ajusta un único modelo para todos los datos, sin importar la población de la que provienen.
+          El modelo es por tanto sencillo y se consideran todos los datos.
+          Sin embargo, se suponen homogéneas las poblaciones y esto no es cierto en general.
+          $$\hat{y_i} = \hat{\beta}_0 + \hat{\beta}_1x_{1i} + \dots + \hat{\beta}_kx_{ki}$$
+    \item \textbf{Modelos individuales.}
+          Se ajustan dos modelos, uno para cada población por separado.
+          Las predicciones tienen sentido pero se tienen menos datos para cada modelo.
+\end{enumerate}
+
+Para obtener un mejor modelo añadimos una variable ficticia o \textit{dummy}:
+$$X_{k+1} = \begin{cases}
+        1 & \text{si el dato procede de } A \\
+        0 & \text{si el dato procede de } B
+    \end{cases}$$
+Consideramos entonces el nuevo modelo general:
+$$\hat{y_i} = \hat{\beta}_0 + \hat{\beta}_1x_{1i} + \dots + \hat{\beta}_kx_{ki} + \hat{\beta}_{k+1}x_{(k+1)i}$$
+Al término $\hat{\beta}_{k+1}x_{(k+1)i}$ se le llama efecto principal.
+\begin{itemize}
+    \item Para la población $A$, el modelo es:
+          $$\hat{y_i} = (\hat{\beta}_0 + \hat{\beta}_{k+1}) + \hat{\beta}_1x_{1i} + \dots + \hat{\beta}_kx_{ki}$$
+    \item Para la población $B$, el modelo es:
+          $$\hat{y_i} = \hat{\beta}_0 + \hat{\beta}_1x_{1i} + \dots + \hat{\beta}_kx_{ki}$$
+\end{itemize}
+
+Para comprobar si la variable $X_{k+1}$ es significativa a nivel de significación $\alpha$, consideramos el contraste de hipótesis:
+$$\begin{cases}
+        H_0: \beta_{k+1} = 0 \\
+        H_1: \beta_{k+1} \neq 0
+    \end{cases}$$
+Aceptar $H_0$ significa que los datos son homogéneos a nivel de significación $\alpha$.
+
+Los modelos que hemos visto se llaman modelos anidados, debido a que cada uno contiene todos los términos del modelo anterior.
+Este último es mejor que los anteriores pero supone que el incremento de $\hat{y}$ es igual para cada población, lo que no es cierto en general.
+Veremos en ejemplos que podemos mejorarlo añadiendo interacciones.
+
+\begin{example}
+    Consideramos las variables:
+    \begin{itemize}
+        \item $Y$: rendimiento de un motor diésel.
+        \item $X$: velocidad del motor.
+    \end{itemize}
+    Existen tres tipos de combustible: petróleo, carbón y mezcla.
+    Tenemos un conjunto de datos $\{(x_i, y_i)\}$ con los distintos tipos de combustible y queremos ajustar un modelo de regresión.
+
+    El modelo conjunto sería:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1$$
+    Como es de esperar que el tipo de combustible influya en el rendimiento del motor, añadimos dos variables ficticias:
+    \begin{align*}
+        X_2 = \begin{cases}
+                  1 & \text{si usa petróleo}    \\
+                  0 & \text{si no usa petróleo}
+              \end{cases} \qquad
+        X_3 = \begin{cases}
+                  1 & \text{si usa carbón}    \\
+                  0 & \text{si no usa carbón}
+              \end{cases}
+    \end{align*}
+    Codificamos los datos a la forma $(x_{1i}, x_{2i}, x_{3i}, y_i)$ para tener en cuenta estas nuevas variables.
+    De esta forma, obtenemos el modelo general:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_2 + \hat{\beta}_3x_3$$
+    Al término $\hat{\beta}_2x_2 + \hat{\beta}_3x_3$ se le llama efecto principal del tipo de combustible.
+    \begin{itemize}
+        \item Para el petróleo el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2 = (\hat{\beta}_0 + \hat{\beta}_2) + \hat{\beta}_1x_1$$
+        \item Para el carbón el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_3 = (\hat{\beta}_0 + \hat{\beta}_3) + \hat{\beta}_1x_1$$
+        \item Para la mezcla el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1$$
+    \end{itemize}
+\end{example}
