@@ -1,0 +1,129 @@
+\chapter{Extensiones separables}
+\section{Polinomios separables}
+
+\begin{definition}
+    Un polinomio no constante $f(x) \in F[x]$ se llama separable si sus raíces en un cuerpo de descomposición son todas simples.
+\end{definition}
+
+\begin{example}
+    Para dar un ejemplo de un polinomio no separable basta con elegir un polinomio reducible con factores repetidos, como:
+    \begin{align*}
+        x^2-2x+1 = (x-1)^2     & \in \mathbb{Q}[x] \\
+        x^4-4x^2+4 = (x^2-2)^2 & \in \mathbb{Q}[x]
+    \end{align*}
+\end{example}
+
+\begin{proposition}
+    Sea $f \in F[x]$ un polinomio mónico y no constante. Entonces las afirmaciones siguientes son equivalentes:
+    \begin{enumerate}
+        \item $f$ es separable.
+        \item $f$ y su derivada $f'$ son primos relativos en $F[x]$.
+    \end{enumerate}
+    En particular, si $f \in F[x]$ es irreducible, entonces $f$ es separable si y solo si $f' \neq 0$.
+\end{proposition}
+
+\begin{corollary}
+    Sea $f(x) \in F[x]$ un polinimio irreducible de grado $n > 0$. Si se verifica una de las siguientes condiciones, entonces $f(x)$ es separable:
+    \begin{itemize}
+        \item $char(F) = 0$.
+        \item $char(F) = p$ y $p$ no divide a $n$.
+    \end{itemize}
+\end{corollary}
+
+\section{Cuerpos perfectos y extensiones separables}
+
+\begin{definition}
+    Un cuerpo $F$ es perfecto si todo polinomio irreducible $f(x) \in F[x]$ es separable.
+\end{definition}
+
+\begin{theorem}
+    Un cuerpo $F$ es perfecto si y solo si se verifica una de las siguientes condiciones:
+    \begin{itemize}
+        \item $char(F) = 0$.
+        \item $char(F) = p$ y para cada $a \in F$ existe $b \in F$ tal que $a = b^2$.
+    \end{itemize}
+\end{theorem}
+
+\begin{remark}
+    Para cada cuerpo $F$ de característica $p$, la aplicación
+    $$\varphi : F \to F$$
+    definida por $\varphi(a) = a^p$ para cada $a \in F$ es un endomorfismo inyectivo.
+    Se conoce como el endomorfismo de Frobenius.\\
+    Observamos que, por el teorema previo, $F$ es perfecto si y solo si $\varphi$ es un automorfismo.\\
+    Cuando $F$ es finito, $\varphi$ es una aplicación inyectiva entre conjuntos del mismo cardinal finito, así que tiene que ser sobreyectiva.
+    Luego todo cuerpo finito es perfecto.
+\end{remark}
+
+\begin{definition}
+    Si $K/F$ es una extensión de cuerpos y $\alpha \in K$ es algebraico sobre $F$, decimos que $\alpha$ es separable sobre $F$ cuando su polinomio mínimo sobre $F$ es separable.\\
+    Una extensión algebraica $K/F$ es separable si cada elemento de $K$ es separable sobre $F$.
+    Equivalentemente, $K/F$ es separable si cada polinomio irreducible $f(x) \in F[x]$ con una raíz en $K$ es separable.
+\end{definition}
+
+\begin{proposition}
+    Toda extensión algebraica de un cuerpo perfecto es separable.
+\end{proposition}
+
+\begin{proposition}
+    Si toda extensión finita de un cuerpo $F$ es separable, entonces $F$ es perfecto.
+\end{proposition}
+
+\begin{example}
+    Para dar un ejemplo de un polinomio irreducible y no separable, necesitamos un cuerpo no perfecto.
+    Hemos visto que no puede tener característica 0 y no puede ser finito ni una extensión algebraica de un cuerpo finito.
+    Luego $F$ tiene que ser una extensión trascendente de su cuerpo primo.
+    Tomaremos $F = \mathbb{Z}_p(t)$ para cierto primo $p$ y una variable $t$.
+    Por otro lado, sabemos que un polinomio irreducible de grado $n$, con $p$ no dividiendo a $n$, es separable.
+    Recordando además que la derivada de un polinomio irreducible no separable es el polinomio nulo, elegiremos el polinomio:
+    $$f(x) = x^p - t \in F[x]$$
+    Veamos que $f(x)$ es irreducible y no separable.\\
+    Procedemos por reducción al absurdo. Sea $\alpha$ una raíz de $f(x)$:
+    $$f(x) = (x-a)^p$$
+    Si $\alpha \in F$, entonces:
+    $$\alpha = \frac{g(t)}{h(t)}$$
+    con $g(t), h(t) \in \mathbb{Z}_p[t], h(t) \neq 0$.
+    Esto implica que $h(t)^pt = g(t)^p$. Sin embargo, esto es imposible.\\
+    Por tanto, $x^p - t$ es irreducible en $F[x]$.
+\end{example}
+
+\section{Inmersiones y separabilidad}
+
+\begin{theorem}
+    Sea $K/F$ una extensión finita con $[K : F] = n$ y $\sigma : F \to L$ una inmersión.
+    \begin{enumerate}
+        \item El número de inmersiones $\bar{\sigma} : K \to L$ que extienden a $\sigma$ es a lo sumo $n$.
+        \item Si $K/F$ no es separable, entonces el número de inmersiones $\bar{\sigma} : K \to L$ que extienden a $\sigma$ es menor que $n$.
+        \item Si $K = F(\alpha_1, \dots, \alpha_r)$, con $\alpha_1, \dots, \alpha_r$ separables sobre $F$, entonces existe una extensión $L'$ de $L$ tal que el número de inmersiones $\bar{\sigma} : K \to L$ que extienden a $\sigma$ es $n$.
+        \item Si $K/F$ es separable, entonces existe una extensión $L'$ de $L$ tal que el número de inmersiones $\bar{\sigma} : K \to L$ que extienden a $\sigma$ es $n$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    Si $K = F(\alpha_1, \dots, \alpha_r)$, con $\alpha_1, \dots, \alpha_r$ separables sobre $F$, entonces $K/F$ es separable.
+\end{corollary}
+
+\begin{corollary}
+    Sea $K/F$ una extensión de cuerpos y
+    $$K_s = \{ \alpha \in K : \alpha \text{ separable sobre } F \}$$
+    Entonces $K_s$ es un cuerpo intermedio de $K/F$. Se llama clausura separable de $K/F$.
+\end{corollary}
+
+\section{Grado de separabilidad}
+
+\begin{definition}
+    Sea $K/F$ una extensión finita y
+    $$K_s = \{ \alpha \in K : \alpha \text{ separable sobre } F \}$$
+    El grado de separabilidad de $K$ sobre $F$ es el grado de $[K_s : F]$. Se denota por $[K : F]_s$.\\
+    El grado de inseparabilidad es $[K : K_s]$ y se denota por $[K : F]_i$.
+\end{definition}
+
+\begin{lemma}
+    Sea $K/F$ una extensión de cuerpos con $char(F) = p \neq 0$.
+    Si $\alpha \in K$ es algebraico sobre $F$, entonces existe un entero $m > 0$ tal que $\alpha^{p^m}$ es separable sobre $F$.
+\end{lemma}
+
+\begin{proposition}
+    Sea $K/F$ una extensión finita, $L$ clausura algebraica de $F$ y $\sigma : F \to L$ una inmersión.
+    Entonces el número de inmersiones de $K$ a $L$ que extienden a $\sigma$ es precisamente $[K : F]_s$.\\
+    En particular, $[K : F]_s$ es el número de $F$-inmersiones de $K$ a $N$, donde $N$ es clausura normal de $K/F$.
+\end{proposition}

@@ -1,0 +1,860 @@
+\chapter{Función de distribución}
+\section{Introducción}
+Sea $(\Omega, \mathcal{A}, P)$ espacio de probabilidad, donde $\mathcal{A} \subset P(\Omega)$ es una $\sigma$-álgebra y $P: \mathcal{A} \to [0, 1]$ es una medida de probabilidad.
+
+Una variable aleatoria es una función $X: \Omega \to \mathbb{R}$ tal que
+$$X^{-1}(B) = \{ \omega \in \Omega : X(\omega) \in B \} \in \mathcal{A}$$
+para todo $B \in \mathcal{B}$ $\sigma$-álgebra de Borel.
+$X$ induce una medida en $(\mathbb{R}, \mathcal{B})$:
+$$P_X: \mathcal{B} \to [0, 1], \quad P_X(B) = P(X^{-1}(B))$$
+
+\begin{definition}
+    Sea $(\Omega, \mathcal{A}, P)$ espacio de probabilidad.
+    Sean $X: \Omega \to \mathbb{R}$ una variable aleatoria en $(\Omega, \mathcal{A}, P)$ y $P_X$ la medida de probabilidad inducida por $X$ en $(\mathbb{R}, \mathcal{B})$.
+    La función de distribución asociada a $X$ es:
+    $$F: \mathbb{R} \to [0, 1], \quad F(a) = P_X((-\infty, a]) = P(X \leq a)$$
+\end{definition}
+
+\begin{note}
+    Variables aleatorias distintas pueden tener la misma función de distribución.
+\end{note}
+
+\section{Propiedades}
+Sea $F$ la función de distribución asociada a una variable aleatoria $X$.
+Entonces:
+\begin{itemize}
+    \item $F$ es creciente.
+    \item $\lim\limits_{x \to -\infty} F(x) = F(-\infty) = 0, \quad \lim\limits_{x \to \infty} F(x) = F(\infty) = 1$
+    \item $F$ es continua por la derecha: $$\lim\limits_{h \to 0^+} F(x+h) = F(x), \quad \forall x \in \mathbb{R}$$
+    \item Existe $\lim\limits_{h \to 0^-} F(x+h) = F(x^-) = F(x) - P_X(\{x\})$
+\end{itemize}
+
+\begin{theorem}[Teorema de correspondencia]
+    Si $F: \mathbb{R} \to [0, 1]$ es una función que verifica:
+    \begin{itemize}
+        \item $F$ es creciente.
+        \item $F(-\infty) = 0, \quad F(\infty) = 1$
+        \item $F$ es continua por la derecha.
+    \end{itemize}
+    Entonces existe una única medida de probabilidad $P_F$ en $(\mathbb{R}, \mathcal{B})$ tal que $F$ es su función de distribución.
+    Es decir, tal que $F(a) = P_F((-\infty, a])$.
+\end{theorem}
+
+\begin{definition}
+    Sea $F$ función de distribución.
+    El conjunto de discontinuidad de $F$ se define como:
+    $$C(F) = \{ x \in \mathbb{R} : F(x) = F(x^-) \}$$
+    También se puede definir el conjunto de puntos de discontinuidad de $F$ como:
+    $$D(F) = \{ x \in \mathbb{R} : F(x) - F(x^-) > 0 \}$$
+\end{definition}
+
+\begin{remark}
+    $D(F) = \bar{C(F)}$.
+\end{remark}
+
+\begin{proposition}
+    $D(F)$ es a lo sumo numerable.
+\end{proposition}
+
+\begin{corollary}
+    $C(F)$ es denso en $\mathbb{R}$.
+\end{corollary}
+
+\begin{proposition}
+    Sean $F$ y $G$ funciones de distribución tales que $F(x) = G(x)$ para todo $x \in E \subset \mathbb{R}$, con $E$ denso en $\mathbb{R}$.
+    Entonces $F(x) = G(x)$ para todo $x \in \mathbb{R}$.
+\end{proposition}
+
+\begin{definition}
+    La función de masa de probabilidad se define como:
+    $$p : \mathbb{R} \to [0, 1], \quad p(x) = P_F(\{x\}) = F(x) - F(x^-)$$
+\end{definition}
+
+\begin{definition}
+    Sea $X$ variable aleatoria con función de distribución $F$ y función de masa $p$.
+    Entonces:
+    \begin{itemize}
+        \item $X$ es discreta cuando $\sum_{x \in D(F)} p(x) = 1$.
+        \item $X$ es continua cuando $p(x) = 0$ para todo $x \in \mathbb{R}$.
+    \end{itemize}
+    En otro caso, $X$ es mixta.
+\end{definition}
+
+\begin{definition}
+    Sea $X: \Omega \to \mathbb{R}$ variable aleatoria.
+    $X$ es singular si existe $B \in \mathcal{B}$ con $m(B) = 0$ tal que $P_X(B) = 1$.
+\end{definition}
+
+\begin{remark}
+    Las variables aleatorias discretas son singulares.
+\end{remark}
+
+\begin{definition}
+    Sea $X$ variable aleatoria.
+    $X$ es absolutamente continua si para cualquier $B \in \mathcal{B}$ con $m(B) = 0$ se tiene que $P_X(B) = 0$.
+\end{definition}
+
+\begin{theorem}
+    Sea $F$ función de distribución.
+    $F$ es absolutamente continua si y solo si existe una función medible $f$ no negativa y finita tal que
+    $$F(b) - F(a) = \int_a^b f(x) dx, \quad \forall a < b$$
+    La función $f$ se llama función de densidad.
+\end{theorem}
+
+\begin{remark}
+    $F$ es continua cuando no hay saltos y absolutamente continua cuando tiene una densidad.
+\end{remark}
+
+\begin{theorem}[Mixtura de distribuciones]
+    Toda función de distribución $F$ se puede descomponer de la forma:
+    $$F = \alpha F_d + (1-\alpha)F_c, \quad 0 \leq \alpha \leq 1$$
+    donde $F_d$ es la función de distribución de una variable aleatoria discreta y $F_c$ de una continua.
+\end{theorem}
+
+\begin{example}
+    Consideramos la función de distribución:
+    $$F(x) = \begin{cases}
+            0                         & \text{si } x < 0        \\
+            \frac{x^2}{16}            & \text{si } 0 \leq x < 2 \\
+            \frac{1}{4}               & \text{si } 2 \leq x < 4 \\
+            \frac{x}{4} - \frac{5}{8} & \text{si } 4 \leq x < 5 \\
+            1 - \frac{5}{4x}          & \text{si } x \geq 5     \\
+        \end{cases}$$
+    Estudiamos sus puntos de discontinuidad y la probabilidad en ellos.
+    $$D(F) = \{4, 5\}, \quad \begin{cases}
+            p(4) = F(4) - F(4^-) = \frac{1}{8} \\
+            p(5) = F(5) - F(5^-) = \frac{1}{8}
+        \end{cases}
+        \Rightarrow \alpha = \frac{1}{4}$$
+    Luego la función de distribución discreta es:
+    $$F_d(x) = \begin{cases}
+            0                                             & \text{si } x < 4        \\
+            \frac{\frac{1}{8}}{\frac{1}{4}} = \frac{1}{2} & \text{si } 4 \leq x < 5 \\
+            1                                             & \text{si } x \geq 5
+        \end{cases}$$
+    Por último podemos calcular la función de distribución continua:
+    $$F_c(x) = \frac{1}{1-\frac{1}{4}} \left( F(x) - \frac{1}{4}F_d(x) \right) = \begin{cases}
+            0                           & \text{si } x < 0        \\
+            \frac{x^2}{12}              & \text{si } 0 \leq x < 2 \\
+            \frac{1}{3}                 & \text{si } 2 \leq x < 4 \\
+            \frac{5x}{24} - \frac{1}{6} & \text{si } 4 \leq x < 5 \\
+            1 - \frac{5}{3x}            & \text{si } x \geq 5
+        \end{cases}$$
+\end{example}
+
+\begin{lemma}
+    Sea $F$ función de distribución.
+    Entonces:
+    \begin{itemize}
+        \item Existe $F'$ en casi todo punto y es no negativa y finita.
+        \item $\int_a^b F'(x) dx \leq F(b) - F(a), \quad a<b$
+        \item Siendo $F_{ac}(x) = \int_{-\infty}^x F'(t) dt$ y $F_s(x) = F(x) - F_{ac}(x)$, entonces $F'_{ac}(x) = F'(x)$ en casi todo punto y $F'_s(x) = 0$.
+    \end{itemize}
+\end{lemma}
+
+\begin{theorem}[Descomposición de Lebesgue]
+    Toda función de distribución $F$ se puede descomponer de la forma:
+    $$F = \beta F_{ac} + (1-\beta)F_s$$
+    con $F_{ac}$ función de distribución absolutamente continua y $F_s$ singular.
+\end{theorem}
+
+\begin{remark}
+    Se pueden aplicar ambas descomposiciones (continua-discreta y Lebesgue) a una función de distribución $F$.
+    $$F = \beta F_{ac} + (1-\beta) \left( \alpha F_{d} + (1-\alpha)F_{cs} \right)$$
+\end{remark}
+
+\begin{definition}[Esperanza]
+    Sea $X$ variable aleatoria en $(\Omega, \mathcal{A}, P)$.
+    La esperanza de $X$ se define como:
+    $$E(X) = \int_\Omega X dP = \int_\mathbb{R} x dF(x)$$
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{itemize}
+        \item Si $F$ es absolutamente continua,
+              $$E(X) = \int_\mathbb{R} xf(x) dx$$
+        \item Si $F$ es discreta,
+              $$E(X) = \sum_{x \in D(F)} xp(x)$$
+    \end{itemize}
+\end{remark}
+
+\section{Convolución en funciones de distribución}
+
+\begin{definition}
+    Sean $F$ y $G$ funciones de distribución.
+    Definimos la convolución de $F$ y $G$ como la función definida por:
+    $$(F \ast G)(z) = \int_\mathbb{R} F(z-y) dG(y), \quad z \in R$$
+\end{definition}
+
+\begin{note}
+    La convolución es conmutativa con funciones medibles no negativas.
+\end{note}
+
+\begin{proposition}
+    $F \ast G$ es una función de distribución.
+\end{proposition}
+
+\begin{theorem}
+    Sean $X$ e $Y$ variables aleatorias independientes con funciones de distribución $F_X$ y $F_Y$ respectivamente.
+    Entonces $F_X \ast F_Y$ es la función de distribución de la variable aleatoria $X+Y$.
+\end{theorem}
+
+\begin{theorem}
+    Si $F$ es absolutamente continua con densidad $f$, entonces $F \ast G$ es absolutamente continua con densidad
+    $$(f \ast G)(z) = \int_{-\infty}^\infty f(z-y)dG(y)$$
+\end{theorem}
+
+\begin{theorem}
+    Si $F$ y $G$ son absolutamente continuas con densidades $f$ y $g$ respectivamente, entonces $F \ast G$ es absolutamente continua con densidad $f \ast g$.
+\end{theorem}
+
+\begin{example}
+    Sean $X, Y \sim U([0, 1])$. Sus funciones de distribución son:
+    $$F_X(x) = \begin{cases}
+            0 & \text{si } x < 0        \\
+            x & \text{si } 0 \leq x < 1 \\
+            1 & \text{si } x \geq 1
+        \end{cases}, \quad
+        F_Y(y) = \begin{cases}
+            0 & \text{si } y < 0        \\
+            y & \text{si } 0 \leq y < 1 \\
+            1 & \text{si } y \geq 1
+        \end{cases}$$
+    Sea $Z = X+Y$ y $z \in \mathbb{R}$.
+    Como $X$ e $Y$ son absolutamente continuas, $Z$ es absolutamente continua.
+    Queremos calcular:
+    $$F_Z(z) = (F_X \ast F_Y)(z) = \int_\mathbb{R} F_X(z-y)dF_y(y) = \int_\mathbb{R} F_X(z-y) f_Y(y) dy$$
+    Consideramos todos los casos:
+    \begin{itemize}
+        \item Si $z < 0$ entonces $z-y<0$ para todo $y \in [0, 1]$.
+              Luego $F_X(z-y) = 0$, así que $F_Z(z) = 0$.
+        \item Si $0 \leq z < 1$ distinguimos dos casos:
+              \begin{itemize}
+                  \item Si $0 \leq y < z$ entonces $0 < z-y < 1$, así que $F_X(z-y) = z-y$.
+                  \item Si $z \leq y < 1$ entonces $z-y < 0$, luego $F_X(z-y) = 0$.
+              \end{itemize}
+              $$F_Z(z) = \int_0^z (z-y) dy + \int_z^1 0 dy = \frac{z^2}{2}$$
+        \item Si $1 \leq z < 2$ de nuevo distinguimos dos casos:
+              \begin{itemize}
+                  \item Si $0 \leq y < z-1$ entonces $z-y \geq 1$, luego $F_X(z-y) = 1$.
+                  \item Si $z-1 \leq y < 1$ entonces $0 \leq z-1 < 1$, así que $F_X(z-y) = z-y$.
+              \end{itemize}
+              $$F_Z(z) = \int_0^{z-1} 1 dy + \int_{z-1}^1 (z-y) dy = 2z - \frac{z^2}{2} - 1$$
+        \item Si $z \geq 2$ entonces $z-y \geq 1$ para todo $y \in [0, 1]$.
+              Luego $F_X(z-y) = 1$, de forma que $F_Z(z) = \int_0^1 1 dx = 1$.
+    \end{itemize}
+    Por tanto:
+    $$F_Z(z) = \begin{cases}
+            0                      & \text{si } z < 0        \\
+            \frac{z^2}{2}          & \text{si } 0 \leq z < 1 \\
+            2z - \frac{z^2}{2} - 1 & \text{si } 1 < z \leq 2 \\
+            1                      & \text{si } x \geq 2
+        \end{cases}$$
+\end{example}
+
+\begin{example}
+    Sea $X \sim U([-1, 1])$ y sea $Y$ absolutamente continua con densidad:
+    $$f_Y(y) = \begin{cases}
+            \frac{y+2}{4} & \text{si } -2 \leq y < 0 \\
+            \frac{2-y}{4} & \text{si } 0 \leq y < 2  \\
+            0             & \text{en el resto}
+        \end{cases}$$
+    Sabemos que $X$ es absolutamente continua con función de densidad:
+    $$f_X(x) = \begin{cases}
+            \frac{1}{2} & \text{si } -1 \leq x \leq 1 \\
+            0           & \text{en el resto}
+        \end{cases}$$
+    Sea $Z = X+Y$.
+    Como $X$ e $Y$ son absolutamente continuas, $Z$ es absolutamente continua con función de densidad $f \ast g$.
+    $$(f_X \ast f_Y)(z) = (f_Y \ast f_X)(z) = \int_{-\infty}^\infty f_Y(z-x) f_X(x) dx$$
+    Sabemos que $S_X = [-1 ,1]$ y $S_Y = [-2, 2]$, así que $S_Z = [-3, 3]$.
+    Consideramos los casos:
+    \begin{itemize}
+        \item Si $z < -3$ entonces $z-x < 2$ para todo $x \in [-1, 1]$.
+              Luego $f_Y(z-x) = 0$, así que $f_Z(z) = 0$.
+        \item Si $-3 \leq z < -1$ distinguimos dos casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z+2$ entonces $-2 \leq z-x < 0$, así que $f_Y(z-x) = \frac{z-x+2}{4}$.
+                  \item Si $z+2 \leq x < 1$ entonces $z-x < -2$, luego $f_Z(z) = 0$.
+              \end{itemize}
+              $$f_Z(z) = \int_{-1}^{z+2} \frac{z-x+2}{4} \frac{1}{2} dx = \frac{(z+3)^2}{16}$$
+        \item Si $-1 \leq z < 1$ distinguimos dos casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z$ entonces $0 \leq z-x < 2$, así que $f_Y(z-x) = \frac{2-z+x}{4}$.
+                  \item Si $z \leq x < 1$ entonces $-2 \leq z-x < 0$, luego $f_Y(z-x) = \frac{z-x+2}{4}$.
+              \end{itemize}
+              $$f_Z = \int_{-1}^z \frac{2-z+x}{4} \frac{1}{2} dx + \int_z^1 \frac{z-x+2}{4} \frac{1}{2} dx = \frac{3-z^2}{8}$$
+        \item Si $1 \leq z < 3$ distinguimos dos casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z-2$ entonces $z-x \geq 2$, luego $f_Z(z) = 0$.
+                  \item Si $z-2 \leq x < 1$ entonces $0 \leq z-x < 2$, así que $f_Y(z-x) = \frac{2-z+x}{4}$.
+              \end{itemize}
+              $$f_Z(z) = \int_{z-2}^1 \frac{2-z+x}{4} \frac{1}{2} dx = \frac{(z-3)^2}{16}$$
+        \item Si $z \geq 3$ entonces $z-x \geq 2$ para todo $x \in [-1, 1]$, así que $f_Z(z) = 0$.
+    \end{itemize}
+    Por tanto:
+    $$f_Z(z) = \begin{cases}
+            \frac{(z+3)^2}{16} & \text{si } -3 \leq z < -1 \\
+            \frac{3-z^2}{8}    & \text{si } -1 \leq z < 1  \\
+            \frac{(z-3)^2}{16} & \text{si } 1 \leq z < 3   \\
+            0                  & \text{en el resto}
+        \end{cases}$$
+\end{example}
+
+\begin{example}
+    Sean $X, Y$ variables aleatorias con funciones de distribución:
+    $$F_X(x) = \begin{cases}
+            0             & \text{si } x < -2        \\
+            \frac{x+2}{4} & \text{si } -2 \leq x < 1 \\
+            1             & \text{si } x \geq 1
+        \end{cases}, \quad
+        F_Y(y) = \begin{cases}
+            0           & \text{si } y < 0        \\
+            \frac{y}{2} & \text{si } 0 \leq y < 2 \\
+            1           & \text{si } y \geq 2
+        \end{cases}$$
+    Observamos que $Y$ es absolutamente continua y $X$ es mixta, así que $Z = X+Y$ es absolutamente continua.
+    Queremos calcular la función de densidad de $Z$.
+    Como $F_X$ es discontinua en 1,
+    $$f_Z(z) = \int_{-\infty}^\infty f_Y(z-x) dF_x(x) = \int_{-2}^1 f_Y(z-x) f_X(x) dx + f_Y(z-1)p_x(1)$$
+    \begin{note}
+        Para no lidiar con discontinuidades, también se podría calcular:
+        $$f_Z(z) = \int_{-\infty}^\infty f_X(z-y) dF_y(y) = \int_{-\infty}^\infty f_X(z-y) f_Y(y) dy$$
+    \end{note}
+    Calculamos las funciones de densidad, pseudodensidad y masa:
+    $$f_Y(y) = \begin{cases}
+            \frac{1}{2} & \text{si } 0 \leq y \leq 2 \\
+            0           & \text{en el resto}
+        \end{cases}$$
+    $$f_X(x) = \begin{cases}
+            \frac{1}{4} & \text{si } -2 \leq x < 1 \\
+            0           & \text{en el resto}
+        \end{cases}, \quad
+        p_X(x) = \begin{cases}
+            \frac{1}{4} & \text{si } x = 1   \\
+            0           & \text{en el resto}
+        \end{cases}$$
+    $S_X = [-2, 1]$ y $S_Y = [0, 2]$, así que $S_Z = [-2, 3]$.
+    Consideramos los casos:
+    \begin{itemize}
+        \item Si $z < -2$ entonces $z-x < 0$ para todo $x \in [-2, 1]$.
+              Luego $f_Y(z-x) = 0$, así que $f_Z(z) = 0$.
+        \item Si $-2 \leq z < 0$ entonces $0 \leq z-x \leq 2$, así que $f_Y(z-x) = \frac{1}{2}$ y $f_X(x) = \frac{1}{4}$.
+              $$f_Z(z) = \int_{-2}^z \frac{1}{2} \frac{1}{4} dx = \frac{z+2}{8}$$
+        \item Si $0 \leq z \leq 1$, $f_Y(z-1) = 0$.
+              Distinguimos tres casos:
+              \begin{itemize}
+                  \item Si $-2 \leq x < z-2$ entonces $z-x > 2$.
+                        Luego $f_Y(z-x) = 0$, así que $f_Z(z) = 0$.
+                  \item Si $z-2 \leq x < z$ entonces $0 \leq z-x < 2$.
+                        Así que $f_Y(z-x) = \frac{1}{2}$ y $f_X(x) = \frac{1}{4}$.
+                  \item Si $z \leq x \leq 1$ entonces $z-x \leq 0$.
+                        Luego $f_Y(z-x) = 0$, así que $f_Z(z) = 0$.
+              \end{itemize}
+              $$f_Z(z) = \int_{-2}^{z-2} 0 dx + \int_{z-2}^z \frac{1}{2} \frac{1}{4} dx + \int_z^1 0 dx + 0p_x(1) = \frac{1}{4}$$
+        \item Si $1 < z \leq 3$, $f_Y(z-1) = \frac{1}{2}$ y $p_X(1) = \frac{1}{4}$.
+              Distinguimos dos casos:
+              \begin{itemize}
+                  \item Si $-2 \leq x < z-2$ entonces $z-x \geq 2$, así que $f_Y(z-x) = 0$.
+                  \item Si $z-2 \leq x < 1$ entonces $0 \leq z-x < 2$, luego $f_Y(z-x) = \frac{1}{2}$ y $f_X(x) = \frac{1}{4}$.
+              \end{itemize}
+              $$f_Z(z) = \int_{z-2}^1 \frac{1}{2} \frac{1}{4} dx + \frac{1}{2} \frac{1}{4} = \frac{4-z}{8}$$
+        \item Si $z \geq 3$ entonces $f_Y(z-x) = 0$, así que $f_Z(z) = 0$.
+    \end{itemize}
+    Por tanto:
+    $$f_Z(z) = \begin{cases}
+            \frac{z+2}{8} & \text{si } -2 \leq z < 0   \\
+            \frac{1}{4}   & \text{si } 0 \leq z \leq 1 \\
+            \frac{4-z}{8} & \text{si } 1 < z \leq 3    \\
+            0             & \text{en el resto}
+        \end{cases}$$
+\end{example}
+
+\begin{exercise}
+    Sean $X$ y $Y$ variables aleatorias con funciones de distribución:
+    $$F_X(x) = \begin{cases}
+            0             & \text{si } x < -1        \\
+            \frac{x+1}{3} & \text{si } -1 \leq x < 1 \\
+            1             & \text{si } x > 1
+        \end{cases}, \quad
+        F_Y(y) = \begin{cases}
+            0            & \text{si } y < 0        \\
+            \frac{2y}{7} & \text{si } 0 \leq y < 2 \\
+            \frac{5}{7}  & \text{si } 2 \leq y < 4 \\
+            1            & \text{si } y \geq 4
+        \end{cases}$$
+    Observamos que $X$ es una variable aleatoria mixta con funciones de pseudodensidad y de masa:
+    $$f_X(x) = \begin{cases}
+            \frac{1}{3} & \text{si } -1 \leq x < 1 \\
+            0           & \text{en el resto}
+        \end{cases}, \quad
+        p_X(x) = \begin{cases}
+            \frac{1}{3} & \text{si } x = 1   \\
+            0           & \text{en el resto}
+        \end{cases}$$
+    $Y$ también es mixta con pseudodensidad y masa:
+    $$f_Y(y) = \begin{cases}
+            \frac{2}{7} & \text{si } 0 \leq y < 2 \\
+            0           & \text{en el resto}
+        \end{cases}, \quad
+        p_Y(y) = \begin{cases}
+            \frac{1}{7} & \text{si } y = 2   \\
+            \frac{2}{7} & \text{si } y = 4   \\
+            0           & \text{en el resto}
+        \end{cases}$$
+    Sea $Z = X+Y$, queremos calcular $F_Z$.
+    Observamos que $S_X = [-1,1) \cup \{1\} = [-1,1]$ y $S_Y = [0,2) \cup \{2\} \cup \{4\} = [0,2] \cup \{4\}$.
+    Por tanto, $S_Z = [-1, 5]$.
+    Calculamos:
+    $$F_Z = \int_{-\infty}^\infty F_Y(z-x)dF_x(x) = \int_{-1}^1 F_Y(z-x)f_X(x)dx + F_Y(z-1)p_X(1)$$
+    Consideramos los casos:
+    \begin{itemize}
+        \item Si $z < -1$, $F_Z(z) = 0$.
+        \item Si $-1 \leq z < 1$, consideramos tres casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z$ entonces $0 \leq z-x < 2$, luego $F_Y(z-x) = \frac{2(z-x)}{7}$.
+                  \item Si $z \leq x < 1$ entonces $z-x < 0$, así que $F_Z(z) = 0$.
+                  \item Si $x = 1$ entonces $z-1 < 0$, luego $F_Z(z) = 0$.
+              \end{itemize}
+              $$F_Z(z) = \int_{-1}^z \frac{2(z-x)}{7}\frac{1}{3}dx = \frac{(z+1)^2}{21}$$
+        \item Si $1 \leq z < 3$, consideramos tres casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z-2$ entonces $2 \leq z-x < 4$, así que $F_Y(z-x) = \frac{5}{7}$.
+                  \item Si $z-2 \leq x < 1$ entonces $0 \leq z-x < 2$, luego $F_Y(z-x) = \frac{2(z-x)}{7}$.
+                  \item Si $x = 1$ entonces $0 \leq z-1 < 2$, así que $F_Y(z-1) = \frac{2(z-1)}{z}$.
+              \end{itemize}
+              $$F_Z(z) = \int_{-1}^{z-2} \frac{5}{7}\frac{1}{3}dx + \int_{z-2}^1 \frac{2(z-x)}{7}\frac{1}{3} + \frac{2(z-1)}{7}\frac{1}{3} = \frac{-z^2+9z-4}{21}$$
+        \item Si $3 \leq z < 5$, consideramos tres casos:
+              \begin{itemize}
+                  \item Si $-1 \leq x < z-4$ entonces $z-x \geq 4$, luego $F_Y(z-x) = 1$.
+                  \item Si $z-4 \leq x < 1$ entonces $2 \leq z-x < 4$, así que $F_Y(z-x) = \frac{5}{7}$.
+                  \item Si $x = 1$ entonces $2 \leq z-1 < 4$, luego $F_Y(z-x) = \frac{5}{7}$.
+              \end{itemize}
+              $$F_Z(z) = \int_{-1}^{z-4} 1 \frac{1}{3}dx + \int_{z-4}^1 \frac{5}{7}\frac{1}{3}dx + \frac{5}{7}\frac{1}{3} = \frac{2z+9}{21}$$
+        \item Si $z \geq 5$, $F_Z(z) = 1$.
+    \end{itemize}
+    Por tanto:
+    $$F_Z(z) = \begin{cases}
+            0                    & \text{si } z < -1        \\
+            \frac{(z+1)^2}{21}   & \text{si } -1 \leq z < 1 \\
+            \frac{-z^2+9z-4}{21} & \text{si } 1 \leq z < 3  \\
+            \frac{2z+9}{21}      & \text{si } 3 \leq z < 5  \\
+            1                    & \text{si } z \geq 5
+        \end{cases}$$
+\end{exercise}
+
+\section{Convergencia en distribución}
+
+Sea $n \in \mathbb{N}$ y sea $X_n$ una variable aleatoria en $(\Omega_n, \mathcal{A}_n, P_n)$.
+$\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribución.
+
+\begin{definition}
+    Sean $F$ y $F_n$ funciones de distribución.
+    Decimos que la sucesión $\{F_n\}_n$ converge a $F$ débilmente cuando
+    $$\lim\limits_{n \to \infty} F_n(x) = F(x), \quad \forall x \in C(F)$$
+    Se escribe $F_n \xrightarrow{d} F$.
+\end{definition}
+
+\begin{example}
+    Sea $X_n \sim \delta(\frac{1}{n})$, es decir, $P(X_n = \frac{1}{n}) = 1$.
+    Su función de distribución es:
+    $$F_n(x) = \begin{cases}
+            0 & \text{si } x < \frac{1}{n}    \\
+            1 & \text{si } x \geq \frac{1}{n}
+        \end{cases}$$
+    Calculamos el límite puntual de la sucesión:
+    $$F(x) = \lim\limits_{n \to \infty} F_n(x) = \begin{cases}
+            0 & \text{si } x \leq 0 \\
+            1 & \text{si } x > 0
+        \end{cases}$$
+    Aunque $\{F_n\}_n$ converge puntualmente a $F$, observamos que $F$ no es continua por la derecha.
+    Así que $F$ no es función de distribución y no puede ser el límite débil de la sucesión.
+    Definimos:
+    $$G(x) = \begin{cases}
+            0 & \text{si } x < 0    \\
+            1 & \text{si } x \geq 0
+        \end{cases}$$
+    $G$ es función de distribución y además $\lim\limits_{n \to \infty} F_n(x) = G(x)$ para todo $x \in C(G) = \mathbb{R} \setminus \{0\}$, luego $F_n \xrightarrow{d} G$.
+    Es función de distribución de una variable aleatoria $\delta(0)$.
+\end{example}
+
+\begin{example}
+    Sea $Y_n \sim \delta(-\frac{1}{n})$.
+    Procedemos de forma análoga al ejemplo anterior.
+    Su función de distribución es:
+    $$F_{Y_n}(y) = \begin{cases}
+            0 & \text{si } x < -\frac{1}{n}    \\
+            1 & \text{si } x \geq -\frac{1}{n}
+        \end{cases}$$
+    y su límite puntual es:
+    $$F_Y(y) = \lim\limits_{n \to \infty} F_{Y_n}(y) = \begin{cases}
+            0 & \text{si } x < 0    \\
+            1 & \text{si } x \geq 0
+        \end{cases}$$
+    En este caso el límite puntual $F_Y$ sí es función de distribución, así que el límite puntual coincide con el límite débil.
+    $$F_{Y_n} \xrightarrow{d} F_Y$$
+\end{example}
+
+\begin{theorem}
+    El límite débil de una sucesión de funciones de distribución es único en caso de existir.
+\end{theorem}
+
+\begin{example}
+    Sea $X_n \sim U([-\frac{1}{n}, \frac{1}{n}])$.
+    Su función de distribución es:
+    $$F_n(x) = \begin{cases}
+            0              & \text{si } x < -\frac{1}{n}                  \\
+            \frac{nx+1}{2} & \text{si } -\frac{1}{n} \leq x < \frac{1}{n} \\
+            1              & \text{si } x \geq \frac{1}{n}
+        \end{cases}$$
+    El límite puntual es:
+    $$F(x) = \begin{cases}
+            0           & \text{si } x < 0 \\
+            \frac{1}{2} & \text{si } x = 0 \\
+            1           & \text{si } x > 0
+        \end{cases}$$
+    $F$ no es función de distribución porque no es continua por la derecha en $x = 0$.
+    Definimos entonces:
+    $$G(x) = \begin{cases}
+            0 & \text{si } x < 0    \\
+            1 & \text{si } x \geq 0
+        \end{cases}$$
+    $G$ es función de distribución y $\lim\limits_{n \to \infty} F_n(x) = G(x)$ para todo $x \in C(G)$, así que $F_n \xrightarrow{d} G$.
+\end{example}
+
+\begin{example}
+    Consideramos la sucesión de funciones de distribución $\{F_n\}_n$, con
+    $$F_n(x) = \begin{cases}
+            0                          & \text{si } x < 0        \\
+            \frac{1}{2} + \frac{x}{2n} & \text{si } 0 \leq x < n \\
+            1                          & \text{si } x \geq n
+        \end{cases}$$
+    Su límite puntual es:
+    $$F(x) = \begin{cases}
+            0           & \text{si } x < 0    \\
+            \frac{1}{2} & \text{si } x \geq 0
+        \end{cases}$$
+    Podemos descomponer $F_n$ como mixtura de distribuciones de la forma $F_n = \alpha F_n^d + (1-\alpha)F_n^c$.
+    Calculamos el valor de $\alpha$:
+    $$\alpha = \sum_{x \in D(F_n)} p(x) = p(0) = \frac{1}{2}$$
+    Por tanto, las funciones de distribución son:
+    $$F_n^d(x) = \frac{1}{\alpha} \sum_{t \leq x, t \in D(F_n)} p(t) = \begin{cases}
+            0 & \text{si } x < 0    \\
+            1 & \text{si } x \geq 0
+        \end{cases} \xrightarrow[n \to \infty]{}
+        F^d(x) = \begin{cases}
+            0 & \text{si } x < 0    \\
+            1 & \text{si } x \geq 0
+        \end{cases}$$
+    $$F_n^c(x) = \frac{1}{1-\alpha}(F_n(x) - \alpha F_n^d(x)) = \begin{cases}
+            0           & \text{si } x < 0        \\
+            \frac{x}{n} & \text{si } 0 \leq x < n \\
+            1           & \text{si } x \geq n
+        \end{cases} \xrightarrow[n \to \infty]{}
+        F^c(x) = 0$$
+    Observamos que $F = \alpha F^d + (1-\alpha)F^c$.
+\end{example}
+
+\begin{definition}
+    La sucesión de variables aleatorias $\{X_n\}_n$ converge en distribución a otra variable aleatoria $X$ cuando $F_n \xrightarrow{d} F$, siendo $F_n$ y $F$ las funciones de distribución asociadas a $X_n$ y $X$, respectivamente.
+    Se escribe $X_n \xrightarrow{d} X$.
+\end{definition}
+
+\begin{exercise}
+    Sea $(\Omega, \mathcal{A}, P)$ espacio de probabilidad, donde:
+    $$\Omega = [0, 3], \quad \mathcal{A} = \{ B \cap [0, 3] : B \in \mathcal{B} \}$$
+    $$P: \mathcal{A} \to [0, 1], \quad P(A) = \begin{cases}
+            \frac{1}{6}    & \text{si } A = \{0\}        \\
+            0              & \text{si } A \subset (0, 1) \\
+            \frac{m(A)}{6} & \text{si } A \subset [1, 3) \\
+            \frac{1}{2}    & \text{si } A = \{3\}
+        \end{cases}$$
+    Sobre este espacio definimos para $n \in \mathbb{N}$ las variables aleatorias:
+    $$X_n: \Omega \to \mathbb{R}, \quad X_n(\omega) = \begin{cases}
+            \frac{\omega - 1}{n\omega + 1} & \text{si } 0 \leq \omega < 1 - \frac{1}{n}               \\
+            2                              & \text{si } 1 - \frac{1}{n} \leq \omega < 3 - \frac{1}{n} \\
+            n(\omega - 3)                  & \text{si } 3 - \frac{1}{n} \leq \omega \leq 3
+        \end{cases}$$
+    $\{X_n\}_n$ es una sucesión de variables aleatorias.
+
+    \begin{enumerate}
+        \item \textbf{Determinar los puntos de discontinuidad y sus masas.}
+              Sabemos que $x$ es punto de discontinuidad de $F_n$ si $F_n(x) - F_n(x^-) > 0$, es decir, $P_{X_n}(\{x\}) > 0$.
+              En primer lugar estudiamos las imágenes por $X_n$ de los puntos con masa en la definición de $P$.
+              En este caso, estos puntos son 0 y 3, con imágenes $X_n(0) = -1$ y $X_n(3) = 0$.
+              \begin{align*}
+                  P_{X_n}(-1) & = P(X_n^{-1}(-1)) = P(\{0\} \cup \{3-\frac{1}{n}\}) = \frac{1}{6} \\
+                  P_{X_n}(0)  & = P(X_n^{-1}(0)) = P(\{3\}) = \frac{1}{2}
+              \end{align*}
+              Además, estudiamos los puntos cuya imagen inversa es un intervalo, es decir, donde $X_n$ es constante.
+              $$P_{X_n}(2) = P([1-\frac{1}{n}, 3-\frac{1}{n})) = P([1, 3-\frac{1}{n})) = \frac{2n-1}{6n}$$
+              Así que $D = \{-1, 0, 2\}$.
+
+        \item \textbf{Calcular la función de distribución $F_n$ asociada a $X_n$.}
+              Recordamos que la función de distribución $F_n$ asociada a una variable aleatoria $X_n$ se define como:
+              $$F_n(x) = P(X_n \leq x) = P(\{ \omega \in \Omega : X(\omega) \leq x \})$$
+              Distringuimos varios casos:
+              \begin{itemize}
+                  \item Si $x < -1$, $F_n(x) = P(\emptyset) = 0$.
+                  \item Si $-1 \leq x < -\frac{1}{n^2}$,
+                        $$F_n(x) = P(X_n \leq x) = P([0, \alpha] \cup [3-\frac{1}{n}, \beta])$$
+                        donde:
+                        \begin{align*}
+                            X_n(\alpha) & = x \Leftrightarrow \frac{\alpha-1}{n\alpha + 1} = x \Leftrightarrow \alpha = \frac{x+1}{1-nx} \\
+                            X_n(\beta)  & = x \Leftrightarrow n(\beta - 3) = x \Leftrightarrow \beta = \frac{x+3n}{n}
+                        \end{align*}
+                        Así que
+                        $$F_n(x) = P([0, \frac{x+1}{1-nx}] \cup [3-\frac{1}{n}, \frac{x+3n}{n}]) = \frac{x+1+n}{6}$$
+                  \item Si $-\frac{1}{n^2} \leq x < 0$,
+                        $$F_n(x) =  P(\{0\}) + P([0, 1-\frac{1}{n})) + P([3-\frac{1}{n}, \frac{x+3n}{n}]) = \frac{x+1+n}{6}$$
+                  \item Si $0 \leq x < 2$,
+                        $$F_n(x) =  P(\{0\}) + P([0, 1-\frac{1}{n})) + P([3-\frac{1}{n}, 3)) + P(\{3\}) = \frac{4n+1}{6n}$$
+                  \item Si $X \geq 2$, $F_n(x) = 1$.
+              \end{itemize}
+              Por tanto,
+              $$F_n(x) = \begin{cases}
+                      0               & \text{si } x < -1        \\
+                      \frac{x+1+n}{6} & \text{si } -1 \leq x < 0 \\
+                      \frac{4n+1}{6n} & \text{si } 0 \leq x < 2  \\
+                      1               & \text{si } x \geq 2
+                  \end{cases}$$
+
+        \item \textbf{Analizar la convergencia en distribución de $\{X_n\}$}
+              Sabemos que $X_n \xrightarrow{d} X$ cuando $F_n \xrightarrow{d} F$.
+              Tomamos el límite puntual en $\{F_n\}$.
+              $$F(x) = \lim\limits_{n \to \infty} F_n(x) = \begin{cases}
+                      0           & \text{si } x < -1        \\
+                      \frac{1}{6} & \text{si } -1 \leq x < 0 \\
+                      \frac{2}{3} & \text{si } 0 \leq x < 2  \\
+                      1           & \text{si } x \geq 2
+                  \end{cases}$$
+              $F$ es continua por la derecha y $D(F) = \{-1, 0, 2\}$ con $p_X(-1) = \frac{1}{6}$, $p_X(0) = \frac{1}{2}$ y $p_X(2) = \frac{1}{3}$.
+              Observamos que estas masas coinciden con los límites cuando $n \to \infty$ de las masas de los puntos de discontinuidad de $X_n$.
+              Por tanto, $F_n \xrightarrow{d} F$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{lemma}
+    Sean $F_n$ y $F$ funciones de distribución.
+    $F_n \xrightarrow{d} F$ si y solo si
+    $$\limsup\limits_{n \to \infty} F_n(x) \leq F(x) \quad \text{y} \quad \liminf\limits_{n \to \infty} F_n(x) \geq F(x^-) \quad \forall x \in \mathbb{R}$$
+\end{lemma}
+
+\begin{theorem}[Helly-Bray]
+    Sean $F_n$ y $F$ funciones de distribución.
+    $F_n \xrightarrow{d} F$ si y solo si
+    $$\lim\limits_{n \to \infty} \int_\mathbb{R} g(x)dF_n(x) = \int_\mathbb{R} g(x)dF(x)$$
+    para toda función $g$ real, continua y acotada.
+\end{theorem}
+
+\begin{remark}
+    En general, el teorema de Helly-Bray no implica que $E(X_n) \xrightarrow[n \to \infty]{} E(X)$ porque $g(x) = x$ no siempre está acotada.
+\end{remark}
+
+\begin{example}
+    Sean $n \in \mathbb{N}$, consideramos la función de distribución:
+    $$F_n(x) = \begin{cases}
+            0                          & \text{si } x < -1                 \\
+            \frac{x+1}{2n}             & \text{si } -1 \leq x < 0          \\
+            \frac{1}{2n} + \frac{1}{4} & \text{si } 0 \leq x < \frac{2}{n} \\
+            \frac{x}{4} + \frac{1}{2}  & \text{si } \frac{2}{n} \leq x < 2 \\
+            1                          & \text{si } x \geq 2
+        \end{cases}$$
+    Su límite puntual es:
+    $$G(x) = \lim\limits_{n \to \infty} F_n(x) = \begin{cases}
+            0                         & \text{si } x < 0     \\
+            \frac{1}{4}               & \text{si } x = 0     \\
+            \frac{x}{4} + \frac{1}{2} & \text{si } 0 < x < 2 \\
+            1                         & \text{si } x \geq 2
+        \end{cases}$$
+    Observamos que $G$ no es función de distribución.
+    Definimos entonces:
+    $$F(x) = \begin{cases}
+            0                         & \text{si } x < 0        \\
+            \frac{x}{4} + \frac{1}{2} & \text{si } 0 \leq x < 2 \\
+            1                         & \text{si } x \geq 2
+        \end{cases}$$
+    $F$ es función de distribución así que $F_n \xrightarrow{d} F$.
+
+    Sea $g(x) = I_{(0,2]}(x)$, veamos si $E(g(X_n)) \xrightarrow[n \to \infty]{} E(g(X))$.
+    \begin{align*}
+        E(g(X_n)) & = E(I_{(0,2]}(X_n)) = \int_\mathbb{R} I_{(0,2]}(x) dF_n(x) = \int_0^2 dF_n(x) =         \\
+                  & = F_n(2) - F_n(0) = \frac{3}{4} - \frac{1}{2n} \xrightarrow[n \to \infty]{} \frac{3}{4} \\
+        E(g(X))   & = \int_0^2 dF(x) = F(2) - F(0) = 1 - \frac{1}{2} = \frac{1}{2}
+    \end{align*}
+    Observamos que $E(g(X_n))$ no tiende a $E(g(X))$ con $n \to \infty$.
+    No se cumplen las hipótesis del teorema de Helly-Bray porque $g$ no es continua.
+
+    Sea ahora $g(x) = x$.
+    Queremos calcular $E(g(X_n)) = \int_\mathbb{R} x dF_n(x)$.
+    Como $F_n$ es mixta, hallamos primero las masas de sus puntos de discontinuidad y su función de pseudodensidad:
+    $$D(F_n) = \{0, \frac{2}{n}\}, \quad p(0) = \frac{1}{4}, \quad p(\frac{2}{n}) = \frac{1}{4}$$
+    $$f_n(x) = F_n'(x) = \begin{cases}
+            \frac{1}{2n} & \text{si } -1 \leq x < 0          \\
+            \frac{1}{4}  & \text{si } \frac{2}{n} \leq x < 2 \\
+            0            & \text{en el resto}
+        \end{cases}$$
+    $$E(g(X_n)) = 0 \frac{1}{4} + \frac{2}{n} \frac{1}{4} + \int_{-1}^0 \frac{x}{2n}dx + \int_\frac{2}{n}^2 \frac{x}{4}dx = \frac{1}{2} + \frac{1}{4n} - \frac{1}{2n^2} \xrightarrow[n \to \infty]{} \frac{1}{2}$$
+    Procedemos de forma análoga para $F$.
+    $$D(F) = \{0\}, \quad p(0) = \frac{1}{2}, \quad
+        f(x) = \begin{cases}
+            \frac{1}{4} & \text{si } 0 \leq x < 2 \\
+            0           & \text{en el resto}
+        \end{cases}$$
+    $$E(g(X)) = 0 \frac{1}{2} + \int_0^2 \frac{x}{4}dx = \frac{1}{2}$$
+    Luego en este caso $E(g(X_n)) \xrightarrow[n \to \infty]{} E(g(X))$.
+    Se verifica el teorema de Helly-Bray porque $g(x) = x$ está acotada en los soportes de $f_n$ y $f$, que son acotados.
+\end{example}
+
+\begin{example}
+    Sea $n \in \mathbb{R}$, consideramos la función de distribución:
+    $$F_n(x) = \begin{cases}
+            0             & \text{si } x < 0        \\
+            \frac{n-1}{n} & \text{si } 0 \leq x < n \\
+            1             & \text{si } x \geq n
+        \end{cases}$$
+    Es claro que:
+    $$F_n \xrightarrow{d} \delta(0) = \begin{cases}
+            0 & \text{si } x < 0    \\
+            1 & \text{si } x \geq 0
+        \end{cases}$$
+    Sea $g(x) = x$, procedemos igual que en el ejemplo anterior.
+    $$D(F_n) = \{0, n\}, \quad p(0) = \frac{n-1}{n}, \quad p(n) = \frac{1}{n}$$
+    \begin{align*}
+        E(g(X_n)) & = 0 \frac{n-1}{n} + n \frac{1}{n} = 1 \xrightarrow[n \to \infty]{} 1 \\
+        E(g(X))   & = E(\delta(0)) = 0 \neq 1
+    \end{align*}
+    No se cumplen las hipótesis del teorema porque $g$ no está acotada en el soporte, ya que no está acotado.
+\end{example}
+
+\begin{definition}
+    Una función $F$ es función de distribución impropia si verifica:
+    \begin{itemize}
+        \item $F$ es creciente.
+        \item $F$ es continua por la derecha.
+        \item Existe $\lim\limits_{h \to 0^-} F(x+h) = F(x^-)$ para todo $x \in \mathbb{R}$.
+        \item $F(-\infty) > 0$ o $F(\infty) < 1$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Sea $\{F_n\}$ una sucesión de funciones de distribución y sea $F$ una función de distribución propia o impropia.
+    Decimos que $\{F_n\}$ converge de forma vaga o vagamente a $F$ si:
+    $$\lim\limits_{n \to \infty} F_n(x) = F(x), \quad \forall x \in C(F)$$
+    Se escribe $F_n \xrightarrow{v} F$.
+\end{definition}
+
+\begin{remark}
+    Convergencia débil implica convergencia vaga.
+\end{remark}
+
+\begin{example}
+    Sea $n \in \mathbb{N}$, consideramos la función de distribución:
+    $$F_n(x) = \begin{cases}
+            0                          & \text{si } x < 0        \\
+            \frac{1}{2} + \frac{x}{2n} & \text{si } 0 \leq x < n \\
+            1                          & \text{si } x \geq n
+        \end{cases}$$
+    El límite puntual de $\{F_n\}$ es:
+    $$G(x) = \begin{cases}
+            0           & \text{si } x < 0    \\
+            \frac{1}{2} & \text{si } x \geq 0
+        \end{cases}$$
+    $G$ es una función de distribución impropia.
+    Por tanto, $F_n \xrightarrow{v} G$.
+\end{example}
+
+\begin{example}
+    Consideramos la función de distribución:
+    $$F_0(x) = \begin{cases}
+            0 & \text{si } x < 2    \\
+            1 & \text{si } x \geq 2
+        \end{cases}$$
+    Definimos:
+    $$F_n(x) = F_0(x+n) = \begin{cases}
+            0 & \text{si } x+n < 2    \\
+            1 & \text{si } x+n \geq 2
+        \end{cases}$$
+    El límite puntual de $F_n(x)$ es $F(x) = 1$, que es una función de distribución impropia.
+    Por tanto, $F_n \xrightarrow{v} F$.
+\end{example}
+
+\begin{exercise}
+    Sea $(\Omega, \mathcal{A}, P)$ espacio de probabilidad con:
+    $$\Omega = \mathbb{N} \cup \{0\}, \quad \mathcal{A} = \mathcal{P}(\Omega), \quad P(\omega) = e^{-\lambda} \frac{\lambda^\omega}{w!}, \quad w \in \mathbb{R}, \lambda > 0$$
+    Consideramos la sucesión de variables aleatorias:
+    $$X_n: \Omega \to \mathbb{R}, \quad X_n(\omega) = e^{n\omega}$$
+    Observamos que $x = e^{n\omega} \Leftrightarrow \omega = -\frac{\log(x)}{n}$, con $x > 0$.
+    $$P(X_n^{-1}(x)) = P\left(-\frac{\log(x)}{n}\right) = \begin{cases}
+            e^{-\lambda} \frac{\lambda^{-\frac{\log(x)}{n}}}{\left(-\frac{\log(x)}{n}\right)!} & \text{si } \frac{-\log(x)}{n} \in \mathbb{N} \cup \{0\} \\
+            0                                                                                  & \text{en el resto}
+        \end{cases}$$
+    Calculamos la función de distribución de $X_n$:
+    \begin{align*}
+        F_n(x) & = P(X_n^{-1}((-\infty,x])) = P(X_n^{-1}([0,x])) = P(X_n^{-1}([0,e^{-nk}])) =                                                                                        \\
+               & = P(\{ \omega \in \Omega : \omega \geq k \}) = 1 - P(\{ \omega \in \Omega : \omega < k \}) = 1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} = \\
+               & = \begin{cases}
+                       0                                                                    & \text{si } x <= 0                                              \\
+                       1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} & \text{si } e^{-nk} \leq x < e^{-n(k-1)}, \quad k = 1, 2, \dots \\
+                       1                                                                    & \text{si } x \geq 1
+                   \end{cases}                             \\
+               & = \begin{cases}
+                       0                           & \text{si } x <= 0                  \\
+                       \vdots                                                           \\
+                       1 - e^{-\lambda}(1+\lambda) & \text{si } e^{-2n} \leq x < e^{-n} \\
+                       1 - e^{-\lambda}            & \text{si } e^{-n} \leq x < 1       \\
+                       1                           & \text{si } x \geq 1
+                   \end{cases}
+    \end{align*}
+    Observamos que $F_n(x)$ tiene como límite puntual:
+    $$G(x) = \begin{cases}
+            0              & \text{si } x <= 0    \\
+            1-e^{-\lambda} & \text{si } 0 < x < 1 \\
+            1              & \text{si } x \geq 1
+        \end{cases}$$
+    $G$ no es función de distribución.
+    Podemos definir:
+    $$F(x) = \begin{cases}
+            0              & \text{si } x < 0      \\
+            1-e^{-\lambda} & \text{si } 0 <= x < 1 \\
+            1              & \text{si } x \geq 1
+        \end{cases}$$
+    Como $F$ sí es función de distribución, $F_n \xrightarrow[d]{} F$.
+\end{exercise}
+
+\begin{theorem}
+    Supongamos que $F_n \xrightarrow[v]{} F$ con $F$ función de distribución impropia.
+    Sea $g$ real y continua en $[a, b]$, con $a, b \in C(F)$. Entonces:
+    $$\lim\limits_{n \to \infty} \int_{[a,b]} g(x)dF_n(x) = \int_{[a,b]} g(x)dF(x)$$
+\end{theorem}
+
+\begin{theorem}
+    Supongamos que $F_n \xrightarrow[v]{} F$ con $F$ función de distribución impropia.
+    Sea $g$ real y continua con $g(\infty) = g(-\infty) = 0$. Entonces:
+    $$\lim\limits_{n \to \infty} \int_\mathbb{R} g(x)dF_n(x) = \int_\mathbb{R} g(x)dF(x)$$
+\end{theorem}
+
+\begin{lemma}
+    Una sucesión $\{F_n\}_n$ converge vagamente si y solo si converge en algún conjunto denso $D \subset \mathbb{R}$.
+\end{lemma}
+
+\begin{theorem}[Principio de selección de Helly]
+    Toda sucesión $\{F_n\}_n$ de funciones de distribución tiene una subsucesión que converge vagamente.
+\end{theorem}
+
+\begin{definition}
+    Sea $\mathcal{H}$ una familia de funciones de distribución.
+    $\mathcal{H}$ es ajustada si para todo $\varepsilon>0$ existe $a>0$ tal que:
+    $$P_F((-a,a]) > 1-\varepsilon, \quad \forall F \in \mathcal{H}$$
+    Equivalentemente,
+    $$P_F((-\infty,-a] \cup (a,\infty)) < \varepsilon, \quad \forall F \in \mathcal{H}$$
+\end{definition}
+
+\begin{definition}
+    $\mathcal{H}$ es relativamente compacta si cada $\{F_n\}_n$ con $F_n \in \mathcal{H}$ tiene una subsucesión convergente.
+\end{definition}
+
+\begin{theorem}[Prokhorov]
+    $\mathcal{H}$ es relativamente compacta si y solo si es ajustada.
+\end{theorem}

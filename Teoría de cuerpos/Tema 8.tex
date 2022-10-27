@@ -1,0 +1,95 @@
+\chapter{Extensiones ciclotómicas}
+
+\begin{definition}
+    Una extensión de cuerpos de la forma $\mathbb{Q}(\zeta_n)/\mathbb{Q}$, con $\zeta_n = e^{2\pi i/n}$ se llama la $n$-ésima extensión ciclotómica.
+\end{definition}
+
+\begin{proposition}
+    $\mathbb{Q}(\zeta_n)/\mathbb{Q}$ es cuerpo de descomposición de $x^n-1$ sobre $\mathbb{Q}$. De hecho, es una extensión de Galois finita.
+\end{proposition}
+
+\begin{definition}
+    Si $\theta$ es una raíz de $x^n-1$ tal que $\theta^k \neq 1$ para todo $1 \leq k < n$, decimos que $\theta$ es una raíz primitiva $n$-ésima de la unidad.
+\end{definition}
+
+\begin{remark}
+    $\zeta_n = e^{2\pi i/n}$ es una raíz primitiva $n$-ésima de la unidad.
+\end{remark}
+
+\begin{proposition}
+    El conjunto de raíces primitivas $n$-ésimas de la unidad es:
+    $$\{ \zeta^k_n : MCD(k, n) = 1 \}$$
+\end{proposition}
+
+\begin{theorem}
+    Las raíces conjugadas de $\zeta_n$ sobre $\mathbb{Q}$ son:
+    $$\{ \zeta^k_n : MCD(k, n) = 1 \}$$
+    las raíces primitivas $n$-ésimas de la unidad.\\
+    En consecuencia, $[\mathbb{Q}(\zeta_n) : \mathbb{Q}] = \phi(n)$, donde $\phi$ es la función de Euler.
+\end{theorem}
+
+\begin{example}
+    Por el teorema previo, el polinomio mímimo de $\zeta_{15}$ sobre $\mathbb{Q}$ tiene grado $\phi(15) = 8$.
+    \begin{align*}
+        x^{15}-1 & = ((x^5)^3-1) = (x^5-1)((x^5)^2+(x^5)+1) = \\
+                 & = (x-1)(x^4+x^3+x^2+x+1)(x^{10}+x^5+1)
+    \end{align*}
+    Sabemos que $x^4+x^3+x^2+x+1$ es irreducible.
+    Como el polinimio mímimo de $\zeta_{15}$ sobre $\mathbb{Q}$ divide a $x^{15}-1$ y tiene grado 8, debe ser un factor irreducible de $x^{10}+x^5+1$.
+    También sabemos que $x^3-1$ divide a $x^15-1$, porque sus raíces son las raíces 3-ésimas de la unidad, luego también son raíces 15-ésimas de la unidad, aunque no sean primitivas.
+    Entonces $x^{10}+x^5+1$ es múltiplo de $x^2+x+1$. Dividiendo por $x^2+x+1$, obtenemos:
+    $$x^{10}+x^5+1 = (x^2+x+1)(x^8-x^7+x^5-x^4+x^3-x+1)$$
+    Podemos concluir que $x^8-x^7+x^5-x^4+x^3-x+1$ es el polinimio mínimo de $\zeta_{15}$ sobre $\mathbb{Q}$.
+\end{example}
+
+\begin{definition}
+    El polinimio mínimo de $\zeta_n$ sobre $\mathbb{Q}$ se llama $n$-ésimo polinomio ciclotómico.
+\end{definition}
+
+\begin{example}
+    $x^8-x^7+x^5-x^4+x^3-x+1$ es el 15-ésimo polinomio ciclotómico.\\
+    Sus raíces son $\zeta_{15}, \zeta^2_{15}, \zeta^4_{15}, \zeta^7_{15}, \zeta^8_{15}, \zeta^{11}_{15}, \zeta^{13}_{15}, \zeta^{14}_{15}$.
+\end{example}
+
+\begin{remark}
+    Si $n = p$ es primo, el $p$-ésimo polinomio ciclotómico es:
+    $$x^{p-1} + x^{p-2} + \dots + x + 1$$
+\end{remark}
+
+\begin{proposition}
+    Sea $\Phi_n(x)$ el $n$-ésimo polinomio ciclotómico. Entonces:
+    $$x^n-1 = \prod_{d | n} \Phi_d(x)$$
+\end{proposition}
+
+\begin{theorem}
+    El grupo de Galois de $\mathbb{Q}(\zeta_n)$ sobre $\mathbb{Q}$ es isomorfo al grupo multiplicativo de los enteros módulo $n$:
+    $$\mathbb{Z}^*_n = \{ k : 1 \leq k < n, MCD(k, n) = 1 \}$$
+    Para cada $k \in \mathbb{Z}^*_n$, el correspondiente automorfismo en el grupo de Galois envía $\zeta_n$ a $\zeta^k_n$.
+\end{theorem}
+
+\section{Ciclos gaussianos}
+
+\begin{theorem}[Gauss]
+    Sea $p$ un primo, $\mathbb{Q}(\zeta_p)/\mathbb{Q}$ la $p$-ésima extensión ciclotómica, $H$ un subgrupo de $\mathbb{Z}^\times_p$. Entonces:
+    $$\gamma_H = \sum_{a \in H} \zeta^a_p$$
+    es un elemento primitivo de $\mathbb{Q}(\zeta_p)^H/\mathbb{Q}$.
+\end{theorem}
+
+\begin{example}
+    Consideramos el subgrupo de $\mathbb{Z}^*_{19}$ generado por 8:
+    $$H = < 8 > = \{ 1, 7, 8, 11, 12, 18 \}$$
+    Este es un ciclo. La suma:
+    $$\gamma_H = \zeta_{19} + \zeta^7_{19} + \zeta^8_{19} + \zeta^{11}_{19} + \zeta^{12}_{19} + \zeta^{18}_{19}$$
+    es un elemento primitivo de $\mathbb{Q}(\zeta_{19})^H$.\\
+    Los otros dos conjuntos complementarios de $H$ en $\mathbb{Z}^*_{19}$ son también ciclos:
+    \begin{align*}
+         & \{ 2, 3, 5, 14, 16, 17 \}, \\
+         & \{ 4, 6, 9, 10, 13, 15 \}
+    \end{align*}
+    Y las correspondientes sumas:
+    \begin{align*}
+        \zeta^2_{19} + \zeta^3_{19} + \zeta^5_{19} + \zeta^{14}_{19} + \zeta^{16}_{19} + \zeta^{17}_{19}, \\
+        \zeta^4_{19} + \zeta^6_{19} + \zeta^9_{19} + \zeta^{10}_{19} + \zeta^{13}_{19} + \zeta^{15}_{19}
+    \end{align*}
+    son las raíces conjugadas de $\gamma_H$ sobre $\mathbb{Q}$, que también generan el cuerpo intermedio $\mathbb{Q}(\zeta_{19})^H$.
+\end{example}

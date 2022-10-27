@@ -1,0 +1,106 @@
+\chapter{Resultados de unicidad}
+\begin{definition}[Propiedad de unicidad global]
+    Sean $n \geq 1$, y $f: \Omega \to \mathbb{R}^n$, donde $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
+    Se dice que la ecuación diferencial $x'(t) = f(t, x(t))$ tiene la propiedad de unicidad global en una región $D \subset \Omega$ cuando, dadas dos soluciones $x: I \to \mathbb{R}^n$, $y: J \to \mathbb{R}^n$ con gráficas contenidas en $D$, sucede que si existe $t_0 \in I \cap J$ tal que $x(t_0) = y(t_0)$ entonces $x(t) = y(t)$ para cada $t \in I \cap J$.
+\end{definition}
+
+\begin{definition}
+    Sean $n \geq 1$ y $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
+    Una función $f: \Omega \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, se dice que es localmente lipschitziana en la región $D \subset \Omega$ respecto de la variable $x$ cuando para cada punto $(t_0, x^0) \in D$ existe un entorno $U$ de $(t_0, x^0)$ tal que $f \in Lip(x, U \cap D)$.
+    Cuando esto sucede escribiremos $f \in Lip_{Loc}(x, D)$.
+\end{definition}
+
+\begin{definition}
+    Sean $n > 1$ y $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
+    Una función $f: \Omega \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, se dice que es localmente lipschitziana en la región $D \subset \Omega$ respecto de la variable $x$ cuando para cada punto $(t_0, x^0) \in D$ existe un entorno $U$ de $(t_0, x^0)$ tal que $f \in Lip(x, U \cap D)$.
+\end{definition}
+
+\begin{proposition}
+    Sean $n > 1$, $\Omega \subset \mathbb{R} \times \mathbb{R}^n$ y $f: \Omega \to \mathbb{R}^n$ con $f = (f_1, \dots, f_n)$.
+    Sea $D \subset \Omega$.
+    Se verifica:
+    $$f \in Lip_{Loc}(x, D) \Leftrightarrow f_i \in Lip_{Loc}(x, D), \quad \forall i = 1, \dots, n$$
+\end{proposition}
+
+\begin{proposition}[Condición suficiente para la condición de Lipschitz local]
+    Supongamos:
+    \begin{itemize}
+        \item $n \geq 1$ y $A$ un abierto en $\mathbb{R} \times \mathbb{R}^n$.
+        \item $f: A \to \mathbb{R}$, $(t, x) = (t, x_1, \dots, x_n) \mapsto f(t, x_1, \dots, x_n)$, una función tal que, para cada $k \in \{1, \dots, n\}$, existe la función derivada parcial $\frac{\partial f}{\partial x_k}: A \to \mathbb{R}$ y es continua en $A$.
+    \end{itemize}
+    Entonces $f \in Lip_{Loc}(x, A)$, siendo $x = (x_1, \dots, x_n)$.
+\end{proposition}
+
+\begin{theorem}[Caracterización de la condición de Lipschitz local]
+    Sean $n \geq 1$, $D$ un abierto en $\mathbb{R} \times \mathbb{R}^n$ y $f: D \to \mathbb{R}^n$ continua en $D$.
+    Entonces:
+    $$f \in Lip_{Loc}(x, D) \Leftrightarrow f \in Lip(x, K), \quad \forall K \subset D \text{ compacto}$$
+\end{theorem}
+
+\begin{proposition}[Lema de Gronwall]
+    Sean $k$ una constante no negativa, $u, v: I \to \mathbb{R}^+$ dos funciones continuas en el intervalo $I$ y $t_0 \in I$ tales que:
+    $$u(t) \leq k + \left| \int_{t_0}^t v(s)u(s)ds \right|, \quad \forall t \in I$$
+    Entonces, se verifica:
+    $$u(t) \leq k\exp\left| \int_{t_0}^t v(s)ds \right|, \quad \forall t \in I$$
+\end{proposition}
+
+\begin{theorem}[Estimación de la diferencia entre dos soluciones]
+    Sean $n \geq 1$, $\|.\|$ una norma en $\mathbb{R}^n$, $x: I \to \mathbb{R}^n$ e $y: I \to \mathbb{R}^n$ dos soluciones de la ecuación diferencial $x'(t) = f(t, x(t))$ con gráficas contenidas en una región $D \subset \mathbb{R} \times \mathbb{R}^n$ y sea $t_0 \in I$.
+    \begin{enumerate}
+        \item Si $f \in \mathcal{C}(D, \mathbb{R}^n) \cap Lip(x, D)$ con constante de Lipschitz $L$, se tiene la siguiente estimación:
+              $$\|x(t) - y(t)\| \leq \|x(t_0) - y(t_0)\| e^{L|t-t_0|}, \quad \forall t \in I$$
+        \item Si $D = J \times \mathbb{R}^n$, donde $J$ es un intervalo en $\mathbb{R}$, y $f \in \mathcal{C}(D, \mathbb{R}^n) \cap LipG(x, D)$ con función de Lipschitz $L: J \to \mathbb{R}$, $t \mapsto L(t)$, entonces:
+              $$\|x(t) - y(t)\| \leq \|x(t_0) - y(t_0)\| \exp\left| \int_{t_0}^t L(s)ds \right|, \quad \forall t \in I$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Teorema de unicidad global]
+    Sean $n \geq 1$ y $f: \Omega \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, donde $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
+    Supongamos que existe $D \subset \Omega$ tal que:
+    $$f \in \mathcal{C}(D, \mathbb{R}^n) \cap Lip_{Loc}(x, D)$$
+    Entonces, la ecuación diferencial $x'(t) = f(t, x(t))$ tiene la propiedad de unicidad global en $D$.
+\end{theorem}
+
+\begin{remark}
+    Si $D$ es abierto y $f \in \mathcal{C}^1(D, \mathbb{R}^n)$, entonces $f$ satisface las condiciones del teorema de unicidad global.
+    Recordamos que satisface además las condiciones del teorema de existencia y unicidad local.
+\end{remark}
+
+\begin{proposition}[Criterio de unicidad de Peano]
+    Sean $J$ y $K$ intervalos en $\mathbb{R}$ y consideramos el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D = J \times K \to \mathbb{R}$ y $(t_0, x^0) \in D$.
+
+    Por otra parte, sea $I$ un intervalo tal que $t_0 \in I \subset J$ y consideramos:
+    $$I^- = \{t \in I: t \leq t_0\}, \quad I^+ = \{t \in I: t \geq t_0\}$$
+    suponiendo que los intervalos $I^-$ e $I^+$ no sean degenerados.
+    \begin{enumerate}
+        \item Unicidad a la izquierda. Si para cada $t \in I^-$ la función $f_t: K \to \mathbb{R}$, $x \mapsto f_t(x) = f(t, x)$ es creciente, entonces $(P)$ tiene a lo sumo una solución definida en $I^-$.
+        \item Unicidad a la derecha. Si para cada $t \in I^+$ la función $f_t: K \to \mathbb{R}$, $x \mapsto f_t(x) = f(t, x)$ es decreciente, entonces $(P)$ tiene a lo sumo una solución definida en $I^+$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Teorema de dependencia continua]
+    Sean $I$ un intervalo acotado en $\mathbb{R}$, $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
+    Consideramos el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D = I \times \mathbb{R}^n \to \mathbb{R}^n$, $(t_0, x^0) \in D$ y $f \in \mathcal{C}(D, \mathbb{R}^n) \cap Lip(x, D)$.
+
+    Sea $x: I \to \mathbb{R}^n$ la solución de $(P)$ y para cada $v \in \mathbb{R}^n$ sea:
+    $$(P_v) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = v
+        \end{cases}$$
+    Se verifica lo siguiente:
+    \begin{enumerate}
+        \item Dado cualquier $\varepsilon > 0$ existe $\delta = \delta(\varepsilon) > 0$ tal que, si $y^0 \in \mathbb{R}^n$ verifica que $\|x^0 - y^0\| < \delta$, entonces la solución $y: I \to \mathbb{R}^n$ del problema $(P_{y^0})$ verifica que:
+              $$\|x(t) - y(t)\| < \varepsilon, \quad \forall t \in I$$
+        \item Si $(v_m)$ es una sucesión en $\mathbb{R}^n$ tal que $v_m \to x^0$ en $\mathbb{R}^n$ y $\phi_m: I \to \mathbb{R}^n$, $m = 1, 2, \dots$, es la solución del problema $(P_{v_m})$, entonces la sucesión $(\phi_m)$ converge uniformemente hacia la solución del problema $(P)$ en el intervalo $I$.
+    \end{enumerate}
+\end{theorem}

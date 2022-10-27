@@ -1,0 +1,97 @@
+\chapter{Teoremas de existencia y unicidad global}
+\begin{theorem}
+    Consideramos el problema de Cauchy:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$ es continua en $D \subset \mathbb{R} \times \mathbb{R}^n$, $n \geq 1$ y $(t_0, x^0) \in D$.
+    Sea $I$ un intervalo en $\mathbb{R}$ tal que $t_0 \in I$ y $x: I \to \mathbb{R^n}$ una función cuya gráfica está contenida en $D$:
+
+    Entonces, las siguientes afirmaciones son equivalentes:
+    \begin{itemize}
+        \item $x: I \to \mathbb{R}^n$ es solución de $(P)$.
+        \item $x$ es una función continua en $I$ que verifica:
+              $$x(t) = x^0 + \int_{t_0}^t f(s, x(s))ds, \quad \forall t \in I$$
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}
+    Sea $D \subset \mathbb{R}^2$.
+    Una función $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, se dice que es lipschitziana en $D$ respecto de la segunda variable $x$ cuando existe una constante $L > 0$ tal que:
+    $$|f(t, x) - f(t, y)| \leq L|x-y|, \quad (t, x), (t, y) \in D$$
+    En tal caso se escribe $f \in Lip(x, D)$ y se dice que $L$ es una constante de Lipschitz para $f$ en $D$ respecto a la segunda variable.
+\end{definition}
+
+\begin{definition}
+    Sean $n > 1$, $\|.\|$ una norma en $\mathbb{R}^n$ y $D \subset \mathbb{R} \times \mathbb{R}^n$.
+    \begin{itemize}
+        \item Una función $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, se dice que es lipschitziana en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una constante $L > 0$ tal que:
+              $$\|f(t, x) - f(t, y)\| \leq L\|x-y\|, \quad (t, x), (t, y) \in D$$
+        \item Una función $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, se dice que es lipschitziana en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una constante $L > 0$ tal que:
+              $$|f(t, x) - f(t, y)| \leq L\|x-y\|, \quad (t, x), (t, y) \in D$$
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    Sean $n > 1$, $D \subset \mathbb{R} \times \mathbb{R}^n$ y $f: D \to \mathbb{R}^n$ con $f = (f_1, \dots, f_n)$.
+    Se verifica:
+    $$f \in Lip(x, D) \Leftrightarrow f_k \in Lip(x, D), \quad \forall k \in \{1, \dots, n\}$$
+\end{proposition}
+
+\begin{proposition}[Caracterización de la condición de Lipschitz]
+    Si $D$ es un conjunto convexo en $\mathbb{R}^2$ y $f: D \to \mathbb{R}$ es una función tal que existe $\frac{\partial f}{\partial x}: D \to \mathbb{R}$, entonces:
+    $$f \in Lip(x, D) \Leftrightarrow \frac{\partial f}{\partial x} \text{ es acotada en } D$$
+\end{proposition}
+
+\begin{remark}
+    Si $K$ es un conjunto convexo y compacto en $\mathbb{R}^2$ y existe $\frac{\partial f}{\partial x}$ y es continua sobre $K$, entonces $f \in Lip(x, K)$.
+\end{remark}
+
+\begin{definition}
+    Sea $I$ cualquier intervalo en $\mathbb{R}$.
+    Se dice que una función $f: D = I \times \mathbb{R} \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, satisface una condición de Lipschitz generalizada en $D$ respecto de la segunda variable $x$ cuando existe una función $L: I \to \mathbb{R}$ continua en $I$ y no negativa tal que:
+    $$|f(t, x) - f(t, y)| \leq L(t) |x-y|, \quad \forall (t, x), (t, y) \in D$$
+    En tal caso se escribe $f \in LipG(x, D)$.
+\end{definition}
+
+\begin{definition}
+    Sean $n > 1$, $\|.\|$ una norma en $\mathbb{R}^n$, $I$ un intervalo en $\mathbb{R}$ y $D = I \times \mathbb{R}^n$.
+    \begin{itemize}
+        \item Se dice que la función vectorial $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, satisface una condición de Lipschitz generalizada en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una función $L: I \to \mathbb{R}^+$ continua en $I$ tal que:
+              $$\|f(t, x) - f(t, y)\| \leq L(t)\|x-y\|, \quad (t, x), (t, y) \in D$$
+        \item Se dice que la función vectorial $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, satisface una condición de Lipschitz generalizada en $D$ respecto de la variable vectorial $x \in \mathbb{R}^n$ cuando existe una función $L: I \to \mathbb{R}^+$ continua en $I$ tal que:
+              $$|f(t, x) - f(t, y)| \leq L(t)\|x-y\|, \quad (t, x), (t, y) \in D$$
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    Sean $n > 1$, $I$ un intervalo en $\mathbb{R}$ y $f: D = I \times \mathbb{R}^n \to \mathbb{R}^n$ con $f = (f_1, \dots, f_n)$.
+    Se verifica:
+    $$f \in LipG(x, D) \Leftrightarrow f_k \in LipG(x, D), \quad \forall k \in \{1, \dots, n\}$$
+\end{proposition}
+
+\begin{proposition}[Caracterización de la condición de Lipschitz generalizada]
+    Sean $I$ un intervalo de $\mathbb{R}$ y $f: D = I \times \mathbb{R} \to \mathbb{R}$, tal que existe la función derivada parcial $\frac{\partial f}{\partial x}: D \to \mathbb{R}$.
+    Las dos siguientes condiciones son equivalentes:
+    \begin{itemize}
+        \item $f \in LipG(x, D)$.
+        \item Existe una función $L: I \to \mathbb{R}^+$ continua en $I$ tal que:
+              $$|\frac{\partial f}{\partial x}(t, x)| \leq L(t), \quad \forall (t, x) \in D$$
+    \end{itemize}
+\end{proposition}
+
+\begin{theorem}[Teorema de existencia y unicidad global]
+    Sea $n \geq 1$ y supongamos las tres siguientes condiciones:
+    \begin{enumerate}
+        \item $D = I \times \mathbb{R}^n$ donde $I$ es un intervalo no degenerado en $\mathbb{R}$.
+        \item La función $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, es continua en $D$.
+        \item $f \in LipG(x, D)$.
+    \end{enumerate}
+    En tal situación, para cada $(t_0, x^0) \in D$ el problema de Cauchy:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    tiene una única solución definida en el intervalo $I$.
+\end{theorem}

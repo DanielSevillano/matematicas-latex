@@ -2,8 +2,8 @@
 
 **Estado:** apuntes en desarrollo.
 
--   [**📄 Archivo PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/An%C3%A1lisis%20de%20datos%20e%20inferencia/An%C3%A1lisis%20de%20datos%20e%20inferencia.pdf)
--   [**✏️ Archivo TeX**](https://github.com/DanielSevillano/matematicas-latex/blob/main/An%C3%A1lisis%20de%20datos%20e%20inferencia/An%C3%A1lisis%20de%20datos%20e%20inferencia.tex)
+-   [**📄 Abrir PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/An%C3%A1lisis%20de%20datos%20e%20inferencia/An%C3%A1lisis%20de%20datos%20e%20inferencia.pdf)
+-   [**📁 Descargar PDF**](https://raw.githubusercontent.com/DanielSevillano/matematicas-latex/main/An%C3%A1lisis%20de%20datos%20e%20inferencia/An%C3%A1lisis%20de%20datos%20e%20inferencia.pdf)
 
 ## ✒️ Contenido
 

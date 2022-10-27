@@ -1,0 +1,212 @@
+\chapter{Geometría diferencial global}
+\section{Superficies congruentes}
+
+\begin{definition}
+    Dos superficies $S$ y $\bar{S}$ se dicen congruentes si existe un movimiento rígido de $\mathbb{R}^3$, $F : \mathbb{R}^3 \to \mathbb{R}^3$, tal que $F(S) = \bar{S}$.
+    En particular, $F|_S : S \to \bar{S}$ es una isometría, luego dos superficies congruentes son isométricas.
+\end{definition}
+
+\begin{definition}
+    Se dice que una superficie es rígida si cualquier superficie isométrica a ella es congruente con ella. Es decir, que salvo movimiento rígido la única superficie isométrica a $S$ es $S$.
+\end{definition}
+
+\section{Hessiano de una función}
+
+\begin{definition}
+    Sea $S$ una superficie y $f : S \to \mathbb{R}$ una función diferenciable.
+    Si $p \in S$ es un punto crítico de $f$, se define el hessiano de $f$ en $p$ de la siguiente forma.\\
+    Dado $w \in T_pS$, si $\alpha : (-\varepsilon, \varepsilon) \to S$ es una curva diferenciable con $\alpha(0) = p$ y $\alpha'(0) = w$, entonces
+    $$Hess_pf(w) = \frac{d^2(f \circ \alpha)}{dt^2}|_{t=0} = (f \circ \alpha)''(0)$$
+    Así, $Hess_pf : T_pS \to \mathbb{R}$.
+\end{definition}
+
+\begin{proposition}
+    \hfill
+    \begin{enumerate}
+        \item El hessiano está bien definido, es decir, no depende de la curva elegida.
+        \item $Hess_pf$ es una forma cuadrática sobre $T_pS$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    Sea $f : S \to \mathbb{R}$, con $p$ crítico para $f$.
+    \begin{enumerate}
+        \item \begin{itemize}
+                  \item Si $Hess_pf$ es definida negativa, entonces $p$ es máximo local estricto de $f$.
+                  \item Si $Hess_pf$ es definida positiva, entonces $p$ es mínimo local estricto de $f$.
+              \end{itemize}
+        \item Si $p$ es extremo local de $f$, entonces $Hess_pf$ es semidefinida.
+              \begin{itemize}
+                  \item Si $p$ es máximo local, entonces $Hess_pf$ es semidefinida negativa.
+                  \item Si $p$ es mínimo local, entonces $Hess_pf$ es semidefinida positiva.
+              \end{itemize}
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    Sea $S$ superficie regular orientable, $p \in S$.
+    El punto $p$ es elíptico si y solo si $p$ es máximo local estricto de una función distancia al cuadrado desde un $p_0 \in \mathbb{R}^3$, con $p \neq p_0$.
+\end{proposition}
+
+\begin{corollary}
+    Toda superficie compacta orientable tiene un punto elíptico.
+\end{corollary}
+
+\begin{corollary}
+    No hay superficies minimales compactas.
+\end{corollary}
+
+\begin{lemma}[Lema de Hilbert]
+    Sea $S$ superficie regular y $p \in S$. Supongamos
+    \begin{itemize}
+        \item $p$ es un máximo local para la función $K_1$.
+        \item $p$ es un mínimo local para la función $K_2$.
+        \item $K_1(p) > K_2(p)$.
+    \end{itemize}
+    Entonces $K(p) \leq 0$.
+\end{lemma}
+
+\begin{note}
+    Como $K_1 \neq K_2$, necesariamente $K_2 \leq 0$. Así que $p$ es hiperbólico o parabólico.
+\end{note}
+
+\begin{corollary}
+    Sea $S$ una superficie regular y $p \in S$. Si $p$ verifica
+    \begin{itemize}
+        \item $p$ es elíptico, esto es, $K(p) > 0$.
+        \item $p$ es máximo local para la función $K_1$.
+        \item $p$ es mínimo local para la función $K_2$.
+        \item $K_1 \geq K_2$.
+    \end{itemize}
+    Entonces $p$ es un punto umbilical de $S$.
+\end{corollary}
+
+\begin{note}
+    Este corolario es equivalente al lema de Hilbert.
+\end{note}
+
+\section{Rigidez de la esfera}
+
+\begin{theorem}
+    Sea $S$ una superficie regular conexa y compacta con curvatura de Gauss $K = cte$.
+    Entonces $S$ es una esfera.
+
+    \begin{proof}
+        Como $S$ es compacta, $S$ tiene al menos un punto elíptico y por tanto $K$ es una constante positiva.
+        Por otra parte, $k_1$ y $k_2$ son funciones continuas sobre $S$ y $S$ es compacta, así que deben alcanzar máximo y mínimo.
+        Sea $p \in S$ el punto donde $k_1(p)$ es máximo.
+        Como $k_1 k_2 = K = cte > 0$, entonces $k_2$ alcanza el mínimo en $p$.
+        Por el lema de Hilbert, $p$ es un punto umbilical.
+        Veamos que todos los puntos de $S$ son umbilicales.
+        Sea $q \in S$ arbitrario, $$k_1(p) \geq k_1(q) \geq k_2(q) \geq k_2(p) = k_1(p)$$
+        Por tanto, $k_1 = k_2$ para todo $q \in S$, así que todos los puntos de $S$ son umbilicales.
+        Como $S$ es conexa y $K>0$, por el teorema de clasificación de superficies umbilicales tenemos que $S$ es un abierto de una esfera de radio $r$, con $K = \frac{1}{r^2}$.
+        Como además $S$ es compacta, entonces $S$ es cerrada en $S^2$.
+        Por tanto, $S = S^2$.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[Teorema de rigidez de la esfera]
+    Si $\varphi : S^2(r) \to S$ es una isometría de una esfera $S^2(r) \subset \mathbb{R}^3$ de radio $r$ sobre una superficie regular $S = \varphi(S^2(r)) \subset \mathbb{R}^3$, entonces $S$ es una esfera de radio $r$ y $\varphi$ es la restricción a $S^2(r)$ de un movimiento rígido de $\mathbb{R}^3$.
+\end{theorem}
+
+\section{Teorema de Hopf-Rinow}
+
+\begin{definition}
+    Una superficie regular $S$ es completa si, para cada punto $p \in S$, cualquier geodésica parametrizada $\gamma : [0, \varepsilon) \to S$ con $\gamma(0) = p$ se puede extender a una geodésica parametrizada definida en toda la recta real.
+    Esto es, existe $\bar{\gamma} : \mathbb{R} \to S$ geodésica parametrizada con $\bar{\gamma}|_{[0, \varepsilon)} = \gamma$.
+\end{definition}
+
+\begin{remark}
+    La completitud es equivalente a que la aplicación exponencial esté definida en todo $T_pS$.
+\end{remark}
+
+\begin{definition}
+    Una aplicación continua $\alpha : [a, b] \to S$ es una curva parametrizada diferenciable a trozos si existe una partición de $[a, b]$
+    $$a = t_0 < t_1 < \dots < t_{k+1} = b$$
+    tal que $\alpha$ es diferenciable en $(t_i, t_{i+1})$.
+    La longitud de $\alpha$ se define por $$l(\alpha) = \sum^k_{i=0} \int^{t_{i+1}}_{t_i} |\alpha'(t)|dt$$
+\end{definition}
+
+\begin{proposition}
+    Sea $S$ una superficie regular conexa.
+    Dados $p, q \in S$, existe una curva parametrizada diferenciable a trozos que une $p$ con $q$.
+\end{proposition}
+
+\begin{definition}
+    Se define la distancia intrínseca de $p$ a $q$, con $p, q \in S$, como $$d(p, q) = \inf \{ l(\alpha) : \alpha \in D^\infty(p,q) \}$$ donde $D^\infty(p, q)$ es el conjunto de curvas parametrizadas diferenciables a trozos que unen $p$ con $q$.
+\end{definition}
+
+\begin{proposition}
+    Sea $d_0$ la métrica inducida en $S \subset \mathbb{R}^3$, $d_0(p, q) = ||p-q||$.\\
+    $d$ y $d_0$ son distancias equivalentes, esto es, inducen la misma topología en $S$.
+\end{proposition}
+
+\begin{proposition}
+    Una superficie regular $S$ es completa si y solo si $(S, d)$ es espacio métrico completo, esto es, cada sucesión de Cauchy en $(S, d)$ converge a un punto de $S$.
+\end{proposition}
+
+\begin{definition}
+    Se dice que una geodésica $\gamma$ que une los puntos $p, q \in S$ es minimal si su longitud es menor o igual que la de cualquier curva parametrizada diferenciable a trozos que una $p$ y $q$.
+\end{definition}
+
+\begin{theorem}[Teorema de Hopf-Rinow]
+    Sea $S$ una superficie completa.
+    Dados dos puntos $p, q \in S$, existe una geodésica minimal que une $p$ y $q$.
+\end{theorem}
+
+\section{Teorema de Gauss-Bonnet}
+
+\begin{definition}
+    Sea $\alpha: [0, l] \to S$, con $S$ superficie regular, una aplicación continua.
+    Decimos que $\alpha$ es una curva parametrizada, regular a trozos, cerrada y simple si
+    \begin{itemize}
+        \item Existe una partición de $[0, l]$
+              $$0 = t_0 < t_1 < \dots < t_k < t_{k+1} = l$$
+              tal que $\alpha$ es diferenciable y regular en cada $[t_i, t_{i+1}]$.
+        \item $\alpha(0) = \alpha(l)$
+        \item Si $\bar{t} \neq \hat{t}, \bar{t}, \hat{t} \in [0, l)$, entonces $\alpha(\bar{t}) \neq \alpha(\hat{t})$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Sea $\alpha$ una curva parametrizada, regular a trozos, cerrada y simple.
+    \begin{itemize}
+        \item Los puntos $\alpha(t_i)$ se llaman los vértices de $\alpha$.
+        \item Las trazas de $\alpha([t_i, t_{i+1}])$ se llaman los arcos regulares de $\alpha$.
+        \item La traza de $\alpha$ se llama una curva cerrada regular a trozos.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Por la condición de regularidad, por cada vértice existen el límite por la izquierda y por la derecha.
+    Supongamos que $S$ está orientada y sea $|\theta_i|$, con $0 < |\theta_i| \leq \pi$ la menor determinación del ángulo de $\alpha'(t_i - 0)$ a $\alpha'(t_i + 0)$.
+    \begin{itemize}
+        \item Si $|\theta_i| \neq \pi$, damos a $\theta_i$ el signo del determinante $det(\alpha'(t_i-0), \alpha'(t_i+0), N)$.
+              Observamos que el signo viene determinado por la orientación de $S$.
+        \item Si $|\theta_i| = \pi$, por la regularidad se tiene que existe $\varepsilon'>0$ tal que $det(\alpha'(t_i-\varepsilon), \alpha'(t_i+\varepsilon), N)$ no cambio de signo para todo $0 < \varepsilon < \varepsilon'$.
+              Damos a $\theta_i$ este signo.
+    \end{itemize}
+    El ángulo con signo $\theta_i$ es el ángulo externo en el vértice $\alpha(t_i)$.
+\end{definition}
+
+\begin{definition}
+    Sea $S$ una superficie orientada, se dice que una región $R$ es una región simple si $R$ es homeomorfa a un disco y la frontera de $R$ es la traza de una curva parametrizada regular a trozos, cerrada y simple $\alpha: I \to S$.
+\end{definition}
+
+\begin{definition}
+    Sea $X: U \subset \mathbb{R}^2 \to S$ una parametrización de $S$ compatible con su orientación y sea $R \subset X(u)$ una región acotada de $S$.
+    La integral $$\int\int_{X^{-1}(R)} f(u, v) \sqrt{EG-F^2} dudv$$ donde $f$ es una función diferenciable sobre $S$ no depende de $X$.
+    Se denomina la integral de $f$ sobre la región $R$ y se nota $\int\int_R f d\sigma$.
+    En particular, $\int\int_R d\sigma = A(R) = \text{ área de } R$.
+\end{definition}
+
+\begin{theorem}[Teorema de Gauss-Bonnet]
+    Sea $S$ una superficie orientada y sea $X: U \to S$ una parametrización de $S$ compatible con la orientación de $S$ y tal que $U$ sea homeomorfo a un disco abierto.
+    Sea $R \subset X(U)$ una región simple de $S$ y sea $\alpha: I \to S$ tal que $Fr(R) = \alpha(I)$.
+    Supongamos que $\alpha$ está orientada positivamente y parametrizada por la longitud de arco $s$.
+    Sean $\alpha(s_0), \dots \alpha(s_k)$ y $\theta_0, \dots, \theta_k$ los vértices y los ángulos externos de $\alpha$ respectivamente.
+    Entonces
+    $$\sum_{i=0}^k \int_{s_i}^{s_{i+1}} k_g(s) ds + \int\int_R K d\sigma + \sum_{i=0}^k \theta_i = 2\pi$$
+    donde $k_g(s)$ es la curvatura geodésica de los arcos regulares de $\alpha$ y $K$ es la curvatura de Gauss de $S$.
+\end{theorem}

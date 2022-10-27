@@ -1,0 +1,54 @@
+\chapter{Teorema del elemento primitivo}
+
+\begin{definition}
+    Sea $K/F$ una extensión de cuerpos. Si existe un elemento $\alpha \in K$ tal que $K = F(\alpha)$, decimos que $K/F$ es simple y que $\alpha$ es un elemento primitivo de la extensión.
+\end{definition}
+
+\begin{example}
+    $\mathbb{Q}(\sqrt{2}, \sqrt{3}) = \mathbb{Q}(\sqrt{2} + \sqrt{3})$ es una extensión simple de $\mathbb{Q}$ y $\sqrt{2} + \sqrt{3}$ es un elemento primitivo.
+\end{example}
+
+\begin{lemma}
+    Sea $G$ un grupo abeliano finito $G$ y $a \in G$ un elemento de orden máximo $m$. Entonces el orden de todo elemento de $G$ es un divisor de $m$.
+\end{lemma}
+
+\begin{lemma}
+    Si $F$ es un cuerpo finito, entonces el grupo multiplicativo $F^\times = \{ a \in F : a \neq 0 \}$ es un grupo cíclico.
+\end{lemma}
+
+\begin{theorem}[Teorema del elemento primitivo]
+    Toda extensión separable finita es simple.
+\end{theorem}
+
+\begin{example}
+    Por el teorema, si una extensión finita no es simple, entonces ha de ser no separable.\\
+    Sea $F = \mathbb{Z}_p(t, s)$, donde $t, s$ son variables, $\alpha$ una raíz de $x^p-t$ y $\beta$ una raíz de $x^p-s$.
+    Veamos que la extensión $F(\alpha, \beta)/F$ no es simple.
+    Para ello, observamos que $[F(\alpha) : F] = p$, pues $x^p-t$ es irreducible en $F[x]$.
+    Con un argumento similar podemos obtener que $x^p-s$ es irreducible en $F(\alpha)[x]$, así que $[F(\alpha, \beta) : F(\alpha)] = p$.
+    Podemos concluir que:
+    $$[F(\alpha, \beta) : F] = p^2$$
+    Si la extensión $F(\alpha, \beta)/F$ es simple, debe existir un elemento primitivo $\gamma \in F(\alpha, \beta)$ de grado $p^2$ sobre $F$.
+    Pero podemos comprobar que todo elemento de $F(\alpha, \beta)/F$ tiene grado $p$.\\
+    Sea $\gamma \in F(\alpha, \beta)$. Entonces:
+    \begin{align*}
+        \gamma   & = \frac{g(\alpha, \beta)}{h(\alpha, \beta)}, \quad g, h \in F[x, y], h \neq 0 \\
+        \gamma^p & = \frac{\bar{g}(\alpha^p, \beta)^p}{\bar{h}(\alpha^p, \beta^p)}
+    \end{align*}
+    donde los coeficientes de $\bar(g), \bar{h}$ son la potencia $p$-ésima de los coeficientes de $g$ y $h$, respectivamente. Luego:
+    $$\gamma^p = \frac{\bar{g}(t, s)}{\bar{h}(t, s)} \in F$$
+    Por tanto $\gamma$ es una raíz de un polinomio de la forma $x^p - a \in F[x]$, luego el grado de $\gamma$ sobre $F$ no es $p^2$.\\
+    Concluimos que $F(\alpha, \beta)/F$ es finita pero no es simple.
+\end{example}
+
+\begin{remark}
+    El recíproco del teorema del elemento primitivo no es cierto.
+\end{remark}
+
+\begin{theorem}[Steiniz]
+    Una extensión finita $K/F$ es simple si y solo si tiene un número finito de cuerpos intermedios.
+\end{theorem}
+
+\begin{proposition}
+    Sean $K/F$ y $L/K$ extensiones finitas. Entonces $K/F$ y $L/K$ son separables si y solo si $L/F$ es separable.
+\end{proposition}

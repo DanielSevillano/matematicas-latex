@@ -1,0 +1,186 @@
+\chapter{Aplicación exponencial}
+
+\section{Aplicación exponencial}
+
+\begin{definition}
+    Dada una superficie regular $S$, un punto $p \in S$ y un vector no nulo $w \in T_pS$ existe una única geodésica parametrizada
+    $$\gamma : (-\varepsilon, \varepsilon) \to S$$
+    con $\gamma(0) = p$ y $\gamma'(0) = w$.
+    Representaremos esta geodésica como $\gamma(t,p,w)$, o $\gamma(t,w)$ si hemos fijado $p$, para indicar la dependencia respecto a $w$.
+\end{definition}
+
+\begin{lemma}[Lema de homogeneidad de las geodésicas]
+    Si la geodésica $\gamma(t,w)$ está definida en $(-\varepsilon, \varepsilon)$, entonces la geodésica $\gamma(t, \lambda w)$, $\lambda \neq 0$, está definida en $(\frac{\varepsilon}{|\lambda|}, \frac{\varepsilon}{|\lambda|})$ y $\gamma(t, \lambda w) = \gamma(\lambda t, w)$.
+\end{lemma}
+
+\begin{remark}
+    No son curvas parametrizadas iguales si $\lambda \neq 1$, aunque sí es igual su traza.
+    En ambos casos, al ser geodésicas, la traza se recorre con velocidad constante.
+\end{remark}
+
+\begin{definition}
+    Sea $w \in T_pS \setminus \{0\}$ tal que $\gamma(|w|, \frac{w}{|w|}) = \gamma(1, w)$ está definido.
+    Entonces la exponencial en $p$ de $w$ está dada por
+    $$exp_p(w) = \gamma(1, w), \quad exp_p(0) = p$$
+\end{definition}
+
+\begin{proposition}
+    Dado $p \in S$ existe $\varepsilon>0$ tal que $exp_p$ está definida y es diferenciable en un disco abierto de radio $\varepsilon$ centrado en el origen de $T_pS$
+    $$B_\varepsilon = \{ w \in T_pS : |w| < \varepsilon \}$$
+\end{proposition}
+
+\begin{proposition}
+    La aplicación $exp_p : B_\varepsilon \subset T_pS \to S$ es un difeomorfismo en un entorno abierto $U \subset B_\varepsilon$ del origen de $T_pS$.
+
+    \begin{proof}
+        Vamos a probar que la diferencial de $exp_p$ en $0 \in T_pS$ es no singular y a aplicar el teorema de la función inversa.
+        $$d(exp_p)_0: T_0(T_pS) \to T_pS$$
+        Podemos identificar $T_0(T_pS) \equiv T_pS$, puesto que un vector tangente en 0 a $T_pS$ es un vector de $T_pS$.
+        Veamos que $d(exp_p)_0 = Id_{T_pS}$.
+        La curva $\alpha(t) = tw, w \in T_pS$, verifica $\alpha(0) = 0 \in T_pS, \alpha'(0) = w$.
+        Por tanto,
+        \begin{align*}
+            d(exp_p)_0(w) & = \frac{d}{dt} (exp_p \circ \alpha)(t)|_{t=0} = \frac{d}{dt} (exp_p(tw))|_{t=0} =          \\
+                          & = \frac{d}{dt} \gamma(1, tw)|_{t=0} = \frac{d}{dt} \gamma(t, w)|_{t=0} = \gamma'(0, w) = w
+        \end{align*}
+        Luego $d(exp_p)_0 = Id$, así que la diferencial de $exp_p$ es no singular.
+        Por el teorema de la función inversa, existe un entorno abierto de 0, $U \subset B_\varepsilon \subset T_pS$, tal que
+        $$exp_p|_U: U \subset T_pS \to exp_p(U) \subset S$$
+        es un difeomorfismo.
+    \end{proof}
+\end{proposition}
+
+
+
+\begin{definition}
+    Se dice que $V \subset S$ es un entorno normal de $p$ si $V = exp_p(U)$ para un entorno abierto $U$ de $0 \in T_pS$ tal que $exp_p : U \to V$ es un difeomorfismo.
+\end{definition}
+
+\section{Sistemas de coordenadas}
+
+\begin{definition}
+    Las coordenadas normales se obtienen al elegir en el plano $T_pS$, $p \in S$, dos vectores ortogonales unitarios, es decir, una base ortonormal $\{e_1, e_2\} \subset T_pS$.\\
+    Como $exp_p : U \to V \subset S$ es un difeomorfismo y $U$ es abierto, $exp_p$ es una parametrización en $p$.
+    Si $q \in V = exp_p(U)$, entonces existe un único $w \in U$ tal que $q = exp_p(w)$.
+    Si $w = ue_1 + ve_2 \in U$, se dice que $q$ tiene coordenadas normales $(u, v)$.
+    Para cada base ortonormal de $T_pS$ se tienen unas coordenadas normales en $V$.
+    $$X(u, v) = exp_p(ue_1 + ve_2) = q$$
+\end{definition}
+
+\begin{properties}
+    \hfill
+    \begin{enumerate}
+        \item En un entorno normal $V$ centrado en $p$ las geodésicas que pasan por $p$ son imagen por $exp_p$ de rectas vectoriales en $U$, con $V = exp_p(U)$. Se llaman geodésicas radiales.
+        \item Como todas las geodésicas que pasan por $p$ son geodésicas radiales, entonces para todo $q \in V$ la geodésica que une $p$ con $q$ contenida en $V$ es única.
+        \item Los coeficientes de la primera forma fundamental en $p$ de $X(u, v) = exp_p(ue_1 + ve_2)$ son $$E(p) = G(p) = 1, \quad F(p) = 0$$
+              Esto es solo cierto en $p$. De serlo en todo punto de $V$, $exp_p$ sería una isometría y la superficie sería localmente isométrica a un plano.
+    \end{enumerate}
+\end{properties}
+
+\begin{definition}
+    Sea $(\rho, \theta)$ un sistema de coordenadas polares en el plano $T_pS$, donde $\rho>0$ es el radio y $\theta \in (0, 2\pi)$ es el ángulo con respecto a una semirrecta cerrada $l$ con extremo en $0 \in T_pS$.
+    Supongamos $exp_p(l) = L$. Entonces $$exp_p : U-l \to V-L$$ sigue siendo un difeomorfismo y se puede parametrizar $V-L$ con las coordenadas $(\rho, \theta)$, que se llaman coordenadas geodésicas polares.
+    No están definidas en $p$ porque no lo están en $0 \in T_pS$.
+    Si $\{e_1, e_2\}$ es una base ortonormal de $T_pS$ tal que $l = \{ \tilde{\rho}e_1 \in T_pS : \tilde{\rho} \geq 0 \}$, se tiene $$X(\rho, \theta) = exp_p(\rho \cos(\theta)e_1 + \rho \sin(\theta)e_2)$$
+\end{definition}
+
+\begin{proposition}
+    Sea $X: U-l \to V-L$ una parametrización de $S$ por coordenadas geodésicas polares $(\rho, \theta)$, $\rho>0$, $\theta \in (0, 2\pi)$.
+    Entonces los coeficientes de la primera forma fundamental verifican
+    \begin{align*}
+         & E(\rho, \theta) = 1,                          & F(\rho, \theta) = 0                          \\
+         & \lim\limits_{\rho \to 0} G(\rho, \theta) = 0, & \lim\limits_{\rho \to 0} (\sqrt{G})_\rho = 1
+    \end{align*}
+\end{proposition}
+
+\begin{remark}
+    $E$, $F$ y $G$ no están definidas en $p$.
+\end{remark}
+
+\section{Teorema de Minding}
+
+\begin{theorem}[Teorema de Minding]
+    Dos superficies cualesquiera con la misma curvatura de Gauss constante son localmente isométricas.\\
+    Concretamente, si $S_1$ y $S_2$ son dos superficies regulares con la misma curvatura de Gauss $K$ constante, dados $p_1 \in S_1$, $p_2 \in S_2$ y bases ortonormales $\{e_1,e_2\}$ de $T_{p_1}S_1$, $\{f_1,f_2\}$ de $T_{p_2}S_2$ existen entornos abiertos $V_1$ de $p_1$, $V_2$ de $p_2$ y una isometría $\psi : V_1 \to V_2$ tal que $d\psi_{p_1}(e_1) = f_1$, $d\psi_{p_1}(e_2) = f_2$.
+
+    \begin{proof}
+        Sean $V_1 = exp_{p_1}(U_1)$ y $V_2 = exp_{p_2}(U_2)$ entornos normales de $p_1$ y $p_2$ respectivamente en $S_1$ y $S_2$.
+        Sea $\varphi: T_{p_1}S_1 \to T_{p_2}S_2$ la isometría lineal definida por $\varphi(e_1) = f_1, \varphi(e_2) = f_2$.
+        Restringiendo si fuera necesario, podemos suponer que $\varphi(U_1) = U_2$.
+        Definimos: $$\psi: V_1 \to V_2, \quad \psi = exp_{p_2} \circ \varphi \circ exp_{p_1}^{-1}$$
+        $\varphi$ es isomorfismo lineal, luego es un difeomorfismo.
+        Como estamos en entornos normales, $exp_{p_1}$ y $exp_{p_2}$ son difeomorfismos, así que $\psi$ es difeomorfismo por composición.\\
+        Veamos que $\psi$ es isometría.
+        Consideramos en $U_1$ coordenadas polares $(\rho, \theta)$ con eje $l = \{ ue_1 : u \geq 0 \}$ para la orientación $\{ e_1, e_2 \}$.
+        Si $L_1 = exp_{p_1}(l)$, en $V_1 - L_1$ tenemos un sistema de coordenadas geodésicas polares centrado en $p_1$.
+        Entonces $(\rho, \theta)$ son coordenadas geodésicas polares en $\psi(V_1 - L_1)$ puesto que
+        \begin{align*}
+            \psi(exp_{p_1}(\rho \cos(\theta) e_1 + \rho \sin(\theta) e_2)) & = exp_{p_2} (\varphi(\rho \cos(\theta) e_1 + \rho \sin(\theta) e_2)) = \\
+                                                                           & = exp_{p_2}(\rho \cos(\theta) f_1 + \rho \sin(\theta) f_2)
+        \end{align*}
+        Así que $\psi(V_1 - L_1)$ es un entorno coordenado polar centrado en $p_2$.
+        Como $S_1$ y $S_2$ tienen la misma curvatura de Gauss constante y los coeficientes de la primera forma fundamental son iguales en los puntos correspondientes de $V_1 - L_1$ y $\psi(V_1 - L_1)$, entonces $\psi|_{V_1 - L_1}$ es isometría.\\
+        Además, $\psi(p_1) = exp_{p_2}\varphi(0) = exp_{p_2}(0) = p_2$ y $\psi(V_1) = V_2$, así que por continuidad $\psi$ es isometría de $V_1$ en $V_2$.
+        Además, $$d\psi_{p_1} = (dexp_{p_2})_{\psi(0)} \circ (d\varphi)_0 \circ (dexp_{p_1})_0^{-1}$$
+        Como $(dexp_p)_0 = Id$ y $d\varphi = \varphi$ por ser $\varphi$ lineal, entonces $d\psi_{p_1} = \varphi$ luego $d\psi_{p_1}(e_i) = \varphi(e_i) = f_i, i = 1, 2$.
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}
+    Sean $S_1$ y $S_2$ superficies regulares con curvatura de Gauss $K_1$ y $K_2$ respectivamente.
+    Si $K_1$ y $K_2$ son constantes, entonces son equivalentes:
+    \begin{enumerate}
+        \item $S_1$ y $S_2$ son localmente isométricas.
+        \item $K_1 = K_2$.
+    \end{enumerate}
+    Así, una superficie con curvatura de Gauss constante $K$ es localmente isométrica a una de las siguientes superficies:
+    \begin{itemize}
+        \item Si $K>0$, a una esfera de radio $r$ tal que $K = \frac{1}{r^2}$.
+        \item Si $K=0$, a un plano.
+        \item Si $K<0$, a una pseudoesfera de pseudorradio $r$ tal que $K = -\frac{1}{r^2}$.
+    \end{itemize}
+\end{corollary}
+
+\begin{note}
+    La pseudoesfera es la superficie de revolución obtenida cuando la tractriz gira alrededor del eje $z$.
+\end{note}
+
+\section{Propiedades variacionales de las geodésicas}
+
+\begin{definition}
+    Para cada punto $p \in S$ de una superficie regular existe un $\delta>0$ tal que la aplicación $$exp_p : B_\delta(0) \subset T_pS \to S$$ es un difeomorfismo sobre su imagen.
+    A esta imagen, que representaremos por $B_\delta(p)$, se le llama bola geodésica de centro $p$ y radio $\delta$.
+    Es el interior de un círculo geodésico.
+\end{definition}
+
+\begin{proposition}
+    Sea $B_\delta(p)$ una bola geodésica de radio $\delta$ con centro en un punto $p$ de una superficie $S$.
+    Si $\alpha : [0, l] \to B_\delta(p) \subset S$ es una curva parametrizada regular con $\alpha(0) = p$, entonces
+    $$L^l_0(\alpha) \geq L^l_0(\gamma)$$
+    donde $\gamma$ es la única geodésica radial parametrizada por el arco definida en $[0, l]$ que une $p$ con $\alpha(l)$.
+    Si se da la igualdad, entonces las trazas de $\alpha$ y de $\gamma$ coinciden.
+\end{proposition}
+
+\begin{corollary}
+    Para cada punto $p$ de una superficie regular $S$ existe un entorno abierto $W$ de $p$ en $S$ tal que si $\gamma : [0, l] \to W$ es una geodésica parametrizada con $\gamma(0) = p$ y $\gamma(t_1) = q$, $t_1 \in [0, l]$, entonces para cualquier curva parametrizada regular $\alpha : [0, t_1] \to S$ uniendo $p$ con $q$ se tiene
+    $$L^{t_1}_0(\alpha) \geq L^{t_1}_0(\gamma)$$
+    Además, $L^{t_1}_0(\alpha) = L^{t_1}_0(\gamma)$ si y solo si $\alpha$ y $\gamma$ tienen la misma traza.
+\end{corollary}
+
+\begin{proposition}
+    Sea $\alpha : I \to S$ una curva parametrizada regular cuyo parámetro es proporcional a la longitud de arco.
+    Si la longitud de arco entre cualquier par de puntos $t_0, t_1 \in I$ es menor o igual que la longitud de arco de cualquier curva parametrizada que una $\alpha(t_0)$ con $\alpha(t_1)$, entonces $\alpha$ es una geodésica parametrizada.
+\end{proposition}
+
+\begin{proposition}
+    Dado $p \in S$, existe un entorno abierto $W$ de $p$ en $S$ y un número $\delta>0$ tal que si $q \in W$, entonces $exp_q$ es un difeomorfismo en $B_\delta(0) \subset T_qS$ y $W \subset exp_q(B_\delta(0))$, esto es, $W$ es entorno normal de todos los puntos.\\
+    $W$ se llama un entorno totalmente normal con $\delta>0$ asociado.
+\end{proposition}
+
+\begin{corollary}
+    Dados dos puntos $q_1, q_2 \in W$ existe una única geodésica minimizante que es de longitud menor que $\delta$ y que une $q_1$ y $q_2$.
+\end{corollary}
+
+\begin{definition}
+    Se dice que una geodésica parametrizada $\gamma$ que une los puntos $p, q \in S$ es minimal o minimizante si su longitud es menor o igual que la de cualquier curva parametrizada diferenciable a trozos que une $p$ y $q$.
+\end{definition}

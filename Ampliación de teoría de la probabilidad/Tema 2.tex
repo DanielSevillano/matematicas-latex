@@ -1,0 +1,171 @@
+\chapter{Función característica}
+\begin{definition}
+    Sea $X$ variable aleatoria en $(\Omega, \mathcal{A}, P)$ con función de distribución $F$.
+    La función característica asociada a $X$ es:
+    $$\varphi_X: \mathbb{R} \to \mathbb{C}$$
+    $$\varphi_X(t) = E(e^{itX}) = \int_\mathbb{R} e^{itx}dF(x)$$
+\end{definition}
+
+\begin{remark}
+    Usando que $e^{ix} = \cos(x) + i\sin(x)$, podemos escribir:
+    $$\varphi_X(t) = \int_\mathbb{R} \cos(tx)dF(x) + i \int_\mathbb{R} \sin(tx)dF(x)$$
+\end{remark}
+
+\begin{example}
+    Sea $X \sim \delta(a)$, con $a \in \mathbb{R}$.
+    Su función característica es:
+    $$\varphi_X(t) = E(e^{itX}) = e^{ita} P(X=a) = e^{ita}$$
+\end{example}
+
+\begin{example}
+    Sea $X \sim Bi(n, p)$, con $n \geq 0$ y $0 \leq p \leq 1$.
+    Su función característica es:
+    \begin{align*}
+        \varphi_X(t) & = \sum_{k=0}^n e^{itk} P(X=k) = \sum_{k=0}^n e^{itk} \binom{n}{k} p^k(1-p)^{n-k} = \\
+                     & = \sum_{k=0}^n \binom{n}{k} (pe^{it})^k(1-p)^{n-k} = (pe^{it} + 1 - p)^n
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Sea $X \sim Po(\lambda)$.
+    Su función característica es:
+    \begin{align*}
+        \varphi_X(t) & = \sum_{k=0}^n e^{itk} P(X=k) = \sum_{k=0}^n e^{itk}e^{-\lambda}\frac{\lambda^k}{k!} = e^{-\lambda} \sum_{k=0}^n \frac{(\lambda e^{it})^k}{k!} = \\
+                     & = e^{-\lambda}e^{\lambda e^{it}} = e^{\lambda(e^{it} - 1)}
+    \end{align*}
+\end{example}
+
+\begin{remark}
+    $$\varphi_{Bi}(x) = (pe^{it} + 1 - p)^n = \left( 1 + \frac{np(e^{it}-1)}{n} \right)^n \xrightarrow[n \to \infty]{np \to \lambda} e^{\lambda(e^{it} - 1)} = \varphi_{Po}(t)$$
+\end{remark}
+
+\begin{example}
+    Sea $X \sim U([0, 1])$.
+    Su función característica es:
+    $$\varphi_X(t) = E(e^{itX}) = \int_\mathbb{R} e^{itx}dF(x) = \int_\mathbb{R} e^{itx}f_X(x)dx = \int_0^1 e^{itx}dx = \frac{e^{it}-1}{it}$$
+\end{example}
+
+\begin{example}
+    Sea $X \sim N(0, 1)$.
+    Su función característica es:
+    \begin{align*}
+        \varphi_X(t) & = \int_\mathbb{R} e^{itx}f_X(x)dx = \int_\mathbb{R} e^{itx} \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}dx = \frac{1}{\sqrt{2\pi}} \int_\mathbb{R} e^{-\frac{(x^2-2itx)}{2}}dx =                     \\
+                     & = \frac{1}{\sqrt{2\pi}} \int_\mathbb{R} e^{-\frac{t^2}{2}}e^{-\frac{x^2-t^2-2it}{2}}dx = \frac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}} \int_\mathbb{R} e^{-\frac{(x-it)^2}{2}}dx = e^{-\frac{t^2}{2}}
+    \end{align*}
+
+    \begin{note}
+        $\int_\mathbb{R} e^{-x^2}dx = \sqrt{\pi}$
+    \end{note}
+\end{example}
+
+\begin{properties}
+    Sea $\varphi$ la función característica de una variable aleatoria $X$.
+    \begin{enumerate}
+        \item $\varphi(0) = 1$.
+              $$E(e^{i0X}) = E(1) = 1$$
+        \item $|\varphi(t)| \leq 1$, para todo $t \in \mathbb{R}$.
+              $$|\varphi(t)| = |E(e^{itX})| \leq E|e^{itX}| = E|\cos(tx) + i\sin(tx)| = 1$$
+        \item $\varphi(-t) = \overline{\varphi(t)}$.
+              \begin{align*}
+                  \varphi(-t) & = E(e^{itX}) = E(\cos(-tx) + i\sin(-tx)) =                             \\
+                              & = E(\cos(tx)) - iE(\sin(tx)) = \overline{E(\cos(tx)) + iE(\sin(tx))} = \\
+                              & = \overline{E(\cos(tx)) + i\sin(tx)} = \overline{\varphi(t)}
+              \end{align*}
+        \item $\varphi$ es función definida positiva, es decir,
+              $$\sum_{k,j=1}^n z_k\varphi(t_j-t_k)\overline{z_j} \geq 0, \quad \forall n \geq 1, \quad \forall z \in \mathbb{C}^n$$
+    \end{enumerate}
+\end{properties}
+
+\begin{theorem}
+    $\varphi$ es uniformemente continua en $\mathbb{R}$.
+\end{theorem}
+
+\begin{theorem}[Teorema de inversión]
+    Sea $X$ variable aleatoria en $(\Omega, \mathcal{A}, P)$ con función de distribución $F$ y función característica $\varphi$.
+    Sean $a, b \in \mathbb{R}$ con $a < b$, entonces:
+    $$\frac{F(b)+F(b^-)}{2} - \frac{F(a)+F(a^-)}{2} = \lim\limits_{T \to \infty} \frac{1}{2\pi} \int_{-T}^T \frac{e^{-itb}-e^{-ita}}{-it} \varphi(t)dt$$
+\end{theorem}
+
+\begin{corollary}
+    Sea $X$ variable aleatoria en $(\Omega, \mathcal{A}, P)$ con función de distribución $F$ y función característica $\varphi$.
+    Sean $a, b \in C(F)$ con $a < b$, entonces:
+    $$F(b) - F(a) = \lim\limits_{T \to \infty} \frac{1}{2\pi} \int_{-T}^T \frac{e^{-itb}-e^{-ita}}{-it} \varphi(t)dt$$
+\end{corollary}
+
+\begin{theorem}[Unicidad]
+    Sean $X_1$ y $X_2$ variables aleatorias, con funciones de distribución $F_1$ y $F_2$ y funciones características $\varphi_1$ y $\varphi_2$ respectivamente.
+    Entonces:
+    $$F_1 = F_2 \Leftrightarrow \varphi_1 = \varphi_2$$
+\end{theorem}
+
+\begin{theorem}
+    Existe $k \in (0, \infty)$ tal que para todo $a > 0$ y toda medida de probabilidad $P_F$ se tiene que:
+    $$P_F \left(\left[-\frac{1}{a}, \frac{1}{a}\right]^c\right) \leq \frac{k}{a} \int_0^a (1 - Re(\varphi_F(t)))dt$$
+    donde $\varphi_F$ es la función característica asociada a $P_F$.
+\end{theorem}
+
+\begin{corollary}
+    Sea $\{X_n\}_{n \geq 1}$ una sucesión de variables aleatorias $X_n$ con $F_n$, $P_{F_n}$ y $\varphi_{F_n}$.
+    Supongamos que:
+    \begin{enumerate}
+        \item Existe $\delta > 0$ tal que $\varphi_{F_n}(t) \xrightarrow[n \to \infty]{} \varphi(t)$ para todo $t \in [-\delta, \delta]$, siendo $\varphi$ una función.
+        \item $\varphi$ es continua en 0.
+    \end{enumerate}
+    Entonces $\{X_n\}_{n \geq 1}$ es una sucesión ajustada.
+    Es decir, $\{F_n\}$ forma una familia ajustada.
+\end{corollary}
+
+\begin{properties}
+    \hfill
+    \begin{itemize}
+        \item $\varphi \in \mathbb{R}^n$ $\Leftrightarrow$ $f$ es simétrica.
+              $$\varphi(-t) = \overline{\varphi(t)} = \varphi(t)$$
+        \item Sea $Y = a + bX$. Entonces:
+              $$\varphi_Y(t) = E(e^{it(a+bX)}) = e^{ita} E(e^{itbX}) = e^{ita} \varphi_X(bt)$$
+    \end{itemize}
+\end{properties}
+
+\begin{exercise}
+    Sea $X$ con función de densidad:
+    $$f(x) = \begin{cases}
+            \frac{1}{a} \left(1 - \frac{|x|}{a}\right) & \text{si } |x| \leq a, \; a > 0 \\
+            0                                          & \text{en otro caso}
+        \end{cases}$$
+    Calculemos su función característica $\varphi$.
+
+    Como $f$ es simétrica, sabemos que $\varphi \in \mathbb{R}$.
+    \begin{align*}
+        \varphi(t) & = E(e^{itX}) = \int_\mathbb{R} e^{itx}dF(x) = \int_\mathbb{R} e^{itx}f(x)dx =                                           \\
+                   & = \int_{-a}^a \cos(tx)f(x)dx + \int_{-a}^a \sin(tx)f(x)dx = 2\int_0^a \cos(tx)\frac{1}{a}\left(1-\frac{x}{a}\right)dx = \\
+                   & = \frac{2(1-\cos(at))}{a^2t^2} = \frac{\sin^2\left(\frac{at}{2}\right)}{\left(\frac{at}{2}\right)^2}
+    \end{align*}
+
+    En el último paso hemos usado que $\sin^2(\frac{\alpha}{2}) = \frac{1-\cos(\alpha)}{2}$.
+\end{exercise}
+
+\begin{exercise}
+    Sea $X$ con función de densidad:
+    $$f(x) = \frac{1}{2\beta}e^{-\frac{|x-\alpha|}{\beta}}, \quad \alpha \in \mathbb{R}, \; \beta > 0$$
+    Calculemos su función característica $\varphi_X$.
+
+    Para facilitar los cálculos, consideramos la variable estandarizada $Y = \frac{X-\alpha}{\beta}$ y calculamos $\varphi_Y$.
+    Para ello, hallamos primero $F_Y$ y $f_Y$:
+    \begin{align*}
+        F_Y(y) & = P(Y \leq y) = P\left(\frac{X-\alpha}{\beta} \leq y\right) = P(X \leq \beta y + \alpha) = F_X(\beta y + \alpha) \\
+        f_Y(y) & = F_Y'(y) = F_X'(\beta y + \alpha)\beta = f_X(\beta y + \alpha)\beta = \frac{1}{2}e^{-|y|}
+    \end{align*}
+    Observamos que $f_Y$ es simétrica, así que $\varphi_Y \in \mathbb{R}$.
+    \begin{align*}
+        \varphi_Y(t) & = \int_\mathbb{R} e^{ity}\frac{1}{2}e^{-|y|}dy = \int_\mathbb{R} (\cos(ty) + i\sin(ty))\frac{1}{2}e^{-|y|}dy = \\
+                     & = \int_0^\infty \cos(ty)e^{-y}dy = \frac{1}{1+t^2}
+    \end{align*}
+    Por tanto:
+    $$\varphi_X(t) = e^{it\alpha}\varphi_Y(\beta t) = \frac{e^{it\alpha}}{1+\beta^2t^2}$$
+
+    También se puede ver que $Y = Y_1 - Y_2$, con $Y_i \sim Exp(1)$ independientes.
+    De esta forma:
+    \begin{align*}
+        \varphi_Y(t) & = E(e^{itY}) = E(e^{it(Y_1-Y_2)}) = E(e^{itY_1})E(e^{-itY_2}) = \varphi_{Y_1}(t)\varphi_{Y_2}(-t) = \\
+                     & = \varphi_{Y_1}(t) \overline{\varphi_{Y_2}(t)} = \frac{1}{1-it}\frac{1}{1+it} = \frac{1}{1+t^2}
+    \end{align*}
+\end{exercise}

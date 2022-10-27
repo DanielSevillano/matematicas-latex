@@ -1,0 +1,213 @@
+\chapter{Desplazamiento paralelo}
+\section{Derivada covariante}
+
+\begin{definition}
+    Una curva parametrizada $\alpha : [0, l] \to S$ es la restricción a $[0, l]$ de una aplicación diferenciable de $(-\varepsilon, l+\varepsilon)$, $\varepsilon>0$, en $S$.
+    Si $\alpha(0) = p$ y $\alpha(l) = q$ se dice que $\alpha$ une $p$ con $q$.
+\end{definition}
+
+\begin{definition}
+    Un campo vectorial tangente a $S$ a lo largo de una curva parametrizada $\alpha : [0, l] \to S$ es una correspondencia $w$ que asigna a cada $t \in [0, l]$ un vector $w(t) \in T_{\alpha(t)}S$.
+    El campo vectorial $w$ se dice diferenciable en $t_0 \in [0, l]$ si para alguna parametrización $X(u, v)$ en $\alpha(t_0)$ se tiene
+    $$w(\alpha(t)) \equiv w(t) = a(t)X_u + b(t)X_v$$
+    con $a$ y $b$ funciones diferenciables en $t_0$.\\
+    $w$ es diferenciable en $[0, l]$ si es diferenciable para todo $t \in I$.
+\end{definition}
+
+\begin{example}
+    El campo $\alpha'(t)$ de vectores tangentes a $\alpha$ es un campo vectorial diferenciable a lo largo de $\alpha$.
+\end{example}
+
+\begin{definition}
+    Sea $w$ un campo vectorial diferenciable a lo largo de $\alpha : [0, l] \to S$.
+    Se denomina derivada covariante de $w$ en $t$ para $t \in [0, l]$ y se representa $\frac{Dw}{dt}(t)$ a la proyección ortogonal del vector $\frac{dw}{dt}(t)$ sobre $T_{\alpha(t)}S$.
+\end{definition}
+
+\begin{remark}
+    Si dos superficies $S$ y $\bar{S}$ son tangentes a lo largo de una curva parametrizada $\alpha$, como los planos tangentes coinciden la derivada covariante de cualquier campo $w$ a lo largo de $\alpha$ es la misma para $S$ y $\bar{S}$.
+\end{remark}
+
+\begin{definition}
+    Se dice que un campo vectorial $w$ a lo largo de una curva parametrizada es paralelo si la derivada covariante es cero en todos los puntos.
+    $$\frac{Dw}{dt} = 0, \quad \forall t \in [0, l]$$
+    Equivalentemente, un campo es paralelo si y solo si $\frac{dw}{dt}$ es normal a $S$ en $\alpha(t)$ para todo $t$.
+\end{definition}
+
+\begin{proposition}
+    Sean $w_1$ y $w_2$ dos campos vectoriales paralelos a lo largo de $\alpha : [0, l] \to S$.
+    Entonces $\left\langle w_1(t), w_2(t) \right\rangle$ es constante.
+    En particular, $|w_1(t)|$ y $|w_2(t)|$ son constantes y el ángulo entre $w_1(t)$ y $w_2(t)$ es constante.
+\end{proposition}
+
+\begin{note}
+    Un campo vectorial $w$ a lo largo de $\alpha$ es paralelo si y solo si $\frac{dw}{dt}$ es proporcional al normal a $S$, es decir, $\frac{dw}{dt} = \lambda(t) N(\alpha(t))$.
+\end{note}
+
+\begin{proposition}
+    Sean $\alpha : [0, l] \to S$ una curva parametrizada, $w$ un campo de vectores diferenciable a lo largo de $\alpha$, $t_0 \in [0, l]$ y $X(u, v)$ una parametrización de $S$ en $\alpha(t_0)$.
+    Existe $\varepsilon>0$ tal que $\alpha(t_0-\varepsilon, t_0+\varepsilon) \subset X(U)$ por ser $X(U)$ abierto y $\alpha$ continua. Supongamos
+    $$\alpha(t) = X(u(t), v(t))$$ y $$w(t) \equiv w(\alpha(t)) = a(t)X_u + b(t)X_v, \quad a, b \text{ diferenciables}$$
+    Utilizando las ecuaciones de Gauss se tiene que la parte tangente de $\frac{dw}{dt}$ es
+    \begin{align*}
+        \frac{Dw}{dt} & = (a' + au'\Gamma^1_{11} + (av' + bu')\Gamma^1_{12} + bv'\Gamma^1_{22}) X_u + \\
+                      & + (b' + au'\Gamma^2_{11} + (av' + bu')\Gamma^2_{12} + bv'\Gamma^2_{22}) X_v
+    \end{align*}
+\end{proposition}
+
+\begin{proposition}
+    Sea $\alpha : [0, l] \to S$ una curva parametrizada sobre $S$ y sea $w_0 \in T_{\alpha(t_0)}S, t_0 \in [0, l]$.
+    Entonces existe un único campo vectorial $w(t)$ paralelo a lo largo de $\alpha$ con $w(t_0) = w_0$.
+\end{proposition}
+
+\section{Desplazamiento paralelo}
+
+\begin{definition}
+    Sea $\alpha : [0, l] \to S$ una curva parametrizada y sea $w_0 \in T_{\alpha(t_0)}S$, $t_0 \in [0, l]$.
+    Sea $w$ el único campo vectorial paralelo a lo largo de $\alpha$ con $w(t_0) = w_0$.
+    El vector $w(t_1) \in T_{\alpha(t_1)}S$, $t_1 \in [0, l]$, es el desplazamiento paralelo de $w_0$ a lo largo de $\alpha$ en el punto $\alpha(t_1)$.
+\end{definition}
+
+\begin{properties}
+    \hfill
+    \begin{enumerate}
+        \item Si $\alpha : [0, l] \to S$ es regular, entonces el desplazamiento paralelo no depende de la parametrización de $\alpha([0, l])$.
+        \item Dados $p, q \in S$ y una curva parametrizada $\alpha: [0, l] \to S$ con $\alpha(0) = p$ y $\alpha(l) = q$, se puede definir
+              $$P_\alpha : T_pS \to T_qS$$
+              como la aplicación que asigna a cada $w_0 \in T_pS$ el transporte paralelo de $w_0$ a lo largo de $\alpha$ en $q = \alpha(l)$.
+              Está bien definido por la unicidad de $w$ y es una isometría.
+        \item Si dos superficies $S$ y $\bar{S}$ son tangentes a lo largo de una curva parametrizada $\alpha$, como la derivada covariante a lo largo de $\alpha$ es igual para ambas superficies, entonces dado $w_0 \in T_{\alpha(t_0)}S$ el campo vectorial paralelo $w(t)$ a lo largo de $\alpha$ tal que $w(t_0) = w_0$ es paralelo en las dos superficies.
+              Por tanto, por unicidad del desplazamiento paralelo, el desplazamiento paralelo de $w_0$ a lo largo de $\alpha$ es el mismo con respecto a $S$ y a $\bar{S}$.
+    \end{enumerate}
+\end{properties}
+
+\begin{definition}
+    Una aplicación $\alpha : [0, l] \to S$ es una curva parametrizada regular a trozos si
+    \begin{enumerate}
+        \item $\alpha$ es continua.
+        \item Existe un subdivisión de $[0, l]$
+              $$0 = t_0 < t_1 < \dots < t_k < t_{k+1} = l$$
+              tal que la restricción de $\alpha$ a $[t_i, t_{i+1}]$ es una curva parametrizada regular.
+              Llamaremos a cada $\alpha |_{[t_i, t_{i+1}]}$ un arco regular de $\alpha$.
+    \end{enumerate}
+\end{definition}
+
+\begin{note}
+    Si $s_0 \in [t_i, t_{i+1}]$, se puede definir su desplazamiento paralelo a lo largo del arco regular $\alpha |_{[t_i, t_{i+1}]}$ de la forma habitual y se toma $w(t_{i+1})$ como valor inicial para el desplazamiento paralelo en $[t_{i+1}, t_{i+2}]$, y así sucesivamente hasta definirlo sobre $\alpha$.
+\end{note}
+
+\section{Geodésicas}
+
+\begin{definition}
+    Se dice que una curva parametrizada no constante $\gamma : [0, l] \to S$ es geodésica parametrizada si su campo de vectores tangente $\gamma'(t)$ es paralelo, es decir,
+    $$\frac{D\gamma'}{dt}(t) = 0, \quad \forall t \in [0, l]$$
+\end{definition}
+
+\begin{remark}
+    Puesto que estamos con curvas parametrizadas no regulares, una geodésica parametrizada puede presentar autointersecciones.
+    Sin embargo, su campo tangente nunca se anula y, en consecuencia, la parametrización es regular.
+\end{remark}
+
+\begin{definition}
+    Una curva regular conexa $C$ en $S$ es una geodésica si, para cada $p \in C$, la parametrización $\alpha(s)$ de un entorno coordenado de $p$ en $C$ por la longitud de arco $s$ es una geodésica parametrizada, es decir, $\alpha'(s)$ es un campo paralelo a lo largo de $\alpha$.
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Cada recta contenida en una superficie es una geodésica por ser $\alpha''(s) = 0$.
+        \item Si no es una recta, se pueden caracterizar las geodésicas.\\
+              Una curva regular conexa $C$ en $S$ con curvatura $K$ no nula es una geodésica si y solo si el normal a $C$ en cada $p \in C$ y el normal a $S$ en $p$ son proporcionales.
+    \end{enumerate}
+\end{remark}
+
+\begin{proposition}[Ecuaciones diferenciales de las geodésicas]
+    Sea $\gamma : [0, l] \to S$ una curva parametrizada de $S$ y sea $X(u, v)$ una parametrización de $S$ en un entorno abierto $X(U)$ de $\gamma(t_0), t_0 \in [0, l]$.
+    Como $X(U)$ es abierto y $\gamma$ es continua, existe un intervalo abierto $J \in [0, l]$ con $t_0 \in J$ tal que $\gamma(J) \subset X(U)$ y $$\gamma(t) = X(u(t), v(t)), \quad t \in J$$
+    $\gamma$ es una geodésica si y solo si se satisface el sistema de ecuaciones diferenciales
+    $$\left\{ \begin{array}{lcl}
+            u'' + \Gamma^1_{11}(u')^2 + 2\Gamma^1_{12}u'v' + \Gamma^1_{22}(v')^2 = 0 \\
+            v'' + \Gamma^2_{11}(u')^2 + 2\Gamma^2_{12}u'v' + \Gamma^2_{22}(v')^2 = 0
+        \end{array}
+        \right.$$
+    para cada intervalo $J \subset [0, l]$ tal que $\gamma(J)$ esté contenido en un entorno coordenado.
+\end{proposition}
+
+\begin{proposition}
+    Sea $S$ superficie regular.
+    Dado $p \in S$ y $w_0 \in T_pS$, $w_0 \neq 0$, existe $\varepsilon > 0$ y una única geodésica parametrizada $\gamma : (-\varepsilon, \varepsilon) \to S$ tal que $\gamma(0) = p$ y $\gamma'(0) = w_0$.
+\end{proposition}
+
+\begin{remark}
+    Para cada punto y para cada dirección tangente hay una geodésica.
+    Consideramos $w_0 \neq 0$ porque para $w_0 = 0$ la solución de la ecuación es una curva constante, que no es geodésica por definición.
+    Si la solución que obtenemos es $(u(t), v(t))$, la geodésica es $X(u(t), v(t))$.
+    Esta no depende de la parametrización. Si para otra parametrización se obtuviese otra geodésica, al escribirla en $X$ tendría que verificarse el sistema, luego por unicidad es la misma.
+\end{remark}
+
+\begin{remark}
+    El módulo de $w$ es el de $w_0$ en todos los puntos, es decir, el módulo de la condición inicial se mantiene a lo largo de la geodésica porque las ecuaciones son las del transporte paralelo, que mantiene el módulo.
+\end{remark}
+
+\begin{remark}
+    Una geodésica se puede autointersecar pero, por unicidad de la geodésica que pasa por un punto en una dirección, dos geodésicas no pueden ser tangentes en un punto.
+\end{remark}
+
+\begin{corollary}
+    Las isometrías locales llevan geodésicas en geodésicas.
+\end{corollary}
+
+\section{Curvatura geodésica}
+
+\begin{definition}
+    Se define el valor algebraico de la derivada covariante de un campo diferenciable $w$ de vectores unitarios en $t \in [0, l]$ como
+    $$\left[ \frac{Dw}{dt} \right] = \left\langle \frac{Dw}{dt}, N \land w \right\rangle = \lambda(t), \quad t \in [0, l]$$
+    Su signo depende de la orientación de $S$.
+\end{definition}
+
+\begin{definition}
+    Sea $C$ una curva regular orientada contenida en una superficie orientada $S$ y sea $\alpha(s)$ una parametrización de $C$ por la longitud de arco $s$ en un entorno de $p$ en $C$.
+    La curvatura geodésica de $C$ en $p$ es el valor algebraico de la derivada covariante de $\alpha'(s)$ en $p$.
+    $$k_g(s) = \left[ \frac{D\alpha'}{ds}(s) \right] = \left\langle \frac{D\alpha'}{ds}(s), N(s) \land \alpha'(s) \right\rangle = \left\langle \frac{d\alpha'}{ds}(s), N(s) \land \alpha'(s) \right\rangle$$
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item El signo de $k_g(s)$ depende de la orientación de $C$ y de la orientación de $S$.
+        \item Las geodésicas se caracterizan por tener curvatura geodésica cero.
+              $$\frac{D\alpha'}{ds} = k_g(N \land \alpha') = 0 \Leftrightarrow k_g = 0$$
+        \item Para una curva $\alpha : [0, l] \to S$ parametrizada por el arco $s$ tenemos definida la curvatura normal
+              $$k_n = k \left\langle n, N \right\rangle = \left\langle a'', N \right\rangle$$
+              y la curvatura geodésica
+              $$k_g = \left\langle \alpha'', N \land \alpha' \right\rangle$$
+              Considerando en cada $\alpha(s)$ la base ortonormal $\left\{ \alpha', N \land \alpha', N \right\}$
+              \begin{align*}
+                   & \left\langle \alpha', \alpha' \right\rangle = 1 \Rightarrow \left\langle \alpha'', \alpha' \right\rangle = 0 \Rightarrow                      \\
+                   & \Rightarrow \alpha''(s) = \left\langle \alpha'', N \land \alpha' \right\rangle (N \land \alpha') + \left\langle \alpha'', N \right\rangle N = \\
+                   & = k_g(s) (N \land \alpha'(s)) + k_n(s)N
+              \end{align*}
+              Por otra parte, $\alpha''(s) = k(s)n(s)$.
+              Puesto que $n$, $N$ y $N \land \alpha'$ son unitarios, igualando módulo al cuadrado en estas dos expresiones
+              $$k^2 = k_g^2 + k_n^2$$
+        \item Cuando dos superficies son tangentes a lo largo de una curva regular $C$, el valor absoluto de la curvatura geodésica de $C$ es el mismo respecto a cualquiera de las dos superficies.
+        \item En el plano $k_n = 0$ en cualquier dirección, así que $k_g^2(s) = k^2(s)$.
+    \end{enumerate}
+\end{remark}
+
+\begin{proposition}
+    Sea $X(u, v)$ una parametrización ortogonal $(F=0)$ de un entorno de una superficie orientada $S$ compatible con la orientación y sea $w(t)$ un campo diferenciable de vectores unitarios a lo largo de la curva $X(u(t), v(t))$. Entonces
+    $$\left[ \frac{Dw}{dt} \right] = \frac{1}{2\sqrt{EG}} \left( G_u \frac{dv}{dt} - E_v \frac{du}{dt} \right) + \frac{d\varphi}{dt}$$
+    donde $\varphi(t)$ es el ángulo de $\frac{X_u}{\sqrt{E}}$ a $w$ en la orientación de $S$.
+\end{proposition}
+
+\begin{theorem}[Teorema de Liouville]
+    Sea $\alpha : [0, l] \to S$ una curva parametrizada por la longitud de arco $s$ en una superficie orientada $S$.
+    Sea $X(u, v)$ una parametrización ortogonal de $S$ en $\alpha(s_0)$ compatible con la orientación de $S$ y sea $\varphi(s)$ el ángulo que forma $X_u$ con $\alpha'(s)$ en la orientación de $S$. Entonces
+    $$k_g = {(k_g)}_1\cos\varphi + {(k_g)}_2\sin\varphi + \frac{d\varphi}{ds}$$
+    donde ${(k_g)}_1$ y ${(k_g)}_2$ son las curvaturas geodésicas de las curvas coordenadas $v = cte$ y $u = cte$, respectivamente.
+    $${(k_g)}_1 = -\frac{E_v}{2E\sqrt{G}}, \quad {(k_g)}_2 = \frac{G_u}{2G\sqrt{E}}$$
+\end{theorem}
+
+\begin{corollary}
+    Si las curvas coordenadas de una parametrización ortogonal de una superficie $S$ son geodésicas, entonces las geodésicas del entorno son las curvas que forman un ángulo constante con las curvas coordenadas.
+\end{corollary}

@@ -1,0 +1,175 @@
+\chapter{Homomorfismos de cuerpos}
+\section{Homomorfismos de anillos y cuerpos}
+
+\begin{definition}
+    Sean $R$ y $S$ anillos. Una aplicación $f : R \to S$ es un homomorfismo de anillos si para todo $a, b \in R$ se verifica:
+    \begin{enumerate}
+        \item $f(a + b) = f(a) + f(b)$
+        \item $f(ab) = f(a) f(b)$
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    Consideramos el homomorfismo de anillos:
+    $$\varphi : \mathbb{Q}[x] \to \mathbb{Q}[\sqrt{3}]$$
+    Esta aplicación deja fijo a todo número racional y envía $x$ a $\sqrt{3}$.
+    Entonces, si $p(x) = a_0 + a_1x + \dots + a_mx^m \in \mathbb{Q}[x]$:
+    \begin{align*}
+        \varphi(p(x)) & = \varphi(a_0 + a_1x + \dots + a_mx^m)                                     \\
+                      & = \varphi(a_0) + \varphi(a_1x) + \dots + \varphi(a_mx^m)                   \\
+                      & = \varphi(a_0) + \varphi(a_1)\varphi(x) + \dots + \varphi(a_m)\varphi(x^m) \\
+                      & = a_0 + a_1\sqrt{3} + \dots + a_m\sqrt{3^m} = p(\sqrt{3})
+    \end{align*}
+    Su núcleo es el conjunto:
+    $$Ker(\varphi) = \{ f(x) \in \mathbb{Q}[x] : f(\sqrt{3}) = 0 \} = (x^2 - 3)$$
+    Como $\varphi$ is sobreyectiva, por el primer teorema de isomorfía tenemos que:
+    $$\mathbb{Q}[\sqrt{3}] \equiv \mathbb{Q}[x] / (x^2 - 3)$$
+    Como $x^2 - 3$ es irreducible y $\mathbb{Q}[x]$ es un dominio de ideales principales, entonces $(x^2 - 3)$ es un ideal maximal y por tanto $\mathbb{Q}[\sqrt{3}]$ es un cuerpo.
+\end{example}
+
+\begin{remark}
+    Si $f$ es un homomorfismo de anillos, entonces $f(0) = 0$. Como siempre trabajaremos con anillos conmutativos unitarios, consideraremos homomorfismos entre anillos unitarios y añadiremos la condición $f(1_R) = 1_S$.
+\end{remark}
+
+\begin{definition}
+    Sean $K_1, K_2$ cuerpos. Un homomorfismo de cuerpos de $K_1$ a $K_2$ es una aplicación $f : K_1 \to K_2$ tal que para todo $a, b \in R$ se verifica:
+    \begin{enumerate}
+        \item $f(a+b) = f(a) + f(b)$
+        \item $f(ab) = f(a) f(b)$
+        \item $f(1_{K_1}) = 1_{K_2}$
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Si $f : K_1 \to K_2$ es un homomorfismo de cuerpos, entonces $f(-a) = -f(a)$ para todo $a \in K_1$.
+    Si además $a$ es un elemento no nulo, entonces $f(a^{-1}) = f(a)^{-1}$.
+\end{remark}
+
+\begin{example}
+    Consideramos el isomorfismo de anillos del ejemplo anterior.
+    $$\mathbb{Q}[x] / (x^2 - 3) \equiv \mathbb{Q}(\sqrt{3})$$
+    Observamos que es de hecho un isomorfismo de cuerpos que identifica cada clase del cociente $\mathbb{Q}[x] / (x^2 - 3)$ con un elemento de $\mathbb{Q}(\sqrt{3})$.
+    En efecto, para cada polinomio $p(x) \in \mathbb{Q}[x]$, su clase $p(x) + (x^2 -3)$ puede ser representada por el resto de la división de $p(x)$ por $x^2 - 3$, que será un polinomio de la forma $a + bx$, con $a, b \in \mathbb{Q}$.
+    Entonces, el elemento correspondiente en $\mathbb{Q}(\sqrt{3})$ es $\varphi(a + bx) = a + b\sqrt{3}$.
+\end{example}
+
+\begin{remark}
+    Todo homomorfismo de cuerpos es inyectivo, es decir, todo homomorfismo de cuerpos es un monomorfismo.
+\end{remark}
+
+\section{F-homomorfismos}
+
+\begin{definition}
+    Sean $K/F$, $K'/F$ extensiones de cuerpos.
+    Un $F$-homomorfismo de $K$ a $K'$ es un homomorfismo de cuerpos $\varphi : K \to K'$ tal que $\varphi(a) = a$ para todo $a \in F$.
+    Podemos definir análogamente los conceptos de $F$-endomorfismo, $F$-isomorfismo, $F$-monomorfismo y $F$-automorfismo.
+\end{definition}
+
+\begin{theorem}
+    Sea $K/F$ una extensión de cuerpos, $u \in K$ trascendente sobre $F$. Entonces existe un $F$-isomorfismo entre $F(u)$ y $F(x)$.
+\end{theorem}
+
+\begin{example}
+    Existe un $\mathbb{Q}$-isomorfismo entre $\mathbb{Q}(\pi)$ y $\mathbb{Q}(x)$ que identifica $\pi$ con $x$.
+\end{example}
+
+\begin{theorem}
+    Sea $K/F$ una extensión de cuerpos, $\alpha \in K$ algebraico sobre $F$ y $f(x) \in F[x]$ el polinimio mínimo de $\alpha$ sobre $F$. Entonces existe un $F$-isomorfismo entre $F(\alpha)$ y $F[x]/(f(x))$.
+\end{theorem}
+
+\begin{example}
+    Sea $p$ un número primo, $\zeta_p = e^{2\pi i / p}$.
+    Entonces $\mathbb{Q}(\zeta_p)$ es isomorfo a $\mathbb{Q}[x]/(x^{p-1} + x^{p-2} + \dots + x + 1)$.
+    El isomorfismo fija a los números racionales e identifica $\zeta_p$ con la clase del polinomio $x$ módulo el ideal $(x^{p-1} + x^{p-2} + \dots + x + 1)$.
+\end{example}
+
+\section{Extensiones de monomorfismos de anillos}
+
+\begin{definition}
+    Sea $\sigma : F_1 \to F_2$ un homomorfismo de cuerpos y
+    $$f(x) = a_nx^n + a_{n-1}x^{n-1} + \dots + a_1x + a_0 \in F_1[x]$$
+    Denotaremos por $f^\sigma(x)$ al polinomio
+    $$f^\sigma(x) = \sigma(a_n)x^n + \sigma(a_{n-1})x^{n-1} + \dots + \sigma(a_1)x + \sigma(a_0) \in F_2[x]$$
+\end{definition}
+
+\begin{remark}
+    Recordamos que todo homomorfismo de cuerpos es un monomorfismo.
+    Los monomorfismos de cuerpos también se llaman inmersiones.
+\end{remark}
+
+\begin{theorem}
+    Sea $\sigma : F_1 \to F_2$ un isomorfismo de cuerpos.
+    Consideramos $u, v$ elementos trascendentes sobre $F_1$ y $F_2$, respectivamente.
+    Entonces existe un isomorfismo $\bar{\sigma} : F_1(u) \to F_2(v)$ que extiende a $\sigma$ y tal que $\bar{\sigma}(u) = v$.
+\end{theorem}
+
+\begin{example}
+    Consideramos el isomorfismo identidad $1_\mathbb{Q} : \mathbb{Q} \to \mathbb{Q}$ y el elemento trascendente $\pi$.
+    Entonces, podemos definir un isomorfismo $\bar{\sigma} : \mathbb{Q}(\pi) \to \mathbb{Q}(v)$ que deje fijos a los números racionales y envíe $\pi$ a cualquier elemento $v$ trascendente sobre $\mathbb{Q}$.
+    Observamos que en lugar de un isomorfismo podríamos considerar una inmersión, como la inclusión $\mathbb{Q} \to \mathbb{R}$, y podríamos extenderla a una inmersión $\mathbb{Q}(\pi) \to \mathbb{R}$ que deje fijo todo elemento de $\mathbb{Q}(\pi)$.
+    Ahora la imagen de $\pi$ es algebraica sobre $\mathbb{R}$.
+\end{example}
+
+\begin{proposition}
+    Sean $K_1/F_1$ y $K_2/F_2$ extensiones de cuerpos, $\sigma : F_1 \to F_2$ un homomorfismo de cuerpos, $\alpha \in K_1$ algebraico sobre $F_1$ y $f(x)$ su polinomio mínimo sobre $F_1$.
+    Si $\bar{\sigma} : K_1 \to K_2$ es un homomorfismo de cuerpos que extiende a $\sigma$, entonces $\bar{\sigma}(\alpha)$ es una raíz de $f^\sigma(x) \in F_2[x]$.
+\end{proposition}
+
+\begin{example}
+    Consideramos el isomorfismo $\tau : \mathbb{Q}(\sqrt{2}) \to \mathbb{Q}(\sqrt{2})$ dado por $\tau(a + b\sqrt{2}) = a - b\sqrt{2}, a, b \in \mathbb{Q}$.
+    Si queremos extenderlo a un automorfismo $\bar{\tau}$ de $\mathbb{Q}(\sqrt{2}, \sqrt[4]{2})$, la imagen de $\sqrt[4]{2}$ tiene que ser una raíz de $f^\tau(x)$, donde $f(x) = x^2 - \sqrt{2} \in \mathbb{Q}(\sqrt{2})[x]$ es el polinimio mínimo de $\sqrt[4]{2}$ sobre $\mathbb{Q}(\sqrt{2})$.
+    Como $f^\tau(x) = x^2 - \tau(\sqrt{2}) = x^2 - (-\sqrt{2}) = x^2 + \sqrt{2}$, tenemos que $\bar{\tau}(\sqrt[4]{2})$ tiene que ser una raíz de $x^2 + \sqrt{2}$.
+\end{example}
+
+\begin{theorem}
+    Sea $\sigma : F_1 \to F_2$ un isomorfismo de cuerpos.
+    Si $\alpha$ es algebraico sobre $F_1$ con polinimio mínimo $f(x) \in F_1[x]$ y $\beta$ es una raíz de $f^\sigma(x) \in F_2[x]$, entonces existe un isomorfismo $\bar{\sigma} : F_1(\alpha) \to F_2(\beta)$ que extiende a $\sigma$ y tal que $\bar{\sigma}(\alpha) = \beta$.
+\end{theorem}
+
+\begin{corollary}
+    Sean $K/F, L/F$ extensiones de cuerpos, $\alpha \in K, \beta \in L$ algebraicos sobre $F$.
+    Entonces $\alpha$ y $\beta$ son raíces del mismo polinimio irreducible $f(x) \in F[x]$ si y solo si existe un $F$-isomorfismo $\sigma : F(\alpha) \to F(\beta)$ tal que $\sigma(\alpha) = \beta$.
+\end{corollary}
+
+\begin{definition}
+    Si $\alpha$ y $\beta$ son raíces del mismo polinomio irreducible $f(x) \in F[x]$, decimos que son raíces conjugadas sobre $F$.
+\end{definition}
+
+\begin{remark}
+    Dos números complejos conjugados son raíces conjugadas sobre $\mathbb{R}$. Si $a, b \in \mathbb{R}$, $a + bi$ y $a - bi$ son raíces del polinomio
+    $$(x - (a+bi))(x - (a-bi)) = (x-a)^2 + b^2 = x^2 - 2ax + a^2 + b^2 \in \mathbb{R}[x]$$
+    Observamos que este polinomio es irreducible cuando $b \neq 0$.
+    Además, si $a, b \in \mathbb{Q}, b \neq 0$, entonces este polinomio es irreducible en $\mathbb{Q}[x]$.
+    Sin embargo, $a + bi$ y $a - bi$ no son raíces conjugadas sobre $\mathbb{Q}(i)$.
+\end{remark}
+
+\begin{corollary}
+    Sean $F_1, F_2, K$ cuerpos, $\sigma : F_1 \to F_2$ una inmersión, $F_2 \subset K$. Sea $\alpha$ un elemento en alguna extensión de cuerpos de $F_1$, algebraico sobre $F_1$, con polinomio mínimo $f(x) \in F_1[x]$. Entonces existe una inmersión $\bar{\sigma} : F_1(\alpha) \to K$ que entiende a $\sigma$ si y solo si $\bar{\sigma}(\alpha)$ es una raíz de $f^\sigma(x)$.
+    En particular, si denotamos por $Emb_\sigma(F_1(\alpha), K)$ el conjunto de inmersiones de $F_1(\alpha)$ en $K$ extendiendo a $\sigma$, tenemos que
+    $$|Emb_\sigma(F_1(\alpha), K)| = \text{número de raíces distintas de } f^\sigma(x) \text{ en } K$$
+\end{corollary}
+
+\begin{definition}
+    Sea $K/F$ extensión de cuerpos.
+    El grupo de $F$-automorfismos de $K$ se llama el grupo de Galois de $K$ sobre $F$.
+    Se denota por $Gal(K/F)$ o por $Gal_F(K)$.
+\end{definition}
+
+\section{Cuerpo primo y característica}
+
+\begin{definition}
+    Sea $F$ un cuerpo y $X \subset F$, consideramos todos los subcuerpos de $F$ que contienen a $X$.
+    Esta es una familia no vacía cuya intersección es el subcuerpo de $F$ más pequeño que contiene a $X$.
+    Este se llama el subcuerpo de $F$ generado por $X$.
+    Si $X = \emptyset, {0_F}, {1_F}$ o ${0_F, 1_F}$, el subcuerpo de $F$ más pequeño generado por $X$ es el subcuerpo más pequeño de $F$.
+    Este se llama cuerpo primo de $F$ y se denota por $\pi(F)$.
+\end{definition}
+
+\begin{proposition}
+    Si $F$ es un cuerpo, $\pi(F)$ es isomofo a $\mathbb{Q}$ o a $\mathbb{Z}_p$, para algún número primo $p$.
+\end{proposition}
+
+\begin{definition}
+    Cuando $\pi(F)$ es isomorfo a $\mathbb{Q}$ decimos que la característica de $F$ es 0.
+    Si $\pi(F)$ es isomorfo a $\mathbb{Z}_p$, decimos que la característica de $F$ es $p$.
+\end{definition}

@@ -1,0 +1,44 @@
+\chapter{Teoremas de existencia}
+\begin{theorem}[Versión lateral a la derecha del teorema de existencia local de Peano]
+    Sean $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
+    Sea el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$, $D \subset \mathbb{R} \times \mathbb{R}^n$ y $(t_0, x^0) \in D$.\\
+    Supongamos que existen $a > 0$ y $b > 0$ tales que $Q = [t_0, t_0 + a] \times \bar{B}(x^0; b) \subset D$ y $f$ es continua en $Q$.
+
+    Entonces, $(P)$ tiene al menos una solución definida en el intervalo $I = [t_0, t_0 + h]$, donde:
+    $$h = \min\{a, \frac{b}{M}\}, \quad M \geq \max_{(t, x) \in Q} \|f(t, x)\|$$
+\end{theorem}
+
+\begin{remark}
+    La versión lateral a la izquierda del teorema de existencia local de Peano consiste en tomar
+    $$Q = [t_0 - a, t_0] \times \bar{B}(x^0; b) \subset D$$
+    De esta forma, el problema $(P)$ tiene al menos una solución definida en el intervalo $I = [t_0 - h, t_0]$.
+\end{remark}
+
+\begin{corollary}[Versión centrada del teorema de existencia local de Peano]
+    Sean $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
+    Sea el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$, $D \subset \mathbb{R} \times \mathbb{R}^n$ y $(t_0, x^0) \in D$.
+    Supongamos que existen $a > 0$ y $b > 0$ tales que $Q = [t_0 - a, t_0 + a] \times \bar{B}(x^0; b) \subset D$ y $f$ es continua en $Q$.
+
+    Entonces, $(P)$ tiene al menos una solución definida en el intervalo $I = [t_0 - h, t_0 + h]$, donde:
+    $$h = \min\{a, \frac{b}{M}\}, \quad M \geq \max_{(t, x) \in Q} \|f(t, x)\|$$
+\end{corollary}
+
+\begin{theorem}[Teorema de existencia global de Peano]
+    Sean $I$ un intervalo compacto en $\mathbb{R}$, $n \geq 1$ y $f: D = I \times \mathbb{R}^n \to \mathbb{R}^n$ una función continua y acotada en $D$.
+    Entonces, para cada $(t_0, x^0) \in D$, el problema
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    tiene al menos una solución definida en $I$.
+\end{theorem}

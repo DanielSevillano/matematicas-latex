@@ -1,0 +1,48 @@
+\chapter{Teoremas de existencia y unicidad local}
+\begin{theorem}[Teorema de existencia y unicidad local]
+    Sean $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
+    Sea el problema de valor inicial:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    donde $f: D \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, $D \subset \mathbb{R} \times \mathbb{R}^n$ y $(t_0, x^0) \in D$.
+
+    Supongamos que existen $a > 0$ y $b > 0$ tales que:
+    $$Q = [t_0 - a, t_0 + a] \times \bar{B}(x^0; b) \subset D$$
+    y la función $f$ verifica las dos siguientes condiciones:
+    \begin{enumerate}
+        \item $f$ es continua en $Q$.
+        \item $f \in Lip(x, Q)$.
+    \end{enumerate}
+    Entonces, existen intervalos $I = [t_0 - h, t_0 + h]$, siendo $0 < h \leq a$, tales que $(P)$ posee una única solución $x: I \to \mathbb{R}^n$.
+    Esto sucede si:
+    $$0 < h \leq \min\{a, \frac{b}{M}\}, \quad \text{siendo } M \geq \max_{(t, x) \in Q} \|f(t, x)\|$$
+\end{theorem}
+
+\begin{remark}
+    Existen versiones laterales del teorema local:
+    \begin{itemize}
+        \item Tomando $Q = [t_0, t_0 + a] \times \bar{B}(x^0; b)$, para obtener una única solución $x: [t_0, t_0 + h] \to \mathbb{R}^n$ del problema $(P)$ (solución lateral a la derecha).
+        \item Tomando $Q = [t_0 - a, t_0] \times \bar{B}(x^0; b)$, para obtener una única solución $x: [t_0 - h, t_0] \to \mathbb{R}^n$ del problema $(P)$ (solución lateral a la izquierda).
+    \end{itemize}
+\end{remark}
+
+\begin{corollary}
+    Supongamos que se verifican las siguientes condiciones:
+    \begin{itemize}
+        \item $D$ es un subconjunto de $\mathbb{R}^2$ con interior $\dot{D}$ no vacío.
+        \item La función $f: D \to \mathbb{R}$, $(t, x) \mapsto f(t, x)$, es continua en $D$.
+        \item Existe la función derivada parcial $\frac{\partial f}{\partial x}: D \to \mathbb{R}$ y es continua en $D$.
+    \end{itemize}
+    En tal situación, para cualquier punto $(t_0, x^0) \in \dot{D}$ existen intervalos $I = [t_0 - h, t_0 + h]$, siendo $h > 0$, tales que el problema de Cauchy:
+    $$(P) \begin{cases}
+            x'(t) = f(t, x(t)) \\
+            x(t_0) = x^0
+        \end{cases}$$
+    tiene una única solución $x: I \to \mathbb{R}$.
+\end{corollary}
+
+\begin{remark}
+    Si $D$ es un abierto de $\mathbb{R}^2$ y $f \in \mathcal{C}^1(D, \mathbb{R})$, entonces $f$ satisface las condiciones del teorema de existencia y unicidad local.
+\end{remark}

@@ -1,0 +1,60 @@
+\chapter{Construcciones geométricas}
+\section{Números construibles}
+
+\begin{definition}
+    Un número complejo $\alpha$ es construible si existe una  secuencia finita de construcciones con regla y compás que empieza con 0 y 1 y acaba con $\alpha$.
+\end{definition}
+
+\begin{proposition}
+    El conjunto $\mathcal{C} = \{ \alpha \in \mathbb{C} : \alpha \text{ es construible} \}$ es un subcuerpo de $\mathbb{C}$. Además:
+    \begin{enumerate}
+        \item Sea $\alpha = a + bi \in \mathbb{C}$. Entonces $\alpha \in \mathcal{C}$ si y solo si $a, b \in \mathcal{C}$.
+        \item Si $\alpha \in \mathcal{C}$ entonces $\sqrt{\alpha} \in \mathcal{C}$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{theorem}
+    Sea $\alpha$ un número complejo. Entonces $\alpha$ es construible si y solo si existe una sucesión de cuerpos
+    $$\mathbb{Q} = F_0 \subset F_1 \subset \dots \subset F_{n-1} \subset F_n \subset \mathbb{C}$$
+    tal que $\alpha \in F_n$ y $[F_i : F_{i-1}] = 2$ para todo $i = 1, \dots, n$.
+\end{theorem}
+
+\begin{corollary}
+    El cuerpo de números construibles es el subcuerpo más pequeño de $\mathbb{C}$ que es cerrado para la raíz cuadrada.
+\end{corollary}
+
+\begin{corollary}
+    Si $\alpha \in \mathbb{C}$ es un número construible, entonces $[\mathbb{Q}(\alpha) : \mathbb{Q}] = 2^m$ para algún $m \geq 0$.
+\end{corollary}
+
+\begin{theorem}
+    Sea $\alpha \in \mathbb{C}$ algebraico sobre $\mathbb{Q}$ y sea $K$ cuerpo de descomposición del polinimio mínimo de $\alpha$ sobre $\mathbb{Q}$.
+    Entonces $\alpha$ es construible si y solo si $[K : \mathbb{Q}]$ es una potencia de 2.
+\end{theorem}
+
+\section{Algunas construcciones imposibles}
+\begin{itemize}
+    \item Trisección del ángulo
+    \item Duplicación del cubo
+    \item Cuadratura del círculo
+\end{itemize}
+
+\section{Polígonos regulares}
+
+\begin{definition}
+    Un primo impar $p$ es un primo de Fermat si se puede escribir como $p = 2^{2^m}+1$ para algún entero $m \geq 0$.
+\end{definition}
+
+\begin{example}
+    Los números primos de Fermat conocidos son 3, 5, 17, 257 y 65537.
+\end{example}
+
+\begin{lemma}
+    Sea $k$ un entero positivo. Si $p = 2^k+1$ es un primo impar, entonces $p$ es un primo de Fermat.
+\end{lemma}
+
+\begin{theorem}
+    Sea $n > 2$ un entero. Entonces un $n$-ágono regular puede ser construido por regla y compás si y solo si
+    $$n = 2^s p_1 \dots p_r$$
+    donde $s \geq 0$ es un entero y $p_1, \dots, p_r$ son distintos primos de Fermat.
+\end{theorem}

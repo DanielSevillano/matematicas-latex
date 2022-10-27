@@ -1,0 +1,651 @@
+\chapter{Introducción}
+\section{Superficies regulares}
+
+\begin{definition}
+    $S \subset \mathbb{R}^3$ es superficie regular si para todo $p \in S$ existe una aplicación $X : U \to V$, con $U \subset \mathbb{R}^2$ abierto y $V \subset S$ entorno abierto de $p$ en $S$, que verifica:
+    \begin{itemize}
+        \item $X$ es diferenciable.
+        \item $X$ es homeomorfismo.
+        \item $dX_q : \mathbb{R}^2 \to \mathbb{R}^3$ es inyectiva para todo $q \in U$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    \hfill
+    \begin{itemize}
+        \item $V$ se llama un entorno coordenado de $p$ en $S$.
+        \item $X$ es una parametrización de $S$ en $p$ o un sistema local de coordenadas.
+        \item $(U, X)$ es una carta en $p$.
+        \item $\{ (U_i, X_i), i \in I : \bigcup_i X_i(U_i) = S \}$ es un atlas.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Las parametrizaciones de una superficie regular no son únicas.
+\end{remark}
+
+\begin{proposition}
+    Si $f : U \to \mathbb{R}$ es una función diferenciable definida sobre un abierto $U$, entonces el grafo de $f$
+    $$G(f) = \{ (x, y, f(x, y)) : (x, y) \in U \}$$
+    es una superficie regular.
+\end{proposition}
+
+\begin{definition}
+    Sea $F : U \subset \mathbb{R}^n \to \mathbb{R}^m$, con $U$ abierto.
+    \begin{itemize}
+        \item $p \in U$ es un punto crítico de $F$ si $dF_p$ no es sobreyectiva. Entonces $F(p) \in \mathbb{R}^m$ es un valor crítico.
+        \item $p$ es un punto regular si no es crítico. Análogamente, $F(p)$ es valor regular si no es crítico.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Si $f : U \subset \mathbb{R}^3 \to \mathbb{R}$, entonces $df_p$ es sobreyectiva o $df_p = (0,0,0)$.
+    Luego $a \in f(U)$ es valor regular de $f$ si y solo si $f_x, f_y, f_z$ no se anulan simultáneamente en ningún punto de $f^{-1}(a)$.
+\end{remark}
+
+\begin{proposition}
+    Si $f: U \subset \mathbb{R}^2 \to \mathbb{R}$ diferenciable y $a \in f(U)$ es valor regular de $f$, entonces $f^{-1}(a)$ es superficie regular de $\mathbb{R}^3$.
+\end{proposition}
+
+\begin{proposition}
+    Sea $S \subset \mathbb{R}^3$ una superficie regular.
+    Entonces dado $p \in S$, existe $V$ entorno abierto de $p$ en $S$ tal que $V$ es el grafo de una función diferenciable de una de las tres formas siguientes:
+    $$z = f(x, y), \quad y = g(x, z), \quad \text{o} \quad x = h(y, z)$$
+\end{proposition}
+
+\begin{proposition}
+    Sea $S$ una superficie regular y sea $X : U \subset \mathbb{R}^2 \to S$ una aplicación diferenciable, inyectiva y tal que $dX_q$ es inyectiva para todo $q \in U$.
+    Entonces $X^{-1} : X(U) \to U$ es continua y, en consecuencia, $X$ es una parametrización de $S$.
+\end{proposition}
+
+\begin{remark}
+    Es necesario que $S$ sea superficie regular.
+\end{remark}
+
+\begin{definition}
+    Una superficie parametrizada es una aplicación $X : U \subset \mathbb{R}^2 \to \mathbb{R}^3$ diferenciable.
+    Se dice que $X(U) \subset \mathbb{R}^3$ es la traza de $X$.\\
+    $X$ es regular si $dX_q : \mathbb{R}^2 \to \mathbb{R}^3$ es inyectiva para todo $q \in U$.
+\end{definition}
+
+\begin{proposition}
+    Sea $X : U \subset \mathbb{R}^2 \to \mathbb{R}^3$ superficie parametrizada regular y sea $q \in U$.
+    Entonces existe $V$ entorno abierto de $q$ en $U$ tal que $X(U)$ es superficie regular.
+\end{proposition}
+
+\begin{definition}
+    $C \subset \mathbb{R}^3$ es una curva regular si para todo $p \in C$ existe $V$ entorno abierto de $p$ y $\alpha : I \to U \int C$, con $I$ intervalo abierto, tal que:
+    \begin{itemize}
+        \item $\alpha$ es diferenciable.
+        \item $\alpha$ es homeomorfismo.
+        \item $d\alpha_t$ = $\alpha'(t)$ es inyectiva para todo $t$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Una superficie de revolución es un subconjunto $S \subset \mathbb{R}^3$ obtenida al rotar una curva plana regular $C$ alrededor de un eje contenido en el mismo plano que la curva y que no corte a la curva.
+\end{definition}
+
+\section{Cálculo diferencial en superficies regulares}
+
+\begin{definition}
+    Sea $f: S \subset \mathbb{R}^3 \to \mathbb{R}$, $X$ parametrización de $S$ y $p \in \mathbb{R}^3$.
+    $f$ es diferenciable en $p$ si y solo si $f \circ X$ es diferenciable en $X^{-1}(p)$.
+\end{definition}
+
+\begin{remark}
+    Esta definición no depende de la parametrización de $S$.
+\end{remark}
+
+\begin{definition}
+    $f: O \subset S \to \mathbb{R}$ es una función diferenciable en $p \in O$ si para alguna parametrización $X : U \to S$, $p \in X(U)$, se tiene que $f \circ X : U \to \mathbb{R}$ es diferenciable en $X^{-1}(p)$.
+\end{definition}
+
+\begin{definition}
+    $\varphi : S_1 \to S_2$ es difeomorfismo si es diferenciable, biyectiva y $\varphi^{-1}$ es diferenciable.
+\end{definition}
+
+\begin{definition}
+    Un vector tangente a $S$ en $p$ es un vector tangente a una curva diferenciable parametrizada que pase por $p$.\\
+    Es decir, una curva $\alpha : (-\varepsilon, \varepsilon) \to S$, con $\alpha(0) = p$, $\alpha'(0) \in T_pS$.
+\end{definition}
+
+\begin{proposition}
+    Sea $X$ una parametrización, $dX_q(\mathbb{R}^2) = T_pS$, con $q = X^{-1}(p)$.
+\end{proposition}
+
+\begin{definition}
+    Sea $\varphi : O \subset S_1 \to S_2$ una aplicación diferenciable definida en un abierto $O$ de $S_1$ y $p \in O$.
+    Consideramos la diferencial de $\varphi$ en $p$
+    $$d\varphi_p : T_pS_1 \to T_{\varphi(p)}S_2$$
+    Sean $w \in T_pS_1$ y $\alpha : (-\varepsilon, \varepsilon) \to S_1$ curva diferenciable parametrizada con $\alpha(0) = p, \alpha'(0) = w$.
+    Entonces $d\varphi_p(w) = (\varphi \circ \alpha)'(0)$.\\
+    Se tiene:
+    \begin{itemize}
+        \item $\varphi \circ \alpha$ es una curva diferenciable parametrizada sobre $S_2$. $(\varphi \circ \alpha)'(0) \in T_{\varphi(p)}S_2$.
+        \item $d\varphi_p$ no depende de $\alpha$ y es lineal.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Sea $S$ superficie regular, $O$ abierto de $S$, $f : O \subset S \to \mathbb{R}$ diferenciable.
+    Consideramos la diferencial de $f$ en $p$
+    $$df_p : T_pS \to \mathbb{R}$$
+    Sean $w \in T_pS$ y $\alpha : (-\varepsilon, \varepsilon) \to S$ curva diferenciable parametrizada con $\alpha(0) = p, \alpha'(0) = w$.
+    Entonces $df(w) = (f \circ \alpha)'(0)$.\\
+    Verifica:
+    \begin{itemize}
+        \item Está bien definida y es lineal.
+        \item Si $f = F|_S$ con $F : O \subset \mathbb{R}^3 \to \mathbb{R}$, entonces $df_p = dF_p|_{T_pS}$.
+    \end{itemize}
+\end{definition}
+
+\section{Primera forma fundamental}
+
+\begin{definition}
+    Sea $S$ superficie regular.
+    Para cada $p \in S$ el producto escalar en $\mathbb{R}^3$ induce una métrica en $T_pS$.
+    $$\left\langle w_1, w_2 \right\rangle _p = \left\langle w_1, w_2 \right\rangle, \quad \forall w_1, w_2 \in T_pS$$
+    La forma cuadrática asociada se llama primera forma fundamental de $S$ en $p$.
+    $$I_p : T_pS \to \mathbb{R}$$
+    $$I_p(w) = \left\langle w, w \right\rangle _p = |w|^2 \geq 0$$
+\end{definition}
+
+\begin{note}
+    Dada una parametrización $X$ de $S$, $\{ X_u, X_v \}_q$ base de $T_pS$, $q = X^{-1}(p)$.
+    Llamamos $E$, $F$ y $G$ a los coeficientes de la primera forma fundamental.
+    $$E_q = \left\langle X_u(q), X_u(q) \right\rangle$$
+    $$F_q = \left\langle X_u(q), X_v(q) \right\rangle$$
+    $$G_q = \left\langle X_v(q), X_v(q) \right\rangle$$
+    Estas son funciones diferenciables en $X(U)$.
+\end{note}
+
+\section{Propiedades de las curvas}
+
+\begin{definition}
+    Sea $\alpha : I \to S$ una curva diferenciable parametrizada.
+    Se define la longitud de arco como una aplicación $s : I \to \mathbb{R}$, con $t_0 \in I$ fijo, dada por:
+    $$s(t) = \int^t_{t_0} |\alpha'(r)|dr = \int^t_{t_0} \sqrt{\left\langle \alpha'(r), \alpha'(r) \right\rangle} dr$$
+\end{definition}
+
+\begin{remark}
+    Sea $(u_0, v_0) \in U$ fijo.
+    $$u \mapsto X(u, v_0), \quad v \mapsto X(u_0, v)$$
+    $$s_{v_0}(u) = \int^u_{u_0} |X_u| dr = \int^u_{u_0} \sqrt{E} dr$$
+    $v = v_0$ está parametrizada por el arco si y solo si $E(u, v_0) = 1$ para todo $u$.
+    $$s_{u_0}(v) = \int^v_{v_0} |X_v| dr = \int^v_{v_0} \sqrt{G} dr$$
+    $u = u_0$ está parametrizada por el arco si y solo si $G(u_0, v) = 1$ para todo $v$.\\
+    En general, todas las curvas coordenadas de $X$ están parametrizadas por el arco si y solo si $E(u, v) = 1$ y $G(u, v) = 1$, para todo $(u, v) \in U$.
+\end{remark}
+
+\begin{definition}
+    El ángulo de dos curvas es el menor ángulo que forman las rectas tangentes.
+    Sean $\alpha, \beta : I \to S$, con $\alpha(t_0) = \beta(t_0)$.
+    $$\cos \theta(t_0) = \frac{\left\langle \alpha'(t_0), \beta'(t_0) \right\rangle}{|\alpha'(t_0)||\beta'(t_0)|}$$
+\end{definition}
+
+\begin{remark}
+    El ángulo de las curvas coordenadas $u = u_0$ y $v = v_0$ en $X(u_0, v_0)$ es
+    $$\cos \theta(u_0, v_0) = \frac{\left\langle X_u, X_v \right\rangle}{|X_u||X_v|} (u_0, v_0) = \frac{F}{\sqrt{EG}} (u_0, v_0)$$
+    Las curvas coordenadas de una parametrización $u = cte$, $v = cte$ son ortogonales en todos los puntos de $U$ si y solo si $F(u, v) = 0$ para todo $(u, v) \in U$.\\
+    En ese caso se dice que $X$ es una parametrización ortogonal.
+\end{remark}
+
+\section{Orientación en superficies}
+
+\begin{properties}
+    \hfill
+    \begin{itemize}
+        \item Dos bases ordenadas de un mismo espacio vectorial representan la misma orientación si el determinante de la matriz de cambio de base es positivo.
+              Cada clase de equivalencia es una orientación en $U$.
+        \item $\{X_u, X_v\}$ determina una orientación en $S$.
+              $\{X_u, X_v, X_u \land X_v\}$ es una base positiva, con $N = \frac{X_u \land X_v}{|X_u \land X_v|}$.
+    \end{itemize}
+\end{properties}
+
+\begin{definition}
+    $S$ es orientable si se puede recubrir con una familia de entornos coordenados tal que en la intersección de dos tales entornos el determinante jacobiano del cambio de coordenadas tiene determinante positivo.
+    La elección de tal familia se llama una orientación de $S$ y se dice que $S$ está orientada.
+\end{definition}
+
+\begin{definition}
+    Sea $V$ abierto de $S$, se llama campo diferenciable de vectores normales unitarios a $N : V \to \mathbb{R}^3$ diferenciable tal que para todo $p \in S$ se tiene que $N(p) \perp T_pS$ y $|N(p)| = 1$.
+\end{definition}
+
+\begin{theorem}
+    $S$ es orientable si y solo si existe un campo diferenciable $N$ de vectores normales unitarios sobre $S$.
+\end{theorem}
+
+\begin{note}
+    La elección de dicho campo normal $N$ determina una orientación en $S$.
+\end{note}
+
+\begin{proposition}
+    Si $S$ es imagen inversa de un valor regular, entonces $S$ es orientable.
+\end{proposition}
+
+\section{Segunda forma fundamental}
+
+\begin{definition}
+    Sea $S \subset \mathbb{R}^3$ orientable y orientada con orientación $N : S \to \mathbb{R}^3$, con $|N(p)| = 1$ para todo $p \in S$.
+    Luego $N(p) \in S^2(1) \equiv S^2 = \{ (x, y, z) \in \mathbb{R}^3 : x^2+y^2+z^2 = 1 \}$.\\
+    La aplicación diferenciable $N : S \to S^2$ es la aplicación de Gauss.
+\end{definition}
+
+\begin{note}
+    Se mira $N$ como aplicación diferenciable entre superficies, no como un campo de vectores.
+    El vector normal se toma con origen en el origen de $\mathbb{R}^3$ y el extremo da un punto de $S^2$.
+\end{note}
+
+\begin{remark}
+    Si se cambia la orientación, también se cambia la aplicación de Gauss.
+\end{remark}
+
+\begin{definition}
+    La diferencial de la aplicación de Gauss es, para $p \in S$, $dN_p : T_pS \to T_{N(p)}S^2$ lineal.
+    Como $N(p) \perp T_pS$ y $N(p) \perp T_{N(p)}S^2$, estos son planos paralelos, así que se pueden identificar y considerar $dN_p : T_pS \to T_pS$ endomorfismo de $T_pS$.
+    Este mide la variación en dirección de $N$ sobre las curvas que pasan por $p$ en un entorno de $p$.
+    $$dN_p(w) = \frac{d}{dt}|_{t=0} (N \circ \alpha)(t) = (N \circ \alpha)'(0)$$
+\end{definition}
+
+\begin{proposition}
+    $dN_p$ es autoadjunta respecto a $\left\langle , \right\rangle$, es decir, $\left\langle dN_p(v), w \right\rangle = \left\langle v, dN_p(w) \right\rangle, \forall v, w \in T_pS$.
+    Luego se puede asociar la forma bilineal simétrica con la forma cuadrática.
+\end{proposition}
+
+\begin{definition}
+    Dicha forma cuadrática $\amalg_p : T_pS \to \mathbb{R}$
+    $$\amalg_p(w) = -\left\langle dN_p(w), w \right\rangle$$
+    es la segunda forma fundamental de $S$ en $p$.
+\end{definition}
+
+\begin{remark}
+    $S_p = -dN_p$ es el operador de Weingarten en $p$.
+\end{remark}
+
+\begin{definition}
+    Sea $C$ una curva regular en $S$ que pasa por $p$.
+    Se define la curvatura normal de $C$ en $p$ como
+    $$k_n(p) = k(p) \left\langle n(p), N(p) \right\rangle$$
+\end{definition}
+
+\begin{remark}
+    $k_n$ cambia de signo si cambia la orientación en $S$ y no depende de la orientación en $C$.
+\end{remark}
+
+\begin{theorem}[Teorema de Meusnier]
+    Todas las curvas sobre una superficie regular orientable $S$ que tienen la misma recta tangente en $p \in S$ tienen la misma curvatura normal en $p$.
+\end{theorem}
+
+\begin{remark}
+    \hfill
+    \begin{itemize}
+        \item $\amalg_p(w) = k_n(p)$, siendo $w$ unitario.
+        \item La curvatura de la sección normal a lo largo de $w$ de $S$ en $p$ es el valor absoluto de la curvatura normal en $p$ de cualquier curva sobre $S$ que pase por $p$ con vector tangente $w$.
+              $$k(p) = |\amalg_p(w)|$$
+    \end{itemize}
+\end{remark}
+
+\begin{theorem}
+    Sea $S$ superficie orientable con aplicación de Gauss $N : S \to S^2$.
+    Para todo $p \in S$ existe $\{e_1, e_2\}$ base ortonormal de $T_pS$ con $dN_p(e_1) = -k_1e_1, dN_p(e_2) = -k_2e_2$.
+    Además, $k_1$ y $k_2$ son el máximo y el mínimo de $\amalg_p$ sobre la circunferencia unidad de $T_pS$, es decir, los valores extremos de las curvaturas normales en $p$.
+\end{theorem}
+
+\begin{theorem}[Fórmula de Euler]
+    Sea $w \in T_pS$, $|w| = 1$.
+    $$\amalg_p(w) = \cos^2(t) k_1 + \sin^2(t) k_2$$
+    con $\cos(t) = \left\langle w, e_1 \right\rangle, \sin(t) = \left\langle w, e_2 \right\rangle$, es decir, $t$ es el ángulo que forma $w$ con $e_1$ en la orientación de $T_pS$.
+\end{theorem}
+
+\begin{definition}
+    $k_1$ y $k_2$ son las curvaturas principales de $S$ en $p$.
+    Las direcciones asociadas se llaman direcciones principales en $p$.
+\end{definition}
+
+\begin{definition}
+    Una curva regular conexa $C$ en $S$ es línea de curvatura de $S$ si para todo $p \in C$ la recta tangente a $C$ en $p$ es una dirección principal en $p$.
+\end{definition}
+
+\begin{definition}
+    \hfill
+    \begin{itemize}
+        \item La curvatura de Gauss de $S$ en $p$ se define como $K(p) = det(dN_p)$.
+        \item La curvatura media de $S$ en $p$ se define como $H(p) = -\frac{1}{2} tr(dN_p)$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    En una base ortonormal de direcciones principales
+    $$dN_p \equiv
+        \begin{pmatrix}
+            -k_1 & 0    \\
+            0    & -k_2
+        \end{pmatrix} \Rightarrow
+        K = k_1 k_2, \quad H = \frac{k_1+k_2}{2}$$
+\end{remark}
+
+\begin{remark}
+    Ante un cambio de orientación, $k_1$, $k_2$ y $H$ cambian de signo, mientras que $K$ no cambia.
+\end{remark}
+
+\begin{definition}
+    Sea $p \in S$, se puede clasificar según su curvatura de Gauss.
+    \begin{itemize}
+        \item Si $K(p) > 0$, decimos que $p$ es elíptico.
+        \item Si $K(p) < 0$, decimos que $p$ es hiperbólico.
+        \item Si $K(p) = 0$ y $dN_p \neq 0$, decimos que $p$ es parabólico.
+        \item Si $dN_p \equiv 0$, decimos que $p$ es plano.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{itemize}
+        \item Si $k_1 = k_2$, todas las direcciones son principales.
+        \item Si $k_1 \neq k_2$, hay dos direcciones principales y son perpendiculares.
+    \end{itemize}
+\end{remark}
+
+\begin{definition}
+    Un punto $p$ es umbilical si $k_1(p) = k_2(p)$.
+    En ese caso, $k_n = k_1 = k_2$ y todas las direcciones de $T_pS$ son principales.
+\end{definition}
+
+\begin{remark}
+    Los puntos umbilicales solo pueden ser elípticos o planos.
+\end{remark}
+
+\begin{theorem}
+    Si todos los puntos de una superficie conexa $S$ son umbilicales, entonces $S$ es un abierto de un plano o de una esfera.
+\end{theorem}
+
+\begin{definition}
+    Una dirección asintótica de $S$ en $p$ es una dirección de $T_pS$ para la cual la curvatura normal es cero.
+\end{definition}
+
+\begin{definition}
+    Una curva o línea asintótica es una curva regular conexa $C$ en $S$ tal que, para todo $p \in C$, la recta tangente a $C$ en $p$ es una dirección asintótica.
+\end{definition}
+
+\begin{note}
+    $C$ es una curva asintótica si y solo si $k_n(p) = k(p) \left\langle n, N \right\rangle = 0$.
+\end{note}
+
+\begin{remark}
+    \hfill
+    \begin{itemize}
+        \item En un punto elíptico no hay direcciones asintóticas.\\
+              $k_1$ y $k_2$ tienen el mismo signo, así que $k_2 < k_n < k_1$.
+        \item En un punto plano todas las direcciones son asintóticas.
+        \item En un punto hiperbólico hay dos direcciones asintóticas.\\
+              $k_1 \cos^2(t) + k_2 \sin^2(t) = 0$ tiene dos soluciones.
+        \item En un punto parabólico hay una dirección asintótica.
+              $k_1 \cos^2(t) = 0$ tiene una solución.
+    \end{itemize}
+\end{remark}
+
+\begin{proposition}
+    Sea $S$ orientada, con $N = \frac{X_u \land X_v}{|X_u \land X_v|}$. En la base $\{ X_u, X_v \}$
+    $$\amalg_p =
+        \begin{pmatrix}
+            e & f \\
+            f & g
+        \end{pmatrix},$$
+    $$e = \left\langle N, X_{uu} \right\rangle = \frac{det(X_u, X_v, X_{uu})}{\sqrt{EG-F^2}}$$
+    $$g = \left\langle N, X_{vv} \right\rangle = \frac{det(X_u, X_v, X_{uv})}{\sqrt{EG-F^2}}$$
+    $$f = \left\langle N, X_{uv} \right\rangle = \frac{det(X_u, X_v, X_{vv})}{\sqrt{EG-F^2}}$$
+\end{proposition}
+
+\begin{proposition}
+    $$dN_p = -I_p^{-1} \amalg_p$$
+\end{proposition}
+
+\begin{proposition}
+    $$K = \frac{eg-f^2}{EG-F^2}$$
+    $$H = \frac{1}{2} \frac{eG - 2fF + gE}{EG-F^2}$$
+    $K$ y $H$ son diferenciables.
+\end{proposition}
+
+\begin{remark}
+    Si una parametrización de una superficie regular es tal que $F = f = 0$, entonces las matrices de $I_p$ y $\amalg_p$ son diagonales y $dN_p$ es diagonal en $\{X_u, X_v\}$.
+    $$dN_p = -
+        \begin{pmatrix}
+            E & 0 \\
+            0 & G
+        \end{pmatrix}^{-1}
+        \begin{pmatrix}
+            e & 0 \\
+            0 & g
+        \end{pmatrix} = -
+        \begin{pmatrix}
+            \frac{e}{E} & 0           \\
+            0           & \frac{g}{G}
+        \end{pmatrix}$$
+    Así que las curvaturas principales son $\frac{e}{E}$ y $\frac{g}{G}$.
+\end{remark}
+
+\section{Geometría intrínseca}
+
+\begin{definition}
+    $\varphi : S \to \bar{S}$ es isometría si:
+    \begin{itemize}
+        \item $\varphi$ es difeomorfismo.
+        \item $d\varphi_p : T_pS \to T_{\varphi(p)}\bar{S}$ es isometría lineal para todo $p \in S$.
+    \end{itemize}
+    Se dice que $S$ y $\bar{S}$ son isométricas.
+\end{definition}
+
+\begin{remark}
+    Como $\varphi$ es difeomorfismo, entonces $d\varphi_p$ es isomorfismo.
+    Luego $d\varphi_p$ es isometría lineal si y solo si conserva el producto escalar.\\
+    Esto es, si para cada $w_1, w_2 \in T_pS$
+    $$\left\langle w_1, w_2 \right\rangle _p = \left\langle d\varphi_p(w_1), d\varphi_p(w_2) \right\rangle _{\varphi(p)}$$
+\end{remark}
+
+\begin{definition}
+    Sea $V$ entorno abierto de $p$ en $S$.
+    $\varphi : V \to \bar{S}$ es isometría local si existe $\bar{V}$ entorno abierto de $\varphi(p)$ en $\bar{S}$ tal que $\varphi : V \to \bar{V}$ es isometría.\\
+    $S$ es localmente isométrica a $\bar{S}$ si para todo $p \in S$ existe isometría local a $\bar{S}$.
+    Si además $\bar{S}$ es localmente isométrica a $S$, se dice que $S$ y $\bar{S}$ son localmente isométricas.
+\end{definition}
+
+\begin{remark}
+    Ser localmente isométricas no implica que exista $\varphi : S \to \bar{S}$ isometría local, porque puede que no sea la misma en todos los puntos.
+\end{remark}
+
+\begin{proposition}
+    Sean $X: U \subset \mathbb{R}^2 \to S, \bar{X}: U \subset \mathbb{R}^2 \to \bar{S}$ parametrizaciones tales que $E = \bar{E}, F = \bar{F}, G = \bar{G}$ en $U$.
+    Entonces $\varphi = \bar{X} \circ X^{-1}: X(U) \to \bar{X}(U)$ es isometría, es decir, $\varphi: X(U) \to \bar{S}$ es isometría local.
+\end{proposition}
+
+\begin{proposition}
+    Sea $\varphi: S \to \bar{S}$ isometría, $X: U \to S$ parametrización.
+    Entonces $\bar{X} = \varphi \circ X: U \to \bar{S}$ es una parametrización de $\bar{S}$ en $\varphi(p)$ con $E = \bar{E}, F = \bar{F}, G = \bar{G}$ en $U$.
+\end{proposition}
+
+\begin{note}
+    La inversa y la composición de isometrías son isometrías.
+\end{note}
+
+\begin{proposition}
+    Sea $\varphi: S \to \bar{S}$ difeomorfismo.
+    \begin{enumerate}
+        \item $\varphi$ es isometría si y solo si $\varphi$ conserva la longitud de arco de las curvas parametrizadas en $S$.
+        \item Si $\varphi$ es isometría entonces $\varphi$ conserva ángulos y áreas.
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+    $\varphi: S \to \bar{S}$ es aplicación conforme si
+    \begin{itemize}
+        \item $\varphi$ es difeomorfismo.
+        \item Para todo $p \in S$, $w_1, w_2 \in T_pS$
+              $$\left\langle d\varphi_p(w_1), d\varphi_p(w_2) \right\rangle _{\varphi(p)} = \lambda^2(p) \left\langle w_1, w_2 \right\rangle _p$$
+              donde $\lambda^2$ es una función diferenciable no nula sobre $S$.
+    \end{itemize}
+    Se dice que $S$ y $\bar{S}$ son conformes.
+\end{definition}
+
+\begin{definition}
+    $\varphi: V \to \bar{S}$, con $V$ entorno abierto de $p$ en $S$, es aplicación conforme local en $p$ si existe un entorno abierto $\bar{V}$ de $\varphi(p)$ en $\bar{S}$ tal que $\varphi: V \to \bar{V}$ es aplicación conforme.
+    Si para todo $p \in S$ existe una aplicación conforme local en $p$, entonces $S$ es localmente conforme a $\bar{S}$.
+\end{definition}
+
+\begin{remark}
+    Una isometría es una aplicación conforme con $\lambda(p) = 1, \forall p$.
+\end{remark}
+
+\begin{note}
+    Una aplicación conforme no conserva longitudes de curvas, mientras que conserva los ángulos.
+\end{note}
+
+\begin{proposition}
+    Sean $X: U \subset \mathbb{R}^2 \to S, \bar{X}: U \subset \mathbb{R}^2 \to \bar{S}$ parametrizaciones tales que $\bar{E} = \lambda^2 E, \bar{F} = \lambda^2 F, \bar{G} = \lambda^2 G$ en $U$, con $\lambda^2$ diferenciable y $\lambda^2 \neq 0$ en $U$.
+    Entonces $\varphi = \bar{X} \circ X^{-1}: X(U) \to \bar{S}$ es una aplicación conforme local.
+\end{proposition}
+
+\begin{corollary}
+    Dos superficies cualesquiera son localmente conformes.
+\end{corollary}
+
+\begin{proposition}
+    Sea $\varphi: S \to \bar{S}$ aplicación conforme, $X: U \to S$ parametrización.
+    Entonces $\bar{X} = \varphi \circ X: U \to \bar{S}$ es una parametrización de $\bar{S}$ en $\varphi(p)$ con $\bar{E} = \lambda^2 E, \bar{F} = \lambda^2 F, \bar{G} = \lambda^2 G$ en $U$.
+\end{proposition}
+
+\section{El teorema de Gauss}
+
+\begin{proposition}
+    Sea $S$ una superficie regular orientable y orientada, con orientación $N: S \to S^2$ y sea $X: U \subset \mathbb{R}^2 \to S$ una parametrización de $S$ compatible con la orientación $N$.
+    Es decir, $N = \frac{X_u \land X_v}{|X_u \land X_v|}$ en $U$.
+    A cada punto de $X(U)$ se le puede asignar un triedro $\{X_u, X_v, N\}$, que es una base de $\mathbb{R}^3$.
+    Derivando estos vectores con respecto de $u$ y $v$ obtenemos las siguientes ecuaciones:
+    $$\left\{
+        \begin{array}{lcl}
+            X_{uu} & = & \Gamma^1_{11}X_u + \Gamma^2_{11}X_v + eN         \\
+            X_{uv} & = & \Gamma^1_{12}X_u + \Gamma^2_{12}X_v + fN = X{vu} \\
+            X_{vv} & = & \Gamma^1_{22}X_u + \Gamma^2_{22}X_v + gN         \\
+            N_u    & = & a_{11}X_u + a_{21}X_v                            \\
+            N_v    & = & a_{12}X_u + a_{22}X_v
+        \end{array}
+        \right.$$
+    Estas se conocen como ecuaciones de Gauss-Weingarten.
+    Los $\Gamma^k_{ij}$ se denominan los símbolos de Christoffel de $S$ en la parametrización $X$.
+\end{proposition}
+
+\begin{proposition}
+    Consideramos las relaciones
+    $$\left\{
+        \begin{array}{lcl}
+            (X_{uu})_v - (X_{uv})_u & = & 0 \\
+            (X_{vv})_u - (X_{vu})_v & = & 0 \\
+            N_{uv} - N_{vu}         & = & 0
+        \end{array}
+        \right.$$
+    Estas son las condiciones que hacen que el sistema de ecuaciones en derivadas parciales que definen las ecuaciones de Gauss-Weingarten sea integrable dada una condición inicial.\\
+    Sustituyendo las ecuaciones de Gauss-Weingarten en estas relaciones y resolviendo llegamos a la fórmula de Gauss si $E \neq 0$:
+    $$\Gamma^1_{11} \Gamma^2_{12} + \Gamma^2_{11} \Gamma^2_{22} + (\Gamma^2_{11})_v - \Gamma^1_{12} \Gamma^2_{11} - \Gamma^2_{12} \Gamma^2_{12} - (\Gamma^2_{12})_u = EK$$
+\end{proposition}
+
+\begin{remark}
+    Como $E \neq 0$, la fórmula de Gauss permite obtener la curvatura de Gauss a partir de los símbolos de Christoffel, es decir, que $K$ es intrínseco.
+\end{remark}
+
+\begin{note}
+    Existen otras dos versiones de la fórmula de Gauss cuando $F \neq 0$ y $G \neq 0$, respectivamente.
+\end{note}
+
+\begin{theorem}[Teorema Egregium de Gauss]
+    La curvatura de Gauss de una superficie regular es invariante frente a isometrías locales.
+\end{theorem}
+
+\begin{remark}
+    El recíproco del teorema Egregium no es cierto en general.
+    Sin embargo, si dos superficies tienen la misma curvatura de Gauss constante, entonces dos entornos cualesquiera suficientemente pequeños de esas superficies son isométricos.
+\end{remark}
+
+\begin{note}
+    Siempre es posible calcular los símbolos de Christoffel en términos de los coeficientes de la primera forma fundamental y de sus derivadas.
+\end{note}
+
+\begin{remark}
+    Todos los conceptos geométricos y propiedades que se expresan en términos de los símbolos de Christoffel son invariantes por isometrías, puesto que solo dependen de la primera forma fundamental.
+\end{remark}
+
+\begin{proposition}
+    Las ecuaciones de Mainardi-Codazzi son
+    $$\left\{
+        \begin{array}{lcl}
+            e_v - f_u & = & e\Gamma^1_{12} + f(\Gamma^2_{12} - \Gamma^1_{11}) - g\Gamma^2_{11} \\
+            f_v - g_u & = & e\Gamma^1_{22} + f(\Gamma^2_{22} - \Gamma^1_{12}) - g\Gamma^2_{12}
+        \end{array}
+        \right.$$
+\end{proposition}
+
+\begin{note}
+    Las fórmulas de Gauss y las ecuaciones de Mainardi-Codazzi se conocen como ecuaciones de compatibilidad de la teoría de superficies.
+\end{note}
+
+\begin{theorem}[Teorema de Bonnet]
+    Sean $E, F, G, e, f, g$ funciones diferenciables definidas en un conjunto abierto $V \subset \mathbb{R}^2$ con $E > 0$, $G > 0$, y que verifican la fórmula de Gauss y las ecuaciones de Mainardi-Codazzi y $EG-F^2 > 0$.
+    Entonces para cada $q \in V$ existe un entorno abierto $U$ de $q$ en $V$ y un difeomorfismo
+    $$X: U \to X(U) \subset \mathbb{R}^3$$
+    tal que la superficie regular $X(U)$ tiene a $E, F, G$ y a $e, f, g$ como coeficientes de la primera y la segunda formas fundamentales respectivamente.\\
+    Además, si $U$ es conexo y si
+    $$\bar{X}: U \to \bar{X}(U) \subset \mathbb{R}^3$$
+    es otro difeomorfismo que satisface las mismas condiciones, entonces existe un movimiento rígido directo de $\mathbb{R}^3$, $\psi: \mathbb{R}^3 \to \mathbb{R}^3$, tal que $\bar{X} = \psi \circ X$.
+\end{theorem}
+
+\section{Parametrizaciones especiales}
+
+\begin{definition}[Parametrización ortogonal]
+    Se dice que una parametrización de una superficie regular $S$, $X: U \subset \mathbb{R}^2 \to S$, $(u, v) \in U$, es ortogonal si la función $\left\langle X_u, X_v \right\rangle$ es idénticamente cero en $U$, es decir, si las curvas coordenadas de $X$ se cortan ortogonalmente en cualquier punto de $X(U)$.
+\end{definition}
+
+\begin{remark}
+    En una parametrización ortogonal $F = 0$ en $X(U)$, es decir, la matriz de $I_p$ en la base $\{X_u, X_v\}_q$ de $T_pS$ es diagonal.
+    $$I_p \equiv
+        \begin{pmatrix}
+            E & 0 \\
+            0 & G
+        \end{pmatrix}$$
+    Esto permite obtener la siguiente expresión de la curvatura de Gauss.
+    $$K = -\frac{1}{2\sqrt{EG}} \left( \left( \frac{E_v}{\sqrt{EG}}\right)_v + \left( \frac{G_u}{\sqrt{EG}}\right)_u \right) $$
+\end{remark}
+
+\begin{theorem}
+    Dado un punto $p$ cualquiera de una superficie regular $S$ existe una parametrización ortogonal de $S$ en $p$.
+\end{theorem}
+
+\begin{definition}[Parametrización por líneas de curvatura]
+    Una parametrización de una superficie regular $S$, $X: U \to S$, es una parametrización por líneas de curvatura si $F = f = 0$, es decir, si las curvas coordenadas son las líneas de curvatura.
+\end{definition}
+
+\begin{remark}
+    En este caso, respecto a $\{X_u, X_v\}$, las matrices de $I_p$ y $\amalg_p$ son diagonales.
+    $$I_p \equiv
+        \begin{pmatrix}
+            E & 0 \\
+            0 & F
+        \end{pmatrix}, \quad
+        \amalg_p \equiv
+        \begin{pmatrix}
+            e & 0 \\
+            0 & g
+        \end{pmatrix}$$
+    Luego, calculando $dN_p$, obtenemos que $\frac{e}{E}$ y $\frac{g}{G}$ son las curvaturas principales.
+\end{remark}
+
+\begin{proposition}
+    Las curvas coordenadas de una parametrización en un entorno sin puntos umbilicales son las líneas de curvatura si y solo si $f = F = 0$ en todos los puntos del entorno.
+\end{proposition}
+
+\begin{corollary}
+    Las curvas coordenadas de una parametrización en un entorno de un punto no umbilical son las líneas de curvatura si y solo si $F = f = 0$ en el entorno.
+\end{corollary}
+
+\begin{theorem}
+    Sea $p$ un punto no umbilical de una superficie regular $S$.
+    Entonces existe una parametrización por líneas de curvatura en un entorno de $p$.
+\end{theorem}

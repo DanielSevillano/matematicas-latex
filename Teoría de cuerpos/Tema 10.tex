@@ -1,0 +1,74 @@
+\chapter{Solubilidad por radicales}
+\section{Extensiones radicales y solubles}
+
+\begin{definition}
+    Una extensión $F \subset K$ es radical si existen cuerpos intermedios
+    $$F = F_0 \subset F_1 \subset \dots \subset F_{m-1} \subset F_m = K$$
+    tales que para cada $i = 1, \dots m$ existe $\gamma_i \in F_i$, con $F_i = F_{i-1}(\gamma_i)$ y $\gamma^{m_i}_i \in F_{i-1}$ para algún $m_i > 0$.
+\end{definition}
+
+\begin{example}
+    $\mathbb{Q} \subset \mathbb{Q}(\sqrt[3]{2+\sqrt{2}})$ es una extensión radical.
+\end{example}
+
+\begin{example}
+    El polinomio $f(x) = x^3+x^2-2x-1 \in \mathbb{Q}[x]$ es irreducible.
+    Podemos comprobar que $f(x)$ tiene tres soluciones reales. Además, el discriminante de $f$ es 49, que es un cuadrado.
+    Se puede comprobar que el grupo de Galois de un polinimio irreducible de orden $n$ cuyo discriminante es un cuadrado es un subgrupo del grupo alternado $A_n$.
+    En este caso, podemos concluir que $Gal_\mathbb{Q}(f)$ es cíclico de grado 3.
+    Por tanto, el cuerpo de descomposición es de la forma $\mathbb{Q}(\alpha)$, donde $\alpha$ es una raíz de $f$.\\
+    Si $\mathbb{Q}(\alpha)$ es radical sobre $\mathbb{Q}$, debe existir un elemento primitivo $\gamma \in \mathbb{Q}(\alpha)$ tal que $\gamma^m \in \mathbb{Q}$ para algún $m \geq 3$.
+    Pero entonces, sus raíces conjugadas pertenecen al conjunto $\{ \gamma, \gamma\zeta_m, \dots, \gamma\zeta^{m-1}_m \}$.
+    Como $\zeta_m$ no pertenece a $\mathbb{Q}(\alpha) \subset \mathbb{R}$, esto no es posible.
+\end{example}
+
+\begin{definition}
+    Una extensión de cuerpos $F \subset K$ es solucble si existe una extensión $L$ de $K$ tal que $L/F$ es radical.
+\end{definition}
+
+\begin{definition}
+    Sea $F$ un cuerpo. Si $f \in F[x]$, la ecuación $f(x) = 0$ se dice que es soluble por radicales cuando el cuerpo de descomposición de $f$ sobre $F$ es una extensión soluble de $F$.
+\end{definition}
+
+\begin{proposition}
+    Sea $K/F$ una extensión de cuerpos y $E, E'$ cuerpos intermedios. Denotamos por $EE'$ al subcuerpo más pequeño de $K$ que contiene a $E$ y a $E'$. Entonces:
+    \begin{enumerate}
+        \item Si $K/E$ y $E/F$ son radicales, entonces $K/F$ es radical.
+        \item Si $E'/F$ es radical, entonces $EE'/E$ es radical.
+        \item Si $E/F$ y $E'/F$ son radicales, entonces $EE'/F$ es radical.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    Si $K/F$ es una extensión radical y $\bar{K}/F$ es clausuranormal de $K/F$, entonces $\bar{K}/F$ es radical.
+\end{proposition}
+
+\section{Teorema de Galois}
+
+\begin{lemma}
+    Sea $K/F$ una extensión de Galois finita de grado $m$ y $\zeta$ una raíz primitiva $m$-ésima de la unidad.
+    Entonces $K(\zeta)/F(\zeta)$ es una extensión de Galois cuyo grado divide a $m$.
+\end{lemma}
+
+\begin{lemma}
+    Sea $K/F$ una extensión de Galois finita con grupo de Galois cíclico de orden primo $p$.
+    Si $F$ contiene una raíz primitiva $p$-ésima de la unidad $\zeta_p$, entonces existe $\alpha \in K$ tal que $K = F(\alpha)$ y $\alpha^p \in F$.
+\end{lemma}
+
+\begin{theorem}[Galois]
+    Sea $K/F$ una extensión de Galois finita con $F$ de característica 0. Entonces son equivalentes:
+    \begin{enumerate}
+        \item $K/F$ es soluble.
+        \item $Gal(K/F)$ es un grupo soluble.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}[Galois]
+    Sea $F$ un cuerpo de característica 0 y $f \in F[x]$.
+    Entonces $f(x) = 0$ es soluble por radicales si y solo si $Gal_F(f)$ es un grupo soluble.
+\end{corollary}
+
+\begin{corollary}[Teorema de Abel-Ruffini]
+    Sea $F$ un cuerpo de característica 0.
+    La ecuacuón general de grado $n \geq 5$ no es soluble por radicales sobre $F$.
+\end{corollary}

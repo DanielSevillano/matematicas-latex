@@ -1,0 +1,290 @@
+\chapter{Extensiones de cuerpos}
+\section{Introducción}
+
+\begin{definition}
+    Un anillo es un conjunto no vacío $R$ con dos operaciones internas tal que:
+    \begin{enumerate}
+        \item $(R, +)$ es un grupo abeliano.
+        \item La multiplicación es asociativa.
+        \item $a(b + c) = ab + ac$ y $(a + b)c = ac + bc$ para todo $a, b, c \in R$.
+    \end{enumerate}
+    Si además la multiplicación es conmutativa entonces $R$ es un anillo conmutativo.
+    Si $R$ contiene un elemento neutro para la multiplicación, entonces $R$ es un anillo unitario.
+\end{definition}
+
+\begin{example}
+    $\mathbb{Z}$, $\mathbb{Z}_n$ y $\mathbb{Q}[x]$ son anillos conmutativos unitarios.
+\end{example}
+
+\begin{definition}
+    Sea $R$ un anillo conmutativo unitario, con neutro no nulo.
+    Un elemento $a \in R$ no nulo es un divisor de cero si existe un elemento $b \in R$ no nulo tal que $ab = 0$.\\
+    $R$ se llama dominio de integridad si no tiene divisores de cero.
+    Si además todo elemento no nulo es invertible, entonces $R$ es un cuerpo.
+\end{definition}
+
+\begin{example}
+    $\mathbb{Z}_n$ es un dominio de integridad si y solo si $n$ es primo.
+\end{example}
+
+\begin{example}
+    $\mathbb{Z}$ es un dominio de integridad, pero no todo elemento de $\mathbb{Z}$ es invertible. Luego $\mathbb{Z}$ no es un cuerpo.\\
+    En $\mathbb{Q}[x]$, no todo polinomio tiene una inversa. Sin embargo, como $\mathbb{Q}[x]$ es un dominio de integridad, podemos construir su cuerpo de fracciones.
+    $$\mathbb{Q}(x) = \{ \frac{p(x)}{q(x)} : p, q \in \mathbb{Q}[x], q(x) \neq 0 \}$$
+    Este es el cuerpo más pequeño que contiene a $\mathbb{Q}[x]$.
+\end{example}
+
+\begin{definition}
+    Sea $R$ un anillo. Un subconjunto $S$ de $R$ no vacío es un subanillo si es cerrado bajo las operaciones de $R$ y $S$ es un anillo.\\
+    Si $K$ es un cuerpo, entonces un subconjunto $F$ de $K$ no vacío es un subcuerpo si, bajo las operaciones de $K$, $F$ es un cuerpo. El elemento neutro de $F$ será $1_K$.\\
+    El subcuerpo más pequeño de $K$ se llama cuerpo primal de $K$.
+\end{definition}
+
+\begin{example}
+    El cuerpo primal de $\mathbb{R}$ o $\mathbb{C}$ es $\mathbb{Q}$.
+\end{example}
+
+\section{Extensiones de cuerpos}
+
+\begin{definition}
+    Sean $F$ y $K$ cuerpos. Decimos que $K$ es una extensión de $F$ cuando $F$ es un subcuerpo de $K$. Lo denotamos $K/F$.
+    Se tiene que $(K, +, *_F)$ es un espacio vectorial sobre $F$.
+\end{definition}
+
+\begin{definition}
+    Un espacio vectorial es un conjunto $V$ con un cuerpo $F$ y dos operaciones tales que:
+    \begin{enumerate}
+        \item $(V, +)$ es un grupo abeliano.
+        \item La multiplicación escalar $*_F : F \times V \to V$ satisface las siguientes propiedades:
+              \begin{enumerate}
+                  \item $a(v + w) = av + aw$, para todo $a \in F, v, w \in V$.
+                  \item $(a + b)v = av + bv$, para todo $a, b \in F, v \in V$.
+                  \item $(ab)v = a(bv)$, para todo $a, b \in F, v \in V$.
+                  \item $1_Fv = v$ para todo $v \in V$.
+              \end{enumerate}
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    $\mathbb{C}$ es una extensión de cuerpos de $\mathbb{R}$. Como $\mathbb{C}$ es un espacio vectorial sobre $\mathbb{R}$, ha de tener una base.
+    En efecto, los elementos 1 e $i$ son linealmente independientes sobre $\mathbb{R}$ y constituyen una base de $\mathbb{C}$.\\
+    Por tanto, $\mathbb{C}/\mathbb{R}$ es un espacio vectorial de dimensión 2.
+\end{example}
+
+\begin{definition}
+    Sea $K/F$ una extensión de cuerpos. El grado de $K/F$, denotado por $[K : F]$, es la dimensión de $K$ como espacio vectorial sobre $F$.\\
+    Si el grado de $K/F$ es finito, decimos que la extensión es finita. En caso contrario, decimos que la extensión es infinita.
+\end{definition}
+
+\begin{example}
+    Consideramos de nuevo el cuerpo $\mathbb{Q}(x)$, que es el cuerpo de fracciones de $\mathbb{Q}[x]$. Este es una extensión de cuerpos de $\mathbb{Q}$.\\
+    En el espacio vectorial $\mathbb{Q}(x)$ sobre $\mathbb{Q}$, el conjunto $\{1, x, x^2, \dots\}$ es linealmente independiente, con infinitos elementos.
+    Por tanto, no existe una base finita, luego la extensión $\mathbb{Q}(x)/\mathbb{Q}$ es infinita.
+\end{example}
+
+\begin{remark}
+    Una extensión de cuerpos $K/F$ tiene grado 1 si y solo si $K = F$.\\
+    Si el grado es 1, todo elemento no nulo de $K$ es una base sobre $K$, en particular $1_K = 1_F$. Por tanto, $K = \{ a1_F : a \in F \}  = F$.
+\end{remark}
+
+\begin{theorem}[Teorema de la torre]
+    Sea $F \subseteq K \subseteq L$ una sucesión de extensiones de cuerpos.
+    \begin{enumerate}
+        \item Si $[K : F] = \infty$ o $[L : K] = \infty$, entonces $[L : F] = \infty$.
+        \item Si $[K : F] < \infty$ y $[L : K] < \infty$. Entonces $[L : F] = [L : K] [K : F]$.
+    \end{enumerate}
+\end{theorem}
+
+\section{Elementos algebraicos y trascendentes}
+
+\begin{definition}
+    Sea $K/F$ una extensión de cuerpos y $\alpha \in K$. Decimos que $\alpha$ es algebraico sobre $F$ si existe un polinomio $f \in F[x]$ no constante tal que $f(\alpha) = 0$.\\
+    Si $\alpha$ no es algebraico sobre $F$, entonces decimos que es trascendente sobre $F$.
+\end{definition}
+
+\begin{example}
+    $\sqrt{2} \in \mathbb{R}$ es algebraico sobre $\mathbb{Q}$, puesto que es una raíz de $x^2 - 2 \in \mathbb{Q}[x]$.
+\end{example}
+
+\begin{example}
+    Veamos que $\sqrt{2} + \sqrt{3}$ es también algebraico sobre $\mathbb{Q}$. Sea $\alpha = \sqrt{2} + \sqrt{3}$.
+    \begin{align*}
+        (\alpha - \sqrt{2})^2              & = 3               \\
+        \alpha^2 - 2\sqrt{2}\alpha + 2 - 3 & = 0               \\
+        \alpha^2 - 1                       & = 2\sqrt{2}\alpha \\
+        \alpha^4 + 1 - 2\alpha^2           & = 8\alpha^2       \\
+        \alpha^4 - 10\alpha^2 + 1          & = 0
+    \end{align*}
+    Luego $\alpha = \sqrt{2} + \sqrt{3}$ es raíz de $x^4 - 10x^2 + 1$.
+\end{example}
+
+\begin{example}
+    $\pi$ es trascendente sobre $\mathbb{Q}$. Sin embargo, $\pi$ es algebraico sobre $\mathbb{R}$, pues es raíz de $x - \pi \in \mathbb{R}[x]$.
+\end{example}
+
+\begin{definition}
+    Se dice que una extensión de cuerpos es algebraica cuando cada elemento en $K$ es algebraico sobre $F$.
+    De lo contrario, se dice que la extensión es trascendente.
+\end{definition}
+
+\begin{example}
+    $\mathbb{R}/\mathbb{Q}$ es trascendente puesto que $\mathbb{R}$ tiene elementos transcendentes sobre $\mathbb{Q}$.\\
+    Sin embargo, $\mathbb{C}/\mathbb{R}$ es algebraico, porque todo elemento complejo $a + bi$ es raíz del polinomio:
+    $$(x - (a+bi))(x - (a-bi)) = x^2 - 2ax + a^2 + b^2 \in \mathbb{R}[x]$$
+\end{example}
+
+\begin{remark}
+    En una extensión de cuerpos $K/F$ cada elemento de $F$ es algebraico sobre $F$.
+    Además, si $\alpha \in K$ es algebraico sobre $F$, entonces también es algebraico sobre todo cuerpo $F'$ entre $F$ y $K$.
+\end{remark}
+
+\section{Nociones de anillos de polinomios}
+
+\begin{theorem}[Algoritmo de la división]
+    Sea $R$ un anillo unitario y $f, g \in \mathbb{R}[x]$ polinomios no nulos tales que el coeficiente líder de $g$ sea un elemento neutro de $R$.
+    Entonces existen dos únicos polinomios $q, r \in \mathbb{R}[x]$ tales que:
+    $$f(x) = q(x)g(x) + r(x), \quad\text{con } r(x)=0 \text{ o } grad(r(x)) < grad(g(x))$$
+\end{theorem}
+
+\begin{corollary}[Algoritmo de Euclides e identidad de Bezout]
+    Sea $F$ un campo, $f, g \in F[x]$ polinomios no constantes y $d = MCD(f, g)$. Entonces existen polinomios $a, b \in F[x]$ tales que:
+    $$d(x) = a(x)f(x) + b(x)g(x)$$
+\end{corollary}
+
+\begin{corollary}
+    Todo ideal en $F[x]$ es principal, es decir, $F[x]$ es un dominio de ideales maximales.
+\end{corollary}
+
+\begin{corollary}
+    Si $f$ es irreducible, entonces el ideal $(f)$ es maximal en $F[x]$.
+\end{corollary}
+
+\section{Polinomio mínimo}
+
+\begin{proposition}
+    Si $\alpha \in K$ es algebraico sobre $F$, entonces existe un único polinomio mónico $f \in F[x]$ tal que:
+    \begin{enumerate}
+        \item $f(\alpha) = 0$.
+        \item Si $g \in F[x]$ y $g(\alpha) = 0$, entonces $f$ divide a $g$ en $F[x]$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+    Dicho polinomio se llama polinomio mínimo de $\alpha$ sobre $F$.
+\end{definition}
+
+\begin{proposition}
+    Sea $\alpha \in K$ algebraico sobre $F$ y $f \in F[x]$ un polinomio mónico no constante.
+    Entonces las siguientes afirmaciones son equivalentes.
+    \begin{enumerate}
+        \item $f$ es el polinomio mínimo de $\alpha$ sobre $F$.
+        \item $f$ tiene grado mínimo entre los polinomios con raíz $\alpha$.
+        \item $f$ es irreducible y $f(\alpha) = 0$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{example}
+    Trabajaremos frecuentemente con el elemento $\xi_n = e^{\frac{2\pi i}{n}}$. Es claro que $\xi_n^n = 1$, así que podemos decir que $\xi_n$ es algebraico sobre $\mathbb{Q}$ y que su polinomio mínimo es un factor irreducible de $x^n - 1$.
+    El polinomio mínimo de $\xi_n$ sobre $\mathbb{Q}$ se llama polinomio ciclotómico de orden $n$. Si $n$ es primo, este polinomio ciclotómico es:
+    $$x^{n-1} + x^{n-2} + \dots + x + 1$$
+\end{example}
+
+\begin{example}
+    Hemos visto que $f(x) = x^4 - 10x^3 + x^2 + 1$ se anula en $\sqrt{2} + \sqrt{3}$. Si comprobamos que $f$ es irreducible, podremos afirmar que este es el polinomio mínimo de $\sqrt{2} + \sqrt{3}$ sobre $\mathbb{Q}$.
+\end{example}
+
+\section{Construcción de extensiones}
+
+\begin{definition}
+    Sea $K/F$ una extensión de cuerpos y $X$ un subconjunto de $K$.
+    El menor subcuerpo de $K$ que contiene a $F \bigcup X$ se denota por $F(X)$ y se llama subcuerpo de $K$ generado por $X$ sobre $F$.
+\end{definition}
+
+\begin{definition}
+    El subanillo más pequeño de $K$ que contiene a $F \bigcup X$ se denota por $F[X]$.
+    Siempre se tiene que $F[X] \subseteq F(X) \subseteq K$ y $F[X]$ es un dominio de integridad.
+\end{definition}
+
+\begin{definition}
+    Si $X$ es finito, $X = \{u_1, \dots, u_n\}$, escribimos $F(X) =\\F(u_1, \dots, u_n)$ y decimos que la extensión es finitamente generada sobre $F$.\\
+    Una extensión de cuerpos de la forma $F(u)$ se llama extensión simple.
+\end{definition}
+
+\begin{proposition}
+    Sea $K/F$ una extensión de cuerpos, $u, u_i \in K, X \subseteq K$.
+    \begin{enumerate}
+        \item $F[u] = \{ f(u) : f(x) \in F[x] \}$
+        \item $F[u_1, \dots, u_n] = \{ f(u_1, \dots, u_n) : f(x_1, \dots, x_n) \in F[x_1, \dots, x_n] \}$
+        \item $F[X] = \{ f(u_1, \dots, u_n) : n \in N, u_i \in X, f(x_1, \dots, x_n) \in F[x_1, \dots, x_n] \}$
+        \item $F(u) = \{ \frac{f(u)}{g(u)} : f(x), g(x) \in F[x], g(x) \neq 0 \}$
+        \item $F(u_1, \dots, u_n) = \{ \frac{a}{b} : a, b \in F[u_1, \dots, u_n], b \neq 0 \}$
+        \item $F(X) = \{ \frac{a}{b} : a, b \in F[x], b \neq 0 \}$
+    \end{enumerate}
+\end{proposition}
+
+\begin{example}
+    Consideramos el anillo $\mathbb{Q}[\sqrt{3}]$.
+    $$\mathbb{Q}[\sqrt{3}] = \{ f(\sqrt{3}) : f(x) \in \mathbb{Q}[x] \}$$
+    Sea $f(x) \in \mathbb{Q}[x]$. Entonces podemos dividir $f(x)$ por el polinomio mínimo de $\sqrt{3}$ sobre $\mathbb{Q}$, $x^2 - 3$. De esta forma, obtenemos polinomios $q(x), r(x) \in \mathbb{Q}[x]$ únicos, con $grad(r(x)) < 2$, tales que:
+    $$f(x) = (x^2 - 3)q(x) + r(x)$$
+    Entonces, existen $a, b \in \mathbb{Q}$ tales que $r(x) = a + bx$. Evaluando en $\sqrt{3}$:
+    $$f(\sqrt{3}) = 0 + r(\sqrt{3})$$
+    Por tanto:
+    $$\mathbb{Q}[\sqrt{3}] = \{ a + b\sqrt{3} : a, b \in \mathbb{Q} \}$$
+\end{example}
+
+\begin{proposition}
+    Sea $K/F$ una extensión de cuerpos. Si $\alpha \in K$ es algebraico sobre $F$, entonces:
+    \begin{enumerate}
+        \item $F[\alpha] = F(\alpha)$.
+        \item $\{1, \alpha, \dots, \alpha^{n-1} \}$ es una base de $F(\alpha)$ sobre $F$, donde $n$ es el grado del polinomio mínimo de $\alpha$ sobre $F$.
+        \item $[F(\alpha) : F] = n$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{example}
+    $\mathbb{Q}(\sqrt{3})$ es una extensión de cuerpos de $\mathbb{Q}$. Tiene grado 2 y una base es $\{ 1, \sqrt{3} \}$.
+\end{example}
+
+\begin{example}
+    $\mathbb{Q}(\sqrt{2}, \sqrt{3}) = \mathbb{Q}(\sqrt{2})(\sqrt{3}) = \mathbb{Q}(\sqrt{3})(\sqrt{2}).$
+    $$\mathbb{Q} \subseteq \mathbb{Q}(\sqrt{2}) \subseteq \mathbb{Q}(\sqrt{2})(\sqrt{3})$$
+    Por el teorema de la torre:
+    $$[\mathbb{Q}(\sqrt{2}, \sqrt{3}) : \mathbb{Q}] = [\mathbb{Q}(\sqrt{2}, \sqrt{3}) : \mathbb{Q}(\sqrt{2})] [\mathbb{Q}(\sqrt{2}) : \mathbb{Q}]$$
+    Además, una base para $\mathbb{Q}(\sqrt{2}, \sqrt{3})$ sobre $\mathbb{Q}$ es $\{ 1, \sqrt{2}, \sqrt{3}, \sqrt{6} \}$.
+\end{example}
+
+\begin{example}
+    $\mathbb{Q}(\pi)$ es una extensión finitamente generada sobre $\mathbb{Q}$.
+    Sin embargo, no es una extensión finita, puesto que $\{ 1, \pi, \pi^2, \dots \}$ es linealmente independiente.
+    En caso contrario, $\pi$ sería algebraico sobre $\mathbb{Q}$.
+\end{example}
+
+\section{Extensiones algebraicas}
+
+\begin{proposition}
+    Sea $K/F$ una extensión finita. Entonces:
+    \begin{enumerate}
+        \item $K/F$ es algebraica.
+        \item El grado del polinomio mínimo de $\alpha \in K$ sobre $F$ divide a $[K : F]$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{remark}
+    No toda extensión algebraica es finita. Consideramos por ejemplo:
+    $$\bar{\mathbb{Q}} = \{ \alpha : \alpha \text{ es algebraico sobre } \mathbb{Q} \}$$
+    Esta es una extensión algebraica infinita de $\mathbb{Q}$.
+\end{remark}
+
+\begin{proposition}
+    Sea $K/F$ una extensión de cuerpos. Entonces $[K : F] < \infty$ si y solo si existen $\alpha_1, \dots, \alpha_m \in K$ algebraicos sobre $F$ tales que $K = F(\alpha_1, \dots, \alpha_m)$.
+\end{proposition}
+
+\begin{proposition}
+    Dada una extensión de cuerpos $K/F$, el siguiente subconjunto es un cuerpo intermedio de $K/F$:
+    $$M = \{ \alpha \in K : \alpha \text{ es algebraico sobre } F \}$$
+\end{proposition}
+
+\begin{proposition}
+    Sea $F \subseteq K \subseteq L$ una sucesión de cuerpos. Si $\alpha \in L$ es algebraico sobre $K$ y $K$ es algebraico sobre $F$, entonces $\alpha$ es algebraico sobre $F$.
+\end{proposition}

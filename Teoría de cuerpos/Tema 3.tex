@@ -1,0 +1,213 @@
+\chapter{Extensiones normales}
+\section{Cuerpo stem}
+
+\begin{definition}
+    Sea $K/F$ una extensión de cuerpos y $f(x) \in F[x]$ no constante.
+    Decimos que $K$ es un cuerpo stem de $f$ sobre $F$ si existe $\alpha \in K$ raíz de $f$ tal que $K = F(\alpha)$.
+\end{definition}
+
+\begin{example}
+    $\mathbb{Q}(\sqrt{2})$ es un cuerpo stem de $x^2 - 2$ sobre $\mathbb{Q}$.
+    Contiene todas las raíces de $x^2 - 2$.
+    Por otro lado, $\mathbb{Q}(\sqrt[3]{2})$ es un cuerpo stem de $x^3 - 2$ sobre $\mathbb{Q}$ que no contiene todas las raíces de $x^3 - 2$.
+\end{example}
+
+\begin{theorem}[Existencia del cuerpo stem]
+    Sea $F$ un cuerpo y $f(x) \in F[x]$ de grado $n > 0$. Entonces existe una extensión simple $F(\alpha)$ de $F$ tal que:
+    \begin{enumerate}
+        \item $\alpha$ es una raíz de $f(x)$.
+        \item Si $f(x)$ es irreducible en $F[x]$, entonces el cuerpo $F(\alpha)$ es único salvo $F$-isomorfismos.
+    \end{enumerate}
+\end{theorem}
+
+\begin{example}
+    Construyamos un cuerpo stem de $f(x) = x^4 + x^2 - x + 1$ sobre $\mathbb{Z}_5$.
+    En primer lugar observamos que $f(x) \in \mathbb{Z}_5[x]$ es irreducible.
+    Entonces $F = \mathbb{Z}_5[x]/(x^4 + x^2 - x + 1)$ es un cuerpo stem.
+    Además, cualquier otro cuerpo stem de $f$ sobre $\mathbb{Z}_5$ es $\mathbb{Z}_5$-isomorfo a $F$.
+    Observamos que $F$ tiene $5^4$ elementos y que $[F : \mathbb{Z}_5] = 4$.
+\end{example}
+
+\begin{example}
+    Construyamos un cuerpo stem de $f(x) = x^5 + 3x^3 + x^2 + 2x +2$ sobre $\mathbb{Z}_5$.
+    Como se tiene que $f(x) = (x^2 + 2)(x^3 + x + 1)$, podemos construir dos cuerpos stem no isomorfos, cada uno con un factor irreducible: $\mathbb{Z}_5[x]/(x^2+2)$ y $\mathbb{Z}_5[x]/(x^3+x+1)$.
+    Podemos asegurar que no son isomorfos porque son cuerpos finitos con distinto número de elementos.
+    Tienen respectivamente $5^2$ y $5^3$ elementos.
+\end{example}
+
+\begin{example}
+    Consideramos el polinomio $f(x) = x^4 + 1$ sobre $\mathbb{Z}_5$.
+    Obsservamos que es reducible: $f(x) = (x^2+2)(x^2+3)$.
+    Podemos construir un cuerpo stem con cada factor irreducible: $\mathbb{Z}_5[x]/(x^2+2)$ y $\mathbb{Z}_5[x]/(x^2+3)$.
+    Sin embargo, en este caso son isomorfos, aunque ningún isomorfismo envía $\alpha = x + (x^2+2)$ a $\beta = x + (x^2+3)$, puesto que son raíces de polinomios irreducibles diferentes.
+\end{example}
+
+\begin{example}
+    El polinomio $f(x) = (x^2-5)(x^2-11) \in \mathbb{Q}[x]$ tiene dos cuerpos stem no isomorfos: $\mathbb{Q}(\sqrt{5})$ y $\mathbb{Q}(\sqrt{11})$.
+    Consideramos el polinomio $f(x) = (x^2-5)(x^2-2x-4) \in \mathbb{Q}[x]$. Podemos construir un cuerpo stem para cada factor irreducible: $\mathbb{Q}(\sqrt{5})$ y $\mathbb{Q}(\alpha)$, donde $\alpha$ es una raíz de $x^2-2x-4$.
+    Sin embargo, como las raíces de este último factor son $1 \pm \sqrt{5}$, luego ambos cuerpos stem son el mismo.
+\end{example}
+
+\section{Cuerpo de descomposición}
+
+\begin{definition}
+    Sea $K/F$ una extensión de cuerpos y $f(x) \in F[x]$ un polinomio no constante.
+    Decimos que $f(x)$ se descompone completamente sobre $K$ si $f(x) = a(x-\alpha_1) \dots (x-\alpha_r)$, con $a \in F, \alpha_i \in K$.
+\end{definition}
+
+\begin{example}
+    $x^2 - 2$ se descompone completamente sobre $\mathbb{Q}(\sqrt{2})$, $\mathbb{Q}(\sqrt{2}$, $\sqrt{3})$, $\mathbb{R}$ y $\mathbb{C}$.
+    No se descompone sobre $\mathbb{Q}$, $\mathbb{Q}(\sqrt{3})$ y $\mathbb{Q}(i)$.
+\end{example}
+
+\begin{definition}
+    Sea $F$ un cuerpo y $f(x) \in F[x]$ no constante. Una extensión $K$ de $F$ es un cuerpo de descomposición de $f$ sobre $F$ si:
+    \begin{enumerate}
+        \item $f(x)$ se descompone completamente sobre $K$.
+        \item $K = F(\alpha_1, \dots, \alpha_r)$, con $\alpha_1, \dots, \alpha_r$ las raíces de $f(x)$ en $K$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    $\mathbb{Q}(\sqrt{2}, \sqrt{3})$ es cuerpo de descomposición de $(x^2-2)(x^2-3)$ sobre $\mathbb{Q}$.
+\end{example}
+
+\begin{example}
+    $\mathbb{Q}(\sqrt[4]{2}, i)$ es cuerpo de descomposición de $x^4-2$ sobre $\mathbb{Q}$.
+    $$x^4-2 = (x - \sqrt[4]{2})(x + \sqrt[4]{2})(x - i\sqrt[4]{2})(x + i\sqrt[4]{2}) \text{ y } \mathbb{Q}(\pm \sqrt[4]{2}, \pm i\sqrt[4]{2}) = \mathbb{Q}(\sqrt[4]{2}, i)$$
+\end{example}
+
+\begin{example}
+    \begin{enumerate}
+        \item $\mathbb{Q}(i)$ es cuerpo de descomposición de $x^2+1$ sobre $\mathbb{Q}$.
+        \item $\mathbb{C}$ es cuerpo de descomposición de $x^2+1$ sobre $\mathbb{R}$.
+        \item $\mathbb{C}$ es cuerpo de descomposición de $x^2+1$ sobre $\mathbb{C}$.
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}[Existencia de cuerpo de descomposición]
+    Sea $f \in F[x]$ un polinomio de grado $n > 0$.
+    Entonces existe un cuerpo de descomposición $K$ de $f$ sobre $F$.
+\end{theorem}
+
+\begin{theorem}
+    Sea $\sigma : F_1 \to F_2$ un isomorfismo de cuerpos y $f(x) \in F_1[x]$ de grado $n > 0$.
+    Si $K_1$ es cuerpo de descomposición de $f(x)$ sobre $F_1$ y $K_2$ es cuerpo de descomposición de $f^\sigma(x)$ sobre $F_2$, entonces $\sigma$ puede ser extendido a un isomorfismo $\bar{\sigma} : K_1 \to K_2$.
+\end{theorem}
+
+\begin{corollary}[Unicidad del cuerpo de descomposición]
+    Dos cuerpos de descomposición de $f(x) \in F[x]$ sobre $F$ son $F$-isomorfos.
+\end{corollary}
+
+\begin{definition}
+    Si $S$ es un subconjunto de $F[x]$, una extensión de cuerpos $K$ de $F$ es cuerpo de descomposición de $S$ sobre $F$ cuando:
+    \begin{enumerate}
+        \item $f(x)$ se descompone completamente sobre $K$ para cada $f(x) \in S$.
+        \item $K = F(X)$ con $X = \{ \alpha \in K : \alpha \text{ es raíz de algún } f(x) \in S \}$.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    Observamos que el cuerpo de descomposición de una familia finita de polinomios $f_1(x), \dots, f_m(x) \in F[x]$ es el mismo que el cuerpo de descomposición del producto de polinomios $f(x) = \prod_{i = 1}^m f_i(x) \in F[x]$.
+    Por tanto, la definición previa solo es interesante cuando la familia $S$ de polinomios es infinita.
+\end{remark}
+
+\section{Clausura algebraica y cuerpos algebraicamente cerrados}
+
+\begin{definition}
+    Un cuerpo $F$ es algebraicamente cerrado si no tiene extensiones algebraicas.
+    Es decir, si $K$ es una extensión algebraica de $F$, entonces $K = F$.
+\end{definition}
+
+\begin{proposition}
+    $F$ es algebraicamente cerrado si y solo si todo polinomio irreducible en $F[x]$ tiene grado 1.
+\end{proposition}
+
+\begin{definition}
+    Una extensión $K/F$ es clausura algebraica de $F$ si $K$ es algebraico sobre $F$ y $K$ es algebraicamente cerrado.
+\end{definition}
+
+\begin{proposition}
+    $K$ es clausura algebraica de $F$ si y solo si $K$ es cuerpo de descomposición de $F[x]$ sobre $F$.
+\end{proposition}
+
+\begin{theorem}[Existencia de clausura algebraica]
+    Sea $F$ un cuerpo. Entonces existe una clausura algebraica de $F$.
+\end{theorem}
+
+\begin{corollary}
+    Sea $S \subseteq F[x]$. Entonces existe un cuerpo de descomposición de $S$ sobre $F$.
+\end{corollary}
+
+\begin{theorem}
+    Sea $K/F$ una extensión algebraica y $L$ un cuerpo algebraicamente cerrado.
+    Todo homomorfismo de cuerpos $F \to L$ puede ser extendido a un homomorfismo de cuerpos $K \to L$.
+\end{theorem}
+
+\begin{corollary}[Unicidad de la clausura algebraica]
+    Dos clausuras algebraicas de un cuerpo $F$ son $F$-isomorfas.
+\end{corollary}
+
+\begin{corollary}[Unicidad del cuerpo de descomposición]
+    Sea $S \subseteq F[x]$. Dos cuerpos de descomposición de $S$ sobre $F$ son $F$-isomorfos.
+\end{corollary}
+
+\section{Extensiones normales}
+
+\begin{definition}
+    Una extensión algebraica $K/F$ es normal si todo polinomio irreducible $f(x) \in F[x]$ que tiene una raíz en $K$ se descompone completamente sobre $K$.
+\end{definition}
+
+\begin{example}
+    Observamos que $\mathbb{Q}(\sqrt[3]{2})$ no es una extensión normal de $\mathbb{Q}$.
+\end{example}
+
+\begin{theorem}
+    Sea $K$ cuerpo de descomposición de un polinomio $f(x) \in F[x]$ sobre $F$. Entonces $K/F$ es normal.
+\end{theorem}
+
+\begin{remark}
+    Si $K$ es el cuerpo de descomposición de un conjunto $S \in F[x]$, entonces $K/F$ es normal.
+\end{remark}
+
+\begin{theorem}
+    Sea $K/F$ una extensión algebraica. Entonces $K/F$ es finita y normal si y solo si $K$ es cuerpo de descomposición sobre $F$ de algún $f(x) \in F[x]$.
+\end{theorem}
+
+\begin{remark}
+    Existe una equivalencia entre extensiones normales y cuerpos de descomposición cuando la extensión es infinita.\\
+    Sabemos que un cuerpo de descomposición de una familia de polinomios $S \subseteq F[x]$ es una extensión normal de $F$.\\
+    Supongamos ahhora que $K/F$ es normal e infinita y tomamos una base $\{ u_i : i \in I \}$ de $K$ sobre $F$. Consideramos el conjunto:
+    $$S = \{ f_i(x) \in F[x] : i \in I \}$$
+    donde cada $f_i(x) \in F[x]$ es el polinomio mínimo de $\alpha_i$ sobre $F$. Entonces $K$ es el cuerpo de descomposición de $S$ sobre $F$.
+\end{remark}
+
+\begin{example}
+    Sea $S = \{ \sqrt{p} : p \text{ primo en } \mathbb{Z} \}$. $\mathbb{Q}(S)$ es una extensión infinita de $\mathbb{Q}$.\\
+    Es claro que $\mathbb{Q}(S)$ es el cuerpo de descomposición de la familia de polinomios $\{ x^2-p : p \text{ primo en } \mathbb{Z} \}$.
+    Entonces es una extensión normal de $\mathbb{Q}$, que es infinito.
+\end{example}
+
+\begin{definition}
+    Sea $K/F$ algebraica. Una extensión $L$ de $K$ se llama clausura normal de $K/F$ si:
+    \begin{enumerate}
+        \item $L/F$ es normal.
+        \item Si $K \subseteq M \subseteq L$ y $M/F$ es normal, entonces $M = L$.
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    Sabemos que $\mathbb{Q}(\sqrt[3]{2})$ no es normal sobre $\mathbb{Q}$. Si adjuntamos las raíces conjugadas de $\sqrt[3]{2}$ sobre $\mathbb{Q}$, obtenemos:
+    $$L = \mathbb{Q}(\sqrt[3]{2}, i\sqrt{3})$$
+    que es una extensión normal de $\mathbb{Q}$ porque es el cuerpo de descomposición de $x^3-2$.\\
+    Cualquier otra extensión de $\mathbb{Q}(\sqrt[3]{2})$ normal sobre $\mathbb{Q}$ debe contener a las raíces conjugadas de $\sqrt[3]{2}$ sobre $\mathbb{Q}$.
+    Por tanto, $L$ es clausura normal de $\mathbb{Q}(\sqrt[3]{2})$ sobre $\mathbb{Q}$.
+\end{example}
+
+\begin{theorem}[Existencia y unicidad de la clausura normal]
+    Sea $K/F$ algebraica. Entonces existe una clausura normal de $K/F$. De hecho, dos clausuras normales de $K/F$ son $K$-isomorfas.
+\end{theorem}
+
+\begin{proposition}
+    Sea $K/F$ algebraica y $L$ su clausura normal. Entonces $K/F$ es finita si y solo si $L/F$ es finita.
+\end{proposition}
