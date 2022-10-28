@@ -1,0 +1,128 @@
+\chapter{Modelo lineal generalizado}
+\section{Introducción}
+El modelo lineal generalizado es una generalización de la regresión lineal que permite que los $y_i$ no sigan una distribución normal.
+Este modelo tiene tres componentes:
+\begin{itemize}
+    \item \textbf{Componente aleatoria.}
+          Viene dada por la variable $Y$.
+          Las $y_i$ pueden seguir varias distribuciones comunes, como la Bernoulli, binomial, binomial negativa, Poisson y gamma.
+          Únicamente veremos el caso en el que $y_i \sim Ber(p)$.
+    \item \textbf{Componente sistemática.}
+          Viene dada por las variables $X_1, \dots, X_k$, que están relacionadas mediante el predictor lineal $\vec{x}_i'\vec{\beta}$.
+          \begin{note}
+              $\vec{x}_i' = (1, x_{1i}, \dots, x_{ki})$.
+          \end{note}
+    \item \textbf{Función enlace.}
+          La función enlace proporciona la relación entre el predictor lineal y la media de la función de distribución.
+          $$E(y_i | x_{1i}, \dots, x_{ki}) = g_i(\vec{x}_i'\vec{\beta}) \Rightarrow \vec{x}_i'\vec{\beta} = g_i^{-1}(E(y_i | x_{1i}, \dots, x_{ki}))$$
+          La función $g_i^{-1}$ es la función enlace.
+          \begin{remark}
+              Si $g_i = g = Id$ para todo $i$, se corresponde con el modelo de regresión lineal múltiple.
+          \end{remark}
+\end{itemize}
+
+\section{Modelo de regresión con respuesta binaria}
+Los modelos de regresión con respuesta binaria son aquellos en los que $y_i \sim Ber(p)$.
+En estos casos tenemos datos que queremos clasificar en dos poblaciones $A$ y $B$.
+El conocimiento de una serie de variables nos ayudará a determinar de qué población son.
+
+Tenemos entonces un conjunto de datos $\{x_{1i}, \dots, x_{ki}, y_i\}$, donde $y_i$ es una variable dicotómica.
+$$y_i = \begin{cases}
+        1 & \text{si el dato procede de } A \\
+        0 & \text{si el dato procede de } B
+    \end{cases}$$
+Así que $y_i \sim Ber(p_i)$ con $p_i = P(Y_i = 1)$.
+
+Queremos estimar $\hat{p_i} = \hat{P}(Y_i = 1) = \hat{P}(A)$, es decir, la probabilidad de que el individuo $i$ sea de la población $A$.
+\begin{align*}
+     & E(y_i | x_{1i}, \dots, x_{ki}) = p_i = g_i(\vec{x}_i'\vec{\beta}) \\
+     & \hat{E}(y_i | x_{1i}, \dots, x_{ki}) = \hat{p}_i
+\end{align*}
+
+No podemos usar el modelo de regresión múltiple porque necesitamos que $p_i \in (0, 1)$.
+En su lugar podemos tomar $p_i = F(\vec{x}_i'\vec{\beta})$, con $F$ función de distribución.
+Usaremos dos funciones de distribución:
+\begin{itemize}
+    \item \textbf{Función de distribución logística.}
+          $$F(x) = \frac{1}{1 + e^{-x}}, \quad x \in \mathbb{R}$$
+          La función $F^{-1}$ es la función enlace y se conoce como función logit.
+          Podemos calcularla:
+          \begin{align*}
+               & p_i = F(\vec{x}_i'\vec{\beta}) = \frac{1}{1 + e^{-\vec{x}_i'\vec{\beta}}} \Leftrightarrow p_i + p_ie^{-\vec{x}_i'\vec{\beta}} = 1 \Leftrightarrow e^{\vec{x}_i'\vec{\beta}} = \frac{p_i}{1 - p_i} \Leftrightarrow \\
+               & \Leftrightarrow \vec{x}_i'\vec{\beta} = \log\left(\frac{p_i}{1-p_i}\right)
+          \end{align*}
+    \item \textbf{Función de distribución normal.}
+          $$\varPhi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}t^2} dt$$
+          La función $\varPhi^{-1}$ es la función enlace y se conoce como función probit.
+\end{itemize}
+
+\section{Riesgo, oportunidad, riesgo relativo y razón de oportunidades}
+\begin{definition}[Riesgo]
+    El riesgo se calcula como la probabilidad de que ocurra un resultado.
+\end{definition}
+
+\begin{definition}[Oportunidad]
+    La oportunidad se calcula como el cociente del número de eventos que producen un resultado entre el número de eventos que no lo producen.
+\end{definition}
+
+\begin{remark}
+    Existe una relación entre el riesgo y la oportunidad:
+    $$O = \frac{R}{1-R}$$
+\end{remark}
+
+\begin{definition}[Riesgo relativo]
+    El riesgo relativo es el cociente de los riesgos de dos grupos de población.
+    $$RR = \frac{R_1}{R_2}$$
+\end{definition}
+
+\begin{definition}[Razón de oportunidades]
+    La razón de oportunidades es el cociente de las oportunidades de dos grupos de población.
+    $$OR = \frac{O_1}{O_2}$$
+\end{definition}
+
+\begin{example}
+    En uno de cada 200 nacimientos ocurre un parto gemelar.
+    La probabilidad o riesgo de que un embarazo elegido al azar dé lugar a gemelos es:
+    $$R_1 = \frac{1}{200}$$
+    Desde el punto de vista de la oportunidad, de 200 partos 1 es gemelar y 199 no lo son.
+    Luego la oportunidad es:
+    $$O_1 = \frac{1}{199} = \frac{R_1}{1-R_1}$$
+
+    Introducimos un factor de riesgo.
+    Se observó que, entre 100 mujeres que tomaron ácido fólico, 3 de cada 200 partos fueron gemelares.
+    En este caso:
+    $$R_2 = \frac{3}{200}, \quad O_2 = \frac{3}{197}$$
+    El aumento del riesgo del embarazo gemelar se puede expresar numéricamente como:
+    $$RR = \frac{R_2}{R_1} = 3, \quad OR = \frac{O_2}{O_1} = \frac{3/197}{1/199} = \approx 3.03$$
+
+    Estudiaremos los modelos de regresión logística en términos de la razón de oportunidades.
+\end{example}
+
+\section{Modelo de regresión logística}
+El modelo de regresión logística es:
+$$E(y_i | x_{1i}, \dots, x_{ki}) = p_i = F(\vec{x}_i'\vec{\beta}) = \frac{1}{1 + e^{-\vec{x}_i'\vec{\beta}}}$$
+Además, hemos visto que:
+$$\vec{x}_i'\vec{\beta} = \log\left(\frac{p_i}{1-p_i}\right)$$
+Luego queremos estimar:
+$$\hat{p}_i = \frac{1}{1 + e^{-\vec{x}_i'\hat{\vec{\beta}}}}$$
+
+Para encontrar los estimadores $\hat{\beta}_i$ usamos el método de máxima verosimilitud.
+Calculamos la función de verosimilitud:
+$$L(\beta_0, \dots, \beta_k) = \prod_{i=1}^n p_i^{y_i}(1-p_i)^{1-y_i}$$
+Tomamos logaritmos en ambos miembros de la igualdad:
+\begin{align*}
+     & \log L(\beta_0, \dots, \beta_k) = \sum_{i=1}^n y_i\log(p_i) + \sum_{i=1}^n (1-y_i)\log(1-p_i) =                                                                                                                              \\
+     & = \sum_{i=1}^n y_i\log\left(\frac{p_i}{1-p_i}\right) + \sum_{i=1}^n \log(1-p_i) = \sum_{i=1}^n y_i \vec{x}_i'\vec{\beta} + \sum_{i=1}^n \log\left(\frac{e^{-\vec{x}_i'\vec{\beta}}}{1 + e^{-\vec{x}_i'\vec{\beta}}}\right) = \\
+     & = \sum_{i=1}^n y_i \vec{x}_i'\vec{\beta} + \sum_{i=1}^n \log\left(\frac{1}{e^{\vec{x}_i'\vec{\beta}} + 1}\right) = \sum_{i=1}^n y_i \vec{x}_i'\vec{\beta} - \sum_{i=1}^n \log(1 + e^{\vec{x}_i'\vec{\beta}})
+\end{align*}
+Así que, derivando tenemos que:
+$$\frac{\partial \log L}{\partial \vec{\beta}} = \sum_{i=1}^n y_i\vec{x}_i - \sum_{i=1}^n \frac{\vec{x}_i e^{\vec{x}_i'\vec{\beta}}}{1 + e^{\vec{x}_i'\vec{\beta}}}$$
+Para hallar los $\hat{\beta}_i$ hay que resolver el sistema $\frac{\partial \log L}{\partial \beta_i} = 0$ para todo $i = 0, \dots, k$ numéricamente.
+
+Podemos darles significado a los $\beta_j$.
+Para ello calculamos la oportunidad:
+$$O(x_{1i}, \dots, x_{ki}) = \frac{p_i}{1-p_i} = \frac{P(Y_i = 1)}{P(Y_i = 0)} = \dfrac{\frac{1}{1+e^{-\vec{x}_i'\vec{\beta}}}}{\frac{e^{-\vec{x}_i'\vec{\beta}}}{1+e^{-\vec{x}_i'\vec{\beta}}}} = e^{\vec{x}_i'\vec{\beta}} = e^{\beta_0 + \beta_1x_{1i} + \dots + \beta_kx_{ki}}$$
+Calculamos ahora la razón de oportunidades cuando aumenta $x_{ji}$ en una unidad:
+$$OR_j = \frac{O(x_{1i}, \dots, x_{ji}+1, \dots, x_{ki})}{x_{1i}, \dots, x_{ji}, \dots, x_{ki}} = e^{\beta_j}$$
+Así que $e^{\beta_j}$ es lo que varía la oportunidad cuando aumenta la componente $j$-ésima en una unidad.
+Luego $OR_j$ determina si las variables son significativas.

@@ -45,3 +45,10 @@ Estos apuntes están abiertos a correcciones y mejoras.
 8. Diagnosis y validación del modelo
 9. Selección de modelos
 10. Regresión con variables cualitativas
+
+### 3. Modelo lineal generalizado
+
+1. Introducción
+2. Modelo de regresión con respuesta binaria
+3. Riesgo, oportunidad, riesgo relativo y razón de oportunidades
+4. Modelo de regresión logística
