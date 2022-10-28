@@ -623,11 +623,54 @@ Este último es mejor que los anteriores pero supone que el incremento de $\hat{
 Veremos en ejemplos que podemos mejorarlo añadiendo interacciones.
 
 \begin{example}
-    Consideramos las variables:
+    Consideramos las variables $Y$ (peso en kg) y $X$ (altura en cm).
+    Los datos $\{(x_i, y_i)\}$ provienen de dos poblaciones según el sexo: hombres y mujeres.
+
+    El modelo conjunto sería:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1$$
+    Como el sexo influye en el peso de una persona, añadimos una variable ficticia para mejorar el modelo:
+    $$X_2 = \begin{cases}
+            1 & \text{si es hombre} \\
+            0 & \text{si es mujer}
+        \end{cases}$$
+    Codificamos los datos a la forma $(x_{1i}, x_{2i}, y_i)$ para tener en cuenta estas nuevas variables.
+    De esta forma, obtenemos el modelo general:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_2$$
+    Al término $\hat{\beta}_2x_2 + \hat{\beta}_3x_3$ se le llama efecto principal del tipo de combustible.
     \begin{itemize}
-        \item $Y$: rendimiento de un motor diésel.
-        \item $X$: velocidad del motor.
+        \item Para los hombres el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2 = (\hat{\beta}_0 + \hat{\beta}_2) + \hat{\beta}_1x_1$$
+        \item Para las mujeres el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1$$
     \end{itemize}
+
+    Podemos observar que ambas rectas tienen la misma pendiente, es decir, se supone que el incremento de los pesos es igual en cada población, lo que no es cierto en general.
+    Para mejorar el modelo, introducimos un nuevo término $\hat{\beta}_3x_1x_2$ llamado interacción de altura y sexo.
+    Así que este nuevo modelo queda de la forma:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_2 + \hat{\beta}_3x_1x_2$$
+    \begin{itemize}
+        \item Para los hombres el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2 + \hat{\beta}_3x_1 = (\hat{\beta}_0 + \hat{\beta}_2) + (\hat{\beta}_1 + \hat{\beta}_3)x_1$$
+        \item Para las mujeres el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1$$
+    \end{itemize}
+    Observamos que ahora las rectas tienen distinta pendiente.
+
+    Podemos realizar algunos contrastes de hipótesis para comprobar si este modelo es el correcto.
+    Para determinar si el sexo tiene una influencia significativa en el peso, contrastamos:
+    $$\begin{cases}
+            H_0: \beta_2 = \beta_3 = 0 \\
+            H_1: \beta_2 \neq 0 \text{ o } \beta_3 \neq 0
+        \end{cases}$$
+    Para comprobar si el incremente en el peso medio es igual para hombres y mujeres, podemos realizar el contraste:
+    $$\begin{cases}
+            H_0: \beta_3 = 0 \\
+            H_1: \beta_3 \neq 0
+        \end{cases}$$
+\end{example}
+
+\begin{example}
+    Consideramos las variables $Y$ (rendimiento de un motor diésel) y $X$ (velocidad del motor).
     Existen tres tipos de combustible: petróleo, carbón y mezcla.
     Tenemos un conjunto de datos $\{(x_i, y_i)\}$ con los distintos tipos de combustible y queremos ajustar un modelo de regresión.
 
@@ -656,4 +699,67 @@ Veremos en ejemplos que podemos mejorarlo añadiendo interacciones.
         \item Para la mezcla el modelo es:
               $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1$$
     \end{itemize}
+
+    De nuevo, podemos observar que las tres rectas tienen la misma pendiente, es decir, se supone que el incremento del rednimiento del motor es igual para cada tipo de combustible, lo que no es cierto en general.
+    Para corregirlo introducimos la interacción entre velocidad y tipo de combustible $\hat{\beta}_4x_1x_2 + \hat{\beta}_5x_1x_3$.
+    Así, el nuevo modelo queda de la forma:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_2 + \hat{\beta}_3x_3 + \hat{\beta}_4x_1x_2 + \hat{\beta}_5x_1x_3$$
+    \begin{itemize}
+        \item Para el petróleo el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2 + \hat{\beta}_4x_1 = (\hat{\beta}_0 + \hat{\beta}_2) + (\hat{\beta}_1 + \hat{\beta}_4)x_1$$
+        \item Para el carbón el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_3 + \hat{\beta}_5x_1 = (\hat{\beta}_0 + \hat{\beta}_3) + (\hat{\beta}_1 + \hat{\beta}_5)x_1$$
+        \item Para la mezcla el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1$$
+    \end{itemize}
+    Ahora las rectas tienen distinta pendiente, como queríamos.
+
+    También podemos realizar algunos contrastes de hipótesis para comprobar si este modelo es el correcto.
+    Para determinar si el rendimiento medio del motor depende del tipo de combustible, contrastamos:
+    $$\begin{cases}
+            H_0: \beta_2 = \beta_3 = \beta_4 = \beta_5 = 0 \\
+            H_1: \beta_2 \neq 0 \text{ o } \beta_3 \neq 0 \text{ o } \beta_4 \neq 0 \text{ o } \beta_5 \neq 0
+        \end{cases}$$
+    Para comprobar si hay dependencia entre velocidad y tipo de combustible, podemos realizar el contraste:
+    $$\begin{cases}
+            H_0: \beta_4 = \beta_5 = 0 \\
+            H_1: \beta_4 \neq 0 \text{ o } \beta_5 \neq 0
+        \end{cases}$$
+
+    Supongamos ahora que creemos que la relación entre el rendimiento medio de un motor diésel y la veloicidad es cuadrática.
+    Entonces el modelo conjunto sería:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2$$
+
+    Añadimos el efecto principal del tipo de combustible con las variables ficticias $X_2$ y $X_3$:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2 + \hat{\beta}_3x_2 + \hat{\beta}_4x_3$$
+    \begin{itemize}
+        \item Para el petróleo el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2 + \hat{\beta}_3 = (\hat{\beta}_0 + \hat{\beta}_3) + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2$$
+        \item Para el carbón el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2 + \hat{\beta}_4 = (\hat{\beta}_0 + \hat{\beta}_4) + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2$$
+        \item Para la mezcla el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2$$
+    \end{itemize}
+
+    Añadimos ahora la interacción entre la velocidad del motor y el tipo de combustible:
+    $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2 + \hat{\beta}_3x_2 + \hat{\beta}_4x_3 + \hat{\beta}_5x_1x_2 + \hat{\beta}_6x_1x_3 + \hat{\beta}_7x_1^2x_2 + \hat{\beta}_8x_1^2x_3$$
+    \begin{itemize}
+        \item Para el petróleo el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2 + \hat{\beta}_3 + \hat{\beta}_5x_1 + \hat{\beta}_7x_1^2 = (\hat{\beta}_0 + \hat{\beta}_3) + (\hat{\beta}_1 + \hat{\beta}_5)x_1 + (\hat{\beta}_2 + \hat{\beta}_7)x_1^2$$
+        \item Para el carbón el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2 + \hat{\beta}_4 + \hat{\beta}_6x_1 + \hat{\beta}_8x_1^2 = (\hat{\beta}_0 + \hat{\beta}_4) + (\hat{\beta}_1 + \hat{\beta}_6)x_1 + (\hat{\beta}_2 + \hat{\beta}_8)x_1^2$$
+        \item Para la mezcla el modelo es:
+              $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x_1 + \hat{\beta}_2x_1^2$$
+    \end{itemize}
+
+    Para determinar si el modelo medio de un motor varía según el tipo de combustible, contrastamos:
+    $$\begin{cases}
+            H_0: \beta_3 = \dots = \beta_8 = 0 \\
+            H_1
+        \end{cases}$$
+    Para comprobar si un modelo de segundo orden es mejor a uno de primer orden, realizamos el contraste:
+    $$\begin{cases}
+            H_0: \beta_2 = \beta_7 = \beta_8 = 0 \\
+            H_1
+        \end{cases}$$
 \end{example}
