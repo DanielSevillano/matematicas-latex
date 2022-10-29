@@ -309,10 +309,16 @@ $$\hat{m_0} = \hat{E}(y | x=x_0) = \hat{\beta_0} + \hat{\beta_1}x_0$$
 Podemos calcular los intervalos de confianza para $m_0$ con nivel de confianza de $100(1-\alpha)\%$.
 
 Si $\sigma^2$ es conocida,
-$$\left( \hat{m_0} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}}, \hat{m_0} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)$$
+\begin{align*}
+    IC_{1-\alpha}(m_0) = & \left( \hat{m_0} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}}, \right. \\
+    & \left. \hat{m_0} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)
+\end{align*}
 
 Si $\sigma^2$ es desconocida,
-$$\left( \hat{m_0} - t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}}, \hat{m_0} + t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)$$
+\begin{align*}
+    IC_{1-\alpha}(m_0) = & \left( \hat{m_0} - t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}}, \right. \\
+    & \left. \hat{m_0} + t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)
+\end{align*}
 
 \subsection*{Predicción de una observación futura}
 Dado un conjunto de datos $(x_1, y_1), \dots, (x_n, y_n)$ y dado $x_0$ queremos predecir:
@@ -327,17 +333,23 @@ $$e_0 = y_0 - \hat{y_0} = \beta_0 + \beta_1x_0 + u_0 - (\hat{\beta_0} + \hat{\be
 que también es una variable aleatoria.
 
 \begin{theorem}
-    $$e_0 \sim \left( 0, \sigma^2 \left(1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{ns_X^2} \right) \right)$$
+    $$e_0 \sim N\left( 0, \sigma^2 \left(1+\frac{1}{n}+\frac{(x_0-\bar{x})^2}{ns_X^2} \right) \right)$$
 \end{theorem}
 
 \subsubsection*{Intervalos de pronóstico para $y_0$}
-Podemos calcular los intervalos de pronóstico $IP_{1-\alpha}(y_0)$ para $y_0$ con contenido probabilístico $1-\alpha$.
+Podemos calcular los intervalos de pronóstico para $y_0$ con contenido probabilístico $1-\alpha$.
 
 Si $\sigma^2$ es conocida,
-$$\left( \hat{y_0} - z_{1-\frac{\alpha}{2}} \sigma \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}}, \hat{y_0} + z_{1-\frac{\alpha}{2}} \sigma \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}} \right)$$
+\begin{align*}
+    IP_{1-\alpha}(y_0) = & \left( \hat{y_0} - z_{1-\frac{\alpha}{2}} \sigma \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}}, \right. \\
+                         & \left. \hat{y_0} + z_{1-\frac{\alpha}{2}} \sigma \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}} \right)
+\end{align*}
 
 Si $\sigma^2$ es desconocida,
-$$\left( \hat{y_0} - t_{n-2, 1-\frac{\alpha}{2}} s_R \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}}, \hat{y_0} + t_{n-2, 1-\frac{\alpha}{2}} s_R \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}} \right)$$
+\begin{align*}
+    IP_{1-\alpha}(y_0) = & \left( \hat{y_0} - t_{n-2, 1-\frac{\alpha}{2}} s_R \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}}, \right. \\
+    & \left. \hat{y_0} + t_{n-2, 1-\frac{\alpha}{2}} s_R \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}} \right)
+\end{align*}
 
 \section{Análisis de residuos y observaciones atípicas e influyentes}
 \subsection*{Residuos}

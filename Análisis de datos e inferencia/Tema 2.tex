@@ -334,7 +334,10 @@ Observamos  que $\hat{m_0}$ es un estimador insesgado.
 Para obtener intervalos de confianza vemos que:
 $$\frac{\hat{m_0}-m_0}{\sigma\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}}} \sim N(0, 1) \Rightarrow \frac{\hat{m_0}-m_0}{s_R\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}}} \sim t_{n-k-1}$$
 Por tanto, el intervalo de confianza para $m_0$ a nivel de significación $\alpha$ es:
-$$\left( \hat{m_0} - t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}}, \hat{m_0} + t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}} \right)$$
+\begin{align*}
+    IC_{1-\alpha}(m_0) = & \left( \hat{m_0} - t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}}, \right. \\
+                         & \left. \hat{m_0} + t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{\vec{x_0}'(X'X)^{-1}\vec{x_0}} \right)
+\end{align*}
 
 \subsection*{Predicción de una nueva observación}
 Queremos predecir la variable aleatoria
@@ -359,9 +362,10 @@ Por tanto, $e_0 \sim N(0, \sigma^2 (1 + \vec{x_0}'(X'X)^{-1}\vec{x_0}))$.
 Para obtener intervalos de pronóstico observamos que:
 $$\frac{e_0}{\sigma\sqrt{1+\vec{x_0}'(X'X)^{-1}\vec{x_0}}} \sim N(0, 1) \Rightarrow \frac{e_0}{s_R\sqrt{1+\vec{x_0}'(X'X)^{-1}\vec{x_0}}} \sim t_{n-k-1}$$
 Así que el intervalo de pronóstico para $y_0$ con contenido probabilístico $1-\alpha$ es:
-$$IP_{1-\alpha}(y_0) = (\hat{y_0} - R, \; \hat{y_0} + R)$$
-donde
-$$R = t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{1+\vec{x_0}'(X'X)^{-1}\vec{x_0}}$$
+\begin{align*}
+    IP_{1-\alpha}(y_0) = & \left( \hat{y_0} - t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{1+\vec{x_0}'(X'X)^{-1}\vec{x_0}}, \right. \\
+                         & \left. \hat{y_0} + t_{n-k-1, 1-\frac{\alpha}{2}} s_R\sqrt{1+\vec{x_0}'(X'X)^{-1}\vec{x_0}} \right)
+\end{align*}
 
 \section{Diagnosis y validación del modelo}
 \subsection*{Multicolinealidad}
