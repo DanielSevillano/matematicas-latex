@@ -169,3 +169,17 @@
                      & = \varphi_{Y_1}(t) \overline{\varphi_{Y_2}(t)} = \frac{1}{1-it}\frac{1}{1+it} = \frac{1}{1+t^2}
     \end{align*}
 \end{exercise}
+
+\begin{theorem}[Teorema de continuidad de Lévy]
+    Sea $\{X_n\}_{n \geq 1}$ y sean $\varphi_n$ las funciones de distribución asociadas.
+    Supongamos que existe una función $\varphi$ tal que:
+    \begin{enumerate}
+        \item $\varphi_n(t) \to \varphi(t)$, $t \in \mathbb{R}$.
+        \item $\varphi$ es continua en 0.
+    \end{enumerate}
+    Entonces $X_n \xrightarrow{d} X$, donde $X$ es la variable aleatoria con función característica $\varphi$.
+\end{theorem}
+
+\begin{theorem}
+    Una sucesión $\{F_n\}_{n \geq 1}$ es ajustada si y solo si $$\lim\limits_{t \to 0} \left( \limsup\limits_{n \to \infty} Re(1 - \varphi_n(t))\right) = 0$$
+\end{theorem}
