@@ -58,11 +58,11 @@ Usaremos dos funciones de distribución:
 
 \section{Riesgo, oportunidad, riesgo relativo y razón de oportunidades}
 \begin{definition}[Riesgo]
-    El riesgo se calcula como la probabilidad de que ocurra un resultado.
+    El riesgo es la probabilidad de que ocurra un resultado.
 \end{definition}
 
 \begin{definition}[Oportunidad]
-    La oportunidad se calcula como el cociente del número de eventos que producen un resultado entre el número de eventos que no lo producen.
+    La oportunidad es el cociente del número de eventos que producen un resultado entre el número de eventos que no lo producen.
 \end{definition}
 
 \begin{remark}
@@ -93,7 +93,7 @@ Usaremos dos funciones de distribución:
     En este caso:
     $$R_2 = \frac{3}{200}, \quad O_2 = \frac{3}{197}$$
     El aumento del riesgo del embarazo gemelar se puede expresar numéricamente como:
-    $$RR = \frac{R_2}{R_1} = 3, \quad OR = \frac{O_2}{O_1} = \frac{3/197}{1/199} = \approx 3.03$$
+    $$RR = \frac{R_2}{R_1} = 3, \quad OR = \frac{O_2}{O_1} = \frac{3/197}{1/199} \approx 3.03$$
 
     Estudiaremos los modelos de regresión logística en términos de la razón de oportunidades.
 \end{example}
@@ -123,6 +123,6 @@ Podemos darles significado a los $\beta_j$.
 Para ello calculamos la oportunidad:
 $$O(x_{1i}, \dots, x_{ki}) = \frac{p_i}{1-p_i} = \frac{P(Y_i = 1)}{P(Y_i = 0)} = \dfrac{\frac{1}{1+e^{-\vec{x}_i'\vec{\beta}}}}{\frac{e^{-\vec{x}_i'\vec{\beta}}}{1+e^{-\vec{x}_i'\vec{\beta}}}} = e^{\vec{x}_i'\vec{\beta}} = e^{\beta_0 + \beta_1x_{1i} + \dots + \beta_kx_{ki}}$$
 Calculamos ahora la razón de oportunidades cuando aumenta $x_{ji}$ en una unidad:
-$$OR_j = \frac{O(x_{1i}, \dots, x_{ji}+1, \dots, x_{ki})}{x_{1i}, \dots, x_{ji}, \dots, x_{ki}} = e^{\beta_j}$$
+$$OR_j = \frac{O(x_{1i}, \dots, x_{ji}+1, \dots, x_{ki})}{O(x_{1i}, \dots, x_{ji}, \dots, x_{ki})} = e^{\beta_j}$$
 Así que $e^{\beta_j}$ es lo que varía la oportunidad cuando aumenta la componente $j$-ésima en una unidad.
 Luego $OR_j$ determina si las variables son significativas.
