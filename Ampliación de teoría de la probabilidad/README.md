@@ -29,3 +29,7 @@ Estos apuntes están abiertos a correcciones y mejoras.
 4. Convergencia en distribución
 
 ### 2. Función característica
+
+1. Propiedades
+2. Teorema de inversión
+3. Momentos

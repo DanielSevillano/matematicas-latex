@@ -58,28 +58,38 @@
     \end{note}
 \end{example}
 
-\begin{properties}
-    Sea $\varphi$ la función característica de una variable aleatoria $X$.
-    \begin{enumerate}
-        \item $\varphi(0) = 1$.
-              $$E(e^{i0X}) = E(1) = 1$$
-        \item $|\varphi(t)| \leq 1$, para todo $t \in \mathbb{R}$.
-              $$|\varphi(t)| = |E(e^{itX})| \leq E|e^{itX}| = E|\cos(tx) + i\sin(tx)| = 1$$
-        \item $\varphi(-t) = \overline{\varphi(t)}$.
-              \begin{align*}
-                  \varphi(-t) & = E(e^{itX}) = E(\cos(-tx) + i\sin(-tx)) =                             \\
-                              & = E(\cos(tx)) - iE(\sin(tx)) = \overline{E(\cos(tx)) + iE(\sin(tx))} = \\
-                              & = \overline{E(\cos(tx)) + i\sin(tx)} = \overline{\varphi(t)}
-              \end{align*}
-        \item $\varphi$ es función definida positiva, es decir,
-              $$\sum_{k,j=1}^n z_k\varphi(t_j-t_k)\overline{z_j} \geq 0, \quad \forall n \geq 1, \quad \forall z \in \mathbb{C}^n$$
-    \end{enumerate}
-\end{properties}
+\section{Propiedades}
+Veamos las propiedades más importantes de las funciones características.
+Sea $\varphi$ la función característica de una variable aleatoria $X$.
+Entonces:
+\begin{enumerate}
+    \item $\varphi(0) = 1$.
+          $$E(e^{i0X}) = E(1) = 1$$
+    \item $|\varphi(t)| \leq 1$, para todo $t \in \mathbb{R}$.
+          $$|\varphi(t)| = |E(e^{itX})| \leq E|e^{itX}| = E|\cos(tx) + i\sin(tx)| = 1$$
+    \item $\varphi(-t) = \overline{\varphi(t)}$.
+          \begin{align*}
+              \varphi(-t) & = E(e^{itX}) = E(\cos(-tx) + i\sin(-tx)) =                             \\
+                          & = E(\cos(tx)) - iE(\sin(tx)) = \overline{E(\cos(tx)) + iE(\sin(tx))} = \\
+                          & = \overline{E(\cos(tx)) + i\sin(tx)} = \overline{\varphi(t)}
+          \end{align*}
+    \item $\varphi$ es función definida positiva, es decir,
+          $$\sum_{k,j=1}^n z_k\varphi(t_j-t_k)\overline{z_j} \geq 0, \quad \forall n \geq 1, \quad \forall z \in \mathbb{C}^n$$
+\end{enumerate}
+
+Además,
+\begin{itemize}
+    \item $\varphi \in \mathbb{R}^n$ $\Leftrightarrow$ $f$ es simétrica.
+          $$\varphi(-t) = \overline{\varphi(t)} = \varphi(t)$$
+    \item Sea $Y = a + bX$. Entonces:
+          $$\varphi_Y(t) = E(e^{it(a+bX)}) = e^{ita} E(e^{itbX}) = e^{ita} \varphi_X(bt)$$
+\end{itemize}
 
 \begin{theorem}
     $\varphi$ es uniformemente continua en $\mathbb{R}$.
 \end{theorem}
 
+\section{Teorema de inversión}
 \begin{theorem}[Teorema de inversión]
     Sea $X$ variable aleatoria en $(\Omega, \mathcal{A}, P)$ con función de distribución $F$ y función característica $\varphi$.
     Sean $a, b \in \mathbb{R}$ con $a < b$, entonces:
@@ -114,16 +124,6 @@
     Entonces $\{X_n\}_{n \geq 1}$ es una sucesión ajustada.
     Es decir, $\{F_n\}$ forma una familia ajustada.
 \end{corollary}
-
-\begin{properties}
-    \hfill
-    \begin{itemize}
-        \item $\varphi \in \mathbb{R}^n$ $\Leftrightarrow$ $f$ es simétrica.
-              $$\varphi(-t) = \overline{\varphi(t)} = \varphi(t)$$
-        \item Sea $Y = a + bX$. Entonces:
-              $$\varphi_Y(t) = E(e^{it(a+bX)}) = e^{ita} E(e^{itbX}) = e^{ita} \varphi_X(bt)$$
-    \end{itemize}
-\end{properties}
 
 \begin{exercise}
     Sea $X$ con función de densidad:
@@ -182,4 +182,55 @@
 
 \begin{theorem}
     Una sucesión $\{F_n\}_{n \geq 1}$ es ajustada si y solo si $$\lim\limits_{t \to 0} \left( \limsup\limits_{n \to \infty} Re(1 - \varphi_n(t))\right) = 0$$
+\end{theorem}
+
+\begin{remark}[Teorema central del límite de De Moivre]
+    Sean $X_n \sim Bi(n, p)$.
+    Sabemos que $E(X_n) = np$ y $V(X_n) = npq$, con $q = 1-p$.
+    Consideramos:
+    $$Z_n = \frac{X_n - np}{\sqrt{npq}} = \frac{X_n - np}{\sigma_n}$$
+    Veamos que $Z_n \xrightarrow{d} Z$.
+
+    Calculamos:
+    \begin{align*}
+        \varphi_{Z_n}(t) & = E(e^{itZ_n}) = E(e^{it\frac{X_n-np}{\sigma_n}}) = e^{-\frac{itnp}{\sigma_n}} E(e^{\frac{it}{\sigma_n}X_n}) = e^{-\frac{itnp}{\sigma_n}} \varphi_{X_n} \left(\frac{t}{\sigma_n}\right) = \\
+                         & = e^{-\frac{itnp}{\sigma_n}} (pe^{i\frac{t}{\sigma_n}} + q)^n = (pe^{i\frac{t}{\sigma_n}q} + qe^{-i\frac{t}{\sigma_n}p})^n
+    \end{align*}
+
+    Se puede comprobar que:
+    $$\lim\limits_{n \to \infty} \varphi_{Z_n}(t) = \lim\limits_{n \to \infty} (pe^{i\frac{t}{\sigma_n}q} + qe^{-i\frac{t}{\sigma_n}p})^n = e^{-\frac{t^2}{n}} = \varphi_Z(t)$$
+    con $Z \sim N(0, 1)$.
+
+    Por el teorema de continuidad de Lévy, $Z_n \xrightarrow{d} Z \sim N(0, 1)$.
+\end{remark}
+
+\section{Momentos}
+Recordamos los momentos de una variable aleatoria $X$.
+\begin{itemize}
+    \item Momento de orden $n$: $E(X^n)$.
+    \item Momento central de orden $n$: $E((X-E(X))^n)$.
+    \item Momento absoluto de orden $n$: $E(|X|^n)$.
+    \item Momento central absoluto de orden $n$: $E(|X-E(X)|^n)$.
+\end{itemize}
+
+\begin{proposition}
+    Si $E(|X|^p) < \infty$ para algún $n \geq 1$, entonces:
+    $$E(X^r), E(|X|^r) < \infty, \quad 0 < r \leq n$$
+\end{proposition}
+
+\begin{definition}
+    El espacio $L^p$ es el conjunto de las variables $X$ tales que $E(|X|^r) < \infty$.
+    $$L^r = \left\{X \text{ variable aleatoria } : \int |X|^rdF(x) < \infty\right\}$$
+
+    $(L^p, \|.\|_p)$ es un espacio normado, con $\|X\|_p = (E(|X|^p))^{1/p}$, $X \in L^p$.
+\end{definition}
+
+\begin{theorem}
+    Sea $X \in L^n$ para algún $n \geq 1$ y con función característica $\varphi$.
+    Entonces existen las derivadas $\varphi^{(k)}$ con $k = 1, \dots, n$ y son uniformemente continuas.
+    Además,
+    $$\varphi^{(k)}(t) = i^k \int x^ke^{itx}dF(x)$$
+    y $\varphi^{(k)}(0) = i^kE(X^k)$.
+    Así que $\varphi$ se puede expresar como:
+    $$\varphi(t) = 1 + \sum_{k=1}^n \frac{(it)^k}{k!}E(X^k) + O(t^n)$$
 \end{theorem}
