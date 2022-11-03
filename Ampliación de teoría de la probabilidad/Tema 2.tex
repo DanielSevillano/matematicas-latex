@@ -234,3 +234,87 @@ Recordamos los momentos de una variable aleatoria $X$.
     Así que $\varphi$ se puede expresar como:
     $$\varphi(t) = 1 + \sum_{k=1}^n \frac{(it)^k}{k!}E(X^k) + O(t^n)$$
 \end{theorem}
+
+\begin{proposition}
+    Sean $X$ e $Y$ variables aleatorias independientes con funciones de distribución $\varphi_X$ y $\varphi_Y$ respectivamente.
+    Entonces la función característica de $S = X+Y$ es $\varphi_S(t) = \varphi_X(t)\varphi_Y(t)$.
+\end{proposition}
+
+En general, si $X_1, \dots, X_n$ son variables aleatorias independientes, la función característica de $S = X_1 + \dots + X_n$ es:
+$$\varphi_S(t) = \prod_{i=1}^n \varphi_{X_i}(t)$$
+Si además $X_1, \dots, X_n$ son igualmente distribuidas, entonces $\varphi_S(t) = \varphi_{X_k}(t)^n$ para cualquier $k \in \{1, \dots, n\}$.
+
+\begin{exercise}
+    Sea $\{X_n\}_{n \geq 1}$ una sucesión de variables aleatorias independeintes, cada una con función característica:
+    $$\varphi_{X_n}(t) = \left(\frac{1 - (1-\alpha)it}{1-it}\right), \quad 0 \leq \alpha \leq 1$$
+
+    \begin{enumerate}
+        \item \textbf{Determinar la distribución de $X_n$.}
+              \begin{align*}
+                  \varphi_{X_n}(t) & = \left(\frac{1 - \alpha + \alpha - (1-\alpha)it}{1-it}\right)^n = \left(\frac{\alpha}{1-it} + \frac{(1-\alpha)(1-it)}{1-it}\right)^n = \\
+                                   & = \left(\alpha\frac{1}{1-it} + (1-\alpha)\right)^n = \varphi_W(t)^n
+              \end{align*}
+              donde $\varphi_W(t) = \alpha\frac{1}{1-it} + (1-\alpha)$.
+              Luego $X_n = \sum_{i=1}^n W$.
+
+              Observamos que $\frac{1}{1-it}$ es función característica de $Exp(1)$ y 1 es función característica de $\delta(0)$, así que $W$ es mixtura de estas dos distribuciones.
+              Por tanto, $X_n$ es la suma de $n$ variables aleatorias con distribuciones mixtura de $Exp(1)$ y $\delta(0)$.
+        \item \textbf{Calcular $E(X_n)$ y $V(X_n)$.}
+              \begin{align*}
+                  E(X_n) & = E\left(\sum_{i=1}^n W\right) = nE(W) = n(\alpha E(Exp(1)) + (1-\alpha)E(\delta(0))) \\
+                         & = n\alpha                                                                             \\
+                  V(X_n) & = nV(W) = n(E(W^2) - E(W)^2) =                                                        \\
+                         & = n(\alpha E(Exp(1)^2) + (1-\alpha)E(\delta(0)^2) - \alpha^2) =                       \\
+                         & = n(\alpha(V(Exp(1)) + E(Exp(1))^2) - \alpha^2) =                                     \\
+                         & = n(2\alpha - \alpha^2) = n\alpha(2-\alpha)
+              \end{align*}
+
+              También se podría haber usado que $\varphi^{(k)}(0) = i^k E(X^k)$.
+              $$\varphi_W'(t) = \frac{i\alpha}{(1-it)^2} \qquad \varphi_W''(t) = \frac{-2\alpha}{(1-it)^3}$$
+              De esta forma podemos calcular:
+              \begin{align*}
+                  E(W)   & = \frac{1}{i}\varphi_W'(0) = \alpha     \\
+                  E(W^2) & = \frac{1}{i^2}\varphi_W''(0) = 2\alpha
+              \end{align*}
+        \item \textbf{Determinar el límite en distribución de la sucesión $\{Y_n\}_{n \geq 1}$ con:}
+              $$Y_n = \frac{X_n - n\alpha}{\sqrt{n}}$$
+              Por el teorema de continuidad de Lévy, basta hallar $\lim\limits_{n \to \infty} \varphi_{Y_n}(t)$, $t \in \mathbb{R}$.
+              \begin{align*}
+                  \varphi_{Y_n}(t) & = E(e^{itY_n}) = E(e^{it\frac{X_n-n\alpha}{\sqrt{n}}}) = e^{-it\sqrt{n}\alpha}\varphi_{X_n}\left(\frac{t}{\sqrt{n}}\right) = \\
+                                   & = e^{-it\sqrt{n}\alpha} \left(\frac{\alpha}{1-i\frac{t}{\sqrt{n}}} + 1-\alpha\right)
+              \end{align*}
+              Como este límite es difícil de resolver podemos proceder de otra forma.
+              Podemos escribir $X_n - n\alpha = \sum_{i=1}^n (W - \alpha) = \sum_{i=1}^n U$, con $U = W-\alpha$.
+              Entonces:
+              $$\varphi_{Y_n}(t) = \varphi_{X_n - n\alpha} \left(\frac{t}{\sqrt{n}}\right) = \varphi_{\sum_{i=1}^n U} \left(\frac{t}{\sqrt{n}}\right) = \varphi_U \left(\frac{t}{\sqrt{n}}\right)^n$$
+
+              \begin{note}
+                  Hemos usado que $\varphi_{aX}(t) = \varphi_X(at)$.
+              \end{note}
+
+              Sabemos que $E(U) = 0$ y $E(U^2) = V(U) = V(W) = \alpha(2-\alpha)$.
+              También sabemos que:
+              $$\varphi_U(t) = \sum_{k=0}^\infty \frac{t^k}{k!} \varphi_U^{(k)}(0) = \sum_{k=0}^\infty \frac{(it)^k}{k!} E(U^k) = 1 + itE(U) - \frac{t^2}{2}E(U^2) + O(t^2)$$
+              Luego:
+              $$\varphi_V\left(\frac{t}{\sqrt{n}}\right) = 1 - \frac{t^2}{2n}\alpha(2-\alpha) + O\left(\frac{t^2}{n}\right)$$
+              Así que:
+              \begin{align*}
+                  \lim\limits_{n \to \infty} \varphi_{Y_n}(t) & = \lim\limits_{n \to \infty} \varphi_U\left(\frac{t}{\sqrt{n}}\right)^n =                                                                                \\
+                                                              & = \lim\limits_{n \to \infty} \left(1 - \frac{t^2}{2n}\alpha(2-\alpha) + O\left(\frac{t^2}{n}\right)\right)^n =                                           \\
+                                                              & = e^{\lim\limits_{n \to \infty} n\left(1 - \frac{t^2}{2n}\alpha(2-\alpha) + O\left(\frac{t^2}{n} - 1\right)\right)} = e^{-\frac{t^2}{2}\alpha(2-\alpha)}
+              \end{align*}
+              Por tanto, $Y_n \xrightarrow{d} Y \sim N(0, \alpha(2-\alpha))$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{remark}[Teorema central del límite de Lévy-Lindeberg]
+    Sea $\{X_n\}_{n \geq 1}$ una sucesión de variables aleatorias independientes e igualmente distribuidas, con $\mu = E(X_n) < \infty$ y $\sigma^2 = V(X_n) < \infty$.
+
+    Consideramos $Y_n = \frac{X_n - \mu}{\sigma}$, con $E(Y_n) = 0$, $V(Y_n) = 1$ y $\varphi_{Y_n}(t) = 1 - \frac{t^2}{2} + O(t^2)$.
+    Sea $Z_n = \frac{1}{\sigma\sqrt{n}} \sum_{i=1}^n (X_i - \mu) = \frac{1}{\sqrt{n}} \sum_{i=1}^n Y_i$. Veamos que $Z_n \xrightarrow{d} N(0, 1)$.
+    $$\varphi_{Z_n}(t) = \varphi_{\sum_{j=1}^n Y_j} \left(\frac{t}{\sqrt{n}}\right) = \varphi_{Y_1} \left(\frac{t}{\sqrt{n}}\right)^n = \left(1 - \frac{t^2}{2n} + O\left(\frac{t^2}{n}\right)\right)^n \to e^{-t^2/2}$$
+\end{remark}
+
+\begin{lemma}
+    $$\left|e^{iy} - \sum_{k=0}^n \frac{(iy)^k}{k!}\right| \leq \min\left\{2\frac{|y|^n}{n!}, \frac{|y|^{n+1}}{(n+1)!}\right\}$$
+\end{lemma}
