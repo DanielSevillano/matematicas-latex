@@ -1,0 +1,333 @@
+\chapter{El método símplex}
+\section{Pivotes}
+Consideramos:
+$$A = \begin{pmatrix}
+        1      & 0      & \dots  & 0      & a_{1(m+1)} & \dots  & a_{1n} \\
+        0      & 1      & \dots  & 0      & a_{2(m+1)} & \dots  & a_{2n} \\
+        \vdots & \vdots & \ddots & \vdots & \vdots     & \ddots & \vdots \\
+        0      & 0      & \dots  & 1      & a_{m(m+1)} & \dots  & a_{mn}
+    \end{pmatrix}$$
+Sabemos que $(b_1, \dots, b_m, 0, \dots, 0) \in \mathbb{R}^n$ es una solución básica y $\{a_1, \dots, a_m\}$ es un sistema linealmente independiente.
+
+Sea $j \in \{1, \dots, n\}$,
+\begin{align*}
+     & a_j = a_{1j}a_1 + \dots + a_{mj}a_m \\
+     & b = b_1a_1 + \dots b_ma_m
+\end{align*}
+
+Reemplazamos $a_p$ por $a_q$ en la base, con $1 \leq p \leq m$, $m+1 \leq q \leq n$.
+Veamos cuándo $\{a_1, \dots, a_{p-1}, a_q, a_{p+1}, \dots, a_m\}$ es un sistema linealmente independiente.
+$$\begin{vmatrix}
+        1      & 0      & \dots  & a_{1q} & \dots  & 0      \\
+        0      & 1      & \dots  & a_{2q} & \dots  & 0      \\
+        \vdots & \vdots & \ddots & \vdots &        & \vdots \\
+        0      & 0      & \dots  & a_{pq} & \dots  & 0      \\
+        \vdots & \vdots &        & \vdots & \ddots & \vdots \\
+        0      & 0      & \dots  & a_{mq} & \dots  & 1
+    \end{vmatrix} = a_{pq}$$
+Luego la base es linealmente independiente si y solo si $a_{pq} \neq 0$.
+
+Supongamos entonces que $a_{pq} \neq 0$.
+Entonces:
+\begin{align*}
+    a_q & = a_{1q}a_1 + \dots + a_{pq}a_p + \dots + a_{mq}a_m = \sum_{i=1, i \neq p}^m a_{iq}a_i + a_{pq}a_p \Leftrightarrow \\
+        & \Leftrightarrow a_p = \frac{a_q}{a_{pq}} - \sum_{i=1, i \neq p}^m \frac{a_{iq}}{a_{pq}}a_i
+\end{align*}
+
+Sea $j \in \{1, \dots, m\}$ con $j \neq p$.
+Entonces:
+\begin{align*}
+    a_j & = \sum_{i=1, i \neq p}^m a_{ij}a_i + a_{pj}a_p = \sum_{i=1, i \neq p}^m a_{ij}a_i + a_{pj} \left(\frac{a_q}{a_{pq}} - \sum_{i=1, i \neq p}^m \frac{a_{iq}}{a_{pq}}a_i\right) = \\
+        & = \frac{a_{pj}}{a_{pq}}a_q + \sum_{i=1, i \neq p}^m \left(a_{ij} - \frac{a_{pj}a_{iq}}{a_{pq}}\right)a_i
+\end{align*}
+Luego:
+\begin{align*}
+    b_j & = \sum_{i=1}^m b_ia_i = \sum_{i=1, i \neq p}^m b_ia_i + b_pa_p = \sum_{i=1, i \neq p}^m b_ia_i + b_p\left(\frac{a_q}{a_{pq}} - \sum_{i=1, i \neq p}^m \frac{a_{iq}}{a_{pq}}a_i\right) = \\
+        & = \frac{b_p}{a_{pq}}a_q + \sum_{i=1, i \neq p}^m \left(b_i - \frac{b_pa_{iq}}{a_{pq}}\right)a_i
+\end{align*}
+Entonces
+\begin{align*}
+     & \left( b_1 - \frac{b_pa_{1q}}{a_{pq}}, \dots, b_{p-1} - \frac{b_pa_{(p-1)q}}{a_{pq}}, 0, b_{p+1} - \frac{b_pa_{(p+1)q}}{a_{pq}}, \dots, b_m - \frac{b_pa_{1q}}{a_{mq}}, \right. \\
+     & \left. 0, \dots, 0, \frac{b_p}{a_{pq}}, 0, \dots, 0 \right)
+\end{align*}
+es solución básica.
+
+\section{Teoremas y algoritmo del símplex}
+\begin{definition}[Costos indirectos]
+    Sea $x^0$ una solución posible básica y supongamos que su base asociada es $\{a_1, \dots, a_m\}$.
+    Sea $j \in \{1, \dots, n\}$ y sean $c_i$ los costos del problema,
+    \begin{align*}
+         & a_j = a_{1j}a_1 + \dots + a_{mj}a_m \in \mathbb{R}^n \\
+         & z_j = a_{1j}c_1 + \dots + a_{mj}c_m \in \mathbb{R}^n
+    \end{align*}
+    Llamamos costo indirecto $j$-ésimo a $z_j - c_j$.
+    El vector $(z_1-c_1, \dots, z_n-c_n) \in \mathbb{R}^n$ se llama vector de costos indirectos.
+\end{definition}
+
+\begin{remark}
+    Los costos indirectos correspondientes a los vectores de la base son nulos.
+\end{remark}
+
+\begin{theorem}
+    Sea $x^0$ una solución posible básica no degenerada con valor en la función objetivo $z^0$.
+    Si existe $j \in \{1, \dots, n\}$ tal que $z_j - c_j > 0$, entonces existe un subconjunto de $K$ de forma que el valor de la función objetivo en cualquier punto sea menor que $z_0$.
+\end{theorem}
+
+\begin{proof}
+    Sea $x^0$ solución posible básica no degenerada, supongamos que la base asociada a $x^0$ es $\{a_1, \dots, a_m\}$, de forma que $x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 0) \in \mathbb{R}^n$.
+    \begin{align*}
+        Ax^0  & = b \Leftrightarrow a_1x^0_1 + \dots + a_mx^0_m = b \\
+        x^0_i & > 0 ;\ \forall i \in \{1, \dots, m\}                \\
+        z^0   & = c_1x^0_1 + \dots + c_mx^0_m
+    \end{align*}
+
+    Supongamos que existe $j \in \{m+1, \dots, n\}$ tal que $z_j - c_j > 0$.
+    \begin{align*}
+        a_j & = a_{1j}a_1 + \dots + a_{mj}a_m \\
+        z_j & = a_{1j}c_1 + \dots + a_{mj}c_m
+    \end{align*}
+
+    Sea $\varepsilon > 0$, definimos:
+    $$x^0_\varepsilon = (x^0_1 - \varepsilon a_{1j}, \dots, x^0_m - \varepsilon a_{mj}, 0, \dots, 0, \varepsilon, 0, \dots, 0)$$
+
+    Veamos que $x^0_\varepsilon$ es solución posible.
+    \begin{enumerate}
+        \item Veamos que $Ax^0_\epsilon = b$.
+              \begin{align*}
+                  Ax^0_\varepsilon & = a_1(x^0_1 - \varepsilon a_{1j}) + \dots + a_m(x^0_m - \varepsilon a_{mj}) + \varepsilon a_j = \\
+                                   & = a_1x^0_1 + \dots + a_mx^0_0 - \varepsilon (a_1a_{1j} + \dots + a_ma_{mj}) + \varepsilon a_j = \\
+                                   & = b - \varepsilon a_j + \varepsilon a_j = b
+              \end{align*}
+        \item Veamos que $x^0_\varepsilon \geq 0$.
+              $$x^0_\varepsilon \geq 0 \Leftrightarrow x^0_i - \varepsilon a_{ij} \geq 0 \; \forall i \in \{1, \dots, m\}$$
+              \begin{itemize}
+                  \item Si $a_{ij} \leq 0$, $x^0_i - \varepsilon a_{ij} \geq 0$.
+                  \item Si $a_{ij} > 0$, $x^0_i - \varepsilon a_{ij} \geq 0 \Leftrightarrow x^0_i \geq \varepsilon a_{ij} \Leftrightarrow \varepsilon \leq \frac{x^0_i}{a_{ij}}$.
+              \end{itemize}
+    \end{enumerate}
+
+    El valor de la función objetivo en $x^0_\varepsilon$ es:
+    \begin{align*}
+         & c_1(x^0_1 - \varepsilon a_{1j}) + \dots + c_m(x^0_m - \varepsilon a_{mj}) + \varepsilon c_j =  \\
+         & = c_1x^0_1 + \dots + c_mx^0_m - \varepsilon(c_1a_{1j} + \dots + c_ma_{mj}) + \varepsilon c_j = \\
+         & = z_0 - \varepsilon z_j + \varepsilon c_j = z_0 - \varepsilon(z_j - c_j) < z_0
+    \end{align*}
+
+    Tenemos dos posibles casos:
+    \begin{enumerate}
+        \item Supongamos que existe $i \in \{1, \dots, m\}$ tal que $a_{ij} > 0$.
+              Entonces $\varepsilon \leq \frac{x^0_i}{a_{ij}}$ para que $x^0_i - \varepsilon a_{ij} \geq 0$.
+              Podemos tomar:
+              $$0 < \varepsilon \leq \min_{a_{ij} > 0} \left\{\frac{x^0_i}{a_{ij}}\right\}$$
+              De esta forma $x^0_\varepsilon$ es solución posible, siendo el valor de la función objetivo en $x^0_\varepsilon$ menor que $z_0$.
+        \item Supongamos que $a_{ij} \leq 0$ para todo $i \in \{1, \dots, m\}$.
+              $$x^0_i - \varepsilon a_{ij} \geq x^0_i > 0, \quad \forall i \in \{1, \dots, m\}$$
+              Para cualquier $\varepsilon > 0$, $x^0_\varepsilon$ es solución posible con valor de la función objetivo menor que $z_0$.
+
+              $x^0_\varepsilon$ tiene $m+1$ componentes positivas.
+              El valor de la función objetivo en $x^0_\varepsilon$ es $z_0 - \varepsilon(z_j - c_j) \xrightarrow[\varepsilon \to \infty]{} -\infty$.
+              Luego es un problema ilimitado.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Sea $x^0$ una solución posible básica no degenerada.
+    Si $z_j - c_j \leq 0$ para todo $j = 1, \dots, n$, entonces $x^0$ es solución óptima.
+\end{theorem}
+
+\begin{proof}
+    Supongamos que $\{a_1, \dots, a_m\}$ es el sistema linealmente independiente asociado a $x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 0) \in \mathbb{R}^n$.
+    \begin{align*}
+        Ax^0  & = b \Leftrightarrow a_1x^0_1 + \dots + a_mx^0_m = b \\
+        x^0_i & > 0 \; \forall i \in \{1, \dots, m\}                \\
+        z_0   & = c_1x^0_1 + \dots + c_mx^0_m
+    \end{align*}
+
+    Supongamos que $z_j - c_j \leq 0$ para todo $j \in \{1, \dots, n\}$.
+    Sea $j \in \{1, \dots, n\}$,
+    \begin{align*}
+        a_j & = a_{1j}a_1 + \dots + a_{mj}a_m \\
+        z_j & = a_{1j}c_1 + \dots + a_{mj}c_m
+    \end{align*}
+
+    Tenemos que probar que $x^0$ es solución óptima, esto es, que se verifica:
+    $$c_1y_1 + \dots + c_ny_n \geq z_0$$
+    para todo $y = (y_1, \dots, y_n)$ solución posible.
+
+    Sabemos que:
+    \begin{align*}
+         & z_j \leq c_j \; \forall j \in \{1, \dots, n\} \Leftrightarrow z_jy_j \leq c_jy_j \; \forall j \in \{1, \dots, n\} \Rightarrow \\
+         & \Rightarrow z_1y_1 + \dots + z_ny_n \leq c_1y_1 + \dots + c_ny_n
+    \end{align*}
+    Luego basta con ver que $z_1y_1 + \dots + z_ny_n = z_0$.
+
+    Tenemos que:+
+    \begin{align*}
+        b & = a_1y_1 + \dots + a_ny_n = \left(\sum_{i=1}^ma_{i1}a_i\right)y_1 + \dots + \left(\sum_{i=1}^ma_{in}a_i\right)y_n = \\
+          & = \left(\sum_{j=1}^na_{1j}ay_j\right)a_1 + \dots + \left(\sum_{j=1}^na_{mj}ay_j\right)a_m
+    \end{align*}
+    Como por hipótesis $b = a_1x^0_1 + \dots + a_mx^0_m$, con $\{a_1, \dots, a_m\}$ sistema linealmente independiente, entonces $\sum_{j=1}^n a_{ij}y_j = x^0_i$.
+
+    Por otro lado,
+    \begin{align*}
+        z_1y_1 + \dots + z_ny_n & = \left(\sum_{i=1}^ma_{i1}c_i\right)y_1 + \dots + \left(\sum_{i=1}^ma_{in}c_i\right)y_n = \\
+                                & = \left(\sum_{j=1}^na_{1j}y_j\right)c_1 + \dots + \left(\sum_{j=1}^na_{mj}y_j\right)c_m
+    \end{align*}
+
+    Por la igualdad anterior tenemos que:
+    $$z_1y_1 + \dots + z_ny_n = x^0_1c_1 + \dots + x^0_mc_m = z_0$$
+\end{proof}
+
+\subsection*{Algoritmo del símplex}
+Formamos la tabla correspondiente a una solución posible básica no degenerada $x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 0)$.
+\begin{enumerate}
+    \item \begin{itemize}
+              \item Si $z_j - c_j \leq 0 \; \forall j = 1, \dots, n$, entonces $x^0$ es solución óptima y termina el algoritmo.
+              \item Si existe $j \in \{1, \dots, n\}$ tal que $z_j - c_j > 0$, tomamos:
+                    $$z_q - c_q = \max_{z_j-c_j > 0}\{z_j-c_j\}$$
+          \end{itemize}
+    \item \begin{itemize}
+              \item Si $a_{iq} \leq 0 \; \forall i = 1, \dots, m$, entonces se trata de un problema ilimitado y termina el algoritmo.
+              \item Si existe $i \in \{1, \dots, m\}$ tal que $a_{iq} > 0$, tomamos:
+                    $$\frac{x^0_p}{a_{pq}} = \min\left\{\frac{x^0_i}{a_{iq}} : a_{iq} > 0\right\}$$
+          \end{itemize}
+    \item Pivotamos sobre $a_{pq}$ y pasamos a una tabla correspondiente a una solución posible básica, así que volvemos a empezar.
+          Comprobaremos más adelante que esta solución posible básica es no degenerada.
+\end{enumerate}
+
+\subsection*{Casos especiales del símplex}
+Sea $x^0$ solución óptima básica, con $x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 0)$, $z_0 = c_1x^0_1 + \dots + c_mx^0_m$ y $\{a_1, \dots, a_m\}$ sistema linealmente independiente.
+Entonces $z_j - c_j \leq 0$ para todo $j = 1, \dots, n$.
+Supongamos que existe $j \in \{m+1, \dots, n\}$ tal que $z_j-c-j = 0$.
+Sabemos que $a_j = a_{1j}a_1 + \dots + a_{mj}a_m$.
+
+Sea $\varepsilon > 0$, $x^0_\varepsilon = (x^0_1 - \varepsilon a_{1j}, \dots, x^0_m - \varepsilon a_{mj}, 0, \dots, 0, \dots, 0, \varepsilon, 0, \dots, 0)$, con $Ax^0_\varepsilon = b$ para todo $\varepsilon \in \mathbb{R}$.
+\begin{itemize}
+    \item Si $a_{ij} \leq 0$ para todo $i = 1, \dots, m$, entonces $x^0_\varepsilon$ es solución posible para todo $\varepsilon > 0$.
+          Además, el valor de la función objetivo en $x^0_\varepsilon$ es $z_0 - \varepsilon(z_j-c_j) = z_0$.
+          Por tanto, $x^0_\varepsilon$ es solución óptima para todo $\varepsilon > 0$.
+    \item Si existe $i \in \{1, \dots, m\}$ tal que $a_{ij} > 0$ y tomamos $\varepsilon = \min_{a_{ij} > 0} \left\{\frac{x^0_i}{a_{ij}}\right\}$, entonces $x^0_\varepsilon$ es solución posible básica.
+          Además, el valor de la función objetivo en $x^0_\varepsilon$ es $z_0 - \varepsilon(z_j-c_j) = z_0$
+          Por tanto, $x^0_\varepsilon$ es solución óptima básica.
+\end{itemize}
+
+\subsection*{Interpretación geométrica de los costos indirectos}
+Sea $x^0$ una solución posible básica, $x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 0)$, con $\{a_1, \dots, a_m\}$ sistema linealmente independiente.
+Supongamos que existe $j \in \{m+1, \dots, n\}$ tal que $z_j-c_j > 0$.
+Sabemos que $a_j = a_{1j}a_1 + \dots + a_{mj}a_m$.
+
+Sea $\varepsilon > 0$, $x^0_\varepsilon = (x^0_1 - \varepsilon a_{1j}, \dots, x^0_m - \varepsilon a_{mj}, 0, \dots, 0, \dots, 0, \varepsilon, 0, \dots, 0)$.
+Consideramos $\vec{d} = (-a_{ij}, -a_{2j}, \dots, -a_{mj}, 0, \dots, 0, 1, 0, \dots, 0) \in \mathbb{R}^n$.
+
+Tenemos que:
+$$z_j = a_{1j}c_1 + \dots + a_{mj}c_m \Rightarrow z_j-c_j = a_{1j}c_1 + \dots + a_{mj}c_m - c_j = -\vec{c}'\vec{d}$$
+donde $\vec{c}' = (c_1, \dots, c_n)$.
+
+Luego $z_j - c_j > 0 \Leftrightarrow \vec{c}'\vec{d} < 0 \Leftrightarrow \cos(\widehat{\vec{c}', \vec{d}}) < 0$.
+
+\section{Variables artificales}
+Para conseguir tener la identidad en la matriz $A$, a veces necesitamos transformar el problema añadiendo variables artificales.
+
+Partimos de un problema $P$ de la forma:
+\begin{align*}
+     & \text{Min } c'x \\
+     & \begin{cases}
+           Ax = b \\
+           x \geq 0
+       \end{cases}
+\end{align*}
+y queremos llegar a un nuevo problema:
+\begin{align*}
+     & \text{Min } c'x                   \\
+     & \begin{cases}
+           Ax = b                            \\
+           x \geq 0   & x \in \mathbb{R}^n   \\
+           x_a \geq 0 & x_a \in \mathbb{R}^m
+       \end{cases}
+\end{align*}
+
+\subsubsection*{Primera fase}
+Consideramos el problema $P_{F_1}$:
+\begin{align*}
+     & \text{Min } \vec{1}' x_a          \\
+     & \begin{cases}
+           Ax = b                            \\
+           x \geq 0   & x \in \mathbb{R}^n   \\
+           x_a \geq 0 & x_a \in \mathbb{R}^m
+       \end{cases}
+\end{align*}
+
+Observamos que:
+\begin{itemize}
+    \item $P_{F_1}$ no es imposible, porque $(0, b) \in \mathbb{R}^n$ es solución posible.
+    \item $P_{F_1}$ no es ilimitado, puesto que el mínimo de la función objetivo es 0.
+\end{itemize}
+Luego $P_{F_1}$ tiene solución óptima, así que también tiene solución óptima básica.
+
+Hay dos posibles casos:
+\begin{enumerate}
+    \item Supongamos que $x_a^\ast \neq 0 \in \mathbb{R}^m$.
+          Entonces $P$ es imposible.
+    \item Supongamos que $x_a^\ast = 0$.
+          Entonces $x^\ast$ es solución posible de $P$.
+          Hay dos posibilidades:
+          \begin{itemize}
+              \item Supongamos que todas las variables artificales han salido de la base.
+                    Entonces $x^\ast$ es solución posible básica.
+              \item Supongamos que alguna variable artifical permanece en la base.
+                    Esto es, $P_{F_1}$ es degenerado.
+                    Podemos conseguir una base que representa a $x^\ast$ y no tenga ninguna componente en la base correspondiente a $x_a^\ast$.
+                    Esto fuerza a que salgan de la base las componentes correspondientes a $x_a^\ast$.
+                    Luego $x^\ast$ es solución posible básica de $P$.
+          \end{itemize}
+          Pasamos a la segunda fase.
+\end{enumerate}
+
+\subsubsection*{Segunda fase}
+En la primera fase conseguido tener la identidad en la matriz $A$, así que partimos de la última tabla para resolver el problema original mediante el algoritmo del símplex.
+
+\subsection*{Técnica adicional a la base artifical}
+Partimos de un problema de la forma:
+\begin{align*}
+     & \text{Min } c_1x_1 + \dots + c_nx_n    \\
+     & \begin{cases}
+           a_{11}x_1 + \dots + a_{1n}x_n \geq b_1 \\
+           \vdots                                 \\
+           a_{s1}x_1 + \dots + a_{sn}x_n \geq b_s \\
+           \vdots                                 \\
+           a_{m1}x_1 + \dots + a_{mn}x_n \geq b_m \\
+           x_1, \dots, x_n \geq 0
+       \end{cases}
+\end{align*}
+
+Pasamos el problema a forma estándar:
+\begin{align*}
+     & \text{Min } c_1x_1 + \dots + c_nx_n                      \\
+     & \begin{cases}
+           a_{11}x_1 + \dots + a_{1n}x_n - x_{n+1} = b_1 \equiv E_1 \\
+           \vdots                                                   \\
+           a_{s1}x_1 + \dots + a_{sn}x_n - x_{n+s} = b_s \equiv E_s \\
+           \vdots                                                   \\
+           a_{m1}x_1 + \dots + a_{mn}x_n - x_{n+m} = b_m \equiv E_m \\
+           x_1, \dots, x_n, x_{n+1}, \dots, x_{n+m} \geq 0
+       \end{cases}
+\end{align*}
+
+Para evitar añadir variables artificales, hacemos el cambio de ecuaciones:
+$$\{E_1, \dots, Em\} \to \{E_1', \dots, E_m'\}$$
+Tomamos $b_s = \max\{b_i\}_{i=1}^m$.
+Entonces, definimos las nuevas ecuaciones como:
+$$\begin{cases}
+        E_s' = E_s                                      \\
+        E_i' = E_s - E_i & i = 1, \dots, m, \; i \neq s
+    \end{cases}$$
+De esta forma, llegamos a un problema equivalente con restricciones:
+$$\begin{cases}
+        (a_{s1}-a_{11})x_1 + \dots + (a_{sn}-a_{1n})x_n - x_{n+s} + x_{n+1} = b_s - b_1 \\
+        \vdots                                                                          \\
+        a_{s1}x_1 + \dots + a_{sn}x_n - x_{n+s} = b_s                                   \\
+        \vdots                                                                          \\
+        (a_{s1}-a_{m1})x_1 + \dots + (a_{sn}-a_{mn})x_n - x_{n+s} + x_{n+m} = b_s - b_m \\
+        x_1, \dots, x_{n+m} \geq 0
+    \end{cases}$$
+Observamos que hemos conseguido tener la identidad en la matriz $A$ sin necesidad de añadir variables artificiales.

@@ -1,0 +1,279 @@
+\chapter{Optimización lineal}
+\section{Planteamiento de un problema de programación lineal}
+En su forma estándar, un problema de este tipo se escribe:
+\begin{align*}
+     & \text{Min } c_1x_1 + c_2x_2 + \dots + c_nx_n \\
+     & \begin{cases}
+           a_{11}x_1 + \dots + a_{1n}x_n = b_1 \\
+           \vdots                              \\
+           a_{m1}x_1 + \dots + a_{mn}x_n = b_m \\
+           x_1, \dots, x_n \geq 0
+       \end{cases}
+\end{align*}
+La función a minimizar $c_1x_1 + c_2x_2 + \dots + c_nx_n$ se llama función objetivo y el sistema de condiciones se llama conjunto de restricciones.
+Este último se puede representar matricialmente con la matriz:
+$$A = \begin{pmatrix}
+        a_{11} & \dots & a_{1n} \\
+        \vdots &       & \vdots \\
+        a_{m1} & \dots & a_{mn}
+    \end{pmatrix}, \quad rang(A) = m \leq n$$
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item $\text{Max } c_1x_1 + c_2x_2 + \dots + c_nx_n = -\text{Min } c_1x_1 + c_2x_2 + \dots + c_nx_n$.
+        \item Las restricciones pueden ser desigualdades.
+              En este caso, se introducen variables de holgura.
+        \item Las variables de holgura del problema pueden ser negativas.
+              En este caso, se expresan como diferencia de variables no negativas.
+              $$x_j \in \mathbb{R}, \; x_j^\ast, x_j^{\ast\ast} \geq 0 \to x_j = x_j^\ast - x_j^{\ast\ast}$$
+    \end{enumerate}
+\end{remark}
+
+\section{Método geométrico de resolución}
+Los problemas de optimización lineal se pueden resolver representando el área en el que pueden estar las variables y evaluar sus vértices.
+Los valores máximo y mínimo siempre se alcanzan en los vértices.
+
+\section{Soluciones de un problema de programación lineal}
+\begin{definition}[Solución posible]
+    Un vector $x \in \mathbb{R}^n$ es una solución posible del problema si $Ax = b$, $x \geq 0$.
+    El conjunto de soluciones posibles es $K = \{x \in \mathbb{R}^n : Ax = b, x \geq 0\}$.
+\end{definition}
+
+Como $rang(A) = m$, hay $m$ columnas de $A$ linealmente independientes.
+Podemos escribir $A = (a_1, \dots, a_n)$, con $a_1, \dots, a_n$ columnas de $A$.
+Entonces, podemos considerar $B = (a_1, \dots, a_m)$ submatriz de $A$ con rango no nulo.
+$$Bx_B = b \Leftrightarrow x_B = B^{-1}b \in \mathbb{R}^n$$
+Llamaremos solución básica a $x = (x_B, 0) \in \mathbb{R}^n$.
+
+\begin{definition}[Solución básica]
+    Una solución básica es un vector $x \in \mathbb{R}^n$ tal que $Ax = b$, $x \geq 0$ y las componentes no nulas de $x$ llevan asociadas columnas de $A$ que constituyen un sistema linealmente independiente.
+\end{definition}
+
+\begin{remark}
+    En general, las soluciones básicas no son soluciones posibles.
+\end{remark}
+
+\begin{definition}[Solución posible básica]
+    Una solución posible básica es un vector $x \in \mathbb{R}^n$ que sea solución básica tal que $x \geq 0$.
+\end{definition}
+
+\begin{definition}
+    Sea $x = (X_B, 0) = \in \mathbb{R}^n$ una solución posible básica.
+    \begin{itemize}
+        \item $x$ es no degenerada si $x_B > 0$.
+        \item $x$ es degenerada si alguna componente de $x_B$ es nula.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Solución óptima]
+    Un vector $x^0 \in \mathbb{R}^n$ es solución óptima si $x^0$ es solución posible y $c'x^0 \leq c'x$ para toda solución posible $x$.
+\end{definition}
+
+\begin{definition}[Solución óptima básica]
+    Un vector $x^0 \in \mathbb{R}^n$ es solución óptima básica si $x^0$ es solución básica y solución óptima.
+\end{definition}
+
+\section{Teorema fundamental de la programación lineal}
+\begin{theorem}[Teorema fundamental de la programación lineal]
+    Dado el problema:
+    \begin{align*}
+         & \text{Min } c'x               \\
+         & \begin{cases}
+               Ax = b, \quad rang(A) = m < n \\
+               x \geq 0
+           \end{cases}
+    \end{align*}
+    Entonces:
+    \begin{enumerate}
+        \item Si el problema tiene solución posible, entonces tiene solución posible básica.
+        \item Si el problema tiene solución óptima, entonces tiene solución óptima básica.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \hfill
+    \begin{enumerate}
+        \item Sea $x^0 = (x^0_1, \dots, x^0_n)$ solución posible.
+              Veamos que el problema tiene solución posible básica.
+
+              Sean $\{a_1, \dots, a_n\}$ las columnas de $A$, entonces:
+              $$\begin{cases}
+                      Ax^0 = b \Leftrightarrow a_1x^0_1 + \dots + a_nx^0_n = b \\
+                      x^0 \geq 0 \Leftrightarrow x^0_i \geq 0, \quad \forall i \in \{0, \dots, n\}
+                  \end{cases}$$
+              Supongamos que $x^0 = (x^0_1, \dots, x^0_p, 0, \dots, 0) \in \mathbb{R}^n$, con $p \leq n$.
+              Entonces:
+              $$a_1x^0_1 + \dots + a_px^0_p = b, \quad x^0_i > 0, \; \forall i \in \{1, \dots, p\}$$
+              Tenemos dos posibles casos:
+              \begin{enumerate}
+                  \item Supongamos que $\{a_1, \dots, a_p\}$ es un sistema linealmente independiente.
+                        Entonces $p \leq m$, luego $x^0$ es solución posible básica.
+                        Además,
+                        \begin{itemize}
+                            \item Si $p = m$, $x^0$ es no degenerada.
+                            \item Si $p < m$, $x^0$ es degenerada.
+                        \end{itemize}
+                  \item Supongamos que $\{a_1, \dots, a_p\}$ es un sistema linealmente dependiente.
+                        Entonces existen $y_1, \dots, y_p \in \mathbb{R}$, alguno de ellos positivo, tales que:
+                        $$a_1y_1 + \dots + a_py_p = 0$$
+                        Sea $y = (y_1, \dots, y_p, 0, \dots, 0) \in \mathbb{R}^n$ y sea $\varepsilon > 0$, consideramos:
+                        $$x^0 - \varepsilon y = (x^0_1 - \varepsilon y_1, \dots, x^0_p - \varepsilon y_p, 0, \dots, 0) \in \mathbb{R}^n$$
+
+                        Veamos si $x^0 - \varepsilon y$ es solución posible del problema.
+                        \begin{align*}
+                            A(x^0 - \varepsilon y)     & = a_1(x^0_1 - \varepsilon y_1) + \dots + a_p(x^0_p - \varepsilon y_p) =                      \\
+                                                       & = a_1x^0_1 + \dots + a_px^0_p - \varepsilon(a_1y_1 + \dots + a_py_p) = b - \varepsilon 0 = b \\
+                            x^0 - \varepsilon y \geq 0 & \Leftrightarrow x^0_i - \varepsilon y_i \geq 0, \quad \forall i \in \{1, \dots, p\}
+                        \end{align*}
+
+                        \begin{itemize}
+                            \item Si $y_i \leq 0$, entonces $x^0_i - \varepsilon y_i \geq x^0_i > 0$, para todo $i \in \{1, \dots, p\}$.
+                            \item Si $y_i > 0$, entonces $x^0_i - \varepsilon y_i \geq 0 \Leftrightarrow \varepsilon \leq \frac{x^0_i}{y_i}$.
+                        \end{itemize}
+                        Si tomamos $\varepsilon$ tal que $0 < \varepsilon \leq \min_{y_i > 0} \left\{\frac{x^0_i}{y_i}\right\}$, entonces $x^0 - \varepsilon y$ es solución posible.
+                        En particular, podemos tomar $\varepsilon = \min_{y_i > 0} \left\{\frac{x^0_i}{y_i}\right\}$, de forma que $x^0 - \varepsilon y$ es solución posible con $p-1$ componentes positivas como máximo.
+
+                        Ahora procedemos de forma análoga al razonamiento para $x^0$. Esto es:
+                        \begin{enumerate}
+                            \item Si las columnas de $A$ correspondientes a las $p-1$ componentes positivas como máximo de $x^0 - \varepsilon y$ constituyen un sistema linealmente independiente, entonces $x^0 - \varepsilon y$ es una solución posible básica.
+                            \item Si las columnas de $A$ consideradas constituyen un sistema linealmente dependiente, construimos de forma análoga una nueva solución posible con $p-2$ componentes positivas como máximo.
+                        \end{enumerate}
+                        Razonando reiteradamente de esta forma, eventualmente se consigue hallar una solución posible básica.
+              \end{enumerate}
+
+        \item Sea $x^0 = (x^0_1, \dots, x^0_n)$ solución óptima.
+              Veamos que el problema tiene solución óptima básica.
+
+              Como $x^0$ es solución óptima, verifica que $Ax^0 = b$, $x^0 \geq 0$ y $x^0 \leq c'x$, para todo $x \in K$.
+              Supongamos que $x^0 = (x^0_1, \dots, x^0_p, 0, \dots, 0) \in \mathbb{R}^n$, con $p \leq n$.
+              Tenemos dos posibles casos:
+              \begin{enumerate}
+                  \item Supongamos que $\{a_1, \dots, a_p\}$ es un sistema linealmente independiente.
+                        Entonces $p \leq m$, luego $x^0$ es solución óptima básica.
+                  \item Supongamos que $\{a_1, \dots, a_p\}$ es un sistema linealmente dependiente.
+                        Entonces existen $y_1, \dots, y_p \in \mathbb{R}$, alguno de ellos positivo, tales que:
+                        $$a_1y_1 + \dots + a_py_p = 0$$
+                        Sea $y = (y_1, \dots, y_p, 0, \dots, 0) \in \mathbb{R}^n$ y sea $\varepsilon > 0$, consideramos:
+                        $$x^0 - \varepsilon y = (x^0_1 - \varepsilon y_1, \dots, x^0_p - \varepsilon y_p, 0, \dots, 0) \in \mathbb{R}^n$$
+
+                        Sabemos que $x^0 - \varepsilon y$ es solución posible del problema si tomamos $0 < \varepsilon \leq \min_{y_i > 0} \left\{\frac{x^0_i}{y_i}\right\}$.
+                        Si en particular, tomamos $\varepsilon = \min_{y_i > 0} \left\{\frac{x^0_i}{y_i}\right\}$, entonces $x^0 - \varepsilon y$ es solución posible del problema con $p-1$ componentes positivas como máximo.
+
+                        Veamos que $x^0 - \varepsilon y$ es solución óptima.
+                        $$c'x^0 = c'(x^0 - \varepsilon y) \Leftrightarrow \varepsilon c'y = 0 \Leftrightarrow c'y = 0$$
+                        Razonamos por reducción al absurdo.
+                        Supongamos pues que $c'y \neq 0$, de forma que $c'y > 0$ o $c'y < 0$.
+                        Veamos que existe $\delta \in \mathbb{R}$ tal que $x^0 - \delta y$ es solución posible y $c'(x^0 - \delta y) < c'x^0$.
+                        $$c'(x^0 - \delta y) < c'x^0 \Leftrightarrow -\delta c'y < 0 \Leftrightarrow \delta c'y > 0$$
+                        \begin{itemize}
+                            \item Si $c'y > 0$, elegimos $\delta > 0$.
+                            \item Si $c'y < 0$, elegimos $\delta < 0$.
+                        \end{itemize}
+                        Para que sea solución posible,
+                        \begin{align*}
+                            A(x^0 - \delta y)     & = Ax^0 - \delta Ay = Ax^0 = b                                                                           \\
+                            x^0 - \delta y \geq 0 & \Leftrightarrow x^0_i - \delta y_i \geq 0 \; \forall i \in \{1, \dots, p\} \Leftrightarrow              \\
+                                                  & \Leftrightarrow \begin{cases}
+                                                                        0 < \delta \leq \min_{y_i > 0} \left\{\frac{x^0_i}{y_i}\right\} & \text{si } \delta > 0 \\
+                                                                        \max_{y_i < 0} \left\{\frac{x^0_i}{y_i}\right\} \leq \delta < 0 & \text{si } \delta < 0
+                                                                    \end{cases}
+                        \end{align*}
+                        Esto es una contradicción.
+                        Luego $x^0 - \varepsilon y$ es solución óptima.
+                        Repetimos el razonamiento con $x^0 - \varepsilon y$.
+              \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\section{Equivalencia de puntos extremos y solución posible básica}
+\begin{theorem}
+    El conjunto $K$ es convexo.
+\end{theorem}
+
+\begin{definition}[Punto extremo]
+    Sea $C \neq \emptyset$ un conjunto convexo y sea $x \in C$.
+    $x$ es un punto extremo de $C$ si y solo si no lo podemos expresar como combinación lineal convexa de dos puntos distintos de $C$, es decir,
+    $$x = \alpha y + (1-\alpha)z, \quad y, z \in C, \; \alpha \in (0, 1) \Rightarrow y = z = x$$
+\end{definition}
+
+\begin{theorem}
+    $x^0$ es un punto extremo de $K$ $\Leftrightarrow$ $x^0$ es una solución posible básica.
+\end{theorem}
+
+\begin{proof}
+    \hfill \break
+    $\boxed{\Rightarrow}$ Supongamos que $x^0$ es un punto extremo de $K$ de la forma:
+    $$x^0 = (x^0_1, \dots, x^0_p, 0, \dots, 0), \quad p \leq n$$
+    Sean $a_1, \dots, a_n$ las columnas de $A$,
+    $$\begin{cases}
+            Ax = b \leftrightarrow a_1x^0_1 + \dots a_px^0_p = b \\
+            x^0 \geq 0 \Leftrightarrow x^0_i \geq 0, \quad \forall i \in \{1, \dots, p\}
+        \end{cases}$$
+    Veamos que $x^0$ es solución posible básica, esto es, que $\{a_1, \dots, a_p\}$ es un sistema linealmente independiente.
+
+    Razonamos por reducción al absurdo.
+    Supongamos que $\{a_1, \dots, a_p\}$ es un sistema linealmente dependiente.
+    Entonces existen $y_1, \dots, y_p \in \mathbb{R}$, con algunos de ellos positivo, tales que:
+    $$a_1y_1 + \dots + a_py_p = 0$$
+    Sea $y = (y_1, \dots, y_p, 0, \dots, 0)$ y sea $\varepsilon > 0$.
+    Veamos que $x^0 - \varepsilon y, x^0 + \varepsilon y \in K$.
+    Sabemos que esto se verifica si y solo si:
+    $$\begin{cases}
+            0 < \varepsilon \leq \min_{y_i > 0} \left\{\frac{x^0_i}{y_i}\right\}  & \text{para } x^0 - \varepsilon y \\
+            0 < \varepsilon \leq \min_{y_i < 0} \left\{\frac{x^0_i}{-y_i}\right\} & \text{para } x^0 + \varepsilon y \\
+        \end{cases}$$
+    Luego podemos tomar $0 < \varepsilon \leq \min_{y_i > 0} \left\{\frac{x^0_i}{|y_i|}\right\}$, de forma que $x^0 - \varepsilon y, x^0 + \varepsilon y \in K$, con $x^0 - \varepsilon y \neq x^0 + \varepsilon y$.
+    De esta forma, podemos escribir:
+    $$x^0 = \frac{1}{2}(x^0 - \varepsilon y) + \frac{1}{2}(x^0 + \varepsilon y)$$
+    Esto contradice la hipótesis de que $x^0$ es punto extremo de $K$.
+
+    $\boxed{\Leftarrow}$ Supongamos que $x^0$ es solución posible básica.
+    Veamos que $x^0$ es punto extremo de $K$.
+
+    Supongamos que la base $\{a_1, \dots, a_m\}$ es un sistema linealmente independiente.
+    Entonces:
+    $$x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 0) \in \mathbb{R}^n$$
+    $$\begin{cases}
+            Ax^0 = b \Leftrightarrow a_1x^0_1 + \dots + a_mx^0_m = b \\
+            x^0_i \geq 0, \quad \forall i \in \{1, \dots, m\}
+        \end{cases}$$
+    Expresamos $x^0$ de la forma:
+    $$x^0 = \alpha y + (1-\alpha)z, \quad \alpha \in (0, 1), \; y, z \in K$$
+    Veamos que $y = z$.
+
+    Se verifica que:
+    \begin{align*}
+        y & = (y_1, \dots, y_n) \in \mathbb{R}^n, & y_i & \geq 0, \; \forall j \in \{1, \dots, n\}, & Ay = b \\
+        z & = (z_1, \dots, z_n) \in \mathbb{R}^n, & z_i & \geq 0, \; \forall j \in \{1, \dots, n\}, & Az = b
+    \end{align*}
+    Luego:
+    $$(x^0_1, \dots, x^0_m, 0, \dots, 0) = \alpha(y_1, \dots, y_n) + (1-\alpha)(z_1, \dots, z_n)$$
+    Observamos que, si $i > m$, entonces:
+    $$0 = \alpha y_i + (1-\alpha)z_i \Leftrightarrow y_i = z_i = 0$$
+    Así pues, $y = (y_1, \dots, y_m, 0, \dots, 0)$ y $z = (z_1, \dots, z_m, 0, \dots, 0)$.
+    Como además $\{a_1, \dots, a_m\}$ es un sistema linealmente independiente,
+    $$\begin{cases}
+            a_1y_1 + \dots + a_my_m = b \\
+            a_1z_1 + \dots + a_my_m = b
+        \end{cases} \Leftrightarrow
+        \begin{cases}
+            y_1 = z_1 \\
+            \vdots    \\
+            y_m = z_m
+        \end{cases} \Leftrightarrow y = z$$
+    Por tanto, $x^0 = y = z$.
+    Luego $x^0$ es punto extremo de $K$.
+\end{proof}
+
+\begin{corollary}
+    Si $K \neq \emptyset$, entonces $K$ tiene algún punto extremo.
+\end{corollary}
+
+\begin{corollary}
+    Si el problema tiene solución óptima entonces tiene alguna solución óptima que es punto extremo de $K$.
+\end{corollary}
+
+\begin{corollary}
+    $K$ tiene como máximo $\binom{n}{m}$ puntos extremos.
+\end{corollary}
