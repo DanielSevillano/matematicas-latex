@@ -318,3 +318,88 @@ Si además $X_1, \dots, X_n$ son igualmente distribuidas, entonces $\varphi_S(t)
 \begin{lemma}
     $$\left|e^{iy} - \sum_{k=0}^n \frac{(iy)^k}{k!}\right| \leq \min\left\{2\frac{|y|^n}{n!}, \frac{|y|^{n+1}}{(n+1)!}\right\}$$
 \end{lemma}
+
+\begin{theorem}
+    Si $\varphi$ es absolutamente integrable, entonces $F$ es absolutamente continua con densidad:
+    $$f(x) = \frac{1}{2\pi} \int_\mathbb{R} e^{-itx}\varphi(t)dt$$
+\end{theorem}
+
+\begin{theorem}[Lema de Riemman-Lebesgue]
+    Si $F$ es absolutamente continua, entonces:
+    $$\lim\limits_{|t| \to \infty} \varphi(t) = 0$$
+\end{theorem}
+
+\begin{definition}
+    Sea $X$ una variable aleatoria con función característica $\varphi$.
+    Definimos su función generatriz de cumulantes como:
+    $$K: \mathbb{R} \to \mathbb{C}, \quad K(t) = \log(\varphi(t))$$
+\end{definition}
+
+\begin{proposition}
+    Sean $X_1, \dots, X_n$ variables aleatorias con funciones características $\varphi_1, \dots, \varphi_n$ y sea $S = X_1 + \dots + X_n$.
+    Entonces:
+    $$K_S(t) = \sum_{i=1}^n K_{x_i}(t)$$
+\end{proposition}
+
+\begin{theorem}
+    Sea $X$ una variable aleatoria.
+    Supongamso que $E(|X|^n) < \infty$ para algún $n \geq 1$.
+    Entonces:
+    $$K_X(t) = \sum_{j=0}^n \frac{(it)^j}{j!}c_j + O(t^n)$$
+    donde $c_j = \frac{K^{(j)}(0)}{i^j}$ es el cumulante de orden $j$.
+\end{theorem}
+
+\begin{note}
+    \begin{align*}
+        c_1 & = \frac{K'(0)}{i} = \frac{1}{i} \frac{\varphi'(0)}{\varphi(0)} = \frac{1}{i}\varphi'(0) = E(X)                                                       \\
+        c_2 & = \frac{K''(0)}{i^2} = -K''(0) = -\left(\frac{\varphi''(0)}{\varphi(0)} - \left(\frac{\varphi'(0)}{\varphi(0)}\right)^2\right) = (E(X^2) - E(X)^2) = \\
+            & = V(X)
+    \end{align*}
+\end{note}
+
+\begin{definition}
+    Sea $X$ una variable aleatoria y $\sigma = \sqrt{V(X)}$.
+    \begin{itemize}
+        \item Definimos el sesgo de $X$ como $\dfrac{c_3}{\sigma^3}$.
+        \item Definimos la curtosis de $X$ como $\dfrac{c_4}{\sigma^4}$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}
+    Sea $X$ una variable aleatoria con función característica $\varphi$.
+    Definimos la función de generatriz de momentos de $X$ como:
+    $$\psi(t) = E(e^{tX}) = \int_\mathbb{R} e^{tx}dF(x)$$
+    $\psi$ está definida en un entorno del 0.
+\end{definition}
+
+\begin{remark}
+    Si existe $\psi$ entonces $E(|X|^n) < \infty$ para todo $n \geq 1$.
+\end{remark}
+
+\begin{definition}
+    Sea $X$ una variable aleatoria con valores en $\mathbb{Z}_+ = \{0, 1, 2, \dots\}$.
+    La función generatriz de probabilidad de $X$ es:
+    $$G_X(t) = E(t^X) = \sum_{n=0}^\infty t^nP(X=n), \quad |t| < 1$$
+\end{definition}
+
+\begin{remark}
+    $$G_x^{(k)}(0) = k!P(X=k) \Rightarrow P(X=k) = \frac{G_X^{(k)}(0)}{k!}$$
+\end{remark}
+
+Sea $X = Y_1 + \dots + Y_N$, con $Y_i$ variables aleatorias independientes e idénticamente distribuidas y $N$ una variable aleatoria en $\mathbb{Z}_+$.
+$X$ sigue una distribución compuesta.
+\begin{align*}
+    \varphi_X(t) & = E(e^{itX}) = E(E(e^{itX}|N)) = \sum_{n=0}^\infty E(e^{itX}|N=n)P(N=n) =                                        \\
+                 & = \sum_{n=0}^\infty E(e^{it\sum_{i=1}^n X_i})P(N=n) = \sum_{n=0}^\infty \varphi_Y(t)^nP(N=n) = G_N(\varphi_Y(t))
+\end{align*}
+
+\begin{example}
+    Sea $X = Y_1 + \dots + Y_N$, con $Y_i$ variables aleatorias independientes e idénticamente distribuidas y $N \sim Po(\lambda)$ una variable aleatoria en $\mathbb{Z}_+$.
+    $$\varphi_X(t) = G_N(\varphi_Y(t)) = e^{\lambda(\varphi_Y(t)-1)}$$
+    donde
+    $$G_N(t) = E(t^N) = \sum_{n=0}^\infty t^nP(N=n) = \sum_{n=0}^\infty t^ne^{-\lambda}\frac{\lambda^n}{n!} = e^{\lambda(t-1)}$$
+    Además,
+    $$K_X(t) = \log(\varphi_X(t)) = \lambda(\varphi_Y(t) - 1)$$
+    Luego podemos calcular:
+    $$E(X) = c_1 = \frac{K'(0)}{i} = \frac{1}{i}\lambda \varphi_Y'(0) = \lambda E(Y)$$
+\end{example}
