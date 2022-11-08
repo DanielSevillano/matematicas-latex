@@ -1,0 +1,58 @@
+\chapter{Espacios de soluciones de los sistemas y ecuaciones diferenciales lineales}
+\begin{theorem}
+    Si $A: I \to \mathcal{M}_n(\mathbb{R})$ es continua en el intervalo $I$, el conjunto de soluciones del sistema diferencial lineal homogéneo $x' = A(t)x$ es un subespacio vectorial de $\mathcal{C}^1(I, \mathbb{R}^n)$ de dimensión finita igual a $n$.
+\end{theorem}
+
+\begin{definition}[Matrices soluciones y matrices fundamentales]
+    Sea el sistema diferencial homogéneo $x' = A(t)x$, donde $A: I \to \mathcal{M}_n(\mathbb{R})$ es continua en $I$.
+    \begin{itemize}
+        \item Una matriz solución del sistema es una función matricial $\Phi: I \to \mathcal{M}_n(\mathbb{R})$ cuyas $n$ columnas son soluciones del sistema.
+        \item Una matriz fundamental del sistema es una función matricial $\mathcal{M}_n(\mathbb{R})$ cuyas $n$ columnas forman un sistema fundamental de soluciones del sistema.
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}
+    Una función matricial $\Phi: I \to \mathcal{M}_n(\mathbb{R})$, derivable en $I$, es matriz solución del sistema $x' = A(t)x$ si y solo si verifica:
+    $$\Phi'(t) = A(t)\Phi(t), \quad \forall t \in I$$
+\end{theorem}
+
+\begin{theorem}[Caracterización de las matrices fundamentales]
+    Si $\Phi$ es matriz solución del sistema diferencial lineal $x' = A(t)x$, las tres siguientes afirmaciones son equivalentes:
+    \begin{enumerate}
+        \item $\Phi$ es matriz fundamental de $x' = A(t)x$.
+        \item $\det(\Phi(t)) \neq 0$ para cada $t \in I$.
+        \item Existe $t_0 \in I$ tal que $\det(\Phi(t_0)) \neq 0$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    Para una matriz solución $\Phi$ solo caben las dos siguientes posibilidades:
+    \begin{enumerate}
+        \item $\det(\Phi(t)) \neq 0$ para cada $t \in I$.
+        \item $\det(\Phi(t)) = 0$ para cada $t \in I$.
+    \end{enumerate}
+    En la primera situación la matriz $\Phi$ es fundamental.
+\end{corollary}
+
+\begin{proposition}
+    Sea $\Phi$ una matriz fundamental del sistema $x' = A(t)x$.
+    Una función matricial $\Psi: I \to \mathcal{M}_n(\mathbb{R})$ es matriz fundamental de $x' = A(t)x$ si y solo si:
+    $$\Psi(t) = \Phi(t)C, \quad \forall t \in I$$
+    donde $C \in \mathcal{M}_n(\mathbb{R})$ y $\det(C) \neq 0$.
+\end{proposition}
+
+\begin{theorem}[Fórmula de Abel-Liouville]
+    Sea $A: I \to \mathcal{M}_n(\mathbb{R})$ continua en el intervalo $I$ y sea $t_0 \in I$.
+    Si $\Phi: I \to \mathcal{M}_n(\mathbb{R})$ es matriz solución del sistema homogéneo $x' = A(t)x$, se verifica:
+    $$\det(\Phi(t)) = \det(\Phi(t_0)) \exp\left( \int_{t_0}^t tr(A(s))ds \right), \quad \forall t \in I$$
+\end{theorem}
+
+\begin{proposition}
+    Si $V_H$ es el espacio vectorial de las soluciones del sistema homogéneo $(S_H)$, con $\dim V_H = n < \infty$, y $x_p: I \to \mathbb{R}^n$ es una solución del sistema no homogéneo $(S)$, el conjunto de soluciones de $(S)$ viene dado por:
+    $$\{x: I \to \mathbb{R}^n : x = x_h + x_p, \; x_h \in V_H\}$$
+\end{proposition}
+
+\begin{corollary}
+    Si $\Phi$ es una matriz fundamental de $x' = A(t)x$ y $x_p$ es una solución de $x' = A(t)x + b(t)$, entonces las soluciones del sistema no homogéneo son de la forma:
+    $$x(t) = \Phi(t)c + x_p(t), \quad c \in \mathbb{R}^n$$
+\end{corollary}
