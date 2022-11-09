@@ -32,4 +32,6 @@ Estos apuntes están abiertos a correcciones y mejoras.
 
 1. Propiedades
 2. Teorema de inversión
-3. Momentos
+3. Teorema de continuidad
+4. Momentos
+5. Reconocimiento de funciones características

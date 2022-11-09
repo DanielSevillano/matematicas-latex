@@ -170,6 +170,7 @@ Además,
     \end{align*}
 \end{exercise}
 
+\section{Teorema de continuidad}
 \begin{theorem}[Teorema de continuidad de Lévy]
     Sea $\{X_n\}_{n \geq 1}$ y sean $\varphi_n$ las funciones de distribución asociadas.
     Supongamos que existe una función $\varphi$ tal que:
@@ -403,3 +404,128 @@ $X$ sigue una distribución compuesta.
     Luego podemos calcular:
     $$E(X) = c_1 = \frac{K'(0)}{i} = \frac{1}{i}\lambda \varphi_Y'(0) = \lambda E(Y)$$
 \end{example}
+
+\section{Reconocimiento de funciones características}
+Para identificar funciones características usamos alguna de las siguientes estrategias:
+\begin{itemize}
+    \item Reconocer la función característica de alguna distribución conocida.
+    \item Encontrar una variable aleatoria cuya función característica sea la que buscamos.
+    \item Usar otros resultados.
+\end{itemize}
+
+\begin{exercise}
+    Supongamos que $\varphi_X$ es una función característica.
+    Veamos que $|\varphi_X|^2$ también lo es.
+    $$|\varphi_X(t)|^2 = \varphi_X(t) \overline{\varphi_X(t)} = \varphi_X(t)\varphi_{-X}(t), \quad t \in \mathbb{R}$$
+    Definimos $X'$ como una copia independiente de $-X$.Entonces, la variable $Y = X + X'$ tiene como función característica a $|\varphi_X|^2$.
+\end{exercise}
+
+\begin{lemma}
+    Sean $\mu_1, \dots, \mu_n$ medidas de probabilidad con funciones características $\varphi_1, \dots, \varphi_n$ respectivamente.
+    Sean $\alpha_1, \dots, \alpha_n \in [0, 1]$ tales que $\sum_{i=1}^n \alpha_i = 1$.
+    Entonces la función característica asociada a la medida $\sum_{i=1}^n \alpha_i\mu_i$ es:
+    $$\varphi(t) = \sum_{i=1}^n \alpha_i\varphi_i(t)$$
+    Es decir, toda combinación lineal convexa de funciones características es una función característica.
+\end{lemma}
+
+\begin{exercise}
+    Supongamos que $\varphi_X$ es una función característica.
+    Veamos que $Re(\varphi_X)$ también lo es.
+    $$Re(\varphi_X) = \frac{\varphi_X + \overline{\varphi_X}}{2} = \frac{1}{2}\varphi_X + \frac{1}{2}\varphi_{X'}$$
+    donde $X'$ es una copia independiente de $-X$.
+
+    Definimos la variable aleatoria $Y$ cuya distribución de probabilidad es una mixta de las distribuciones $X$ y $X'$ con pesos $\frac{1}{2}$ y $\frac{1}{2}$.
+    Entonces, $Y$ tiene como función característica $\varphi_Y(t) = Re(\varphi_X(t))$.
+\end{exercise}
+
+\begin{definition}
+    Una función $g: \mathbb{R} \to \mathbb{C}$ es definida positiva si:
+    $$\sum_{j=1}^n \sum_{k=1}^n g(t_j-t_k)z_j\bar{z}_k \geq 0$$
+    para todo $t_1, \dots, t_n \in \mathbb{R}$ y $z_1, \dots, z_n \in \mathbb{C}$.
+\end{definition}
+
+\begin{remark}
+    La función característica es definida positiva.
+\end{remark}
+
+\begin{theorem}
+    Sea $g$ una función definida positiva.
+    Si $g$ es continua en 0 entonces es uniformemente continua en $\mathbb{R}$.
+\end{theorem}
+
+\begin{lemma}[Herglotz]
+    Sea $\phi: \mathbb{Z} \to \mathbb{C}$ definida positiva con $\phi(0) = 1$.
+    Entonces existe $\mu$ distribución de probabilidad en $[-\pi, \pi]$ tal que $\phi$ es su función de distribución asociada, es decir,
+    $$\phi(t) = \int_{-\pi}^\pi e^{itx}\mu(dx), \quad \forall t \in \mathbb{Z}$$
+\end{lemma}
+
+\begin{theorem}[Bochner]
+    Sea $\varphi: \mathbb{R} \to \mathbb{C}$ tal que:
+    \begin{enumerate}
+        \item $\varphi$ es definida positiva.
+        \item $\varphi$ es continua en 0.
+        \item $\varphi(0) = 1$.
+    \end{enumerate}
+    Entonces $\varphi$ es una función característica.
+\end{theorem}
+
+\begin{proposition}
+    La función $\varphi_T$ dada por:
+    $$\varphi(t) = \max\left\{1-\frac{|t|}{T}, 0\right\} = \begin{cases}
+            1 - \frac{|t|}{T} & \text{si } |t| \leq T \\
+            0                 & \text{si } |t| > T
+        \end{cases}$$
+    es una función característica.
+\end{proposition}
+
+\begin{lemma}
+    Sea $\varphi: \mathbb{R} \to \mathbb{R}$ tal que:
+    \begin{enumerate}
+        \item $\varphi(0) = 1$.
+        \item $\varphi(t) \geq 0 \; \forall t \in \mathbb{R}$.
+        \item $\varphi$ es par.
+        \item $\varphi$ es una poligonal convexa no creciente en $\mathbb{R}_+$.
+    \end{enumerate}
+    Entonces $\varphi$ es una función característica.
+\end{lemma}
+
+\begin{theorem}[Criterio de Pólya]
+    Sea $\varphi: \mathbb{R} \to \mathbb{R}$ tal que:
+    \begin{enumerate}
+        \item $\varphi(0) = 1$.
+        \item $\varphi$ es no negativa, par y continua.
+        \item $\varphi$ es convexa y no creciente en $\mathbb{R}_+$.
+    \end{enumerate}
+    Entonces $\varphi$ es función característica.
+\end{theorem}
+
+\begin{exercise}
+    Sea $\varphi$ la función dada por:
+    $$\varphi(t) = \begin{cases}
+            1 - 0.025|t| & \text{si } |t| < 2        \\
+            0.9 - 0.2|t| & \text{si } 2 \leq |t| < 3 \\
+            0.6 - 0.1|t| & \text{si } 3 \leq |t| < 4 \\
+            0.2          & \text{si } |t| \geq 4
+        \end{cases}$$
+    Veamos que $\varphi$ es función característica.
+
+    Para ello expresamos $\varphi$ como combinación lineal convexa de funciones características de la forma $1 - \frac{|t|}{T}$ en $|t| < T$.
+    Escribimos $\varphi$ como:
+    $$\varphi(t) = \alpha_1\varphi_2(t) + \alpha_2\varphi_3(t) + \alpha_3\varphi_4(t) + \alpha_4, \quad \varphi_a(t) = \begin{cases}
+            1 - \frac{|t|}{a} & \text{si } |t| \leq a \\
+            0                 & \text{si } |t| > a
+        \end{cases}$$
+    Ahora encontramos los $\alpha_i$.
+    $$\begin{cases}
+            \varphi(0) = 1 = \alpha_1 + \alpha_2 + \alpha_3 + \alpha_4                                                                                               \\
+            \varphi(2) = \alpha_2\varphi_3(2) + \alpha_3\varphi_4(2) + \alpha_4 = \alpha_2\left(1-\frac{2}{3}\right) + \alpha_3\left(1-\frac{1}{2}\right) + \alpha_4 \\
+            \varphi(3) = \alpha_3\varphi_4(2) + \alpha_1 = \alpha_3\left(1-\frac{3}{4}\right) + \alpha_4                                                             \\
+            \varphi(4) = \alpha_4
+        \end{cases}$$
+    Resolviendo el sistema obtenemos que:
+    $$\alpha_1 = 0.1, \quad \alpha_2 = 0.3, \quad \alpha_3 = 0.4, \quad \alpha_4 = 0.2$$
+
+    Por tanto,
+    $$\varphi(t) = 0.1\varphi_2(t) + 0.3\varphi_3(t) + 0.4\varphi_4(t) + 0.2$$
+    Como cada $\varphi_a$ es función característica, $\varphi$ es función característica por ser combinación lineal convexa de ellas.
+\end{exercise}
