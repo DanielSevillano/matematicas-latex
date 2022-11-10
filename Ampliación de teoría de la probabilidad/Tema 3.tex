@@ -1,0 +1,86 @@
+\chapter{Convergencia}
+Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad, con $P: \mathcal{A} \to [0, 1]$.
+Estudiaremos las sucesiones $\{A_n\}_{n \geq 1}$ con $A_i \in \mathcal{A}$ para todo $i \geq 1$.
+
+\begin{definition}
+    Sea $\{A_n\}_n \subset \mathcal{A}$.
+    \begin{itemize}
+        \item Definimos el límite superior de la sucesión como:
+              $$\limsup\limits_{n \to \infty} A_n = \bigcap_{n \geq 1} \bigcup_{m \geq n} A_m \in \mathcal{A}$$
+        \item Definimos el límite inferior de la sucesión como:
+              $$\liminf\limits_{n \to \infty} A_n = \bigcup_{n \geq 1} \bigcap_{m \geq n} A_m \in \mathcal{A}$$
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    $$\liminf\limits_{n \to \infty} A_n \subseteq \limsup\limits_{n \to \infty} A_n$$
+\end{remark}
+
+La sucesión $\{A_n\}_n$ converge si:
+$$\liminf\limits_{n \to \infty} A_n = \limsup\limits_{n \to \infty} A_n = \lim\limits_{n \to \infty} A_n$$
+
+\begin{definition}
+    Sea $\{A_n\}_n \subset \mathcal{A}$.
+    $\{A_n\}_n$ es monótona creciente si:
+    $$A_1 \subseteq A_2 \subseteq \dots \subseteq A_n \subseteq \dots$$
+
+    En ese caso,
+    $$\lim\limits_{n \to \infty} A_n = \bigcup_{n \geq 1} A_n$$
+\end{definition}
+
+\begin{definition}
+    Sea $\{A_n\}_n \subset \mathcal{A}$.
+    $\{A_n\}_n$ es monótona decreciente si:
+    $$A_1 \supseteq A_2 \supseteq \dots \supseteq A_n \supseteq \dots$$
+
+    En ese caso,
+    $$\lim\limits_{n \to \infty} A_n = \bigcap_{n \geq 1} A_n$$
+\end{definition}
+
+\begin{theorem}
+    Sea $\{A_n\}_n \subset \mathcal{A}$ monótona.
+    Entonces:
+    $$P(\lim\limits_{n \to \infty} A_n) = \lim\limits_{n \to \infty} P(A_n)$$
+\end{theorem}
+
+\begin{theorem}
+    Sea $\{A_n\}_n \subset \mathcal{A}$.
+    Entonces:
+    \begin{enumerate}
+        \item $$P(\limsup\limits_{n \to \infty} A_n) = \lim\limits_{n \to \infty} P(\bigcup_{m \geq n} A_m)$$
+        \item $$P(\liminf\limits_{n \to \infty} A_n) = \lim\limits_{n \to \infty} P(\bigcap_{m \geq n} A_m)$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Sean $\{A_n\}_n \subset \mathcal{A}$ y $\omega \in \Omega$.
+    Entonces:
+    \begin{enumerate}
+        \item $w \in \limsup\limits_{n \to \infty} A_n$ si y solo si existe una sucesión de índices
+              $$n_1 < n_2 < \dots < n_k < \dots$$
+              tal que $w \in A_{n_k}$, para $k = 1, 2, \dots$.
+        \item $w \in \liminf\limits_{n \to \infty} A_n$ si y solo si existe $n_0 \geq 1$ tal que $w \in A_m$ para todo $m \geq n_0$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Primer lema de Borel-Cantelli]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad y sea $\{A_n\}_n \subset \mathcal{A}$ tal que $\sum_{n \geq 1} P(A_n) < \infty$.
+    Entonces:
+    $$P(\limsup\limits_{n \to \infty} A_n) = 0$$
+\end{theorem}
+
+Veamos que el recíproco del primer lema de Borel-Cantelli no es cierto.
+\begin{example}
+    Sea $(\Omega, \mathcal{A}, P)$ el espacio de probabilidad dado por $\Omega = (0, 1)$, $A = \mathcal{B}_\Omega$ y $P$ la medida de Lebesgue.
+    Consideramos la sucesión $\{A_n\}_n$ con $A_n = \left\{\left(0, \frac{1}{\sqrt{n}}\right)\right\}$.
+    Observamos que:
+    $$\limsup\limits_{n \to \infty} A_n = \bigcap_{n \geq 1} \bigcup_{m \geq n} \left(0, \frac{1}{\sqrt{n}}\right) = \emptyset \Rightarrow P(\limsup\limits_{n \to \infty} A_n) = 0$$
+    Sin embargo,
+    $$\sum_{n=1}^\infty P(A_n) = \sum_{i=1}^\infty \frac{1}{\sqrt{n}} = \infty$$
+\end{example}
+
+\begin{theorem}[Segundo lema de Borel-Cantelli]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad y sea $\{A_n\}_n \subset \mathcal{A}$ con $A_i$ independientes tal que $\sum_{n \geq 1} P(A_n) = \infty$.
+    Entonces:
+    $$P(\limsup\limits_{n \to \infty} A_n) = 1$$
+\end{theorem}

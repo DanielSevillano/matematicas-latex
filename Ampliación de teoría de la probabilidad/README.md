@@ -35,3 +35,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 3. Teorema de continuidad
 4. Momentos
 5. Reconocimiento de funciones características
+
+### 3. Convergencia
