@@ -79,8 +79,103 @@ Veamos que el recíproco del primer lema de Borel-Cantelli no es cierto.
     $$\sum_{n=1}^\infty P(A_n) = \sum_{i=1}^\infty \frac{1}{\sqrt{n}} = \infty$$
 \end{example}
 
+\begin{remark}
+    \begin{align*}
+        \limsup\limits_{n \to \infty} I_{A_n}(\omega) & = I_{\limsup\limits_{n \to \infty} A_n}(\omega) \\
+        \liminf\limits_{n \to \infty} I_{A_n}(\omega) & = I_{\liminf\limits_{n \to \infty} A_n}(\omega)
+    \end{align*}
+\end{remark}
+
 \begin{theorem}[Segundo lema de Borel-Cantelli]
     Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad y sea $\{A_n\}_n \subset \mathcal{A}$ con $A_i$ independientes tal que $\sum_{n \geq 1} P(A_n) = \infty$.
     Entonces:
     $$P(\limsup\limits_{n \to \infty} A_n) = 1$$
 \end{theorem}
+
+\begin{remark}
+    $$P(\liminf\limits_{n \to \infty} A_n) \leq \liminf\limits_{n \to \infty} P(A_n) \leq \limsup\limits_{n \to \infty} P(A_n) \leq P(\limsup\limits_{n \to \infty} A_n)$$
+\end{remark}
+
+\begin{example}
+    Un mono pulsando teclas al azar sobre un teclado durante un periodo de tiempo infinito escribirá el Quijote y cualquier texto un número infinito de veces.
+\end{example}
+
+\begin{corollary}[Ley 0-1 de Borel-Cantelli]
+    Sea $\{A_n\}_n \subset \mathcal{A}$ con $A_i$ independientes.
+    Entonces:
+    $$P(\limsup\limits_{n \to \infty} A_n) = 0 \quad \text{o} \quad P(\limsup\limits_{n \to \infty} A_n) = 1$$
+\end{corollary}
+
+Sea $X$ variable aleatoria en el espacio de probabilidad $(\Omega, \mathcal{A}, P)$, definimos:
+$$\Omega_1 = \{ \omega \in \Omega : \liminf\limits_{n \to \infty} X_n(\omega) = \limsup\limits_{n \to \infty} X_n(\omega) \}$$
+
+Recordamos que:
+\begin{itemize}
+    \item Sean $X: \Omega \to S$ y $f: S \to T$ dos funciones medibles.
+          Entonces $f(X)$ es medible.
+    \item Sean $X_1, \dots, X_n$ variables aleatorias y $f: \mathbb{R}^n \to \mathbb{R}$ una función.
+          Entonces $f(X_1, \dots, X_n)$ es variable aleatoria.
+    \item Toda función continua es medible Borel.
+\end{itemize}
+
+\begin{theorem}
+    Sea ${X_n}$ una sucesión de variables aleatorias en $(\Omega, \mathcal{A}, P)$.
+    Entonces son variables aleatorias:
+    \begin{itemize}
+        \item $\inf X_n$
+        \item $\sup X_n$
+        \item $\liminf\limits_{n \to \infty} X_n$
+        \item $\limsup\limits_{n \to \infty} X_n$
+    \end{itemize}
+\end{theorem}
+
+\begin{corollary}
+    $\Omega_1$ es medible.
+\end{corollary}
+
+\begin{definition}
+    Sea $\{X_n\}_{n \geq 1}$ una sucesión de variables aleatorias en $(\Omega, \mathcal{A}, P)$.
+    Decimos que $X_n$ converge casi seguro si $P(\Omega_1) = 1$.
+
+    En tal caso escribimos $X_n \xrightarrow{cs} X$, con $X = \limsup\limits_{n \to \infty} X_n$.
+\end{definition}
+
+\begin{theorem}
+    Sea $\{X_n\}_{n \geq 1}$ una sucesión de variables aleatorias independientes en $(\Omega, \mathcal{A}, P)$.
+    Entonces las siguientes afirmaciones son equivalentes:
+    \begin{enumerate}
+        \item $X_n \xrightarrow{cs} X$.
+        \item $P(\liminf\limits_{n \to \infty} Y_{n, k}) = 1$ para todo $k \geq 1$.
+        \item $P(\limsup\limits_{n \to \infty} Y_{n, k}^c) = 0$ para todo $k \geq 1$.
+    \end{enumerate}
+    donde
+    $$Y_{n, k} = \left\{ \omega \in \Omega : |X_n(\omega) - X(\omega)| < \frac{1}{k} \right\}$$
+\end{theorem}
+
+\begin{example}
+    Veamos un contrajemplo para el caso en el que no hay independencia.
+
+    Sea $\Omega = [0, 1]$, $\mathcal{A} = \mathcal{B}_{[0, 1]}$ y $P = m$ la medida de Lebesgue.
+    Consideramos:
+    $$X_n(\omega) = \begin{cases}
+            1 & \text{si } 0 \leq \frac{1}{n}          \\
+            0 & \text{si } \frac{1}{n} < \omega \leq 1
+        \end{cases}$$
+    Veamos que las variables aleatorias no son independientes dos a dos:
+    \begin{align*}
+        P(X_n = 1 | X_{n-1} = 0) & = \frac{P((X_n = 1) \cap (X_{n-1} = 0))}{P(X_{n-1} = 0)} =                             \\
+                                 & = \frac{m\left([0, \frac{1}{n}] \cap (\frac{1}{n-1}, 1]\right)}{1 - \frac{1}{n-1}} = 0 \\
+        P(X_n = 1)               & = \frac{1}{n}
+    \end{align*}
+    Calculamos el límite de la sucesión:
+    $$\lim\limits_{n \to \infty} X_n(\omega) = \begin{cases}
+            1 & \text{si } \omega = 0        \\
+            0 & \text{si } 0 < \omega \leq 1
+        \end{cases}$$
+    Sea $X(\omega) = 0$, $X_n \xrightarrow{cs} X$ porque:
+    $$P(\{\lim\limits_{n \to \infty} X_n \neq X\}) = P(\{0\}) = 0$$
+    Sea $\varepsilon > 0$,
+    $$Y_{n, 1/\varepsilon}^c = \left\{ \omega \in [0, 1] : |X_n(\omega) - 0| \geq \varepsilon \right\}$$
+    Sin embargo, observamos que:
+    $$\sum_{n=1}^\infty P(Y_{n, 1/\varepsilon}^c) = \sum_{n=1}^\infty P(|X_n| \geq \varepsilon) = \sum_{n=1}^\infty P(X_n = 1) = \sum_{n=1}^\infty \frac{1}{n} = \infty$$
+\end{example}
