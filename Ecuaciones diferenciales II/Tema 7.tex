@@ -1,9 +1,26 @@
-\chapter{Sistemas y ecuaciones diferenciales lineales con coeficientes constantes}
-\begin{properties}[Exponencial]
+\chapter{Resolución de sistemas y ecuaciones diferenciales lineales con coeficientes constantes}
+\begin{definition}[Álgebra de Banach]
+    Un espacio de Banach $(X, \|.\|)$ es álgebra de Banach cuando también hay definida en $X$ una operación multiplicación interna "$\cdot$" que hace que $(X, +, \cdot)$ es anillo (con unidad, no necesariamente conmutativo) y que es compatible con la norma $\|.\|$ en $X$ en el sentido de que si $z, w \in X$ entonces:
+    $$\|z \cdot w \| \leq \|z\| \cdot \|w\|$$
+    En las álgebras de Banach $(X,\|.\|)$ podemos definir la exponencial:
+    $$e^{A} = \sum_{k=0}^{\infty}{\frac{A^k}{k!}}, \ \ \ A \in X$$
+\end{definition}
+
+\begin{remark}
+    La convergencia de esta serie es absoluta:
+    $$\sum_{k=0}^{\infty}{\left\| \frac{A^k}{k!}\right\|} \leq \sum_{k=0}^{\infty}{\frac{\|A\|^k}{k!}} = e^{\|A\|}$$
+\end{remark}
+
+\begin{proposition}[Producto de series en álgebras de Banach]
+    Sea $(X, \|.\|)$ espacio de Banach y sean $\sum_{k=0}^{\infty}{A_k}$ y $\sum_{k=0}^{\infty}{B_k}$ series absolutamente convergentes. Entonces la serie $\sum_{k=0}^{\infty}{C_k}$ donde $C_k = \sum_{j=0}^{k}{A_kB_{k-j}}$ (producto de Cauchy), es absolutamente convergente y
+    $$\sum_{k=0}^{\infty}{C_k} = \left( \sum_{k=0}^{\infty}{A_k} \right) \cdot \left( \sum_{k=0}^{\infty}{B_k} \right)$$
+\end{proposition}
+
+\begin{properties}
     \hfill
     \begin{enumerate}
         \item Si $A \in X$, $\|e^A\| \leq e^{\|A\|}$.
-        \item $e^{0_X} = \sum_{n=0}^\infty \frac{0_X^n}{n!} = 1 + 0_X + 0_X + \dots = 1$.
+        \item $e^{0_X} = \sum_{n=0}^\infty \frac{0_X^n}{n!} = I + 0_X + 0_X + \dots = I$.
         \item $e^I = I^0 + I^1 + \frac{I^2}{2!} + \dots = (1 + 1 + \frac{1}{2!} + \dots)I = eI$.
         \item Si $A \in X$,
               $$Ae^A = A\sum_{k=0}^\infty \frac{A^k}{k!} = \sum_{k=0}^\infty \frac{A^{k+1}}{k!} = \sum_{k=0}^\infty \frac{A^k}{k!} A = e^AA$$
@@ -11,6 +28,7 @@
               $$Ae^B = A\sum_{k=0}^\infty \frac{B^k}{k!} = \sum_{k=0}^\infty \frac{AB^k}{k!} = \sum_{k=0}^\infty \frac{B^k}{k!}A = e^BA$$
         \item Si $A, B \in X$ y $A$ y $B$ conmutan,
               $$e^{A+B} = e^Ae^B$$
+        \item Si $A \in X$, entonces $e^A$ es invertible y su inverso es $(e^A)^{-1} = e^{-A}$.
     \end{enumerate}
 \end{properties}
 
@@ -51,4 +69,9 @@
 
 \begin{theorem}[Teorema fundamental del álgebra]
     Si $\rho(X) \in \mathbb{C}[X]$ es no constante, entonces tiene al menos una raíz compleja.
+\end{theorem}
+
+\begin{theorem}[Forma canónica de Jordan compleja]
+    Si $A \in \mathcal{M}_n(\mathbb{C})$, entonces existen esencialmente una única matriz Jordan $J \in \mathcal{M}_n(\mathbb{C})$ y una matriz $P \in \mathcal{M}_n(\mathbb{C})$ invertible tales que:
+    $$AP = PJ \Leftrightarrow A = PJP^{-1}$$
 \end{theorem}
