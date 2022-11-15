@@ -1,0 +1,21 @@
+\chapter{Inferencia bayesiana}
+\section{Teorema de Bayes}
+\begin{theorem}[Teorema de Bayes]
+    Sea $(\Omega, \mathcal{A}, P)$ un espacio de probabilidad.
+    Sea $\{A_1, \dots, A_n\} \subset \mathcal{A}$ una partición de $\Omega$ y sea $B \in \mathcal{A}$ tal que $P(B) > 0$ y del que se conocen $P(B|A_i)$, para $i = 1, \dots, n$.
+    Entonces
+    $$P(A_i|B) = \frac{P(B|A_i)P(A_i)}{\sum_{j=1}^n P(B|A_j)P(A_j)}, \quad \forall i = 1, \dots, n$$
+    donde:
+    \begin{itemize}
+        \item $P(A_j)$, $j = 1, \dots, n$, se llaman probabilidades a priori.
+        \item $P(B|A_j)$, $j = 1, \dots, n$, se llaman verosimilitudes.
+        \item $P(A_j|B)$, $j= 1, \dots, n$, se llaman probabilidades a posteriori.
+    \end{itemize}
+
+    Esta se conoce como la fórmula de Bayes.
+\end{theorem}
+
+\begin{remark}
+    Las probabilidades a posteriori son proporcionales al producto de verosimilitudes y probabilidades a priori.
+    $$P(A_i|B) \propto P(B|A_i)P(A_i)$$
+\end{remark}

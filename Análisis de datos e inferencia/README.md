@@ -52,3 +52,7 @@ Estos apuntes están abiertos a correcciones y mejoras.
 2. Modelo de regresión con respuesta binaria
 3. Riesgo, oportunidad, riesgo relativo y razón de oportunidades
 4. Modelo de regresión logística
+
+### 4. Inferencia bayesiana
+
+1. Teorema de Bayes
