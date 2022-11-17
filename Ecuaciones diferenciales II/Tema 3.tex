@@ -1,9 +1,11 @@
-\chapter{Resultados de unicidad}
+\chapter{Resultados de unicidad para ecuaciones diferenciales}
+\section{La propiedad de unicidad global}
 \begin{definition}[Propiedad de unicidad global]
     Sean $n \geq 1$, y $f: \Omega \to \mathbb{R}^n$, donde $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
     Se dice que la ecuación diferencial $x'(t) = f(t, x(t))$ tiene la propiedad de unicidad global en una región $D \subset \Omega$ cuando, dadas dos soluciones $x: I \to \mathbb{R}^n$, $y: J \to \mathbb{R}^n$ con gráficas contenidas en $D$, sucede que si existe $t_0 \in I \cap J$ tal que $x(t_0) = y(t_0)$ entonces $x(t) = y(t)$ para cada $t \in I \cap J$.
 \end{definition}
 
+\section{Funciones localmente lipschitzianas}
 \begin{definition}
     Sean $n \geq 1$ y $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
     Una función $f: \Omega \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, se dice que es localmente lipschitziana en la región $D \subset \Omega$ respecto de la variable $x$ cuando para cada punto $(t_0, x^0) \in D$ existe un entorno $U$ de $(t_0, x^0)$ tal que $f \in Lip(x, U \cap D)$.
@@ -37,6 +39,7 @@
     $$f \in Lip_{Loc}(x, D) \Leftrightarrow f \in Lip(x, K), \quad \forall K \subset D \text{ compacto}$$
 \end{theorem}
 
+\section{Comparación de soluciones}
 \begin{proposition}[Lema de Gronwall]
     Sean $k$ una constante no negativa, $u, v: I \to \mathbb{R}^+$ dos funciones continuas en el intervalo $I$ y $t_0 \in I$ tales que:
     $$u(t) \leq k + \left| \int_{t_0}^t v(s)u(s)ds \right|, \quad \forall t \in I$$
@@ -54,6 +57,7 @@
     \end{enumerate}
 \end{theorem}
 
+\section{El teorema de unicidad global}
 \begin{theorem}[Teorema de unicidad global]
     Sean $n \geq 1$ y $f: \Omega \to \mathbb{R}^n$, $(t, x) \mapsto f(t, x)$, donde $\Omega \subset \mathbb{R} \times \mathbb{R}^n$.
     Supongamos que existe $D \subset \Omega$ tal que:
@@ -66,6 +70,7 @@
     Recordamos que satisface además las condiciones del teorema de existencia y unicidad local.
 \end{remark}
 
+\section{El criterio de unicidad de Peano}
 \begin{proposition}[Criterio de unicidad de Peano]
     Sean $J$ y $K$ intervalos en $\mathbb{R}$ y consideramos el problema de valor inicial:
     $$(P) \begin{cases}
@@ -83,6 +88,7 @@
     \end{enumerate}
 \end{proposition}
 
+\section{Dependencia continua de las soluciones}
 \begin{theorem}[Teorema de dependencia continua]
     Sean $I$ un intervalo acotado en $\mathbb{R}$, $n \geq 1$ y $\|.\|$ una norma en $\mathbb{R}^n$.
     Consideramos el problema de valor inicial:

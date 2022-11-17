@@ -3,15 +3,19 @@
     Si $A: I \to \mathcal{M}_n(\mathbb{R})$ es continua en el intervalo $I$, el conjunto de soluciones del sistema diferencial lineal homogéneo $x' = A(t)x$ es un subespacio vectorial de $\mathcal{C}^1(I, \mathbb{R}^n)$ de dimensión finita igual a $n$.
 \end{theorem}
 
+\section{Matrices soluciones y matrices fundamentales}
 \begin{definition}[Matrices soluciones y matrices fundamentales]
     Sea el sistema diferencial homogéneo $x' = A(t)x$, donde $A: I \to \mathcal{M}_n(\mathbb{R})$ es continua en $I$.
     \begin{itemize}
         \item Una matriz solución del sistema es una función matricial $\Phi: I \to \mathcal{M}_n(\mathbb{R})$ cuyas $n$ columnas son soluciones del sistema.
         \item Una matriz fundamental del sistema es una función matricial $\mathcal{M}_n(\mathbb{R})$ cuyas $n$ columnas forman un sistema fundamental de soluciones del sistema.
     \end{itemize}
+
+    Si $\Phi$ es matriz fundamental del sistema $x' = A(t)x$, el conjunto de soluciones del sistema viene dado por:
+    $$\{x: I \to \mathbb{R}^n: x(t) = \Phi(t)c, \; c \in \mathbb{R}\}$$
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Caracterización de las matrices solución]
     Una función matricial $\Phi: I \to \mathcal{M}_n(\mathbb{R})$, derivable en $I$, es matriz solución del sistema $x' = A(t)x$ si y solo si verifica:
     $$\Phi'(t) = A(t)\Phi(t), \quad \forall t \in I$$
 \end{theorem}
@@ -41,12 +45,37 @@
     donde $C \in \mathcal{M}_n(\mathbb{R})$ y $\det(C) \neq 0$.
 \end{proposition}
 
-\begin{theorem}[Fórmula de Abel-Liouville]
+\begin{proposition}
+    Si $A: I \to \mathcal{M}_n(\mathbb{R})$ es continua en el intervalo $I$, entonces para cada $t_0 \in I$ existe una única matriz fundamental $\Phi$ del sistema $x' = A(t)x$ tal que $\Phi(t_0) = I_n$.
+    Tal función matricial se conoce como matriz fundamental canónica del sistema $x' = A(t)x$ en el punto $t_0 \in I$.
+\end{proposition}
+
+\begin{remark}
+    Consideramos el problema de Cauchy:
+    $$(P): \begin{cases}
+            x' = A(t)x \\
+            x(t_0) = x^0
+        \end{cases}$$
+    con $A : I \to \mathcal{M}_n(\mathbb{R})$ continua en $I$, $t_0 \in I$ y $x_0 \in \mathbb{R}^n$.
+    Sabemos que $(P)$ tiene una única solución $x: I \to \mathbb{R}^n$.
+    \begin{enumerate}
+        \item Supongamos que $\Phi$ es una matriz fundamental del sistema $x' = A(t)x$.
+              Entonces, la solución del problema $(P)$ es:
+              $$x(t) = \Phi(t)\Phi^{-1}(t_0)x^0$$
+        \item Supongamos que $\Phi$ es una matriz fundamental canónica del sistema $x' = A(t)x$.
+              Entonces, la solución del problema $(P)$ es:
+              $$x(t) = \Phi(t)x^0$$
+    \end{enumerate}
+\end{remark}
+
+\section{Fórmula de Abel-Liouville}
+\begin{theorem}
     Sea $A: I \to \mathcal{M}_n(\mathbb{R})$ continua en el intervalo $I$ y sea $t_0 \in I$.
     Si $\Phi: I \to \mathcal{M}_n(\mathbb{R})$ es matriz solución del sistema homogéneo $x' = A(t)x$, se verifica:
     $$\det(\Phi(t)) = \det(\Phi(t_0)) \exp\left( \int_{t_0}^t tr(A(s))ds \right), \quad \forall t \in I$$
 \end{theorem}
 
+\section{Soluciones de un sistema diferencial no homogéneo}
 \begin{proposition}
     Si $V_H$ es el espacio vectorial de las soluciones del sistema homogéneo $(S_H)$, con $\dim V_H = n < \infty$, y $x_p: I \to \mathbb{R}^n$ es una solución del sistema no homogéneo $(S)$, el conjunto de soluciones de $(S)$ viene dado por:
     $$\{x: I \to \mathbb{R}^n : x = x_h + x_p, \; x_h \in V_H\}$$
@@ -56,3 +85,10 @@
     Si $\Phi$ es una matriz fundamental de $x' = A(t)x$ y $x_p$ es una solución de $x' = A(t)x + b(t)$, entonces las soluciones del sistema no homogéneo son de la forma:
     $$x(t) = \Phi(t)c + x_p(t), \quad c \in \mathbb{R}^n$$
 \end{corollary}
+
+\begin{proposition}[Conjetura de Lagrange]
+    Si $\Phi$ es una matriz fundamental de $x' = A(t)x$, existen soluciones del sistema $x' = A(t)x + b(t)$ que son de la forma:
+    $$x_p(t) = \Phi(t)c(t)$$
+    donde la función $c: I \to \mathbb{R}^n$ es derivable y viene dada por:
+    $$c(t) = \int \Phi^{-1}(s)b(s)ds$$
+\end{proposition}

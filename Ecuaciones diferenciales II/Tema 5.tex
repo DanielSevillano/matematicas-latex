@@ -6,6 +6,21 @@
     Una solución que no admite prolongación estricta se dice que es no prolongable o que es maximal.
 \end{definition}
 
+\begin{definition}[Soluciones estrictamente prolongables lateralmente]
+    \hfill
+    \begin{itemize}
+        \item Una solución $x: I \to \mathbb{R}^n$ de $(P)$ se dice que es estrictamente prolongable a la derecha cuando existe otra solución $y: J \to \mathbb{R}^n$ de $(P)$ con $I \subset J$ tal que:
+              $$I^+ = \{t \in I: t \geq t_0\} \subsetneqq J^+ = \{t \in J: t \geq t_0\} \quad \text{y} \quad y|_I = x$$
+              Cuando esto sucede, se dice que $y: J \to \mathbb{R}^n$ es una prolongación estricta a la derecha de $x: I \to \mathbb{R}^n$.
+              Una solución de $(P)$ que no admite prolongación estricta a la derecha se dice que no es prolongable a la derecha.
+        \item Una solución $x: I \to \mathbb{R}^n$ de $(P)$ se dice que es estrictamente prolongable a la izquierda cuando existe otra solución $y: J \to \mathbb{R}^n$ de $(P)$ con $I \subset J$ tal que:
+              $$I^- = \{t \in I: t \leq t_0\} \subsetneqq J^- = \{t \in J: t \leq t_0\} \quad \text{y} \quad y|_I = x$$
+              Cuando esto sucede, se dice que $y: J \to \mathbb{R}^n$ es una prolongación estricta a la izquierda de $x: I \to \mathbb{R}^n$.
+              Una solución de $(P)$ que no admite prolongación estricta a la izquierda se dice que no es prolongable a la izquierda.
+    \end{itemize}
+\end{definition}
+
+\section{Existencia y unicidad de soluciones no prolongables}
 \begin{theorem}[Existencia y unicidad de soluciones no prolongables]
     Si $f$ es continua en $D$ se verifica:
     \begin{enumerate}
@@ -20,7 +35,8 @@
     Si $D$ es abierto y $f$ es de clase $\mathcal{C}^1$ en $D$, entonces $(P)$ tiene una única solución maximal, que está definida en un intervalo que contiene a $t_0$ en su interior.
 \end{remark}
 
-\begin{theorem}[Soluciones maximales con gráficas contenidas en conjuntos compactos]
+\section{Soluciones maximales con gráficas contenidas en compactos}
+\begin{theorem}
     Sea el problema de valor inicial:
     $$(P) \begin{cases}
             x'(t) = f(t, x(t)) \\
@@ -37,7 +53,8 @@
     \end{enumerate}
 \end{theorem}
 
-\begin{definition}[Puntos límite]
+\section{Puntos límites y el lema de Wintner}
+\begin{definition}[Puntos límites]
     Sean $n \geq 1$ y $x: [t_0, t_1) \to \mathbb{R}^n$ una función tal que $t_1 < \infty$.
     Sea $x^1 \in \mathbb{R}^n$.
     Se dice que $(t_1, x^1)$ es un punto límite de la gráfica de $x$ para $t \to t_1$ cuando existe una sucesión $(s_m)$ en el intervalo $[t_0, t_1)$ tal que $(s_m, x(s_m)) \to (t_1, x^1)$ en $\mathbb{R} \times \mathbb{R}^n$.
@@ -62,7 +79,8 @@
     Entonces $\lim\limits_{t \to t_1} x(t) = x^1$.
 \end{theorem}
 
-\begin{theorem}[Soluciones maximales con gráficas contenidas en conjuntos abiertos]
+\section{Soluciones maximales con gráficas contenidas en abiertos}
+\begin{theorem}
     Sean $A$ un abierto en $\mathbb{R} \times \mathbb{R}^n$, $n \geq 1$, $f: A \to \mathbb{R}^n$ una función continua en $A$ y $\|.\|$ una norma en $\mathbb{R}^n$.
     Si $x: I \to \mathbb{R}^n$ es una solución no prolongable de la ecuación diferencial $x'(t) = f(t, x(t))$ con gráfica $\Gamma$ contenida en $A$, se verifica:
     \begin{enumerate}
@@ -71,6 +89,7 @@
     \end{enumerate}
 \end{theorem}
 
+\section{Soluciones maximales de las ecuaciones diferenciales autónomas}
 \begin{theorem}[Teorema fundamental de las ecuaciones autónomas]
     Supongamos que $g \in \mathcal{C}^1(\mathbb{R}, \mathbb{R})$.
     Sea $x: I \to \mathbb{R}$ una solución no prolongable de la ecuación $X' = g(x)$ y sea $t_0 \in \dot{I}$.

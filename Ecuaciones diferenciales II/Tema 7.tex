@@ -1,37 +1,22 @@
 \chapter{Resolución de sistemas y ecuaciones diferenciales lineales con coeficientes constantes}
-\begin{definition}[Álgebra de Banach]
-    Un espacio de Banach $(X, \|.\|)$ es álgebra de Banach cuando también hay definida en $X$ una operación multiplicación interna "$\cdot$" que hace que $(X, +, \cdot)$ es anillo (con unidad, no necesariamente conmutativo) y que es compatible con la norma $\|.\|$ en $X$ en el sentido de que si $z, w \in X$ entonces:
-    $$\|z \cdot w \| \leq \|z\| \cdot \|w\|$$
-    En las álgebras de Banach $(X,\|.\|)$ podemos definir la exponencial:
-    $$e^{A} = \sum_{k=0}^{\infty}{\frac{A^k}{k!}}, \ \ \ A \in X$$
+\section{Exponencial de una matriz cuadrada}
+\begin{definition}
+    Dada $A \in \mathcal{M}_n(\mathbb{R})$, se llama matriz exponencial de $A$ y se escribe $e^A$ a la matriz de $\mathcal{M}_n(\mathbb{R})$ definida por:
+    $$e^A = \sum_{k=0}^\infty \frac{1}{k!}A^k$$
 \end{definition}
 
-\begin{remark}
-    La convergencia de esta serie es absoluta:
-    $$\sum_{k=0}^{\infty}{\left\| \frac{A^k}{k!}\right\|} \leq \sum_{k=0}^{\infty}{\frac{\|A\|^k}{k!}} = e^{\|A\|}$$
-\end{remark}
-
-\begin{proposition}[Producto de series en álgebras de Banach]
-    Sea $(X, \|.\|)$ espacio de Banach y sean $\sum_{k=0}^{\infty}{A_k}$ y $\sum_{k=0}^{\infty}{B_k}$ series absolutamente convergentes. Entonces la serie $\sum_{k=0}^{\infty}{C_k}$ donde $C_k = \sum_{j=0}^{k}{A_kB_{k-j}}$ (producto de Cauchy), es absolutamente convergente y
-    $$\sum_{k=0}^{\infty}{C_k} = \left( \sum_{k=0}^{\infty}{A_k} \right) \cdot \left( \sum_{k=0}^{\infty}{B_k} \right)$$
-\end{proposition}
-
-\begin{properties}
+\begin{proposition}[Propiedades de la exponencial]
     \hfill
     \begin{enumerate}
-        \item Si $A \in X$, $\|e^A\| \leq e^{\|A\|}$.
-        \item $e^{0_X} = \sum_{n=0}^\infty \frac{0_X^n}{n!} = I + 0_X + 0_X + \dots = I$.
-        \item $e^I = I^0 + I^1 + \frac{I^2}{2!} + \dots = (1 + 1 + \frac{1}{2!} + \dots)I = eI$.
-        \item Si $A \in X$,
-              $$Ae^A = A\sum_{k=0}^\infty \frac{A^k}{k!} = \sum_{k=0}^\infty \frac{A^{k+1}}{k!} = \sum_{k=0}^\infty \frac{A^k}{k!} A = e^AA$$
-        \item Si $A, B \in X$ y $A$ y $B$ conmutan,
-              $$Ae^B = A\sum_{k=0}^\infty \frac{B^k}{k!} = \sum_{k=0}^\infty \frac{AB^k}{k!} = \sum_{k=0}^\infty \frac{B^k}{k!}A = e^BA$$
-        \item Si $A, B \in X$ y $A$ y $B$ conmutan,
-              $$e^{A+B} = e^Ae^B$$
-        \item Si $A \in X$, entonces $e^A$ es invertible y su inverso es $(e^A)^{-1} = e^{-A}$.
+        \item Si $\Theta \in \mathcal{M}_n(\mathbb{R})$ es la matriz nula, entonces $e^\Theta = I_n$.
+        \item Si $I \in \mathcal{M}_n(\mathbb{R})$ es la matriz identidad, $e^I = eI$.
+        \item Si $A, B \in \mathcal{M}_n(\mathbb{R})$ y $A$ y $B$ conmutan, entonces $Ae^B = e^BA$
+        \item Si $A, B \in \mathcal{M}_n(\mathbb{R})$ y $A$ y $B$ conmutan, entonces $e^{A+B} = e^Ae^B$
+        \item Si $A \in \mathcal{M}_n(\mathbb{R})$, entonces $e^A$ es invertible y su inversa es $(e^A)^{-1} = e^{-A}$.
     \end{enumerate}
-\end{properties}
+\end{proposition}
 
+\section{Determinación de una matriz fundamental}
 \begin{theorem}
     Supongamos que $I \subset \mathbb{R}$ es intervalo no degenerado, que $B \in \mathcal{C}^1(I, \mathcal{M}_n(\mathbb{R}))$ y que $B$ y $B'$ conmutan para todo $t \in I$.
     Entonces, fijado $t_0 \in I$, la aplicación:
@@ -54,24 +39,12 @@
     $$\varphi(t) = e^{(t-t_0)A}x^0 + \int_{t_0}^t e^{(t-s)A}b(s)ds, \quad t \in I$$
 \end{corollary}
 
-\begin{definition}[Autovalor y autovector]
-    Sea $A$ una matriz cuadrada de orden $n$.
-    Decimos que $\lambda \in \mathbb{C}$ es autovalor de $A$ si existe $v \in \mathbb{R}^n$ no nulo tal que $Av = \lambda v$.
-    En tal caso, $v$ recibe el nombre de autovector de $A$ asociado a $\lambda$.
-
-    Tratándose de una matriz cuadrada,
-    $$Av = \lambda v \Leftrightarrow (A-\lambda I)X = 0 \Leftrightarrow |A-\lambda I| = 0$$
-    Es decir, el conjunto de autovalores de $A$ es el conjunto de raíces del polinomio característica de $A$:
-    $$\rho(\lambda) = |A - \lambda I|$$
-
-    Llamamos ecuación característica de $A$ a $\rho(\lambda) = |A - \lambda I| = 0$.
-\end{definition}
-
-\begin{theorem}[Teorema fundamental del álgebra]
-    Si $\rho(X) \in \mathbb{C}[X]$ es no constante, entonces tiene al menos una raíz compleja.
-\end{theorem}
-
-\begin{theorem}[Forma canónica de Jordan compleja]
-    Si $A \in \mathcal{M}_n(\mathbb{C})$, entonces existen esencialmente una única matriz Jordan $J \in \mathcal{M}_n(\mathbb{C})$ y una matriz $P \in \mathcal{M}_n(\mathbb{C})$ invertible tales que:
-    $$AP = PJ \Leftrightarrow A = PJP^{-1}$$
-\end{theorem}
+\section{Cálculo de la exponencial de una matriz}
+\begin{enumerate}
+    \item Si $A = diag(\lambda_1, \dots, \lambda_n)$, entonces:
+          $$e^{tA} = diag(e^{t\lambda_1}, \dots, e^{t\lambda_n})$$
+    \item Si $A$ es semejante a una matriz diagonal $D$, es decir, existe $P$ invertible tal que $A = PDP^{-1}$, entonces:
+          $$e^{tA} = Pe^{tD}P^{-1}$$
+    \item Si $A$ es diagonal por bloques, es decir, $A = diag(A_1, \dots, A_l)$ siendo cada $A_j \in \mathcal{M}_{r_j}(\mathbb{R})$ con $r_1 + \dots + r_l = n$, entonces:
+          $$e^{tA} = diag(e^{tA_1}, \dots, e^{tA_l})$$
+\end{enumerate}
