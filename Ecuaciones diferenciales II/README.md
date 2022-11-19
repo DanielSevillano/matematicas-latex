@@ -1,6 +1,6 @@
 # Ecuaciones diferenciales II
 
--   [**📄 Abrir PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.pdf)
+-   [**🔎 Previsualizar PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.pdf)
 -   [**📁 Descargar PDF**](https://raw.githubusercontent.com/DanielSevillano/matematicas-latex/main/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.pdf)
 
 ## ✒️ Contenido

@@ -2,7 +2,7 @@
 
 **Estado:** apuntes en desarrollo.
 
--   [**📄 Abrir PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Optimización/Optimización.pdf)
+-   [**🔎 Previsualizar PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Optimización/Optimización.pdf)
 -   [**📁 Descargar PDF**](https://raw.githubusercontent.com/DanielSevillano/matematicas-latex/main/Optimización/Optimización.pdf)
 
 ## ✒️ Contenido

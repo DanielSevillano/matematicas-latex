@@ -1,6 +1,6 @@
 # Geometría diferencial global de superficies
 
--   [**📄 Abrir PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Geometr%C3%ADa%20diferencial%20global%20de%20superficies/Geometr%C3%ADa%20diferencial%20global%20de%20superficies.pdf)
+-   [**🔎 Previsualizar PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Geometr%C3%ADa%20diferencial%20global%20de%20superficies/Geometr%C3%ADa%20diferencial%20global%20de%20superficies.pdf)
 -   [**📁 Descargar PDF**](https://raw.githubusercontent.com/DanielSevillano/matematicas-latex/main/Geometr%C3%ADa%20diferencial%20global%20de%20superficies/Geometr%C3%ADa%20diferencial%20global%20de%20superficies.pdf)
 
 ## ✒️ Contenido
