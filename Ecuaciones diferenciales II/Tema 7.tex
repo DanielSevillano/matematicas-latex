@@ -71,7 +71,7 @@
                   \vec{0}   & \vec{0}   & \dots  & \vec{\mu} & \vec{1}   \\
                   \vec{0}   & \vec{0}   & \dots  & \vec{0}   & \vec{\mu}
               \end{pmatrix}$$
-          con $\mu = \alpha + i\beta$ y donde:
+          con $\mu = \alpha + i\beta$, $\beta > 0$, y donde:
           $$\vec{\mu} = \begin{pmatrix}
                   \alpha & \beta  \\
                   -\beta & \alpha
@@ -264,3 +264,103 @@ Su polinomio característico es $p(\lambda) = (A - \lambda I)$, que tiene coefic
               \item $P^2 + iP^3$ es autovector complejo de $A$ asociado a $\lambda$.
           \end{itemize}
 \end{enumerate}
+
+\section{Ecuaciones diferenciales lineales de orden superior}
+Las ecuaciones diferenciales lineales ordinarias de coeficientes constantes de orden $n$ son de la forma:
+$$(E): y^{(n)} + a_1y^{(n-1)} + \dots + a_ny = a_0(t)$$
+donde $a_0 \in \mathcal{C}(I, \mathbb{R})$ y $a_1, \dots, a_n \in \mathbb{R}$.
+
+El sistema asociado es $(S): x' = Ax + b$, donde
+$$A = \begin{pmatrix}
+        0      & 1       & \dots  & 0      \\
+        \vdots & \vdots  & \ddots & \vdots \\
+        0      & 0       & \dots  & 1      \\
+        -a_n   & a_{n-1} & \dots  & -a_1
+    \end{pmatrix}, \quad
+    b(t) = \begin{pmatrix}
+        0      \\
+        \vdots \\
+        0      \\
+        a_0(t)
+    \end{pmatrix}$$
+
+La solución de $(E)$ con dato inicial $y(t_0) = y_1^0$, $y'(t_0) = y_2^0$ viene dada por la primera componente de la solución de $(S)$.
+
+El polinomio característico de $A$ es
+$$p(\lambda) = (-1)^n(\lambda^n + a_1\lambda^{n-1} + ... + a_{n-2}\lambda^2 + a _{n-1}\lambda + a_n)$$
+luego su ecuación característica es:
+$$\lambda^n + a_1\lambda^{n-1} + ... + a_{n-2}\lambda^2 + a _{n-1}\lambda + a_n = 0$$
+
+Ha de verificarse que
+$$rg(A - \lambda I) + \dim(\ker(A - \lambda I)) = n$$
+Como $rg(A - \lambda I) = n-1$, entonces $\dim(Ker(A - \lambda I)) = 1$.
+Es decir, hay una caja de Jordan asociada a $\lambda$.
+\begin{itemize}
+    \item Si $\lambda \in \mathbb{R}$, la caja tiene tamaño $m(\lambda$) y es de la forma:
+          $$D_{m(\lambda)}(\lambda) =
+              \begin{pmatrix}
+                  \lambda & 1       & \dots  & 0       & 0       \\
+                  0       & \lambda & \dots  & 0       & 0       \\
+                  \vdots  & \vdots  & \ddots & \vdots  & \vdots  \\
+                  0       & 0       & \dots  & \lambda & 1       \\
+                  0       & 0       & \dots  & 0       & \lambda
+              \end{pmatrix}$$
+    \item Si $\lambda = \mu = \alpha + i\beta \in \mathbb{C}$ con $\beta > 0$, la caja tiene tamaño $2m(\mu)$ y es de la forma:
+          $$E_{m(\mu)}(\mu) = \begin{pmatrix}
+                  \vec{\mu} & \vec{1}   & \dots  & \vec{0}   & \vec{0}   \\
+                  \vec{0}   & \vec{\mu} & \dots  & \vec{0}   & \vec{0}   \\
+                  \vdots    & \vdots    & \ddots & \vdots    & \vdots    \\
+                  \vec{0}   & \vec{0}   & \dots  & \vec{\mu} & \vec{1}   \\
+                  \vec{0}   & \vec{0}   & \dots  & \vec{0}   & \vec{\mu}
+              \end{pmatrix}$$
+          donde:
+          $$\vec{\mu} = \begin{pmatrix}
+                  \alpha & \beta  \\
+                  -\beta & \alpha
+              \end{pmatrix}, \quad
+              \vec{0} = \begin{pmatrix}
+                  0 & 0 \\
+                  0 & 0
+              \end{pmatrix}, \quad
+              \vec{1} = \begin{pmatrix}
+                  1 & 0 \\
+                  0 & 1
+              \end{pmatrix}$$
+\end{itemize}
+
+Supongamos que $\lambda_1, \dots, \lambda_l$ son los autovalores reales de $A$ con multiplicidades respectivas $m_1, \dots, m_n$ y que $\mu_1, \dots, \mu_s$ son los autovalores complejos de $A$ con parte imaginaria positiva y con multiplicidades respectivas $v_1, \dots, v_s$.
+Entonces la forma canónica de Jordan real asociada a $A$ es:
+$$J = diag(D_{m_1}(\lambda_1), \dots, D_{m_l}(\lambda_l), E_{v_1}(\mu_1), \dots, E_{v_s}(\mu_s))$$
+Además, existe una matriz $P$ invertible tal que $A = PJP^{-1}$.
+Por tanto:
+$$e^{tA} = P \; diag(e^{tD_{m_1}(\lambda_1)}, \dots, e^{tD_{m_l}(\lambda_l)}, e^{tE_{v_1}(\mu_1)}, \dots, e^{tE_{v_s}(\mu_s)}) \; P^{-1}$$
+
+Observamos que los elementos de $e^{tA}$ son combinaciones lineales de los elementos de la colección:
+\begin{align*}
+    \mathcal{F} = & \{t^ke^{\lambda_jt}, 1 \leq j \leq l, 0 \leq k \leq m_j-1\}                   \\
+                  & \cup \{t^ke^{\alpha_j}t\cos(\beta_jt), 1 \leq j \leq s, 0 \leq k \leq v_j-1\} \\
+                  & \cup \{t^ke^{\alpha_j}t\sin(\beta_jt), 1 \leq j \leq s, 0 \leq k \leq v_j-1\}
+\end{align*}
+
+\begin{theorem}
+    $\mathcal{F}$ es sistema fundamental de soluciones de:
+    $$(E_H): y^{(n)} + a_1y^{(n-1)} + \dots + a_ny = 0$$
+\end{theorem}
+
+\begin{theorem}[Método de los coeficientes indeterminados]
+    Consideremos:
+    $$(E_H): y^{(n)} + a_1y^{(n-1)} + \dots + a_ny = a_0(t)$$
+    con $a_1, \dots,a_n \in \mathbb{R}$ y $a_0 \in \mathcal{C}(I, \mathbb{R})$.
+    \begin{itemize}
+        \item \textbf{Caso complejo.}
+              Supongamos que $a_0(t) = g(t)e^{\lambda t}$, siendo $g$ un polinomio complejo de grado a lo sumo $d$ y $\lambda \in \mathbb{C}$.
+              Entonces, una solución particular de $(E)$ es del tipo:
+              $$\varphi_p(t) = t^{m(\lambda)}Q(t)e^{\lambda t}$$
+              donde $Q$ es un polinomio de grado a lo sumo $d$ y $m(\lambda)$ es la multiplicidad de $\lambda$ como autovalor del polinomio característico de $(E_H)$.
+        \item \textbf{Caso real.}
+              Supongamos que $a_0(t) = e^{\alpha t}(q_1(t)\cos(\beta t) + q_2(t)\sin(\beta t))$, siendo $q_1$ y $q_2$ polinomios reales de grado a lo sumo $d$ y $\alpha, \beta \in \mathbb{R}$.
+              Entonces, una solución particular de $(E)$ es del tipo:
+              $$\varphi_p(t) = t^{m(\mu)}e^{\alpha t}(Q_1(t)\cos(\beta t) + Q_2(t)\sin(\beta t))$$
+              donde $Q_1$ y $Q_2$ son polinomios reales de grado a lo sumo $d$ y $m(\mu)$ es la multiplicidad de $\mu = \alpha + i\beta$ como autovalor de $(E_H)$.
+    \end{itemize}
+\end{theorem}

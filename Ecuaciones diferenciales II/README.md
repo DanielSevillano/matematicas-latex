@@ -1,7 +1,5 @@
 # Ecuaciones diferenciales II
 
-**Estado:** apuntes en desarrollo.
-
 -   [**📄 Abrir PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.pdf)
 -   [**📁 Descargar PDF**](https://raw.githubusercontent.com/DanielSevillano/matematicas-latex/main/Ecuaciones%20diferenciales%20II/Ecuaciones%20diferenciales%20II.pdf)
 
@@ -15,7 +13,6 @@ Estos apuntes están abiertos a correcciones y mejoras.
 
 -   Correcciones de erratas, expresiones y enunciados
 -   Nuevos resultados importantes
--   Nuevo contenido sobre ecuaciones y sistemas lineales
 
 ## 📖 Índice
 
@@ -60,3 +57,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 1. Exponencial de una matriz cuadrada
 2. Determinación de una matriz fundamental
 3. Cálculo de la exponencial de una matriz
+4. Formas canónicas de Jordan
+5. Ecuaciones diferenciales lineales de orden superior
