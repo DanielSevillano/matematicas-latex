@@ -47,4 +47,220 @@
           $$e^{tA} = Pe^{tD}P^{-1}$$
     \item Si $A$ es diagonal por bloques, es decir, $A = diag(A_1, \dots, A_l)$ siendo cada $A_j \in \mathcal{M}_{r_j}(\mathbb{R})$ con $r_1 + \dots + r_l = n$, entonces:
           $$e^{tA} = diag(e^{tA_1}, \dots, e^{tA_l})$$
+    \item Si $A$ es un bloque de Jordan real del tipo
+          $$A = D_r(\lambda) = \begin{pmatrix}
+                  \lambda & 1       & \dots  & 0       & 0       \\
+                  0       & \lambda & \dots  & 0       & 0       \\
+                  \vdots  & \vdots  & \ddots & \vdots  & \vdots  \\
+                  0       & 0       & \dots  & \lambda & 1       \\
+                  0       & 0       & \dots  & 0       & \lambda
+              \end{pmatrix}$$
+          entonces:
+          $$e^{tA} = e^{t\lambda}I_r\sum_{k=0}^{r-1}{\frac{t^k}{k!}N_r^k} = e^{t\lambda}\begin{pmatrix}
+                  1      & t      & \frac{t^2}{2!} & \dots  & \frac{t^{r-1}}{(r-1)!} \\
+                  0      & 1      & t              & \dots  & \frac{t^{r-2}}{(r-2)!} \\
+                  \vdots & \vdots & \vdots         & \ddots & \vdots                 \\
+                  0      & 0      & 0              & \dots  & t                      \\
+                  0      & 0      & 0              & \dots  & 1
+              \end{pmatrix}$$
+    \item Si $A$ es un bloque de Jordan complejo del tipo
+          $$A = E_r(\mu) = \begin{pmatrix}
+                  \vec{\mu} & \vec{1}   & \dots  & \vec{0}   & \vec{0}   \\
+                  \vec{0}   & \vec{\mu} & \dots  & \vec{0}   & \vec{0}   \\
+                  \vdots    & \vdots    & \ddots & \vdots    & \vdots    \\
+                  \vec{0}   & \vec{0}   & \dots  & \vec{\mu} & \vec{1}   \\
+                  \vec{0}   & \vec{0}   & \dots  & \vec{0}   & \vec{\mu}
+              \end{pmatrix}$$
+          con $\mu = \alpha + i\beta$ y donde:
+          $$\vec{\mu} = \begin{pmatrix}
+                  \alpha & \beta  \\
+                  -\beta & \alpha
+              \end{pmatrix}, \quad
+              \vec{0} = \begin{pmatrix}
+                  0 & 0 \\
+                  0 & 0
+              \end{pmatrix}, \quad
+              \vec{1} = \begin{pmatrix}
+                  1 & 0 \\
+                  0 & 1
+              \end{pmatrix}$$
+          entonces:
+          $$e^{tA} = e^{t\vec{\mu}} \begin{pmatrix}
+                  \vec{1} & t\vec{1} & \frac{t^2}{2!}\vec{1} & \dots  & \frac{t^{r-1}}{(r-1)!}\vec{1} \\
+                  \vec{0} & \vec{1}  & t\vec{1}              & \dots  & \frac{t^{r-2}}{(r-2)!}\vec{1} \\
+                  \vdots  & \vdots   & \vdots                & \ddots & \vdots                        \\
+                  \vec{0} & \vec{0}  & \vec{0}               & \dots  & t\vec{1}                      \\
+                  \vec{0} & \vec{0}  & \vec{0}               & \dots  & \vec{1}
+              \end{pmatrix}$$
+          donde
+          $$e^{t\mu} = e^{t\alpha}\begin{pmatrix}
+                  \cos(t\beta)  & \sin(t\beta) \\
+                  -\sin(t\beta) & \cos(t\beta)
+              \end{pmatrix}$$
+\end{enumerate}
+
+\begin{theorem}[Forma canónica de Jordan real]
+    Si $A \in \mathcal{M}_n(\mathbb{R})$, entonces existen una matriz de Jordan $J \in \mathcal{M}_n(\mathbb{R})$ y una matriz $P \in \mathcal{M}_n(\mathbb{R})$ invertible tales que:
+    $$AP = PJ \Leftrightarrow A = PJP^{-1}$$
+    Más concretamente,
+    \begin{itemize}
+        \item Para cada $\lambda \in \mathbb{R}$ autovalor de $A$ con multiplicidad $m(\lambda)$, $J$ contiene tantas cajas de Jordan del tipo $D_r(\lambda)$ como indique $\dim(\ker(A - \lambda I))$ y la suma de los tamaños de estas cajas es $m(\lambda)$.
+        \item Para cada $\mu \in \mathbb{C}$ autovalor de $A$ con multiplicidad $m(\mu)$, $J$ contiene tantas cajas de Jordan del tipo $E_r(\mu)$ como indique $\dim(\ker(A - \lambda I))$ y la suma de los tamaños de estas cajas es $m(\mu)$.
+    \end{itemize}
+\end{theorem}
+
+\section{Formas canónicas de Jordan}
+\subsection*{Formas canónicas de Jordan reales asociadas a matrices $2 \times 2$}
+Sea $A \in \mathcal{M}_2(\mathbb{R})$.
+Su polinomio característico es $p(\lambda) = (A - \lambda I)$, que tiene coeficientes reales y es de grado 2, así que tiene dos raíces $\lambda_1$ y $\lambda_2$.
+\begin{enumerate}
+    \item Supongamos que $\lambda_1, \lambda_2 \in \mathbb{R}$, con $\lambda_1 \neq \lambda_2$.
+          Sean $P^1$ y $P^2$ autovectores asociados a $\lambda_1$ y $\lambda_2$ respectivamente, entonces:
+          $$J = \begin{pmatrix}
+                  \lambda_1 & 0         \\
+                  0         & \lambda_2
+              \end{pmatrix}, \quad
+              P = \begin{pmatrix}
+                  P^1 | P^2
+              \end{pmatrix}$$
+    \item Supongamos que $\lambda_1 = \lambda_2 = \lambda \in \mathbb{R}$.
+          Entonces $\dim(\ker(A - \lambda I)) \in \{1, 2\}$.
+          \begin{enumerate}
+              \item Supongamos que $\dim(\ker(A - \lambda I)) = 2$.
+                    Sean $P^1$ y $P^2$ autovectores linealmente independientes asociados a $\lambda$, entonces:
+                    $$J = \begin{pmatrix}
+                            \lambda & 0       \\
+                            0       & \lambda
+                        \end{pmatrix}, \quad
+                        P = \begin{pmatrix}
+                            P^1 | P^2
+                        \end{pmatrix}$$
+              \item Supongamos que $\dim(\ker(A - \lambda I)) = 1$.
+                    Entonces solo hay un bloque de Jordan asociado a $\lambda$ de tamaño 2, es decir,
+                    $$J = \begin{pmatrix}
+                            \lambda & 1       \\
+                            0       & \lambda
+                        \end{pmatrix}, \quad
+                        P = \begin{pmatrix}
+                            P^1 | P^2
+                        \end{pmatrix}$$
+                    donde:
+                    \begin{itemize}
+                        \item $P^1$ es autovector de $A$ asociado a $\lambda$.
+                        \item $(A - \lambda I)P^2 = P^1$, es decir, $P^2$ es solución de $(A - \lambda I)X = P^1$.
+                    \end{itemize}
+          \end{enumerate}
+    \item Supongamos que $\lambda_1, \lambda_2 \in \mathbb{C}$, es decir, son de la forma $\lambda_1 = \lambda = \alpha + i\beta$, $\lambda_2 = \bar{\lambda} = \alpha - i\beta$.
+          Sea $W = P^1 + iP^2$ un autovector complejo de $A$ asociado a $\lambda$, entonces:
+          $$J = \begin{pmatrix}
+                  \alpha & \beta  \\
+                  -\beta & \alpha
+              \end{pmatrix}, \quad
+              P = (P^1 | P^2)$$
+\end{enumerate}
+
+\subsection*{Formas canónicas de Jordan reales asociadas a matrices $3 \times 3$}
+Sea $A \in \mathcal{M}_3(\mathbb{R})$.
+Su polinomio característico es $p(\lambda) = (A - \lambda I)$, que tiene coeficientes reales y es de grado 3, así que tiene tres raíces $\lambda_1$, $\lambda_2$ y $\lambda_3$.
+\begin{enumerate}
+    \item Supongamos que $\lambda_1, \lambda_2, \lambda_3 \in \mathbb{R}$ distintos.
+          Sean $P^1$, $P^2$ y $P^3$ autovectores asociados a $\lambda_1$, $\lambda_2$ y $\lambda_3$ respectivamente, entonces:
+          $$J = \begin{pmatrix}
+                  \lambda_1 & 0         & 0         \\
+                  0         & \lambda_2 & 0         \\
+                  0         & 0         & \lambda_3
+              \end{pmatrix}, \quad
+              P = \begin{pmatrix}
+                  P^1 | P^2 | P^3
+              \end{pmatrix}$$
+    \item Supongamos que $\lambda_1, \lambda_2, \lambda_3 \in \mathbb{R}$ con $\lambda_2 = \lambda_3 = \lambda$ y $\lambda_1 \neq \lambda$.
+          Entonces $\dim(\ker(A - \lambda I)) \in \{1, 2\}$.
+          \begin{enumerate}
+              \item Supongamos que $\dim(\ker(A - \lambda I)) = 2$.
+                    Sea $P^1$ autovector asociado a $\lambda_1$ y sean $P^2$ y $P^3$ autovectores linealmente independientes asociados a $\lambda$, entonces:
+                    $$J = \begin{pmatrix}
+                            \lambda_1 & 0       & 0       \\
+                            0         & \lambda & 0       \\
+                            0         & 0       & \lambda
+                        \end{pmatrix}, \quad
+                        P = \begin{pmatrix}
+                            P^1 | P^2 | P^3
+                        \end{pmatrix}$$
+              \item Supongamos que $\dim(\ker(A - \lambda I)) = 1$.
+                    Entonces:
+                    $$J = \begin{pmatrix}
+                            \lambda_1 & 0       & 0       \\
+                            0         & \lambda & 1       \\
+                            0         & 0       & \lambda
+                        \end{pmatrix}, \quad
+                        P = \begin{pmatrix}
+                            P^1 | P^2 | P^3
+                        \end{pmatrix}$$
+                    donde:
+                    \begin{itemize}
+                        \item $P^1$ es autovector de $A$ asociado a $\lambda_1$.
+                        \item $P^2$ es autovector de $A$ asociado a $\lambda$.
+                        \item $(A - \lambda I)P^3 = P^2$, es decir, $P^3$ es solución de $(A - \lambda I)X = P^2$.
+                    \end{itemize}
+          \end{enumerate}
+    \item Supongamos que $\lambda_1 = \lambda_2 = \lambda_3 = \lambda \in \mathbb{R}$.
+          Entonces $\dim(\ker(A - \lambda I)) \in \{1, 2, 3\}$.
+          \begin{enumerate}
+              \item Supongamos que $\dim(\ker(A - \lambda I)) = 3$.
+                    Sean $P^1$, $P^2$ y $P^3$ autovectores linealmente independientes asociados a $\lambda$, entonces:
+                    $$J = \begin{pmatrix}
+                            \lambda & 0       & 0       \\
+                            0       & \lambda & 0       \\
+                            0       & 0       & \lambda
+                        \end{pmatrix}, \quad
+                        P = \begin{pmatrix}
+                            P^1 | P^2 | P^3
+                        \end{pmatrix}$$
+              \item Supongamos que $\dim(\ker(A - \lambda I)) = 2$.
+                    Entonces:
+                    $$J = \begin{pmatrix}
+                            \lambda & 0       & 0       \\
+                            0       & \lambda & 1       \\
+                            0       & 0       & \lambda
+                        \end{pmatrix}, \quad
+                        P = \begin{pmatrix}
+                            P^1 | P^2 | P^3
+                        \end{pmatrix}$$
+                    donde:
+                    \begin{itemize}
+                        \item $P^1$ y $P^2$ son autovectores linealmente independientes asociados a $\lambda$.
+                        \item $(A - \lambda I)P^3 = P^2$, es decir, $P^3$ es solución de $(A - \lambda I)X = P^2$.
+                    \end{itemize}
+              \item Supongamos que $\dim(\ker(A - \lambda I)) = 1$.
+                    Entonces:
+                    $$J = \begin{pmatrix}
+                            \lambda_1 & 1       & 0       \\
+                            0         & \lambda & 1       \\
+                            0         & 0       & \lambda
+                        \end{pmatrix}, \quad
+                        P = \begin{pmatrix}
+                            P^1 | P^2 | P^3
+                        \end{pmatrix}$$
+                    donde:
+                    \begin{itemize}
+                        \item $P^1$ es autovector de $A$ asociado a $\lambda$.
+                        \item $(A - \lambda I)P^2 = P^1$, es decir, $P^2$ es solución de $(A - \lambda I)X = P^1$.
+                        \item $(A - \lambda I)P^3 = P^2$, es decir, $P^3$ es solución de $(A - \lambda I)X = P^2$.
+                    \end{itemize}
+          \end{enumerate}
+    \item Supongamos que $\lambda_1 \in \mathbb{R}$ y $\lambda_2, \lambda_3 \in \mathbb{C}$, es decir, son de la forma $\lambda_2 = \lambda = \alpha + i\beta$, $\lambda_3 = \bar{\lambda} = \alpha - i\beta$.
+          Entonces:
+          $$J = \begin{pmatrix}
+                  \lambda_1 & 0      & 0      \\
+                  0         & \alpha & \beta  \\
+                  0         & -\beta & \alpha
+              \end{pmatrix}, \quad
+              P = \begin{pmatrix}
+                  P^1 | P^2 | P^3
+              \end{pmatrix}$$
+          donde:
+          \begin{itemize}
+              \item $P^1$ es autovector de $A$ asociado a $\lambda_1$.
+              \item $P^2 + iP^3$ es autovector complejo de $A$ asociado a $\lambda$.
+          \end{itemize}
 \end{enumerate}
