@@ -179,3 +179,74 @@ Recordamos que:
     Sin embargo, observamos que:
     $$\sum_{n=1}^\infty P(Y_{n, 1/\varepsilon}^c) = \sum_{n=1}^\infty P(|X_n| \geq \varepsilon) = \sum_{n=1}^\infty P(X_n = 1) = \sum_{n=1}^\infty \frac{1}{n} = \infty$$
 \end{example}
+
+\begin{definition}
+    Sea $\{X_n\}_{n \geq 1}$ una sucesión de variables aleatorias en $(\Omega, \mathcal{A}, P)$.
+    Decimos que $X_n$ converge en probabilidad a $X$ si para todo $\varepsilon > 0$
+    $$P(Y_{n, \varepsilon}) \xrightarrow[n \to \infty]{} 1$$
+
+    En tal caso escribimos $X_n \xrightarrow{p} X$.
+\end{definition}
+
+\begin{theorem}
+    El límite en probabilidad es único en casi todo punto.
+\end{theorem}
+
+\begin{theorem}
+    Si $X_n \xrightarrow{cs} X$, entonces $X_n \xrightarrow{p} X$.
+\end{theorem}
+
+\begin{example}
+    Sea $\Omega = [0, 1]$, $\mathcal{A} = \mathcal{B}_{[0, 1]}$ y $P = m$ la medida de Lebesgue.
+    Consideramos:
+    $$X_n(\omega) = \omega^n$$
+    Calculamos el límite de la sucesión:
+    $$\lim\limits_{n \to \infty} X_n(\omega) = \begin{cases}
+            0 & \text{si } 0 \leq \omega < 1 \\
+            1 & \text{si } \omega = 1
+        \end{cases}$$
+    Sea $X(\omega) = 0$, $X_n \xrightarrow{cs} X$ porque:
+    $$P(\{\lim\limits_{n \to \infty} X_n \neq X\}) = P(\{1\}) = 0$$
+
+    Como $X_n$ converge casi seguro, sabemos que $X_n$ converge en probabilidad.
+    Veamos que esto es cierto.
+
+    Sea $\varepsilon > 0$,
+    $$Y_{n, \varepsilon} = \{|X_n - X| < \varepsilon\} = \{X_n < \varepsilon\}$$
+    Observamos que:
+    $$F_n(x) = P(X_n \leq x) = \begin{cases}
+            0           & \text{si } x < 0        \\
+            \sqrt[n]{x} & \text{si } 0 \leq x < 1 \\
+            1           & \text{si } x \geq 1
+        \end{cases}$$
+    Por tanto, si tomamos $\varepsilon \leq 1$,
+    $$P(Y_{n, \varepsilon}) = F_n(\varepsilon^-) = \sqrt[n]{\varepsilon} \xrightarrow[n \to \infty]{} 1$$
+\end{example}
+
+\begin{example}
+    Sean $X_n$ variables aleatorias independientes de Bernoulli en un espacio de medida $(\Omega, \mathcal{A}, P)$.
+    $$X_n(\omega) = \begin{cases}
+            1 & \text{si hay éxito en la prueba } n    \\
+            0 & \text{si no hay éxito en la prueba } n
+        \end{cases}$$
+    Observamos que:
+    $$P(X_n = x) = \begin{cases}
+            \frac{1}{n}     & \text{si } x = 1    \\
+            1 - \frac{1}{n} & \text{si } x = 0    \\
+            0               & \text{en otro caso}
+        \end{cases}$$
+
+    Sea $X = 0$, veamos que $X_n$ no converge casi seguro a $X$.
+    Sea $\varepsilon > 0$,
+    $$\sum_{n=1}^\infty P(Y_{n, \varepsilon}^c) = \sum_{n=1}^\infty P(X_n \geq \varepsilon) = \sum_{n=1}^\infty \frac{1}{n} = \infty$$
+    Veamos que aún así $X_n$ converge en probabilidad a $X$.
+    $$P(Y_{n, \varepsilon}^c) = P(X_n \geq \varepsilon) = \begin{cases}
+            \frac{1}{n} & \text{si } 0 < \varepsilon \leq 1 \\
+            0           & \text{si } \varepsilon > 1
+        \end{cases} \Rightarrow \lim\limits_{n \to \infty} P(Y_{n, \varepsilon}^c) = 0 \quad \forall \varepsilon$$
+    Por tanto, $X_n \xrightarrow{p} X$.
+\end{example}
+
+\begin{theorem}
+    Si $X_n \xrightarrow{p} X$, entonces existe una subsucesión tal que $X_{n_k} \xrightarrow[k \to \infty]{cs} X$.
+\end{theorem}
