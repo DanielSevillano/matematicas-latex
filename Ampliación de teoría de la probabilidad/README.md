@@ -37,3 +37,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 5. Reconocimiento de funciones características
 
 ### 3. Convergencia
+
+1. Tipos de convergencia
