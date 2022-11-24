@@ -352,3 +352,69 @@ Esta norma induce una métrica:
     Sean $X_n, X \in L^p$, con $0 < p < \infty$.
     Si $X_n \xrightarrow{L^p} X$, entonces $X_n \xrightarrow{p} X$.
 \end{theorem}
+
+\begin{theorem}
+    El límite en $L^p$ es único.
+\end{theorem}
+
+\begin{theorem}
+    Si $X_n \xrightarrow{p} X$ con $X_n, X \in L^p$ y existe $Y \in L^p$ tal que $|X_n| \leq Y$ para todo $n \in \mathbb{N}$, entonces $X_n \xrightarrow{L^p} X$.
+\end{theorem}
+
+\section{Leyes de los grandes números}
+\subsection*{Ley débil de los grandes números}
+Sean $X_1, \dots, X_n$ variables aleatorias en $(\Omega, \mathcal{A}, P)$ y sea $S_n = X_1 + \dots + X_n$.
+La sucesión $\{X_n\}_{n \geq 1}$ verifica la ley débil de los grandes números si existen sucesiones numéricas $\{a_n\}$ y $\{b_n\}$ con $b_n \uparrow \infty$ tales que:
+$$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
+
+\begin{note}
+    Escribir $X_n \to c$ con $c \in \mathbb{R}$ es equivalente a $X_n \to X$ con $X \sim \delta(c)$.
+\end{note}
+
+\begin{theorem}[Bernoulli]
+    Sean $X_1, \dots, X_n$ variables aleatorias independientes con $X_i \sim Ber(p)$, donde $0 < p < 1$.
+    Entonces:
+    $$\frac{S_n}{n} \xrightarrow{p} p$$
+    Es decir, $\{X_n\}_{n \geq 1}$ verifica la ley débil de los grandes números para $a_n = np$ y $b_n = n$.
+\end{theorem}
+
+\begin{example}[Ciclos de permutaciones aleatorias]
+    Sea $\Omega_n$ el conjunto de permutaciones de $n$ elementos, consideramos la permutación $\pi \in \Omega_9$ dada por:
+    \begin{center}
+        \begin{tabular}{ c | c c c c c c c c c}
+            $i$      & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 \\
+            $\pi(i)$ & 3 & 9 & 6 & 8 & 2 & 1 & 5 & 4 & 7
+        \end{tabular}
+    \end{center}
+    Observamos que $\pi$ tiene tres ciclos y se puede escribir como $(1 \; 3 \; 6)(2 \; 9 \; 7 \; 5)(4 \; 8)$.
+
+    Tomando una permutación al azar de $\Omega_n$, queremos estudiar cuántos ciclos tendrá.
+    Definimos las variables:
+    $$X_{n, k} = \begin{cases}
+            1 & \text{si se cierra un ciclo tras el número } k \\
+            0 & \text{en otro caso}
+        \end{cases}$$
+    En el caso de $\pi$ tenemos que $x_{9, 3} = x_{9, 7} = x_{9, 9} = 0$, con $x_{9, m} = 0$ en el resto.
+
+    Observamos que $S_n = X_{n, 1} + \dots + X_{n, n}$ es el número de ciclos.
+    Se puede demostrar que $X_{n, 1}, \dots, X_{n, n}$ son variables aleatorias independientes y que:
+    $$P(X_{n, k} = 1) = \frac{1}{n-k+1}$$
+    Calculemos su esperanza:
+    $$E(S_n) = E(X_{n, 1}) + \dots + E(X_{n, n}) = \frac{1}{n} + \frac{1}{n-1} + \dots + \frac{1}{2} + 1 = \sum_{j=1}^n \frac{1}{j}$$
+    Podemos aproximar:
+    $$\sum_{j=1}^n \frac{1}{j} \sim \int_1^n \frac{1}{x}dx = \log(n)$$
+
+    Por tanto, sean $b_n = \log(n)$ y $a_n = E(S_n) = \log(n)$, entonces:
+    $$\frac{S_n - \log(n)}{\log(n)} \xrightarrow{p} 0 \Leftrightarrow \frac{S_n}{\log(n)} \xrightarrow{p} 1$$
+\end{example}
+
+\begin{example}[Polinomios de Bernstein]
+    Sea $f$ continua en $[0, 1]$.
+    Para cada $x \in [0, 1]$, el polinomio de Bernstein de grado $n$ asociado a $f$ es:
+    $$f_n(x) = \sum_{m=0}^n \binom{n}{m}x^m(1-x)^{n-m}f\left(\frac{m}{n}\right)$$
+    Sean $X_i \sim Ber(p)$ para $i \geq 1$ con $0 < p < 1$.
+    Entonces $S_n = X_1 + \dots + X_n \sim Bi(n, p)$, con:
+    $$P(S_n = k) = \binom{n}{k}p^k(1-p)^{n-k}$$
+    Por la ley débil de los grandes números de Bernoulli:
+    $$\frac{S_n}{n} \xrightarrow{p} p \Leftrightarrow \frac{S_n}{n} - p \xrightarrow{p} 0$$
+\end{example}

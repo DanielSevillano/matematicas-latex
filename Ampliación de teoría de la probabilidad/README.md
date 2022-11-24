@@ -39,3 +39,4 @@ Estos apuntes están abiertos a correcciones y mejoras.
 ### 3. Convergencia
 
 1. Tipos de convergencia
+2. Leyes de los grandes números
