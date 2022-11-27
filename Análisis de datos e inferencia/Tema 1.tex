@@ -257,7 +257,7 @@ La tabla ANOVA es de la forma:
 También se incluyen columnas para $F_{exp}$ y $p$-valor.
 
 \begin{remark}
-    Existe la siguiente relación entre $t_{exp}$ y $F_exp$:
+    Existe la siguiente relación entre $t_{exp}$ y $F_{exp}$:
     $$t_{exp}^2 = F_{exp}$$
 \end{remark}
 
@@ -311,13 +311,13 @@ Podemos calcular los intervalos de confianza para $m_0$ con nivel de confianza d
 Si $\sigma^2$ es conocida,
 \begin{align*}
     IC_{1-\alpha}(m_0) = & \left( \hat{m_0} - z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}}, \right. \\
-    & \left. \hat{m_0} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)
+                         & \left. \hat{m_0} + z_{1-\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)
 \end{align*}
 
 Si $\sigma^2$ es desconocida,
 \begin{align*}
     IC_{1-\alpha}(m_0) = & \left( \hat{m_0} - t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}}, \right. \\
-    & \left. \hat{m_0} + t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)
+                         & \left. \hat{m_0} + t_{n-2, 1-\frac{\alpha}{2}} \frac{s_R}{\sqrt{n}} \sqrt{1 + \frac{(x_0-\bar{x})^2}{s_X^2}} \right)
 \end{align*}
 
 \subsection*{Predicción de una observación futura}
@@ -348,7 +348,7 @@ Si $\sigma^2$ es conocida,
 Si $\sigma^2$ es desconocida,
 \begin{align*}
     IP_{1-\alpha}(y_0) = & \left( \hat{y_0} - t_{n-2, 1-\frac{\alpha}{2}} s_R \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}}, \right. \\
-    & \left. \hat{y_0} + t_{n-2, 1-\frac{\alpha}{2}} s_R \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}} \right)
+                         & \left. \hat{y_0} + t_{n-2, 1-\frac{\alpha}{2}} s_R \sqrt{1 + \frac{1}{n} + \frac{(x_0-\bar{x})^2}{ns_X^2}} \right)
 \end{align*}
 
 \section{Análisis de residuos y observaciones atípicas e influyentes}
