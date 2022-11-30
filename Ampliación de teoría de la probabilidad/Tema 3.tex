@@ -418,3 +418,126 @@ $$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
     Por la ley débil de los grandes números de Bernoulli:
     $$\frac{S_n}{n} \xrightarrow{p} p \Leftrightarrow \frac{S_n}{n} - p \xrightarrow{p} 0$$
 \end{example}
+
+\begin{theorem}[Chebyshev]
+    Sea $\{X_n\}_{n \geq 1}$ una sucesión de variables aleatorias independientes con media $\mu$ y varianza $\sigma^2$ constantes.
+    Entonces:
+    $$\frac{S_n}{n} \xrightarrow{p} \mu$$
+\end{theorem}
+
+\begin{theorem}[Chebyshev]
+    Sea $\{X_n\}$ una sucesión de variables aleatorias independientes con varianza acotada por una constante $c$.
+    Entonces:
+    $$\frac{S_n - E(S_n)}{n} \xrightarrow{p} 0$$
+\end{theorem}
+
+\begin{theorem}[Márkov]
+    Sea $\{X_n\}$ una sucesión de variables aleatorias con $V\left(\frac{S_n}{n}\right) \xrightarrow[n \to \infty]{} 0$.
+    Entonces:
+    $$\frac{S - E(S_n)}{n} \xrightarrow{p} 0$$
+\end{theorem}
+
+\begin{theorem}[Khinchin]
+    Sea $\{X_n\}$ una sucesión de variables aleatorias independientes e idénticamente distribuidas con media $\mu < \infty$.
+    Entonces:
+    $$\frac{S_n}{n} \xrightarrow{p} \mu$$
+\end{theorem}
+
+\begin{example}
+    Sean $X_1, X_2, \dots$ variables aleatorias independientes e idénticamente distribuidas con $X_j \sim U([0, 1])$ para todo $j$.
+    Sea $f: [0, 1] \to \mathbb{R}$ una función medible en $[0, 1]$ tal que:
+    $$\int_0^1 |f(x)|dx < \infty$$
+    Consideramos las variables aleatorias $f(X_1), f(X_2), \dots$.
+    Observamos que:
+    $$E(f(X_j)) = \int_0^1 f(x)dx < \infty$$
+    Por la ley débil de los grandes números:
+    $$\frac{1}{n}(f(X_1) + \dots + f(X_n)) \xrightarrow{p} \int_0^1 f(x)dx$$
+\end{example}
+
+% Ejemplo
+
+\subsection*{Ley fuerte de los grandes números}
+\begin{definition}
+    Una sucesión $\{X_n\}_{n \geq 1}$ de una variable aleatoria verifica la ley fuerte de los grandes números si existen sucesiones numéricas $\{a_n\}$ y $\{b_n\}$ con $b_n \uparrow \infty$ tales que:
+    $$\frac{S_n - a_n}{b_n} \xrightarrow{cs} 0$$
+    donde $S_n = \sum_{i=1}^n X_i$.
+\end{definition}
+
+\begin{remark}
+    Estudiaremos el caso $a_n = E(S_n)$, $b_n = n$.
+    Queremos estudiar la convergencia de series de variables aleatorias, como $\sum_{i=1}^\infty X_n$ y $\sum_{i=1}^\infty (X_n - E(X_n))$.
+    Diremos que una serie $\sum_{i=1}^\infty$ converge casi seguro para indicar que $\sum_{i=1}^\infty X_n < \infty$ en casi todo punto.
+\end{remark}
+
+\begin{lemma}
+    Sea $\{X_n\}$ una sucesión de variables aleatorias.
+    Entonces $\sum_{n=1}^\infty X_n$ converge casi seguro si y solo si:
+    $$\lim\limits_{n \to \infty} \lim\limits_{m \to \infty} P(\max_{1 \leq j \leq m} |S_j - S_n| \geq \varepsilon) = 0, \quad \forall \varepsilon > 0$$
+\end{lemma}
+
+\begin{theorem}[Criterio de convergencia de Kolmogórov]
+    Sea $\{X_n\}$ una sucesión de variables aleatorias independientes con $\sum_{n=1}^\infty V(X_n) < \infty$.
+    Entonces $\sum_{n=1}^\infty (X_n - E(X_n)) < \infty$ casi seguro.
+\end{theorem}
+
+\begin{remark}
+    Si $\sum_{n=1}^\infty (X_n - E(X_n)) < \infty$ casi seguro, entonces:
+    $$\sum_{n=1}^\infty X_n < \infty \text{ casi seguro } \Leftrightarrow \sum_{n=1}\infty E(X_n) < \infty$$
+\end{remark}
+
+\begin{theorem}[Recíproco del criterio de convergencia de Kolmogórov]
+    Sea $\{X_n\}$ una sucesión de variables aleatorias independientes.
+    Si existe una constante $c > 0$ tal que $\{X_n\} \leq c$ casi seguro para todo $n \geq 1$, entonces:
+    $$\sum_{n=1}^\infty (X_n - E(X_n)) < \infty \text{ casi seguro } \Leftrightarrow \sum_{n=1}^\infty V(X_n) < \infty$$
+\end{theorem}
+
+\begin{corollary}
+    Sea $\{X_n\}$ una sucesión de variables aleatorias independientes tales que $\{X_n\} \leq c$ para alguna constante $c > 0$.
+    Si $\sum_{n=1}^\infty < \infty$ casi seguro, entonces también convergen casi segura las series:
+    $$\sum_{n=1}^\infty (X_n - E(X_n)), \quad \sum_{n=1}^\infty E(X_n), \quad \sum_{n=1}^\infty V(X_n)$$
+\end{corollary}
+
+\begin{theorem}[Condición suficiente de Kolmogórov]
+    Sea $\{X_n\}$ una sucesión de variables aleatorias independientes con varianza finita.
+    Si $\sum_{n=1}^\infty \frac{V(X_n)}{n^2} < \infty$ entonces $\{X_n\}$ verifica la ley fuerte de los grandes números, es decir,
+    $$\frac{S_n - E(S_n)}{n} \xrightarrow{cs} 0$$
+\end{theorem}
+
+\begin{lemma}[Kronecker]
+    Sean $\{X_n\}$ una sucesión de variables aleatorias y $\{a_n\}$ una sucesión de números reales con $a_n \uparrow \infty$.
+    Si $\sum_{n=1}^\infty \frac{X_n}{a_n} < \infty$ casi seguro, entonces:
+    $$\frac{1}{a_n} \sum_{k=1}^n X_k \xrightarrow{cs} 0$$
+\end{lemma}
+
+\begin{definition}
+    Sean $\{X_n\}$ una sucesión de variables aleatorias y $\{c_n\}$ una sucesión de reales no negativos.
+    Se define la sucesión de las variables aleatorias truncadas como $\{Y_n\}_{n \geq 1}$, donde:
+    $$Y_n = X_n I_{\{|X_n| < c_n\}}$$
+\end{definition}
+
+\begin{definition}
+    Dos sucesiones de variables aleatorias $\{X_n\}$ e $\{Y_n\}$ son equivalentes en convergencia cuando:
+    $$\sum_{n=1}^\infty P(X_n \neq Y_n) < \infty$$
+\end{definition}
+
+\begin{theorem}
+    Si $\{X_n\}$ e $\{Y_n\}$ son equivalentes en convergencia, entonces se verifican:
+    \begin{enumerate}
+        \item $P(\limsup\limits_{n \to \infty} \{X_n \neq Y_n\}) = 0$
+        \item $\sum_{n=1}^\infty X_n < \infty \text{ casi seguro } \Leftrightarrow \sum_{n=1}^\infty Y_n < \infty \text{ casi seguro}$
+        \item $\frac{1}{n} \sum_{k=1}^n (X_k - Y_k) \xrightarrow[n \to \infty]{cs} 0$
+    \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+    Si elegimos $c_n = c$ constante para todo $n \in \mathbb{N}$,
+    $$Y_n = X_n I_{\{|X_n| < c\}} = \begin{cases}
+            X_n & \text{si } |X_n| < c \\
+            0   & \text{en otro caso}
+        \end{cases}$$
+    Entonces:
+    $$\sum_{n=1}^\infty P(X_n \neq Y_n) = \sum_{n=1}^\infty P(|X_n| \geq c)$$
+    Si existe $c$ tal que esa serie es finita, tenemos equivalencia entre $\{X_n\}$ e $\{Y_n\}$.
+\end{remark}
+
+% Ejemplo
