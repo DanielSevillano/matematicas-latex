@@ -19,3 +19,134 @@
     Las probabilidades a posteriori son proporcionales al producto de verosimilitudes y probabilidades a priori.
     $$P(A_i|B) \propto P(B|A_i)P(A_i)$$
 \end{remark}
+
+\begin{example}
+    Una caja contiene una moneda legal $M_1$ y otra con una cara en cada lado $M_2$.
+    \begin{enumerate}
+        \item Se selecciona una de las dos monedas al azar, se lanza y sale cara.
+              ¿Cuál es la probabilidad de que la moneda lanzada sea la legal?
+
+              Definimos los sucesos:
+              \begin{itemize}
+                  \item $C_i$: en el lanzamiento $i$ sale cara.
+                  \item $F_i$: en el lanzamiento $i$ sale cruz.
+              \end{itemize}
+
+              \begin{center}
+                  \begin{tabular}{| c | c | c |}
+                      \hline
+                      Probabilidad a priori  & Verosimilitudes            & Probabilidad a posteriori  \\
+                      \hline
+                      $P(M_1) = \frac{1}{2}$ & $P(C_1|M_1) = \frac{1}{2}$ & $P(M_1|C_1) = \frac{1}{3}$ \\
+                      $P(M_2) = \frac{1}{2}$ & $P(C_1|M_2) = 1$           & $P(M_2|C_1) = \frac{2}{3}$ \\
+                      \hline
+                  \end{tabular}
+              \end{center}
+
+        \item Lanzamos de nuevo la moneda elegida y se obtiene otra cara.
+              ¿Cuál es la probabilidad de que la moneda lanzada sea la legal?
+
+              Podemos usar el carácter secuencial del teorema de Bayes y usar los resultados anteriores.
+
+              \begin{center}
+                  \begin{tabular}{| c | c | c |}
+                      \hline
+                      Probabilidad a priori      & Verosimilitudes            & Probabilidad a posteriori           \\
+                      \hline
+                      $P(M_1|C_1) = \frac{1}{3}$ & $P(C_2|M_1) = \frac{1}{2}$ & $P(M_1|C_1 \cap C_2) = \frac{1}{5}$ \\
+                      $P(M_2|C_1) = \frac{2}{3}$ & $P(C_2|M_2) = 1$           & $P(M_2|C_1 \cap C_2) = \frac{4}{5}$ \\
+                      \hline
+                  \end{tabular}
+              \end{center}
+    \end{enumerate}
+\end{example}
+
+\section{Teorema de Bayes generalizado}
+\begin{theorem}[Teorema de Bayes generalizado]
+    Sean $\vec{x} = (x_1, \dots, x_n)$ una muestra y $\theta$ una variable aleatoria.
+    Sea $f_\theta$ la distribución a priori y $f(\vec{x}|\theta)$ la función de verosimilitud.
+    Entonces:
+    $$f(\theta|\vec{x}) = \frac{f(\vec{x}|\theta)f_\theta(\theta)}{f(\vec{x})}$$
+    donde:
+    $$f(\vec{x}) = \begin{cases}
+            \sum_{i=1}^n f(\vec{x}|\theta_i)f_\theta(\theta_i)    & \text{si es discreta} \\
+            \int_\Theta f(\vec{x}, \theta)f_\theta(\theta)d\theta & \text{si es continua}
+        \end{cases}$$
+\end{theorem}
+
+\begin{remark}
+    Para los clásicos, $\theta$ es un parámetro fijo y desconocido.
+    En cambio, para los bayesianos $\theta$ es una variable aleatoria.
+\end{remark}
+
+% Ejemplo
+
+\section{Familias de distribución conjugadas}
+Las familias de distribución conjugadas son aquellas en las que las distribuciones a priori y a posteriori son de la misma familia.
+
+% Ejemplos
+
+\begin{lemma}
+    $$A(z-a)^2 + B(z-b)^2 = (A+B)\left(z - \frac{Aa+Bb}{A+B}\right)^2 + \frac{AB}{A+B}(a-b)^2$$
+\end{lemma}
+
+% Ejemplo
+
+\begin{definition}
+    Sea $X \sim Ga(a, p)$, consideramos $Y = \frac{1}{X}$.
+    Entonces $Y \sim GaI(a, p)$ gamma invertida.
+    Su función de densidad es:
+    $$f_Y(y) = \frac{a^p}{\Gamma(p)} e^{-\frac{a}{y}} y^{-(p+1)}, \quad y > 0$$
+\end{definition}
+
+% Ejemplo
+
+\begin{definition}
+    Decimos que $(\mu, \tau) \sin NGa(m_0, \tau_0, a_0, p_0)$ normal gamma, con $m_0 \in \mathbb{R}, \tau_0, a_0, p_0 > 0$, si:
+    $$\mu|\tau \sim N(m_0, pr = \tau\tau_0) \text{ y } \tau \sim Ga(a_0, p_0), \quad \mu \in \mathbb{R}, \tau > 0$$
+    Su función de densidad es:
+    $$f(\mu, \tau) = \frac{\sqrt{\tau_0}}{\sqrt{2\pi}} \frac{a_0^{p_0}}{\Gamma(p_0)} \tau^{p_0 - \frac{1}{2}} e^{-\tau \left(a_0 + \frac{\tau_0}{2}(\mu-m_0)^2\right)}$$
+\end{definition}
+
+\begin{definition}
+    Si $T \sim t_n$ y $X = \mu + \frac{1}{\sqrt{p}}T$, entonces $X \sim t(\mu, p, n)$, donde $\mu$ es la media y $p$ es el parámetro de escala.
+    Su función de densidad es:
+    $$f_X(x) = \frac{\Gamma\left(\frac{n+1}{2}\right)\sqrt{p}}{\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{n}{2}\right)\sqrt{n}} \left(1 + \frac{p}{n}(x-\mu)^2\right)^{-\frac{n+1}{2}}$$
+    Verifica que:
+    $$E(X) = \mu, \quad V(X) = \frac{1}{p} \frac{n}{n-2}$$
+\end{definition}
+
+\begin{remark}
+    La distribución $t_1$ se llama distribución de Cauchy.
+    Además:
+    $$t_n \xrightarrow[n \to \infty]{} N(0, 1)$$
+\end{remark}
+
+\begin{theorem}
+    Si $(\mu, \tau) \sim NGa(m_0, \tau_0, a_0, p_0)$, entonces:
+    $$\mu \sim t\left(m_0, \frac{p_0\tau_0}{a_0}, 2p_0\right)$$
+\end{theorem}
+
+\begin{corollary}[Génesis bayesiana de la $t$ de Student]
+    $$\begin{cases}
+            \mu|\tau \sim N(0, pr = \tau) \\
+            \tau \sim Ga\left(\frac{n}{2}, \frac{n}{2}\right)
+        \end{cases} \Rightarrow \mu \sim t(0, 1, n) \equiv t_n$$
+\end{corollary}
+
+% Ejemplo
+
+\section{Distribuciones a priori no informativas}
+\begin{definition}
+    La información de Fisher para $\theta$ se define como:
+    $$J(\theta) = -E\left(\frac{\partial^2 \log(f(x|\theta))}{\partial\theta^2}\right)$$
+\end{definition}
+
+\begin{proposition}[Regla de Jeffreys]
+    $$f_\theta(\theta) \propto \sqrt{J(\theta)}$$
+\end{proposition}
+
+\begin{remark}
+    La reglas de Jeffreys no da densidades en general.
+    A aquellas que no son densidades se les llama densidades impropias.
+\end{remark}

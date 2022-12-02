@@ -56,3 +56,6 @@ Estos apuntes están abiertos a correcciones y mejoras.
 ### 4. Inferencia bayesiana
 
 1. Teorema de Bayes
+2. Teorema de Bayes generalizado
+3. Familias de distribución conjugadas
+4. Distribuciones a priori no informativas
