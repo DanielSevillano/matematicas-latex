@@ -21,44 +21,44 @@
 \end{remark}
 
 \begin{example}
-    Una caja contiene una moneda legal $M_1$ y otra con una cara en cada lado $M_2$.
-    \begin{enumerate}
-        \item Se selecciona una de las dos monedas al azar, se lanza y sale cara.
-              ¿Cuál es la probabilidad de que la moneda lanzada sea la legal?
+    Una caja contiene dos monedas: una moneda legal $M_1$ y otra con una cara en cada lado $M_2$.
 
-              Definimos los sucesos:
-              \begin{itemize}
-                  \item $C_i$: en el lanzamiento $i$ sale cara.
-                  \item $F_i$: en el lanzamiento $i$ sale cruz.
-              \end{itemize}
+    En primer lugar, se selecciona una de las dos monedas al azar, se lanza y sale cara.
+    Veamos cuál es la probabilidad de que la moneda lanzada sea la legal.
 
-              \begin{center}
-                  \begin{tabular}{| c | c | c |}
-                      \hline
-                      Probabilidad a priori  & Verosimilitudes            & Probabilidad a posteriori  \\
-                      \hline
-                      $P(M_1) = \frac{1}{2}$ & $P(C_1|M_1) = \frac{1}{2}$ & $P(M_1|C_1) = \frac{1}{3}$ \\
-                      $P(M_2) = \frac{1}{2}$ & $P(C_1|M_2) = 1$           & $P(M_2|C_1) = \frac{2}{3}$ \\
-                      \hline
-                  \end{tabular}
-              \end{center}
+    Para ello definimos los sucesos:
+    \begin{itemize}
+        \item $C_i$: en el lanzamiento $i$ sale cara.
+        \item $F_i$: en el lanzamiento $i$ sale cruz.
+    \end{itemize}
 
-        \item Lanzamos de nuevo la moneda elegida y se obtiene otra cara.
-              ¿Cuál es la probabilidad de que la moneda lanzada sea la legal?
+    Usamos el teorema de Bayes:
+    \begin{center}
+        \begin{tabular}{| c | c | c |}
+            \hline
+            Probabilidad a priori  & Verosimilitudes            & Probabilidad a posteriori  \\
+            \hline
+            $P(M_1) = \frac{1}{2}$ & $P(C_1|M_1) = \frac{1}{2}$ & $P(M_1|C_1) = \frac{1}{3}$ \\
+            $P(M_2) = \frac{1}{2}$ & $P(C_1|M_2) = 1$           & $P(M_2|C_1) = \frac{2}{3}$ \\
+            \hline
+        \end{tabular}
+    \end{center}
 
-              Podemos usar el carácter secuencial del teorema de Bayes y usar los resultados anteriores.
+    Lanzamos de nuevo la moneda elegida y se obtiene otra cara.
+    Veamos cuál es la probabilidad de que la moneda lanzada sea la legal.
 
-              \begin{center}
-                  \begin{tabular}{| c | c | c |}
-                      \hline
-                      Probabilidad a priori      & Verosimilitudes            & Probabilidad a posteriori           \\
-                      \hline
-                      $P(M_1|C_1) = \frac{1}{3}$ & $P(C_2|M_1) = \frac{1}{2}$ & $P(M_1|C_1 \cap C_2) = \frac{1}{5}$ \\
-                      $P(M_2|C_1) = \frac{2}{3}$ & $P(C_2|M_2) = 1$           & $P(M_2|C_1 \cap C_2) = \frac{4}{5}$ \\
-                      \hline
-                  \end{tabular}
-              \end{center}
-    \end{enumerate}
+    Podemos usar el carácter secuencial del teorema de Bayes y usar los resultados anteriores.
+
+    \begin{center}
+        \begin{tabular}{| c | c | c |}
+            \hline
+            Probabilidad a priori      & Verosimilitudes            & Probabilidad a posteriori           \\
+            \hline
+            $P(M_1|C_1) = \frac{1}{3}$ & $P(C_2|M_1) = \frac{1}{2}$ & $P(M_1|C_1 \cap C_2) = \frac{1}{5}$ \\
+            $P(M_2|C_1) = \frac{2}{3}$ & $P(C_2|M_2) = 1$           & $P(M_2|C_1 \cap C_2) = \frac{4}{5}$ \\
+            \hline
+        \end{tabular}
+    \end{center}
 \end{example}
 
 \section{Teorema de Bayes generalizado}
@@ -79,18 +79,106 @@
     En cambio, para los bayesianos $\theta$ es una variable aleatoria.
 \end{remark}
 
-% Ejemplo
+\begin{example}
+    Supongamos que tenemos una moneda y queremos estimar la probabilidad $p$ de obtener cara.
+    Supongamos que nuestras creencias a priori sobre $p$ se pueden describir por una distribución uniforme en $(0, 1)$.
+    Realizamos el experimento de tirar la moneda 12 veces y obtenemos 9 caras y 3 cruces.
+
+    Definimos la variable aleatoria:
+    $$X = \begin{cases}
+            1 & \text{si sale cara } (C) \\
+            0 & \text{si sale cruz } (F)
+        \end{cases}, \quad X|p \sim Ber(p)$$
+    Queremos estimar $P(C) = P(X = 1) = p$ a partir de nuestra muestra $\vec{x} = (x_1, \dots, x_{12})$, com $\sum_{i=1}^{12} x_i = 9$.
+
+    Como $p \sim U(0, 1)$, su distribución a priori es $f(p) = 1$ si $p \in (0, 1)$.
+    Calculamos la función de verosimilitud:
+    $$L(\vec{x}, p) = \prod_{i=1}^{12} f(x_i|p) = \prod_{i=1}^{12} p^{x_i}(1-p)^{1-x_i} = p^9(1-p)^3$$
+    Podemos hallar la distribución a posteriori:
+    $$f(p|\vec{x}) \propto p^9(1-p)^3 \Rightarrow p|\vec{x} \sim Be(10, 4)$$
+\end{example}
+
+\begin{note}
+    Si $X \sim Be(p, q)$ beta, entonces:
+    $$f_X(x) \propto x^{p-1}(1-x)^{q-1}$$
+\end{note}
 
 \section{Familias de distribución conjugadas}
 Las familias de distribución conjugadas son aquellas en las que las distribuciones a priori y a posteriori son de la misma familia.
 
-% Ejemplos
+\subsection*{Muestras de la distribución Bernoulli}
+Sean $x_i|\theta \sim Ber(\theta)$ y $\theta \sim Be(p, q)$.
+Su distribución a priori es:
+$$f_\theta(\theta) \propto \theta^{p-1}(1-\theta)^{q-1}, \quad \theta \in (0, 1)$$
+Dada una muestra $\vec{x}$, calculamos la función de verosimilitud:
+$$L(\vec{x}, \theta) = \prod_{i=1}^n f(x_i|\theta) \propto \theta^{\sum_{i=1}^n x_i}(1-\theta)^{n-\sum_{i=1}^n x_i}$$
+Luego la distribución a posteriori es:
+\begin{align*}
+    f(\theta|\vec{x}) & \propto f_\theta(\theta)L(\vec{x}, \theta) \propto \theta^{p+\sum_{i=1}^n x_i-1}(1-\theta)^{n+q-\sum_{i=1}^n x_i+1} \\
+                      & \Rightarrow \theta|\vec{x} \sim Be\left(p+\sum_{i=1}^n x_i, n+q-\sum_{i=1}^n x_i\right)
+\end{align*}
+Por tanto, la beta es una familia conjugada respecto de muestras de la Bernoulli.
 
+\subsection*{Muestras de la distribución de Poisson}
+Sean $x_i|\lambda \sim Po(\lambda)$ y $\lambda \sim Ga(a, p)$.
+Su distribución a priori es:
+$$f_\lambda(\lambda) = \frac{a^p}{\Gamma(p)}e^{-a\lambda}\lambda^{p-1}, \quad \lambda, a, p > 0$$
+Dada una muestra $\vec{x}$, calculamos la función de verosimilitud:
+$$L(\vec{x}, \lambda) = \prod_{i=1}^n f(x_i|\lambda) \propto \prod_{i=1}^n e^{-\lambda}\lambda^{x_i} = e^{-n\lambda}\lambda^{\sum_{i=1}^n x_i}$$
+Luego la distribución a posteriori es:
+\begin{align*}
+    f(\lambda|\vec{x}) & \propto f_\lambda(\lambda)L(\vec{x}, \lambda) \propto e^{-(a+n)\lambda}\lambda^{\sum_{i=1}^n x_i+p-1} \\
+                       & \Rightarrow \lambda|\vec{x} \sim Ga(a+n, p+\sum_{i=1}^n x_i)
+\end{align*}
+Por tanto, la gamma es una familia conjugada respecto de muestras de la Poisson.
+
+\subsection*{Muestras de la distribución normal}
 \begin{lemma}
     $$A(z-a)^2 + B(z-b)^2 = (A+B)\left(z - \frac{Aa+Bb}{A+B}\right)^2 + \frac{AB}{A+B}(a-b)^2$$
 \end{lemma}
 
-% Ejemplo
+\subsubsection*{Media desconocida y precisión conocida}
+Sea $x_i|\mu \sim N(\mu, p)$ con media $\mu$ desconocida y precisión $p$ conocida y sea $\mu \sim N(m_0, p_0)$.
+Su distribución a priori es:
+$$f_\mu(\mu) = \frac{\sqrt{p_0}}{\sqrt{2\pi}} e^{\frac{p_0}{2}(\mu-m_0)^2} \propto e^{-\frac{p_0}{2}(\mu-m_0)^2}$$
+Dada una muestra $\vec{x}$, calculamos la función de verosimilitud:
+$$L(\vec{x}, \mu) = \prod_{i=1}^n f(x_i|\mu) \propto \prod_{i=1}^n e^{-\frac{p}{2}(x_i-\mu)^2} = e^{-\frac{p}{2}\sum_{i=1}^n (x_i-\mu)^2}$$
+
+\begin{note}
+    \begin{align*}
+        \sum_{i=1}^n (x_i-\mu)^2 & = \sum_{i=1}^n (x_i-\bar{x}+\bar{x}-\mu)^2 =                                                   \\
+                                 & = \sum_{i=1}^n (x_i-\bar{x})^2 + n(\bar{x}-\mu)^2 + 2(\bar{x}-\mu)\sum_{i=1}^n (x_i-\bar{x}) = \\
+                                 & = (n-1)s^2 + n(\bar{x}-\mu)^2
+    \end{align*}
+\end{note}
+
+Así que:
+$$L(\vec{x}, \mu) = e^{-\frac{p}{2}((n-1)s^2+n(\bar{x}-\mu)^2)} \propto e^{-\frac{np}{2}(\bar{x}-\mu)^2}$$
+Luego la distribución a posteriori es:
+$$f(\mu|\vec{x}) \propto f_\mu(\mu)L(\vec{x}, \mu) \propto e^{-\frac{p}{2}(\mu-m_0)^2}e^{-\frac{np}{2}(\bar{x}-\mu)^2} = e^{-\frac{1}{2}(p_0(\mu-m_0)^2+np(\bar{x}-\mu)^2)}$$
+Usando el lema previo, queda:
+\begin{align*}
+    f(\mu, \vec{x}) & \propto e^{-\frac{1}{2}(a(\mu-b)^2+c)} \propto e^{-\frac{a}{2}(\mu-b)^2} \\
+                    & \Rightarrow \mu|\vec{x} \sim N(b, pr = a)
+\end{align*}
+donde
+$$a = p_0+np, \quad b = \frac{p_0m_0+np\bar{x}}{p_0+np}$$
+Por tanto, la normal es una familia conjugada respecto de muestras de la normal con media desconocida y precisión conocida.
+
+\subsubsection*{Media conocida y precisión desconocida}
+Sea $x_i|\tau \sim N(\mu, \tau)$ y sea $\tau \sim Ga(a_0, p_0)$.
+Su distribución a priori es:
+$$f_\tau(\tau) = \frac{a_0^p}{\Gamma(p_0)}e^{-a_0\tau}\tau^{p_0-1}, \quad \tau, a_0, p_0 > 0$$
+Dada una muestra $\vec{x}$, calculamos la función de verosimilitud:
+$$L(\vec{x}, \tau) = \prod_{i=1}^n f(x_i|\tau) \propto \prod_{i=1}^n \sqrt{\tau}e^{-\frac{\tau}{2}(x_i-\mu)^2} = \tau^{\frac{n}{2}}e^{-\frac{\tau}{2}\sum_{i=1}^n(x_i-\mu)^2}$$
+Luego la distribución a posteriori es:
+\begin{align*}
+    f(\tau|\vec{x}) & \propto f_\tau(\tau)L(\vec{x}, \tau) \propto \tau^{\frac{n}{2}+p_0-1}e^{-\tau\left(a_0+\frac{1}{2}\sum_{i=1}^n(x_i-\mu)^2\right)} \\
+                    & \Rightarrow \tau|\vec{x} \sim Ga(a_n, p_n)
+\end{align*}
+donde
+$$a_n = a_0 + \frac{1}{2}\sum_{i=1}^n(x_i-\mu)^2, \quad p_n = \frac{n}{2}+p_0$$
+Por tanto, la gamma es una familia conjugada respecto de muestras de la normal con media conocida y precisión desconocida.
 
 \begin{definition}
     Sea $X \sim Ga(a, p)$, consideramos $Y = \frac{1}{X}$.
@@ -99,7 +187,20 @@ Las familias de distribución conjugadas son aquellas en las que las distribucio
     $$f_Y(y) = \frac{a^p}{\Gamma(p)} e^{-\frac{a}{y}} y^{-(p+1)}, \quad y > 0$$
 \end{definition}
 
-% Ejemplo
+\subsubsection*{Media conocida y varianza desconocida}
+Sea $x_i|\sigma^2 \sim N(\mu, \sigma^2)$ con varianza $\sigma^2$ desconocida y sea $\sigma^2 \sim GaI(a_0, p_0)$.
+Su distribución a priori es:
+$$f_{\sigma^2}(\sigma^2) = \frac{a_0^{p_0}}{\Gamma(p_0)}e^{-\frac{a_0}{\sigma^2}}(\sigma^2)^{-(p_0+1)}, \quad a_0, p_0 > 0$$
+Dada una muestra $\vec{x}$, calculamos la función de verosimilitud:
+$$L(\vec{x}, \sigma^2) = \prod_{i=1}^n f(x_i|\sigma^2) \propto \prod_{i=1}^n \frac{1}{\sqrt{\sigma^2}}e^{-\frac{1}{2\sigma^2}(x_i-\mu)^2} = (\sigma^2)^{-\frac{n}{2}}e^{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\mu)^2}$$
+Luego la distribución a posteriori es:
+\begin{align*}
+    f(\sigma^2|\vec{x}) & \propto f_{\sigma^2}(\sigma^2)L(\vec{x}, \sigma^2) \propto (\sigma^2)^{-\left(p_0+\frac{n}{2}+1\right)}e^{-\frac{1}{\sigma^2}}\left(a_0+\frac{1}{2}\sum_{i=1}^n(x_i-\mu)^2\right) \\
+                        & \Rightarrow \sigma^2|\vec{x} \sim GaI(a_n, p_n)
+\end{align*}
+donde
+$$a_n = a_0 + \frac{1}{2}\sum_{i=1}^n(x_i-\mu)^2, \quad p_n = p_0 + \frac{n}{2}$$
+Por tanto, la gamma invertida es una familia conjugada respecto de muestras de la normal con media conocida y varianza desconocida.
 
 \begin{definition}
     Decimos que $(\mu, \tau) \sin NGa(m_0, \tau_0, a_0, p_0)$ normal gamma, con $m_0 \in \mathbb{R}, \tau_0, a_0, p_0 > 0$, si:
@@ -134,7 +235,10 @@ Las familias de distribución conjugadas son aquellas en las que las distribucio
         \end{cases} \Rightarrow \mu \sim t(0, 1, n) \equiv t_n$$
 \end{corollary}
 
-% Ejemplo
+\subsubsection*{Media y precisión desconocidas}
+Sean $x_i|\mu, \tau \sim N(\mu, \tau)$ y $(\mu, \tau) \sim NGa(m_0, \tau_0, a_0, p_0)$.
+Se puede comprobar que la normal gamma es una familia conjugada respecto de muestras de la normal con media y precisión desconocidas.
+% Completar
 
 \section{Distribuciones a priori no informativas}
 \begin{definition}
