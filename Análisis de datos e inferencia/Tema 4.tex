@@ -180,6 +180,7 @@ donde
 $$a_n = a_0 + \frac{1}{2}\sum_{i=1}^n(x_i-\mu)^2, \quad p_n = \frac{n}{2}+p_0$$
 Por tanto, la gamma es una familia conjugada respecto de muestras de la normal con media conocida y precisión desconocida.
 
+\subsubsection*{Media conocida y varianza desconocida}
 \begin{definition}
     Sea $X \sim Ga(a, p)$, consideramos $Y = \frac{1}{X}$.
     Entonces $Y \sim GaI(a, p)$ gamma invertida.
@@ -187,7 +188,6 @@ Por tanto, la gamma es una familia conjugada respecto de muestras de la normal c
     $$f_Y(y) = \frac{a^p}{\Gamma(p)} e^{-\frac{a}{y}} y^{-(p+1)}, \quad y > 0$$
 \end{definition}
 
-\subsubsection*{Media conocida y varianza desconocida}
 Sea $x_i|\sigma^2 \sim N(\mu, \sigma^2)$ con varianza $\sigma^2$ desconocida y sea $\sigma^2 \sim GaI(a_0, p_0)$.
 Su distribución a priori es:
 $$f_{\sigma^2}(\sigma^2) = \frac{a_0^{p_0}}{\Gamma(p_0)}e^{-\frac{a_0}{\sigma^2}}(\sigma^2)^{-(p_0+1)}, \quad a_0, p_0 > 0$$
@@ -202,6 +202,7 @@ donde
 $$a_n = a_0 + \frac{1}{2}\sum_{i=1}^n(x_i-\mu)^2, \quad p_n = p_0 + \frac{n}{2}$$
 Por tanto, la gamma invertida es una familia conjugada respecto de muestras de la normal con media conocida y varianza desconocida.
 
+\subsubsection*{Media y precisión desconocidas}
 \begin{definition}
     Decimos que $(\mu, \tau) \sin NGa(m_0, \tau_0, a_0, p_0)$ normal gamma, con $m_0 \in \mathbb{R}, \tau_0, a_0, p_0 > 0$, si:
     $$\mu|\tau \sim N(m_0, pr = \tau\tau_0) \text{ y } \tau \sim Ga(a_0, p_0), \quad \mu \in \mathbb{R}, \tau > 0$$
@@ -230,15 +231,13 @@ Por tanto, la gamma invertida es una familia conjugada respecto de muestras de l
 
 \begin{corollary}[Génesis bayesiana de la $t$ de Student]
     $$\begin{cases}
-            \mu|\tau \sim N(0, pr = \tau) \\
+            \mu|\tau \sim N(0, \tau) \\
             \tau \sim Ga\left(\frac{n}{2}, \frac{n}{2}\right)
         \end{cases} \Rightarrow \mu \sim t(0, 1, n) \equiv t_n$$
 \end{corollary}
 
-\subsubsection*{Media y precisión desconocidas}
 Sean $x_i|\mu, \tau \sim N(\mu, \tau)$ y $(\mu, \tau) \sim NGa(m_0, \tau_0, a_0, p_0)$.
 Se puede comprobar que la normal gamma es una familia conjugada respecto de muestras de la normal con media y precisión desconocidas.
-% Completar
 
 \section{Distribuciones a priori no informativas}
 \begin{definition}
@@ -251,6 +250,124 @@ Se puede comprobar que la normal gamma es una familia conjugada respecto de mues
 \end{proposition}
 
 \begin{remark}
-    La reglas de Jeffreys no da densidades en general.
+    La regla de Jeffreys no da densidades en general.
     A aquellas que no son densidades se les llama densidades impropias.
 \end{remark}
+
+\subsection*{Muestras de la distribución Bernoulli}
+Sea $x|\theta \sim Ber(\theta)$.
+Entonces:
+$$f(x|\theta) = \theta^x(1-\theta)^{1-x}, \quad x = 0, 1, 0 < \theta < 1$$
+Calculamos:
+\begin{align*}
+    \log(f(x|\theta))                                      & = x\log(\theta) + (1-x)\log(1-\theta)               \\
+    \frac{\partial \log(f(x|\theta))}{\partial \theta}     & = \frac{x}{\theta} - (1-x)\frac{1}{1-\theta}        \\
+    \frac{\partial^2 \log(f(x|\theta))}{\partial \theta^2} & = -\frac{x}{\theta^2} - (1-x)\frac{1}{(1-\theta)^2}
+\end{align*}
+Luego la información de Fisher para $\theta$ es:
+\begin{align*}
+    J(\theta) & = E\left(\frac{x}{\theta^2} + \frac{1-x}{(1-\theta)^2}\right) = \frac{1}{\theta^2}E(X) + \frac{1}{(1-\theta)^2}E(1-x) = \\
+              & = \frac{1}{\theta^2}\theta + \frac{1}{(1-\theta)^2}(1-\theta) = \frac{1}{\theta(1-\theta)}
+\end{align*}
+Por tanto:
+$$f_\theta(\theta) \propto \sqrt{J(\theta)} \propto \theta^{-\frac{1}{2}}(1-\theta)^{-\frac{1}{2}} \Rightarrow \theta \sim Be(\frac{1}{2}, \frac{1}{2})$$
+
+\subsection*{Muestras de la distribución de Poisson}
+Sea $x|\lambda \sim Po(\lambda)$.
+Entonces:
+$$f(x|\lambda) = \frac{e^{-\lambda}\lambda^x}{x!} \propto e^{-\lambda}\lambda^x, \quad x = 0, 1, \lambda > 0$$
+Calculamos:
+\begin{align*}
+    \log(f(x|\lambda))                                       & \propto -\lambda + x\log(\lambda) \\
+    \frac{\partial \log(f(x|\lambda))}{\partial \lambda}     & \propto -1 + \frac{x}{\lambda}    \\
+    \frac{\partial^2 \log(f(x|\lambda))}{\partial \lambda^2} & \propto -\frac{x}{\lambda^2}
+\end{align*}
+Luego la información de Fisher para $\lambda$ es:
+$$J(\lambda) = E\left(\frac{x}{\lambda^2}\right) = \frac{1}{\lambda^2}E(x) = \frac{1}{\lambda^2}\frac{1}{\lambda} = \frac{1}{\lambda}$$
+Por tanto:
+$$f_\lambda(\lambda) \propto \frac{1}{\sqrt{\lambda}}$$
+Observamos que $f_\lambda$ no es una densidad.
+
+\subsection*{Muestras de la distribución normal}
+\subsubsection*{Media desconocida y precisión conocida}
+Sea $x|\mu \sim N(\mu, p)$.
+Entonces:
+$$f(x|\mu) = \frac{\sqrt{p}}{\sqrt{2\pi}}e^{-\frac{p}{2}(x-\mu)^2} \propto e^{-\frac{p}{2}(x-\mu)^2}$$
+Calculamos:
+\begin{align*}
+    \log(f(x|\mu))                                   & \propto -\frac{p}{2}(x-\mu)^2 \\
+    \frac{\partial \log(f(x|\mu))}{\partial \mu}     & \propto p(x-\mu)              \\
+    \frac{\partial^2 \log(f(x|\mu))}{\partial \mu^2} & \propto -p \propto -1         \\
+\end{align*}
+Luego la información de Fisher para $\mu$ es:
+$$J(\mu) \propto E(1) = 1$$
+Por tanto:
+$$f_\mu(\mu) \propto \sqrt{J(\mu)} \propto 1$$
+Observamos que $f_\mu$ no es una densidad.
+
+\subsubsection*{Media conocida y desviación típica desconocida}
+Sea $x|\sigma \sim N(\mu, \sigma)$.
+Entonces:
+$$f(x|\sigma) = \frac{1}{\sqrt{1\pi\sigma^2}}e^{-\frac{p}{2}(x-\mu)^2} \propto e^{-\frac{p}{2}(x-\mu)^2}$$
+Calculamos:
+\begin{align*}
+    \log(f(x|\mu))                                         & \propto -\log(\sigma) - \frac{1}{2\sigma^2}(x-\mu)^2     \\
+    \frac{\partial \log(f(x|\sigma))}{\partial \sigma}     & \propto -\frac{1}{\sigma} + (x-\mu)^2\frac{1}{\sigma^3}  \\
+    \frac{\partial^2 \log(f(x|\sigma))}{\partial \sigma^2} & \propto \frac{1}{\sigma^2} - 3\frac{(x-\mu)^2}{\sigma^4}
+\end{align*}
+Luego la información de Fisher para $\sigma$ es:
+\begin{align*}
+    J(\sigma) & \propto E\left(-\frac{1}{\sigma^2} + 3\frac{(x-\mu)^2}{\sigma^4}\right) = -\frac{-1}{\sigma^2} + \frac{3}{\sigma^4}E((x-\mu)^2) = -\frac{-1}{\sigma^2} + \frac{3}{\sigma^4}\sigma^2 = \\
+              & = \frac{2}{\sigma^2} \propto \frac{1}{\sigma^2}
+\end{align*}
+Por tanto:
+$$f_\sigma(\sigma) \propto \frac{1}{\sigma}$$
+Observamos que $f_\sigma$ no es una densidad.
+
+\subsubsection*{Media conocida y varianza desconocida}
+Sea $x|\sigma^2 \sim N(\mu, \sigma^2)$.
+Entonces:
+$$f_{\sigma^2}(\sigma^2) = \frac{1}{\sigma^2}$$
+
+\subsubsection*{Media conocida y precisión desconocida}
+Sea $x|\tau \sim N(\mu, \tau)$.
+Entonces:
+$$f_\tau(\tau) \propto \frac{1}{\tau}$$
+
+\subsubsection*{Media y desviación típica desconocidas}
+Sea $x|\mu, \sigma \sim N(\mu, \sigma)$.
+Entonces:
+$$f(\mu, \sigma) = f_\mu(\mu)f_\sigma(\sigma) \propto \frac{1}{\sigma}$$
+
+\subsubsection*{Media y varianza desconocidas}
+Sea $x|\mu, \sigma^2 \sim N(\mu, \sigma^2)$.
+Entonces:
+$$f(\mu, \sigma^2) = f_\mu(\mu)f_{\sigma^2}(\sigma^2) \propto \frac{1}{\sigma^2}$$
+
+\subsubsection*{Media y precisión desconocidas}
+Sea $x|\mu, \tau \sim N(\mu, \tau)$.
+Entonces:
+$$f(\mu, \tau) = f_\mu(\mu)f_\tau(\tau) \propto \frac{1}{\tau}$$
+
+\begin{remark}[Regla de oro]
+    Todo sale de la distribución a priori.
+\end{remark}
+
+\section{Estimación puntual}
+La estimación puntual bayesiana es un problema de decisión.
+
+Una función de pérdida es una función $L: \Theta \times \Theta \to \mathbb{R}$ donde $L(\theta, t)$ es la pérdida si estimamos el parámetro por $t$, siendo $\theta$ su verdadero valor.
+Las funciones de pérdida más usuales son:
+\begin{itemize}
+    \item $L(\theta, t) = (\theta-t)^2$ (función de pérdida cuadrática)
+    \item $L(\theta, t) = |\theta-t|$
+    \item $L(\theta, t) = \begin{cases}
+                  0 & \text{si } |\theta-t| \leq \varepsilon \\
+                  1 & \text{si } |\theta-t| > \varepsilon
+              \end{cases}$
+\end{itemize}
+
+Queremos minimizar respecto de $t$ la función pero el valor de $\theta$ es desconocido y no podemos calcular la pérdida.
+Así que minimizamos la esperanza de la función de pérdida a posteriori $E(L(\theta, t)|\vec{x})$.
+Elegimos $\hat{\theta}$ tal que:
+$$\min_t E(L(\theta, t)|\vec{x}) = \min_t \int_\Theta L(\theta, t)f(\theta|\vec{x})d\theta = E(L(\theta, \vec{\theta}))$$
