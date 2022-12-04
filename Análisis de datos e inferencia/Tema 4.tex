@@ -359,15 +359,62 @@ La estimación puntual bayesiana es un problema de decisión.
 Una función de pérdida es una función $L: \Theta \times \Theta \to \mathbb{R}$ donde $L(\theta, t)$ es la pérdida si estimamos el parámetro por $t$, siendo $\theta$ su verdadero valor.
 Las funciones de pérdida más usuales son:
 \begin{itemize}
-    \item $L(\theta, t) = (\theta-t)^2$ (función de pérdida cuadrática)
-    \item $L(\theta, t) = |\theta-t|$
-    \item $L(\theta, t) = \begin{cases}
+    \item Función de pérdida cuadrática:
+          $$L(\theta, t) = (\theta-t)^2$$
+    \item Función de pérdida valor absoluto:
+          $$L(\theta, t) = |\theta-t|$$
+    \item Función de pérdida 0-1:
+          $$L(\theta, t) = \begin{cases}
                   0 & \text{si } |\theta-t| \leq \varepsilon \\
                   1 & \text{si } |\theta-t| > \varepsilon
-              \end{cases}$
+              \end{cases}$$
 \end{itemize}
 
 Queremos minimizar respecto de $t$ la función pero el valor de $\theta$ es desconocido y no podemos calcular la pérdida.
 Así que minimizamos la esperanza de la función de pérdida a posteriori $E(L(\theta, t)|\vec{x})$.
 Elegimos $\hat{\theta}$ tal que:
-$$\min_t E(L(\theta, t)|\vec{x}) = \min_t \int_\Theta L(\theta, t)f(\theta|\vec{x})d\theta = E(L(\theta, \vec{\theta}))$$
+$$\min_{t \in \Theta} E(L(\theta, t)|\vec{x}) = \min_{t \in \Theta} \int_\Theta L(\theta, t)f(\theta|\vec{x})d\theta = E(L(\theta, \vec{\theta}))$$
+
+\begin{example}
+    Tomamos $L(\theta, t) = (\theta-t)^2$.
+    \begin{align*}
+        \psi(t)  & = E(L(\theta, t)|\vec{x}) = \int_\Theta (\theta-t)^2f(\theta|\vec{x})d\theta =                                                             \\
+                 & = \int_\Theta \theta^2f(\theta|\vec{x})d\theta + t^2\int_\Theta f(\theta|\vec{x})d\theta - 2t\int_\Theta \theta f(\theta|\vec{x})d\theta = \\
+                 & = \int_\Theta \theta^2f(\theta|\vec{x})d\theta + t^2 - 2tE(\theta|\vec{x})                                                                 \\
+        \psi'(t) & = 2t - E(\theta|\vec{x})
+    \end{align*}
+    Hallamos el mímimo de $\psi$:
+    $$\psi'(t) = 0 \Leftrightarrow t = E(\theta|\vec{x}) \Rightarrow \hat{\theta} = E(\theta|\vec{x})$$
+\end{example}
+
+De forma análoga podemos concluir:
+\begin{itemize}
+    \item El estimador bayesiano de $\theta$ bajo la función de pérdida cuadrática es la media a posteriori de $\theta$.
+    \item El estimador bayesiano de $\theta$ bajo la función de pérdida valor absoluto es la media a posteriori de $\theta$.
+    \item El estimador bayesiano de $\theta$ bajo la función de pérdida 0-1 es la media a posteriori de $\theta$.
+\end{itemize}
+
+\begin{remark}
+    La media a posteriori es una media ponderada de la media a priori y del estimador de máxima verosimilitud.
+    $$E(\theta|\vec{x}) = \omega E(\theta) + (1-\omega)\hat{\theta}_{EMV}$$
+\end{remark}
+
+\section{Intervalos de credibilidad}
+Un intervalo de credibilidad para $\theta$ de contenido probabilístico $1-\alpha$ es un intervalo $(a, b)$ tal que:
+$$P(a < \theta|\vec{x} < b) = 1-\alpha$$
+
+\begin{definition}
+    Un región $R$ es de máxima densidad a posteriori de $\theta$ con contenido probabilístico $1-\alpha$ si:
+    \begin{enumerate}
+        \item $P((\theta|\vec{x}) \in R) = 1-\alpha$.
+        \item Si $\theta_1 \in R$ y $\theta_2 \notin R$, entonces $f(\theta_1|\vec{x}) > f(\theta_2|\vec{x})$.
+    \end{enumerate}
+\end{definition}
+
+\begin{note}
+    Si la distribución de $\theta|\vec{x}$ es unimodal, la región de máxima densidad a posteriori de contenido probabilístico $1-\alpha$ para $\theta$ es un intervalo $(a, b)$ tal que:
+    \begin{enumerate}
+        \item $P(a < \theta|\vec{x} < b) = 1-\alpha$.
+        \item $f_{\theta|\vec{x}}(a) = f_{\theta|\vec{x}}(b) \Leftrightarrow f(a|\vec{x}) = f(b|\vec{x})$.
+    \end{enumerate}
+\end{note}
