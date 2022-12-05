@@ -603,3 +603,44 @@ $$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
     $$\frac{S_n}{n} \xrightarrow{cs} \mu$$
     Recíprocamente, si $\frac{S_n}{n} \xrightarrow{cs} c$, con $c$ constante, entonces $E(X_i) = c$ para todo $i$.
 \end{theorem}
+
+\section{Teorema central del límite}
+\begin{theorem}[Teorema central del límite de Lindeberg-Lévy]
+    Sean variables aleatorias $X_1, X_2, \dots$ independientes e idénticamente distribuidas con media $E(X_i) = \mu < \infty$ y varianza $V(X_i) = \sigma^2 < \infty$ para todo $i$.
+    Sean $S_n = X_1 + \dots + X_n$.
+    Entonces:
+    $$\frac{S_n-n\mu}{\sigma\sqrt{n}} = \frac{\sqrt{n}}{\sigma}\left(\frac{S_n}{n}-\mu\right) \xrightarrow{d} Z \sim N(0, 1)$$
+\end{theorem}
+
+\begin{remark}
+    En particular, si $\mu = 0$ y $\sigma^2 = 1$, entonces:
+    $$\frac{S_n}{\sqrt{n}} \xrightarrow{d} Z \sim N(0, 1)$$
+\end{remark}
+
+\begin{exercise}
+    Sean $X_n \sim U([0, \pi])$ variables aleatorias independientes e idénticamente distribuidas.
+    Sea $S_n = \sum_{j=1}^n \sin(X_j)$.
+    Queremos encontrar sucesiones $\{a_n\}$ y $\{b_n\}$ tales que:
+    $$\frac{S_n-a_n}{b_n} \xrightarrow{d} Z \sim N(0, 1)$$
+
+    Definimos $Y_j = \sin(X_j)$, de forma que $S_n = \sum_{j=1}^n Y_j$.
+    Veamos si $E(Y_j)$ y $V(Y_j)$ son constantes para aplicar el teorema central del límite de Lindeberg-Lévy.
+    \begin{align*}
+        E(Y_j)   & = \int_0^\pi \sin(x)f(x)dx = \frac{1}{\pi} \int_0^\pi \sin(x)dx = \frac{2}{\pi} \\
+        E(Y_j^2) & = \frac{1}{\pi} \int_0^\pi \sin^2(x)dx = \frac{1}{2}
+    \end{align*}
+    Como $E(Y_j) = \frac{2}{\pi}$ y $V(Y_j) = \frac{1}{2} - \left(\frac{2}{\pi}\right)^2$ son constantes, los $X_n$ verifican el teorema central del límite de Lindeberg-Lévy para:
+    $$a_n = n\mu = \frac{2n}{\pi}, \quad b_n = \sqrt{n\left(\frac{1}{2}-\frac{4}{\pi^2}\right)}$$
+\end{exercise}
+
+\begin{theorem}[Teorema central del límite de Lindeberg-Feller]
+    Sean variables aleatorias $X_1, X_2, \dots$ independientes con $E(X_n) = \mu_n < \infty$ y $V(X_n) = \sigma^2_n < \infty$.
+    Sea $S_n = X_1 + \dots + X_n$ y sea $s_n = V(S_n) = \sum_{j=1}^n \sigma_j$.
+    Entonces:
+    \begin{enumerate}
+        \item $\frac{1}{s_n} \sum_{j=1}^n (X_j-\mu_j) \xrightarrow{d} Z \sim N(0, 1)$
+        \item $\max_{1 \leq j \leq n} \frac{\sigma^2_j}{s_n^2} \xrightarrow[n \to \infty]{} 0$
+    \end{enumerate}
+    es equivalente a:
+    $$L_n(\varepsilon) = \frac{1}{s_n^2} \sum_{j=1}^n \int_{|x-\mu_j| > \varepsilon s_n} (x-\mu_j)^2dF_j(x) \xrightarrow[n \to \infty]{} 0, \quad \forall \varepsilon > 0$$
+\end{theorem}

@@ -40,3 +40,4 @@ Estos apuntes están abiertos a correcciones y mejoras.
 
 1. Tipos de convergencia
 2. Leyes de los grandes números
+3. Teorema central del límite
