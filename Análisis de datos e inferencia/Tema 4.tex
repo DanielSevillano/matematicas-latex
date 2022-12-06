@@ -409,6 +409,7 @@ $$P(a < \theta|\vec{x} < b) = 1-\alpha$$
         \item $P((\theta|\vec{x}) \in R) = 1-\alpha$.
         \item Si $\theta_1 \in R$ y $\theta_2 \notin R$, entonces $f(\theta_1|\vec{x}) > f(\theta_2|\vec{x})$.
     \end{enumerate}
+    Se escribe $MDP_{1-\alpha}$.
 \end{definition}
 
 \begin{note}
@@ -418,3 +419,119 @@ $$P(a < \theta|\vec{x} < b) = 1-\alpha$$
         \item $f_{\theta|\vec{x}}(a) = f_{\theta|\vec{x}}(b) \Leftrightarrow f(a|\vec{x}) = f(b|\vec{x})$.
     \end{enumerate}
 \end{note}
+
+\section{Contrastes de hipótesis}
+\subsection*{Contraste unilateral a la derecha}
+$$\begin{cases}
+        H_0: \theta \leq \theta_0 \\
+        H_1: \theta > \theta_0
+    \end{cases}$$
+Calculamos:
+\begin{align*}
+    P(H_0|\vec{x}) & = P(\theta \leq \theta_0|\vec{x}) \\
+    P(H_1|\vec{x}) & = P(\theta > \theta_0|\vec{x})
+\end{align*}
+Entonces:
+\begin{itemize}
+    \item Si $P(H_0|\vec{x}) > P(H_1|\vec{x})$, aceptamos $H_0$.
+    \item En caso contrario, rechazamos $H_0$.
+\end{itemize}
+
+\subsection*{Contraste unilateral a la izquierda}
+$$\begin{cases}
+        H_0: \theta \leq \theta_0 \\
+        H_1: \theta > \theta_0
+    \end{cases}$$
+Calculamos:
+\begin{align*}
+    P(H_0|\vec{x}) & = P(\theta \geq \theta_0|\vec{x}) \\
+    P(H_1|\vec{x}) & = P(\theta < \theta_0|\vec{x})
+\end{align*}
+Entonces:
+\begin{itemize}
+    \item Si $P(H_0|\vec{x}) > P(H_1|\vec{x})$, aceptamos $H_0$.
+    \item En caso contrario, rechazamos $H_0$.
+\end{itemize}
+
+\subsection*{Contraste bilateral}
+$$\begin{cases}
+        H_0: \theta = \theta_0 \\
+        H_1: \theta \neq \theta_0
+    \end{cases}$$
+\begin{itemize}
+    \item Si $\theta_0 \in MDP_{1-\alpha}(\theta|\vec{x})$, aceptamos $H_0$.
+    \item En caso contrario, rechazamos $H_0$.
+\end{itemize}
+
+\section{Distribuciones predictivas}
+Sea $\vec{x} = (x_1, \dots, x_n)$, definimos la distribución predictiva como:
+$$f(x_{n+1}|\vec{x}) = \int_\Theta f(x_{n+1}|\theta)f(\theta|\vec{x})d\theta$$
+
+\begin{example}
+    Consideramos los tres siguientes casos:
+    \begin{enumerate}
+        \item A una anciana se le somete a diez pruebas para ver si acierta o no si en una taza de té con leche se ha echado antes el té o la leche.
+              Acierta las diez pruebas.
+        \item A un experto en música se le somete a diez pruebas para ver si acierta si una pieza musical es de Mozart o de Haydn.
+              Acierta en las diez ocasiones.
+        \item A un borracho se le somete a diez pruebas para ver si acierta si en el lanzamiento de una moneda sale cara o cruz.
+              Acierta en las diez ocasiones.
+    \end{enumerate}
+    Estudiemos qué ocurrirá si realizamos en cada uno de estos casos una prueba más.
+
+    Sea $X \sim Ber(\theta)$, con:
+    $$X = \begin{cases}
+            1 & \text{si acierta} \\
+            0 & \text{si falla}
+        \end{cases}, \quad \theta = P(X=1)$$
+    Entonces:
+    $$f(x_i|\theta) \propto \theta^{x_i}(1-\theta)^{10-x_i}$$
+    Sea $\vec{x} = (x_1, \dots, x_{10}) = (1, \dots, 1)$, calculamos la función de verosimilitud:
+    $$L(\vec{x}, \theta) = \prod_{i=1}^{10} f(x_i|\theta) \propto \theta^{\sum_{i=1}^{10} x_i}(1-\theta)^{10-\sum_{i=1}^{10} x_i} = \theta^{10}$$
+
+    Sea $\theta \sim Be(p, q)$.
+    Su distribución a priori es:
+    $$f_\theta(\theta) = \frac{\Gamma(p+q)}{\Gamma(p)\Gamma(q)} \theta^{p-1}(1-\theta)^{q-1}, \quad 0 < \theta < 1$$
+    Luego la distribución a posteriori es:
+    \begin{align*}
+        f(\theta|\vec{x}) & \propto f_\theta(\theta)L(\vec{x}, \theta) \propto \theta^{p-1+10}(1-\theta)^{q-1} = \theta^{p+q}(1-\theta)^{q-1} \\
+                          & \Rightarrow \theta|\vec{x} \sim Be(p+10, q)
+    \end{align*}
+
+    Una estimación puntual de $\theta$ con la función de pérdida cuadrática es:
+    $$E(\theta|\vec{x}) = \frac{p+10}{p+q+10}$$
+
+    Hallamos la distribución predictiva:
+    \begin{align*}
+        P(x_{11}=1|\vec{x}) & = \int_0^1 P(x_{11}=1|\theta)f(\theta|\vec{x})d\theta =                                               \\
+                            & = \int_0^1 \theta \frac{\Gamma(p+10+q)}{\Gamma(p+10)\Gamma(q)} \theta^{p+10}(1-\theta)^{q-1}d\theta = \\
+                            & = \frac{\Gamma(p+10+q)}{\Gamma(p+10)\Gamma(q)} \int_0^1 \theta^{p+10}(1-\theta)^{q-1}d\theta
+    \end{align*}
+    Observamos que el interior de la integral es la función de densidad de una distribución $Be(p+11, q)$ salvo constantes.
+    Por tanto:
+    $$P(x_{11}=1|\vec{x}) = \frac{\Gamma(p+10+q)}{\Gamma(p+10)\Gamma(q)} \frac{\Gamma(p+11)\Gamma(q)}{\Gamma(p+q+11)} = \frac{p+10}{p+q+10}$$
+    Luego $P(x_{11}=0|\vec{x}) = \frac{q}{p+q+10}$.
+
+    Analizamos cada caso:
+    \begin{enumerate}
+        \item Podemos usar una distribución no informativa según la regla de Jeffreys, como $p = q = \frac{1}{2}$.
+              En este caso:
+              $$P(x_{11}|\vec{x}) = \frac{1/2+10}{1/2+1/2+10} = \frac{21}{22} \approx 0,9545$$
+        \item Podemos tomar $p, q \to \infty$, de forma que $\frac{p}{p+q} \xrightarrow[p, q \to \infty]{} 1$.
+              En este caso:
+              $$P(x_{11}|\vec{x}) = \frac{p+10}{p+q+10} \xrightarrow[p, q \to \infty]{} 1$$
+        \item Podemos tomar $p = q \to \infty$.
+              En este caso:
+              $$P(x_{11}|\vec{x}) = \frac{p+10}{2p+10} \xrightarrow[p \to \infty]{} \frac{1}{2}$$
+    \end{enumerate}
+
+    La probabilidad de que en tres pruebas siguientes los resultados sean acierto, fallo y fallo, en ese orden, podemos calcularla como:
+    \begin{align*}
+        P(x_{11} = 1, x_{12} = 1, x_{13} = 0|\vec{x}) & = \int_0^1 P(x_{11} = 1, x_{12} = 1, x_{13} = 0|\theta)f(\theta|\vec{x})d\theta = \\
+                                                      & = \int_0^1 \theta^2(1-\theta)f(\theta|\vec{x})d\theta
+    \end{align*}
+
+    La probabilidad de que en tres pruebas siguientes haya dos aciertos y un fallo, podemos calcularla como $3P(x_{11} = 1, x_{12} = 1, x_{13} = 0)$.
+
+    En general, la probabilidad de que en las siguientes $m$ pruebas haya $r$ aciertos se calcula como $\binom{m}{r}P(x_{11} = 1, x_{12} = 1, x_{13} = 0)$.
+\end{example}

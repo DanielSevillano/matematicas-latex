@@ -61,3 +61,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 4. Distribuciones a priori no informativas
 5. Estimación puntual
 6. Intervalos de credibilidad
+7. Contrastes de hipótesis
+8. Distribuciones predictivas
