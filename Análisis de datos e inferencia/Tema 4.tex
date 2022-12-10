@@ -270,7 +270,7 @@ Luego la información de Fisher para $\theta$ es:
               & = \frac{1}{\theta^2}\theta + \frac{1}{(1-\theta)^2}(1-\theta) = \frac{1}{\theta(1-\theta)}
 \end{align*}
 Por tanto:
-$$f_\theta(\theta) \propto \sqrt{J(\theta)} \propto \theta^{-\frac{1}{2}}(1-\theta)^{-\frac{1}{2}} \Rightarrow \theta \sim Be(\frac{1}{2}, \frac{1}{2})$$
+$$f_\theta(\theta) \propto \sqrt{J(\theta)} \propto \theta^{-\frac{1}{2}}(1-\theta)^{-\frac{1}{2}} \Rightarrow \theta \sim Be\left(\frac{1}{2}, \frac{1}{2}\right)$$
 
 \subsection*{Muestras de la distribución de Poisson}
 Sea $x|\lambda \sim Po(\lambda)$.
@@ -535,3 +535,116 @@ $$f(x_{n+1}|\vec{x}) = \int_\Theta f(x_{n+1}|\theta)f(\theta|\vec{x})d\theta$$
 
     En general, la probabilidad de que en las siguientes $m$ pruebas haya $r$ aciertos se calcula como $\binom{m}{r}P(x_{11} = 1, x_{12} = 1, x_{13} = 0)$.
 \end{example}
+
+\section{Análisis bayesiano para datos de Bernoulli}
+Sea $x|\theta \sim Ber(\theta)$.
+Estudiaremos el caso informativo con $\theta \sim Be(p, q)$.
+Sabíamos que:
+$$\theta|\vec{x} \sim Be\left(p+\sum_{i=1}^n x_i, n+q-\sum_{i=1}^n x_i\right)$$
+
+Como por la regla de Jeffreys $\theta \sim Be\left(\frac{1}{2}, \frac{1}{2}\right)$, el caso no informativo es análogo con $p = q = \frac{1}{2}$.
+
+\subsection*{Estimación puntual}
+Analizamos la estimación bajo cada una de las funciones de pérdida usuales.
+\begin{itemize}
+    \item Si $L(\theta, t) = (\theta-t)^2$, entonces:
+          $$\hat{\theta} = E(\theta|\vec{x}) = \frac{\sum_{i=1}^n x_i + p}{n+p+q}$$
+    \item Si $L(\theta, t) = |\theta-t|$, entonces:
+          $$\hat{\theta} = Me(\theta|\vec{x})$$
+    \item Si $L(\theta, t) = \begin{cases}
+                  0 & \text{si } |\theta-t| \leq \varepsilon \\
+                  1 & \text{si } |\theta-t| > \varepsilon
+              \end{cases}$, entonces:
+          $$\hat{\theta} = Mo(\theta|\vec{x}) = \frac{\sum_{i=1}^n x_i + p-1}{n+p+q-2}$$
+\end{itemize}
+
+Vimos que la media a posteriori era una media ponderada de la media a priori y del estimador de máxima verosimilitud.
+Es decir:
+$$E(\theta|\vec{x}) = \omega E(\theta) + (1-\omega)\hat{\theta}_{EMV}$$
+Calculamos los pesos:
+$$\frac{\sum_{i=1}^n x_i + p}{n+p+q} = \omega\frac{p}{p+q} + (1-\omega)\frac{1}{n}\sum_{i=1}^n x_i \Rightarrow \omega = \frac{p+q}{n+p+q}$$
+Observamos que:
+$$\omega = \frac{p+q}{n+p+q} \xrightarrow[n \to \infty]{} 0,  \quad 1-\omega = \frac{n}{n+p+q} \xrightarrow[n \to \infty]{} 1$$
+Es decir, en la media a posteriori tiene mayor influencia el estimador de máxima verosimilitud si tenemos muchos datos.
+
+\subsection*{Intervalos de credibilidad}
+Un intervalo de credibilidad para $\theta$ de contenido probabilístico $1-\alpha$ es un intervalo $(a, b)$ tal que:
+$$P(a < \theta|\vec{x} < b) = \int_a^b f(\theta|\vec{x})d\theta = 1-\alpha$$
+
+El intervalo de máxima densidad a posteriori de $\theta$ con contenido probabilístico $1-\alpha$ es un intervalo $(a, b)$ tal que:
+\begin{enumerate}
+    \item $P(a < \theta|\vec{x} < b) = 1-\alpha$.
+    \item $f(a|\vec{x}) = f(b|\vec{x})$.
+\end{enumerate}
+
+\begin{note}
+    El intervalo de máxima densidad a posteriori no se puede calcular a mano.
+\end{note}
+
+\subsection*{Distribución predictiva}
+Calculamos la distribución predictiva.
+\begin{align*}
+     & P(x_{n+1} = 1|\vec{x}) = \int_0^1 P(x_{n+1} = 1|\theta)f(\theta|\vec{x})d\theta =                                                                                        \\
+     & = \frac{\Gamma(n+p+q)}{\Gamma(\sum_{i=1}^n x_i + p)\Gamma(n - \sum_{i=1}^n x_i + q)} \int_0^1 \theta^{\sum_{i=1}^n x_i + p}(1-\theta)^{n - \sum_{i=1}^n x_i +q-1}d\theta
+\end{align*}
+Observamos que el interior de la integral es la función de densidad de una distribución $Be(\sum_{i=1}^n x_i + p+1, n - \sum_{i=1}^n x_i + q)$ salvo constantes.
+Por tanto:
+\begin{align*}
+    P(x_{n+1} = 1|\vec{x}) & = \frac{\Gamma(n+p+q)\Gamma(\sum_{i=1}^n x_i+p+1)\Gamma(n - \sum_{i=1}^n x_i + q)}{\Gamma(\sum_{i=1}^n x_i + p)\Gamma(n - \sum_{i=1}^n x_i + q)\Gamma(n+p+q+1)} = \\
+                           & = \frac{\sum_{i=1}^n x_i+p}{n+p+q}
+\end{align*}
+
+La probabilidad de que en las siguientes $m$ pruebas haya $r$ éxitos y $m-r$ fracasos se calcula como:
+\begin{align*}
+     & \binom{m}{r}P(x_{n+1} = \dots = x_{n+r} = 1, x_{n+r+1} = \dots = x_{n+m} = 0|\vec{x}) = \\
+     & = \binom{m}{r} \int_0^1 \theta^r(1-\theta)^{m-r}f(\theta|\vec{x})d\theta
+\end{align*}
+
+\section{Análisis bayesiano para datos de Poisson}
+Sea $x|\lambda \sim Po(\lambda)$.
+Estudiaremos el caso informativo con $\lambda \sim Ga(a, p)$.
+Sabíamos que:
+\begin{align*}
+    f_\lambda(\lambda) & = \frac{a^p}{\Gamma(p)} e^{-a\lambda}\lambda^{p-1}, \quad \lambda > 0 \\
+    \lambda|\vec{x}    & \sim Ga(a+n, p+\sum_{i=1}^n x_i)
+\end{align*}
+
+Como por la regla de Jeffreys $f_\lambda(\lambda) \propto \lambda^{-\frac{1}{2}}$, el caso no informativo es análogo con $a = 0$ y $p = \frac{1}{2}$.
+
+\subsection*{Estimación puntual}
+Analizamos la estimación bajo la función de pérdida cuadrática:
+$$\hat{\lambda} = E(\lambda|\vec{x}) = \frac{a+n}{\sum_{i=1}^n + p}$$
+
+\subsection*{Intervalos de credibilidad}
+Un intervalo de credibilidad para $\lambda$ de contenido probabilístico $1-\alpha$ es un intervalo $(\lambda_1, \lambda_2)$ tal que:
+$$P(\lambda_1 < \lambda|\vec{x} < \lambda_2) = 1-\alpha$$
+
+\begin{note}
+    Si $X \sim Ga(a, p)$ entonces $2aX \sim \chi^2_{2p}$.
+\end{note}
+
+Así que:
+$$2(a+n)\lambda|\vec{x} \sim \chi^2_{2(\sum_{i=1}^n x_i + p)}$$
+
+Por tanto:
+$$1-\alpha = P(\lambda_1 < \lambda|\vec{x} < \lambda_2) = P(2(a+n)\lambda_1 < \chi^2_{2(\sum_{i=1}^n x_i - p)} < 2(a+n)\lambda_2)$$
+
+El intervalo de máxima densidad a posteriori de $\lambda$ con contenido probabilístico $1-\alpha$ es un intervalo $(\lambda_1, \lambda_2)$ tal que:
+\begin{enumerate}
+    \item $P(\lambda_1 < \lambda|\vec{x} < \lambda_2) = 1-\alpha$.
+    \item $f(\lambda_1|\vec{x}) = f(\lambda_2|\vec{x})$.
+\end{enumerate}
+
+\begin{note}
+    El intervalo de máxima densidad a posteriori no se puede calcular a mano.
+\end{note}
+
+\subsection*{Distribución predictiva}
+Calculamos la distribución predictiva.
+\begin{align*}
+     & P(X_{n+1} = x_{n+1}|\vec{x}) = \int_0^\infty P(X_{n+1} = x_{n+1}|\lambda)f(\lambda|\vec{x})d\lambda =                                                         \\
+     & = \frac{(a+n)^{\sum_{i=1}^n x_i + p}}{x_{n+1}!\Gamma(\sum_{i=1}^n x_i + p)} \int_0^\infty e^{-\lambda(a+n+1)\lambda^{x_n+1 + \sum_{i=1}^n x_i + p-1}}d\lambda
+\end{align*}
+Observamos que el interior de la integral es la función de densidad de una distribución $Ga(a+n+1, x_{n+1} + \sum_{i=1}^n x_i + p)$ salvo constantes.
+Por tanto:
+$$P(X_{n+1} = x_{n+1}|\vec{x}) = \frac{(a+n)^{\sum_{i=1}^n x_i + p}}{x_{n+1}!\Gamma(\sum_{i=1}^n x_i + p)} \frac{\Gamma(x_{n+1} + \sum_{i=1}^n x_i + p)}{(a+n+1)^{x_{n+1} + \sum_{i=1}^n x_i + p}}$$

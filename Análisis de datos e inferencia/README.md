@@ -63,3 +63,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 6. Intervalos de credibilidad
 7. Contrastes de hipótesis
 8. Distribuciones predictivas
+9. Análisis bayesiano para datos de Bernoulli
+10. Análisis bayesiano para datos de Poisson
