@@ -42,7 +42,7 @@ Entonces:
 
 \begin{definition}
     Sea $F$ función de distribución.
-    El conjunto de discontinuidad de $F$ se define como:
+    El conjunto de continuidad de $F$ se define como:
     $$C(F) = \{ x \in \mathbb{R} : F(x) = F(x^-) \}$$
     También se puede definir el conjunto de puntos de discontinuidad de $F$ como:
     $$D(F) = \{ x \in \mathbb{R} : F(x) - F(x^-) > 0 \}$$
@@ -128,9 +128,13 @@ Entonces:
         \Rightarrow \alpha = \frac{1}{4}$$
     Luego la función de distribución discreta es:
     $$F_d(x) = \begin{cases}
-            0                                             & \text{si } x < 4        \\
-            \frac{\frac{1}{8}}{\frac{1}{4}} = \frac{1}{2} & \text{si } 4 \leq x < 5 \\
-            1                                             & \text{si } x \geq 5
+            0                               & \text{si } x < 4        \\
+            \frac{\frac{1}{8}}{\frac{1}{4}} & \text{si } 4 \leq x < 5 \\
+            1                               & \text{si } x \geq 5
+        \end{cases} = \begin{cases}
+            0           & \text{si } x < 4        \\
+            \frac{1}{2} & \text{si } 4 \leq x < 5 \\
+            1           & \text{si } x \geq 5
         \end{cases}$$
     Por último podemos calcular la función de distribución continua:
     $$F_c(x) = \frac{1}{1-\frac{1}{4}} \left( F(x) - \frac{1}{4}F_d(x) \right) = \begin{cases}

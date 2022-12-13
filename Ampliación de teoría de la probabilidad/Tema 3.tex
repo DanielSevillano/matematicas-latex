@@ -159,7 +159,7 @@ Recordamos que:
     Sea $\Omega = [0, 1]$, $\mathcal{A} = \mathcal{B}_{[0, 1]}$ y $P = m$ la medida de Lebesgue.
     Consideramos:
     $$X_n(\omega) = \begin{cases}
-            1 & \text{si } 0 \leq \frac{1}{n}          \\
+            1 & \text{si } 0 \leq \omega \leq \frac{1}{n} \\
             0 & \text{si } \frac{1}{n} < \omega \leq 1
         \end{cases}$$
     Veamos que las variables aleatorias no son independientes dos a dos:
@@ -434,7 +434,7 @@ $$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
 \begin{theorem}[Márkov]
     Sea $\{X_n\}$ una sucesión de variables aleatorias con $V\left(\frac{S_n}{n}\right) \xrightarrow[n \to \infty]{} 0$.
     Entonces:
-    $$\frac{S - E(S_n)}{n} \xrightarrow{p} 0$$
+    $$\frac{S_n - E(S_n)}{n} \xrightarrow{p} 0$$
 \end{theorem}
 
 \begin{theorem}[Khinchin]
@@ -502,7 +502,7 @@ $$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
 
 \begin{remark}
     Si $\sum_{n=1}^\infty (X_n - E(X_n)) < \infty$ casi seguro, entonces:
-    $$\sum_{n=1}^\infty X_n < \infty \text{ casi seguro } \Leftrightarrow \sum_{n=1}\infty E(X_n) < \infty$$
+    $$\sum_{n=1}^\infty X_n < \infty \text{ casi seguro } \Leftrightarrow \sum_{n=1}^\infty E(X_n) < \infty$$
 \end{remark}
 
 \begin{theorem}[Recíproco del criterio de convergencia de Kolmogórov]
@@ -513,7 +513,7 @@ $$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
 
 \begin{corollary}
     Sea $\{X_n\}$ una sucesión de variables aleatorias independientes tales que $\{X_n\} \leq c$ para alguna constante $c > 0$.
-    Si $\sum_{n=1}^\infty < \infty$ casi seguro, entonces también convergen casi segura las series:
+    Si $\sum_{n=1}^\infty X_n < \infty$ casi seguro, entonces también convergen casi seguro las series:
     $$\sum_{n=1}^\infty (X_n - E(X_n)), \quad \sum_{n=1}^\infty E(X_n), \quad \sum_{n=1}^\infty V(X_n)$$
 \end{corollary}
 
@@ -583,7 +583,7 @@ $$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
     Sean $\{X_n\}$ una sucesión de variables aleatorias independientes y $\{X_n^c\}$ la sucesión de variables aleatorias truncadas por alguna constante $c > 0$.
     Supongamos que las tres siguientes series convergen:
     $$\sum_{n=1}^\infty P(X_n \neq X_n^c), \quad \sum_{n=1}^\infty E(X_n^c), \quad \sum_{n=1}^\infty V(X_n^c)$$
-    Entonces $\sum_{n=1}^\infty$ converge casi seguro.
+    Entonces $\sum_{n=1}^\infty X_n$ converge casi seguro.
 
     Recíprocamente, si $\sum_{n=1}^\infty X_n < \infty$ casi seguro, entonces las tres series convergen para todo $c > 0$.
 \end{theorem}
@@ -591,9 +591,9 @@ $$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
 \begin{lemma}
     Sea $X$ una variable aleatoria.
     Entonces:
-    $$E|X| < \infty \Leftrightarrow \sum_{n=1}^\infty P(|X| \geq n) < \infty$$
+    $$E(|X|) < \infty \Leftrightarrow \sum_{n=1}^\infty P(|X| \geq n) < \infty$$
     Además:
-    $$\sum_{n=1}^\infty P(|X| \geq n) \leq E|X| \leq 1 + \sum_{n=1}^\infty P(|X| \geq n)$$
+    $$\sum_{n=1}^\infty P(|X| \geq n) \leq E(|X|) \leq 1 + \sum_{n=1}^\infty P(|X| \geq n)$$
 \end{lemma}
 
 \begin{theorem}[Ley fuerte de los grandes números]
