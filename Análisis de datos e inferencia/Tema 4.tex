@@ -613,7 +613,7 @@ Como por la regla de Jeffreys $f_\lambda(\lambda) \propto \lambda^{-\frac{1}{2}}
 
 \subsection*{Estimación puntual}
 Analizamos la estimación bajo la función de pérdida cuadrática:
-$$\hat{\lambda} = E(\lambda|\vec{x}) = \frac{a+n}{\sum_{i=1}^n + p}$$
+$$\hat{\lambda} = E(\lambda|\vec{x}) = \frac{a+n}{\sum_{i=1}^n x_i + p}$$
 
 \subsection*{Intervalos de credibilidad}
 Un intervalo de credibilidad para $\lambda$ de contenido probabilístico $1-\alpha$ es un intervalo $(\lambda_1, \lambda_2)$ tal que:
@@ -648,3 +648,143 @@ Calculamos la distribución predictiva.
 Observamos que el interior de la integral es la función de densidad de una distribución $Ga(a+n+1, x_{n+1} + \sum_{i=1}^n x_i + p)$ salvo constantes.
 Por tanto:
 $$P(X_{n+1} = x_{n+1}|\vec{x}) = \frac{(a+n)^{\sum_{i=1}^n x_i + p}}{x_{n+1}!\Gamma(\sum_{i=1}^n x_i + p)} \frac{\Gamma(x_{n+1} + \sum_{i=1}^n x_i + p)}{(a+n+1)^{x_{n+1} + \sum_{i=1}^n x_i + p}}$$
+
+\section{Análisis bayesiano para datos normales}
+\subsection*{Media desconocida y precisión conocida}
+Sea $x|\mu \sim N(\mu, p)$.
+Estudiaremos el caso informativo con $\mu \sim N(m_0, p_0)$.
+Sabíamos que:
+\begin{align*}
+    f_\mu(\mu)  & = \frac{\sqrt{p_0}}{\sqrt{2\pi}} e^{\frac{p_0}{2}(\mu-m_0)^2} \propto e^{-\frac{p_0}{2}(\mu-m_0)^2} \\
+    \mu|\vec{x} & \sim N(m_n, p_n)
+\end{align*}
+donde
+$$m_n = \frac{p_0m_0+np\bar{x}}{p_0+np}, \quad p_n = p_0+np$$
+
+Como por la regla de Jeffreys $f_\mu(\mu) \propto 1$, el caso no informativo es análogo con $p_0 = 0$.
+
+\subsubsection*{Estimación puntual}
+Analizamos la estimación bajo la función de pérdida cuadrática:
+$$\hat{\mu} = E(\mu|\vec{x}) = m_n = \frac{p_0m_0+np\bar{x}}{p_0+np}$$
+
+\subsubsection*{Intervalos de credibilidad}
+El intervalo de máxima densidad a posteriori de $\mu$ con contenido probabilístico $1-\alpha$ es un intervalo $(\mu_1, \mu_2)$ tal que:
+\begin{enumerate}
+    \item $P(\mu_1 < \mu|\vec{x} < \mu_2) = 1-\alpha$.
+    \item $f(\mu_1|\vec{x}) = f(\mu_2|\vec{x})$.
+\end{enumerate}
+
+Es decir, tiene que verificar:
+\begin{align*}
+    1-\alpha & = P(\mu_1 < \mu|\vec{x} < \mu_2) =                                                 \\
+             & = P(\sqrt{p_n}(\mu_1-m_n) < \sqrt{p_n}(\mu-m_n)|\vec{x} < \sqrt{p_n}(\mu_2-m_n)) = \\
+             & = P(\sqrt{p_n}(\mu_1-m_n) < Z < \sqrt{p_n}(\mu_2-m_n))
+\end{align*}
+Además:
+\begin{align*}
+    \sqrt{p_n}(\mu_1-m_n) & = -z_{1-\frac{\alpha}{2}} \Rightarrow \mu_1 = m_n - \frac{z_{1-\frac{\alpha}{2}}}{\sqrt{p_n}} \\
+    \sqrt{p_n}(\mu_2-m_n) & = z_{1-\frac{\alpha}{2}} \Rightarrow \mu_2 = m_n + \frac{z_{1-\frac{\alpha}{2}}}{\sqrt{p_n}}
+\end{align*}
+
+Por tanto:
+$$MDP_{1-\alpha}(\mu) = \left(m_n - \frac{z_{1-\frac{\alpha}{2}}}{\sqrt{p_n}}, m_n + \frac{z_{1-\frac{\alpha}{2}}}{\sqrt{p_n}}\right)$$
+
+\subsubsection*{Contrastes de hipótesis}
+Consideramos el contraste:
+$$\begin{cases}
+        H_0: \mu \leq \mu_0 \\
+        H_1: \mu > \mu_0
+    \end{cases}$$
+Entonces:
+\begin{align*}
+    P(H_0|\vec{x}) & = P(\mu \leq \mu_0|\vec{x}) = P(\sqrt{p_n}(\mu-m_n) \leq \sqrt{p_n}(\mu_0-m_n)) = \\
+                   & = P(Z \leq \sqrt{p_n}(\mu_0-m_n)) = \varPhi(\sqrt{p_n}(\mu_0-m_n))                \\
+    P(H_1|\vec{x}) & = 1 - \varPhi(\sqrt{p_n}(\mu_0-m_n))
+\end{align*}
+Aceptamos $H_0$ si $P(H_0|\vec{x}) \geq P(H_1|\vec{x})$.
+
+Consideramos ahora el contraste:
+$$\begin{cases}
+        H_0: \mu = \mu_0 \\
+        H_1: \mu \neq \mu_0
+    \end{cases}$$
+Aceptamos $H_0$ si $\mu_0 \in MDP_{1-\alpha}(\mu)$, para $\alpha$ fijo.
+
+\subsubsection*{Distribución predictiva}
+Calculamos la distribución predictiva.
+\begin{align*}
+     & f(x_{n+1}|\vec{x}) = \int_\mathbb{R} f(x_{n+1}|\mu)f(\mu|\vec{x})d\mu =                                                                           \\
+     & = \int_\mathbb{R} \frac{\sqrt{p}}{\sqrt{2\pi}} e^{-\frac{p}{2}(x_{n+1}-\mu)^2} \frac{\sqrt{p_n}}{\sqrt{2\pi}} e^{-\frac{p_n}{2}(\mu-m_n)^2}d\mu = \\
+     & = \frac{\sqrt{pp_n}}{2\pi} \int_\mathbb{R} e^{-\frac{1}{2}(p(x_{n+1}-\mu)^2 + p_n(\mu-m_n)^2)}d\mu
+\end{align*}
+Usando el lema, queda:
+\begin{align*}
+    f(x_{n+1}|\vec{x}) & = \frac{\sqrt{pp_n}}{2\pi} \int_\mathbb{R} e^{-\frac{1}{2}(\alpha(\mu-\beta)^2+\gamma)}d\mu =       \\
+                       & = \frac{\sqrt{pp_n}}{2\pi} e^{-\frac{\gamma}{2}} \int_\mathbb{R} e^{-\frac{\alpha}{2}(\mu-\beta)^2}
+\end{align*}
+Observamos que el interior de la integral es la función de densidad de una distribución $N(\beta, \alpha)$ salvo constantes.
+Por tanto:
+$$f(x_{n+1}|\vec{x}) = \frac{\sqrt{pp_n}}{2\pi} e^{-\frac{\gamma}{2}} \frac{\sqrt{2\pi}}{\sqrt{\alpha}} = \frac{\sqrt{pp_n}}{\sqrt{2\pi}\sqrt{\alpha}}e^{-\frac{\gamma}{2}}$$
+
+\subsection*{Media conocida y varianza desconocida}
+Sea $x|\sigma^2 \sim N(\mu, \sigma^2)$.
+Estudiaremos el caso informativo con $\sigma^2 \sim GaI(a_0, p_0)$.
+Sabíamos que:
+\begin{align*}
+    f_{\sigma^2}(\sigma^2) & = \frac{a_0^{p_0}}{\Gamma(p_0)}e^{-\frac{a_0}{\sigma^2}}(\sigma^2)^{-(p_0+1)} \\
+    \sigma^2|\vec{x}       & \sim GaI(a_n, p_n)
+\end{align*}
+donde
+$$a_n = a_0 + \frac{1}{2}\sum_{i=1}^n(x_i-\mu)^2, \quad p_n = p_0 + \frac{n}{2}$$
+Como por la regla de Jeffreys $f_{\sigma^2}(\sigma^2) \propto (\sigma^2)^{-1}$, el caso no informativo es análogo con $a_0 = p_0 = 0$.
+
+\subsubsection*{Intervalos de credibilidad}
+Un intervalo de credibilidad de contenido probabilístico $1-\alpha$ para $\sigma^2$ es un intervalo $(\sigma^2_1, \sigma^2_2)$ tal que:
+\begin{align*}
+    1-\alpha & = P(\sigma^2_1 < \sigma^2|\vec{x} < \sigma^2_2) = P(\frac{1}{\sigma^2_2} < \frac{1}{\sigma^2}|\vec{x} < \frac{1}{\sigma^2_1}) =           \\
+             & = P\left(\frac{2a_0 + \sum_{i=1}^n (x_i-\mu)^2}{\sigma^2_2} < \chi^2_{n+2p_0} < \frac{2a_0 + \sum_{i=1}^n (x_i-\mu)^2}{\sigma^2_1}\right)
+\end{align*}
+
+\begin{note}
+    Si $X \sim Ga(a, p)$, entonces $2aX \sim \chi^2_{2p}$.
+\end{note}
+
+\subsubsection*{Distribución predictiva}
+Calculamos la distribución predictiva.
+\begin{align*}
+     & f(x_{n+1}|\vec{x}) = \int_0^\infty f(x_{n+1}|\sigma^2)f(\sigma^2|\vec{x})d\sigma^2 =                                                                                                 \\
+     & = \int_0^\infty \frac{1}{\sqrt{2\pi\sigma^2}}\frac{a_n^{p_n}}{\Gamma(p_n)} \int_0^\infty (\sigma^2)^{-(p_n+\frac{1}{2}+1)} e^{-\frac{1}{2\sigma^2}((x_{n+1}-\mu)^2 + 2a_n)}d\sigma^2
+\end{align*}
+Observamos que el interior de la integral es la función de densidad de una distribución $GaI\left(\frac{(x_{n+1}-\mu)^2}{2} + a_n, p_n + \frac{1}{2}\right)$ salvo constantes.
+Por tanto:
+$$f(x_{n+1}|\vec{x}) = \frac{1}{\sqrt{2\pi\sigma^2}}\frac{a_n^{p_n}}{\Gamma(p_n)} \frac{\Gamma\left(p_n+\frac{1}{2}\right)}{\left(\frac{(x_n-\mu)^2}{2}+a_n\right)^{p_n+\frac{1}{2}}}$$
+
+\section{Influencia de la distribución a priori según el tamaño muestral}
+\begin{example}
+    Supongamos que dos físicos $A$ y $B$ están interesados en obtener estimaciones lo más precisas posibles de una constante física $\theta$ conocida previamente solo de forma aproximada.
+    Supongamos que la opinión del físico $A$, muy familiarizado con este estudio, es que a priori $\theta_A \sim N(900, \sigma_A = 20)$.
+    Supongamos que $B$ tiene poca experiencia en este área y su opinión más bien vaga es que a priori $\theta_B \sim N(200, \sigma_B = 80)$.
+    Supongamos que un método experimental de medidas está disponible y que una observación $y$ medida por este método sigue $y|\theta \sim N(\theta, \sigma = 40)$.
+    Supongamos que $y = 850$.
+
+    Calculamos la función de verosimilitud:
+    $$L(\theta, y) = \frac{1}{\sqrt{2\pi \frac{1600}{40^2}}} e^{-\frac{1}{20 \cdot 40^2}(850-\theta)^2}$$
+    Hallamos sus distribuciones a posteriori:
+    \begin{align*}
+        \theta_A|y & \sim N\left(890, \frac{1}{390}\right) \equiv N(890, 17.9)  \\
+        \theta_B|y & \sim N\left(840, \frac{1}{1280}\right) \equiv N(840, 35.7)
+    \end{align*}
+
+    Supongamos ahora que tenemos 100 observaciones $y_1, \dots, y_{100}$ tales que $\bar{y} = 870$.
+    Calculamos de nuevo la función de verosimilitud:
+    $$L(\theta, y_1, \dots, y_{100}) = \prod_{i=1}^{100} e^{-\frac{1}{2 \cdot 40^2}(y_i-\theta)^2} \propto e^{-\frac{1}{2 \cdot 40^2} \sum_{i=1}^{100} (y_i-\theta)^2}$$
+    Observamos que $\sum_{i=1}^{100} (y_i-\theta)^2 = \sum_{i=1}^{100} (y_i-\bar{y}+\bar{y}-\theta)^2 = \sum_{i=1}^{100} (y_i-\bar{y})^2 + 100(\bar{y-\theta})^2$.
+    Por tanto:
+    $$L(\theta, y_1, \dots, y_{100}) \propto e^{-\frac{1}{2 \cdot 40^2} 100(\bar{y}-\theta)^2}$$
+    Hallamos sus distribuciones a posteriori:
+    \begin{align*}
+        \theta_A|y_1, \dots, y_{100} & \sim N(871.2, 3.9)   \\
+        \theta_B|y_1, \dots, y_{100} & \sim N(869.8, 3.995)
+    \end{align*}
+    Observamos que son muy similares.
+\end{example}

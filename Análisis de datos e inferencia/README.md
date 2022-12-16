@@ -65,3 +65,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 8. Distribuciones predictivas
 9. Análisis bayesiano para datos de Bernoulli
 10. Análisis bayesiano para datos de Poisson
+11. Análisis bayesiano para datos normales
+12. Influencia de la distribución a priori según el tamaño muestral
