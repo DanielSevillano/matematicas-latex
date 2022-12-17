@@ -824,17 +824,17 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
             1-e^{-\lambda} & \text{si } 0 <= x < 1 \\
             1              & \text{si } x \geq 1
         \end{cases}$$
-    Como $F$ sí es función de distribución, $F_n \xrightarrow[d]{} F$.
+    Como $F$ sí es función de distribución, $F_n \xrightarrow{d} F$.
 \end{exercise}
 
 \begin{theorem}
-    Supongamos que $F_n \xrightarrow[v]{} F$ con $F$ función de distribución impropia.
+    Supongamos que $F_n \xrightarrow{v} F$ con $F$ función de distribución impropia.
     Sea $g$ real y continua en $[a, b]$, con $a, b \in C(F)$. Entonces:
     $$\lim\limits_{n \to \infty} \int_{[a,b]} g(x)dF_n(x) = \int_{[a,b]} g(x)dF(x)$$
 \end{theorem}
 
 \begin{theorem}
-    Supongamos que $F_n \xrightarrow[v]{} F$ con $F$ función de distribución impropia.
+    Supongamos que $F_n \xrightarrow{v} F$ con $F$ función de distribución impropia.
     Sea $g$ real y continua con $g(\infty) = g(-\infty) = 0$. Entonces:
     $$\lim\limits_{n \to \infty} \int_\mathbb{R} g(x)dF_n(x) = \int_\mathbb{R} g(x)dF(x)$$
 \end{theorem}
