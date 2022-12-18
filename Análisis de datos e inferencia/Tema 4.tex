@@ -283,7 +283,7 @@ Calculamos:
     \frac{\partial^2 \log(f(x|\lambda))}{\partial \lambda^2} & \propto -\frac{x}{\lambda^2}
 \end{align*}
 Luego la información de Fisher para $\lambda$ es:
-$$J(\lambda) = E\left(\frac{x}{\lambda^2}\right) = \frac{1}{\lambda^2}E(x) = \frac{1}{\lambda^2}\frac{1}{\lambda} = \frac{1}{\lambda}$$
+$$J(\lambda) = E\left(\frac{x}{\lambda^2}\right) = \frac{1}{\lambda^2}E(x) = \frac{1}{\lambda^2}\lambda = \frac{1}{\lambda}$$
 Por tanto:
 $$f_\lambda(\lambda) \propto \frac{1}{\sqrt{\lambda}}$$
 Observamos que $f_\lambda$ no es una densidad.
@@ -381,7 +381,7 @@ $$\min_{t \in \Theta} E(L(\theta, t)|\vec{x}) = \min_{t \in \Theta} \int_\Theta 
         \psi(t)  & = E(L(\theta, t)|\vec{x}) = \int_\Theta (\theta-t)^2f(\theta|\vec{x})d\theta =                                                             \\
                  & = \int_\Theta \theta^2f(\theta|\vec{x})d\theta + t^2\int_\Theta f(\theta|\vec{x})d\theta - 2t\int_\Theta \theta f(\theta|\vec{x})d\theta = \\
                  & = \int_\Theta \theta^2f(\theta|\vec{x})d\theta + t^2 - 2tE(\theta|\vec{x})                                                                 \\
-        \psi'(t) & = 2t - E(\theta|\vec{x})
+        \psi'(t) & = 2t - 2E(\theta|\vec{x})
     \end{align*}
     Hallamos el mímimo de $\psi$:
     $$\psi'(t) = 0 \Leftrightarrow t = E(\theta|\vec{x}) \Rightarrow \hat{\theta} = E(\theta|\vec{x})$$
@@ -439,8 +439,8 @@ Entonces:
 
 \subsection*{Contraste unilateral a la izquierda}
 $$\begin{cases}
-        H_0: \theta \leq \theta_0 \\
-        H_1: \theta > \theta_0
+        H_0: \theta \geq \theta_0 \\
+        H_1: \theta < \theta_0
     \end{cases}$$
 Calculamos:
 \begin{align*}
@@ -494,8 +494,7 @@ $$f(x_{n+1}|\vec{x}) = \int_\Theta f(x_{n+1}|\theta)f(\theta|\vec{x})d\theta$$
     $$f_\theta(\theta) = \frac{\Gamma(p+q)}{\Gamma(p)\Gamma(q)} \theta^{p-1}(1-\theta)^{q-1}, \quad 0 < \theta < 1$$
     Luego la distribución a posteriori es:
     \begin{align*}
-        f(\theta|\vec{x}) & \propto f_\theta(\theta)L(\vec{x}, \theta) \propto \theta^{p-1+10}(1-\theta)^{q-1} = \theta^{p+q}(1-\theta)^{q-1} \\
-                          & \Rightarrow \theta|\vec{x} \sim Be(p+10, q)
+        f(\theta|\vec{x}) & \propto f_\theta(\theta)L(\vec{x}, \theta) \propto \theta^{p-1+10}(1-\theta)^{q-1} \Rightarrow \theta|\vec{x} \sim Be(p+10, q)
     \end{align*}
 
     Una estimación puntual de $\theta$ con la función de pérdida cuadrática es:
@@ -533,7 +532,7 @@ $$f(x_{n+1}|\vec{x}) = \int_\Theta f(x_{n+1}|\theta)f(\theta|\vec{x})d\theta$$
 
     La probabilidad de que en tres pruebas siguientes haya dos aciertos y un fallo, podemos calcularla como $3P(x_{11} = 1, x_{12} = 1, x_{13} = 0)$.
 
-    En general, la probabilidad de que en las siguientes $m$ pruebas haya $r$ aciertos se calcula como $\binom{m}{r}P(x_{11} = 1, x_{12} = 1, x_{13} = 0)$.
+    En general, la probabilidad de que en las siguientes $m$ pruebas haya $r$ aciertos se calcula como $\binom{m}{r}P(x_{n+1} = \dots = x_{n+r} = 1, x_{n+r+1} = \dots = x_{n+m} = 0)$.
 \end{example}
 
 \section{Análisis bayesiano para datos de Bernoulli}
