@@ -1,0 +1,72 @@
+\chapter{Introducción a la inferencia no paramétrica}
+\section{Introducción}
+Hasta ahora los tests de hipótesis han sido utilizados para contrastar la veracidad de hipótesis acerca de los parámetros de la distribución de una población.
+Sin embargo, en muchas ocasiones, es necesario emitir un juicio estadístico sobre la distribución poblacional en su conjunto.
+Los problemas de este tipo que se plantean de manera habitual son los siguientes:
+\begin{itemize}
+    \item \textbf{Contrastes de bondad de ajuste.}
+          Decidir, a la vista de una muestra aleatoria de una población, si puede admitirse que la distribución poblacional coincide con una cierta distribución dada o pertenece a un determinado tipo de distribuciones.
+    \item \textbf{Contrastes de homogeneidad.}
+          Analizar si varias muestras aleatorias provienen de poblaciones con la misma distribución teórica, de forma que puedan ser utilizadas conjuntamente para inferencias posteriores acerca de esta; o, por el contrario, son muestras de poblaciones con distinta distribución, que no pueden agruparse como información homogénea acerca de una única distribución.
+    \item \textbf{Contrastes de independencia.}
+          Estudiar, en el caso en que se observen dos o más características de los elementos de la población si las características observadas pueden considerarse independientes, y se puede proceder a su análisis por separado, o, por el contrario, existe relación estadística entre ellas.
+\end{itemize}
+
+\section{Contrastes de bondad de ajuste}
+\subsection*{Primer caso}
+Consideremos una muestra aleatoria $(X_1, \dots, X_n)$ de una variable aleatoria $X$ con distribución desconocida.
+Para decidir si es razonable admitir que la distribucion de $X$ viene dada por un determinado modelo de probabilidad $P$, resolvemos el siguiente contraste de hipótesis:
+$$\begin{cases}
+        H_0: \text{ el modelo de probabilidad de } X \text{ es } P \\
+        H_1: \text{ el modelo de probabilidad de } X \text{ no es } P
+    \end{cases}$$
+
+\begin{note}
+    El modelo $P$ debe estar completamente especificado.
+\end{note}
+
+Para contrastar $H_0$ frente a $H_1$ hacemos una partición arbitraria del espacio muestral de la población en $k$ clases $A_1, \dots, A_k$.
+Después, para cada $A_i$ consideramos las siguientes frecuencias absolutas:
+\begin{itemize}
+    \item $O_i$: frecuencia observada en $A_i$, número de elementos de la muestra que están en la clase $A_i$.
+    \item $e_i$: frecuencia esperada de la clase $A_i$ si la hipótesis $H_0$ es cierta, $nP(A_i)$.
+\end{itemize}
+
+El estadístico que utilizaremos es:
+$$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i}$$
+que tiene aproximadamente cuando $n$ es grande una distribución $\chi^2_{k-1}$ si $H_0$ es cierta.
+
+Para que la aproximación sea razonablemente buena, además de tener una muestra suficientemente grande, es necesario que el valor esperado de cada clase sea suficientemente grande.
+Si la muestra procede de $P$, es de esperar que haya valores parecidos para $O_i$ y $e_i$ y, por tanto, este estadístico debería tomar valores próximos a cero.
+
+Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
+$$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i} > \chi^2_{k-1, 1-\alpha}$$
+En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
+
+% Ejemplos
+
+\subsection*{Segundo caso}
+El contraste de bondad de ajuste se puede plantear también en una situación más general.
+Consideremos una muestra aleatoria $(X_1, \dots, X_n)$ de una variable aleatoria $X$ con distribución desconocida.
+Para decidir si es razonable admitir que la distribución de $X$ viene dada por algún modelo de probabilidad de una cierta familia $P_\theta$, con $\theta = (\theta_1, \dots, \theta_r)$, resolveremos el siguiente contraste de hipótesis:
+$$\begin{cases}
+        H_0: \text{ el modelo de probabilidad } X \text{ es de la familia } \{P_\theta: \theta \in \Theta\} \\
+        H_0: \text{ el modelo de probabilidad } X \text{ no es de la familia } \{P_\theta: \theta \in \Theta\}
+    \end{cases}$$
+
+Para contrastar $H_0$ frente a $H_1$ hacemos nuevamente una partición arbitraria del espacio muestral de la población en $k$ clases $A_1, \dots, A_k$.
+Después, para cada $A_i$ consideramos las siguientes frecuencias absolutas:
+\begin{itemize}
+    \item $O_i$: frecuencia observada en $A_i$, número de elementos de la muestra que están en la clase $A_i$.
+    \item $e_i$: frecuencia esperada de la clase $A_i$ si la hipótesis $H_0$ es cierta, $nP_\theta(A_i) \approx nP_{\hat{\theta}}(A_i)$, donde $\hat{\theta}$ es el estimador de máxima verossimilitud de $\theta$.
+\end{itemize}
+
+El estadístico que utilizaremos es:
+$$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i}$$
+que tiene aproximadamente cuando $n$ es grande una distribución $\chi^2_{k-r-1}$ si $H_0$ es cierta.
+
+Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
+$$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i} > \chi^2_{k-r-1, 1-\alpha}$$
+En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
+
+% Ejemplos

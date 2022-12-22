@@ -67,3 +67,8 @@ Estos apuntes están abiertos a correcciones y mejoras.
 10. Análisis bayesiano para datos de Poisson
 11. Análisis bayesiano para datos normales
 12. Influencia de la distribución a priori según el tamaño muestral
+
+### 5. Introducción a la inferencia no paramétrica
+
+1. Introducción
+2. Contrastes de bondad de ajuste
