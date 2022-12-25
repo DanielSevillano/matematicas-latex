@@ -8,6 +8,7 @@
 ## ✒️ Contenido
 
 -   Teoría
+-   Ejemplos
 -   Demostraciones más importantes
 
 ## ✉️ Contribuir
@@ -72,3 +73,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 
 1. Introducción
 2. Contrastes de bondad de ajuste
+3. Contrastes de homogeneidad
+4. Contrastes de independencia
