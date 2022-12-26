@@ -5,7 +5,7 @@ Sin embargo, en muchas ocasiones, es necesario emitir un juicio estadístico sob
 Los problemas de este tipo que se plantean de manera habitual son los siguientes:
 \begin{itemize}
     \item \textbf{Contrastes de bondad de ajuste.}
-          Decidir, a la vista de una muestra aleatoria de una población, si puede admitirse que la distribución poblacional coincide con una cierta distribución dada o pertenece a un determinado tipo de distribuciones.
+          Decidir, a la vista de una muestra aleatoria de una población, si puede admitirse que la distribución poblacional coincide con una cierta distribución dada o pertenece a un determinado tipo de distribuciónes.
     \item \textbf{Contrastes de homogeneidad.}
           Analizar si varias muestras aleatorias provienen de poblaciones con la misma distribución teórica, de forma que puedan ser utilizadas conjuntamente para inferencias posteriores acerca de esta; o, por el contrario, son muestras de poblaciones con distinta distribución, que no pueden agruparse como información homogénea acerca de una única distribución.
     \item \textbf{Contrastes de independencia.}
@@ -15,7 +15,7 @@ Los problemas de este tipo que se plantean de manera habitual son los siguientes
 \section{Contrastes de bondad de ajuste}
 \subsection*{Primer caso}
 Consideremos una muestra aleatoria $(X_1, \dots, X_n)$ de una variable aleatoria $X$ con distribución desconocida.
-Para decidir si es razonable admitir que la distribucion de $X$ viene dada por un determinado modelo de probabilidad $P$, resolvemos el siguiente contraste de hipótesis:
+Para decidir si es razonable admitir que la distribución de $X$ viene dada por un determinado modelo de probabilidad $P$, resolvemos el siguiente contraste de hipótesis:
 $$\begin{cases}
         H_0: \text{ el modelo de probabilidad de } X \text{ es } P \\
         H_1: \text{ el modelo de probabilidad de } X \text{ no es } P
@@ -78,7 +78,7 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
     donde las frecuencias esperadas bajo $H_0$ han sido calculadas como:
     $$e_i = nP(A_i) = 300 \frac{1}{6} = 50$$
 
-    Usamos el estadístico de contraste:
+    Usaremos el estadístico de contraste:
     $$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i}$$
     que tiene aproximadamente una distribución $\chi^2_{k-1}$ si $H_0$ es cierta.
 
@@ -91,7 +91,7 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
 \end{example}
 
 \begin{example}
-    Nos dicen que un programa de ordenador genera observaciones de una distribucion $N(0, 1)$.
+    Nos dicen que un programa de ordenador genera observaciones de una distribución $N(0, 1)$.
     Como no estamos seguros de ello, obtenemos una muestra aleatoria de 450 observaciones mediante dicho programa, obteniendo los siguientes resultados:
     \begin{itemize}
         \item 30 observaciones menores que -2.
@@ -130,9 +130,9 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
     \end{center}
     donde las frecuencias esperadas bajo $H_0$ han sido calculadas de la forma:
     $$e_i = nP(A_i) = 450P(A_i)$$
-    y los valores $P(A_i)$ se han calculado a partir de la tabla de la función de distribucion de la normal estándar.
+    y los valores $P(A_i)$ se han calculado a partir de la tabla de la función de distribución de la normal estándar.
 
-    Usamos el estadístico de contraste:
+    Usaremos el estadístico de contraste:
     $$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i}$$
     que tiene aproximadamente una distribución $\chi^2_{k-1}$ si $H_0$ es cierta.
 
@@ -150,7 +150,7 @@ Consideremos una muestra aleatoria $(X_1, \dots, X_n)$ de una variable aleatoria
 Para decidir si es razonable admitir que la distribución de $X$ viene dada por algún modelo de probabilidad de una cierta familia $P_\theta$, con $\theta = (\theta_1, \dots, \theta_r)$, resolveremos el siguiente contraste de hipótesis:
 $$\begin{cases}
         H_0: \text{ el modelo de probabilidad } X \text{ es de la familia } \{P_\theta: \theta \in \Theta\} \\
-        H_0: \text{ el modelo de probabilidad } X \text{ no es de la familia } \{P_\theta: \theta \in \Theta\}
+        H_1: \text{ el modelo de probabilidad } X \text{ no es de la familia } \{P_\theta: \theta \in \Theta\}
     \end{cases}$$
 
 Para contrastar $H_0$ frente a $H_1$ hacemos nuevamente una partición arbitraria del espacio muestral de la población en $k$ clases $A_1, \dots, A_k$.
@@ -168,7 +168,57 @@ Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
 $$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i} > \chi^2_{k-r-1, 1-\alpha}$$
 En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
 
-% Ejemplo
+\begin{example}
+    En el transcurso de dos horas, el número de llamadas por minuto recibidas en una centralita fue el siguiente:
+    \begin{center}
+        \begin{tabular}{|c | c c c c c c c |}
+            \hline
+            Número de llamadas por minuto & 0 & 1  & 2  & 3  & 4  & 5  & 6 \\
+            \hline
+            Frecuencia                    & 6 & 18 & 32 & 35 & 17 & 10 & 2 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Veamos si se puede aceptar que el número de llamadas por minuto sigue una distribución de Poisson.
+
+    Disponemos de una muestra de $n = 120$ minutos, en los cuales registramos el número de llamadas que se han producido.
+    El número de llamadas por minutos lo clasificamos en las siguientes clases:
+    $$\{0\}, \quad \{1\}, \quad \{2\}, \quad \{3\}, \quad \{4\}, \quad \{\geq 5\}$$
+    Las dos últimas clases las hemos agrupado para evitar frecuencias demasiado bajas.
+
+    Sea $X$ el número de llamadas por minuto, realizamos el siguiente contraste:
+    $$\begin{cases}
+            H_0: X \sim \text{ Poisson}  \\
+            H_1: X \nsim \text{ Poisson} \\
+        \end{cases}$$
+
+    La tabla de frecuencias observadas y esperadas es:
+    \begin{center}
+        \begin{tabular}{| c | c c c c c c |}
+            \hline
+            $A_i$    & $\{0\}$ & $\{1\}$ & $\{2\}$ & $\{3\}$ & $\{4\}$ & $\{\geq 5\}$ \\
+            \hline
+            $O_i$    & 6       & 18      & 32      & 35      & 17      & 12           \\
+            $P(A_i)$ & 0.0743  & 0.19318 & 0.2510  & 0.2176  & 0.1414  & 0.1226       \\
+            $e_i$    & 8.92    & 23.17   & 30.12   & 26.11   & 16.97   & 14.71        \\
+            \hline
+        \end{tabular}
+    \end{center}
+    donde las frecuencias observadas bajo $H_0$ han sido calculadas como:
+    $$e_i = nP(A_i) = 120P(A_i)$$
+    y los valores de $P(A_i)$ se han calculado a partir de una distribución de Poisson de parámetro $\hat{\lambda} = \bar{x} = 2.6$.
+
+    Usaremos el estadístico de contraste:
+    $$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i}$$
+    que tiene aproximadamente una distribución $\chi^2_{k-r-1}$ si $H_0$ es cierta.
+
+    Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
+    $$\sum_{i=1}^k \frac{(O_i-e_i)^2}{e_i} > \chi^2_{k-r-1, 1-\alpha}$$
+    En nuestro caso:
+    $$\sum_{i=1}^6 \frac{(O_i-e_i)^2}{e_i} = 5.75, \quad \chi^2_{4, 0.95} = 9.488$$
+
+    Por tanto, aceptamos $H_0$ a nivel de significación $\alpha = 0.05$, es decir, podemos aceptar que el número de llamadas por minuto sigue una distribución de Poisson a nivel de significación $\alpha = 0.05$.
+\end{example}
 
 \section{Contrastes de homogeneidad}
 Supongamos que disponemos de $p$ muestras aleatorias independientes tomadas de $p$ poblaciones sobre una característica común $X$ a todas ellas:
@@ -179,11 +229,11 @@ Supongamos que disponemos de $p$ muestras aleatorias independientes tomadas de $
 \end{align*}
 con $n_1 + \dots + n_p = n$.
 
-Queremos ver si, a la vista de las muestras obtenidas, es razonable admitir que todas las poblaciones tienen una distribucion común, es decir, si son poblaciones homogéneas.
+Queremos ver si, a la vista de las muestras obtenidas, es razonable admitir que todas las poblaciones tienen una distribución común, es decir, si son poblaciones homogéneas.
 Por tanto, tenemos el contraste:
 $$\begin{cases}
-        H_0: \text{ Las } p \text{ poblaciones tienen una distribucion común} \\
-        H_1: \text{ Las } p \text{ poblaciones no tienen una distribucion común}
+        H_0: \text{ Las } p \text{ poblaciones tienen una distribución común} \\
+        H_1: \text{ Las } p \text{ poblaciones no tienen una distribución común}
     \end{cases}$$
 
 Para contrastar $H_0$ frente a $H_1$ hacemos nuevamente una partición arbitraria del espacio muestral común a las $p$ poblaciones en $k$ clases $A_1, \dots, A_k$.
@@ -191,18 +241,85 @@ Para contrastar $H_0$ frente a $H_1$ hacemos nuevamente una partición arbitrari
 Después, definimos para la clase $A_i$ y para la muestra de la población $j$-ésima:
 \begin{itemize}
     \item $O_{ij}$: frecuencia observada en la clase $A_i$ con la muestra $j$-ésima.
-    \item $e_{ij}$: frecuencia esperada en la clase $A_i$ con la muestra $j$-ésima si todas las poblaciones tienen la distribucion común $P$, $n_jP(A_i)$.
+    \item $e_{ij}$: frecuencia esperada en la clase $A_i$ con la muestra $j$-ésima si todas las poblaciones tienen la distribución común $P$, $n_jP(A_i)$.
 \end{itemize}
 
 El estadístico utilizado es:
 $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}}$$
-que tiene aproximadamente cuando $n$ es grande una distribucion $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
+que tiene aproximadamente cuando $n$ es grande una distribución $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
 
 Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
 $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}} > \chi^2_{(k-1)(p-1), 1-\alpha}$$
 En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
 
-% Ejemplo y problemas
+\begin{example}
+    Una fábrica de automóviles quiere averiguar si la preferencia de modelo tiene relación con el sexo de los clientes.
+    Se toman dos muestras aleatorias de 1000 hombres y 1000 mujeres, observándose las siguientes preferencias:
+    \begin{center}
+        \begin{tabular}{| c | c c |}
+            \hline
+            Modelo & Hombre & Mujer \\
+            \hline
+            $A$    & 340    & 350   \\
+            $B$    & 400    & 270   \\
+            $C$    & 260    & 380   \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Veamos si son homogéneas las preferencias entre hombres y mujeres a nivel de significación $\alpha = 0.01$.
+
+    Disponemos de una muestra aleatoria de 1000 mujeres y otra de 1000 hombres, clasificadas según sus preferencias por los modelos $A$, $B$ y $C$.
+    El número total de datos es $n = 2000$.
+
+    Para decidir si las preferencias en las dos poblaciones son homogéneas, planteamos el siguiente contraste de homogeneidad:
+    $$\begin{cases}
+            H_0: \text{ Las preferencias son homogéneas} \\
+            H_1: \text{ Las preferencias no son homogéneas}
+        \end{cases}$$
+
+    La tabla de frecuencias observadas es:
+    \begin{center}
+        \begin{tabular}{| c | c c | c |}
+            \hline
+            $O_{ij}$ & Hombres & Mujeres &      \\
+            \hline
+            $A$      & 340     & 350     & 690  \\
+            $B$      & 400     & 270     & 670  \\
+            $C$      & 260     & 380     & 640  \\
+            \hline
+                     & 1000    & 1000    & 2000 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Las frecuencias esperadas se calculan de la forma:
+    $$e_{ij} = \frac{(\sum_{i=1}^k O_{ij})(\sum_{j=1}^p O_{ij})}{n}$$
+    obteniéndose la siguiente tabla de frecuencias esperadas:
+    \begin{center}
+        \begin{tabular}{| c | c c |}
+            \hline
+            $e_{ij}$ & Hombres & Mujeres \\
+            \hline
+            $A$      & 345     & 345     \\
+            $B$      & 335     & 335     \\
+            $C$      & 320     & 320     \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Usaremos el estadístico de contraste:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}}$$
+    que tiene aproximadamente una distribución $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
+
+    Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}} > \chi^2_{(k-1)(p-1), 1-\alpha}$$
+    En nuestro caso:
+    $$\sum_{j=1}^3 \sum_{i=1}^3 \frac{(O_{ij}-e_{ij})^2}{e_{ij}} = 47.87, \quad \chi^2_{2, 0.99} = 9.210$$
+
+    Por tanto, rechazamos $H_0$ a nivel de significación $\alpha = 0.01$, es decir, podemos concluir que no son homogéneas las preferencias entre hombres y mujeres a nivel de significación $\alpha = 0.01$.
+\end{example}
+
+% Problemas
 
 \section{Contrastes de independencia}
 Supongamos que queremos estudiar si dos características $X$ e $Y$ de una población están relacionadas o no.
@@ -227,7 +344,7 @@ Llamamos:
 
 El estadístico utilizado es:
 $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}}$$
-que tiene aproximadamente cuando $n$ es grande una distribucion $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
+que tiene aproximadamente cuando $n$ es grande una distribución $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
 
 \begin{remark}
     Este estadístico coincide con el que utilizábamos en el contraste de homogeneidad.
@@ -237,4 +354,68 @@ Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
 $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}} > \chi^2_{(k-1)(p-1), 1-\alpha}$$
 En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
 
-% Ejemplos
+\begin{example}
+    Se desea evaluar la efectividad de una nueva vacuna antigripal. Para ello, se decide suministrar dicha vacuna, de manera voluntaria y gratuita, a una pequeña comunidad.
+    La vacuna se administra en dos dosis, separadas por un período de dos semanas, de forma que alguna de las personas han recibido una sola dosis, otras han recibido las dos y otras personas no han recibido ninguna.
+    La siguiente tabla muestra los resultados que se registraron durante la siguiente primavera en 1000 habitantes de la comunidad elegidos al azar:
+    \begin{center}
+        \begin{tabular}{| c | c c c |}
+            \hline
+                     & No vacunados & Una dosis & Dos dosis \\
+            \hline
+            Gripe    & 24           & 9         & 13        \\
+            No gripe & 289          & 100       & 565       \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Veamos si proporcionan estos datos suficiente evidencia estadística para indicar una dependencia entre la clasificación respecto a la vacuna y la protección frente a la gripe a nivel de significación $\alpha = 0.05$.
+
+    Disponemos de una muestra aleatoria de $n = 1000$ habitantes clasificados según dos características: número de dosis recibidas y protección frente a la gripe.
+
+    Para decidir si existe dependencia entre estas dos características, planteamos un contraste de independencia:
+    $$\begin{cases}
+            H_0: \text{ Las dos características son independientes} \\
+            H_1: \text{ Existe dependencia entre las dos características}
+        \end{cases}$$
+
+    La tabla de frecuencias observadas es:
+    \begin{center}
+        \begin{tabular}{| c | c c c | c |}
+            \hline
+            $O_{ij}$ & No vacunados & Una dosis & Dos dosis &      \\
+            \hline
+            Gripe    & 24           & 9         & 13        & 46   \\
+            No gripe & 289          & 100       & 565       & 954  \\
+            \hline
+                     & 313          & 109       & 578       & 1000 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Las frecuencias esperadas se calculan de la forma:
+    $$e_{ij} = \frac{(\sum_{i=1}^k O_{ij})(\sum_{j=1}^p O_{ij})}{n}$$
+    obteniéndose la siguiente tabla de frecuencias esperadas:
+    \begin{center}
+        \begin{tabular}{| c | c c c |}
+            \hline
+            $e_{ij}$ & No vacunados & Una dosis & Dos dosis \\
+            \hline
+            Gripe    & 14.4         & 5         & 26.6      \\
+            No gripe & 298.6        & 104       & 551.4     \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Usaremos el estadístico de contraste:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}}$$
+    que tiene aproximadamente una distribución $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
+
+    Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}} > \chi^2_{(k-1)(p-1), 1-\alpha}$$
+    En nuestro caso:
+    $$\sum_{j=1}^3 \sum_{i=1}^2 \frac{(O_{ij}-e_{ij})^2}{e_{ij}} = 17.35, \quad \chi^2_{2, 0.95} = 5.991$$
+
+    Por tanto, rechazamos $H_0$ a nivel de significación $\alpha = 0.05$, es decir, podemos concluir que existe dependencia entre el número de dosis recibidas y la protección frente a la gripe a nivel de significación $\alpha = 0.05$.
+\end{example}
+
+% Problema
