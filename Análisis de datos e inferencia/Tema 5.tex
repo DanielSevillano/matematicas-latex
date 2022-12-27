@@ -319,7 +319,70 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
     Por tanto, rechazamos $H_0$ a nivel de significación $\alpha = 0.01$, es decir, podemos concluir que no son homogéneas las preferencias entre hombres y mujeres a nivel de significación $\alpha = 0.01$.
 \end{example}
 
-% Problemas
+% Problema
+
+\begin{exercise}
+    Para probar la efectividad de una vacuna contra cierta enfermedad, se realizó un experimento observando el comportamiento de 100 personas vacunadas y 100 personas sin vacunar.
+    Los resultados fueron los siguientes:
+    \begin{center}
+        \begin{tabular}{| c | c c |}
+            \hline
+                         & Enfermaron & No enfermaron \\
+            \hline
+            Vacunados    & 4          & 96            \\
+            No vacunados & 6          & 94            \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Queremos contrastar la efectividad de la vacuna con los datos obtenidos.
+
+    Para ello consideramos el contraste:
+    $$\begin{cases}
+            H_0: \text{Las poblaciones son homogéneas, luego la vacuna no es efectiva} \\
+            H_1: \text{La vacuna es efectiva}
+        \end{cases}$$
+
+    La tabla de frecuencias observadas es:
+    \begin{center}
+        \begin{tabular}{| c | c c | c |}
+            \hline
+            $O_{ij}$     & Enfermaron & No enfermaron &     \\
+            \hline
+            Vacunados    & 4          & 96            & 100 \\
+            No vacunados & 6          & 94            & 100 \\
+            \hline
+                         & 10         & 190           & 200 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Las frecuencias esperadas se calculan de la forma:
+    $$e_{ij} = \frac{(\sum_{i=1}^k O_{ij})(\sum_{j=1}^p O_{ij})}{n}$$
+    obteniéndose la siguiente tabla de frecuencias esperadas:
+    \begin{center}
+        \begin{tabular}{| c | c c |}
+            \hline
+            $e_{ij}$     & Enfermaron & No enfermaron \\
+            \hline
+            Vacunados    & 5          & 95            \\
+            No vacunados & 5          & 95            \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Usaremos el estadístico de contraste:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}}$$
+    que tiene aproximadamente una distribución $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
+
+    Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}} > \chi^2_{(k-1)(p-1), 1-\alpha}$$
+    En nuestro caso:
+    $$\sum_{j=1}^2 \sum_{i=1}^2 \frac{(O_{ij}-e_{ij})^2}{e_{ij}} = 0.4211, \quad \chi^2_{1, 0.95} = 3.8415$$
+
+    Por tanto, aceptamos $H_0$ a nivel de significación $\alpha = 0.05$, es decir, podemos concluir que la vacuna no es eficaz a nivel de significación $\alpha = 0.05$.
+\end{exercise}
+
+% Problema
 
 \section{Contrastes de independencia}
 Supongamos que queremos estudiar si dos características $X$ e $Y$ de una población están relacionadas o no.
