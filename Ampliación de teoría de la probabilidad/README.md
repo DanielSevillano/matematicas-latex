@@ -1,7 +1,5 @@
 # Ampliación de teoría de la probabilidad
 
-**Estado:** apuntes en desarrollo.
-
 -   [**🔎 Previsualizar PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad.pdf)
 -   [**📁 Descargar PDF**](https://raw.githubusercontent.com/DanielSevillano/matematicas-latex/main/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad/Ampliaci%C3%B3n%20de%20teor%C3%ADa%20de%20la%20probabilidad.pdf)
 
@@ -9,14 +7,13 @@
 
 -   Teoría
 -   Ejemplos
--   Demostraciones más importantes
 
 ## ✉️ Contribuir
 
 Estos apuntes están abiertos a correcciones y mejoras.
 
 -   Correcciones de erratas, expresiones y enunciados
--   Nuevas demostraciones de resultados importantes
+-   Demostraciones de resultados importantes
 -   Nuevas gráficas
 
 ## 📖 Índice
