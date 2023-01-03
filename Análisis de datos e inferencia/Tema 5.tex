@@ -5,11 +5,11 @@ Sin embargo, en muchas ocasiones, es necesario emitir un juicio estadístico sob
 Los problemas de este tipo que se plantean de manera habitual son los siguientes:
 \begin{itemize}
     \item \textbf{Contrastes de bondad de ajuste.}
-          Decidir, a la vista de una muestra aleatoria de una población, si puede admitirse que la distribución poblacional coincide con una cierta distribución dada o pertenece a un determinado tipo de distribuciónes.
+          Decidir, a la vista de una muestra aleatoria de una población, si puede admitirse que la distribución poblacional coincide con una cierta distribución dada o pertenece a un determinado tipo de distribuciones.
     \item \textbf{Contrastes de homogeneidad.}
           Analizar si varias muestras aleatorias provienen de poblaciones con la misma distribución teórica, de forma que puedan ser utilizadas conjuntamente para inferencias posteriores acerca de esta; o, por el contrario, son muestras de poblaciones con distinta distribución, que no pueden agruparse como información homogénea acerca de una única distribución.
     \item \textbf{Contrastes de independencia.}
-          Estudiar, en el caso en que se observen dos o más características de los elementos de la población si las características observadas pueden considerarse independientes, y se puede proceder a su análisis por separado, o, por el contrario, existe relación estadística entre ellas.
+          Estudiar, en el caso en que se observen dos o más características de los elementos de la población, si las características observadas pueden considerarse independientes, y se puede proceder a su análisis por separado; o, por el contrario, existe relación estadística entre ellas.
 \end{itemize}
 
 \section{Contrastes de bondad de ajuste}
@@ -17,8 +17,8 @@ Los problemas de este tipo que se plantean de manera habitual son los siguientes
 Consideremos una muestra aleatoria $(X_1, \dots, X_n)$ de una variable aleatoria $X$ con distribución desconocida.
 Para decidir si es razonable admitir que la distribución de $X$ viene dada por un determinado modelo de probabilidad $P$, resolvemos el siguiente contraste de hipótesis:
 $$\begin{cases}
-        H_0: \text{ el modelo de probabilidad de } X \text{ es } P \\
-        H_1: \text{ el modelo de probabilidad de } X \text{ no es } P
+        H_0: \text{ El modelo de probabilidad de } X \text{ es } P \\
+        H_1: \text{ El modelo de probabilidad de } X \text{ no es } P
     \end{cases}$$
 
 \begin{note}
@@ -46,7 +46,7 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
 \begin{example}
     Después de lanzar un dado 300 veces, se obtienen las siguientes frecuencias:
     \begin{center}
-        \begin{tabular}{ | c | c c c c c c | }
+        \begin{tabular}{ | l | c c c c c c | }
             \hline
             Resultado  & 1  & 2  & 3  & 4  & 5  & 6  \\
             \hline
@@ -149,15 +149,15 @@ El contraste de bondad de ajuste se puede plantear también en una situación m�
 Consideremos una muestra aleatoria $(X_1, \dots, X_n)$ de una variable aleatoria $X$ con distribución desconocida.
 Para decidir si es razonable admitir que la distribución de $X$ viene dada por algún modelo de probabilidad de una cierta familia $P_\theta$, con $\theta = (\theta_1, \dots, \theta_r)$, resolveremos el siguiente contraste de hipótesis:
 $$\begin{cases}
-        H_0: \text{ el modelo de probabilidad } X \text{ es de la familia } \{P_\theta: \theta \in \Theta\} \\
-        H_1: \text{ el modelo de probabilidad } X \text{ no es de la familia } \{P_\theta: \theta \in \Theta\}
+        H_0: \text{ El modelo de probabilidad } X \text{ es de la familia } \{P_\theta: \theta \in \Theta\} \\
+        H_1: \text{ El modelo de probabilidad } X \text{ no es de la familia } \{P_\theta: \theta \in \Theta\}
     \end{cases}$$
 
 Para contrastar $H_0$ frente a $H_1$ hacemos nuevamente una partición arbitraria del espacio muestral de la población en $k$ clases $A_1, \dots, A_k$.
 Después, para cada $A_i$ consideramos las siguientes frecuencias absolutas:
 \begin{itemize}
     \item $O_i$: frecuencia observada en $A_i$, número de elementos de la muestra que están en la clase $A_i$.
-    \item $e_i$: frecuencia esperada de la clase $A_i$ si la hipótesis $H_0$ es cierta, $nP_\theta(A_i) \approx nP_{\hat{\theta}}(A_i)$, donde $\hat{\theta}$ es el estimador de máxima verossimilitud de $\theta$.
+    \item $e_i$: frecuencia esperada de la clase $A_i$ si la hipótesis $H_0$ es cierta, $nP_\theta(A_i) \approx nP_{\hat{\theta}}(A_i)$, donde $\hat{\theta}$ es el estimador de máxima verosimilitud de $\theta$.
 \end{itemize}
 
 El estadístico que utilizaremos es:
@@ -171,7 +171,7 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
 \begin{example}
     En el transcurso de dos horas, el número de llamadas por minuto recibidas en una centralita fue el siguiente:
     \begin{center}
-        \begin{tabular}{|c | c c c c c c c |}
+        \begin{tabular}{| l | c c c c c c c |}
             \hline
             Número de llamadas por minuto & 0 & 1  & 2  & 3  & 4  & 5  & 6 \\
             \hline
