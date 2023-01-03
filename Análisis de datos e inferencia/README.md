@@ -1,7 +1,5 @@
 # Análisis de datos e inferencia
 
-**Estado:** apuntes en desarrollo.
-
 -   [**🔎 Previsualizar PDF**](https://github.com/DanielSevillano/matematicas-latex/blob/main/An%C3%A1lisis%20de%20datos%20e%20inferencia/An%C3%A1lisis%20de%20datos%20e%20inferencia.pdf)
 -   [**📁 Descargar PDF**](https://raw.githubusercontent.com/DanielSevillano/matematicas-latex/main/An%C3%A1lisis%20de%20datos%20e%20inferencia/An%C3%A1lisis%20de%20datos%20e%20inferencia.pdf)
 
@@ -17,7 +15,7 @@ Estos apuntes están abiertos a correcciones y mejoras.
 
 -   Correcciones de erratas, expresiones y enunciados
 -   Nuevas demostraciones de resultados importantes
--   Nuevos ejemplos y gráficas
+-   Nuevos ejemplos y gráficas de modelos de regresión
 
 ## 📖 Índice
 
