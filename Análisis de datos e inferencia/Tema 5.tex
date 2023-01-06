@@ -223,9 +223,9 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
 \section{Contrastes de homogeneidad}
 Supongamos que disponemos de $p$ muestras aleatorias independientes tomadas de $p$ poblaciones sobre una característica común $X$ a todas ellas:
 \begin{align*}
-    (X_{11}, \dots, X_{1n_1}) \\
-    \dots                     \\
-    (X_{p1}, \dots, X_{pn_p})
+     & (X_{11}, \dots, X_{1n_1}) \\
+     & \dots                     \\
+     & (X_{p1}, \dots, X_{pn_p})
 \end{align*}
 con $n_1 + \dots + n_p = n$.
 
@@ -243,6 +243,13 @@ Después, definimos para la clase $A_i$ y para la muestra de la población $j$-�
     \item $O_{ij}$: frecuencia observada en la clase $A_i$ con la muestra $j$-ésima.
     \item $e_{ij}$: frecuencia esperada en la clase $A_i$ con la muestra $j$-ésima si todas las poblaciones tienen la distribución común $P$, $n_jP(A_i)$.
 \end{itemize}
+
+Queremos contrastar si las poblaciones tienen una distribución común sin saber cuál es esa distribución.
+Estimamos $P(A_i)$ a partir de las observaciones de la siguiente manera:
+$$\hat{P}(A_i) = \frac{\sum_{j=1}^p O_{ij}}{n}$$
+
+Las frecuencias esperadas se calculan de la forma:
+$$e_{ij} = n_j\hat{P}(A_i) = n_j \frac{\sum_{j=1}^p O_{ij}}{n} = \frac{(\sum_{i=1}^k O_{ij})(\sum_{j=1}^p O_{ij})}{n}$$
 
 El estadístico utilizado es:
 $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}}$$
@@ -314,12 +321,71 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
     Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
     $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}} > \chi^2_{(k-1)(p-1), 1-\alpha}$$
     En nuestro caso:
-    $$\sum_{j=1}^3 \sum_{i=1}^3 \frac{(O_{ij}-e_{ij})^2}{e_{ij}} = 47.87, \quad \chi^2_{2, 0.99} = 9.210$$
+    $$\sum_{j=1}^2 \sum_{i=1}^3 \frac{(O_{ij}-e_{ij})^2}{e_{ij}} = 47.87, \quad \chi^2_{2, 0.99} = 9.210$$
 
     Por tanto, rechazamos $H_0$ a nivel de significación $\alpha = 0.01$, es decir, podemos concluir que no son homogéneas las preferencias entre hombres y mujeres a nivel de significación $\alpha = 0.01$.
 \end{example}
 
-% Problema
+\begin{exercise}
+    En un sondeo de opinión sobre una determinada cuestión se han obtenido los siguientes datos:
+    \begin{center}
+        \begin{tabular}{| c | c c c |}
+            \hline
+                    & En contra & Indeciso & A favor \\
+            \hline
+            Hombres & 400       & 100      & 500     \\
+            Mujeres & 600       & 400      & 500     \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Queremos contrastar si hay diferencias de opinión según el sexo.
+
+    Para ello consideramos el contraste:
+    $$\begin{cases}
+            H_0: \text{No hay diferencias de opinión según el sexo} \\
+            H_1: \text{Hay diferencias de opinión según el sexo}
+        \end{cases}$$
+
+    La tabla de frecuencias observadas es:
+    \begin{center}
+        \begin{tabular}{| c | c c c | c |}
+            \hline
+            $O_{ij}$ & En contra & Indeciso & A favor &      \\
+            \hline
+            Hombres  & 400       & 100      & 500     & 1000 \\
+            Mujeres  & 600       & 400      & 500     & 1500 \\
+            \hline
+                     & 1000      & 500      & 1000    & 2500 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Las frecuencias esperadas se calculan de la forma:
+    $$e_{ij} = \frac{(\sum_{i=1}^k O_{ij})(\sum_{j=1}^p O_{ij})}{n}$$
+    obteniéndose la siguiente tabla de frecuencias esperadas:
+
+    \begin{center}
+        \begin{tabular}{| c | c c c |}
+            \hline
+            $e_{ij}$ & En contra & Indeciso & A favor \\
+            \hline
+            Hombres  & 400       & 200      & 400     \\
+            Mujeres  & 600       & 300      & 600     \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Usaremos el estadístico de contraste:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}}$$
+    que tiene aproximadamente una distribución $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
+
+    Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}} > \chi^2_{(k-1)(p-1), 1-\alpha}$$
+    En nuestro caso:
+    $$\sum_{j=1}^3 \sum_{i=1}^2 \frac{(O_{ij}-e_{ij})^2}{e_{ij}} = 125 \quad \chi^2_{2, 0.95} = 5,991$$
+
+    Por tanto, rechazamos $H_0$ a nivel de significación $\alpha = 0.05$, es decir, podemos asegurar que hay diferencias de opinión según el sexo a nivel de significación $\alpha = 0.05$.
+\end{exercise}
 
 \begin{exercise}
     Para probar la efectividad de una vacuna contra cierta enfermedad, se realizó un experimento observando el comportamiento de 100 personas vacunadas y 100 personas sin vacunar.
@@ -381,8 +447,6 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
 
     Por tanto, aceptamos $H_0$ a nivel de significación $\alpha = 0.05$, es decir, podemos concluir que la vacuna no es eficaz a nivel de significación $\alpha = 0.05$.
 \end{exercise}
-
-% Problema
 
 \section{Contrastes de independencia}
 Supongamos que queremos estudiar si dos características $X$ e $Y$ de una población están relacionadas o no.
@@ -481,4 +545,69 @@ En caso contrario, aceptaremos $H_0$ a nivel de significación $\alpha$.
     Por tanto, rechazamos $H_0$ a nivel de significación $\alpha = 0.05$, es decir, podemos concluir que existe dependencia entre el número de dosis recibidas y la protección frente a la gripe a nivel de significación $\alpha = 0.05$.
 \end{example}
 
-% Problema
+\begin{exercise}
+    Para estudiar si el grupo sanguíneo de los individuos tiene relación con la predisposición a padecer diabetes, se han seleccionado al azar 400 sujetos de los que se ha determiando el grupo sanguíneo y el nivel de glucosa en sangre en idénticas condiciones experimentales.
+    Clasificada la segunda medida en niveles bajo, medio y alto, los resultados han sido:
+    \begin{center}
+        \begin{tabular}{| c | c c c |}
+            \hline
+               & Bajo & Medio & Alto \\
+            \hline
+            0  & 137  & 86    & 35   \\
+            A  & 42   & 23    & 11   \\
+            B  & 19   & 17    & 7    \\
+            AB & 14   & 7     & 2    \\
+            \hline
+        \end{tabular}
+    \end{center}
+    Queremos contrastar la independencia entre el grupo sanguíneo y el nivel de glucosa en sangre.
+
+    Para ello consideramos el contraste:
+    $$\begin{cases}
+            H_0: \text{ Las dos características son independientes} \\
+            H_1: \text{ Las dos características no son independientes}
+        \end{cases}$$
+
+    La tabla de frecuencias observadas es:
+    \begin{center}
+        \begin{tabular}{| c | c c c | c |}
+            \hline
+            $O_{ij}$ & Bajo & Medio & Alto &     \\
+            \hline
+            0        & 137  & 86    & 35   & 258 \\
+            A        & 42   & 23    & 11   & 76  \\
+            B        & 19   & 17    & 7    & 43  \\
+            AB       & 14   & 7     & 2    & 23  \\
+            \hline
+                     & 212  & 133   & 55   & 400 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Las frecuencias esperadas se calculan de la forma:
+    $$e_{ij} = \frac{(\sum_{i=1}^k O_{ij})(\sum_{j=1}^p O_{ij})}{n}$$
+    obteniéndose la siguiente tabla de frecuencias esperadas:
+    \begin{center}
+        \begin{tabular}{| c | c c c |}
+            \hline
+            $e_{ij}$ & Bajo   & Medio   & Alto   \\
+            \hline
+            0        & 136.74 & 85.785  & 35.475 \\
+            A        & 40.28  & 25.27   & 10.45  \\
+            B        & 22.79  & 14.2975 & 5.9125 \\
+            AB       & 12.19  & 7.6475  & 3.1625 \\
+            \hline
+        \end{tabular}
+    \end{center}
+
+    Usaremos el estadístico de contraste:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}}$$
+    que tiene aproximadamente una distribución $\chi^2_{(k-1)(p-1)}$ si $H_0$ es cierta.
+
+    Rechazaremos $H_0$ a nivel de significación $\alpha$ si:
+    $$\sum_{j=1}^p \sum_{i=1}^k \frac{(O_{ij}-e_{ij})^2}{e_{ij}} > \chi^2_{(k-1)(p-1), 1-\alpha}$$
+    En nuestro caso:
+    $$\sum_{j=1}^3 \sum_{i=1}^4 \frac{(O_{ij}-e_{ij})^2}{e_{ij}} = 2,4057, \quad \chi^2_{6, 0.95} = 12,5916$$
+
+    Por tanto, aceptamos $H_0$ a nivel de significación $\alpha = 0.05$, es decir, podemos concluir que no existe dependencia entre el grupo sanguíneo y el nivel de glucosa en sangre a nivel de significación $\alpha = 0.05$.
+\end{exercise}
