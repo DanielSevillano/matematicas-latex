@@ -1,0 +1,455 @@
+\chapter{Conformalidad y funciones abiertas en el disco unidad}
+\section{Funciones meromorfas}
+
+\begin{definition}
+    Sea $D$ un abierto en $\mathbb{C}^\ast$.
+    La función $f: D \to \mathbb{C}^\ast$ es meromorfa en $D$ si dado $a \in D$ se verifica una de las siguientes posibilidades:
+    \begin{itemize}
+        \item $a \in \mathbb{C}$ y $f$ es holomorfa en $a$.
+        \item $a \in \mathbb{C}$ y $f$ tiene un polo en $a$, es decir, $f(a) = \infty$..
+        \item $a = \infty$ y $f$ tiene una singularidad evitable en $\infty$, es decir, $\lim\limits_{z \to \infty} f(z) = f(\infty) \in \mathbb{C}$.
+        \item $a = \infty$ y $f$ tiene un polo en $a$, es decir, $f(\infty) = \infty$.
+    \end{itemize}
+
+    Entonces $f: D \to \mathbb{C}^\ast$ es continua.
+\end{definition}
+
+\begin{remark}
+    En el caso $D \subset \mathbb{C}$, la definición es la que ya conocíamos de función meromorfa.
+    Si además $f(D) \subset \mathbb{C}$, se tiene una función holomorfa en $D$.
+\end{remark}
+
+\begin{remark}
+    Sea $D$ abierto en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$ continua.
+    Supongamos que $f$ es holomorfa en $\{z \in D \cap \mathbb{C} : f(z) \in \mathbb{C}\}$ y que el conjunto $\{z \in D : f(z) = z\}$ no tiene puntos de acumulación en $D$.
+    Entonces $f$ es meromorfa en $D$.
+\end{remark}
+
+\begin{remark}
+    Sea $D$ abierto en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$, $f$ meromorfa e inyectiva en $ A = \{z \in D \cap \mathbb{C} : f(z) \in \mathbb{C}\}$.
+    Entonces $f$ tiene a lo sumo un polo y tal polo es simple.
+    Además, $f'(a) \neq 0$ para todo $a \in A$, por lo que $f$ es conforme en $a$ para todo $a \in A$.
+\end{remark}
+
+\begin{theorem}[Teorema de la aplicación abierta]
+    Sea $D$ un dominio en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$ una función meromorfa y no constante en $D$.
+    Entonces $f$ es una aplicación abierta.
+    En particular, $f(D)$ es un dominio en $\mathbb{C}^\ast$.
+\end{theorem}
+
+Sea $D$ un dominio en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$ meromorfa e inyectiva, con $D' = f(D)$.
+Entonces:
+\begin{enumerate}
+    \item $D'$ es un dominio en $\mathbb{C}^\ast$.
+    \item $f^{-1}: D' \to D$ es meromorfa e inyectiva.
+\end{enumerate}
+
+Veamos que (2) es cierto.
+Como $f$ es una aplicación abierta, se tiene que $f^{-1}$ es continua.
+Sea $w \in D' \cap \mathbb{C}$ tal que $z = f^{-1}(w) \in \mathbb{C}$, veamos que $f^{-1}$ es holomorfa en $w$.
+Como $z \in \mathbb{C} \cap D$ y $f(z) \in \mathbb{C}$, $f$ es holomorfa en $z$ con $f'(z) \neq 0$.
+Por el teorema de la función inversa, $f^{-1}$ es holomorfa en $w$.
+
+\section{Aplicaciones conformes}
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$ meromorfa e inyectiva en $D$.
+    Sea $D' = f(D)$.
+    Entonces diremos que $f$ es una aplicación conforme de $D$ sobre $D'$.
+\end{definition}
+
+En este caso, se tiene que $D'$ es un dominio en $\mathbb{C}^\ast$ y que $f^{-1}: D' \to D$ es meromorfa e inyectiva en $D'$.
+Por tanto, $f: D \to D'$ es un homeomorfismo, con $f$ y $f^{-1}$ meromorfas.
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Si $f$ es una aplicación conforme de $D$ sobre $D'$, entonces $f^{-1}$ es una aplicación conforme de $D'$ sobre $D$.
+        \item Si $D_1$, $D_2$ y $D_3$ son dominios en $\mathbb{C}^\ast$, con $f$ aplicación conforme de $D_1$ sobre $D_2$ y $g$ aplicación conforme de $D_2$ sobre $D_3$, entonces $g \circ f$ es una aplicación conforme de $D_1$ sobre $D_3$.
+    \end{enumerate}
+\end{remark}
+
+Se puede comprobar que, sean $G_1, G_2$ abiertos en $\mathbb{C}^\ast$ y $f: G_1 \to \mathbb{C}, g: G_2 \to \mathbb{C}$ meroformas tal que $f(G_1) \subset G_2$, entonces $g \circ f: G_1 \to \mathbb{C}^\ast$ es meromorfa.
+
+\begin{definition}
+    Sean $D_1$ y $D_2$ dominios en $\mathbb{C}^\ast$.
+    Diremos que $D_1$ y $D_2$ son conformemente equivalentes si existe una aplicación conforme $f$ de $D_1$ sonre $D_2$.
+
+    En el conjunto de los dominios en $\mathbb{C}^\ast$, el ser conformemente equivalentes es una relación de equivalencia.
+\end{definition}
+
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}^\ast$.
+    Diremos que $D$ es simplemente conexo si $\mathbb{C}^\ast \setminus D$ es conexo.
+\end{definition}
+
+\begin{example}
+    \hfill
+    \begin{itemize}
+        \item $D = \mathbb{C}$.
+        \item $D = \mathbb{C}^\ast \setminus \{a\}$, $a \in \mathbb{C}$.
+        \item $D = \mathbb{C}^\ast \setminus \overline{D}(a, R)$, $a \in \mathbb{C}$, $R > 0$.
+        \item $D = D(a, R)$, $a \in \mathbb{C}$, $R > 0$.
+        \item Un semiplano sin $\infty$.
+        \item Un sector sin $\infty$.
+        \item El plano menos dos semirrectas.
+        \item $D = \mathbb{C} \setminus \{a\}$, $a \in \mathbb{C}$, no es simplemente conexo, porque $\mathbb{C}^\ast \setminus D = \{a, \infty\}$ no es conexo.
+    \end{itemize}
+\end{example}
+
+\begin{lemma}
+    Dado $a \in \mathbb{C}$, la transformación $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$, $T(z) = \frac{1}{z-a}$ si $z \in \mathbb{C} \setminus \{a\}$, $T(a) = \infty$ y $T(\infty) = 0$, es una aplicación conforme de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
+\end{lemma}
+
+\begin{lemma}
+    Sea $H$ un homeomorfismo de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
+    Si $D$ es un dominio simplemente conexo en $\mathbb{C}^\ast$, entonces $H(D)$ es un dominio simplemente conexo en $\mathbb{C}^\ast$.
+\end{lemma}
+
+\begin{proof}
+    Como $H: \mathbb{C}^\ast \to \mathbb{C}^\ast$ y $D$ es abierto y conexo en $\mathbb{C}^\ast$, entonces $H(D)$ es abierto y conexo en $\mathbb{C}^\ast$.
+    Luego $H(D)$ es un dominio en $\mathbb{C}^\ast$.
+    Como además $\mathbb{C}^\ast \setminus D$ es conexo, entonces $\mathbb{C}^\ast \setminus H(D) = H(\mathbb{C}^\ast \setminus D)$ es conexo.
+    Por tanto, $H(D)$ es un dominio simplemente conexo.
+\end{proof}
+
+\begin{theorem}
+    Sean $D_1$ y $D_2$ dos dominios en $\mathbb{C}^\ast$ que son conformemente equivalentes.
+    Entonces $D_1$ es simplemente conexo si y solo si $D_2$ es simplemente conexo.
+\end{theorem}
+
+\begin{proof}
+    Sea $F: D_1 \to D_2$ aplicación conforme.
+    Consideramos todos los posibles casos teniendo en cuenta que los papeles de $D_1$ y $D_2$ son intercambiables.
+    \begin{itemize}
+        \item Si $D_1, D_2 \subset \mathbb{C}$, se cumple.
+        \item Si $D_1 = \mathbb{C}^\ast$, como $\mathbb{C}^\ast$ es cerrado y $F$ es un homeomorfismo, se tiene que $D_2$ es compacto y por tanto cerrado.
+              Entonces $D_2$ es abierto y cerrado en $\mathbb{C}^\ast$, que es conexo.
+              Por tanto, $D_2 = \mathbb{C}^\ast = D_1$, ambos simplemente conexos.
+        \item Si $D_1, D_2 \neq \mathbb{C}^\ast$, consideramos dos casos.
+              \begin{itemize}
+                  \item Supongamos que $\infty \notin D_1$ y $\infty \in D_2$.
+                        $D$ es un dominio en $\mathbb{C}$ y $D_2$ es un dominio en $\mathbb{C}^\ast$.
+                        Sea $a \in \mathbb{C}^\ast \setminus D_2$, de hecho $a \in \mathbb{C} \setminus D_2$.
+                        Tomamos la aplicación conforme $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$, $T(z) = \frac{1}{z-a}$ si $z \in \mathbb{C}^\ast \setminus \{a\}$, $T(a) = \infty$.
+                        Tenemos el diagrama:
+                        $$D_1 \xrightarrow{F} D_2 \xrightarrow{T} T(D_2)$$
+                        $T(D_2)$ es un dominio en $\mathbb{C}^\ast$.
+                        Como $a \notin D_2$, entonces $T(a) = \infty \notin T(D_2)$.
+                        Así que $T(D_2)$ es un dominio en $\mathbb{C}$ conformemente equivalente a $D_1$.
+                        Luego $D_1$ es simplemente conexo si y solo si $T(D_2)$ es simplemente conexo.
+                        Por el lema anterior, esto es equivalente a que $D_2$ sea simplemente conexo.
+
+                  \item Supongamos que $\infty \in D_1, D_2$.
+                        Se sigue de un razonamiento similar usando el apartado anterior.
+              \end{itemize}
+    \end{itemize}
+\end{proof}
+
+\section{Dominios conformemente equivalentes al plano complejo y al plano complejo extendido}
+Veremos que hay tres clases de equivalencia de dominios simplemente conexos en $\mathbb{C}^\ast$: $\mathbb{C}^\ast$, $\mathbb{C}$ y el disco unidad $\mathbb{D} = D(0, 1) = \{z \in \mathbb{C} : |z| < 1\}$.
+
+$\mathbb{C}^\ast$ es compacto.
+Si $D$ es un dominio en $\mathbb{C}^\ast$ que es conformemente equivalente a $\mathbb{C}^\ast$, entonces $D$ es compacto y por tanto cerrado.
+Como $D$ es abierto, entonces $D = \mathbb{C}^\ast$.
+
+$\mathbb{C}$ y $\mathbb{D}$ son homeomorfos.
+Por ejemplo, $T: \mathbb{D} \to \mathbb{C}$, $T(z) = \frac{z}{1-|z|}$ es un homeomorfismo.
+
+\begin{proposition}
+    $\mathbb{C}$ y $\mathbb{D}$ no son conformemente equivalentes.
+\end{proposition}
+
+\begin{proof}
+    Supongamos que existe una aplicación conforme $F$ de $\mathbb{C}$ sobre $\mathbb{D}$.
+    Entonces $F: \mathbb{C} \to \mathbb{D}$ es entera y acotada.
+    Por el teorema de Liouville, $F$ es constante.
+    Esto contradice que $F$ sea una aplicación conforme.
+\end{proof}
+
+\begin{proposition}
+    Sea $f$ entera e inyectiva, entonces $f$ es de la forma
+    $$f(z) = \alpha z + \beta, \quad \alpha, \beta \in \mathbb{C}, \; \alpha \neq 0$$
+\end{proposition}
+
+\begin{proof}
+    Sea $f(z) = \sum_{n=0}^\infty a_nz^n$, $z \in \mathbb{C}$, el desarrollo de Taylor de $f$ en 0.
+    Entonces $\infty$ es una singularidad aislada de $f$ y el desarrollo anterior coincide con el desarrollo de Laurent de $f$ en $\infty$.
+    \begin{itemize}
+        \item Si $\infty$ es una singularidad evitable de $f$, entonces $a_n = 0$ si $n \geq 1$, así que $f$ es constante.
+              Esto no es posible.
+        \item Si $\infty$ es un polo de orden $N$ de $f$, entonces $a_N \neq 0$ y $a_n = 0$ si $n > N$.
+              Luego $f$ es un polinomio de grado $N$.
+              $f'$ es un polinomio de grado $N-1$, con $f'(z) \neq 0$ para todo $z \in \mathbb{C}$.
+              Así que $f'$ es constante, por tanto $N - 1 = 0 \Rightarrow N = 1$.
+        \item Si $\infty$ es una singularidad esencial de $f$, entonces $f(\{z \in \mathbb{C} : |z| > 1\})$ es denso en $\mathbb{C}$.
+              Por el teorema de la aplicación abierta, $f(\{z \in \mathbb{C} : |z| < 1\})$ es abierto en $\mathbb{C}$.
+              Estos conjuntos son disjuntos por ser $f$ inyectiva, y esto no es posible.
+    \end{itemize}
+\end{proof}
+
+Si $D$ es un dominio en $\mathbb{C}$ que es conformemente equivalente a $\mathbb{C}$, entonces $D = \mathbb{C}$.
+Veamos que esto es verdad.
+Sea $f: \mathbb{C} \to D$ aplicación conforme.
+$f$ es entera e inyectiva, así que $f(z) = \alpha z + \beta$, con $\alpha, \beta \in \mathbb{C}$, $\alpha \neq 0$.
+Luego $D = f(\mathbb{C}) = \mathbb{C}$.
+
+Las aplicaciones conformes de $\mathbb{C}$ sobre $\mathbb{C}$ son de la forma:
+$$f(z) = \alpha z + \beta, \quad \alpha, \beta \in \mathbb{C}, \; \alpha \neq 0$$
+
+Sea $D$ un dominio en $\mathbb{C}^\ast$ que es conformemente equivalente a $\mathbb{C}$.
+\begin{itemize}
+    \item Si $\infty \notin D$, entonces $D$ es un dominio en $\mathbb{C}$ conformemente equivalente a $\mathbb{C}$ y, por tanto, $D = \mathbb{C}$.
+    \item Si $\infty \in D$, consideramos $F: \mathbb{C} \to D$ aplicación conforme.
+          Como sabemos que $D \neq \mathbb{C}^\ast$, existe $\alpha \in \mathbb{C}^\ast \setminus D$, de hecho $\alpha \in \mathbb{C} \setminus D$.
+          Sea
+          $$T: D \to T(D), \quad T(z) = \frac{1}{z-\alpha}$$
+          Tenemos el diagrama:
+          $$\mathbb{C} \xrightarrow[]{F} D \xrightarrow[]{T} T(D) = D'$$
+          $D'$ es un dominio en $\mathbb{C}$ conformemente equivalente a $\mathbb{C}$, así que $D' = \mathbb{C} = \mathbb{C}^\ast \setminus \{\infty\}$.
+          Por tanto, $D = \mathbb{C}^\ast \setminus \{\alpha\}$.
+\end{itemize}
+
+Hemos probado que si $D$ es un dominio en $\mathbb{C}^\ast$ conformemente equivalente a $\mathbb{C}$, entonces $D = \mathbb{C}$ o $D = \mathbb{C}^\ast \setminus \{\alpha\}$, con $\alpha \in \mathbb{C}$.
+Es decir, $D = \mathbb{C}^\ast \setminus \{\alpha\}$, $\alpha \in \mathbb{C}^\ast$.
+
+Los dominios en $\mathbb{C}^\ast$ que son conformemente equivalentes a $\mathbb{C}$ son $\mathbb{C}^\ast \setminus \{\alpha\}$, $\alpha \in \mathbb{C}^\ast$.
+
+\subsection*{Aplicaciones conformes de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$}
+Sea $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ aplicación conforme.
+Sea $a \in \mathbb{C}^\ast$ tal que $T(a) = \infty$.
+Consideramos dos casos:
+\begin{enumerate}
+    \item Si $a = \infty$, $T(\infty) = \infty$.
+          $T: \mathbb{C} \to \mathbb{C}$ es una aplicación conforme, así que $T(z) = \alpha z + \beta$, con $\alpha, \beta \in \mathbb{C}$, $\alpha \neq 0$.
+    \item Si $a \in \mathbb{C}$, $T(a) = \infty$.
+          $T$ es holomorfa en $\mathbb{C} \setminus \{a\}$, así que $a$ es un polo simple de $T$.
+          Consideramos el desarrollo de Laurent de $T$ en $a$.
+          $$T(z) = \frac{A_{-1}}{z-a} + \sum_{n=0}^\infty A_n(z-a)^n, \quad z \in \mathbb{C} \setminus \{a\}, \; A_{-1} \neq 0$$
+          $\infty$ es una singularidad aislada de $T$.
+          De hecho, es una singularidad evitable.
+
+          Sea $F(z) = T(z) - \frac{A_{-1}}{z-a}$, $z \in \mathbb{C} \setminus \{a\}$.
+          $F$ es holomorfa en $\mathbb{C} \setminus \{a\}$.
+          $a$ es singularidad evitable de $F$ y $\lim\limits_{z \to \infty} F(z) = T(\infty) \in \mathbb{C}$, así que $\infty$ es una singularidad evitable también.
+          Evitando la singularidad de $F$ en $a$, tenemos que $F$ es entera y acotada.
+          Por tanto $F$ es constante.
+          Así que $F(z) = a_0$, para todo $z \in \mathbb{C}$.
+          Entonces:
+          $$T(z) = F(z) + \frac{A_{-1}}{z-a} = a_0 + \frac{A_{-1}}{z-a} = \frac{a_0z + (A_{-1}-a_0a)}{z-a}$$
+\end{enumerate}
+
+En cualquiera de los dos casos, $T$ es de la forma:
+$$T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad \alpha, \beta, \gamma, \delta \in \mathbb{C}$$
+
+No todas las aplicaciones de esta forma son aplicaciones conformes de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
+
+\begin{example}[Contraejemplo]
+    No es una aplicación conforme si $\alpha = \beta = 0$ o $(\alpha, \beta)$ y $(\gamma, \delta)$ son proporcionales.
+    Por ejemplo:
+    $$T(z) = \frac{3z + 2}{6z + 4} = \frac{1}{2}$$
+\end{example}
+
+Para que las aplicaciones de esa forma sean aplicaciones conformes de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$, se tiene que verificar que:
+$$\begin{vmatrix}
+        \alpha & \beta  \\
+        \gamma & \delta
+    \end{vmatrix} \neq 0$$
+
+En el caso (1), $T(z) = Az + B = \frac{Az + B}{0z + 1}$, con $A, B \in \mathbb{C}$, $A \neq 0$, luego:
+$$\begin{vmatrix}
+        A & B \\
+        0 & 1
+    \end{vmatrix} = A \neq 0$$
+
+En el caso (2),
+$$\begin{vmatrix}
+        a_0 & A_{-1} - a_0a \\
+        1   & -a
+    \end{vmatrix} = -a_0a - A_{-1} + a_0a = -A_{-1} \neq 0$$
+
+\begin{theorem}
+    Las aplicaciones conformes de $\mathbb{C}^\ast$ en $\mathbb{C}^\ast$ son de la forma:
+    $$T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad \alpha, \beta, \gamma, \delta \in \mathbb{C}, \; \alpha\delta - \beta\gamma \neq 0$$
+\end{theorem}
+
+\begin{proof}
+    Sea $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ una aplicación de esa forma.
+    \begin{itemize}
+        \item Si $\gamma = 0$, entonces:
+              $$T(z) = \frac{\alpha z + \beta}{\delta} = \frac{\alpha}{\delta}z + \frac{\beta}{\delta}, \quad \alpha, \delta \neq 0$$
+
+              $T$ es una aplicación conforme de $\mathbb{C}$ sobre $\mathbb{C}$, con $\lim\limits_{z \to \infty} T(z) = \infty$.
+              Definiendo $T(\infty) = \infty$, tenemos que $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ es una aplicación conforme.
+
+        \item Si $\gamma \neq 0$, entonces $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$,
+              \begin{align*}
+                   & T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\} \\
+                   & T\left(-\frac{\delta}{\gamma}\right) = \infty                                                                             \\
+                   & T(\infty) = \frac{\alpha}{\gamma}
+              \end{align*}
+
+              $T$ es meromorfa en $\mathbb{C}^\ast$ y $T$ es inyectiva.
+
+              Veamos que $T$ es sobreyectiva.
+              Sea $w \in \mathbb{C} \setminus \{\frac{\alpha}{\gamma}\}$ y sea $z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\}$.
+              Entonces:
+              $$T(z) = w \Leftrightarrow \frac{\alpha z + \beta}{\gamma z + \delta} = w \Leftarrow \alpha z + \beta = \gamma zw + \delta w \Leftrightarrow (\alpha - \gamma w)z = \delta w - \beta \Leftarrow z = \frac{\delta w - \beta}{-\gamma w + \alpha}$$
+
+              Por tanto, $T$ es una aplicación conforme de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
+    \end{itemize}
+
+    Además, hemos probado que $T^{-1}$ es de la forma:
+    $$T^{-1}(z) = \frac{\delta z - \beta}{-\gamma z + \alpha}, \quad \begin{vmatrix}
+            \delta  & -\beta \\
+            -\gamma & \alpha
+        \end{vmatrix} = \alpha\delta - \beta\gamma \neq 0$$
+    Si $\gamma = 0$, también es válida esta expresión.
+\end{proof}
+
+\section{Funciones holomorfas en el disco unidad}
+\begin{theorem}[Lema de Schwarz]
+    Sea $\varphi$ una función holomorfa en $\mathbb{D}$ tal que $\varphi(0) = 0$ y $\varphi(\mathbb{D}) \subset \mathbb{D}$.
+    Entonces:
+    \begin{enumerate}
+        \item $|\varphi(z)| \leq |z|$ para todo $z \in \mathbb{D}$.
+        \item $|\varphi'(0)| \leq 1$.
+    \end{enumerate}
+
+    Además, se da la igualdad en (1) para algún $z \in \mathbb{D}$ con $z \neq 0$ o bien se da la igualdad en (2) si y solo si $\varphi$ es una rotación de $\mathbb{D}$, es decir, si existe $\lambda \in \mathbb{C}$ con $|\lambda| = 1$ tal que $\varphi(z) = \lambda z$ para todo $z \in \mathbb{D}$.
+\end{theorem}
+
+\begin{remark}
+    Si $\varphi$ es una rotación, entonces se da la igualdad en (1) para todo $z \in \mathbb{D}$ y se da la igualdad en (2).
+\end{remark}
+
+\begin{remark}
+    El teorema se puede enunciar de forma equivalente con la condición $\varphi(\mathbb{D}) \subset \overline{\mathbb{D}}$ en lugar de $\varphi(\mathbb{D}) \subset \mathbb{D}$.
+    Es decir, si $\varphi$ es holomorfa en $\mathbb{D}$ con $\varphi(0) = 0$ y $\varphi(\mathbb{D}) \subset \overline{\mathbb{D}}$, entonces $\varphi(\mathbb{D}) \subset \mathbb{D}$. \\
+    Veamos que esto es cierto.
+    Supongamos que existe $z_0 \in \mathbb{D}$ con $|\varphi(z_0)| = 1$.
+    Como $|\varphi(z)| \leq 1$ para todo $z \in \mathbb{D}$, por el principio del máximo $\varphi$ es constante, luego $\varphi \equiv \varphi(0) = 0$.
+    Esto contradice que $|\varphi(z_0)| = 1$.
+\end{remark}
+
+Sea $f$ holomorfa en $\mathbb{D}$ con $(\mathbb{D}) \subset \mathbb{D}$.
+Sea $a \in \mathbb{D}$ y $b = f(a) \in \mathbb{D}$.
+Definimos:
+\begin{align*}
+    T_a(z) & = \frac{z+a}{1 + \bar{a}z}, & T_a \in \mathcal{M}, \; T_a(\mathbb{D}) = \mathbb{D}, \; T_a(0) = a \\
+    S_b(z) & = \frac{z-b}{1 - \bar{b}z}, & S_b \in \mathcal{M}, \; S_b(\mathbb{D}) = \mathbb{D}, \; S_b(b) = 0
+\end{align*}
+
+Sea $\varphi = S_b \circ f \circ T_a$.
+$\varphi$ es holomorfa en $\mathbb{D}$, con $\varphi(\mathbb{D}) \subset \mathbb{D}$ y $\varphi(0) = 0$.
+Por el lema de Schwarz,
+\begin{enumerate}
+    \item $|\varphi(z)| \leq |z|$ para todo $z \in \mathbb{D}$.
+    \item $|\varphi(0)| \leq 1$.
+\end{enumerate}
+
+Además, se da la igualdad en (1) para algún $z \in \mathbb{D}$, $z \neq 0$, o bien se da la igualdad en (2) si y solo si $\varphi$ es una rotación.
+
+Desarrollamos las dos expresiones:
+\begin{enumerate}
+    \item Sea $z \in \mathbb{D}$.
+          Consideramos $T_a^{-1}(z) \in \mathbb{D}$.
+          \begin{align*}
+               & |\varphi(T_a^{-1}(z))| \leq |T_a^{-1}(z)| \Leftrightarrow |S_b(f(z))| \leq |S_a(z)| \Leftrightarrow                                                                                                                                              \\
+               & \Leftrightarrow \left|\frac{f(z)-b}{1-\bar{z}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right| \Leftrightarrow \left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|, \quad \forall z \in \mathbb{D}
+          \end{align*}
+
+          Además, si se da la igualdad para algún $z \in \mathbb{D}$, $z \neq a$, entonces $\varphi$ es una rotación.
+          Entonces, $f = S_b^{-1} \circ \varphi \circ T_a^{-1} \in \mathcal{M}$, con $f(\mathbb{D}) = \mathbb{D}$.
+
+    \item Por la regla de la cadena, $\varphi'(0) = T_a'(0) f'(a) S_b'(b)$.
+          \begin{align*}
+              T_a'(z) & = \frac{1 + \bar{a}z - (z+a)\bar{a}}{(1 + \bar{a}z)^2}, & T_a'(0) & = 1 - |a|^2                                     \\
+              S_b'(z) & = \frac{1 - \bar{b}z + (z-b)\bar{b}}{(1 - \bar{b}z)^2}, & S_b'(b) & = \frac{1-|b|^2}{(1-|b|^2)} = \frac{1}{1-|b|^2}
+          \end{align*}
+
+          Así que:
+          $$\varphi'(0) = (1-|a|^2)f'(a)\frac{1}{1-|b|^2}$$
+
+          Por tanto:
+          $$|\varphi'(0)| \leq 1 \Leftrightarrow (1-|a|^2)f'(a)\frac{1}{1-|b|^2} \leq 1 \Leftrightarrow \frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}$$
+
+          Además, si se da la igualdad, entonces $\varphi$ es una rotación y por tanto $f \in \mathcal{M}$, con $f(\mathbb{D}) \subset \mathbb{D}$.
+\end{enumerate}
+
+Por tanto, hemos probado lo siguiente:
+\begin{enumerate}
+    \item Para todo $z \in \mathbb{D}$,
+          $$\left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|$$
+          Si se da la igualdad para algún $z \in \mathbb{D}$ con $z \neq a$ entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
+    \item $$\frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}$$
+          Si se da la igualdad entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
+\end{enumerate}
+
+\begin{theorem}[Teorema de Schwarz-Pick]
+    Sea $f$ holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$.
+    Entonces:
+    \begin{enumerate}
+        \item Para todo $z_1, z_2 \in \mathbb{D}$,
+              $$\left|\frac{f(z_2)-f(z_1)}{1-\overline{f(z_1)}f(z_2)}\right| \leq \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+        \item Para todo $z \in \mathbb{D}$,
+              $$\frac{|f'(z)|}{1-|f(z)|^2} \leq \frac{1}{1-|z|^2}$$
+    \end{enumerate}
+
+    Además, se da la igualdad en (1) para algún par de puntos $z_1, z_2 \in \mathbb{D}$ con $z_1 \neq z_2$ o bien se da la igualdad en (2) para algún $z \in \mathbb{D}$ si y solo si $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$, en cuyo caso se da la igualdad en (1) para todo $z_1, z_2 \in \mathbb{D}$ y se da la igualdad en (2) para todo $z \in \mathbb{D}$.
+\end{theorem}
+
+\begin{proposition}
+    Sea $T \in \mathcal{M}$ con $T(\mathbb{D}) = \mathbb{D}$.
+    Entonces:
+    \begin{enumerate}
+        \item Para todo $z_1, z_2 \in \mathbb{D}$,
+              $$\left|\frac{T(z_2)-T(z_1)}{1-\overline{T(z_1)}T(z_2)}\right| = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+        \item Para todo $z \in \mathbb{D}$,
+              $$\frac{|T'(z)|}{1-|T(z)|^2} \leq \frac{1}{1-|z|^2}$$
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+    Dados $z_1, z_2 \in \mathbb{D}$, definimos:
+    $$\rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+
+    Observamos que si $1-\overline{z_1}z_2 = 0$ entonces $\overline{z_1}z_2 = 1 \Rightarrow |z_1||z_2| = 1$.
+    Como esto no ocurre, $\rho$ está bien definida.
+\end{definition}
+
+La primera parte del teorema de Schwarz-Pick se puede reescribir usando $\rho$.
+
+Sea $f$ holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$.
+Entonces:
+$$\rho(f(z_1), f(z_2)) \leq \rho(z_1, z_2), \quad \text{si } z_1, z_2 \in \mathbb{D}$$
+Además, se da la igualdad para algún par de puntos distintos $z_1, z_2 \in \mathbb{D}$ si y solo si $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$, en cuyo caso se da la igualdad para todo $z_1, z_2 \in \mathbb{D}$.
+
+Vamos a ver que $\rho$ es una distancia en $\mathbb{D}$.
+\begin{align*}
+    \rho: & D \times D \to \mathbb{R}                                                            \\
+          & (z_1, z_2) \mapsto \rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|
+\end{align*}
+
+\begin{itemize}
+    \item $\rho(z_1, z_2) \leq 0$.
+    \item $\rho(z_1, z_2) = \rho(z_2, z_1)$.
+    \item $\rho(z_1, z_2) = 0 \Leftrightarrow z_1 = z_2$.
+    \item $\rho(z_1, z_3) \leq \rho(z_1, z_2) + \rho(z_2, z_3)$.
+\end{itemize}
+
+\begin{lemma}
+    Para todo $a, z \in \mathbb{D}$,
+    $$\frac{||z|-|a||}{1-|a||z|} \leq \left|\frac{z-a}{1-\bar{a}z} \leq \frac{|z|+|a|}{1+|a||z|}\right|$$
+\end{lemma}
+
+Observamos que si $a, z \in \mathbb{D}$, tenemos:
+$$\rho(a, z) = \left|\frac{z-a}{1-\bar{a}z}\right| = |S_a(z)| < 1, \quad S_a \in \mathcal{M}, S_a(\mathbb{D}) = \mathbb{D}$$
+
+Dados $a \in \mathbb{D}$ y $0 < r < 1$, denotamos:
+$$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}$$
+Entonces, dado $z \in \mathbb{D}$, se tiene que:
+\begin{align*}
+     & z \in \Delta(a, r) \Leftrightarrow \rho(z, a) < r \Leftrightarrow |S_a(z)| < r \Leftrightarrow S_a(z) \in D(0, r) \Leftrightarrow \\
+     & \Leftrightarrow z \in S_a^{-1}(D(0, r)) \Leftrightarrow z \in T_a(D(0, r))
+\end{align*}
+Entonces $\Delta(a, r) = T_a(D(0, r))$.

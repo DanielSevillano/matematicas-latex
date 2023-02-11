@@ -1,0 +1,291 @@
+\chapter*{Preliminares}
+\addcontentsline{toc}{chapter}{Preliminares}
+\begin{definition}
+    Si $a \in \mathbb{C}$ y $0 \leq R_1 < R_2 \leq \infty$, se define la corona de centro $a$ y radios $R_1$ y $R_2$ como:
+    $$A(a, R_1, R_2) = \{z \in \mathbb{C} : R_1 < |z-a| < R_2\}$$
+\end{definition}
+
+\begin{theorem}
+    Si $a \in \mathbb{C}$, $0 \leq R_1 < R_2 \leq \infty$ y $f$ es holomorfa en $A(a, R_1, R_2)$, entonces existe una única sucesión $\{a_n\}_{-\infty}^\infty$ en $\mathbb{C}$ tal que:
+    \begin{itemize}
+        \item $\sum_{-\infty}^\infty a_n(z-a)^n$ converge para todo $z \in A(a, R_1, R_2)$.
+        \item $f(z) = \sum_{-\infty}^\infty a_n(z-a)^n$ para todo $z \in A(a, R_1, R_2)$.
+    \end{itemize}
+
+    Para cada $n \in \mathbb{Z}$,
+    $$a_n = \frac{1}{2\pi i} \int_\gamma \frac{f(z)}{(z-a)^{n+1}}dz$$
+    siendo $\gamma$ cualquiera camino que esté en $A(a, R_1, R_2)$ con $n(\gamma, a) = 1$
+
+    Además, la serie $\sum_{-\infty}^\infty a_n(z-a)^n$ converge absoluta y uniformemente a cada subconjunto compacto de $A(a, R_1, R_2)$.
+
+    A esta serie se le llama desarrollo de Laurent de $f$ en $A(a, R_1, R_2)$.
+\end{theorem}
+
+\begin{definition}
+    $f$ tiene una singularidad aislada en $a \in \mathbb{C}$ si existe $R > 0$ tal que $f$ está definida y es holomorfa en $D(a, R) \setminus \{a\} = A(a, 0, R)$.
+\end{definition}
+
+Podemos considerar el desarrollo de Laurent de $f$ en $D(a, R) \setminus \{a\}$.
+Existe una única sucesión en $\mathbb{C}$, $\{a_n\}_{-\infty}^\infty$, tal que:
+$$f(z) = \sum_{-\infty}^\infty a_n(z-a)^n, \quad z \in D(a, R) \setminus \{a\}$$
+
+Como la sucesión $\{a_n\}_{-\infty}^\infty$ no depende de $R$, a este desarrollo se le puede llamar desarrollo de Laurent de $f$ en $a$ o en un entorno perforado de $a$.
+
+\begin{proposition}
+    Sea $f$ una función con una singularidad aislada en $a \in \mathbb{C}$ y sea $\sum_{-\infty}^\infty a_n(z-a)^n$ el desarrollo de Laurent de $f$ en $a$.
+    Entonces:
+    \begin{enumerate}
+        \item $a$ es una singularidad evitable de $f$ $\Leftrightarrow$ $a_n = 0$ si $n < 0$ $\Leftrightarrow$ $\{n < 0 : a_n \neq 0\} = \emptyset$.
+        \item $a$ es un polo de orden $N$ de $f$ $\Leftrightarrow$ $a_{-N} \neq 0$ y $a_n = 0$ si $n < -N$.
+              Luego $a$ es un polo de $f$ $\Leftrightarrow$ $\{n < 0 : a_n \neq 0\}$ es finito y no vacío.
+        \item $a$ es una singularidad esencial de $f$ $\Leftrightarrow$ $\{n < 0 : a_n \neq 0\}$ es infinito.
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+    $f$ tiene una singularidad aislada en $\infty$ si existe $R > 0$ tal que $f$ es holomorfa en $\{z \in \mathbb{C} : |z| > R\}$.
+    \begin{enumerate}
+        \item Es una singularidad evitable de $f$ si $\lim\limits_{z \to \infty} f(z)$ existe en $\mathbb{C}$.
+        \item Es un polo de $f$ si $\lim\limits_{z \to \infty} f(z) = \infty$.
+        \item Es una singularidad esencial en otro caso.
+    \end{enumerate}
+\end{definition}
+
+Si $f$ tiene una singularidad aislada en $\infty$, entonces $f$ es holomorfa en $\{z \in \mathbb{C} : |z| > R\}$ para un cierto $R > 0$.
+Entonces la función $g(z) = f\left(\frac{1}{z}\right)$ es holomorfa en $D\left(0, \frac{1}{R}\right) \setminus \{0\}$, por lo que tiene una singularidad aislada en 0.
+
+Entonces:
+\begin{enumerate}
+    \item $f$ tiene una singularidad evitable en $\infty$ $\Leftrightarrow$ $g$ tiene una singularidad evitable en 0.
+    \item $f$ tiene un polo en $\infty$ $\Leftrightarrow$ $g$ tiene un polo en 0.
+    \item $f$ tiene una singularidad esencial en $\infty$ $\Leftrightarrow$ $g$ tiene una singularidad esencial en 0.
+\end{enumerate}
+
+\begin{proposition}
+    Sea $f$ una función con una singularidad aislada en $\infty$.
+    Entonces:
+    \begin{enumerate}
+        \item $\infty$ es una singularidad evitable de $f$ $\Leftrightarrow$ $f$ está acotada en un entorno perforado de $\infty$.
+              Es decir, si existe $R > 0$ tal que $f$ es holomorfa y está acotada en $\{z \in \mathbb{C} : |z| > R\}$.
+        \item $\infty$ es un polo de $f$ $\Leftrightarrow$ existe $N \in \mathbb{N}$ tal que $\lim\limits_{z \to \infty} \frac{f(z)}{z^N}$ existe en $\mathbb{C}$ y es distinto de 0.
+              En este caso, $N$ es único y se denomina el orden de $\infty$ como polo de $f$.
+        \item $\infty$ es una singularidad esencial de $f$ $\Leftrightarrow$ $f(\{z \in \mathbb{C} : |z| > R\})$ es denso en $\mathbb{C}$ para todo $R > 0$ suficientemente grande.
+    \end{enumerate}
+\end{proposition}
+
+\begin{remark}
+    En (2), el orden de $\infty$ como polo de $f$ coincide con el orden de 0 como polo de $f\left(\frac{1}{z}\right)$.
+\end{remark}
+
+Si $f$ tiene una singularidad aislada en $\infty$, entonces existe $R > 0$ tal que $f$ es holomorfa en $\{z \in \mathbb{C} : |z| > R\} = A(0, R, \infty)$.
+Podemos considerar el desarrollo de Laurent de $f$ en $A(0, R, \infty)$: existe una única sucesión $\{a_n\}_{-\infty}^\infty$ en $\mathbb{C}$ tal que:
+$$f(z) = \sum_{-\infty}^\infty a_nz^n, \quad \text{para todo } z \in \mathbb{C} \text{ con } |z| > R$$
+
+Como no depende de $R$, se le puede llamar desarrollo de Laurent de $f$ en $\infty$.
+
+\begin{proposition}
+    Sea $f$ una función con una singularidad aislada en $\infty$ y sea $\sum_{-\infty}^\infty a_nz^n$ el desarrollo de Laurent de $f$ en $\infty$.
+    Entonces:
+    \begin{enumerate}
+        \item $\infty$ es una singularidad evitable de $f$ $\Leftrightarrow$ $a_n = 0$ si $n > 0$.
+        \item $\infty$ es un polo de $f$ de orden $N$ $\Leftrightarrow$ $a_N \neq 0$ y $a_n = 0$ si $n > N$.
+        \item $\infty$ es una singularidad esencial de $f$ $\Leftrightarrow$ $\{n > 0 : a_n \neq 0\}$ es infinito.
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+    Si $f$ tiene una singularidad aislada en $a \in \mathbb{C}$ y $\sum_{-\infty}^\infty a_n(z-a)^n$ es el desarrollo de Laurent de $f$ en $a$, se define $Res(f, a) = a_{-1}$.
+\end{definition}
+
+\begin{proposition}
+    Sea $a \in \mathbb{C}$ y $f$ una función con una singularidad aislada en $a$.
+    Sea $R > 0$ tal que $f$ es holomorfa en $D(a, R) \setminus \{a\}$.
+    Entonces, para todo $r \in (0, R)$, se tiene que:
+    $$Res(f, a) = \frac{1}{2\pi i} \int_{|z-a| = r} f(z)dz$$
+\end{proposition}
+
+\begin{proposition}
+    Sea $f$ una función con una singularidad aislada en $\infty$.
+    Sea $R > 0$ tal que $f$ es holomorfa en $\{z \in \mathbb{C} : |z| > R\}$.
+    Se define:
+    $$Res(f, \infty) = \frac{-1}{2\pi i} \int_{|z| = r} f(z)dz, \quad \text{siendo } r > R$$
+\end{proposition}
+
+\begin{proposition}
+    Si $f$ tiene una singularidad aislada en $\infty$ y $\sum_{-\infty}^\infty a_nz^n$ es el desarrollo de Laurent de $f$ en $\infty$, entonces $Res(f, \infty) = -a_{-1}$.
+\end{proposition}
+
+\begin{theorem}[Teorema de los residuos]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $f$ holomorfa en $D$ salvo por singularidades aisladas, es decir, existe $A \subset D$, $A$ sin puntos de acumulación en $D$, tal que $f$ es holomorfa en $D \setminus A$.
+    Sea $\gamma$ un camino cerrado en $D \setminus A$, con $n(\gamma, z) = 0$ para todo $z \in \mathbb{C} \setminus D$.
+    Entonces:
+    $$\frac{1}{2\pi i} \int_\gamma f(z)dz = \sum_{a \in A} Res(f, a)n(\gamma, a)$$
+\end{theorem}
+
+\begin{theorem}[Teorema de la función inversa]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $f$ holomorfa en $D$, con $a \in D$ tal que $f'(a) \neq 0$.
+    Entonces existen $U, V$ abiertos en $\mathbb{C}$ con $a \in U \subset D$, $f(a) \in V$, tales que:
+    \begin{enumerate}
+        \item $f$ es inyectiva en $U$.
+        \item $f(U) = V$.
+        \item $f'(z) \neq 0$ para todo $z \in U$.
+        \item $f^{-1}: V \to U$ es holomorfa y además:
+              $$(f^{-1})'(f(z)) = \frac{1}{f'(z)}, \quad \forall z \in U$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$ y sean $f$ holomorfa en $D$ no constante y $a \in D$.
+    Sea $n$ el orden de $a$ como cero de $f-f(a)$, es decir, el primer natural para el que $f^{(n)}(a) \neq 0$.
+    Entonces $f$ es localmente una aplicación $n \to 1$ cerca de $a$.
+    Es decir, existe $\alpha > 0$ con $D(a, \alpha) \subset D$ tal que para todo $0 < \varepsilon < \alpha$ existe $\delta > 0$ tal que cada punto $w \in D(f(a), \delta) \setminus \{f(a)\}$ es la imagen de exactamente $n$ puntos distintos $z_1, z_2, \dots z_n \in D(a, \varepsilon) \setminus \{a\}$.
+    En particular, $f(D(a, \varepsilon)) \supset D(f(a), \delta)$.
+\end{theorem}
+
+\begin{definition}
+    Sea $D$ abierto en $\mathbb{C}$ y sea $f$ holomorfa en $D$ salvo por polos.
+    Si $a \in D$ es un polo de $f$, se tiene que $\lim\limits_\{z \to a\} f(z) = \infty$.
+    Definimos $f(a) = \infty$.
+    Entonces $f: D \to \mathbb{C}^\ast$ y es continua.
+    Se dice que $f$ es meromorfa en $D$.
+\end{definition}
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $f$ meromorfa en $D$, con $a \in D$ un polo de orden $n$ de $f$.
+    Entonces $f$ es localmente una aplicación $n \to 1$ cerca de $a$.
+    Es decir, existe $\alpha > 0$ tal que $D(a, \alpha) \subset D$, $f$ es holomorfa en $D(a, \alpha) \setminus \{a\}$ y se verifica que para todo $0 < \varepsilon < \alpha$ existe $R > 0$ tal que cada punto $w \in \mathbb{C}$ con $|w| > R$ es la imagen de exactamente $n$ puntos distintos $z_1, z_2, \dots z_n \in D(a, \varepsilon) \setminus \{a\}$.
+    En particular, $f(D(a, \varepsilon) \setminus \{a\}) \supset \{w \in \mathbb{C} : |w| > R\}$.
+\end{theorem}
+
+
+\begin{theorem}
+    Sea $f$ una función con un polo de orden $n$ en $\infty$.
+    Entonces $f$ es localmente una aplicación $n \to 1$ cerca de $\infty$.
+    Es decir, existe $R_0 > 0$ tal que $f$ es holomorfa en $\{z \in \mathbb{C} : |z| > R_0\}$ y se verifica que para todo $R > R_0$ existe $R' > 0$ tal que cada punto $w \in \mathbb{C}$ con $|w| > R'$ es la imagen de exactamente $n$ puntos distintos $z_1, \dots, z_n$ de $\{z \in \mathbb{C} : |z| > R\}$.
+    En particular, $f(\{z \in \mathbb{C} : |z| > R\}) \supset \{w \in \mathbb{C} : |w| > R\}$.
+\end{theorem}
+
+\begin{theorem}[Teorema de la aplicación abierta]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $f: D \to \mathbb{C}$ holomorfa y no constante.
+    Entonces $f$ es una aplicación abierta.
+    En particular, $f(D)$ es un dominio.
+\end{theorem}
+
+\begin{lemma}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $f$ holomorfa en $D$.
+    \begin{itemize}
+        \item Sea $a \in D$.
+              Entonces $f'(a) \neq 0$ si y solo si $f$ es inyectiva en un entorno de $a$.
+        \item Si $f$ es inyectiva en $D$, entonces $f'(z) \neq 0$ para todo $z \in D$.
+    \end{itemize}
+\end{lemma}
+
+\section*{Aplicaciones conformes}
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $f: D \to \mathbb{C}$ holomorfa e inyectiva.
+    Sea $D' = f(D)$.
+    Entonces:
+    \begin{itemize}
+        \item $D'$ es un dominio en $D$.
+        \item $f: D \to D'$ es biyectiva.
+        \item $f^{-1}: D' \to D$ es holomorfa.
+    \end{itemize}
+
+    En ese caso decimos que $f$ es una aplicación conforme de $D$ sobre $D'$.
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Si $f$ es una aplicación conforme de $D$ sobre $D'$, entonces $f^{-1}$ es una aplicación conforme de $D'$ sobre $D$.
+        \item Si $D_1$, $D_2$ y $D_3$ son dominios en $\mathbb{C}$ con $f$ aplicación conforme de $D_1$ sobre $D_2$ y $g$ aplicación conforme de $D_2$ sobre $D_3$, entonces $g \circ f$ es una aplicación cnforme de $D_1$ sobre $D_3$.
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}
+    Si $D_1$ y $D_2$ son dominios en $\mathbb{C}$, se dice que $D_1$ y $D_2$ son conformemente equivalentes si existe una aplicación conforme $f$ de $D_1$ sobre $D_2$.
+
+    En el conjunto de los dominios en $\mathbb{C}$, se tiene la relación de equivalencia "ser conformemente equivalentes".
+\end{definition}
+
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}$.
+    $D$ es simplemente conexo si $\mathbb{C}^\ast \setminus D$ es conexo.
+    Equivalentemente, $D$ es simplemente conexo si todo camino cerrado $\gamma$ en $D$ es homólogo a cero módulo $D$, es decir, $n(\gamma, z) = 0$ para todo $z \in \mathbb{C} \setminus D$.
+\end{definition}
+
+\begin{theorem}
+    Sean $D_1$ y $D_2$ dos dominios en $\mathbb{C}$ que son conformemente equivalentes.
+    Entonces $D_1$ es simplemente conexo si y solo si $D_2$ es simplemente conexo.
+\end{theorem}
+
+\begin{definition}
+    Si $z_1, z_2 \in \mathbb{C} \setminus \{0\}$, el ángulo formado por $z_1$ y $z_2$ se define como:
+    $$\theta(z_1, z_2) = \arg \frac{z_2}{z_1} \in (-\pi, \pi]$$
+\end{definition}
+
+\begin{remark}
+    Si $z_1, z_2 \in \mathbb{C} \setminus \{0\}$ y $\lambda_1, \lambda_2 > 0$, entonces $\theta(\lambda_1z_1, \lambda_2z_2) = \theta(z_1, z_2)$.
+\end{remark}
+
+\begin{definition}
+    Sea $\gamma$ un camino con origen en un punto $a \in \mathbb{C}$.
+    Se dice que $\gamma$ es regular en $a$ si existe una parametrización $\mathcal{C}^1$ a trozos de $\gamma$, $\gamma: [0, 1] \to \mathbb{C}$, tal que $\gamma'(0) \neq 0$.
+\end{definition}
+
+\begin{definition}
+    Sean $\gamma_1$ y $\gamma_2$ dos caminos con origen $a \in \mathbb{C}$ que son regulares en $a$.
+    El ángulo que forman $\gamma_1$ y $\gamma_2$ en $a$, $\theta_a(\gamma_1, \gamma_2)$, se define como sigue.
+
+    Sean $\gamma_1, \gamma_2: [0, 1] \to \mathbb{C}$ parametrizaciones $\mathcal{C}^1$ a trozos de $\gamma_1$ y $\gamma_2$ respectivamente tales que $\gamma_1'(0), \gamma_2'(0) \neq 0$.
+    Entonces $\theta_a(\gamma_1, \gamma_2) = \theta(\gamma_1'(0), \gamma_2'(0))$.
+\end{definition}
+
+\begin{definition}
+    Si $\gamma$ es una curva en $\mathbb{C}$ y $f: sop(\gamma) \to \mathbb{C}$ es continua, se define la curva imagen de $\gamma$ por $f$ como la curva $\Gamma$ que tiene por parametrización $f \circ \gamma$, siendo $\gamma$ una parametrización de $\gamma$.
+\end{definition}
+
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}$ y sean $f$ holomorfa en $D$ y $a \in D$.
+    Diremos que $f$ preserva ángulos en $a$ o que $f$ es conforme en $a$ si se verifica lo siguiente.
+
+    Si $\gamma_1$ y $\gamma_2$ son caminos con origen $a$, regulares en $a$, entonces las curvas imagen de $\Gamma_1$ y $\Gamma_2$ por $f$ de $\gamma_1$ y $\gamma_2$ respectivamente son caminos con oriden $f(a)$, que son regulares en $f(a)$ y se tiene que:
+    $$\theta_{f(a)}(\Gamma_1, \Gamma_2) = \theta_a(\gamma_1, \gamma_2)$$
+\end{definition}
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$ y sean $f$ holomorfa en $D$ y $a \in D$.
+    Si $f'(a) \neq 0$, entonces $f$ es conforme en $a$.
+\end{theorem}
+
+\begin{proof}
+    Sean $\gamma_1$ y $\gamma_2$ caminos en $D$, con origen en $a$ y regulares en $a$.
+    Sean $\gamma_1, \gamma_2: [0, 1] \to \mathbb{C}$ parametrizaciones de $\gamma_1$ y $\gamma_2$ respectivamente, ambas $\mathcal{C}^1$ a trozos con $\gamma_1'(0), \gamma_2'(0) \neq 0$.
+    Consideramos las curvas imagen de $\gamma_1$ y $\gamma_2$ por $f$:
+    \begin{align*}
+        \Gamma_1 & = f \circ \gamma_1: [0, 1] \to \mathbb{C} \\
+        \Gamma_2 & = f \circ \gamma_2: [0, 1] \to \mathbb{C}
+    \end{align*}
+    $\Gamma_1$ y $\Gamma_2$ son $\mathcal{C}^1$ a trozos.
+    Además, $\Gamma_1$ y $\Gamma_2$ son caminos con origen $f(a)$, porque:
+    $$\Gamma_1(0) = f(\gamma_1(0)) = f(a) = f(\gamma_2(0)) = \Gamma_2(0)$$
+    Observamos que $\Gamma_1$ y $\Gamma_2$ son regulares en $a$:
+    \begin{align*}
+        \Gamma_1'(0) & = f'(\gamma_1(0))\gamma_1'(0) = f'(a)\gamma_1(0) \neq 0 \\
+        \Gamma_2'(0) & = f'(\gamma_2(0))\gamma_2'(0) = f'(a)\gamma_2(0) \neq 0
+    \end{align*}
+    Por tanto:
+    $$\theta_{f(a)}(\Gamma_1, \Gamma_2) = \theta(\Gamma_1'(0), \Gamma_2'(0)) = \arg \frac{\Gamma_2'(0)}{\Gamma_1'(0)} = \theta(\gamma_1'(0), \gamma_2'(0)) = \theta_a(\gamma_1, \gamma_2)$$
+\end{proof}
+
+\begin{example}[Contraejemplo]
+    Sean $D = \mathbb{C}$, $f(z) = z^2$ y $a = 0$.
+    Observamos que $f'(a) = 0$.
+    Sea $\gamma_1$ el segmento $[0, 1]$ y $\gamma_2$ el segmento $[0, i]$.
+    Es claro que $\theta_0(\gamma_1, \gamma_2) = \frac{\pi}{2}$.
+    Si consideramos las curvas imagen de $\gamma_1$ y $\gamma_2$ por $f$, $\Gamma_1$ y $\Gamma_2$, podemos ver que $\Gamma_1$ es el segmento $[0, 1]$ y $\Gamma_2$ el segmento $[0, -1]$, que tienen $\theta_0(\Gamma_1, \Gamma_2) = \pi \neq \frac{\pi}{2}$.
+\end{example}
+
+De hecho, se tiene la equivalencia.
+Sea $D$ un dominio en $\mathbb{C}$ y sean $f$ holomorfa en $D$ y $a \in D$.
+Entonces $f'(a) \neq 0$ $\Leftrightarrow$ $f$ es conforme en $a$.
