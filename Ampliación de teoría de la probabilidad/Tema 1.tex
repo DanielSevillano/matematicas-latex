@@ -411,7 +411,7 @@ Entonces:
     Observamos que $S_X = [-1,1) \cup \{1\} = [-1,1]$ y $S_Y = [0,2) \cup \{2\} \cup \{4\} = [0,2] \cup \{4\}$.
     Por tanto, $S_Z = [-1, 5]$.
     Calculamos:
-    $$F_Z = \int_{-\infty}^\infty F_Y(z-x)dF_x(x) = \int_{-1}^1 F_Y(z-x)f_X(x)dx + F_Y(z-1)p_X(1)$$
+    $$F_Z(z) = \int_{-\infty}^\infty F_Y(z-x)dF_x(x) = \int_{-1}^1 F_Y(z-x)f_X(x)dx + F_Y(z-1)p_X(1)$$
     Consideramos los casos:
     \begin{itemize}
         \item Si $z < -1$, $F_Z(z) = 0$.
@@ -799,17 +799,17 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
         F_n(x) & = P(X_n^{-1}((-\infty,x])) = P(X_n^{-1}([0,x])) = P(X_n^{-1}([0,e^{-nk}])) =                                                                                        \\
                & = P(\{ \omega \in \Omega : \omega \geq k \}) = 1 - P(\{ \omega \in \Omega : \omega < k \}) = 1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} = \\
                & = \begin{cases}
-                       0                                                                    & \text{si } x <= 0                                              \\
-                       1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} & \text{si } e^{-nk} \leq x < e^{-n(k-1)}, \quad k = 1, 2, \dots \\
-                       1                                                                    & \text{si } x \geq 1
-                   \end{cases}                             \\
+            0                                                                    & \text{si } x <= 0                                              \\
+            1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} & \text{si } e^{-nk} \leq x < e^{-n(k-1)}, \quad k = 1, 2, \dots \\
+            1                                                                    & \text{si } x \geq 1
+        \end{cases}                                                                                                                                       \\
                & = \begin{cases}
-                       0                           & \text{si } x <= 0                  \\
-                       \vdots                                                           \\
-                       1 - e^{-\lambda}(1+\lambda) & \text{si } e^{-2n} \leq x < e^{-n} \\
-                       1 - e^{-\lambda}            & \text{si } e^{-n} \leq x < 1       \\
-                       1                           & \text{si } x \geq 1
-                   \end{cases}
+            0                           & \text{si } x <= 0                  \\
+            \vdots                                                           \\
+            1 - e^{-\lambda}(1+\lambda) & \text{si } e^{-2n} \leq x < e^{-n} \\
+            1 - e^{-\lambda}            & \text{si } e^{-n} \leq x < 1       \\
+            1                           & \text{si } x \geq 1
+        \end{cases}
     \end{align*}
     Observamos que $F_n(x)$ tiene como límite puntual:
     $$G(x) = \begin{cases}
