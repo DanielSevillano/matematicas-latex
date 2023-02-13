@@ -29,3 +29,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 2. Aplicaciones conformes
 3. Dominios conformemente equivalentes a $\mathbb{C}$ y $\mathbb{C}^\ast$
 4. Funciones holomorfas en el disco unidad
+5. El teorema de Schwarz-Pick
+6. Subordinación

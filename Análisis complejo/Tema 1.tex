@@ -385,6 +385,7 @@ Por tanto, hemos probado lo siguiente:
           Si se da la igualdad entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
 \end{enumerate}
 
+\section{El teorema de Schwarz-Pick}
 \begin{theorem}[Teorema de Schwarz-Pick]
     Sea $f$ holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$.
     Entonces:
@@ -453,3 +454,168 @@ Entonces, dado $z \in \mathbb{D}$, se tiene que:
      & \Leftrightarrow z \in S_a^{-1}(D(0, r)) \Leftrightarrow z \in T_a(D(0, r))
 \end{align*}
 Entonces $\Delta(a, r) = T_a(D(0, r))$.
+
+$T_a(\partial D(0, r))$ es una circunferencia $C$ contenida en $\mathbb{D}$.
+Sean $c$ y $R$ el centro y el radio de $C$, con $c \in \mathbb{C}$, $R > 0$.
+Entonces $T_a(D(0, r)) = D(c, R)$.
+Por tanto:
+$$\Delta(a, r) = T_a(D(0, r)) = D(c, R)$$
+Así que $\Delta(a, r)$ es un disco euclídeo.
+Como $T_a(0) = a$ tenemos que $a \in \Delta(a, r)$, pero $a$ no tiene por qué ser el centro del disco.
+
+Vamos a calcular $c$ y $R$.
+Si $a = 0$, $T_a(z) = z$ luego $T_a(D(0, r)) = D(0, r)$.
+Supongamos que $a \neq 0$.
+Sea $L$ la recta que pasa por 0 y $a$.
+Calculamos $S_a(L)$ hallando la imagen de tres puntos.
+\begin{align*}
+    S_a(0)                            & = -a     \\
+    S_a(a)                            & = 0      \\
+    S_a\left(\frac{1}{\bar{a}}\right) & = \infty
+\end{align*}
+$L' = S_a(L)$ es la recta que pasa por 0 y por $-a$, luego $L'$ coincide con $L$.
+Como $L'$ es perpendicular a $\partial D(0, r)$ en los dos puntos de corte y $T_a$ preserva ángulos en esos dos puntos, entonces $L$ es perpendicular a $C$.
+Por tanto $c$ está en $L$.
+
+El diámetro $\left[-r\frac{a}{|a|}, r\frac{a}{|a|}\right]$ se aplica mediante $T_a$ en un diámetro de $C$, que es:
+$$\left[T_a\left(-r\frac{a}{|a|}\right), T_a\left(r\frac{a}{|a|}\right)\right]$$
+Entonces:
+\begin{align*}
+    c & = \frac{1}{2} \left(T_a\left(-r\frac{a}{|a|}\right) + T_a\left(r\frac{a}{|a|}\right)\right) \\
+    R & = \frac{1}{2} \left|T_a\left(r\frac{a}{|a|}\right) - T_a\left(-r\frac{a}{|a|}\right)\right|
+\end{align*}
+
+Calculamos:
+\begin{align*}
+    T_a\left(-r\frac{a}{|a|}\right) = \frac{-r\frac{a}{|a|}+a}{1-\bar{a}r\frac{a}{|a|}} = \frac{-ra+a|a|}{|a|-r|a|^2} = \frac{a(|a|-r)}{|a|(1-r|a|)} \\
+    T_a\left(r\frac{a}{|a|}\right) = \frac{r\frac{a}{|a|}+a}{1+\bar{a}r\frac{a}{|a|}} = \frac{ra+a|a|}{|a|+r|a|^2} = \frac{a(|a|+r)}{|a|(1+r|a|)}
+\end{align*}
+Se llega a que:
+\begin{align*}
+    c & = \frac{1-r^2}{1-r^2|a|^2}a     \\
+    R & = \frac{r(1-|a|^2)}{1-r^2|a|^2}
+\end{align*}
+
+Observamos que los puntos de mayor y menor módulo de $C$ son $T_a\left(-r\frac{a}{|a|}\right)$ y $T_a\left(r\frac{a}{|a|}\right)$
+Veamos que, de hecho,
+$$\left|T_a\left(-r\frac{a}{|a|}\right)\right| = \frac{||a|-r|}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} = \left|T_a\left(r\frac{a}{|a|}\right)\right|$$
+\begin{itemize}
+    \item Si $|a| \geq r$,
+          \begin{align*}
+               & \frac{|a|-r}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow |a| + r|a|^2 - r - r^2|a| \leq r + |a| - r^2|a| - r|a|^2 \Leftrightarrow \\
+               & \Leftrightarrow 2r|a|^2 \leq 2r \Leftrightarrow |a| \leq 1
+          \end{align*}
+    \item Si $|a| < r$ se razona de forma análoga.
+\end{itemize}
+
+Entonces, para todo $z \in \partial D(0, r)$ se tiene que:
+\begin{align*}
+     & \frac{||a|-r|}{1-r|a|} \leq T_a(z) \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \frac{||a|-r|}{1-r|a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \\
+     & \Leftrightarrow \frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|
+\end{align*}
+Hemos probado esto para $a, z \in \mathbb{D}$, $a, z \neq 0$.
+Pero si $a = 0$ o $z = 0$ la desigualdad es trivial.
+Por tanto, esta cadena de desigualdades es cierta para todo $a, z \in \mathbb{D}$.
+
+Cambiando $a$ por $-a$, tenemos:
+$$\frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|, \quad z, a \in \mathbb{D}$$
+Las desigualdades primera y segunda corresponden al último lema.
+
+Por otro lado,
+$$\rho(a, z) \leq |z| + |a|, \quad z, a \in \mathbb{D}$$
+Como $\rho(z_1, 0) = |z_1|$ y $\rho(0, z_2) = |z_2|$, entonces:
+$$\rho(a, z) \leq \rho(a, 0) + \rho(0, z), \quad a, z \in \mathbb{D}$$
+Esto es un caso particular de la desigualdad triangular.
+
+Sean $z_1, z_2, z_3 \in \mathbb{D}$.
+Tenemos, usando el teorema de Schwarz-Pick,
+\begin{align*}
+    \rho(z_1, z_3) & = \rho(S_{z_2}(z_1), S_{z_2}(z_3)) \leq \rho(S_{z_2}(z_1, 0)) + \rho(0, S_{z_2}(z_3)) =                 \\
+                   & = \rho(S_{z_2}(z_1), S_{z_2}(z_2)) + \rho(S_{z_2}(z_2), S_{z_2}(z_3)) = \rho(z_1, z_2) + \rho(z_2, z_3)
+\end{align*}
+Así que $\rho$ verifica la desigualdad triangular.
+Por tanto, $\rho$ es una distancia en $\mathbb{D}$ que se denomina distancia pseudohiperbólica en $\mathbb{D}$.
+$$\rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right| = |S_{z_1}(z_2)| < 1$$
+
+Si $a \in \mathbb{D}$ y $0 < r < 1$, el disco pseudohiperbólico de centro $a$ y radio $r$ es:
+$$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}$$
+No consideramos $r \geq 1$ porque $\Delta(a, r) = \mathbb{D}$.
+Sabemos que $\Delta(a, r)$ es un disco euclídeo, en concreto un disco abierto de centro $\frac{1-r^2}{1-r^2|a|^2}a$ y radio $\frac{r(1-|a|^2)}{1-r^2|a|^2}$.
+Si $a = 0$, $\Delta(a, r) = D(0, r)$.
+
+Esta distancia es equivalente a la distancia euclídea en $\mathbb{D}$.
+
+Si $T \in \mathcal{M}$ con $T(\mathbb{D}) = \mathbb{D}$, se tiene que:
+$$\rho(T(z_1), T(z_2)) = \rho(z_1, z_2), \quad z_1, z_2 \in \mathbb{D}$$
+Además, si $f$ es holomorfa en $\mathbb{D}$ y $f(\mathbb{D}) \subset \mathbb{D}$, se tiene que:
+$$\rho(f(z_1), f(z_2)) \leq \rho(z_1, z_2), \quad z_1, z_2 \in \mathbb{D}$$
+
+\section{Subordinación}
+\begin{definition}
+    Sean $f, F$ holomorfas en $\mathbb{D}$.
+    Diremos que $f$ está subordinada a $F$, $f \prec F$, si existe $w$ holomorfa en $\mathbb{D}$, con $w(0) = 0$ y $w(\mathbb{D}) \subset \mathbb{D}$ tal que $f = F \circ w$.
+\end{definition}
+
+\begin{remark}
+    $w$ está en las condiciones del lema de Schwarz.
+\end{remark}
+
+Veamos algunas propiedades:
+\begin{itemize}
+    \item $f(0) = F(w(0)) = F(0)$.
+    \item $f(\mathbb{D}) = F(w(\mathbb{D})) \subset F(\mathbb{D})$.
+    \item Si $0 < r < 1$, veamos que
+          $$f(D(0, r)) \subset F(D(0, r))$$
+          Si $z \in D(0, r)$, $f(z) = F(w(z))$.
+          Por el lema de Schwarz,
+          $$w(z)| \leq |z| < r$$
+    \item Si $0 < r < 1$, veamos que
+          $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|$$
+          Si $|z| = r$, como por el lema de Schwarz $|w(z)| \leq |z| = r$, entonces:
+          $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|$$
+    \item Si $|z| = r$, como por el lema de Schwarz $|w'(0)| \leq 1$ y $f'(0) = F'(w(0))w'(0) = F'(0)w'(0)$, entonces:
+          $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|$$
+    \item No se verifica para todo $r \in (0, 1)$ que
+          $$\max_{|z|=r} |f'(z)| \leq \max_{|z|=r} |F'(z)|$$
+\end{itemize}
+
+\begin{example}[Contraejemplo]
+    Sean $f(z) = z^2$ y $F(z) = z$.
+    Podemos tomar $w(z) = z^2$, que verifica $w(0) = 0$ y $w(\mathbb{D}) \subset \mathbb{D}$, luego $f \prec F$.
+    Si $0 < r < 1$,
+    \begin{align*}
+        \max_{|z|=r} |f'(z)| & = \max_{|z|=r} 2|z| = 2r \\
+        \max_{|z|=r} |F'(z)| & = 1
+    \end{align*}
+    Observamos que no se cumple que $2r \leq 1$ para todo $r \in (0, 1)$.
+\end{example}
+
+Por la segunda parte del teorema de Schwarz-Pick,
+$$\frac{|w'(z)|}{1-|w(z)|^2} \leq \frac{1}{1-|z|^2}, \quad z \in \mathbb{D}$$
+Entonces, si $z \in \mathbb{D}$,
+\begin{align*}
+     & |f'(z)| = |F'(w(z))||w'(z)| \leq |F'(w(z))|\frac{1-|w(z)|^2}{1-|z|^2} \Leftrightarrow \\
+     & \Leftrightarrow (1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))|
+\end{align*}
+Entonces, si $0 < r \leq 1$, tenemos que:
+$$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+
+Veamos que esto es cierto.
+Si $|z| < r$, como $|w(z)| \leq |z| < r$,
+$$(1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+
+\begin{proposition}
+    Sean $f, F$ holomorfas en $\mathbb{D}$, con $f \prec F$.
+    Entonces:
+    \begin{enumerate}
+        \item $f(0) = F(0)$.
+        \item $f(\mathbb{D}) \subset F(\mathbb{D})$.
+        \item Para todo $r \in (0, 1)$,
+              $$f(D(0, r)) \subset F(D(0, r))$$
+        \item Para todo $r \in (0, 1)$,
+              $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|$$
+        \item $|f'(0)| \leq |F'(0)|$.
+        \item Para todo $r \in (0, 1]$,
+              $$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+    \end{enumerate}
+\end{proposition}
