@@ -705,6 +705,7 @@ En conclusión, las aplicaciones conformes de $\mathbb{D}$ sobre $\mathbb{D}$ so
                                                                               & = \{\lambda \varphi_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\}
 \end{align*}
 
+\section{La métrica de Poincaré}
 Si $\gamma$ es un camino en $\mathbb{C}$ y $f: sop(\gamma) \to \mathbb{C}$ es continua, entonces:
 \begin{align*}
     \int_\gamma f(z)dz   & = \int_a^b f(\gamma(t))\gamma'(t)dt   \\
@@ -751,6 +752,7 @@ $$\inf(A_{12} + A_{13}) = \inf A_{12} + \inf A_{23} \geq \inf A_{13} \Leftrighta
 $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en $\mathbb{D}$.
 
 \begin{proposition}
+    \hfill
     \begin{enumerate}
         \item Si $f$ es holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$, entonces:
               $$\delta(f(z_1), f(z_2)) \leq \delta(z_1, z_2), \quad \forall z_1, z_2 \in \mathbb{D}$$
@@ -782,3 +784,73 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
         \item Se tiene aplicando (1) a $T$ y $T^{-1}$.
     \end{enumerate}
 \end{proof}
+
+\begin{proposition}
+    Si $z_1, z_2 \in \mathbb{D}$, entonces:
+    $$\delta(z_1, z_2) = \frac{1}{2} Log \frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
+\end{proposition}
+
+\begin{proof}
+    Si $z_1 = z_2$ es trivial.
+    Supongamos $z_1 \neq z_2$.
+    Consideramos:
+    $$S_{z_1}(z) = \frac{z-z_1}{1-\overline{z_1}z}$$
+    Se tiene que $S_{z_1} \in \mathcal{M}$, $S_{z_1}(\mathbb{D}) = \mathbb{D}$ y $S_{z_1}(z_1) = 0$.
+    Sabemos que $S_{z_1}(z_2) \neq 0$.
+    Además,
+    $$\delta(z_1, z_2) = \delta(0, S_{z_1}(z_2))$$
+
+    Tomamos $\lambda \in \mathbb{C}$, $|\lambda| = 1$, tal que $\lambda S_{z_1}(z_2) \in (0, 1)$.
+    Sea $r = \lambda S_{z_1}(z_2)$.
+    Entonces:
+    $$\delta(z_1, z_2) = \delta(0, S_{z_1}(z_2)) = \delta(0, r)$$
+    Además, $r = |\lambda S_{z_1}(z_2)| = |S_{z_1}(z_2)| = \rho(z_1, z_2)$.
+    Calculamos $\delta(0, r)$.
+    $$\delta(0, r) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } 0 \text{ y extremo } r\right\}$$
+    Si $\gamma = [0, r]$,
+    \begin{align*}
+         & \int_\gamma \frac{|dz|}{1-|z|^2} = \int_0^r \frac{dt}{1-t^2} = \frac{1}{2} \int_0^r \left(\frac{1}{1-t} + \frac{1}{1+t}\right)dt =      \\
+         & = \frac{1}{2} \left[-Log(1-t) + Log(1+t)\right]_0^r = \frac{1}{2} \left[Log \frac{1+t}{1-t}\right]_0^r = \frac{1}{2} Log\frac{1+r}{1-r}
+    \end{align*}
+    Luego $\delta(0, r) \leq \frac{1}{2} Log\frac{1+r}{1-r}$.
+
+    Sea $\gamma$ un camino en $\mathbb{D}$ con origen 0 y extremo $r$.
+    Veamos que
+    $$\int_\gamma \frac{|dz|}{1-|z|^2} \geq \frac{1}{2} Log\frac{1+r}{1-r}$$
+    Sea $\gamma: [a, b] \to \mathbb{C}$ una parametrización $\mathcal{C}^1$ a trozos de $\gamma$.
+    Sean $u = Re(f)$ y $v= Im(f)$, de forma que $\gamma = u + iv$.
+    $u, v: [a, b] \to \mathbb{R}$, $\mathcal{C}^1$ a trozos.
+    $$\int_\gamma \frac{|dz|}{1+|z|^2} = \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt$$
+    Tenemos que:
+    $$\begin{cases}
+            |\gamma(t)|^2 \geq u(t)^2 \Rightarrow 0 < 1-|\gamma(t)|^2 \leq 1-u(t)^2 \Rightarrow \frac{1}{1-|\gamma(t)|^2} \geq \frac{1}{1-u(t)^2} \\
+            |\gamma'(t)| \geq |u'(t)| \geq 0
+        \end{cases}$$
+    Así que:
+    $$\frac{|\gamma'(t)|}{1-|\gamma(t)|^2} \geq \frac{|u'(t)|}{1-u(t)^2} \geq \frac{u'(t)}{1-u(t)^2}$$
+    Luego:
+    \begin{align*}
+         & \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt \geq \int_a^b \frac{u'(t)}{1-u(t)^2}dt = \frac{1}{2} \int_a^b \left(\frac{u'(t)}{1-u(t)} + \frac{u'(t)}{1+u(t)}\right)dt = \\
+         & = \frac{1}{2} \left[-Log(1-u(t)) + Log(1+u(t))\right]_a^b = \frac{1}{2} \left[Log \frac{1+u(t)}{1-u(t)}\right]_a^b = \frac{1}{2} Log\frac{1+r}{1-r}
+    \end{align*}
+    porque $u(a) = 0$ y $u(b) = r$.
+    Por tanto,
+    $$\delta(z_1, z_2) = \delta(0, r) = \frac{1}{2} Log\frac{1+r}{1-r} = \frac{1}{2} log\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
+\end{proof}
+
+\begin{remark}
+    Sea $h(x) = \frac{1}{2} Log \frac{1+x}{1-x}$, $x \in [0, 1)$.
+    Observamos que si $x < 1$, entonces $1+x \geq 1-x > 0 \Rightarrow \frac{1+x}{1-x} \geq 1$, así que $h: [0, 1) \to [0, \infty)$.
+    $h$ es creciente, con $h(0) = 0$ y $\lim\limits_{x \to 1^-} h(x) = \infty$.
+    Podemos escribir $\delta = h \circ \rho : \mathbb{D} \times \mathbb{D} \xrightarrow{\rho} [0, 1) \xrightarrow{h} [0, \infty)$.
+    Fijado $a \in \mathbb{D}$, si $\{z_n\}_{n=1}^\infty$ está en $\mathbb{D}$ con $|z_n| \to 1$, entonces:
+    $$\rho(a, z_n) = |S_a(z_n)| \xrightarrow[n \to \infty]{} 1$$
+    Por tanto, $\delta(a, z_n) \xrightarrow[n \to \infty]{} \infty$.
+\end{remark}
+
+$\mathbb{D}$ con esta distancia $\delta$ es un modelo de la geometría hiperbólica.
+Si $\gamma$ es un camino en $\mathbb{D}$, la longitud de $\gamma$ es
+$$\int_\gamma \frac{|dz|}{1-|z|^2}$$
+La geodésica que une $z_1, z_2 \in \mathbb{D}$ es el camino $\gamma$ para el que:
+$$\delta(z_1, z_2) = \int_\gamma \frac{|dz|}{1-|z|^2}$$
+Las geodésicas con respecto a $\delta$ son los diámetros de $\partial \mathbb{D}$ y los arcos de circunferencia ortogonales a $\partial \mathbb{D}$.

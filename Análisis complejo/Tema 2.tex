@@ -1,0 +1,56 @@
+\chapter{Familias normales}
+\section{Familias normales}
+
+\begin{theorem}[Teorema de convergencia de Weierstrass]
+    Sea $D$ abierto en $\mathbb{C}$ y sean $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en $D$ y $f: D \to \mathbb{C}$.
+    Si $f_n \xrightarrow[n \to \infty]{} f$ uniformemente en cada subconjunto compacto de $D$, entonces $f$ es holomorfa en $D$ y $f_n' \xrightarrow[n \to \infty]{} f'$ uniformemente en cada subconjunto compacto.
+    Para todo $k \in \mathbb{N}$, $f^{(k)}_n \xrightarrow[n \to \infty]{} f^{(k)}$ uniformemente en cada compacto.
+\end{theorem}
+
+\begin{definition}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$.
+    Diremos que $\mathcal{F}$ es finitamente normal si para cada sucesión $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$.
+\end{definition}
+
+\begin{remark}
+    El límite $f$ de tal subsucesión es una función holomorfa en $D$, pero no tiene por qué pertenecer a $\mathcal{F}$.
+\end{remark}
+
+\begin{definition}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$.
+    Diremos que $\mathcal{F}$ es compacta si para cada sucesión $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$ a una función que pertenece a $\mathcal{F}$.
+\end{definition}
+
+En el conjunto $Hol(D)$ de las funciones holomorfas en $D$, con $D$ abierto en $\mathbb{C}$, se puede definir una distancia $d$ tal que $(Hol(D), d)$ es un espacio métrico completo, y en el que:
+$$f_n \xrightarrow{d} f \Leftrightarrow f_n \to f \text{ uniformemente en cada subconjunto compacto de } D$$
+Si $\mathcal{F} \subset Hol(D)$, $\mathcal{F}$ es finitamente normal si y solo si $\mathcal{F}$ es relativamente compacto.
+Los compactos coinciden con la definición de familia compacta dada.
+
+\section{El teorema de Montel}
+\begin{theorem}[Teorema de Montel]
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\mathcal{F}$ es finitamente normal.
+        \item $\mathcal{F}$ está uniformemente acotada en cada subconjunto compacto de $D$.
+              Es decir, para cada $K \subset D$, $K$ compacto, existe $M_k > 0$ tal que $|f(z)| \leq M_k$ para toda $f \in \mathcal{F}$ y para todo $z \in K$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+    Sea $D$ un abierto en $\mathbb{C}$ y $\mathcal{F}$ una familia de funciones holomorfas en $D$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\mathcal{F}$ está uniformemente acotada en cada subconjunto compacto de $D$.
+        \item Para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$ y $f$ está uniformemente acotada en $D(a, r_a)$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{lemma}
+    Sea $D$ abierto en $\mathbb{C}$ y sean $f_n: D \to \mathbb{C}$ para $n = 1, 2, \dots$ y $f: D \to \mathbb{C}$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $f_n \to f$ uniformemente en cada subconjunto compacto de $D$.
+        \item Para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$ tal que $f_n \to f$ uniformemente en $D(a, r_a)$.
+    \end{enumerate}
+\end{lemma}

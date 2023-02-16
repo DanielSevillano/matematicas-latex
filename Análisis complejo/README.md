@@ -31,3 +31,9 @@ Estos apuntes están abiertos a correcciones y mejoras.
 4. Funciones holomorfas en el disco unidad
 5. El teorema de Schwarz-Pick
 6. Subordinación
+7. La métrica de Poincaré
+
+### 2. Familias normales
+
+1. Familias normales
+2. El teorema de Montel
