@@ -27,16 +27,6 @@ Si $\mathcal{F} \subset Hol(D)$, $\mathcal{F}$ es finitamente normal si y solo s
 Los compactos coinciden con la definición de familia compacta dada.
 
 \section{El teorema de Montel}
-\begin{theorem}[Teorema de Montel]
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$.
-    Entonces son equivalentes:
-    \begin{enumerate}
-        \item $\mathcal{F}$ es finitamente normal.
-        \item $\mathcal{F}$ está uniformemente acotada en cada subconjunto compacto de $D$.
-              Es decir, para cada $K \subset D$, $K$ compacto, existe $M_k > 0$ tal que $|f(z)| \leq M_k$ para toda $f \in \mathcal{F}$ y para todo $z \in K$.
-    \end{enumerate}
-\end{theorem}
-
 \begin{lemma}
     Sea $D$ un abierto en $\mathbb{C}$ y $\mathcal{F}$ una familia de funciones holomorfas en $D$.
     Entonces son equivalentes:
@@ -54,3 +44,111 @@ Los compactos coinciden con la definición de familia compacta dada.
         \item Para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$ tal que $f_n \to f$ uniformemente en $D(a, r_a)$.
     \end{enumerate}
 \end{lemma}
+
+\begin{lemma}
+    Sean $C_1, C_2 \in \mathbb{C}$, con $C_1 \cap C_2 = \emptyset$ y $C_1, C_2 \neq \emptyset$.
+    Si $C_1$ es compacto y $C_2$ es cerrado, entonces:
+    $$dist(C_1, C_2) = \inf\{|z_1-z_2| : z_1 \in C_1, z_2 \in C_2\} > 0$$
+\end{lemma}
+
+\begin{remark}
+    Si $C_1$ no es compacto no es cierto en general.
+\end{remark}
+
+\begin{lemma}
+    Sea $A \subset \mathbb{C}$, $A \neq \emptyset$ y sea
+    $$F: \mathbb{C} \to \mathbb{R}, \; F(z) = dist(z, A) = \inf \{|z-a| : a \in A\}$$
+    Entonces $F$ es continua y $F(z) = 0$ para todo $z \in A$.
+    Si además $A$ es cerrado, entonces $F(z) = \min \{|z-a| : a \in A\}$ para todo $z \in \mathbb{C}$.
+\end{lemma}
+
+\begin{lemma}
+    Sea $A \subset \mathbb{C}$, $A \neq \emptyset$ y sea $\varepsilon > 0$.
+    Consideramos los conjuntos:
+    \begin{align*}
+        B & = \{z \in \mathbb{C} : dist(z, A) < \varepsilon\}    \\
+        C & = \{z \in \mathbb{C} : dist(z, A) \leq \varepsilon\}
+    \end{align*}
+    Entonces $B$ es abierto y $C$ es cerrado, con $A \subset B \subset C$.
+    Si además $A$ es acotado, entonces $B$ es acotado y $C$ es compacto.
+\end{lemma}
+
+\begin{proposition}
+    Sea $D$ un abierto en $\mathbb{C}$ y $\mathcal{F}$ una familia de funciones holomorfas en $D$.
+    Supongamos que $\mathcal{F}$ está uniformemente acotada en $D$.
+    Sea $K$ un subconjunto compacto de $D$.
+    Entonces existe $A > 0$ tal que:
+    $$|f(z_2)-f(z_1)| \leq A|z_2-z_1|, \quad \forall z_1, z_2 \in K, \; \forall f \in \mathcal{F}$$
+\end{proposition}
+
+\begin{proof}
+    Sea $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in D$ y para toda $f \in \mathcal{F}$.
+    Sean $K \subset D$, $K$ compacto.
+    Sea $d > 0$ con $d < dist(K, \mathbb{C} \setminus D)$.
+    Si $D = \mathbb{C}$, tomamos $d > 0$ cualquiera.
+    Sea $z_0 \in K$.
+    Entonces $D(z_0, d) \subset D$.
+    De hecho, podemos tomar $\varepsilon > 0$ tal que $D(z_0, d+\varepsilon) \subset D$.
+    Dada $f \in \mathcal{F}$, por la fórmula de Cauchy,
+    $$f'(z) = \frac{1}{2\pi i} \int_{|\xi-z_0|=d} \frac{f(\xi)}{(\xi-z)^2}d\xi \quad \text{si } z \in D\left(z_0, \frac{d}{2}\right)$$
+    Entonces:
+    $$|f'(z)| \leq \frac{1}{2\pi}2\pi \max_{|\xi-z_0|=d} \frac{|f(\xi)|}{|\xi-z|^2}$$
+    Podemos acotar:
+    $$|\xi-z| = |(\xi-z_0) + (z_0-z)| \geq |\xi-z_0| - |z_0-z| \geq d - \frac{d}{2} = \frac{d}{2}$$
+    Así que $|\xi-z|^2 \geq \frac{d^2}{4} > 0$.
+    Luego:
+    $$|f'(z)| \leq d\frac{M}{d^2/4} = \frac{4M}{d}$$
+    Hemos probado que si $z_0 \in K$, $f \in \mathcal{F}$ y $z \in D\left(z_0, \frac{d}{2}\right) \subset D$, entonces $|f'(z)| \leq \frac{4M}{d}$.
+
+    Ahora, sean $z_1, z_2 \in K$ y $f \in \mathcal{F}$.
+    Supongamos que $|z_1-z_2| < \frac{d}{2}$.
+    Si $\xi \in [z_1, z_2]$, entonces $z_2 \in D\left(z_1, \frac{d}{2}\right) \subset D$ y $|\xi-z_1| \leq |z_1-z_2| < \frac{d}{2}$, $\xi \in D\left(z_1, \frac{d}{2}\right)$.
+    Entonces $\xi \in D$ y $|f'(\xi)| \leq \frac{4M}{d}$.
+    Por tanto:
+    $$|f(z_2)-f(z_1)| = \left|\int_{[z_1, z_2]} f'(\xi)d\xi\right| \leq |z_2-z_1| \max_{\xi \in [z_1, z_2]} |f'(\xi)| \leq |z_2-z_1| \frac{4M}{d}$$
+    Entonces, si $z_1, z_2 \in K$, $|z_1-z_2| < \frac{d}{2}$ y $f \in \mathcal{F}$, se tiene que:
+    $$|f(z_2)-f(z_1)| \leq A|z_2-z_1|$$
+
+    Ahora, si $z_1, z_2 \in K$, $|z_2-z_1| \geq \frac{d}{2}$ y $f \in \mathcal{F}$, tenemos:
+    $$|f(z_2)-f(z_1)| \leq |f(z_2)| + |f(z_1)| \leq 2M = 2M \frac{d}{2}\frac{2}{d} \leq \frac{4M}{d}|z_2-z_1| = A|z_2-z_1|$$
+\end{proof}
+
+\begin{theorem}[Teorema de Arzelá-Ascoli]
+    Sean $(X_1, d_1)$ y $(X_2, d_2)$ dos espacios métricos, siendo $(X_1, d_1)$ separable y $(X_2, d_2)$ completo.
+    Sea $\mathcal{F}$ una familia de aplicaciones continuas de $X_1$ en $X_2$ que verifica:
+    \begin{enumerate}
+        \item $\mathcal{F}$ es puntualmente equicontinua.
+              Es decir, dado $x \in X_1$ se verifica que, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que si $y \in X_1$ con $d_1(x, y) < \delta$, entonces $d_2(f(x), f(y)) < \varepsilon$ para toda $f \in \mathcal{F}$.
+        \item Para todo $x \in X_1$, el conjunto $\{f(x) : f \in \mathcal{F}\}$ es relativamente compacto.
+    \end{enumerate}
+    Entonces, si $\{f_n\}_{n=1}^\infty$ es una sucesión en $\mathcal{F}$, existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $X_1$.
+\end{theorem}
+
+\begin{theorem}[Teorema de Montel]
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\mathcal{F}$ es finitamente normal.
+        \item $\mathcal{F}$ está uniformemente acotada en cada subconjunto compacto de $D$.
+              Es decir, para cada $K \subset D$, $K$ compacto, existe $M_k > 0$ tal que $|f(z)| \leq M_k$ para toda $f \in \mathcal{F}$ y para todo $z \in K$.
+    \end{enumerate}
+\end{theorem}
+
+% Demostración (1 + 2)
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Sea $D$ un abierto en $\mathbb{C}$.
+              Si $\mathcal{F}$ es una familia finitamente normal de funciones holomorfas en $D$, entonces la familia $\mathcal{F}' = \{f' : f \in \mathcal{F}\}$ es finitamente normal.
+              En general, si $k \in \mathbb{N}$, la familia $\mathcal{F}^{(k)} = \{f^{(k)} : f \in \mathcal{F}\}$ es finitamente normal.
+
+              Sea $\{g_n\}_{n=1}^\infty$ en $\mathcal{F}'$.
+              Entonces $g_n = f_n'$, $f_n \in \mathcal{F}$.
+              Existe $\{f_{n_k}\}_{k=1}^\infty$ subsucesión de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$ a una función $f$ holomorfa en $D$.
+              Entonces $g_{n_k} = f_{n_k}' \to f'$ uniformemente en cada subconjunto compacto de $D$.
+
+        \item Sea $D$ abierto en $\mathcal{C}$ y sea $\mathcal{G}$ familia finitamente normal de funciones holomorfas en $D$ con $\mathcal{F} \subset \mathcal{G}$.
+              Entonces $\mathcal{F}$ es finitamente normal.
+    \end{enumerate}
+\end{remark}
