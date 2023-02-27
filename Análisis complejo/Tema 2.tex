@@ -150,5 +150,93 @@ Los compactos coinciden con la definición de familia compacta dada.
 
         \item Sea $D$ abierto en $\mathcal{C}$ y sea $\mathcal{G}$ familia finitamente normal de funciones holomorfas en $D$ con $\mathcal{F} \subset \mathcal{G}$.
               Entonces $\mathcal{F}$ es finitamente normal.
+
+        \item Si $a \in \mathbb{C}$, $R > 0$ y $K \subset D(a, R)$, $K$ compacto, entonces existe $r \in (0, R)$ tal que $K \subset \overline{D}(a, r)$.
     \end{enumerate}
 \end{remark}
+
+\begin{example}
+    \hfill
+    \begin{enumerate}
+        \item $\mathcal{F} = \{f : f \text{ es entera y } |f(z)| \leq n \text{ si } |z| = n, n = 1, 2, \dots\}$.
+              Sea $K \subset \mathbb{C}$, $K$ compacto, y sea $f \in \mathcal{F}$.
+              Existe $n_0 \in \mathbb{N}$ tal que $K \subset \overline{D}(0, n_0)$.
+              Además, $|f(z_0)| \leq n_0$ si $|z| = n_0$.
+              Por el principio del máximo, $|f(z)| \leq n_0$ si $|z| \leq n_0$.
+              En particular, $|f(z)| \leq n_0$ si $z \in K$ y $f \in \mathcal{F}$.
+              $\mathcal{F}$ está uniformemente acotada en $K$.
+              Por el teorema de Montel, $\mathcal{F}$ es finitamente normal.
+
+        \item $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f(0) = 1, Re(f(z)) > 0 \forall z \in \mathbb{D}\}$.
+              Sea $K \subset \mathbb{D}$, $K$ compacto.
+              Si $f \in \mathcal{P}$ y $z \in K$,
+              $$|f(z)| \leq \frac{1+|z|}{1-|z|}$$
+              Existe $R \in (0, 1)$ tal que $K \subset \overline{D}(0, R)$.
+              Entonces, si $f \in \mathcal{P}$ y $z \in K$,
+              $$|f(z)| \leq \frac{1+|z|}{1-|z|} \leq \frac{1+R}{1-R}$$
+              $\mathcal{P}$ está uniformemente acotada en $K$ para todo subconjunto compacto $K$ de $\mathbb{D}$.
+              Por el teorema de Montel, $\mathcal{P}$ es finitamente normal.
+
+              \begin{remark}
+                  Si quitamos la condición $f(0) = 1$ en $\mathcal{P}$, la familia deja de ser finitamente normal.
+                  Por ejemplo, $f_n(z) = n$, $n = 1, 2, \dots$, $\{f_n : n = 1, 2, \dots\} \subset \mathcal{P}$.
+                  Si tomamos $K = \{0\}$, $\mathcal{P}$ no está uniformemente acotada en $K$, así que $\mathcal{P}$ no es finitamente normal.
+              \end{remark}
+
+              Recordemos que $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f \prec P\}$, con $P(z) = \frac{1+z}{1-z}$.
+              Esto es un caso particular del siguiente ejemplo.
+
+        \item Sea $F$ holomorfa en $\mathbb{D}$ y sea
+              $$\mathcal{F}_F = \{f : f \text{ holomorfa en } \mathbb{D}, f \prec F\}$$
+              Entonces $\mathcal{F}_F$ es finitamente normal.
+
+        \item Sean $a \in \mathbb{C}$ y $R > 0$.
+              Sea $\mathcal{F}$ una familia finitamente normal de funciones holomorfas en $D(a, R)$.
+              Para cada $f \in \mathcal{F}$, consideramos el desarrollo de Taylor de $f$ centrado en $a$
+              $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, R)$$
+              Entonces $M_n = \sup_{f \in \mathcal{F}} |a_n(f)| < \infty$ para cada $n$ y la serie de potencias $\sum_{n=0}^\infty M_n(z-a)^n$ tiene radio de convergencia mayor o igual que $R$, y por tanto define una función holomorfa en $D(a, R)$.
+
+              % Demostración
+
+              % Ejemplo 5
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}
+    Sean $a \in \mathbb{C}$ y $R > 0$.
+    Sea $\mathcal{F}$ una familia de funciones holomorfas en $D(a, R)$.
+    Las siguientes condiciones son equivalentes:
+    \begin{enumerate}
+        \item $\mathcal{F}$ es finitamente normal.
+        \item Existe una sucesión $\{M_n\}_{n=0}^\infty$ con $M_n \geq 0$ para todo $n$ tal que la serie de potencias $\sum_{n=0}^\infty M_n(z-a)^n$ tiene radio de convergencia mayor o igual que $R$ y tal que, si para cada $f \in \mathcal{F}$,
+              $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, r)$$
+              se tiene que $|a_n(f)| \leq M_n$ para todo $n$ y para toda $f \in \mathcal{F}$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Teorema de Stieltjes-Vitali]
+    Sea $D$ un dominio en $\mathbb{C}$ y $\mathcal{F}$ una familia finitamente normal de funciones holomorfas en $D$.
+    Sea $\{f_n\}_{n=1}^\infty$ una sucesión en $\mathcal{F}$.
+    Si existe $A \subset D$ tal que $A$ tiene algún punto de acumulación en $D$, para el que existe $\lim\limits_{n \to \infty} f_n(a) \in \mathbb{C}$ para todo $a \in A$, entonces $\{f_n\}$ converge uniformemente en cada subconjunto compacto de $D$.
+\end{theorem}
+
+% Demostración
+
+% Ejemplo
+
+\begin{theorem}[Teorema de Lindelöf]
+    Sea $f$ holomorfa y acotada en $\mathbb{D}$.
+    Sea $\xi \in \partial \mathbb{D}$ y supongamos que existe el límite radial, es decir, $\lim\limits_{r \to 1^-} f(r\xi) = L \in \mathbb{C}$.
+    Entonces para todo $\alpha \in (0, \frac{\pi}{2})$ existe el límite tangencial de $f$ en $\xi$, es decir,
+    $$\lim\limits_{z \to \xi, z \in S_\alpha(\xi)} f(z) = L$$
+    siendo $S_\alpha(\xi)$ el vector de vértice $\xi$ y ángulo $2\alpha$, simétrico con respecto al segmento $[0, \xi]$.
+\end{theorem}
+
+\begin{theorem}
+    Sea $f$ holomorfa y acotada en $D(1, 1)$.
+    Supongamos que existe $\lim\limits_{x \to 0^+} f(x) = L \in \mathbb{C}$.
+    Entonces para todo $\alpha \in (0, \frac{pi}{2})$ existe
+    $$\lim\limits_{z \to 0, |Arg(z)| < \alpha} f(z) = L$$
+\end{theorem}
+
+% Demostración

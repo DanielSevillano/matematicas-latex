@@ -72,7 +72,7 @@ Se puede comprobar que, sean $G_1, G_2$ abiertos en $\mathbb{C}^\ast$ y $f: G_1 
 
 \begin{definition}
     Sean $D_1$ y $D_2$ dominios en $\mathbb{C}^\ast$.
-    Diremos que $D_1$ y $D_2$ son conformemente equivalentes si existe una aplicación conforme $f$ de $D_1$ sonre $D_2$.
+    Diremos que $D_1$ y $D_2$ son conformemente equivalentes si existe una aplicación conforme $f$ de $D_1$ sobre $D_2$.
 
     En el conjunto de los dominios en $\mathbb{C}^\ast$, el ser conformemente equivalentes es una relación de equivalencia.
 \end{definition}
@@ -293,7 +293,10 @@ $$\begin{vmatrix}
               Veamos que $T$ es sobreyectiva.
               Sea $w \in \mathbb{C} \setminus \{\frac{\alpha}{\gamma}\}$ y sea $z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\}$.
               Entonces:
-              $$T(z) = w \Leftrightarrow \frac{\alpha z + \beta}{\gamma z + \delta} = w \Leftarrow \alpha z + \beta = \gamma zw + \delta w \Leftrightarrow (\alpha - \gamma w)z = \delta w - \beta \Leftarrow z = \frac{\delta w - \beta}{-\gamma w + \alpha}$$
+              \begin{align*}
+                   & T(z) = w \Leftrightarrow \frac{\alpha z + \beta}{\gamma z + \delta} = w \Leftarrow \alpha z + \beta = \gamma zw + \delta w \Leftrightarrow \\
+                   & \Leftrightarrow (\alpha - \gamma w)z = \delta w - \beta \Leftrightarrow z = \frac{\delta w - \beta}{-\gamma w + \alpha}
+              \end{align*}
 
               Por tanto, $T$ es una aplicación conforme de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
     \end{itemize}
@@ -568,12 +571,12 @@ Veamos algunas propiedades:
           $$f(D(0, r)) \subset F(D(0, r))$$
           Si $z \in D(0, r)$, $f(z) = F(w(z))$.
           Por el lema de Schwarz,
-          $$w(z)| \leq |z| < r$$
+          $$|w(z)| \leq |z| < r$$
     \item Si $0 < r < 1$, veamos que
           $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|$$
           Si $|z| = r$, como por el lema de Schwarz $|w(z)| \leq |z| = r$, entonces:
           $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|$$
-    \item Si $|z| = r$, como por el lema de Schwarz $|w'(0)| \leq 1$ y $f'(0) = F'(w(0))w'(0) = F'(0)w'(0)$, entonces:
+    \item Si $|z| = r$, como por el lema de Schwarz $|w'(0)| \leq 1$ y además $f'(0) = F'(w(0))w'(0) = F'(0)w'(0)$, entonces:
           $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|$$
     \item No se verifica para todo $r \in (0, 1)$ que
           $$\max_{|z|=r} |f'(z)| \leq \max_{|z|=r} |F'(z)|$$
