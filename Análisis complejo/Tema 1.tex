@@ -790,7 +790,7 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
 
 \begin{proposition}
     Si $z_1, z_2 \in \mathbb{D}$, entonces:
-    $$\delta(z_1, z_2) = \frac{1}{2} Log \frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
+    $$\delta(z_1, z_2) = \frac{1}{2} \Log \frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
 \end{proposition}
 
 \begin{proof}
@@ -812,14 +812,14 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
     $$\delta(0, r) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } 0 \text{ y extremo } r\right\}$$
     Si $\gamma = [0, r]$,
     \begin{align*}
-         & \int_\gamma \frac{|dz|}{1-|z|^2} = \int_0^r \frac{dt}{1-t^2} = \frac{1}{2} \int_0^r \left(\frac{1}{1-t} + \frac{1}{1+t}\right)dt =      \\
-         & = \frac{1}{2} \left[-Log(1-t) + Log(1+t)\right]_0^r = \frac{1}{2} \left[Log \frac{1+t}{1-t}\right]_0^r = \frac{1}{2} Log\frac{1+r}{1-r}
+         & \int_\gamma \frac{|dz|}{1-|z|^2} = \int_0^r \frac{dt}{1-t^2} = \frac{1}{2} \int_0^r \left(\frac{1}{1-t} + \frac{1}{1+t}\right)dt =          \\
+         & = \frac{1}{2} \left[-\Log(1-t) + \Log(1+t)\right]_0^r = \frac{1}{2} \left[\Log \frac{1+t}{1-t}\right]_0^r = \frac{1}{2} \Log\frac{1+r}{1-r}
     \end{align*}
-    Luego $\delta(0, r) \leq \frac{1}{2} Log\frac{1+r}{1-r}$.
+    Luego $\delta(0, r) \leq \frac{1}{2} \Log\frac{1+r}{1-r}$.
 
     Sea $\gamma$ un camino en $\mathbb{D}$ con origen 0 y extremo $r$.
     Veamos que
-    $$\int_\gamma \frac{|dz|}{1-|z|^2} \geq \frac{1}{2} Log\frac{1+r}{1-r}$$
+    $$\int_\gamma \frac{|dz|}{1-|z|^2} \geq \frac{1}{2} \Log\frac{1+r}{1-r}$$
     Sea $\gamma: [a, b] \to \mathbb{C}$ una parametrización $\mathcal{C}^1$ a trozos de $\gamma$.
     Sean $u = Re(f)$ y $v= Im(f)$, de forma que $\gamma = u + iv$.
     $u, v: [a, b] \to \mathbb{R}$, $\mathcal{C}^1$ a trozos.
@@ -834,15 +834,15 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
     Luego:
     \begin{align*}
          & \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt \geq \int_a^b \frac{u'(t)}{1-u(t)^2}dt = \frac{1}{2} \int_a^b \left(\frac{u'(t)}{1-u(t)} + \frac{u'(t)}{1+u(t)}\right)dt = \\
-         & = \frac{1}{2} \left[-Log(1-u(t)) + Log(1+u(t))\right]_a^b = \frac{1}{2} \left[Log \frac{1+u(t)}{1-u(t)}\right]_a^b = \frac{1}{2} Log\frac{1+r}{1-r}
+         & = \frac{1}{2} \left[-\Log(1-u(t)) + \Log(1+u(t))\right]_a^b = \frac{1}{2} \left[\Log \frac{1+u(t)}{1-u(t)}\right]_a^b = \frac{1}{2} \Log\frac{1+r}{1-r}
     \end{align*}
     porque $u(a) = 0$ y $u(b) = r$.
     Por tanto,
-    $$\delta(z_1, z_2) = \delta(0, r) = \frac{1}{2} Log\frac{1+r}{1-r} = \frac{1}{2} log\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
+    $$\delta(z_1, z_2) = \delta(0, r) = \frac{1}{2} \Log\frac{1+r}{1-r} = \frac{1}{2} log\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
 \end{proof}
 
 \begin{remark}
-    Sea $h(x) = \frac{1}{2} Log \frac{1+x}{1-x}$, $x \in [0, 1)$.
+    Sea $h(x) = \frac{1}{2} \Log \frac{1+x}{1-x}$, $x \in [0, 1)$.
     Observamos que si $x < 1$, entonces $1+x \geq 1-x > 0 \Rightarrow \frac{1+x}{1-x} \geq 1$, así que $h: [0, 1) \to [0, \infty)$.
     $h$ es creciente, con $h(0) = 0$ y $\lim\limits_{x \to 1^-} h(x) = \infty$.
     Podemos escribir $\delta = h \circ \rho : \mathbb{D} \times \mathbb{D} \xrightarrow{\rho} [0, 1) \xrightarrow{h} [0, \infty)$.

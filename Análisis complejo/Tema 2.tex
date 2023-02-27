@@ -167,7 +167,7 @@ Los compactos coinciden con la definición de familia compacta dada.
               $\mathcal{F}$ está uniformemente acotada en $K$.
               Por el teorema de Montel, $\mathcal{F}$ es finitamente normal.
 
-        \item $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f(0) = 1, Re(f(z)) > 0 \forall z \in \mathbb{D}\}$.
+        \item $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f(0) = 1, Re(f(z)) > 0 \; \forall z \in \mathbb{D}\}$.
               Sea $K \subset \mathbb{D}$, $K$ compacto.
               Si $f \in \mathcal{P}$ y $z \in K$,
               $$|f(z)| \leq \frac{1+|z|}{1-|z|}$$
@@ -198,7 +198,27 @@ Los compactos coinciden con la definición de familia compacta dada.
 
               % Demostración
 
-              % Ejemplo 5
+        \item $\mathcal{F} = \{f : f \text{ es holomorfa en } \mathbb{D} \text{ y } \int\int_\mathbb{D} |f(z)|dxdy \leq M\}$, siendo $M > 0$.
+              Veamos que $\mathcal{F}$ es finitamente normal.
+
+              Sea $K \subset \mathbb{D}$, $K$ compacto.
+              Tomamos $r \in (0, 1)$ con $K \subset D(0, r)$.
+              Sea $f \in \mathcal{F}$ y $z \in K$, por la fórmula de Cauchy
+              $$f(z) = \frac{1}{2\pi i} \int_{|z| = \rho} \frac{f(\xi)}{\xi-z}d\xi = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{f(\rho e^{i\theta})}{\rho e^{i\theta} - z}\rho d\rho, \quad r \leq \rho < 1$$
+
+              $$|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\rho, \quad r \leq \rho < 1$$
+
+              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho \leq \frac{1}{2\pi} \int_{\frac{1+r}{2}}^1 \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\theta d\rho = \frac{1}{2\pi} \int\int_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy$$
+              Como $|w-z| \geq |w| - |z| > \frac{1+r}{2}-r = \frac{1-r}{2} > 0$,
+              \begin{align*}
+                   & \frac{1}{2\pi} \int\int_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy \leq \frac{1}{2\pi} \frac{2}{1-r} \int\int_{\frac{1+r}{2} < |w| < 1} |f(w)| dxdy \leq \\
+                   & \leq \frac{1}{\pi(1-r)} \int\int_\mathbb{D} |f(w)|dxdy \leq \frac{M}{\pi(1-r)}
+              \end{align*}
+              Por otro lado,
+              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho = |f(z)|\left(1 - \frac{1+r}{2}\right) = |f(z)|\frac{1-r}{2}$$
+              Entonces:
+              $$|f(z)|\frac{1-r}{2} \leq \frac{M}{\pi(1-r)} \Rightarrow |f(z)| \leq \frac{2M}{\pi(1-r)^2}$$
+              Por tanto, $\mathcal{F}$ está uniformemente acotada en $K$.
     \end{enumerate}
 \end{example}
 
@@ -214,6 +234,22 @@ Los compactos coinciden con la definición de familia compacta dada.
     \end{enumerate}
 \end{theorem}
 
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item[$\Rightarrow$] $M_n = \sup_{f \in \mathcal{F}} |a_n(f)|$.
+        \item[$\Leftarrow$] Sea $K \subset D(a, R)$, $K$ compacto.
+            Existe $r \in (0, R)$ tal que $K \subset \overline{D}(a, r)$.
+            Si $z \in K$ y $f \in \mathcal{F}$, se tiene:
+            \begin{align*}
+                |f(z)| & = \left|\sum_{n=0}^\infty a_n(f)(z-a)^n\right| \leq \sum_{n=0}^\infty |a_n(f)||z-a|^n \leq \\
+                       & \leq \sum_{n=0}^\infty M_n|z-a|^n \leq \sum_{n=0}^\infty M_nr^n < \infty
+            \end{align*}
+            ya que $\sum_{n=0}^\infty M_n(z-a)^n$ converge para $z = a+r$.
+            $\mathcal{F}$ está uniformemente acotada en $K$.
+    \end{itemize}
+\end{proof}
+
 \begin{theorem}[Teorema de Stieltjes-Vitali]
     Sea $D$ un dominio en $\mathbb{C}$ y $\mathcal{F}$ una familia finitamente normal de funciones holomorfas en $D$.
     Sea $\{f_n\}_{n=1}^\infty$ una sucesión en $\mathcal{F}$.
@@ -222,7 +258,26 @@ Los compactos coinciden con la definición de familia compacta dada.
 
 % Demostración
 
-% Ejemplo
+\begin{example}
+    Para $x \geq 0$, tenemos que $\left(1 + \frac{x}{n}\right)^n$ es una sucesión creciente y
+    $$\lim\limits_{n \to \infty} \left(1 + \frac{x}{n}\right)^n = e^x$$
+    Veamos que $\lim\limits_{n \to \infty} \left(1 + \frac{z}{n}\right)^n = e^z$ para todo $z \in \mathbb{C}$, siendo la convergencia uniforme en cada subconjunto compacto de $\mathbb{C}$.
+
+    Sea $D = \mathbb{C}$, $f_n(z) = \left(1 + \frac{z}{n}\right)^n$, $n \in \mathbb{N}$.
+    Cada $f_n$ es una función entera.
+    Veamos que $\mathcal{F}$ es finitamente normal.
+
+    Sea $K \subset \mathbb{C}$, $K$ compacto.
+    Tomamos $R > 0$ con $K \subset \overline{D}(0, R)$.
+    Si $k \in K$ y $n \in \mathbb{N}$,
+    $$|f_n(z)| = \left|1 + \frac{z}{n}\right|^n \leq \left(1 + \frac{|z|}{n}\right)^n \leq \left(1 + \frac{R}{n}\right)^n \leq e^R$$
+    Sea $A = [0, 1]$.
+    $A$ tiene puntos de acumulación en $\mathbb{C}$ y $\lim\limits_{n \to \infty} f_n(x) = e^x$ para todo $x \in A$.
+    Por el teorema de Stieltjes-Vitali, $\{f_n\}$ converge uniformemente en cada subconjunto compacto de $\mathbb{C}$.
+    Sea $f$ el límite, entonces $f$ es entera.
+    Si $x \in A$, $\lim\limits_{n \to \infty} f_n(x) = f(x) = e^x$.
+    Por el teorema de identidad, $f(z) = e^z$ si $z \in \mathbb{C}$.
+\end{example}
 
 \begin{theorem}[Teorema de Lindelöf]
     Sea $f$ holomorfa y acotada en $\mathbb{D}$.
@@ -235,8 +290,27 @@ Los compactos coinciden con la definición de familia compacta dada.
 \begin{theorem}
     Sea $f$ holomorfa y acotada en $D(1, 1)$.
     Supongamos que existe $\lim\limits_{x \to 0^+} f(x) = L \in \mathbb{C}$.
-    Entonces para todo $\alpha \in (0, \frac{pi}{2})$ existe
-    $$\lim\limits_{z \to 0, |Arg(z)| < \alpha} f(z) = L$$
+    Entonces para todo $\alpha \in (0, \frac{\pi}{2})$ existe
+    $$\lim\limits_{z \to 0, |\Arg(z)| < \alpha} f(z) = L$$
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $M > 0$ tal que $|f(z)| \leq M$ si $z \in D(1, 1)$.
+    Consideramos la sucesión $\{f_n\}_{n=1}^\infty$, $f_n(z) = f\left(\frac{z}{n}\right)$.
+    Cada $f_n$ es holomorfa en $D(1, 1)$.
+    La familia $\mathcal{F} = \{f_n : n \in \mathbb{N}\}$ está uniformemente acotada en $D$, porque si $z \in D$ y $n \in \mathbb{N}$ se tiene que $|f_n(z)| = \left|f\left(\frac{z}{n}\right)\right| \leq M$.
+    Así que $\mathcal{F}$ es finitamente normal.
+
+    Sea $A = (0, 1)$.
+    Si $x \in A$, $\lim\limits_{n \to \infty} f_n(x) = \lim\limits_{n \to \infty} f\left(\frac{x}{n}\right) = L$.
+    Por el teorema de Stieltjes-Vitali, $\{f_n\}$ converge uniformemente en cada subconjunto compacto de $D(1, 1)$.
+    Sea $g$ el límite, entonces $g$ es holomorfa en $D(1, 1)$ y $g(x) = L$ para todo $x \in A$.
+    Por el teorema de identidad, $g(z) = L$ para todo $z \in D(1, 1)$.
+    Hemos probado que $f_n \xrightarrow[n \to \infty]{} L$ uniformemente en cada subconjunto compacto de $D$.
+
+    Sea $\alpha \in (0, \frac{\pi}{2})$.
+    Sea $K = \left\{z \in \mathbb{C} : \frac{\cos(\alpha)}{2} \leq |z| \leq \cos(\alpha), |\Arg(z)| \leq \alpha\right\}$.
+    $K \subset D(1, 1)$, $K$ compacto.
+
+    % Terminar
+\end{proof}
