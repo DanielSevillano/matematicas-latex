@@ -293,10 +293,7 @@ $$\begin{vmatrix}
               Veamos que $T$ es sobreyectiva.
               Sea $w \in \mathbb{C} \setminus \{\frac{\alpha}{\gamma}\}$ y sea $z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\}$.
               Entonces:
-              \begin{align*}
-                   & T(z) = w \Leftrightarrow \frac{\alpha z + \beta}{\gamma z + \delta} = w \Leftarrow \alpha z + \beta = \gamma zw + \delta w \Leftrightarrow \\
-                   & \Leftrightarrow (\alpha - \gamma w)z = \delta w - \beta \Leftrightarrow z = \frac{\delta w - \beta}{-\gamma w + \alpha}
-              \end{align*}
+              $$T(z) = w \Leftrightarrow \frac{\alpha z + \beta}{\gamma z + \delta} = w \Leftarrow \alpha z + \beta = \gamma zw + \delta w \Leftrightarrow (\alpha - \gamma w)z = \delta w - \beta \Leftrightarrow z = \frac{\delta w - \beta}{-\gamma w + \alpha}$$
 
               Por tanto, $T$ es una aplicación conforme de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
     \end{itemize}
@@ -357,8 +354,8 @@ Desarrollamos las dos expresiones:
     \item Sea $z \in \mathbb{D}$.
           Consideramos $T_a^{-1}(z) \in \mathbb{D}$.
           \begin{align*}
-               & |\varphi(T_a^{-1}(z))| \leq |T_a^{-1}(z)| \Leftrightarrow |S_b(f(z))| \leq |S_a(z)| \Leftrightarrow                                                                                                                                              \\
-               & \Leftrightarrow \left|\frac{f(z)-b}{1-\bar{z}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right| \Leftrightarrow \left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|, \quad \forall z \in \mathbb{D}
+               & |\varphi(T_a^{-1}(z))| \leq |T_a^{-1}(z)| \Leftrightarrow |S_b(f(z))| \leq |S_a(z)| \Leftrightarrow \left|\frac{f(z)-b}{1-\bar{z}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right| \Leftrightarrow \\
+               & \Leftrightarrow \left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|, \quad \forall z \in \mathbb{D}
           \end{align*}
 
           Además, si se da la igualdad para algún $z \in \mathbb{D}$, $z \neq a$, entonces $\varphi$ es una rotación.
@@ -452,10 +449,7 @@ $$\rho(a, z) = \left|\frac{z-a}{1-\bar{a}z}\right| = |S_a(z)| < 1, \quad S_a \in
 Dados $a \in \mathbb{D}$ y $0 < r < 1$, denotamos:
 $$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}$$
 Entonces, dado $z \in \mathbb{D}$, se tiene que:
-\begin{align*}
-     & z \in \Delta(a, r) \Leftrightarrow \rho(z, a) < r \Leftrightarrow |S_a(z)| < r \Leftrightarrow S_a(z) \in D(0, r) \Leftrightarrow \\
-     & \Leftrightarrow z \in S_a^{-1}(D(0, r)) \Leftrightarrow z \in T_a(D(0, r))
-\end{align*}
+$$z \in \Delta(a, r) \Leftrightarrow \rho(z, a) < r \Leftrightarrow |S_a(z)| < r \Leftrightarrow S_a(z) \in D(0, r) \Leftrightarrow z \in S_a^{-1}(D(0, r)) \Leftrightarrow z \in T_a(D(0, r))$$
 Entonces $\Delta(a, r) = T_a(D(0, r))$.
 
 $T_a(\partial D(0, r))$ es una circunferencia $C$ contenida en $\mathbb{D}$.
@@ -504,10 +498,7 @@ Veamos que, de hecho,
 $$\left|T_a\left(-r\frac{a}{|a|}\right)\right| = \frac{||a|-r|}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} = \left|T_a\left(r\frac{a}{|a|}\right)\right|$$
 \begin{itemize}
     \item Si $|a| \geq r$,
-          \begin{align*}
-               & \frac{|a|-r}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow |a| + r|a|^2 - r - r^2|a| \leq r + |a| - r^2|a| - r|a|^2 \Leftrightarrow \\
-               & \Leftrightarrow 2r|a|^2 \leq 2r \Leftrightarrow |a| \leq 1
-          \end{align*}
+          $$\frac{|a|-r}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow |a| + r|a|^2 - r - r^2|a| \leq r + |a| - r^2|a| - r|a|^2 \Leftrightarrow 2r|a|^2 \leq 2r \Leftrightarrow |a| \leq 1$$
     \item Si $|a| < r$ se razona de forma análoga.
 \end{itemize}
 
@@ -596,10 +587,7 @@ Veamos algunas propiedades:
 Por la segunda parte del teorema de Schwarz-Pick,
 $$\frac{|w'(z)|}{1-|w(z)|^2} \leq \frac{1}{1-|z|^2}, \quad z \in \mathbb{D}$$
 Entonces, si $z \in \mathbb{D}$,
-\begin{align*}
-     & |f'(z)| = |F'(w(z))||w'(z)| \leq |F'(w(z))|\frac{1-|w(z)|^2}{1-|z|^2} \Leftrightarrow \\
-     & \Leftrightarrow (1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))|
-\end{align*}
+$$|f'(z)| = |F'(w(z))||w'(z)| \leq |F'(w(z))|\frac{1-|w(z)|^2}{1-|z|^2} \Leftrightarrow (1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))|$$
 Entonces, si $0 < r \leq 1$, tenemos que:
 $$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
 
@@ -703,10 +691,7 @@ Tenemos que:
 $$|f'(0)| \leq 1-|a|^2 \leq \frac{1}{|g'(a)|} = |f'(0)|$$
 Por tanto se da igualdad, así que $f$ es una transformación de Möbius con $f(\mathbb{D}) = \mathbb{D}$.
 En conclusión, las aplicaciones conformes de $\mathbb{D}$ sobre $\mathbb{D}$ son:
-\begin{align*}
-    \{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} & = \{\lambda S_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} =     \\
-                                                                              & = \{\lambda \varphi_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\}
-\end{align*}
+$$\{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{\lambda S_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{\lambda \varphi_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\}$$
 
 \section{La métrica de Poincaré}
 Si $\gamma$ es un camino en $\mathbb{C}$ y $f: sop(\gamma) \to \mathbb{C}$ es continua, entonces:
@@ -812,8 +797,8 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
     $$\delta(0, r) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } 0 \text{ y extremo } r\right\}$$
     Si $\gamma = [0, r]$,
     \begin{align*}
-         & \int_\gamma \frac{|dz|}{1-|z|^2} = \int_0^r \frac{dt}{1-t^2} = \frac{1}{2} \int_0^r \left(\frac{1}{1-t} + \frac{1}{1+t}\right)dt =          \\
-         & = \frac{1}{2} \left[-\Log(1-t) + \Log(1+t)\right]_0^r = \frac{1}{2} \left[\Log \frac{1+t}{1-t}\right]_0^r = \frac{1}{2} \Log\frac{1+r}{1-r}
+         & \int_\gamma \frac{|dz|}{1-|z|^2} = \int_0^r \frac{dt}{1-t^2} = \frac{1}{2} \int_0^r \left(\frac{1}{1-t} + \frac{1}{1+t}\right)dt = = \frac{1}{2} \left[-\Log(1-t) + \Log(1+t)\right]_0^r = \\
+         & = \frac{1}{2} \left[\Log \frac{1+t}{1-t}\right]_0^r = \frac{1}{2} \Log\frac{1+r}{1-r}
     \end{align*}
     Luego $\delta(0, r) \leq \frac{1}{2} \Log\frac{1+r}{1-r}$.
 
@@ -838,7 +823,7 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
     \end{align*}
     porque $u(a) = 0$ y $u(b) = r$.
     Por tanto,
-    $$\delta(z_1, z_2) = \delta(0, r) = \frac{1}{2} \Log\frac{1+r}{1-r} = \frac{1}{2} log\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
+    $$\delta(z_1, z_2) = \delta(0, r) = \frac{1}{2} \Log\frac{1+r}{1-r} = \frac{1}{2} \log\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
 \end{proof}
 
 \begin{remark}
