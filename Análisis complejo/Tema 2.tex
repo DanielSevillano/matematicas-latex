@@ -1,6 +1,6 @@
 \chapter{Familias normales}
-\section{Familias normales}
 
+\section{Familias normales}
 \begin{theorem}[Teorema de convergencia de Weierstrass]
     Sea $D$ abierto en $\mathbb{C}$ y sean $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en $D$ y $f: D \to \mathbb{C}$.
     Si $f_n \xrightarrow[n \to \infty]{} f$ uniformemente en cada subconjunto compacto de $D$, entonces $f$ es holomorfa en $D$ y $f_n' \xrightarrow[n \to \infty]{} f'$ uniformemente en cada subconjunto compacto.
@@ -130,11 +130,47 @@ Los compactos coinciden con la definición de familia compacta dada.
     \begin{enumerate}
         \item $\mathcal{F}$ es finitamente normal.
         \item $\mathcal{F}$ está uniformemente acotada en cada subconjunto compacto de $D$.
-              Es decir, para cada $K \subset D$, $K$ compacto, existe $M_k > 0$ tal que $|f(z)| \leq M_k$ para toda $f \in \mathcal{F}$ y para todo $z \in K$.
+              Es decir, para cada $K \subset D$, $K$ compacto, existe $M_K > 0$ tal que $|f(z)| \leq M_K$ para toda $f \in \mathcal{F}$ y para todo $z \in K$.
     \end{enumerate}
 \end{theorem}
 
-% Demostración (1 + 2)
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item[$\Rightarrow$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, con $\mathcal{F}$ finitamente normal.
+            Supongamos por reducción al absurdo que existe $K \subset D$, $K$ compacto, tal que $\mathcal{F}$ no está uniformemente acotada en $K$.
+            Entonces existen $\{z_n\}_{n=1}^\infty$ en $K$ y $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ tales que $|f_n(z_n)| \to \infty$.
+
+            Como $\mathcal{F}$ es una familia finitamente normal, existe $\{f_{n_k}\}_{k=1}^\infty$ subsucesión de $\{f_n\}$ tal que $\{f_{n_k}\}$ converge uniformemente en cada subconjunto compacto de $D$ a una función $f$ holomorfa en $D$.
+            Como $f$ es continua en $K$ y $K$ es compacto, existe $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in K$.
+            Por otro lado, como $f_{n_k} \xrightarrow[k \to \infty]{} f$ uniformemente en $K$, existe $k_0 \in \mathbb{N}$ tal que $k \geq k_0$, $z \in K$ $\Rightarrow$ $|f_{n_k}(z)-f(z)| < 1$.
+            Entonces $|f_{n_k}(z)| \leq |f_{n_k}(z)-f(z)| + |f(z)| < 1 + M$, $z \in K$, $k \geq k_0$.
+            En particular, $|f_{n_k}(z_{n_k})| < 1 + M$ si $k \geq k_0$.
+            Esta es una contradicción.
+
+        \item[$\Leftarrow$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, uniformemente acotada en cada subconjunto compacto de $D$.
+            Tomamos $X_1 = D$ y $X_2 = \mathbb{C}$.
+
+            \begin{enumerate}
+                \item Sea $z_0 \in \mathbb{C}$.
+                      Dado $\varepsilon > 0$, veamos que existe $\delta > 0$ tal que, si $z_1 \in D$, $|z_1-z_0| < \delta$, $f \in \mathcal{F}$, entonces $|f(z_1) - f(z_0)| < \varepsilon$.
+                      Sea $R > 0$ con $\overline{D}(0, R) \subset D$.
+                      $\mathcal{F}$ está uniformemente acotada en $\overline{D}(z_0, R)$ y por tanto en $D(z_0, R)$.
+                      Sea $K = \overline{D}(z_0, \frac{R}{2})$, que es un subconjunto compacto de $D(z_0, R)$.
+                      Por la proposición anterior, existe $A > 0$ tal que
+                      $$|f(z_2) - f(z_1)| \leq A|z_2-z_1|, \quad \text{si } z_1, z_2 \in K, f \in \mathcal{F}$$
+                      Entonces, si $\delta = \min \left(\frac{\varepsilon}{A}, \frac{R}{2}\right)$, $z_1 \in D$, $|z_1-z_0| < \delta$ y $f \in \mathcal{F}$, entonces $z_1 \in \overline{D}(z_0, \frac{R}{2}) = K$, así que:
+                      $$|f(z_1) - f(z_0)| \leq A|z_1-z_0| < A\delta \leq A\frac{\varepsilon}{A} = \varepsilon$$
+
+                \item Sea $z \in D$.
+                      El conjunto $\{f(z) : f \in \mathcal{F}\}$ está acotado, ya que $\mathcal{F}$ está uniformemente acotada en $\{z\}$.
+                      Por tanto, su clausura es compacta.
+            \end{enumerate}
+
+            Entonces, por el teorema de Arzelá-Ascoli, existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$.
+            Por tanto, $\mathcal{F}$ es finitamente normal.
+    \end{itemize}
+\end{proof}
 
 \begin{remark}
     \hfill
@@ -250,6 +286,7 @@ Los compactos coinciden con la definición de familia compacta dada.
     \end{itemize}
 \end{proof}
 
+\section{El teorema de Stieltjes-Vitali}
 \begin{theorem}[Teorema de Stieltjes-Vitali]
     Sea $D$ un dominio en $\mathbb{C}$ y $\mathcal{F}$ una familia finitamente normal de funciones holomorfas en $D$.
     Sea $\{f_n\}_{n=1}^\infty$ una sucesión en $\mathcal{F}$.
