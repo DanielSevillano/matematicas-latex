@@ -683,8 +683,7 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
 
     Sea $g(x) = I_{(0,2]}(x)$, veamos si $E(g(X_n)) \xrightarrow[n \to \infty]{} E(g(X))$.
     \begin{align*}
-        E(g(X_n)) & = E(I_{(0,2]}(X_n)) = \int_\mathbb{R} I_{(0,2]}(x) dF_n(x) = \int_0^2 dF_n(x) =         \\
-                  & = F_n(2) - F_n(0) = \frac{3}{4} - \frac{1}{2n} \xrightarrow[n \to \infty]{} \frac{3}{4} \\
+        E(g(X_n)) & = E(I_{(0,2]}(X_n)) = \int_\mathbb{R} I_{(0,2]}(x) dF_n(x) = \int_0^2 dF_n(x) = F_n(2) - F_n(0) = \frac{3}{4} - \frac{1}{2n} \xrightarrow[n \to \infty]{} \frac{3}{4} \\
         E(g(X))   & = \int_0^2 dF(x) = F(2) - F(0) = 1 - \frac{1}{2} = \frac{1}{2}
     \end{align*}
     Observamos que $E(g(X_n))$ no tiende a $E(g(X))$ con $n \to \infty$.
@@ -796,13 +795,13 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
         \end{cases}$$
     Calculamos la función de distribución de $X_n$:
     \begin{align*}
-        F_n(x) & = P(X_n^{-1}((-\infty,x])) = P(X_n^{-1}([0,x])) = P(X_n^{-1}([0,e^{-nk}])) =                                                                                        \\
-               & = P(\{ \omega \in \Omega : \omega \geq k \}) = 1 - P(\{ \omega \in \Omega : \omega < k \}) = 1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} = \\
+        F_n(x) & = P(X_n^{-1}((-\infty,x])) = P(X_n^{-1}([0,x])) = P(X_n^{-1}([0,e^{-nk}])) = P(\{ \omega \in \Omega : \omega \geq k \}) = \\
+               & = 1 - P(\{ \omega \in \Omega : \omega < k \}) = 1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} =    \\
                & = \begin{cases}
             0                                                                    & \text{si } x <= 0                                              \\
             1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} & \text{si } e^{-nk} \leq x < e^{-n(k-1)}, \quad k = 1, 2, \dots \\
             1                                                                    & \text{si } x \geq 1
-        \end{cases}                                                                                                                                       \\
+        \end{cases}                                                                                             \\
                & = \begin{cases}
             0                           & \text{si } x <= 0                  \\
             \vdots                                                           \\

@@ -20,19 +20,13 @@
 \begin{example}
     Sea $X \sim Bi(n, p)$, con $n \geq 0$ y $0 \leq p \leq 1$.
     Su función característica es:
-    \begin{align*}
-        \varphi_X(t) & = \sum_{k=0}^n e^{itk} P(X=k) = \sum_{k=0}^n e^{itk} \binom{n}{k} p^k(1-p)^{n-k} = \\
-                     & = \sum_{k=0}^n \binom{n}{k} (pe^{it})^k(1-p)^{n-k} = (pe^{it} + 1 - p)^n
-    \end{align*}
+    $$\varphi_X(t) = \sum_{k=0}^n e^{itk} P(X=k) = \sum_{k=0}^n e^{itk} \binom{n}{k} p^k(1-p)^{n-k} = \sum_{k=0}^n \binom{n}{k} (pe^{it})^k(1-p)^{n-k} = (pe^{it} + 1 - p)^n$$
 \end{example}
 
 \begin{example}
     Sea $X \sim Po(\lambda)$.
     Su función característica es:
-    \begin{align*}
-        \varphi_X(t) & = \sum_{k=0}^n e^{itk} P(X=k) = \sum_{k=0}^n e^{itk}e^{-\lambda}\frac{\lambda^k}{k!} = e^{-\lambda} \sum_{k=0}^n \frac{(\lambda e^{it})^k}{k!} = \\
-                     & = e^{-\lambda}e^{\lambda e^{it}} = e^{\lambda(e^{it} - 1)}
-    \end{align*}
+    $$\varphi_X(t) = \sum_{k=0}^n e^{itk} P(X=k) = \sum_{k=0}^n e^{itk}e^{-\lambda}\frac{\lambda^k}{k!} = e^{-\lambda} \sum_{k=0}^n \frac{(\lambda e^{it})^k}{k!} = e^{-\lambda}e^{\lambda e^{it}} = e^{\lambda(e^{it} - 1)}$$
 \end{example}
 
 \begin{remark}
@@ -69,9 +63,8 @@ Entonces:
           $$|\varphi(t)| = |E(e^{itX})| \leq E|e^{itX}| = E|\cos(tx) + i\sin(tx)| = 1$$
     \item $\varphi(-t) = \overline{\varphi(t)}$.
           \begin{align*}
-              \varphi(-t) & = E(e^{itX}) = E(\cos(-tx) + i\sin(-tx)) =                             \\
-                          & = E(\cos(tx)) - iE(\sin(tx)) = \overline{E(\cos(tx)) + iE(\sin(tx))} = \\
-                          & = \overline{E(\cos(tx)) + i\sin(tx)} = \overline{\varphi(t)}
+              \varphi(-t) & = E(e^{itX}) = E(\cos(-tx) + i\sin(-tx)) = = E(\cos(tx)) - iE(\sin(tx))                              \\
+                          & = \overline{E(\cos(tx)) + iE(\sin(tx))} = \overline{E(\cos(tx)) + i\sin(tx)} = \overline{\varphi(t)}
           \end{align*}
     \item $\varphi$ es función definida positiva, es decir,
           $$\sum_{k,j=1}^n z_k\varphi(t_j-t_k)\overline{z_j} \geq 0, \quad \forall n \geq 1, \quad \forall z \in \mathbb{C}^n$$
@@ -135,9 +128,8 @@ Además,
 
     Como $f$ es simétrica, sabemos que $\varphi \in \mathbb{R}$.
     \begin{align*}
-        \varphi(t) & = E(e^{itX}) = \int_\mathbb{R} e^{itx}dF(x) = \int_\mathbb{R} e^{itx}f(x)dx =                                           \\
-                   & = \int_{-a}^a \cos(tx)f(x)dx + \int_{-a}^a \sin(tx)f(x)dx = 2\int_0^a \cos(tx)\frac{1}{a}\left(1-\frac{x}{a}\right)dx = \\
-                   & = \frac{2(1-\cos(at))}{a^2t^2} = \frac{\sin^2\left(\frac{at}{2}\right)}{\left(\frac{at}{2}\right)^2}
+        \varphi(t) & = E(e^{itX}) = \int_\mathbb{R} e^{itx}dF(x) = \int_\mathbb{R} e^{itx}f(x)dx = \int_{-a}^a \cos(tx)f(x)dx + \int_{-a}^a \sin(tx)f(x)dx =                          \\
+                   & = 2\int_0^a \cos(tx)\frac{1}{a}\left(1-\frac{x}{a}\right)dx = \frac{2(1-\cos(at))}{a^2t^2} = \frac{\sin^2\left(\frac{at}{2}\right)}{\left(\frac{at}{2}\right)^2}
     \end{align*}
 
     En el último paso hemos usado que $\sin^2(\frac{\alpha}{2}) = \frac{1-\cos(\alpha)}{2}$.
@@ -155,18 +147,15 @@ Además,
         f_Y(y) & = F_Y'(y) = F_X'(\beta y + \alpha)\beta = f_X(\beta y + \alpha)\beta = \frac{1}{2}e^{-|y|}
     \end{align*}
     Observamos que $f_Y$ es simétrica, así que $\varphi_Y \in \mathbb{R}$.
-    \begin{align*}
-        \varphi_Y(t) & = \int_\mathbb{R} e^{ity}\frac{1}{2}e^{-|y|}dy = \int_\mathbb{R} (\cos(ty) + i\sin(ty))\frac{1}{2}e^{-|y|}dy = \\
-                     & = \int_0^\infty \cos(ty)e^{-y}dy = \frac{1}{1+t^2}
-    \end{align*}
+    $$\varphi_Y(t) = \int_\mathbb{R} e^{ity}\frac{1}{2}e^{-|y|}dy = \int_\mathbb{R} (\cos(ty) + i\sin(ty))\frac{1}{2}e^{-|y|}dy = \int_0^\infty \cos(ty)e^{-y}dy = \frac{1}{1+t^2}$$
     Por tanto:
     $$\varphi_X(t) = e^{it\alpha}\varphi_Y(\beta t) = \frac{e^{it\alpha}}{1+\beta^2t^2}$$
 
     También se puede ver que $Y = Y_1 - Y_2$, con $Y_i \sim Exp(1)$ independientes.
     De esta forma:
     \begin{align*}
-        \varphi_Y(t) & = E(e^{itY}) = E(e^{it(Y_1-Y_2)}) = E(e^{itY_1})E(e^{-itY_2}) = \varphi_{Y_1}(t)\varphi_{Y_2}(-t) = \\
-                     & = \varphi_{Y_1}(t) \overline{\varphi_{Y_2}(t)} = \frac{1}{1-it}\frac{1}{1+it} = \frac{1}{1+t^2}
+        \varphi_Y(t) & = E(e^{itY}) = E(e^{it(Y_1-Y_2)}) = E(e^{itY_1})E(e^{-itY_2}) = \varphi_{Y_1}(t)\varphi_{Y_2}(-t) = \varphi_{Y_1}(t) \overline{\varphi_{Y_2}(t)} = \\
+                     & = \frac{1}{1-it}\frac{1}{1+it} = \frac{1}{1+t^2}
     \end{align*}
 \end{exercise}
 
@@ -194,8 +183,8 @@ Además,
 
     Calculamos:
     \begin{align*}
-        \varphi_{Z_n}(t) & = E(e^{itZ_n}) = E(e^{it\frac{X_n-np}{\sigma_n}}) = e^{-\frac{itnp}{\sigma_n}} E(e^{\frac{it}{\sigma_n}X_n}) = e^{-\frac{itnp}{\sigma_n}} \varphi_{X_n} \left(\frac{t}{\sigma_n}\right) = \\
-                         & = e^{-\frac{itnp}{\sigma_n}} (pe^{i\frac{t}{\sigma_n}} + q)^n = (pe^{i\frac{t}{\sigma_n}q} + qe^{-i\frac{t}{\sigma_n}p})^n
+        \varphi_{Z_n}(t) & = E(e^{itZ_n}) = E(e^{it\frac{X_n-np}{\sigma_n}}) = e^{-\frac{itnp}{\sigma_n}} E(e^{\frac{it}{\sigma_n}X_n}) = e^{-\frac{itnp}{\sigma_n}} \varphi_{X_n} \left(\frac{t}{\sigma_n}\right) = e^{-\frac{itnp}{\sigma_n}} (pe^{i\frac{t}{\sigma_n}} + q)^n = \\
+                         & = (pe^{i\frac{t}{\sigma_n}q} + qe^{-i\frac{t}{\sigma_n}p})^n
     \end{align*}
 
     Se puede comprobar que:
@@ -252,8 +241,8 @@ Si además $X_1, \dots, X_n$ son igualmente distribuidas, entonces $\varphi_S(t)
     \begin{enumerate}
         \item \textbf{Determinar la distribución de $X_n$.}
               \begin{align*}
-                  \varphi_{X_n}(t) & = \left(\frac{1 - \alpha + \alpha - (1-\alpha)it}{1-it}\right)^n = \left(\frac{\alpha}{1-it} + \frac{(1-\alpha)(1-it)}{1-it}\right)^n = \\
-                                   & = \left(\alpha\frac{1}{1-it} + (1-\alpha)\right)^n = \varphi_W(t)^n
+                  \varphi_{X_n}(t) & = \left(\frac{1 - \alpha + \alpha - (1-\alpha)it}{1-it}\right)^n = \left(\frac{\alpha}{1-it} + \frac{(1-\alpha)(1-it)}{1-it}\right)^n = \left(\alpha\frac{1}{1-it} + (1-\alpha)\right)^n = \\
+                                   & = \varphi_W(t)^n
               \end{align*}
               donde $\varphi_W(t) = \alpha\frac{1}{1-it} + (1-\alpha)$.
               Luego $X_n = \sum_{i=1}^n W$.
@@ -262,12 +251,10 @@ Si además $X_1, \dots, X_n$ son igualmente distribuidas, entonces $\varphi_S(t)
               Por tanto, $X_n$ es la suma de $n$ variables aleatorias con distribuciones mixtura de $Exp(1)$ y $\delta(0)$.
         \item \textbf{Calcular $E(X_n)$ y $V(X_n)$.}
               \begin{align*}
-                  E(X_n) & = E\left(\sum_{i=1}^n W\right) = nE(W) = n(\alpha E(Exp(1)) + (1-\alpha)E(\delta(0))) \\
-                         & = n\alpha                                                                             \\
-                  V(X_n) & = nV(W) = n(E(W^2) - E(W)^2) =                                                        \\
-                         & = n(\alpha E(Exp(1)^2) + (1-\alpha)E(\delta(0)^2) - \alpha^2) =                       \\
-                         & = n(\alpha(V(Exp(1)) + E(Exp(1))^2) - \alpha^2) =                                     \\
-                         & = n(2\alpha - \alpha^2) = n\alpha(2-\alpha)
+                  E(X_n) & = E\left(\sum_{i=1}^n W\right) = nE(W) = n(\alpha E(Exp(1)) + (1-\alpha)E(\delta(0)))        \\
+                         & = n\alpha                                                                                    \\
+                  V(X_n) & = nV(W) = n(E(W^2) - E(W)^2) = n(\alpha E(Exp(1)^2) + (1-\alpha)E(\delta(0)^2) - \alpha^2) = \\
+                         & = n(\alpha(V(Exp(1)) + E(Exp(1))^2) - \alpha^2) = n(2\alpha - \alpha^2) = n\alpha(2-\alpha)
               \end{align*}
 
               También se podría haber usado que $\varphi^{(k)}(0) = i^k E(X^k)$.
@@ -280,10 +267,7 @@ Si además $X_1, \dots, X_n$ son igualmente distribuidas, entonces $\varphi_S(t)
         \item \textbf{Determinar el límite en distribución de la sucesión $\{Y_n\}_{n \geq 1}$ con:}
               $$Y_n = \frac{X_n - n\alpha}{\sqrt{n}}$$
               Por el teorema de continuidad de Lévy, basta hallar $\lim\limits_{n \to \infty} \varphi_{Y_n}(t)$, $t \in \mathbb{R}$.
-              \begin{align*}
-                  \varphi_{Y_n}(t) & = E(e^{itY_n}) = E(e^{it\frac{X_n-n\alpha}{\sqrt{n}}}) = e^{-it\sqrt{n}\alpha}\varphi_{X_n}\left(\frac{t}{\sqrt{n}}\right) = \\
-                                   & = e^{-it\sqrt{n}\alpha} \left(\frac{\alpha}{1-i\frac{t}{\sqrt{n}}} + 1-\alpha\right)
-              \end{align*}
+              $$\varphi_{Y_n}(t) = E(e^{itY_n}) = E(e^{it\frac{X_n-n\alpha}{\sqrt{n}}}) = e^{-it\sqrt{n}\alpha}\varphi_{X_n}\left(\frac{t}{\sqrt{n}}\right) = e^{-it\sqrt{n}\alpha} \left(\frac{\alpha}{1-i\frac{t}{\sqrt{n}}} + 1-\alpha\right)$$
               Como este límite es difícil de resolver podemos proceder de otra forma.
               Podemos escribir $X_n - n\alpha = \sum_{i=1}^n (W - \alpha) = \sum_{i=1}^n U$, con $U = W-\alpha$.
               Entonces:
@@ -300,8 +284,7 @@ Si además $X_1, \dots, X_n$ son igualmente distribuidas, entonces $\varphi_S(t)
               $$\varphi_V\left(\frac{t}{\sqrt{n}}\right) = 1 - \frac{t^2}{2n}\alpha(2-\alpha) + O\left(\frac{t^2}{n}\right)$$
               Así que:
               \begin{align*}
-                  \lim\limits_{n \to \infty} \varphi_{Y_n}(t) & = \lim\limits_{n \to \infty} \varphi_U\left(\frac{t}{\sqrt{n}}\right)^n =                                                                                \\
-                                                              & = \lim\limits_{n \to \infty} \left(1 - \frac{t^2}{2n}\alpha(2-\alpha) + O\left(\frac{t^2}{n}\right)\right)^n =                                           \\
+                  \lim\limits_{n \to \infty} \varphi_{Y_n}(t) & = \lim\limits_{n \to \infty} \varphi_U\left(\frac{t}{\sqrt{n}}\right)^n = \lim\limits_{n \to \infty} \left(1 - \frac{t^2}{2n}\alpha(2-\alpha) + O\left(\frac{t^2}{n}\right)\right)^n = \\
                                                               & = e^{\lim\limits_{n \to \infty} n\left(1 - \frac{t^2}{2n}\alpha(2-\alpha) + O\left(\frac{t^2}{n} - 1\right)\right)} = e^{-\frac{t^2}{2}\alpha(2-\alpha)}
               \end{align*}
               Por tanto, $Y_n \xrightarrow{d} Y \sim N(0, \alpha(2-\alpha))$.
@@ -352,9 +335,8 @@ Si además $X_1, \dots, X_n$ son igualmente distribuidas, entonces $\varphi_S(t)
 
 \begin{note}
     \begin{align*}
-        c_1 & = \frac{K'(0)}{i} = \frac{1}{i} \frac{\varphi'(0)}{\varphi(0)} = \frac{1}{i}\varphi'(0) = E(X)                                                       \\
-        c_2 & = \frac{K''(0)}{i^2} = -K''(0) = -\left(\frac{\varphi''(0)}{\varphi(0)} - \left(\frac{\varphi'(0)}{\varphi(0)}\right)^2\right) = (E(X^2) - E(X)^2) = \\
-            & = V(X)
+        c_1 & = \frac{K'(0)}{i} = \frac{1}{i} \frac{\varphi'(0)}{\varphi(0)} = \frac{1}{i}\varphi'(0) = E(X)                                                            \\
+        c_2 & = \frac{K''(0)}{i^2} = -K''(0) = -\left(\frac{\varphi''(0)}{\varphi(0)} - \left(\frac{\varphi'(0)}{\varphi(0)}\right)^2\right) = (E(X^2) - E(X)^2) = V(X)
     \end{align*}
 \end{note}
 
@@ -390,8 +372,8 @@ Si además $X_1, \dots, X_n$ son igualmente distribuidas, entonces $\varphi_S(t)
 Sea $X = Y_1 + \dots + Y_N$, con $Y_i$ variables aleatorias independientes e idénticamente distribuidas y $N$ una variable aleatoria en $\mathbb{Z}_+$.
 $X$ sigue una distribución compuesta.
 \begin{align*}
-    \varphi_X(t) & = E(e^{itX}) = E(E(e^{itX}|N)) = \sum_{n=0}^\infty E(e^{itX}|N=n)P(N=n) =                                        \\
-                 & = \sum_{n=0}^\infty E(e^{it\sum_{i=1}^n X_i})P(N=n) = \sum_{n=0}^\infty \varphi_Y(t)^nP(N=n) = G_N(\varphi_Y(t))
+    \varphi_X(t) & = E(e^{itX}) = E(E(e^{itX}|N)) = \sum_{n=0}^\infty E(e^{itX}|N=n)P(N=n) = \sum_{n=0}^\infty E(e^{it\sum_{i=1}^n X_i})P(N=n) = \\
+                 & = \sum_{n=0}^\infty \varphi_Y(t)^nP(N=n) = G_N(\varphi_Y(t))
 \end{align*}
 
 \begin{example}

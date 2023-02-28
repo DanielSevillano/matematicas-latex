@@ -164,8 +164,7 @@ Recordamos que:
         \end{cases}$$
     Veamos que las variables aleatorias no son independientes dos a dos:
     \begin{align*}
-        P(X_n = 1 | X_{n-1} = 0) & = \frac{P((X_n = 1) \cap (X_{n-1} = 0))}{P(X_{n-1} = 0)} =                             \\
-                                 & = \frac{m\left([0, \frac{1}{n}] \cap (\frac{1}{n-1}, 1]\right)}{1 - \frac{1}{n-1}} = 0 \\
+        P(X_n = 1 | X_{n-1} = 0) & = \frac{P((X_n = 1) \cap (X_{n-1} = 0))}{P(X_{n-1} = 0)} = \frac{m\left([0, \frac{1}{n}] \cap (\frac{1}{n-1}, 1]\right)}{1 - \frac{1}{n-1}} = 0 \\
         P(X_n = 1)               & = \frac{1}{n}
     \end{align*}
     Calculamos el límite de la sucesión:
@@ -309,12 +308,12 @@ Esta norma induce una métrica:
         \end{cases}$$
     Veamos si $X_n$ converge a $X$ en $L^p$.
     \begin{align*}
-        E(|X_n - X|^p) & = E(|X_n|^p) = 0^pP(X_n = 0) + n^pP(X_n = n) =                                                                                  \\
-                       & = n^pm\left(\left[0, \frac{1}{n}\right]\right) = \frac{n^p}{n} = n^{p-1} \xrightarrow[n \to \infty]{} \begin{cases}
-                                                                                                                                   0      & \text{si } p < 1 \\
-                                                                                                                                   1      & \text{si } p = 1 \\
-                                                                                                                                   \infty & \text{si } p > 1
-                                                                                                                               \end{cases}
+        E(|X_n - X|^p) & = E(|X_n|^p) = 0^pP(X_n = 0) + n^pP(X_n = n) = n^pm\left(\left[0, \frac{1}{n}\right]\right) = \\
+                       & = \frac{n^p}{n} = n^{p-1} \xrightarrow[n \to \infty]{} \begin{cases}
+            0      & \text{si } p < 1 \\
+            1      & \text{si } p = 1 \\
+            \infty & \text{si } p > 1
+        \end{cases}
     \end{align*}
     Luego $X_n$ converge a $X$ en $L^p$ si $p < 1$.
 \end{example}
@@ -329,8 +328,8 @@ Esta norma induce una métrica:
     Sea $X \sim \delta(0)$, se puede comprobar que $X_n \xrightarrow{p} X$.
     Veamos si $X_n$ converge a $X$ en $L^p$.
     \begin{align*}
-        E(|X_n - X|^p) & = E(|X_n|^p) = 0^pP(X_n = 0) + 2^{np}P(X_n = 2^n) =                                                      \\
-                       & = 2^{np}m\left(\left[0, \frac{1}{n}\right]\right) = \frac{2^{np}}{n} \xrightarrow[n \to \infty]{} \infty
+        E(|X_n - X|^p) & = E(|X_n|^p) = 0^pP(X_n = 0) + 2^{np}P(X_n = 2^n) = 2^{np}m\left(\left[0, \frac{1}{n}\right]\right) = \\
+                       & = \frac{2^{np}}{n} \xrightarrow[n \to \infty]{} \infty
     \end{align*}
     Luego $X_n$ no converge a $X$ en $L^p$.
 \end{example}
