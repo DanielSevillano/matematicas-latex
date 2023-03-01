@@ -344,7 +344,80 @@ Los compactos coinciden con la definición de familia compacta dada.
 
     Sea $\alpha \in (0, \frac{\pi}{2})$.
     Sea $K = \left\{z \in \mathbb{C} : \frac{\cos(\alpha)}{2} \leq |z| \leq \cos(\alpha), |\Arg(z)| \leq \alpha\right\}$.
-    $K \subset D(1, 1)$, $K$ compacto.
+    $K$ es un subconjunto compacto de $D(1, 1)$, así que $f_n \xrightarrow[n \to \infty]{} L$ uniformemente en $K$.
+    Es decir, existe $n_0 \in \mathbb{N}$ tal que, si $n \geq n_0$ y $z \in K$, entonces $|f_n(z)-L| < \varepsilon$.
 
-    % Terminar
+    Sea $\delta = \frac{\cos(\alpha)}{2n_0} > 0$.
+    Sea $z$ tal que $0 < |z| < \delta$ y $|\Arg(z)| < \alpha$.
+    Observamos que $|z| < \frac{\cos(\alpha)}{2n_0} \leq \frac{\cos(\alpha)}{2}$.
+    Tomamos $n_z$ el primer natural para el que $n_z|z| \geq \frac{\cos(\alpha)}{2}$.
+    Como $|z| < \frac{\cos(\alpha)}{2n_0} \Leftrightarrow n_0|z| < \frac{\cos(\alpha)}{2}$, entonces $1 \leq n_0 < n_z$.
+    Por otro lado,
+    $$(n_z-1)|z| < \frac{\cos(\alpha)}{2} \Leftrightarrow n_z|z| - |z| < \frac{\cos(\alpha)}{2} \Leftrightarrow n_z|z| < |z| + \frac{\cos(\alpha)}{2} < \frac{\cos(\alpha)}{2} + \frac{\cos(\alpha)}{2} = \cos(\alpha)$$
+    Así que $\frac{\cos(\alpha)}{2} \leq n_z|z| = |n_zz| < \cos(\alpha)$.
+    Además, $|\Arg(n_zz)| = |\Arg(z)| < \alpha$.
+    Por tanto, $n_zz \in K$.
+    Entonces:
+    $$|f_{n_k}(n_zz) - L| = |f(z) - L| < \varepsilon$$
+\end{proof}
+
+\section{Teoremas de Hurwitz}
+\begin{theorem}[Teorema de Rouché]
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ y sea $J$ un camino de Jordan en $D$.
+    Sean $f$ y $g$ funciones holomorfas en $D$ tales que
+    $$|f(z) - g(z)| < |f(z)| \quad \text{si } z \in J$$
+    Entonces:
+    \begin{enumerate}
+        \item $I(J) \subset D$.
+        \item Ni $f$ ni $g$ se anulan en $J$.
+        \item $f$ y $g$ tienen el mismo número de ceros en $I(J)$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Primer teorema de Hurwitz]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas y nunca nulas en $D$, que converge uniformemente en cada subconjunto de $D$ a una función $f$.
+    Entonces $f$ es nunca nula en $D$ o bien $f$ es idénticamente nula en $D$.
+\end{theorem}
+
+\begin{proof}
+    Si $f \equiv 0$ en $D$, no hay nada que hacer.
+    Supongamos que $f \not\equiv 0$ en $D$.
+    Supongamos por reducción al absurdo que existe $a \in D$ con $f(a) = 0$.
+    Entonces $a$ es un cero aislado de $f$.
+    Podemos tomar $R > 0$ tal que $D(a, 2R) \subset D$ y $f$ no tiene ceros en $D(a, 2R) \setminus \{a\}$.
+
+    Sea $C_R$ la circunferencia $|z-a| = R$.
+    Como $f$ no tiene ceros en $C_R$, existe $\alpha > 0$ tal que $|f(z)| > \alpha$ para todo $z \in C_R$.
+    Como $f_n \to f$ uniformemente en $C_R$, existe $n_0 \in \mathbb{N}$ tal que $n \geq n_0, z \in C_R \Rightarrow |f_n(z) - f(z)| < \alpha$.
+    Entonces, si $n \geq n_0$ y $z \in C_R$, se tiene que
+    $$|f_n(z) - f(z)| < \alpha < |f(z)|$$
+    Por el teorema de Rouché, $f_n$ y $f$ tienen el mismo número de ceros en $D(a, R)$.
+    Pero $f_n$ es nunca nula en $D$, por lo que no tiene ceros en $D(a, R)$, mientras que $f(a) = 0$.
+    Esta es una contradicción.
+    Entonces $f$ es nunca nula en $D$.
+\end{proof}
+
+\begin{theorem}[Segundo teorema de Hurwitz]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas e inyectivas en $D$.
+    Si $\{f_n\}$ converge uniformemente a $f$ en cada subconjunto compacto de $D$, entonces $f$ es inyectiva o constante.
+\end{theorem}
+
+\begin{proof}
+    Sabemos que $f$ es holomorfa en $D$.
+    Supongamos que $f$ no es constante.
+    Sean $a, b \in D$ con $a \neq b$.
+    Veamos que $f(a) \neq f(b)$.
+    $D \setminus \{a\}$ es un dominio en $\mathbb{C}$.
+    Para cada $n \in \mathbb{N}$, sea $g_n(z) = f_n(z) - f_n(a)$ si $z \in D \setminus \{a\}$.
+    Cada $g_n$ es holomorfa y nunca nula en $D \setminus \{a\}$.
+    $f_n \to f$ uniformemente en cada subconjunto compacto de $D$.
+    Sea $g(z) = f(z) - f(a)$, $z \in D \setminus \{a\}$.
+    Entonces $g_n \to g$ uniformemente en cada subconjunto compacto de $D \setminus \{a\}$.
+    Por el teorema anterior, $g \equiv 0$ en $D \setminus \{a\}$ o bien $g$ es nunca nula en $D \setminus \{a\}$.
+
+    \begin{enumerate}
+        \item Si $g \equiv 0$ en $D \setminus \{a\}$, entonces $f(z) = f(a)$ si $z \in D \setminus \{a\}$ $\Rightarrow$ $f(z) = f(a)$ si $z \in D$.
+              $f$ es constante, lo que contradice nuestra hipótesis.
+        \item Si $g(z) \neq 0$ si $z \in D \setminus \{a\}$, en particular $g(b) = f(b) - f(a) \neq 0 \Rightarrow f(a) \neq f(b)$.
+    \end{enumerate}
 \end{proof}
