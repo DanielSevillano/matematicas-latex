@@ -1,0 +1,182 @@
+\chapter{El teorema de Riemann de la aplicación conforme}
+
+\section{Preliminares}
+Recordemos algunos conceptos y resultados.
+
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $f$ una función holomorfa en $D$.
+    \begin{itemize}
+        \item $g$ es una rama de $\sqrt{f}$ en $D$ si $g: D \to \mathbb{C}$ es una función continua tal que $g(z)^2 = f(z)$ para todo $z \in D$.
+        \item $g$ es una rama de $\log(f)$ en $D$ si $g: D \to \mathbb{C}$ es una función continua tal que $e^{g(z)} = f(z)$ para todo $z \in D$.
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    Sean $D$ un dominio en $\mathbb{C}$ y $f$ una función holomorfa y nunca nula en $D$.
+    \begin{enumerate}
+        \item Si $g$ es una rama de $\sqrt{f}$ en $D$, entonces $g$ es holomorfa en $D$ y $g'(z) = \frac{f'(z)}{2g(z)}$ para todo $z \in D$.
+        \item Si $g$ es un rama de $\log(f)$ en $D$, entonces $g$ es holomorfa en $D$ y $g'(z) = \frac{f'(z)}{f(z)}$ para todo $z \in D$.
+        \item Existe una rama de $\log(f)$ en $D$ si y solo si $\frac{f'}{f}$ tiene primitiva en $D$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    Sean $D$ un dominio en $\mathbb{C}$ y $f: D \to \mathbb{C}$ una función continua en $D$.
+    Entonces $f$ tiene primitiva en $D$ si y solo si $\int_\gamma f(z)dz = 0$ para todo camino cerrado $\gamma$ en $D$.
+\end{proposition}
+
+\begin{definition}
+    Si $D$ es un dominio en $\mathbb{C}$ y $\Gamma$ es un ciclo en $D$, se dice que $\Gamma$ es homólogo a cero módulo $D$, y se denota $\Gamma \sim 0 (mod D)$, si $n(\Gamma, a) = 0$ para todo $a \in \mathbb{C} \setminus D$.
+\end{definition}
+
+\begin{theorem}[Versión general del teorema de Cauchy]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\Gamma$ un ciclo en $D$.
+    Las dos siguientes condiciones son equivalentes:
+    \begin{enumerate}
+        \item $\Gamma \sim 0 (mod D)$.
+        \item $\int_\Gamma f(z)dz = 0$ para toda función $f$ holomorfa en $D$.
+    \end{enumerate}
+\end{theorem}
+
+\section{Dominios simplemente conexos}
+\begin{definition}
+    Si $D$ es un dominio en $\mathbb{C}$, se dice que $D$ es simplemente conexo si $\mathbb{C}^\ast \setminus D$ es conexo.
+\end{definition}
+
+Hay una serie de caracterizaciones para los dominios simplemente conexos, que se pueden deducir de los resultados anteriores.
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$.
+    Las siguientes condiciones son equivalentes:
+    \begin{enumerate}
+        \item $D$ es simplemente conexo.
+        \item Todo ciclo en $D$ es homólogo a cero módulo $D$.
+        \item Todo camino cerrado en $D$ es homólogo a cero módulo $D$.
+        \item $\int_\Gamma f(z)dz = 0$ para toda $f$ holomorfa en $D$ y para todo ciclo $\Gamma$ en $D$.
+        \item $\int_\gamma f(z)dz = 0$ para toda $f$ holomorfa en $D$ y para todo camino cerrado $\gamma$ en $D$.
+        \item Toda función holomorfa en $D$ tiene primitiva.
+        \item Para toda función $f$ holomorfa y nunca nula en $D$, existe una rama de $\log(f)$ en $D$.
+        \item Para toda función $f$ holomorfa y nunca nula en $D$, existe una rama de $\sqrt{f}$ en $D$.
+    \end{enumerate}
+\end{theorem}
+
+Recordamos que:
+\begin{itemize}
+    \item Dos dominios $D_1$ y $D_2$ en $\mathbb{C}^\ast$ son conformemente equivalentes si existe una aplicación conforme $f$ de $D_1$ sobre $D_2$.
+    \item En el conjunto de los dominios en $\mathbb{C}^\ast$, el ser conformemente equivalentes es una relación de equivalencia.
+    \item Si $D_1$ y $D_2$ son dos dominios en $\mathbb{C}^\ast$ que son conformemente equivalentes, entonces $D_1$ es simplemente conexo si y solo si $D_2$ es simplemente conexo.
+    \item $\mathbb{C}^\ast$, $\mathbb{C}$ y el disco unidad $\mathbb{D} = \{z \in \mathbb{C} : |z| < 1\}$ son tres dominios simplemente conexos en $\mathbb{C}^\ast$, que no son conformemente equivalentes.
+    \item El único dominio en $\mathbb{C}^\ast$ conformemente equivalente a $\mathbb{C}^\ast$ es $\mathbb{C}^\ast$.
+\end{itemize}
+
+Vamos a ver que, además de $\mathbb{C}\ast$, $\mathbb{C}$ y $\mathbb{D}$, no hay más dominios simplemente conexos en $\mathbb{C}^\ast$ módulo la relación de equivalencia.
+Es decir, si $D$ es un dominio simplemente conexo en $\mathbb{C}^\ast$, entonces $D$ es conformemente equivalente a uno de los tres: $\mathbb{C}^\ast$, $\mathbb{C}$ o $\mathbb{D}$.
+Por tanto se tendrá que, si $D$ es un dominio simplemente conexo en $\mathbb{C}$, con $D \neq \mathbb{C}$, entonces $D$ es conformemente equivalente a $\mathbb{D}$.
+
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}^\ast$.
+    Llamamos automorfismos de $D$ a aquellas aplicaciones conformes de $D$ sobre $D$.
+    El conjunto de todos los automorfismos de $D$ se denota $Aut(D)$, y tiene estructura de grupo con la composición.
+\end{definition}
+
+Tenemos que
+\begin{align*}
+    Aut(\mathbb{C}^\ast) & = \mathcal{M}                                                                                                                                                       \\
+    Aut(\mathbb{C})      & = \{f_{\alpha, \beta} : f_{\alpha, \beta}(z) = \alpha z + \beta, \alpha, \beta \in \mathbb{C}, \alpha \neq 0\} = \{T \in \mathcal{M} : T(\mathbb{C}) = \mathbb{C}\} \\
+    Aut(\mathbb{D})      & = \{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{T \in \mathcal{M} : T(\mathbb{D}) = \mathbb{D}\}
+\end{align*}
+
+\begin{example}
+    Veamos algunos ejemplos de dominios en $\mathbb{C}$ para los que podemos encontrar una aplicación conforme del dominio sobre $\mathbb{D}$.
+    \begin{enumerate}
+        \item Un disco abierto, $D(a, R)$, $a \in \mathbb{C}, R > 0$.
+              \begin{align*}
+                  \mathbb{D} & \to D(a, R)    \\
+                  z          & \mapsto a + rz
+              \end{align*}
+        \item Un semiplano.
+              \begin{align*}
+                  \mathbb{D} & \to \mathbb{H} = \{z \in \mathbb{C} : \Re(z) > 0\} \\
+                  z          & \mapsto P(z)
+              \end{align*}
+              donde $P(z) = \frac{1+z}{1-z}$, es una aplicación conforme.
+
+              Componiendo con una rotación y una traslación, vemos que $\mathbb{D}$ es conformemente equivalente a cualquier semiplano.
+              \begin{align*}
+                  \mathbb{D} & \to \mathbb{C}              \\
+                  z          & \mapsto a + e^{i\theta}P(z)
+              \end{align*}
+              con $a \in \mathbb{C}$ y $\theta \in \mathbb{R}$.
+        \item El exterior de un disco, $\{z \in \mathbb{C} : |z-a| > R\} \cup \{\infty\}$, $a \in \mathbb{C}, R > 0$.
+              \begin{align*}
+                  D(a, R) & \to \{z \in \mathbb{C} : |z-a| > R\} \cup \{\infty\} \\
+                  z       & \mapsto \frac{1}{z}
+              \end{align*}
+        \item El plano menos una semirrecta, $\mathbb{C} \setminus \{a + re^{i\theta}, r \geq 0\}$, $a \in \mathbb{C}, \theta \in \mathbb{R}$.
+              \begin{align*}
+                  \mathbb{H} & \to \mathbb{C} \setminus (-\infty, 0] \\
+                  z          & \mapsto z^2
+              \end{align*}
+              es una aplicación conforme.
+              Así que
+              \begin{align*}
+                  \mathbb{H} & \to \mathbb{C} \setminus (-\infty, 0]           \\
+                  z          & \mapsto P(z)^2 = \left(\frac{1+z}{1-z}\right)^2
+              \end{align*}
+              es una aplicación conforme.
+
+              Componiendo con una rotación y una traslación, vemos que $\mathbb{D}$ es conformemente equivalente al plano menos una semirrecta cualquiera.
+        \item La función exponencial no es inyectiva.
+              $$z = x + iy_0 \mapsto e^z = e^{x + iy_0} = e^x(\cos(y_0) + i\sin(y_0))$$
+              Es inyectiva en cualquier banda horizontal abierta de amplitud menor o igual que $2\pi$.
+              Por ejemplo,
+              $$\exp: \left\{z \in \mathbb{C} : |\Im(z)| < \frac{\pi}{2}\right\} \to \mathbb{H}$$
+              es una aplicación conforme.
+              Como $\mathbb{H}$ es conformemente equivalente a $\mathbb{D}$, tenemos que esta banda es conformemente equivalente a $\mathbb{D}$.
+
+              Componiendo con el producto por un número real, una rotación y una traslación, vemos que $\mathbb{D}$ es conformemente equivalente a cualquier banda.
+        \item Sectores.
+              $$\left\{z \in \mathbb{C} : |\Im(z)| < \frac{\alpha}{2}\right\} \xrightarrow{\exp} S$$
+              donde $S$ es el sector de vértice 0 y amplitud $\alpha$, es una aplicación conforme.
+        \item $\mathbb{D}^+ = \{z \in \mathbb{D} : \Im(z) > 0\}$.
+              $$\mathbb{D}^+ \xrightarrow{P} \{z \in \mathbb{C} : \Re(z) > 0, \Im(z) > 0\}$$
+              es una aplicación conforme. El dominio $\{z \in \mathbb{C} : \Re(z) > 0, \Im(z) > 0\}$ es un sector, así que es conformemente equivalente a $\mathbb{D}$.
+    \end{enumerate}
+\end{example}
+
+\section{El teorema de Riemann de la aplicación conforme}
+\begin{theorem}[Teorema de Riemann de la aplicación conforme]
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ y sea $z_0 \in D$.
+    Entonces existe una única aplicación conforme $f$ de $D$ sobre $\mathbb{D}$ tal que $f(z_0) = 0$ y $f'(z_0) > 0$.
+\end{theorem}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Existen infinitas aplicaciones conformes de $D$ sobre $\mathbb{D}$.
+              Basta cambiar el punto $z_0$ o componer con una rotación.
+        \item Para la demostración, las condiciones
+              \begin{enumerate}
+                  \item $D$ simplemente conexo.
+                  \item $D \neq \mathbb{C}$.
+              \end{enumerate}
+              solo las vamos a utilizar para deducir que:
+              \begin{itemize}
+                  \item $\mathbb{C} \setminus D$ tiene más de un punto.
+                  \item Si $h$ es holomorfa y nunca nula en $D$, existe una rama de $\sqrt{h}$ en $D$.
+              \end{itemize}
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$ tal que:
+    \begin{enumerate}
+        \item $\mathbb{C} \setminus D$ tiene más de un punto.
+        \item Para toda función $h$ holomorfa y nunca nula en $D$, existe una rama de $\sqrt{h}$ en $D$.
+    \end{enumerate}
+    Sea $z_0 \in D$.
+    Entonces existe una única aplicación conforme $f$ de $D$ sobre $\mathbb{D}$ tal que $f(z_0) = 0$ y $f'(z_0) > 0$.
+\end{theorem}
+
+
+% Demostración

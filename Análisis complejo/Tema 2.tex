@@ -203,7 +203,7 @@ Los compactos coinciden con la definición de familia compacta dada.
               $\mathcal{F}$ está uniformemente acotada en $K$.
               Por el teorema de Montel, $\mathcal{F}$ es finitamente normal.
 
-        \item $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f(0) = 1, Re(f(z)) > 0 \; \forall z \in \mathbb{D}\}$.
+        \item $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f(0) = 1, \Re(f(z)) > 0 \; \forall z \in \mathbb{D}\}$.
               Sea $K \subset \mathbb{D}$, $K$ compacto.
               Si $f \in \mathcal{P}$ y $z \in K$,
               $$|f(z)| \leq \frac{1+|z|}{1-|z|}$$
@@ -232,7 +232,27 @@ Los compactos coinciden con la definición de familia compacta dada.
               $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, R)$$
               Entonces $M_n = \sup_{f \in \mathcal{F}} |a_n(f)| < \infty$ para cada $n$ y la serie de potencias $\sum_{n=0}^\infty M_n(z-a)^n$ tiene radio de convergencia mayor o igual que $R$, y por tanto define una función holomorfa en $D(a, R)$.
 
-              % Demostración
+              \begin{proof}
+                  Fijado $n$, si $f \in \mathcal{F}$ tenemos:
+                  $$a_n(f) = \frac{f^{(n)}(a)}{n!} \Rightarrow |a_n(f)| = \frac{|f^{(n)}(a)|}{n!}$$
+                  La familia $\mathcal{F}^{(n)}$ es finitamente normal y por tanto está uniformemente acotada en el conjunto $\{a\}$, por lo que $\{f^{(n)}(a) : f \in \mathcal{F}\}$ está acotado.
+                  Es decir, $\sup_{f \in \mathcal{F}} |f^{(n)}(a)| < \infty$.
+                  Entonces $M_n = \sup_{f \in \mathcal{F}} |a_n(f)| = \sup_{f \in \mathcal{F}} \frac{|f^{(n)}(a)|}{n!} < \infty$.
+                  Consideramos la serie de potencias:
+                  $$\sum_{n=0}^\infty M_n(z-a)^n$$
+                  Si $r \in (0, R)$, tenemos que $\mathcal{F}$ está uniformemente acotada en $\overline{D}(a, r)$, y por tanto existe $M(r) > 0$ tal que $|f(z)| \leq M(r)$ si $z \in \overline{D}(a, r)$ y $f \in \mathcal{F}$.
+                  Si $f \in \mathcal{F}$, por la fórmula de Cauchy,
+                  $$a_n(f) = \frac{f^{(n)}(a)}{n!} = \frac{1}{2\pi i} \int_{|z-a|=r} \frac{f(z)}{(z-a)^{n+1}}dz, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots$$
+                  Así que:
+                  $$|a_n(f)| \leq \frac{1}{2\pi} 2\pi r \max_{|z-a|=r} \frac{|f(z)|}{|z-a|^{n+1}} \leq r\frac{M(r)}{r^{n+1}} = \frac{M(r)}{r^n}, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots, f \in \mathcal{F}$$
+                  Tomando supremo en $f \in \mathcal{F}$ tenemos que:
+                  $$|M_n| = M_n \leq \frac{M(r)}{r^n} \Rightarrow \sqrt[n]{M_n} \leq \frac{\sqrt[n]{M(r)}}{r}, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots$$
+                  Por tanto:
+                  $$\limsup_{n \to \infty} \sqrt[n]{M_n} \leq \lim_{n \to \infty} \frac{\sqrt[n]{M(r)}}{r} = \frac{1}{r}, \quad \text{si } r \in (0, R)$$
+                  Haciendo $r \to R$,
+                  $$\limsup_{n \to \infty} \sqrt[n]{M_n} \leq \frac{1}{R}$$
+                  Entonces el radio de convergencia es mayor o igual que $R$.
+              \end{proof}
 
         \item $\mathcal{F} = \{f : f \text{ es holomorfa en } \mathbb{D} \text{ y } \int\int_\mathbb{D} |f(z)|dxdy \leq M\}$, siendo $M > 0$.
               Veamos que $\mathcal{F}$ es finitamente normal.
@@ -290,7 +310,57 @@ Los compactos coinciden con la definición de familia compacta dada.
     Si existe $A \subset D$ tal que $A$ tiene algún punto de acumulación en $D$, para el que existe $\lim\limits_{n \to \infty} f_n(a) \in \mathbb{C}$ para todo $a \in A$, entonces $\{f_n\}$ converge uniformemente en cada subconjunto compacto de $D$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    \hfill
+    \begin{enumerate}
+        \item Veamos que $\{f_n\}$ converge puntualmente en $D$.
+              Sea $z^\ast \in D$.
+              Supongamos por reducción al absurdo que $\{f_n(z^\ast)\}$ no converge.
+              Como $\mathcal{F}$ está uniformemente acotada en el conjunto $\{z^\ast\}$, tenemos que $\{f_n(z^\ast)\}$ está acotado.
+              Por tanto, existen $\{f_{n_i}\}_{i=1}^\infty$ y $\{f_{m_i}\}_{i=1}^\infty$ subsucesiones de $\{f_n\}$, y $w_1, w_2 \in \mathbb{C}$ distintos, tales que $f_{n_i}(z^\ast) \xrightarrow[i \to \infty]{} w_1$, $f_{m_i}(z^\ast) \xrightarrow[i \to \infty]{} w_2$.
+              Como $\mathcal{F}$ es finitamente normal, existen $\{g_k\}_{k=1}^\infty$ y $\{h_k\}_{k=1}^\infty$ subsucesiones de $\{f_{n_i}\}$ y $\{f_{m_i}\}$, respectivamente, que convergen uniformemente en cada subconjunto compacto de $D$.
+              Sean $g$ y $h$ los respectivos límites.
+              Entonces $g$ y $h$ son holomorfas en $D$.
+              Tenemos que:
+              \begin{align*}
+                  g_k(z^\ast) & \xrightarrow[k \to \infty]{} w_1, & g(z^\ast) & = w_1 \\
+                  h_k(z^\ast) & \xrightarrow[k \to \infty]{} w_2, & h(z^\ast) & = w_2
+              \end{align*}
+              Si $a \in A$, existe $\lim\limits_{n \to \infty} f_n(a) \in \mathbb{C}$, así que $g(a) = h(a)$.
+              $g$ y $h$ son holomorfas en $D$, $g = h$ en $A$ y $A$ tiene algún punto de acumulación en $D$.
+              Por el teorema de identidad, $g = h$ en $D$.
+              Pero $g(z^\ast) = w_1 \neq w_2 = h(z^\ast)$.
+              Esto contradice nuestro supuesto.
+
+        \item Sea $K \subset D$, $K$ compacto.
+              Sea $\alpha > 0$ tal que $2\alpha < dist(K, \mathbb{C} \setminus D)$.
+              Si $D = \mathbb{C}$, tomamos $\alpha > 0$ cualquiera.
+              Sean $G = \{z \in \mathbb{C} : dist(z, K) < \alpha\}$ y $K_1 = \{z \in \mathbb{C} : dist(z, K) \leq \alpha\}$.
+              $G$ es abierto, $K_1$ es compacto y $K \subset G \subset K_1 \subset D$.
+
+              Veamos que $K_1 \subset D$.
+              Si $z \in K_1$, $dist(z, K) \leq \alpha$.
+              Supongamos que $z \in D$.
+              Tomamos $w \in K$ con $|z-w| < 2\alpha$.
+              Entonces $2\alpha < dist(K, \mathbb{C} \setminus D) \leq |w-z| < 2\alpha$.
+              Esto contradice nuestra hipótesis.
+
+              $\mathcal{F}$ está uniformemente acotada en $K_1$ y por tanto en $G$.
+              $K \subset G$, $K$ compacto.
+              Por una proposición previa, existe $A > 0$ tal que $|f(z_2)-f(z_1)| \leq A|z_2-z_1|$ si $z_1, z_2 \in K$ y $f \in \mathcal{F}$.
+              Vamos a ver que $\{f_n\}$ es uniformemente de Cauchy en $K$.
+              Sea $\varepsilon > 0$ y sea $\delta = \frac{\varepsilon}{3A} > 0$.
+              Tenemos que si $z_1, z_2 \in K$, $|z_1-z_2| < \delta$ y $n \in \mathbb{N}$, entonces $|f_n(z_1)-f_n(z_2)| \leq A|z_1-z_2| < A\delta = \frac{\varepsilon}{3}$.
+              Consideramos la familia $\{D(z, \delta) : z \in K\}$.
+              Como $K$ es compacto, existen $z_1, z_2, \dots, z_N \in K$ tales que $K \subset \bigcup_{j=1}^N D(z_j, \delta)$.
+              Para cada $j \in \{1, \dots, N\}$, la sucesión $\{f_n(z_j)\}_{n=1}^\infty$ es de Cauchy, ya que $\{f_n\}$ converge puntualmente en $D$.
+              Por tanto, exsite $n_j \in \mathbb{N}$ tal que $n, m \geq n_j \Rightarrow |f_n(z_j)-f_m(z_j)| < \frac{\varepsilon}{3}$.
+              Sea $n_0 = \max \{n_j : j = 1, \dots, N\}$.
+              Si $n, n \geq n_j$ y $z \in K$, hay que probar que $|f_n(z)-f_m(z)| < \varepsilon$.
+              Tomamos $j \in \{1, \dots, N\}$ con $z \in D(z_j, \delta)$.
+              $$|f_n(z)-f_m(z)| \leq |f_n(z)-f_n(z_j)| + |f_n(z_j)-f_m(z_j)| + |f_m(z_j)-f_m(z)| < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon$$
+    \end{enumerate}
+\end{proof}
 
 \begin{example}
     Para $x \geq 0$, tenemos que $\left(1 + \frac{x}{n}\right)^n$ es una sucesión creciente y

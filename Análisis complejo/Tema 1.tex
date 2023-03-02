@@ -1,6 +1,6 @@
 \chapter{Conformalidad y funciones abiertas en el disco unidad}
-\section{Funciones meromorfas}
 
+\section{Funciones meromorfas}
 \begin{definition}
     Sea $D$ un abierto en $\mathbb{C}^\ast$.
     La función $f: D \to \mathbb{C}^\ast$ es meromorfa en $D$ si dado $a \in D$ se verifica una de las siguientes posibilidades:
@@ -652,11 +652,11 @@ Además, $f = F \circ w$.
 Por ejemplo:
 $$P(z) = \frac{1+z}{1-z}$$
 Esta es una transformación de Möbius que aplica $\partial \mathbb{D}$ en el eje imaginario.
-$P(\mathbb{D})$ es el semiplano de la derecha $\{z \in \mathbb{C} : Re(z) > 0\}$ y $P(0) = 1$.
-Entonces, si $f$ es holomorfa en $\mathbb{D}$, $f(\mathbb{D}) \subset \{z \in \mathbb{C} : Re(z) > 0\}$ y $f(0) = P(0)$, entonces $f \prec P$.
-Es decir, si $f$ es holomorfa en $\mathbb{D}$, $Re(f(z)) > 0$ para todo $z \in \mathbb{D}$ y $f(0) = 1$, entonces $f \prec F$.
+$P(\mathbb{D})$ es el semiplano de la derecha $\{z \in \mathbb{C} : \Re(z) > 0\}$ y $P(0) = 1$.
+Entonces, si $f$ es holomorfa en $\mathbb{D}$, $f(\mathbb{D}) \subset \{z \in \mathbb{C} : \Re(z) > 0\}$ y $f(0) = P(0)$, entonces $f \prec P$.
+Es decir, si $f$ es holomorfa en $\mathbb{D}$, $\Re(f(z)) > 0$ para todo $z \in \mathbb{D}$ y $f(0) = 1$, entonces $f \prec F$.
 
-Sea $\mathcal{P} = \{f \text{ holomorfa en } \mathbb{D} : Re(f(z)) > 0 \; \forall z \in \mathbb{D}, f(0) = 1\}$.
+Sea $\mathcal{P} = \{f \text{ holomorfa en } \mathbb{D} : \Re(f(z)) > 0 \; \forall z \in \mathbb{D}, f(0) = 1\}$.
 Entonces:
 \begin{itemize}
     \item $P \in \mathcal{P}$.
@@ -806,7 +806,7 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
     Veamos que
     $$\int_\gamma \frac{|dz|}{1-|z|^2} \geq \frac{1}{2} \Log\frac{1+r}{1-r}$$
     Sea $\gamma: [a, b] \to \mathbb{C}$ una parametrización $\mathcal{C}^1$ a trozos de $\gamma$.
-    Sean $u = Re(f)$ y $v= Im(f)$, de forma que $\gamma = u + iv$.
+    Sean $u = \Re(f)$ y $v= \Im(f)$, de forma que $\gamma = u + iv$.
     $u, v: [a, b] \to \mathbb{R}$, $\mathcal{C}^1$ a trozos.
     $$\int_\gamma \frac{|dz|}{1+|z|^2} = \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt$$
     Tenemos que:
