@@ -179,4 +179,181 @@ Tenemos que
 \end{theorem}
 
 
-% Demostración
+\begin{proof}
+    Sea $\mathcal{F} = \{f : f \text{ es holomorfa e inyectiva en } D, f(D) \subset \mathbb{D}, f(z_0) = 0\}$.
+    \begin{enumerate}
+        \item Veamos que $\mathcal{F} \neq \emptyset$.
+              Por (1), existen $a, b \in \mathbb{C} \setminus D$ con $a \neq b$.
+              Sea $\varphi(z) = \frac{z-a}{z-b}$, $z \in D$.
+              $$\begin{vmatrix}
+                      1 & -a \\
+                      1 & -b
+                  \end{vmatrix} = -b + a \neq 0 \Rightarrow \varphi \in \mathcal{M}$$
+              $\varphi$ es holomorfa e inyectiva en $D$ y $\varphi$ es nunca nula en $D$, porque $a, b \notin D$.
+              Por (2), existe $\psi$ rama de $\sqrt{\varphi}$ en $D$.
+              $\psi$ es holomorfa e inyectiva en $D$ y $\psi$ es nunca nula.
+
+              Además, se tiene que si $w \in \psi(D)$, entonces $-w \notin \psi(D)$.
+              Veámoslo.
+              Supongamos que $w \in \psi(D)$ y $-w \in \psi(D)$.
+              Entonces:
+              \begin{align*}
+                  w  & = \psi(z_1), \quad z_1 \in D \\
+                  -w & = \psi(z_2), \quad z_2 \in D
+              \end{align*}
+              $$\psi(z_1)^2 = w^2 = (-w)^2 = \psi(z_2)^2 \Leftrightarrow \varphi(z_1) = \varphi(z_2) \Leftrightarrow z_1 = z_2 \Leftrightarrow w = -w \Leftrightarrow w = 0 \in \psi(D)$$
+              Sin embargo, $\psi$ es nunca nula en $D$.
+
+              Tomamos $w_0 \in \psi(D)$.
+              Como $\psi(D)$ es abierto, existe $r > 0$ tal que $\overline{D}(0, r) \subset \psi(D)$.
+              Entonces, si $z \in D$ se tiene que $\psi(z) \in \psi(D)$ y por tanto $-\psi(z) \notin \psi(D)$, de manera que $-\psi(z) \notin \overline{D}(w_0, r)$.
+              Es decir,
+              $$|-\psi(z)-w_0| > r \Leftrightarrow |\psi(z)+w_0| > r > 0 \Leftrightarrow \frac{r}{|\psi(z)+w_0} < 1$$
+              Sea $h(z) = \frac{r}{\psi(z)+w_0}$, $z \in D$.
+              $h$ es holomorfa e inyectiva en $D$ y $|h(z)| < 1$ para todo $z \in D$, luego $h(D) \subset \mathbb{D}$.
+              Consideramos la transformación de Möbius $S_{h(z_0)}(z) = \frac{z-h(z_0)}{1-\overline{h(z_0)}z}$.
+              Sabemos que $S_{h(z_0)}(\mathbb{D}) = \mathbb{D}$ y $S_{h(z_0)}(h(z_0)) = 0$.
+              Por tanto, $f = S_{h(z_0)} \circ h \in \mathcal{F}$.
+
+        \item $\mathcal{F}$ está uniformemente acotada en $D$.
+              Por el teorema de Montel, $\mathcal{F}$ es finitamente normal.
+
+        \item Sea $M = \sup_{f \in \mathcal{F}} |f'(z_0)|$, $0 \leq M \leq \infty$.
+              Si $f \in \mathcal{F}$, $f$ es holomorfa e inyectiva en $D$, por lo que $f'(z_0) \neq 0$.
+              Entonces $M \neq 0$.
+              Como $\mathcal{F}' = \{f' : f \in \mathcal{F}\}$ es finitamente normal, entonces está uniformemente acotada en $\{z_0\}$.
+              Entonces $\{f'(z_0) : f \in \mathcal{F}\}$ está acotado, así que $M = \sup_{f \in \mathcal{F}} |f'(z_0)| < \infty$.
+              Por tanto, $0 < M < \infty$.
+
+              Tomamos una sucesión $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ tal que $\lim\limits_{n \to \infty} |f_n'(z_0)| = M$.
+              Como $\mathcal{F}$ es finitamente normal, existe $\{f_{n_k}\}_{k=1}^\infty$ subsucesión de $\{f_n\}$ que converge a una función $F$ uniformemente en cada subconjunto comapcto de $D$.
+              Entonces $F$ es holomorfa en $D$ y cada $f_{n_k}$ es holomorfa e inyectiva en $D$.
+              Por el segundo teorema de Hurwitz, $F$ es inyectiva o constante.
+              Como $f_{n_k}' \to F'$ uniformemente en cada subconjunto compacto de $D$, se tiene que $f_{n_k}'(z_0) \to F'(z_0)$, así que $|f_{n_k}'(z_0)| \to |F'(z_0)| = M > 0$.
+              Luego $F$ no es constante.
+              Entonces $F$ es inyectiva.
+              Además, $F(z_0)= \lim\limits_{k \to \infty} f_{n_k}(z_0) = 0$ porque $f_{n_z}(z_0) = 0$.
+              Si $z \in D$, $F(z) = \lim\limits_{k \to \infty} f_{n_k}(z)$, así que $|F(z)| = \lim\limits_{k \to \infty} |f_{n_z}(z)| \leq 1$ porque $|f_{n_z}(z)| < 1$.
+              Pero si $|F(z)| = 1$ para algún $z \in D$, por el principio del máximo $F$ sería constante, lo cual es imposible.
+              Por tanto, $|F(z)| < 1$ para todo $z \in D$, luego $F(D) \subset \mathbb{D}$.
+              Entonces $F \in \mathcal{F}$ y $|F'(z_0)| = M$.
+
+        \item Veamos que $F(D) = \mathbb{D}$.
+              Supongamos por reducción al absurdo que existe $\alpha \in \mathbb{D} \setminus F(D)$.
+              Consideramos $S_\alpha(z) = \frac{z-\alpha}{1-\bar{\alpha}z}$ transformación de Möbius con $S_\alpha(\mathbb{D}) = \mathbb{D}$ y $S_\alpha(\alpha) = 0$.
+              Sea $h = S_\alpha \circ F$.
+              $h$ es holomorfa e inyectiva en $D$.
+              Además, $h$ es nunca nula en $D$ y $h(D) \subset \mathbb{D}$.
+              Por (2), existe $g$ una rama de $\sqrt{h}$ en $D$, es decir, $g^2 = h$ en $D$.
+              $g$ es holomorfa, inyectiva y nunca nula en $D$, con $g(D) \subset \mathbb{D}$.
+              Sea $G = S_{g(z_0)} \circ g$.
+              $G$ es holomorfa e inyectiva en $D$, con $G(D) \subset \mathbb{D}$ y $G(z_0) = 0$.
+              Por tanto, $G \in \mathcal{F}$.
+
+              Calculemos $|G'(z_0)|$.
+              $$G'(z_0) = g'(z_0)S_{g(z_0)}'(g(z_0))$$
+              En primer lugar, hallamos la derivada de $S_a$.
+              $$S_a'(z) = \frac{1-\bar{a}z + (z-a)\bar{a}}{(1-\bar{a}z)^2} = \frac{1-|a|^2}{(1-\bar{a}z)^2}$$
+              Observamos que $S_a'(a) = \frac{1}{1-|a|^2}$ y $S_a'(0) = 1-|a|^2$.
+              Así que:
+              $$G'(z_0) = g'(z_0)\frac{1}{1-|g(z_0)|^2} \Rightarrow |G'(z_0)| = \frac{|g'(z_0)|}{1-|g(z_0)|^2}$$
+              Como $g^2 = h$ en $D$, también tenemos que $2gg' = h$ en $D$.
+              Luego $|g(z_0)|^2 = |h(z_0)|$ y $2|g(z_0)||g'(z_0)| = |h'(z_0)|$.
+              Entonces:
+              $$|G'(z_0)| = \frac{|h'(z_0)|}{2|g(z_0)|}\frac{1}{1-|g(z_0)|^2} = \frac{|h'(z_0)|}{2\sqrt{|h(z)|}}\frac{1}{1-|h(z_0)|}$$
+              Calculamos también:
+              \begin{align*}
+                  h'(z_0) & = F'(z_0)S_\alpha'(F(z_0)) = F'(z_0)S_\alpha'(0) = F'(z_0)(1-|\alpha|^2)   \\
+                  h(z_0)  & = S_\alpha(F(z_0)) = S_\alpha(0) = -\alpha \Rightarrow |h(z_0)| = |\alpha|
+              \end{align*}
+              Por tanto:
+              $$|G'(z_0)| = \frac{|F'(z_0)|(1-|\alpha|^2)}{2\sqrt{|\alpha|}(1-|\alpha|)} = M\frac{1-|\alpha|^2}{2\sqrt{|\alpha|}(1-|\alpha|)} = M\frac{1+|\alpha|}{2\sqrt{|\alpha|}}$$
+
+              Veamos que $\frac{1+|\alpha|}{2\sqrt{|\alpha|}} > 1$.
+              \begin{align*}
+                   & \frac{1+|\alpha|}{2\sqrt{|\alpha|}} > 1 \Leftrightarrow 1+|\alpha| > 2\sqrt{|\alpha|} \Leftrightarrow 1+\alpha - 2\sqrt{|\alpha|} > 0 \Leftrightarrow (1-\sqrt{|\alpha|})^2 > 0 \Leftrightarrow 1-\sqrt{|\alpha|} \neq 0 \Leftrightarrow \\
+                   & \Leftrightarrow \sqrt{|\alpha|} \neq 1 \Leftrightarrow |\alpha| \neq 1
+              \end{align*}
+              Como $\alpha \in \mathbb{D}$, la desigualdad se cumple.
+              Por tanto, $|G'(z_0)| > M$, con $G \in \mathcal{F}$ y $M = \sup_{f \in \mathcal{F}} |f'(z_0)|$, luego llegamos a contradicción.
+              Entonces, $F(D) = \mathbb{D}$.
+
+        \item Tenemos $F \in \mathcal{F}$, $|F'(z_0)| = M$ y $F(D) = \mathbb{D}$.
+              $F$ es una aplicación conforme de $D$ sobre $\mathbb{D}$ con $F(z_0) = 0$.
+              Falta que $F'(z_0) > 0$.
+
+              Queremos encontrar $\lambda \in \mathbb{C}$ con $|\lambda| = 1$ tal que $f = \lambda F$ verifique que $f'(z_0) > 0$.
+              $$f'(z_0) = \lambda F'(z_0) > 0 \Leftrightarrow f'(z_0) = |\lambda||F'(z_0)| = |F'(z_0)| = M \Rightarrow \lambda = \frac{M}{F'(z_0)}$$
+              Sea $\lambda = \frac{M}{F'(z_0)} \in \mathbb{C}$, con $|\lambda| = \frac{M}{|F'(z_0)|} = 1$, $F'(z_0) \neq 0$.
+              Sea $f = \lambda F$.
+              $f$ es holomorfa e inyectiva en $D$, con $f(D) = \mathbb{D}$, $f(z_0) = 0$ y $f'(z_0) = \lambda F'(z_0) = \frac{M}{F'(z_0)}F'(z_0) = M > 0$.
+
+        \item Veamos que esta aplicación conforme es única.
+              Supongamos $f_1, f_2: D \to \mathbb{D}$ aplicación conforme, con $f_j(z_0) = 0$, $f_j'(z_0) > 0$.
+              Sea $g = f_1 \circ f_2^{-1}$.
+              $$g: \mathbb{D} \xrightarrow{f_2^{-1}} D \xrightarrow{f_1} \mathbb{D}$$
+              $g$ es una aplicación conforme de $\mathbb{D}$ sobre $\mathbb{D}$, así que es de la forma
+              $$g(z) = \lambda T_a(z) = \lambda \frac{z+a}{1+\bar{a}z}, \quad \lambda \in \mathbb{C}, \; |\lambda| = 1, \; a \in \mathbb{D}$$
+              Como $g(0) = 0$,
+              $$g(0) = \lambda a = 0 \Rightarrow a = 0 \Rightarrow g(z) = \lambda z$$
+              Como $g \circ f_2 = f_1$ en $D$,
+              $$f_2'(z_0)g'(f_2(z_0)) = f_1'(z_0) \Leftrightarrow f_2'(z_0)g'(0) = f_1'(z_0) \Leftrightarrow g'(0) = \frac{f_1'(z_0)}{f_2'(z_0)} > 0$$
+              Como $g'(0) = \lambda > 0$ y $|\lambda| = 1$, entonces $\lambda = 1$.
+              Por tanto, $g(z) = z \Leftrightarrow f_1 = f_2$.
+    \end{enumerate}
+\end{proof}
+
+\subsection*{Otros enunciados equivalentes}
+\begin{theorem}[Teorema de Riemann]
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ y sea $z_0 \in D$.
+    Entonces existe una única aplicación conforme de $\mathbb{D}$ sobre $D$ tal que $f(0) = z_0$ y $f'(0) > 0$.
+\end{theorem}
+
+
+\begin{theorem}[Teorema de Riemann: enunciado equivalente]
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ y sea $z_0 \in D$.
+    Entonces existe un único $R > 0$ tal que existe una aplicación conforme $f$ de $D$ sobre $D(0, R)$ con $f(z_0) = 0$ y $f'(z_0) = 1$.
+    Además, esta $f$ es única.
+
+    A este número $R$ se le denomina radio conforme interior a $D$ en $z_0$ y se denota $r(D, z_0)$.
+\end{theorem}
+
+\begin{proof}
+    Este enunciado es equivalente al teorema de Riemann.
+    Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ y $z_0 \in D$.
+    \begin{enumerate}
+        \item Si $f: D \to \mathbb{D}$ aplicación conforme, $f(z_0) = 0$ y $f'(z_0) > 0$, entonces si $R = \frac{1}{f'(z_0)} > 0$ se tiene que $g = Rf: D \to D(0, R)$ es una aplicación conforme con $g(z_0) = 0$ y $g'(z_0) = 1$.
+        \item Si $R > 0$, $g: D \to D(0, R)$ es una aplicación conforme con $g(z_0) = 0$ y $g'(z_0) = 1$, entonces $f = \frac{1}{R}g: D \to \mathbb{D}$ es una aplicación conforme con $f(z_0) = 0$ y $f'(z_0) = \frac{1}{R}g'(z_0) = \frac{1}{R} > 0$.
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+    Hemos visto que cualquier dominio $D$ simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ es conformemente equivalente a $\mathbb{D}$.
+    Entonces, si $D_1$ y $D_2$ son dominios simplemente conexos en $\mathbb{C}$ con $D_1, D_2 \neq \mathbb{C}$, $D_1$ y $D_2$ son conformemente equivalentes.
+\end{remark}
+
+En $\mathbb{C}^\ast$ tenemos el siguiente resultado.
+
+\begin{theorem}
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}^\ast$ tal que $\mathbb{C}^\ast \setminus D$ tiene más de un punto.
+    Entonces $D$ es conformemente equivalente a $\mathbb{D}$.
+\end{theorem}
+
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item Si $D \subset \mathbb{C}$, entonces $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$, ya que $\mathbb{C}^\ast \setminus D$ tiene más de un punto.
+              Entonces $D$ es conformemente equivalente a $\mathbb{D}$.
+        \item Si $\infty \in D$, entonces tomamos $a, b \in \mathbb{C}^\ast \setminus D$ con $a \neq b$.
+              Entonces $a, b \in \mathbb{C} \setminus D$.
+              Sea $T(z) = \frac{1}{z-a}$, $z \in \mathbb{C} \setminus \{a\}$, con $T(a) = \infty$ y $T(\infty) = 0$.
+              $T: \mathbb{C}^\ast \to \mathbb{C}\ast$ es una aplicación conforme.
+              Entonces $D \xrightarrow{T} T(D) = D'$ es una aplicación conforme y $D'$ es un dominio simplemente conexo en $\mathbb{C}^\ast$.
+
+              Como $a, b \notin D$, $T(a) = \infty \notin D'$, así que $D'$ es un dominio en $\mathbb{C}$.
+              Además, $T(b) \notin D'$ con $T(b) \in \mathbb{C}$, luego $D \neq \mathbb{C}$.
+              $D'$ es un dominio simplemente conexo en $\mathbb{C}$, con $D' \neq \mathbb{C}$.
+              Por tanto, $D'$ es conformemente equivalente a $\mathbb{D}$.
+              Como $D'$ es conformemente equivalente a $D$, entonces $D$ es conformemente equivalente a $\mathbb{D}$.
+    \end{itemize}
+\end{proof}
