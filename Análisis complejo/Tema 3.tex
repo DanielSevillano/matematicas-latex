@@ -332,6 +332,8 @@ Tenemos que
     Entonces, si $D_1$ y $D_2$ son dominios simplemente conexos en $\mathbb{C}$ con $D_1, D_2 \neq \mathbb{C}$, $D_1$ y $D_2$ son conformemente equivalentes.
 \end{remark}
 
+\section{Clasificación de los dominios simplemente conexos}
+
 En $\mathbb{C}^\ast$ tenemos el siguiente resultado.
 
 \begin{theorem}
@@ -357,3 +359,162 @@ En $\mathbb{C}^\ast$ tenemos el siguiente resultado.
               Como $D'$ es conformemente equivalente a $D$, entonces $D$ es conformemente equivalente a $\mathbb{D}$.
     \end{itemize}
 \end{proof}
+
+Ya tenemos clasificados los dominios simplemente conexos en $\mathbb{C}^\ast$ módulo la relación de equivalencia ser conformemente equivalentes.
+
+Sea $D$ un dominio simplemente conexo en $\mathbb{C}^\ast$.
+\begin{enumerate}
+    \item Si $\mathbb{C}^\ast \setminus D = \emptyset$, entonces $D = \mathbb{C}^\ast$, que es el único dominio conformemente equivalente a $\mathbb{C}^\ast$.
+    \item Si $\mathbb{C}^\ast \setminus D$ se reduce a un punto, entonces $D = \mathbb{C}$ o bien $D = \mathbb{C}^\ast \setminus \{\alpha\}$, $\alpha \in \mathbb{C}$.
+          Estos son los dominios en $\mathbb{C}^\ast$ que son conformemente equivalentes a $\mathbb{C}$.
+    \item Si $\mathbb{C}^\ast \setminus D$ tiene más de un punto, entonces $D$ es conformemente equivalente al disco unidad $\mathbb{D}$.
+\end{enumerate}
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$.
+    Son equivalentes:
+    \begin{enumerate}
+        \item $D$ es simplemente conexo.
+        \item Para toda función $f$ holomorfa y nunca nula en $D$, existe una rama de $\sqrt{f}$ en $D$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item[$\Rightarrow$] Lo sabemos.
+        \item[$\Leftarrow$] Hay tres posibilidades.
+            \begin{enumerate}
+                \item $D = \mathbb{C}$.
+                      Entonces $D$ es simplemente conexo.
+
+                \item $\mathbb{C} \setminus D$ se reduce a un punto.
+                      Entonces $\mathbb{C} \setminus D = \{a\}$, $a \in \mathbb{C}$.
+                      Queremos llegar a contradicción, ya que $D$ no es simplemente conexo.
+
+                      Sea $f(z) = \frac{1}{z-a}$, $z \in D$.
+                      $f$ es holomorfa y nunca nula en $D$.
+                      Sea $g$ una rama de $\sqrt{f}$ en $D$.
+                      Entonces $g$ es holomorfa y nunca nula en $D$, y $g^2 = f$ en $D$.
+
+                      Sea $R > 0$ y sea $\gamma$ la circunferencia $|z-a| = R$.
+                      Sea $\Gamma$ la curva imagen de $\gamma$ por $g$.
+                      Entonces $\Gamma$ es un camino cerrado que no pasa por 0.
+                      Unas parametrizaciones de $\gamma$ y $\Gamma$ son:
+                      \begin{align*}
+                          \gamma: [0, 2\pi] & \to \mathbb{C}      & \Gamma: [0, 2\pi] & \to \mathbb{C}         \\
+                          t                 & \mapsto a + Re^{it} & t                 & \mapsto g(a + Re^{it})
+                      \end{align*}
+                      Entonces:
+                      $$n(\Gamma, 0) = \frac{1}{2\pi i} \int_\Gamma \frac{dw}{w} = \frac{1}{2\pi i} \int_0^{2\pi} \frac{\Gamma'(t)}{\Gamma(t)}dt = \frac{1}{2\pi i} \int_0^{2\pi} \frac{g'(a + Re^{it})Rie^{it}}{g(a + Re^{it})}dt = \frac{1}{2\pi i} \int_\gamma \frac{g'(z)}{g(z)}dz$$
+                      Como $g^2 = f$, entonces además $2gg' = f'$.
+                      Luego:
+                      $$\frac{2gg'}{g^2} = \frac{f'}{g^2} \Leftrightarrow \frac{g'}{g} = \frac{1}{2}\frac{f'}{f}$$
+                      Como $f'(z) = -\frac{1}{(z-a)^2}$,
+                      $$\frac{f'(z)}{f(z)} = -\frac{z-a}{(z-a)^2} = -\frac{1}{z-a}$$
+                      Por tanto:
+                      $$n(\Gamma, 0) = \frac{1}{2\pi i} \int_\gamma \frac{g'(z)}{g(z)}dz = \frac{1}{2\pi i}\frac{1}{2} \int_\gamma \frac{f'(z)}{f(z)}dz = -\frac{1}{2}\frac{1}{2\pi i} \int_\gamma \frac{1}{z-a}dz = -\frac{1}{2}n(\gamma, a) = -\frac{1}{2}$$
+                      Luego $n(\Gamma, 0) = -\frac{1}{2} \notin \mathbb{Z}$.
+                      Esto es imposible.
+
+                \item $\mathbb{C} \setminus D$ tiene más de un punto.
+                      Por el teorema que probamos para la demostración del teorema de Riemann, tenemos que $D$ es conformemente equivalente a $\mathbb{D}$.
+                      Por tanto $D$ es simplemente conexo.
+            \end{enumerate}
+    \end{itemize}
+\end{proof}
+
+\section{Teorema de Carathéodory sobre extensión homeomorfa hasta la frontera}
+
+Recordemos que $\mathbb{C}$ y $\mathbb{D}$ son homeomorfos, aunque no conformemente equivalentes.
+
+\begin{corollary}
+    Si $D_1$ y $D_2$ son dominios simplemente conexos en $\mathbb{C}$, entonces $D_1$ y $D_2$ son homeomorfos.
+\end{corollary}
+
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item Si $D_1 = D_2 = \mathbb{C}$, son iguales.
+        \item Si $D_1 = \mathbb{C}$, $D_2 \neq \mathbb{C}$, entonces por el teorema de Riemann $D_2$ es conformemente equivalente y por tanto homeomorfo a $\mathbb{D}$.
+              Además, $D_1 = \mathbb{C}$ es homeomorfo a $\mathbb{D}$.
+              Entonces $D_1$ y $D_2$ son homeomorfos.
+        \item Si $D_1, D_2 \neq \mathbb{C}$, entonces $D_1$ y $D_2$ son conformemente equivalentes y por tanto homeomorfos a $\mathbb{D}$.
+              Entonces $D_1$ y $D_2$ son homeomorfos.
+    \end{itemize}
+\end{proof}
+
+Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$, por el teorema de Riemann existe una aplicación conforme $f$ de $\mathbb{D}$ sobre $D$.
+
+\begin{notation}
+    Si $D \subset \mathbb{C}$, denotamos $\partial_\infty D$ a la frontera de $D$ como subconjunto de $\mathbb{C}^\ast$.
+    Es decir,
+    \begin{itemize}
+        \item Si $D$ es acotado, $\partial_\infty D = \partial D$.
+        \item Si $D$ no es acotado, $\partial_\infty D = \partial D \cup \{\infty\}$.
+    \end{itemize}
+\end{notation}
+
+\begin{proposition}
+    Sean $D_1$ y $D_2$ dos dominios en $\mathbb{C}$ y sea $f$ un homeomorfismo de $D_1$ sobre $D_2$.
+    Sea $\{z_n\}_{n=1}^\infty$ una sucesión en $D_1$ y supongamos que existe $\lim\limits_{n \to \infty} z_n = \xi \in \partial_\infty D_1$.
+    Entonces todos los puntos de acumulación de la sucesión $\{f(z_n)\}$ están en $\partial_\infty D_2$.
+\end{proposition}
+
+\begin{proof}
+    Supongamos por reducción al absurdo que existe un punto de acumulación de $\{f(z_n)\}$ que está en $\mathbb{C}^\ast \setminus \partial_\infty D_2$.
+    Le llamamos $w_0$.
+    Existe $\{z_{n_k}\}_{k=1}\infty$ subsucesión de $\{z_n\}$ tal que $f(z_{n_k}) \xrightarrow[k \to \infty]{} w_0 \in D_2$.
+    $f^{-1}$ es continua en $w_0$.
+    Además,
+    $$f^{-1}(f(z_{n_k})) \to f^{-1}(w_0) \in D_1$$
+    Sin embargo, $f^{-1}(f(z_{n_k})) = z_{n_k}$ y $z_{n_k} \to \xi \in \partial_\infty D_1$.
+\end{proof}
+
+\begin{proposition}
+    Sean $D_1$ y $D_2$ dos dominios en $\mathbb{C}$ y $f$ un homeomorfismo de $D_1$ sobre $D_2$.
+    Supongamos que $f$ se extiende de forma continua a $\overline{D_1}$ y le llamamos $f$ a la extensión $f: \overline{D_1} \to \mathbb{C}^\ast$.
+    Entonces $f(\overline{D_1}) = \overline{D_2}$, $f(D_1) = D_2$ y $f(\partial_\infty D_1) = \partial_\infty D_2$.
+\end{proposition}
+
+\begin{proof}
+    Sea $\xi \in \partial_\infty D_1$.
+    Existe una sucesión $\{z_n\}_{n=1}^\infty$ en $D_1$ con $z_n \to \xi$, y podemos tomar todos los $z_n$ distintos.
+    Como $f$ es continua en $\xi$, tenemos que $f(z_n) \xrightarrow[n \to \infty]{} f(\xi) \in \mathbb{C}^\ast$.
+    Como todos los $f(z_n)$ son distintos, $f(\xi)$ es un punto de acumulación de $\{f(z_n)\}$.
+
+    Por la proposición anterior, $f(\xi) \in \partial_\infty D_2$.
+    Por tanto, $f(\partial_\infty D_1) \subset \partial_\infty D_2$.
+    Además, sabemos que $f(D_1) = D_2$.
+    Entonces $f(\overline{D_1}) \subset \overline{D_2}$.
+    Ahora tenemos que
+    $$D_2 = f(D_1) \subset f(\overline{D_1}) \subset \overline{D_2}$$
+    $\overline{D_1}$ es cerrado en $\mathbb{C}^\ast$ y compacto.
+    Como $f: \overline{D_1} \to \mathbb{C}^\ast$ es continua, entonces $f(\overline{D_1})$ es compacto y por tanto cerrado.
+    $$D_2 \subset f(\overline{D_1}) \subset \overline{D_2} \Rightarrow f(\overline{D_1}) = \overline{D_2}$$
+    Entonces también tenemos que $f(\partial_\infty D_1) = \partial_\infty D_2$.
+\end{proof}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item $f(\partial_\infty D_1) = \partial_\infty D_2$ pero no tiene por qué ser inyectiva.
+              Lo mismo para $f(\overline{D_1}) = \overline{D_2}$.
+        \item Puede ocurrir que la extensión $f$ no exista.
+              Por ejemplo.
+              $$D = \{z = x + iy : 0 < x < 1, 0 < y < 1\} \setminus \bigcup_{i=1}^\infty \left\{\frac{1}{2^n} + iy : 0 < y \leq \frac{1}{2}\right\}$$
+              $D$ es un dominio simplemente conexo en $\mathbb{C}$.
+              Entonces existe $f: \mathbb{D} \to D$ aplicación conforme.
+              Supongamos que $f$ se extiende de manera continua $f: \bar{\mathbb{D}} \to \bar{D}$ continua, con $f(\partial\mathbb{D}) = \partial D$ y $f(\bar{\mathbb{D}}) = \bar{D}$.
+              Como $0 \in \partial D$, entonces $0 = f(\xi)$ con $\xi \in \partial \partial\mathbb{D}$.
+              Sea $\gamma$ el segmento $[0, \xi]$.
+              Sea $\Gamma$ la curva imagen de $\gamma$ por $f$.
+              Unas parametrizaciones son:
+              \begin{align*}
+                  \gamma: [0, 1] & \to \mathbb{C} & \Gamma: [0, 1] & \to \mathbb{C}  \\
+                  t              & \mapsto t\xi   & t              & \mapsto f(t\xi)
+              \end{align*}
+              $\Gamma$ tiene origen en $f(0) \in D$ y extremo 0.
+              El soporte de $\gamma$ está en $D$ salvo por el extremo.
+    \end{enumerate}
+\end{remark}

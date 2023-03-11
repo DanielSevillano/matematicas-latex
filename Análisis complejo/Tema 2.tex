@@ -254,7 +254,7 @@ Los compactos coinciden con la definición de familia compacta dada.
                   Entonces el radio de convergencia es mayor o igual que $R$.
               \end{proof}
 
-        \item $\mathcal{F} = \{f : f \text{ es holomorfa en } \mathbb{D} \text{ y } \int\int_\mathbb{D} |f(z)|dxdy \leq M\}$, siendo $M > 0$.
+        \item $\mathcal{F} = \{f : f \text{ es holomorfa en } \mathbb{D} \text{ y } \iint_\mathbb{D} |f(z)|dxdy \leq M\}$, siendo $M > 0$.
               Veamos que $\mathcal{F}$ es finitamente normal.
 
               Sea $K \subset \mathbb{D}$, $K$ compacto.
@@ -264,11 +264,11 @@ Los compactos coinciden con la definición de familia compacta dada.
 
               $$|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\rho, \quad r \leq \rho < 1$$
 
-              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho \leq \frac{1}{2\pi} \int_{\frac{1+r}{2}}^1 \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\theta d\rho = \frac{1}{2\pi} \int\int_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy$$
+              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho \leq \frac{1}{2\pi} \int_{\frac{1+r}{2}}^1 \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\theta d\rho = \frac{1}{2\pi} \iint_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy$$
               Como $|w-z| \geq |w| - |z| > \frac{1+r}{2}-r = \frac{1-r}{2} > 0$,
               \begin{align*}
-                   & \frac{1}{2\pi} \int\int_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy \leq \frac{1}{2\pi} \frac{2}{1-r} \int\int_{\frac{1+r}{2} < |w| < 1} |f(w)| dxdy \leq \\
-                   & \leq \frac{1}{\pi(1-r)} \int\int_\mathbb{D} |f(w)|dxdy \leq \frac{M}{\pi(1-r)}
+                   & \frac{1}{2\pi} \iint_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy \leq \frac{1}{2\pi} \frac{2}{1-r} \iint_{\frac{1+r}{2} < |w| < 1} |f(w)| dxdy \leq \\
+                   & \leq \frac{1}{\pi(1-r)} \iint_\mathbb{D} |f(w)|dxdy \leq \frac{M}{\pi(1-r)}
               \end{align*}
               Por otro lado,
               $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho = |f(z)|\left(1 - \frac{1+r}{2}\right) = |f(z)|\frac{1-r}{2}$$
