@@ -424,7 +424,7 @@ Sea $D$ un dominio simplemente conexo en $\mathbb{C}^\ast$.
     \end{itemize}
 \end{proof}
 
-\section{Teorema de Carathéodory sobre extensión homeomorfa hasta la frontera}
+\section{El teorema de extensión de Carathéodory}
 
 Recordemos que $\mathbb{C}$ y $\mathbb{D}$ son homeomorfos, aunque no conformemente equivalentes.
 
@@ -517,4 +517,39 @@ Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$,
               $\Gamma$ tiene origen en $f(0) \in D$ y extremo 0.
               El soporte de $\gamma$ está en $D$ salvo por el extremo.
     \end{enumerate}
+\end{remark}
+
+Una curva de Jordan es una curva en $\mathbb{C}$ que tiene alguna parametrización $\gamma: [a, b] \to \mathbb{C}$ inyectiva en $[a, b)$ con $\gamma(a) = \gamma(b)$.
+Si esto ocurre para una parametrización, entonces pasa para todas.
+
+Si $J$ es el soporte de una curva de Jordan en $\mathbb{C}$, entonces $\mathbb{C} \setminus J$ tiene dos componentes conexas.
+\begin{itemize}
+    \item $I(J)$ es la componente acotada y se le llama dominio interior a $J$.
+    \item $E(J)$ es la componente no acotada y se le llama dominio exterior a $J$.
+\end{itemize}
+Además, $J$ es la frontera de ambas.
+Observamos que $I(J)$ y $E(J)$ son dominios en $\mathbb{C}$.
+Como $\mathbb{C} \setminus J$ es abierto, sus componentes conexas son abiertas.
+
+Además, $I(J)$ es un dominio simplemente conexo en $\mathbb{C}$.
+\begin{align*}
+    \mathbb{C}^\ast \setminus I(J) & = J \cup E(J) \cup  \{\infty\}                      \\
+    \partial_\infty E(J)           & = \partial E(J) \cup \{\infty\} = J \cup \{\infty\}
+\end{align*}
+Observamos que $\mathbb{C}^\ast \setminus I(J)$ es la clausura en $\mathbb{C}^\ast$ de $E(J)$.
+Como $E(J)$ es conexo, $\mathbb{C}^\ast \setminus I(J)$ también lo es.
+Luego $I(J)$ es simplemente conexo.
+Observamos además que $I(J) \cup J$ es compacto.
+
+Sea $D = I(J)$, $D$ es un dominio simplemente conexo con $D \neq \mathbb{C}$.
+Por el teorema de Riemann, existe una aplicación conforme $f$ de $\mathbb{D}$ sobre $D$.
+
+\begin{theorem}[Teorema de extensión de Carathéodory]
+    Sea $J$ una curva de Jordan en $\mathbb{C}$ y sea $D$ el dominio interior a $J$.
+    Sea $f$ una aplicación conforme de $\mathbb{D}$ sobre $D$.
+    Entonces $f$ se extiende de forma continua a $\bar{\mathbb{D}}$, y esta extensión es un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D} = I(J) \cup J$.
+\end{theorem}
+
+\begin{remark}
+    Como consecuencia, la extensión también es un homeomorfismo de $\partial\mathbb{D}$ sobre $\partial D = J$.
 \end{remark}

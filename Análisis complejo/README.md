@@ -46,4 +46,4 @@ Estos apuntes están abiertos a correcciones y mejoras.
 2. Dominios simplemente conexos
 3. El teorema de Riemann de la aplicación conforme
 4. Clasificación de los dominios simplemente conexos
-5. Teorema de Carathéodory sobre extensión homeomorfa hasta la frontera
+5. El teorema de extensión de Carathéodory
