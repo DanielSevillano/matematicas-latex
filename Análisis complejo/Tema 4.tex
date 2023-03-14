@@ -1,0 +1,152 @@
+\chapter{Funciones armónicas}
+
+\section{Funciones armónicas y funciones holomorfas}
+\begin{definition}
+    Sea $D$ un abierto en $\mathbb{R}^n$ y sea $f: D \to \mathbb{R}$.
+    Decimos que $f$ es armónica en $D$ si $f \in \mathcal{C}^2(D)$ y
+    $$\Delta f = \frac{\partial^2f}{\partial x_1^2} + \frac{\partial^2f}{\partial x_2^2} + \dots + \frac{\partial^2f}{\partial x_n^2}$$
+\end{definition}
+
+\begin{definition}
+    Dado $D$ abierto en $\mathbb{C}$ y $u: D \to \mathbb{R}$, con $u \in \mathcal{C}^2(D)$.
+    El laplaciano de $u$ se define como:
+    $$\Delta u = \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}$$
+\end{definition}
+
+\begin{definition}
+    Sea $D$ abierto en $\mathbb{D}$ y sea $u: D \to \mathbb{R}$, con $u \in \mathcal{C}^2(D)$.
+    Diremos que $u$ es armónica en $D$ si $\Delta u = 0$.
+\end{definition}
+
+\begin{example}
+    \hfill
+    \begin{itemize}
+        \item Las funciones constantes.
+              $u(z) = a$, $a \in \mathbb{R}$, es armónica en $\mathbb{C}$.
+        \item La función parte real es armónica en $\mathbb{C}$.
+              \begin{align*}
+                  \Re: \mathbb{C} & \to \mathbb{R}                         \\
+                  z               & \mapsto \Re(z) = \frac{z + \bar{z}}{2} \\
+                  (x, y)          & \mapsto x
+              \end{align*}
+        \item La función parte imaginaria es armónica en $\mathbb{C}$.
+              \begin{align*}
+                  \Im: \mathbb{C} & \to \mathbb{R}                          \\
+                  z               & \mapsto \Im(z) = \frac{z - \bar{z}}{2i} \\
+                  (x, y)          & \mapsto y
+              \end{align*}
+        \item Si $D$ es un abierto en $\mathbb{C}$ y $u$ y $v$ son armónicas en $D$, entonces $u+v$ es armónica en $D$.
+        \item Si $D$ es un abierto en $\mathbb{C}$, $u$ es armónica en $D$ y $c \in \mathbb{R}$, entonces $cu$ es armónica en $D$.
+    \end{itemize}
+\end{example}
+
+\begin{theorem}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $f$ una función holomorfa en $D$.
+    Entonces $\Re(f)$ e $\Im(f)$ son armónicas en $D$.
+\end{theorem}
+
+\begin{proof}
+    Sean $u = \Re(f)$ y $v = \Im(f)$, $u, v: D \to \mathbb{R}$, con $u, v \in \mathcal{C}^\infty(D) \subset \mathcal{C}^2(D)$.
+    Se verifican las condiciones de Cauchy-Riemann:
+    $$\begin{cases}
+            u_x = v_y \\
+            u_y = -v_x
+        \end{cases}$$
+    Por tanto:
+    \begin{align*}
+        \Delta u & = u_{xx} + u_{yy} = v_{yx} - v_{xy} = 0  \\
+        \Delta v & = v_{xx} + v_{yy} = -u_{yx} + u_{xy} = 0
+    \end{align*}
+\end{proof}
+
+El recíproco no es cierto.
+Es decir, dado $D$ abierto en $\mathbb{C}$, $u$ y $v$ armónicas en $D$ y $f = u + iv: D \to \mathbb{C}$, no se cumple en general que $f$ sea holomorfa en $D$.
+
+\begin{example}[Contraejemplo]
+    Sea $D = \mathbb{C}$ y sean $u(z) = \Re(z)$ y $v(z) = \Im(z)$.
+    $u$ y $v$ son armónicas en $\mathbb{C}$.
+    Sin embargo, $f(z) = u(z) + iv(z) = \bar{z}$ no es holomorfa.
+\end{example}
+
+\begin{definition}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Diremos que $v: D \to \mathbb{R}$ es una conjugada armónica de $u$ en $D$ si la función $f = u + iv$ es holomorfa en $D$.
+\end{definition}
+
+\begin{properties}
+    \hfill
+    \begin{itemize}
+        \item Si existe una conjugada armónica de $u$ en $D$, entonces es una función armónica en $D$.
+        \item Si $u$ es una conjugada armónica de $u$ en $D$, entonces $u + c$ es conjugada armónica de $u$ en $D$ para todo $c \in \mathbb{R}$.
+        \item Si $D$ es un dominio en $\mathbb{C}$, $u$ es armónica en $D$ y $v_1, v_2$ son conjugadas armónicas de $u$ en $\mathbb{C}$, entonces existe $c \in \mathbb{R}$ tal que $v_1-v_2 = c$.
+              \begin{proof}
+                  $f_1 = u + iv_1$ y $f_2 = u + iv_2$ son holomorfas en $D$, así que $f_2 - f_1 = i(v_2-v_1)$ es holomorfa en $D$.
+                  Como $\Re(f_2-f_1) = 0$ en $D$ con $D$ dominio, entonces $f_2 - f_1$ es constante.
+                  Es decir, existe $c \in \mathbb{R}$ con $f_2-f_1 = ic$.
+                  Por tanto:
+                  $$i(v_2-v_1) = ic \Rightarrow v_2 - v_1 = c$$
+              \end{proof}
+    \end{itemize}
+\end{properties}
+
+No tiene por qué existir la conjugada armónica.
+
+\begin{example}[Contraejemplo]
+    Sea $D = \mathbb{C} \setminus \{0\}$ abierto en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$, $u(z) = \Log|z|$.
+    Si escribimos $z = x +iy$,
+    $$u(z) = \Log(x^2 + y^2)^{1/2} = \frac{1}{2}\Log(x^2+y^2)$$
+    Calculamos sus derivadas parciales:
+    \begin{align*}
+        u_x(z)    & = \frac{1}{2} \frac{2x}{x^2+y^2} = \frac{x}{x^2+y^2}             & u_y(z) & = \frac{y}{x^2+y^2}           \\
+        u_{xx}(z) & = \frac{x^2+y^2-2x^2}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2} & u_{yy} & = \frac{x^2-y^2}{(x^2+y^2)^2}
+    \end{align*}
+    $\Delta u = 0$, así que $u$ es armónica en $D$.
+
+    Supongamos que $v$ es una conjugada armónica de $u$ en $D$.
+    Entonces $v: \mathbb{C} \setminus \{0\} \to \mathbb{R}$, con $f = u + iv$ holomorfa en $\mathbb{C} \setminus \{0\}$.
+    Consideramos:
+    \begin{align*}
+        g = \Log: \mathbb{C} \setminus (-\infty, 0] & \to \mathbb{C}                       \\
+        z                                           & \mapsto \Log(z) = \log|z| + i\Arg(z)
+    \end{align*}
+    $f$ y $g$ son holomorfas en $\mathbb{C} \setminus (-\infty, 0]$, luego $f-g$ es holomorfa en $\mathbb{C} \setminus (-\infty, 0]$.
+    Como $\Re(f-g) = 0$, entonces $f-g = ic$, con $c \in \mathbb{R}$.
+    Así que $g = f - ic$.
+    Sin embargo, $g$ no se extiende de forma continua a $\mathbb{C} \setminus \{0\}$.
+    Esto es una contradicción.
+\end{example}
+
+Hemos probado que la función $u(z) = \Log|z|$ es armónica en $\mathbb{C} \setminus \{0\}$.
+
+\begin{lemma}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $f$ una función holomorfa y nunca nula en $D$.
+    Entonces la función $u = \Log|f|$ es armónica en $D$.
+\end{lemma}
+
+\begin{proof}
+    Sean $z_0 \in D$ y $R > 0$ tales que $D(z_0, R) \subset D$.
+    Como $D(z_0, R)$ es un dominio simplemente conexo en $\mathbb{C}$, existe $g$ una rama de $\log(f)$ en $D(z_0, R)$.
+    $g$ es holomorfa en $D(z_0, R)$, con
+    $$\Re(g(z)) = \Log|f(z)|, \quad z \in D(z_0, R)$$
+    $Re(g) = \Log|f|$ es armónica en $D(z_0, R)$.
+\end{proof}
+
+\begin{proposition}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Entonces la función $u_x - iu_y$ es holomorfa en $D$.
+\end{proposition}
+
+% Demostración
+
+\begin{corollary}
+    Sea $D$ abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Entonces $u \in \mathcal{C}^\infty(D)$.
+\end{corollary}
+
+% Demostración
+
+\begin{proposition}
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Entonces existe $F$ holomorfa en $D$ tal que $\Re(F) = u$ en $D$.
+    Además, esta $F$ es única salvo adición de constantes imaginarias.
+\end{proposition}

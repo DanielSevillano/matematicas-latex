@@ -47,3 +47,7 @@ Estos apuntes están abiertos a correcciones y mejoras.
 3. El teorema de Riemann de la aplicación conforme
 4. Clasificación de los dominios simplemente conexos
 5. El teorema de extensión de Carathéodory
+
+### 4. Funciones armónicas
+
+1. Funciones armónicas y funciones holomorfas
