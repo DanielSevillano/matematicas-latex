@@ -150,3 +150,102 @@ Hemos probado que la función $u(z) = \Log|z|$ es armónica en $\mathbb{C} \setm
     Entonces existe $F$ holomorfa en $D$ tal que $\Re(F) = u$ en $D$.
     Además, esta $F$ es única salvo adición de constantes imaginarias.
 \end{proposition}
+
+% Demostración
+
+\begin{corollary}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si $z_0 \in D$ y $R > 0$ con $D(z_0, R) \subset D$, entonces existe $F$ holomorfa en $D(z_0, R)$ tal que $\Re(F) = u$ en $D(z_0, R)$.
+\end{corollary}
+
+Toda función armónica, localmente, es la parte real de una función holomorfa.
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$.
+    Son equivalentes:
+    \begin{enumerate}
+        \item $D$ es simplemente conexo.
+        \item Toda función armónica tiene conjugada armónica.
+    \end{enumerate}
+\end{theorem}
+
+% Demostración
+
+\begin{theorem}[Propiedad del valor medio]
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Sea $z_0 \in D$ y $R > 0$ con $D(z_0, R) \subset D$.
+    Entonces:
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad 0 \leq 0 < R$$
+\end{theorem}
+
+% Demostración
+
+\begin{theorem}[Forma débil del principio del máximo para funciones armónicas]
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si $u$ tiene un máximo local en un punto $z_0 \in D$, entonces existe $r > 0$ con $D(z_0, R) \subset D$ tal que $u$ es constante en $D(z_0, R)$.
+\end{theorem}
+
+% Demostración
+
+Sea $D$ dominio en $\mathbb{C}$, sean $u$, $v$ armónicas en $D$ y sea $A \subset D$, $A$ con puntos de acumulación en $D$.
+$u = v$ en $A$ no implica en general que $u = v$ en $D$.
+
+\begin{example}[Contraejemplo]
+    Sea $D = \mathbb{C}$ y sean $u(z) = \Re(z)$ y $v(z) = 0$ armónicas.
+    $u = v$ en el eje imaginario, que tiene puntos de acumulación en $\mathbb{C}$, pero $u \neq v$ en $\mathbb{C}$.
+\end{example}
+
+\begin{remark}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$.
+    Si existen $u_x$ y $u_y$ en $D$ y $u_x = u_y = 0$ en $D$, entonces $u$ es constante en $D$.
+\end{remark}
+
+\begin{theorem}[Teorema de identidad para funciones armónicas]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si existe $G \subset D$, $G$ abierto y no vacío tal que $u = 0$ en $G$, entonces $u = 0$ en $D$.
+\end{theorem}
+
+\begin{proof}
+    Sea $f = u_x - iu_y$ holomorfa en $D$.
+    Como $u = 0$ en $G$, tenemos que $u_x = u_y = 0$ en $G$.
+    Entonces $f = 0$ en $G$.
+    Por el teorema de identidad, $f = 0$ en $D$.
+    Entonces $u_x = u_y = 0$ en $D$, luego $u$ es constante en $D$.
+    Como $u = 0$ en $G$, entonces $u = 0$ en $D$.
+\end{proof}
+
+\begin{corollary}
+    Sea $D$ un dominio en $\mathbb{C}$ y sean $u$ y $v$ armónicas en $D$.
+    Si existe $G \subset D$, $G$ abierto y no vacío tal que $u = v$ en $G$, entonces $u = v$ en $D$.
+\end{corollary}
+
+\begin{theorem}[Principio del máximo para funciones armónicas: primera versión]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si $u$ tiene un máximo local en un punto $z_0 \in D$, entonces $u$ es constante en $D$.
+\end{theorem}
+
+\begin{proof}
+    Existe $R > 0$ con $D(z_0, R) \subset D$ tal que $u$ es constante en $D(z_0, R)$.
+    Es decir, $u(z) = c$, $z \in D(z_0, R)$, $c \in \mathbb{R}$.
+    Sea $v(z) = c$, $z \in D$.
+    $u$ y $v$ son armónicas en $D$ y $u = v$ en $D(z_0, R)$.
+    Entonces $u = v$ en $D$, es decir, $u(z) = c$ para todo $z \in D$.
+\end{proof}
+
+\begin{notation}
+    Si $D$ es un dominio en $\mathbb{C}$, $\bar{D}$ denotará la clausura de $D$ como subconjunto de $\mathbb{C}^\ast$.
+    \begin{itemize}
+        \item Si $D$ es acotado, entonces $\partial_\infty D = \partial D$.
+              $$\bar{D} = D \cup \partial_\infty D = D \cup \partial D$$
+        \item Si $D$ no es acotado, entonces $\partial_\infty D = \partial D \cup \{\infty\}$.
+              $$\bar{D} = D \cup \partial_\infty D = D \cup \partial D \cup \{\infty\}$$
+    \end{itemize}
+\end{notation}
+
+\begin{theorem}[Principio del máximo para funciones armónicas: segunda versión]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si existe $M \in \mathbb{R}$ tal que
+    $$\limsup_{z \to \chi, z \in D} u(z) \leq M, \quad \forall \chi \in \partial_\infty D$$
+    entonces $u(z) \leq M$ para todo $z \in D$.
+    Además, si $u(z_0) = M$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
+\end{theorem}
