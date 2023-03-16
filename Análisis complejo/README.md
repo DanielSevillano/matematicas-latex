@@ -51,3 +51,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 ### 4. Funciones armónicas
 
 1. Funciones armónicas y funciones holomorfas
+2. El problema de Dirichlet para el disco unidad
+3. La integral de Poisson

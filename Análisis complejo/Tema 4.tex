@@ -249,3 +249,128 @@ $u = v$ en $A$ no implica en general que $u = v$ en $D$.
     entonces $u(z) \leq M$ para todo $z \in D$.
     Además, si $u(z_0) = M$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
 \end{theorem}
+
+% Demostración
+
+\begin{theorem}[Principio del mínimo para funciones armónicas]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    \begin{enumerate}
+        \item Si $u$ tiene un mínimo local en un punto $z_0 \in D$, entonces $u$ es constante en $D$.
+        \item Si existe $m \in \mathbb{R}$ tal que
+              $$\liminf_{z \to \xi, z \in D} u(z) \geq m, \quad \forall \chi \in \partial_infty D$$
+              entonces $u(z) \geq m$ para todo $z \in D$.
+              Además, si $u(z_0) = m$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{corollary}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Entonces:
+    \begin{align*}
+        \max_{z \in \bar{D}} u(z) & = \max_{z \in \partial_\infty D} u(z) \\
+        \min_{z \in \bar{D}} u(z) & = \min_{z \in \partial_\infty D} u(z)
+    \end{align*}
+\end{corollary}
+
+\begin{corollary}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Si $u = 0$ en $\partial_\infty D$, entonces $u = 0$ en $D$.
+\end{corollary}
+
+\begin{corollary}
+    Sea $D$ un dominio en $\mathbb{C}$ y sean $u, v: \bar{D} \to \mathbb{R}$ armónicas en $D$ y continuas en $\bar{D}$.
+    Si $u = v$ en $\partial_\infty D$, entonces $u = v$ en $D$.
+\end{corollary}
+
+\begin{remark}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Entonces los valores de $u$ en $D$ están completamente determinados por los valores de $u$ en $\partial_\infty D$.
+\end{remark}
+
+\section{El problema de Dirichlet para el disco unidad}
+Esto da lugar a la siguiente cuestión.
+Sea $D$ un dominio en $\mathbb{C}$ y sea $f: \partial_\infty D \to \mathbb{R}$ continua.
+Queremos estudiar si existe $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$ tal que $u = f$ en $D$.
+Esto es el problema de Dirichlet en $D$ con valores frontera $f$.
+Si existe una solución del problema de Dirichlet en $D$ con valores frontera $f$, esta es única.
+
+Si $D$ es un dominio en $\mathbb{C}$, se dice que $D$ es regular para el problema de Dirichlet si para toda $f: \partial_\infty D \to \mathbb{R}$ continua existe la solución del problema de Dirichlet con valores frontera $f$.
+Queremos resolver el problema de Dirichlet en el disco unidad.
+
+Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+Vamos a expresar $u(z)$ para $z \in \mathbb{D}$ en función de $u(\xi)$, con $\xi \in \partial\mathbb{D}$.
+Por la propiedad del valor medio, si $0 < r < 1$,
+$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(re^{it})dt$$
+Si consideramos las funciones
+$$u_r(t) = u(re^{it}), \quad t \in [-\pi, \pi]$$
+vemos que $u_r \xrightarrow[r \to 1^-]{} u_1$ uniformemente porque $u$ es uniformemente continua en $\bar{\mathbb{D}}$.
+Así que:
+$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u_r(t)dt \xrightarrow[r \to 1^-]{} \frac{1}{2\pi} \int_{-\pi}^\pi u_1(t)dt \Rightarrow u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
+
+\begin{lemma}
+    Sean $G_1$ y $G_2$ dos abiertos en $\mathbb{C}$, sea $f$ holomorfa en $G_1$ con $f(G_1) \subset G_2$ y sea $u$ armónica en $G_2$.
+    Entonces $u \circ f$ es armónica en $G_1$.
+\end{lemma}
+
+% Demostración
+
+Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+Hemos visto que:
+$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
+Sea $a \in \mathbb{D}$.
+Consideramos $T_a(z) = \frac{z+a}{1+\bar{a}z}$, con $T_a(0) = a$ y $T(\bar{\mathbb{D}}) = \bar{\mathbb{D}}$.
+Sea $v = u \circ T_a$.
+$$\bar{\mathbb{D}} \xrightarrow{T_a} \bar{\mathbb{D}} \xrightarrow{u} \mathbb{R}$$
+$v$ es continua en $\bar{\mathbb{D}}$ y armónica en $\mathbb{D}$.
+$$u(a) = v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt$$
+Hacemos el cambio de variable:
+$$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi})$$
+Derivando,
+$$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi$$
+Recordamos que $S_a(z) = \frac{z-a}{1-\bar{a}z}$ y $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
+$$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{-i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
+Entonces la integral queda de la forma:
+$$u(a) = \frac{1}{2\pi} \int_{\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
+
+\begin{theorem}
+    Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Entonces
+    $$u(z) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|z|^2}{|1-ze^{-it}|^2}dt, \quad \forall z \in \mathbb{D}$$
+\end{theorem}
+
+Si $f: \partial_\infty D \to \mathbb{R}$ es una función continua, sabemos que la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $f$, de existir, es única.
+Además, tendría que ser la siguiente:
+$$u: \bar{\mathbb{D}} \to \mathbb{R}, \quad
+    u(z) = \begin{cases}
+        \dfrac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\dfrac{1-|z|^2}{|1-ze^{-it}|^2}dt & \text{si } z \in \mathbb{D}         \\
+        u(z) = f(z)                                                                & \text{si } z \in \partial\mathbb{D}
+    \end{cases}$$
+
+\section{La integral de Poisson}
+Una primera expresión del núcleo de Poisson es
+$$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2}, \quad z \in \mathbb{D}, \; t \in \mathbb{R}$$
+Si $z = re^{i\theta}$, $0 \leq r < 1$, $\theta \in \mathbb{R}$,
+$$P(z, e^{it}) = \frac{1-r^2}{|1-re^{i\theta}e^{-it}|^2} = \frac{1-r^2}{|1-re^{i(\theta-t)}|^2}$$
+De esta forma llegamos a una segunda expresión del núcleo de Poisson:
+$$P_r(t) = \frac{1-r^2}{|1-re^{it}|^2}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+Podemos escribir el denominador de otra forma:
+$$|1-re^{it}|^2 = (1-re^{it})(1-re^{-it}) = 1 - re^{-it} - re^{it} + r^2 = 1 - r(e^{it}+e^{-it}) + r^2 = 1 - 2r\cos(t) + r^2$$
+Luego
+$$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb{R}$$
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Si $0 \leq r < 1$, $\theta \in \mathbb{R}$, $t \in \mathbb{R}$ y $z = re^{i\theta}$, entonces $P(z, e^{it}) = P_r(\theta-t)$.
+        \item Si $0 \leq r < 1$, $t \in \mathbb{R}$ y $z = re^{it}$, entonces $P_r(t) = P(z, e^{i0}) = P(z, 1)$.
+    \end{enumerate}
+\end{remark}
+
+\begin{properties}
+    \hfill
+    \begin{enumerate}
+        \item $P(z, e^{it}) > 0$ si $z \in \mathbb{D}$ y $t \in \mathbb{R}$.
+              Equivalentemente, $P_r(t) > 0$ si $0 \leq r < 1$ y $t \in \mathbb{R}$.
+        \item Fijando $t \in \mathbb{R}$, la función $z \in \mathbb{D} \mapsto P(z, e^{it}) > 0$ es armónica en $\mathbb{D}$.
+    \end{enumerate}
+\end{properties}
