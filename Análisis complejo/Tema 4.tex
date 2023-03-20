@@ -143,7 +143,12 @@ Hemos probado que la función $u(z) = \Log|z|$ es armónica en $\mathbb{C} \setm
     Entonces $u \in \mathcal{C}^\infty(D)$.
 \end{corollary}
 
-% Demostración
+\begin{proof}
+    Sea $u$ armónica en $D$.
+    Entonces $f = u_x - iu_y$ es holomorfa en $D$.
+    Así que $u_x, u_y \in \mathcal{C}^\infty(D)$.
+    Como además $u \in \mathcal{C}^2(D)$, entonces $u \in \mathcal{C}^\infty(D)$.
+\end{proof}
 
 \begin{proposition}
     Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ y sea $u$ armónica en $D$.
@@ -151,7 +156,32 @@ Hemos probado que la función $u(z) = \Log|z|$ es armónica en $\mathbb{C} \setm
     Además, esta $F$ es única salvo adición de constantes imaginarias.
 \end{proposition}
 
-% Demostración
+\begin{proof}
+    Sea $f = u_x - iu_y$, que es holomorfa en $D$.
+    Como $D$ es simplemente conexo, existe $g$ primitiva de $f$ en $D$.
+    $g$ es holomorfa en $D$ y $g' = f$ en $D$.
+    Escribimos $g = U + iV$, con $U = \Re(f)$ y $V = \Im(f)$.
+    Como $g$ es holomorfa, $U_x = V_y$ y $U_y = -V_x$.
+    Además, $g' = U_x + iV_x = u_x - iu_y$, así que $U_x = u_x$ y $V_x = -u_y$.
+
+    Sea $F = u + iV$, $F: D \to \mathbb{C}$, con $u \in \mathcal{C}^2(D)$.
+    $V$ es armónica en $D$, $V \in \mathcal{C}^\infty(D)$.
+    $F$ es diferenciable en sentido real.
+    Además,
+    $$\begin{cases}
+            u_x = U_x = V_y \\
+            u_y = -V_x
+        \end{cases}$$
+    Luego $F$ es holomorfa en $D$, con $\Re(F) = u$ en $D$.
+
+    Veamos que $F$ es única salvo adición de constantes imaginarias.
+    \begin{itemize}
+        \item Si $c \in \mathbb{R}$, está claro que si $G = F + ic$, entonces $G$ es holomorfa en $D$ y $\Re(G) = u$ en $D$.
+        \item Si $G$ es holomorfa en $D$ y $\Re(G) = u$ en $D$.
+              Entonces $F-G$ es holomorfa y $\Re(F-G) = 0$ en $D$.
+              Por tanto $F-G$ es constante, así que existe $c \in \mathbb{R}$ con $F-G = ic \Leftrightarrow G = F - ic$.
+    \end{itemize}
+\end{proof}
 
 \begin{corollary}
     Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
@@ -169,7 +199,27 @@ Toda función armónica, localmente, es la parte real de una función holomorfa.
     \end{enumerate}
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item[$\Rightarrow$] Lo sabemos.
+        \item[$\Leftarrow$] Sea $f$ holomorfa y nunca nula en $D$.
+            Veamos que existe un rama de $\log(f)$ en $D$.
+            Sea $u = \Log|f|$, que es una función armónica en $D$.
+            Sea $v$ una conjugada armónica de $u$ en $D$.
+            Entonces $F = u + iv$ es holomorfa en $D$.
+            Sea $h = fe^{-F}$ holomorfa en $D$.
+            Como $|e^F| = |e^{u+iv}| = e^u = e^{\Log|f|} = |f|$, entonces
+            $$|h| = \frac{|f|}{|e^F|} = 1$$
+            Entonces $h$ es constante.
+            Es decir, existe $\xi = e^{ic}$ con $c \in \mathbb{R}$ tal que $h(z) = \xi$ para todo $z \in D$.
+            $$h = \frac{f}{e^F} \Rightarrow f = \xi e^F = e^{ic}e^F = e^{F + ic}$$
+            La función $F + ic$ es una rama de $\log(f)$ en $D$.
+
+            Toda función holomorfa y nunca nula en $D$ tiene una rama del logaritmo.
+            Luego $D$ es simplemente conexo.
+    \end{itemize}
+\end{proof}
 
 \begin{theorem}[Propiedad del valor medio]
     Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
@@ -178,14 +228,34 @@ Toda función armónica, localmente, es la parte real de una función holomorfa.
     $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad 0 \leq 0 < R$$
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Si $r = 0$ es trivial.
+    Supongamos $0 < r < R$.
+    Existe $F$ holomorfa en $D(z_0, R)$ con $\Re(F) = u$ en $D(z_0, R)$.
+    Por la fórmula de Cauchy,
+    $$F(z_0) = \frac{1}{2\pi i} \int_{|z-z_0|=r} \frac{F(z)}{z-z_0}dz = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{F(z_0 + re^{it})}{z_0 + re^{it} - z_0}rie^{it}dt = \frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt$$
+    Tomando parte real,
+    $$u(z_0) = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \Re(F(z_0 + re^{it}))dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + Re^{it})dt$$
+\end{proof}
 
 \begin{theorem}[Forma débil del principio del máximo para funciones armónicas]
     Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
     Si $u$ tiene un máximo local en un punto $z_0 \in D$, entonces existe $r > 0$ con $D(z_0, R) \subset D$ tal que $u$ es constante en $D(z_0, R)$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $r > 0$ con $D(z_0, r) \subset D$.
+    Existe $F$ holomorfa en $D(z_0, r)$ tal que $\Re(F) = u$ en $D(z_0, r)$.
+    Sea $f = e^F$, que es holomorfa en $D(z_0, r)$.
+    En $D(z_0, r)$ tenemos que:
+    $$|f| = |e^F| = e^{\Re(F)} = e^u$$
+    Existe $r_1$ con $0 < r_1 < r$, tal que $u(z) \leq u(z_0)$ si $z \in D(z_0, r_1)$.
+    Entonces
+    $$|e^{F(z)}| = e^{u(z)} \leq e^{u(z_0)} = |e^{F(z_0)}$$
+    $|e^F|$ tiene un máximo local en $z_0$.
+    Por el principio del máximo, tenemos que $e^F$ es constante en $D(z_0, r)$.
+    Entonces $|e^F| = e^u$ es constante, así que $u$ es constante en $D(z_0, r)$.
+\end{proof}
 
 Sea $D$ dominio en $\mathbb{C}$, sean $u$, $v$ armónicas en $D$ y sea $A \subset D$, $A$ con puntos de acumulación en $D$.
 $u = v$ en $A$ no implica en general que $u = v$ en $D$.
@@ -250,7 +320,25 @@ $u = v$ en $A$ no implica en general que $u = v$ en $D$.
     Además, si $u(z_0) = M$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $K = \sup_{z \in D} u(z) \in \mathbb{R} \cup \{\infty\}$.
+    Hay que probar que $K \leq M$.
+    Existe $\{z_n\}_{n=1}^\infty$ en $D$ tal que $\lim\limits_{n \to \infty} u(z_n) = K$.
+    Podemos suponer, pasando si es necesario a una subsucesión, que existe $\lim\limits_{n \to \infty} z_n = z^\ast \in \mathbb{C}^\ast$.
+    Entonces $z^\ast \in \bar{D} = D \cup \partial_\infty D$.
+    \begin{itemize}
+        \item Si $z^\ast \in \partial_\infty D$, entonces
+              $$K \leq \limsup_{z \to z^\ast. z \in D} u(z) \leq M$$
+        \item Si $z^\ast \in D$, como $\lim\limits_{n \to \infty} z_n = z^\ast$, se tiene que $\lim\limits_{n \to \infty} u(z_n) = u(z^\ast) = K$.
+              Luego
+              $$u(z) \leq u(z^\ast) \quad \forall z \in D$$
+              Por la primera versión del principio del máximo, $u$ es constante en $D$, es decir, $u(z) = K$ para todo $z \in D$.
+              Aplicando la hipótesis a un punto $\xi$ cualquiera de $\partial_\infty D$, vemos que $K \leq M$.
+              Observamos que $\partial_\infty D \neq \emptyset$.
+              Si $\partial_\infty D = \emptyset$, entonces $\bar{D} = D$, luego $D$ sería abierto y cerrado en $\mathbb{C}^\ast$.
+              Por tanto, $D = \emptyset$ o $D = \mathbb{C}^\ast$, lo que es imposible.
+    \end{itemize}
+\end{proof}
 
 \begin{theorem}[Principio del mínimo para funciones armónicas]
     Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
@@ -312,7 +400,40 @@ $$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u_r(t)dt \xrightarrow[r \to 1^-]{} \frac
     Entonces $u \circ f$ es armónica en $G_1$.
 \end{lemma}
 
-% Demostración
+\begin{proof}
+    $u \circ f \in \mathcal{C}^2(G_1)$.
+    Se puede comprobar que $\Delta(u \circ f) = 0$.
+    De otra manera, sea $z_0 \in G_1$, entonces $f(z_0) \in G_2$.
+    Tomamos $R > 0$ con $D(f(z_0), R) \subset G_2$.
+    Como $f$ es continua en $z_0$, existe $\delta > 0$ tal que $D(z_0, \delta) \subset G_1$ y $f(D(z_0, \delta)) \subset D(f(z_0), R)$.
+
+    Como $u$ es armónica en $D(f(z_0), R)$, existe $F$ holomorfa en $D(f(z), R)$ tal que $u = \Re(F)$ en $D(f(z_0), R)$.
+    $$D(z_0, \delta) \xrightarrow{f} D(f(z_0), R) \xrightarrow{F} \mathbb{C}$$
+    $F \circ f$ es holomorfa en $D(z_0, \delta)$, así que $\Re(f \circ F)$ es armónica en $D(z_0, \delta)$.
+    Si $z \in D(z_0, \delta)$, tenemos que $f(z) \in D(f(z_0), R)$.
+    $$\Re(F \circ f)(z) = \Re(F(f(z))) = u(f(z))$$
+    Entonces $\Re(F \circ f) = u \circ f$.
+    Por tanto $u \circ f$ es armónica en $D(z_0, \delta)$.
+    Entonces $u \circ f$ es armónica en $D$.
+
+    Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Hemos visto que:
+    $$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
+    Sea $a \in \mathbb{D}$.
+    Consideramos $T_a(z) = \frac{z+a}{1+\bar{a}z}$, con $T_a(0) = a$ y $T_a(\bar{\mathbb{D}}) = \bar{\mathbb{D}}$.
+    Sea $v = u \circ T_a$.
+    $$\bar{\mathbb{D}} \xrightarrow{T_a} \bar{\mathbb{D}} \xrightarrow{u} \mathbb{R}$$
+    $v$ es continua en $\bar{\mathbb{D}}$ y armónica en $\mathbb{D}$.
+    $$u(a) = v(0) \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt$$
+    Hacemos el cambio de variable:
+    $$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi})$$
+    Derivando,
+    $$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi$$
+    Recordamos que $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
+    $$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
+    Entonces la integral queda de la forma:
+    $$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
+\end{proof}
 
 Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
 Hemos visto que:
@@ -330,7 +451,7 @@ $$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac
 Recordamos que $S_a(z) = \frac{z-a}{1-\bar{a}z}$ y $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
 $$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{-i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
 Entonces la integral queda de la forma:
-$$u(a) = \frac{1}{2\pi} \int_{\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
+$$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
 
 \begin{theorem}
     Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
