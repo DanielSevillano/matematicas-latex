@@ -492,6 +492,125 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
     \begin{enumerate}
         \item $P(z, e^{it}) > 0$ si $z \in \mathbb{D}$ y $t \in \mathbb{R}$.
               Equivalentemente, $P_r(t) > 0$ si $0 \leq r < 1$ y $t \in \mathbb{R}$.
+
         \item Fijando $t \in \mathbb{R}$, la función $z \in \mathbb{D} \mapsto P(z, e^{it}) > 0$ es armónica en $\mathbb{D}$.
+              \begin{proof}
+                  \hfill
+                  \begin{itemize}
+                      \item Si $t = 0$ y $z \in \mathbb{D}$,
+                            \begin{align*}
+                                P(z, e^{i0}) & = \frac{1-|z|^2}{|1-z|^2} = \frac{1-z\bar{z}}{(1-z)(1-\bar{z})} = \frac{1-z+z-z\bar{z}}{(1-z)(1-\bar{z})} = \frac{1}{1-\bar{z}} + \frac{z}{1-z} = \\
+                                             & = \frac{1}{1-\bar{z}} + \frac{z-1+1}{1-z} = \frac{1}{1-\bar{z}} - 1 + \frac{1}{1-z} = -1 + \Re\left(\frac{1}{1-z}\right) =                        \\
+                                             & = \Re\left(-1 + \frac{2}{1-z}\right) = \Re\left(\frac{1+z}{1-z}\right)
+                            \end{align*}
+                            La función $z \in \mathbb{D} \mapsto P(z, e^{i0}) = \Re\left(\frac{1+z}{1-z}\right)$ es armónica en $\mathbb{D}$.
+
+                      \item Si $t \in \mathbb{R}$ y $z \in \mathbb{D}$, tomamos $w = ze^{-it} \in \mathbb{D}$, con $|w| = |z|$.
+                            Entonces:
+                            $$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2} = \frac{1-|w|^2}{|1-w|^2} = \Re\left(\frac{1+w}{1-w}\right) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)$$
+                            La función $z \in \mathbb{D} \mapsto P(z, e^{it})$ es armónica en $\mathbb{D}$.
+                  \end{itemize}
+              \end{proof}
+
+        \item Si $z \in \mathbb{D}$ y $t \in \mathbb{R}$,
+              $$P(z, e^{it}) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)$$
+              Si $0 \leq r < 1$ y $t \in \mathbb{R}$,
+              $$P_r(t) = \Re\left(\frac{1+re^{it}}{1-re^{it}}\right)$$
+
+        \item Fijado $r \in [0, 1)$, tenemos la función
+              \begin{align*}
+                  P_r: \mathbb{R} & \to \mathbb{R}                                                               \\
+                  t               & \mapsto P_r(t) = \frac{1-r^2}{|1-re^{it}|^2} = \frac{1-r^2}{1+r^2-2r\cos(t)}
+              \end{align*}
+              que es continua, positiva, periódica de periodo $2\pi$, par y decreciente en $[0, \pi]$.
+              Observamos que:
+              \begin{align*}
+                  P_r(0)               & = \frac{1-r^2}{(1-r)^2} = \frac{1+r}{1-r} \xrightarrow[r \to 1^-]{} \infty \\
+                  P_r(\pi) = P_r(-\pi) & = \frac{1-r^2}{(1+r)^2} = \frac{1-r}{1+r} \xrightarrow[r \to 1^-]{} 0
+              \end{align*}
+              Tenemos entonces la desigualdad:
+              $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+              Además, si en el teorema anterior tomamos $u \equiv 1$ y $z = r$, tenemos:
+              $$1 = u(r) = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(\theta - t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt$$
+              Por tanto,
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t) = 1$$
+
+        \item Para cada $t \in [-\pi, 0) \cup (0, \pi]$ se tiene que $P_r(t) \xrightarrow[r \to 1^-]{} 0$.
+              Además, si $\delta \in (0, \pi)$, se tiene que $P_r(t) \xrightarrow[r \to 1^-]{} 0$ uniformemente en $[-\pi, -\delta] \cup [\delta, \pi]$.
+
+              Si $t \in [-\pi, 0) \cup (0, \pi]$, $\cos(t) \neq 1$, así que:
+              $$\lim_{r \to 1^-} P_r(t) = \frac{0}{2-2\cos(t)} = 0$$
+              Si $\delta \in [0, \pi)$, entonces:
+              $$P_r(t) \leq P_r(\delta) \xrightarrow[r \to 1^-]{} 0$$
     \end{enumerate}
 \end{properties}
+
+\begin{definition}
+    Sea $f: \partial\mathbb{D} \to \mathbb{R}$ continua.
+    Se define la integral de Poisson de $f$, y se denota $P[f]$, como la función
+    \begin{align*}
+        P[f]: \mathbb{D} & \to \mathbb{R}                                                           \\
+        z                & \mapsto P[f](z) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt
+    \end{align*}
+    Equivalentemente, si $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$, entonces
+    $$P[f](z) = P[f](re^{it}) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta - t)dt$$
+\end{definition}
+
+\begin{theorem}
+    El disco unidad $\mathbb{D}$ es un dominio regular para el problema de Dirichlet.
+    En concreto, si $f: \partial\mathbb{D} \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $f$ es la función:
+    \begin{align*}
+        u: \bar{\mathbb{D}} & \to \mathbb{R}                       \\
+        u(z)                & = \begin{cases}
+                                    P[f](z) & z \in \mathbb{D}         \\
+                                    f(z)    & z \in \partial\mathbb{D}
+                                \end{cases}
+    \end{align*}
+    Es decir, $u$ es armónica en $\mathbb{D}$, continua en $\bar{\mathbb{D}}$ y $u = f$ en $\partial\mathbb{D}$.
+\end{theorem}
+
+\begin{proof}
+    \hfill
+    \begin{enumerate}
+        \item $P[f]$ es armónica en $\mathbb{D}$.
+              Si $z \in \mathbb{D}$, tenemos que
+              \begin{align*}
+                  P[f](z) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt =                                \\
+                          & = \frac{1}{2\pi} \int_{-\pi}^\pi \Re\left(f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt\right)
+              \end{align*}
+              Veamos que $\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt$ es una función holomorfa en $\mathbb{D}$ expresándola como serie de potencias.
+
+              Si $z \in \mathbb{D}$,
+              $$\frac{1+z}{1-z} = \frac{1}{1-z} + \frac{z}{1-z} = \sum_{n=0}^\infty z^n + \sum_{n=0}^\infty z^{n+1} = 1 + 2\sum_{n=1}^\infty z^n$$
+              converge uniformemente en cada subconjunto compacto de $\mathbb{D}$.
+              Así que:
+              $$\frac{1+ze^{-it}}{1-ze^{-it}} = 1 + 2\sum_{n=1}^\infty z^ne^{-int}, \quad t \in [-\pi, \pi]$$
+              con convergencia uniforme.
+              Entonces:
+              \begin{align*}
+                  P[f](z) & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\left(1 + 2\sum_{n=1}^\infty z^ne^{-int}\right)dt\right) =                                          \\
+                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{it}) + 2\sum_{n=1}^\infty f(e^{it})z^ne^{-int}\right)dt\right) =                                  \\
+                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + \frac{1}{2\pi} \int_{-\pi}^\pi \left(2\sum_{n=1}^\infty f(e^{it})z^ne^{-int}\right)dt\right) = \\
+                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + 2\sum_{n=1}^\infty\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt\right)z^n\right)
+              \end{align*}
+
+              Sea
+              $$a_n = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt, \quad n = 0, 1, 2, \dots$$
+              Entonces:
+              $$P[f](z) = \Re\left(a_0 + 2\sum_{n=1}^\infty a_nz^n\right)$$
+              Esta es una serie de potencias centrada en 0 que converge para todo $z \in \mathbb{D}$.
+              Su radio de convergencia es mayor o igual que 1.
+              Por tanto, define una función holomorfa en $\mathbb{D}$.
+              Entonces la función $z \in \mathbb{D} \mapsto P[f](z)$ es armónica en $\mathbb{D}$.
+
+        \item Veamos que:
+              $$\lim_{z \to 1, z \in \mathbb{D}} u(z) = f(1)$$
+              Si $z \in \mathbb{D}$, $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$.
+              \begin{align*}
+                  u(z) - f(1) & = P[f](z) - f(1) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta-t)dt - f(1) =                                         \\
+                              & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta-t)dt - f(1)\frac{1}{2\pi} \int_{-\pi}^\pi P_r(s)ds =                   \\
+                              & = \frac{1}{2\pi} \int_{-\pi+\theta}^{\pi+\theta} f(e^{i(\theta-s)})P_r(s)ds - \frac{1}{2\pi} \int_{-\pi}^\pi f(1)P_r(s)ds = \\
+                              & = \frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{i(\theta-s)}) - f(e^{i0})\right)P_r(s)ds
+              \end{align*}
+    \end{enumerate}
+\end{proof}
