@@ -612,5 +612,156 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
                               & = \frac{1}{2\pi} \int_{-\pi+\theta}^{\pi+\theta} f(e^{i(\theta-s)})P_r(s)ds - \frac{1}{2\pi} \int_{-\pi}^\pi f(1)P_r(s)ds = \\
                               & = \frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{i(\theta-s)}) - f(e^{i0})\right)P_r(s)ds
               \end{align*}
+              Así que
+              $$|u(z)-f(1)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt$$
+              Sea $\varepsilon > 0$, como la función $t \in [-\pi, \pi] \mapsto f(e^{it})$ es uniformemente continua, existe $\delta_1 \in (0, \pi)$ tal que si $t, s \in [-\pi, \pi]$ con $|t-s| < \delta_1$, entonces $|f(e^{it})-f(e^{is})| < \frac{\varepsilon}{2}$.
+              Como $f$ está acotada en $\partial\mathbb{D}$, existe $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in \partial\mathbb{D}$.
+              Tomamos $\delta = \frac{\delta_1}{2} \in \left(0, \frac{\pi}{2}\right)$.
+              Como $P_r(t) \xrightarrow[r \to 1^-]{} 0$ uniformemente en $[-\pi, -\delta] \cup [\delta, \pi]$, existe $r_0 \in (0, 1)$ tal que
+              $$\begin{cases}
+                      r_0 < r < 1 \\
+                      t \in [-\pi, -\delta] \cup [\delta, \pi]
+                  \end{cases} \Rightarrow P_r(t) < \frac{\varepsilon}{4M}$$
+              Entonces, si $r_0 < r < 1$ y $|\theta| < \delta$, vamos a ver que $|u(z)-f(1)| < \varepsilon$.
+              \begin{align*}
+                  |u(z)-f(1)| \leq & \frac{1}{2\pi} \int_{-\delta}^\delta \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt +                        \\
+                  +                & \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt
+              \end{align*}
+              Si $t \in [-\delta, \delta]$, tenemos que
+              $$|\theta-t-0| \leq |\theta| + |t| < \delta + \delta = 2\delta = \delta_1 < \pi$$
+              Además, $\theta-t, 0 \in [-\pi, \pi]$.
+              Así que:
+              $$\left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right| < \frac{\varepsilon}{2}$$
+              Luego:
+              \begin{align*}
+                  |u(z)-f(1)| & \leq \frac{1}{2\pi} \int_{-\delta}^\delta \frac{\varepsilon}{2}P_r(t)dt + \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} 2M\frac{\varepsilon}{4M}dt =                     \\
+                              & \leq \frac{\varepsilon}{2}\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt + \frac{1}{2\pi} \int_{-\pi}^\pi \frac{\varepsilon}{2}dt = \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+              \end{align*}
+
+        \item Veamos que
+              $$\lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi), \quad \forall \xi \in \partial\mathbb{D}$$
+              Sea $g: \partial\mathbb{D} \to \mathbb{R}$, $g(z) = f(\xi z)$, es continua.
+              Sea $v = P[g]: \mathbb{D} \to \mathbb{R}$.
+              Sabemos que $\lim\limits_{z \to 1, z \in \mathbb{D}} v(z) = g(1)$.
+              Veamos que $v(z) = u(\xi z)$ para todo $z \in \mathbb{D}$.
+
+              Sea $z \in \mathbb{D}$, $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$.
+              $$v(z) = P[g](z) = \frac{1}{2\pi} \int_{-\pi}^\pi g(e^{it})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{it})P_r(\theta-t)dt$$
+              Si escribimos $\xi = e^{i\theta_0}$, con $\theta_0 \in \mathbb{R}$, entonces:
+              \begin{align*}
+                  v(z) & = \frac{1}{2\pi} f(\xi e^{i(\theta_0-t)})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{is})P_r(\theta+\theta_0-s)ds = P[f](re^{i(\theta-\theta_0)}) = \\
+                       & = P[f](\xi z) = u(\xi z)
+              \end{align*}
+              Entonces:
+              $$\lim_{z \to 1, z \in \mathbb{D}} u(\xi z) = f(\xi) \Rightarrow \lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi)$$
+
+        \item Veamos que $u$ es continua en $\bar{\mathbb{D}}$.
+              $u$ es continua en $\mathbb{D}$ porque es armónica en $\mathbb{D}$.
+              Dado $\xi \in \partial\mathbb{D}$, hay que probar que
+              $$\lim_{z \to \xi, z \in \bar{\mathbb{D}}} f(\xi)$$
+
+              Dada $\{z_n\}_{n=1}\infty$ sucesión en $\bar{\mathbb{D}}$ con $z_n \to \xi$, definimos la sucesión $\{w_n\}_{n=1}^\infty$ como sigue.
+              \begin{itemize}
+                  \item Si $z_n \in \mathbb{D}$, tomamos $w_n = z_n$.
+                  \item Si $z_n \in \partial\mathbb{D}$, tomamos $w_n \in \mathbb{D}$ con $|z_n-w_n| < \frac{1}{n}$ y $|u(z_n)-u(w_n)| < \frac{1}{n}$.
+                        Esto se puede hacer porque $\lim\limits_{z \to z_n, z \in \mathbb{D}} u(z) = u(z_n)$.
+
+                        Hay que probar que $u(z_n) \to f(\xi)$.
+                        $$|u(z_n)-f(\xi)| \leq |u(z_n)-u(w_n)| + |u(w_n)-f(\xi)|$$
+                        Observamos que
+                        $$|w_n-\xi| \leq |w_n-z_n| + |z_n-\xi| \to 0$$
+                        Además, sabemos que $\lim\limits_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi)$, así que $u(w_n) \to f(\xi)$.
+                        Por tanto,
+                        $$|u(z_n) - f(\xi)| \to 0$$
+              \end{itemize}
     \end{enumerate}
 \end{proof}
+
+\begin{theorem}
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$.
+    Supongamos que existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$ que se puede extender a un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D} = D \cup \partial_\infty D$.
+    Entonces $D$ es regular para el problema de Dirichlet.
+
+    En concreto, si $f: \partial_\infty D \to \mathbb{R} \to \mathbb{R}$ continua, la función $u: \bar{D} \to \mathbb{R}$ definida por
+    $$u(z) = \begin{cases}
+            f(z)                           & z \in \partial_\infty D \\
+            u(z) = P[f \circ F](F^{-1}(z)) & z \in D
+        \end{cases}$$
+    es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
+\end{theorem}
+
+\begin{proof}
+    $F: \mathbb{D} \to D$ se puede extender a una homeomorfismo $F: \bar{\mathbb{D}} \to \bar{D}$.
+    Observamos que $F$ es un homeomorfismo de $\partial\mathbb{D}$ sobre $\partial_\infty D$.
+    Sea $g = f \circ F$.
+    $$g: \partial\mathbb{D} \xrightarrow{F} \partial_\infty D \xrightarrow{f} \mathbb{R}$$
+    $g$ es continua.
+    Sea $v$ la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $g$.
+    $v: \bar{\mathbb{D}} \to \mathbb{R}$ es armónica en $\mathbb{D}$, continua en $\bar{\mathbb{D}}$ y con $v = g$ en $\partial\mathbb{D}$.
+
+    Sea $u: \bar{D} \to \mathbb{R}$, $u = v \circ F^{-1}$.
+    $u$ es continua en $\bar{D}$ y armónica en $D$.
+    Si $z \in \partial_\infty D$,
+    $$u(z) = v(F^{-1}(z)) = g(F^{-1}(z)) = f(z)$$
+    Luego $u = f$ en $\partial_\infty D$.
+\end{proof}
+
+\begin{example}
+    Cualquier disco abierto es un dominio regular para el problema de Dirichlet.
+
+    Sea $a \in \mathbb{C}$ y $R > 0$.
+    Sea $D = D(a, R)$.
+    Sea $F: \mathbb{D} \to D$, $F(z) = a + Rz$.
+    $D$ es regular para el problema de Dirichlet.
+
+    Si $f: \partial D(a, R) \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $f$ es $u: \bar{D}(a, R) \to \mathbb{R}$, con
+    $$u(z) = f(z), \quad z \in \partial D(a, R)$$
+    Si $z \in D(a, R)$, $z = a + re^{i\theta}$ con $0 \leq r < R$ y $\theta \in \mathbb{R}$,
+    \begin{align*}
+        u(z) & = P[f \circ F](F^{-1}(z)) = P[f \circ F]\left(\frac{z-a}{R}\right) = P[f \circ F]\left(\frac{r}{R}e^{i\theta}\right) =                                                                                      \\
+             & = \frac{1}{2\pi} \int_{-\pi}^\pi (f \circ F)(e^{it})P_{r/R}(\theta-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{1-\left(\frac{r}{R}\right)^2}{\left|1-\frac{r}{R}e^{i(\theta-t)}\right|^2}dt = \\
+             & = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{R^2-r^2}{|R-re^{i(\theta-t)}|^2}dt
+    \end{align*}
+\end{example}
+
+Sea $D$ el dominio interior a una curva de Jordan en $\mathbb{C}$.
+Entonces $D$ es un dominio simplemente conexo en $D$, con $D \neq \mathbb{C}$.
+Por el teorema de Riemann, existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$, que se puede extender a un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D}$ por el teorema de extensión de Carathéodory.
+Por el teorema anterior, $D$ es regular para el problema de Dirichlet.
+Si $f: \partial D \to \mathbb{R}$ es continua, entonces la función $u: \bar{D} \to \mathbb{R}$ dada por
+$$u(z) = \begin{cases}
+        f(z)                    & z \in \partial D \\
+        P[f \circ F](F^{-1}(z)) & z \in D
+    \end{cases}$$
+es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
+
+\begin{theorem}[Principio del máximo para funciones armónicas: tercera versión]
+    Sea $D$ un dominio acotado en $\mathbb{C}$ y sea $u$ una función armónica y acotada superiormente en $D$.
+    Si existen $M \in \mathbb{R}$ y $\{\xi_1, \xi_2, \dots, \xi_n\} \in \partial D$ tales que
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial D \setminus \{\xi_1, \xi_2, \dots \xi_n\}$$
+    entonces $u(z) \leq M$ para todo $z \in D$.
+\end{theorem}
+
+% Demostración
+
+\begin{theorem}[Principio del máximo para funciones armónicas: cuarta versión]
+    Sea $D$ un dominio en $\mathbb{C}$ con exterior no vacío y sea $u$ una función armónica y acotada superiormente en $D$.
+    Supongamos que existen $M \in \mathbb{R}$ y $\{\xi_1, \xi_2, \dots, \xi_n\} \in \partial_\infty D$ tales que
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D \setminus \{\xi_1, \xi_2, \dots \xi_n\}$$
+    Entonces $u(z) \leq M$ para todo $z \in D$.
+\end{theorem}
+
+% Demostración
+
+\begin{theorem}[Teorema de la singularidad evitable para funciones armónicas]
+    Sean $a \in \mathbb{C}$ y $R > 0$.
+    Si $u$ es armónica y acotada en $D(a, R) \setminus \{a\}$, entonces $u$ se puede extender a una función armónica en $D(a, R)$.
+\end{theorem}
+
+% Demostración
+
+\begin{theorem}
+    $\mathbb{D} \setminus \{0\}$ es un dominio en $\mathbb{C}$ que no es regular para el problema de Dirichlet.
+\end{theorem}
+
+% Demostración
