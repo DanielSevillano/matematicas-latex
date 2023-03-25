@@ -742,7 +742,28 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     entonces $u(z) \leq M$ para todo $z \in D$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $\alpha = diam(D) = \sup \{|z-w| : z, w \in D\}$.
+    Entonces $0 < \alpha < \infty$.
+    Dado $\varepsilon > 0$, sea $u_\varepsilon: D \to \mathbb{R}$ dada por
+    $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{i=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)$$
+    Si $z \in D$ y $j \in \{1, \dots, n\}$, como $|z-w| \leq \alpha$ para todo $w \in D$, se tiene que
+    $$0 < |z-\xi_j| \leq \alpha \Rightarrow 0 < \frac{|z-\xi_j|}{\alpha} \leq 1 \Rightarrow \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq 0$$
+    Entonces $u_\varepsilon \leq u$ en $D$.
+    Como la función $z \mapsto \frac{z-\xi_j}{\alpha}$ es holomorfa y nunca nula en $D$, se tiene que $\Log\left(\frac{|z-\xi_j|}{\alpha}\right)$ es armónica en $D$ para cada $j$.
+    Por tanto, $u_\varepsilon$ es armónica en $D$.
+
+    Sea $\xi \in \partial D \setminus \{\xi_1, \xi_2, \dots, \xi_n\}$.
+    Entonces:
+    $$\limsup_{z \to \xi, z \in D} u_\varepsilon(z) \leq \limsup_{z \to \xi, z \in D} u(z) \leq M$$
+    Sea $j_0 \in \{1, \dots, n\}$.
+    $$\limsup_{z \to \xi_{j_0}, z \in D} u_\varepsilon(z) = \limsup_{z \to \xi_{j_0}, z \in D} \left(u(z) + \varepsilon\Log\left(\frac{|z-\xi_{j_0}|}{\alpha}\right) + \varepsilon \sum_{j = 1, j \neq j_0}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)\right) = -\infty \leq M$$
+
+    Por la segunda versión del principio del máximo, $u_\varepsilon(z) \leq M$ para todo $z \in D$.
+    Entonces hemos probado que, dado $\varepsilon > 0$, se tiene que
+    $$u(z) + \varepsilon \sum_{j=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq M, \quad \forall z \in D$$
+    Haciendo $\varepsilon \to 0$, tenemos que $u(z) \leq M$ para todo $z \in D$.
+\end{proof}
 
 \begin{theorem}[Principio del máximo para funciones armónicas: cuarta versión]
     Sea $D$ un dominio en $\mathbb{C}$ con exterior no vacío y sea $u$ una función armónica y acotada superiormente en $D$.
@@ -751,17 +772,71 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     Entonces $u(z) \leq M$ para todo $z \in D$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $a \in \mathbb{C}$ un punto exterior a $D$.
+    Existe $R > 0$ tal que $D(a, R) \cap D = \emptyset$.
+    Entonces $|z-a| \geq R$ para todo $z \in D$.
+    Para cada $j \in \{1, \dots, n\}$ vamos a construir una función $h_j$ holomorfa y nunca nula en $D$, con $|h_j| \leq 1$ en $D$ y tal que $\lim\limits_{z \to \xi_j, z \in D} h_j(z) = 0$ y $\lim\limits_{z \to \xi_i, x \in D} h_j(z)$ existe en $\mathbb{C} \setminus \{0\}$ si $i \neq j$.
+    \begin{itemize}
+        \item Si $\xi_j = \infty$,
+              $$h_j(z) = \frac{R}{z-a}, \quad z \in D$$
+              $h_j$ es holomorfa y nunca nula en $D$ con $|h_j| \leq 1$ en $D$.
+
+        \item Si $\xi_j \in \mathbb{C}$,
+              $$\left|\frac{z-\xi_j}{z-a}\right| = \left|\frac{z-a+a-\xi_j}{z-a}\right| \leq \frac{|z-a|+|a-\xi_j|}{|z-a|} = 1 + \frac{|a-\xi_j|}{|z-a|} \leq 1 + \frac{|a-\xi_j|}{R} = K_j > 0$$
+              Sea
+              $$h_j(z) = \frac{1}{K_j}\frac{z-\xi_j}{z-a}$$
+              $h_j$ es holomorfa y nunca nula en $D$, con
+              $$|h_j(z)| = \frac{1}{K_j}\left|\frac{z-\xi_j}{z-a}\right| \leq \frac{1}{K_j}K_j = 1, \quad \forall z \in D$$
+              Además,
+              $$\begin{cases}
+                      \lim_{z \to \xi_j, z \in D} h_j(z) = 0                                                                                  \\
+                      \lim_{z \to \xi_i, z \in D} h_j(z) = \frac{1}{K_j}\frac{\xi_i-\xi_j}{\xi_i-a} \in \mathbb{C} \setminus \{0\} & i \neq j
+                  \end{cases}$$
+              Sea $\varepsilon > 0$, definimos:
+              $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{n=1}^\infty \Log|h_j(z)|, \quad z \in D$$
+              Se sigue como en la demostración del teorema anterior.
+    \end{itemize}
+\end{proof}
 
 \begin{theorem}[Teorema de la singularidad evitable para funciones armónicas]
     Sean $a \in \mathbb{C}$ y $R > 0$.
     Si $u$ es armónica y acotada en $D(a, R) \setminus \{a\}$, entonces $u$ se puede extender a una función armónica en $D(a, R)$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $f = u|_{\partial D(a, R/2)}$, $f: \partial D(a, R/2) \to \mathbb{R}$ es continua.
+    Como $D(a, R/2)$ es regular para el problema de Dirichlet, existe $v: \bar{D}(a, R/2) \to \mathbb{R}$ armónica en $D(a, R/2)$, continua en $\bar{D}(a, R/2)$ y con $v = f$ en $\partial D(a, R/2)$.
+
+    Sea $D = D(a, R/2) \setminus \{a\}$.
+    $u$ y $v$ son armónicas en $D$, $u-v$ y $v-u$ también.
+    Aplicamos la tercera versión del principio del máximo a $u-v$ y $v-u$ en $D$.
+    $D$ es un dominio acotado en $\mathbb{C}$, $u$ está acotada en $D$ y $v$ es continua en $\bar{D}(a, R/2)$, así que $v$ está acotada en $D$.
+    Luego $u-v$ y $v-u$ están acotadas en $D$.
+
+    Si $\xi \in \partial D(a, R/2) = \partial D \setminus \{a\}$,
+    \begin{align*}
+        \limsup_{z \to \xi, z \in D} (u(z) - v(z)) & \leq u(\xi) - v(\xi) = 0 \\
+        \limsup_{z \to \xi, z \in D} (v(z) - u(z)) & \leq v(\xi) - u(\xi) = 0
+    \end{align*}
+
+    Por tanto, $u(z) - v(z) \leq 0$ y $v(z) - u(z) \leq 0$ para todo $z \in D$.
+    Luego $u(z) = v(z)$ para todo $z \in D = D(a, R/2) \setminus \{a\}$, con $v$ armónica en $D(a, R/2)$.
+    Definiendo $u(a) = v(a)$, vemos que $u$ se puede extender a una función armónica en $D(a, R)$.
+\end{proof}
 
 \begin{theorem}
     $\mathbb{D} \setminus \{0\}$ es un dominio en $\mathbb{C}$ que no es regular para el problema de Dirichlet.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    $D = \mathbb{D} \setminus \{0\}$, $\partial D = \partial\mathbb{D} \cup \{0\}$.
+    Sea $f: \partial D \to \mathbb{R}$, $f(z) = 0$ si $|z| = 1$ y $f(0) = 1$.
+    $f$ es continua en $\partial D$.
+    Supongamos que existe $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D} \setminus \{0\}$, continua en $\bar{\mathbb{D}}$ y con $u = f$ en $\partial D$.
+    Como $u$ es armónica y acotada en $\mathbb{D} \setminus \{0\}$, por el teorema anterior $u$ se puede extender a una función armónica en $\mathbb{D}$.
+    Entonces $u$ es armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Por tanto,
+    $$\max_{z \in \bar{\mathbb{D}}} u(z) = \max_{z \in \partial\mathbb{D}} u(z) = 0$$
+    Sin embargo, esto contradice que $u(0) = 1 \neq 0$.
+\end{proof}
