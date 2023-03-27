@@ -840,3 +840,120 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     $$\max_{z \in \bar{\mathbb{D}}} u(z) = \max_{z \in \partial\mathbb{D}} u(z) = 0$$
     Sin embargo, esto contradice que $u(0) = 1 \neq 0$.
 \end{proof}
+
+\begin{remark}
+    La condición de que $u$ está acotada superiormente no se puede suprimir en la tercera versión del principio del máximo.
+\end{remark}
+
+\begin{example}
+    Sea $D = \mathbb{D} \setminus \{0\}$ dominio acotado en $\mathbb{C}$ y sea $u(z) = \Log\left(\frac{1}{|z|}\right)$, $z \in D$.
+    Como la función $z \mapsto \frac{1}{z}$ es holomorfa y nunca nula en $D$, entonces $u$ es armónica en $D$.
+    $u$ no está acotada superiormente en $D$.
+    $$\partial D = \partial\mathbb{D} \cup \{0\}$$
+    Si $\xi \in \partial\mathbb{D}$,
+    $$\limsup_{z \to \xi, z \in D} u(z) = \limsup_{z \to \xi, z \in \mathbb{D}} \Log\left(\frac{1}{|z|}\right) = 0 = M$$
+    Pero no es cierto que $u(z) \leq 0$ para todo $z \in D$.
+    De hecho, $u(z) > 0$ para todo $z \in D$.
+\end{example}
+
+\begin{lemma}
+    Sean $a \in \mathbb{C}$ y $R > 0$.
+    Sea $u: \bar{D}(a, R) \to \mathbb{R}$ una función continua, con $u \equiv 0$ en $\partial D(a, R)$.
+    Supongamos que para cada $z_0 \in D(a, R)$ existe $r_{z_0} > 0$ con $D(z_0, r_{z_0}) \subset D(a, R)$ tal que
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad r \in [0, r_{z_0}]$$
+    Entonces $u \equiv 0$ en $D(a, R)$.
+\end{lemma}
+
+\begin{proof}
+    Sea $M = \max\{u(z) : z \in \bar{D}(a, R)\}$ y sea $K = \{z \in \bar{D}(a, R) : u(z) = M\}$.
+    $K$ es un compacto no vacío con $K \subset \bar{D}(a, R)$.
+    Como la función $z \in \mathbb{C} \mapsto |z-a|$ es continua, alcanza el máximo en $K$.
+    Tomamos $z_0 \in K$ tal que $|z_0-a| = \max\{|z-a| : z \in K\}$.
+
+    Supongamos por reducción al absurdo que $z_0 \in D(a, R)$.
+    Tomamos $r_{z_0} > 0$, que existe por hipótesis, y fijamos $r \in (0, r_{z_0})$.
+    Entonces
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt$$
+    Sean $E_1 = \{t \in [-\pi, \pi] : |z_0+re^{it}-a| \leq |z_0-a|\}$ y $E_2 = \{t \in [-\pi, \pi] : |z_0+re^{it}-a| > |z_0-a|\}$.
+    Observamos que $E_2 \neq \emptyset$.
+    Si $t \in E_2$, se tiene que $z_0 + re^{it} \notin K$.
+    Así que $u(z_0 + re^{it}) < M$.
+    Entonces
+    $$u(z_0) = \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt + \frac{1}{2\pi} \int_{E_2} u(z_0 + re^{it})dt$$
+    Observamos que:
+    \begin{align*}
+        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt \leq \frac{1}{2\pi} \int_{E_1} Mdt \\
+        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt < \frac{1}{2\pi} \int_{E_2} Mdt
+    \end{align*}
+    Por tanto,
+    $$u(z_0) < \frac{1}{2\pi} \int_{E_1} Mdt + \frac{1}{2\pi} \int_{E_2} Mdt = \frac{1}{2\pi} \int_{-\pi}^\pi Mdt = M$$
+    Esto contradice que $z_0 \in K$.
+    Entonces $z_0 \in \partial D(a, R)$, así que por hipótesis $u(z_0) = 0$.
+    Es decir,
+    $$u(z_0) = M = \max\{u(z) : z \in \bar{D}(a, R)\} = 0$$
+    Por tanto, $u(z) \leq 0$ para todo $z \in D(a, R)$.
+
+    Aplicando la parte del lema que acabamos de ver a la función $-u$, tenemos que $-u(z) \leq 0$ para todo $z \in D(a, R)$.
+    Por tanto, $u \equiv 0$ en $D(a, R)$.
+\end{proof}
+
+\begin{theorem}[Caracterización de la armonicidad por la propiedad del valor medio]
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$ continua.
+    Supongamos que para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$, tal que
+    $$u(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt, \quad r \in [0, r_a]$$
+    Entonces $u$ es armónica en $D$.
+\end{theorem}
+
+\begin{proof}
+    Sea $a \in D$.
+    Tomamos $r_a > 0$ y $R = \frac{r_a}{2}$.
+    Sea $v$ la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $u$.
+    Entonces $v: \bar{D}(a, R) \to \mathbb{R}$ es armónica en $D(a, R)$, continua en $\bar{D}(a, R)$ y con $u = v$ en $\partial D(a, R)$.
+    Vamos a aplicar el lema a $u-v$.
+    $u-v: \bar{D}(a, R) \to \mathbb{R}$ es continua y $u-v \equiv 0$ en $\partial D(a, R)$.
+    Sea $z_0 \in D(a, R)$.
+    Tomamos $r_{z_0} > 0$, que elegimos suficientemente pequeño para que $D(z_0, r_{z_0}) \subset D(a, R)$.
+    Si $r \in [0, r_{z_0})$, tenemos que
+    $$u(z_0)-v(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt - frac{1}{2\pi} \int_{-\pi}^\pi v(z_0 + re^{it})dt = frac{1}{2\pi} \int_{-\pi}^\pi (u-v)(z_0 + re^{it})dt$$
+    Por el lema, $u-v = 0$ en $D(a, R)$.
+    Como $v$ es armónica en $D(a, R)$, $u$ es armónica en $D(a, R)$.
+    Para cada $a \in D$ hemos encontrado $R > 0$ con $D(a, R) \subset D$ tal que $u$ es armónica en $D(a, R)$.
+    Entonces $u$ es armónica en $D$.
+\end{proof}
+
+\begin{remark}
+    Esta es la forma débil de la propiedad del valor medio.
+    Como $u$ es armónica en $D$, tenemos que $u$ verifica la propiedad del valor medio.
+\end{remark}
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión de funciones armónicas en $D$.
+    Supongamos que $\{u_n\}$ converge uniformemente en cada subconjunto compacto de $D$.
+    Sea $u(z) = \lim\limits_{n \to \infty} u_n(z)$, $z \in D$.
+    Entonces $u$ es armónica en $D$.
+\end{theorem}
+
+\begin{proof}
+    Tenemos $u: D \to \mathbb{R}$.
+    Si $K \subset D$, $K$ compacto, tenemos que $u_n \to u$ uniformemente en $K$ y $u_n$ es continua en $K$ para cada $n \in \mathbb{N}$.
+    Así que $u$ es continua en $K$, luego $u$ es continua en $D$.
+    Sea $a \in D$ y sea $R > 0$ con $D(a, R) \subset D$.
+    Sea $r \in [0, R)$.
+    Tenemos que
+    $$u_n(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt, \quad \forall n \in \mathbb{N}$$
+    Haciendo $n \to \infty$,
+    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt$$
+    Como $u_n \to u$ uniformemente en $\partial D(a, r)$,
+    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi \lim_{n \to \infty} u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt$$
+    Por el teorema anterior, $u$ es armónica en $D$.
+\end{proof}
+
+Vamos a ver qué sucede al cambiar la condición de convergencia uniforme en compactos por la condición de que $\{u_n\}$ sea creciente.
+
+\section{Desigualdades de Harnack}
+Sean $a \in \mathbb{C}$ y $R > 0$.
+Sea $u$ una función armónica y no negativa en $D(a, R)$.
+Entonces, si $r \in (0, R)$, se tiene que
+$$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}, \quad \forall z \in \bar{D}(a, R)$$
+Por tanto, tomando $r = \frac{R}{2}$, tenemos
+$$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\right)$$
