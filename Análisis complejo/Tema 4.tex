@@ -251,7 +251,7 @@ Toda función armónica, localmente, es la parte real de una función holomorfa.
     $$|f| = |e^F| = e^{\Re(F)} = e^u$$
     Existe $r_1$ con $0 < r_1 < r$, tal que $u(z) \leq u(z_0)$ si $z \in D(z_0, r_1)$.
     Entonces
-    $$|e^{F(z)}| = e^{u(z)} \leq e^{u(z_0)} = |e^{F(z_0)}$$
+    $$|e^{F(z)}| = e^{u(z)} \leq e^{u(z_0)} = |e^{F(z_0)}|$$
     $|e^F|$ tiene un máximo local en $z_0$.
     Por el principio del máximo, tenemos que $e^F$ es constante en $D(z_0, r)$.
     Entonces $|e^F| = e^u$ es constante, así que $u$ es constante en $D(z_0, r)$.
@@ -315,7 +315,7 @@ $u = v$ en $A$ no implica en general que $u = v$ en $D$.
 \begin{theorem}[Principio del máximo para funciones armónicas: segunda versión]
     Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
     Si existe $M \in \mathbb{R}$ tal que
-    $$\limsup_{z \to \chi, z \in D} u(z) \leq M, \quad \forall \chi \in \partial_\infty D$$
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D$$
     entonces $u(z) \leq M$ para todo $z \in D$.
     Además, si $u(z_0) = M$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
 \end{theorem}
@@ -345,7 +345,7 @@ $u = v$ en $A$ no implica en general que $u = v$ en $D$.
     \begin{enumerate}
         \item Si $u$ tiene un mínimo local en un punto $z_0 \in D$, entonces $u$ es constante en $D$.
         \item Si existe $m \in \mathbb{R}$ tal que
-              $$\liminf_{z \to \xi, z \in D} u(z) \geq m, \quad \forall \chi \in \partial_infty D$$
+              $$\liminf_{z \to \xi, z \in D} u(z) \geq m, \quad \forall \xi \in \partial_infty D$$
               entonces $u(z) \geq m$ para todo $z \in D$.
               Además, si $u(z_0) = m$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
     \end{enumerate}
@@ -957,3 +957,153 @@ Entonces, si $r \in (0, R)$, se tiene que
 $$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}, \quad \forall z \in \bar{D}(a, R)$$
 Por tanto, tomando $r = \frac{R}{2}$, tenemos
 $$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\right)$$
+
+\begin{proof}
+    Fijamos $r \in (0, R)$.
+    Tomamos $\rho$ con $r < \rho < R$.
+    Sea $v: \bar{\mathbb{D}} \to \mathbb{R}$, $v(z) = u(a + \rho z)$.
+    \begin{align*}
+        v: \mathbb{D} & \to D(a, R) \xrightarrow{u} \mathbb{R} \\
+        z             & \mapsto a + \rho z
+    \end{align*}
+    $v$ es continua en $\bar{\mathbb{D}}$, armónica en $\mathbb{D}$ y no negativa en $\bar{\mathbb{D}}$.
+
+    Sea $z \in \partial D\left(0, \frac{r}{\rho}\right)$.
+    $z$ es de la forma $z = \frac{r}{\rho}e^{i\theta}$, con $\theta \in \mathbb{R}$.
+    Entonces:
+    $$v(z) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt$$
+    Además,
+    $$v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt$$
+    Recordemos que
+    $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+    Entonces, si $\theta \in \mathbb{R}$ y $z = \frac{r}{\rho}e^{i\theta}$, tenemos:
+    \begin{align*}
+         & \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1-r/\rho}{1+r/\rho}dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1+r/\rho}{1-r/\rho}dt \Leftrightarrow                    \\
+         & \Leftrightarrow \frac{\rho-r}{\rho+r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \leq v(z) \leq \frac{\rho+r}{\rho-r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \Leftrightarrow \frac{\rho-r}{\rho+r}v(0) \leq v(z) \leq \frac{\rho+r}{\rho-r}v(0)
+    \end{align*}
+    En términos de $u$,
+    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R), \; z = \frac{r}{\rho}e^{i\theta}$$
+    Como $u(a+\rho z) = u\left(a + \rho\frac{r}{\rho}e^{i\theta}\right) = u(a + re^{i\theta})$, entonces
+    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R)$$
+
+    Haciendo $\rho \to R^-$, tenemos que:
+    $$\frac{R-r}{R+r}u(a) \leq u(a+re^{i\theta}) \leq \frac{R+r}{R-r}u(a), \quad \forall \theta \in \mathbb{R}$$
+    Entonces:
+    $$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}u(a), \quad z \in \partial D(a, r)$$
+    Como $u$ es continua en $\bar{D}(a, r)$ y armónica en $D(a, r)$, por el principio del máximo y el principio del mínimo,
+    \begin{align*}
+        \max_{z \in \bar{D}(a, r)} u(z) & = \max_{z \in \partial D(a, r)} u(z) \\
+        \min_{z \in \bar{D}(a, r)} u(z) & = \min_{z \in \partial D(a, r)} u(z)
+    \end{align*}
+    Entonces tenemos la desigualdad para todo $z \in \bar{D}(a, r)$.
+\end{proof}
+
+\begin{proposition}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión de funciones armónicas y no negativas en $D$.
+    Si existe $z_0 \in D$ tal que $\lim\limits_{n \to \infty} u_n(z_0) = \infty$, entonces
+    $$\lim_{n \to \infty} u_n(z) = \infty, \quad \forall z \in D$$
+    siendo la convergencia uniforme en cada subconjunto compacto de $D$.
+\end{proposition}
+
+\begin{proof}
+    Para cada $n \in \mathbb{N}$ tenemos $u_n: D \to \mathbb{R}$ armónica no negativa.
+    Sea
+    $$A = \{z \in D : \lim\limits_{n \to \infty} u_n(z) = \infty\}$$
+    $A \neq \emptyset$ porque $z_0 \in A$.
+    Veamos que $A$ es abierto y cerrado en $D$.
+
+    \begin{enumerate}
+        \item Probemos que $A$ es abierto.
+              Queremos ver que si $a \in A$ y $R > 0$ tal que $D(a, R) \subset D$, entonces $D(a, R/2) \subset A$ y $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en $D(a, R/2)$.
+
+              Basta ver la convergencia uniforme.
+              Sea $M > 0$, veamos que existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ y $z \in D(a, R/2)$, entonces $u_n(z) > M$.
+              Como $a \in A$, tenemos que $\lim\limits_{n \to \infty} u_n(a) = \infty$.
+              Por tanto, existe $n_0 \in \mathbb{N}$ tal que
+              $$n \geq n_0 \Rightarrow u_n(a) > 3M$$
+              Entonces, si $n \geq n_0$ y $z \in D(a, R/2)$, por las desigualdades de Harnack tenemos
+              $$u_n(z) \geq \frac{1}{3}u_n(a) > \frac{1}{3}3M = M$$
+              Por tanto, $A$ es abierto.
+
+        \item Veamos que $A$ es cerrado en $D$, es decir, que $D \setminus A$ es abierto.
+
+              Sea $a \in D \setminus A$ y sea $R > 0$ con $D(a, R) \subset D$.
+              $D(a, R/2) \subset D \setminus A$, ya que si $z \in D(a, R/2)$, entonces $u_n(z) \leq 3u_n(a)$ para todo $n \in \mathbb{N}$ y $z \in D$.
+              Si $z \in A$, $\lim\limits_{n \to \infty} u_n(z) = \infty$ y $\lim\limits_{n \to \infty} u_n(a) = \infty$, pero $a \notin A$.
+              Así que $D \setminus A$ es abierto.
+    \end{enumerate}
+
+    $A$ es abierto y cerrado en $D$, que es conexo.
+    Como $A \neq \emptyset$, tenemos que $A = D$.
+    Entonces $\lim\limits_{n \to \infty} u_n(z) = \infty$ para todo $z \in D$.
+    Sabemos que, dado $a \in D$ y $R > 0$ con $D(a, R) \subset D$, se tiene que $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en $D(a, R/2)$.
+    Entonces $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en cada subconjunto compacto de $D$.
+\end{proof}
+
+\begin{theorem}[Teorema de Harnack]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión creciente de funciones armónicas en $D$.
+    Para cada $z \in D$, sea $u(z) = \lim\limits_{n \to \infty} u_n(z) \in \mathbb{R} \cup \{\infty\}$.
+    Entonces se da una de las dos siguientes posibilidades:
+    \begin{enumerate}
+        \item $u \equiv \infty$.
+              En este caso, $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en cada subconjunto compacto de $D$.
+        \item $u(z) \in \mathbb{R}$ para todo $z \in D$.
+              En este caso, $u$ es armónica en $D$ y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Supongamos en primer lugar que $u_n$ es no negativa para cada $n \in \mathbb{N}$.
+    Hay dos posibilidades:
+    \begin{itemize}
+        \item Existe $z_0 \in D$ tal que $u(z_0) = \infty$.
+              Entonces $u(z) = \lim\limits_{n \to \infty} u_n(z) = \infty$ y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
+              Se verifica (1).
+
+        \item $u(z) \in \mathbb{R}$ para todo $z \in D$.
+              Entonces $u: D \to \mathbb{R}$.
+              Sea $a \in D$ y $R > 0$ con $D(a, R) \subset D$.
+              Veamos que $\{u_n\}$ es uniformemente de Cauchy en $D(a, R/2)$.
+
+              Sea $\varepsilon > 0$.
+              Como $\{u_n(a)\}_{n=1}^\infty$ es una sucesión de Cauchy por ser convergente, tenemos que existe $n_0 \in \mathbb{N}$ tal que
+              $$n \geq m > n_0 \Rightarrow 0 \leq u_n(a)-u_m(a) < \frac{\varepsilon}{3}$$
+              ya que $u_n-u_m$ es armónica en $D(a, R)$ y no negativa.
+              Por tanto, $\{u_n\}_{n=1}^\infty$ converge uniformemente en $D(a, R/2)$.
+
+              Entonces, dado $a \in D$ y $R > 0$ con $D(a, R) \subset D$, hemos visto que $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en $D(a, R/2)$.
+              Por tanto, $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
+              Entonces $u$ es armónica en $D$, así que se verifica (2).
+    \end{itemize}
+
+    Consideramos ahora el caso general.
+    Para cada $n \in \mathbb{N}$, sea $v_n = u_n - u_1$.
+    Entonces $\{v_n\}_{n=1}^\infty$ es una sucesión creciente de funciones armónicas no negativas.
+    Para cada $z \in D$, sea
+    $$v(z) = \lim\limits_{n \to \infty} v_n(z) \in \mathbb{R} \cup \{\infty\}$$
+    Si $z \in D$,
+    $$v(z) = \lim\limits_{n \to \infty} (u_n(z)-u_1(z)) = \begin{cases}
+            \infty        & \text{si } u(z) = \infty       \\
+            u(z) - u_1(z) & \text{si } u(z) \in \mathbb{R}
+        \end{cases}$$
+    Por el caso anterior se da una de las dos siguientes posibilidades:
+    \begin{itemize}
+        \item $v \equiv \infty$.
+              Veamos que $v_n \to \infty$ uniformemente en cada subconjunto compacto de $D$.
+
+              Sea $K \subset D$, $K$ compacto.
+              Sea $A = \min_{z \in K} u_1(z)$.
+              Como $v_n \to \infty$ uniformemente en $D$, existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ y $z \in K$, entonces $v(z) > M-A$, con $M \in \mathbb{R}$.
+              Entonces, si $n \geq n_0$ y $z \in K$, $u_n(z) = u_1(z) + v_n(z) > A + M - A = M$.
+              Por tanto, se verifica (1).
+
+        \item $v(z) \in \mathbb{R}$ para todo $z \in D$.
+              Veamos que $u$ es armónica y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
+
+              Sabemos que
+              $$v(z) = u(z) - u_1(z) \Leftrightarrow u(z) = u_1(z) + v(z), \quad z \in D$$
+              Entonces $u(z) \in \mathbb{R}$ para todo $z \in D$ y $u$ es armónica en $D$.
+              Además, $u_n - u_1 \xrightarrow[n \to \infty]{} u-u_1$ uniformemente en cada subconjunto compacto de $D$.
+              Por tanto, $u_n \to u$ uniformemente en cada subconjunto compacto de $D$, así que se verifica (2).
+    \end{itemize}
+\end{proof}
