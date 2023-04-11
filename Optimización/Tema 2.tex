@@ -16,7 +16,9 @@ Sea $j \in \{1, \dots, n\}$,
 \end{align*}
 
 Reemplazamos $a_p$ por $a_q$ en la base, con $1 \leq p \leq m$, $m+1 \leq q \leq n$.
-Veamos cuándo $\{a_1, \dots, a_{p-1}, a_q, a_{p+1}, \dots, a_m\}$ es un sistema linealmente independiente.
+Veamos cuándo
+$$\{a_1, \; \dots, \; a_{p-1}, \; a_q, \; a_{p+1}, \; \dots, \; a_m\}$$
+es un sistema linealmente independiente.
 $$\begin{vmatrix}
         1      & 0      & \dots  & a_{1q} & \dots  & 0      \\
         0      & 1      & \dots  & a_{2q} & \dots  & 0      \\
@@ -29,10 +31,7 @@ Luego la base es linealmente independiente si y solo si $a_{pq} \neq 0$.
 
 Supongamos entonces que $a_{pq} \neq 0$.
 Entonces:
-\begin{align*}
-    a_q & = a_{1q}a_1 + \dots + a_{pq}a_p + \dots + a_{mq}a_m = \sum_{i=1, i \neq p}^m a_{iq}a_i + a_{pq}a_p \Leftrightarrow \\
-        & \Leftrightarrow a_p = \frac{a_q}{a_{pq}} - \sum_{i=1, i \neq p}^m \frac{a_{iq}}{a_{pq}}a_i
-\end{align*}
+$$a_q = a_{1q}a_1 + \dots + a_{pq}a_p + \dots + a_{mq}a_m = \sum_{i=1, i \neq p}^m a_{iq}a_i + a_{pq}a_p \Leftrightarrow a_p = \frac{a_q}{a_{pq}} - \sum_{i=1, i \neq p}^m \frac{a_{iq}}{a_{pq}}a_i$$
 
 Sea $j \in \{1, \dots, m\}$ con $j \neq p$.
 Entonces:
@@ -46,10 +45,7 @@ Luego:
         & = \frac{b_p}{a_{pq}}a_q + \sum_{i=1, i \neq p}^m \left(b_i - \frac{b_pa_{iq}}{a_{pq}}\right)a_i
 \end{align*}
 Entonces
-\begin{align*}
-     & \left( b_1 - \frac{b_pa_{1q}}{a_{pq}}, \dots, b_{p-1} - \frac{b_pa_{(p-1)q}}{a_{pq}}, 0, b_{p+1} - \frac{b_pa_{(p+1)q}}{a_{pq}}, \dots, b_m - \frac{b_pa_{1q}}{a_{mq}}, \right. \\
-     & \left. 0, \dots, 0, \frac{b_p}{a_{pq}}, 0, \dots, 0 \right)
-\end{align*}
+$$\left( b_1 - \frac{b_pa_{1q}}{a_{pq}}, \dots, b_{p-1} - \frac{b_pa_{(p-1)q}}{a_{pq}}, 0, b_{p+1} - \frac{b_pa_{(p+1)q}}{a_{pq}}, \dots, b_m - \frac{b_pa_{1q}}{a_{mq}}, 0, \dots, 0, \frac{b_p}{a_{pq}}, 0, \dots, 0 \right)$$
 es solución básica.
 
 \section{Teoremas y algoritmo del símplex}
@@ -95,8 +91,7 @@ es solución básica.
         \item Veamos que $Ax^0_\epsilon = b$.
               \begin{align*}
                   Ax^0_\varepsilon & = a_1(x^0_1 - \varepsilon a_{1j}) + \dots + a_m(x^0_m - \varepsilon a_{mj}) + \varepsilon a_j = \\
-                                   & = a_1x^0_1 + \dots + a_mx^0_0 - \varepsilon (a_1a_{1j} + \dots + a_ma_{mj}) + \varepsilon a_j = \\
-                                   & = b - \varepsilon a_j + \varepsilon a_j = b
+                                   & = a_1x^0_1 + \dots + a_mx^0_0 - \varepsilon (a_1a_{1j} + \dots + a_ma_{mj}) + \varepsilon a_j = b - \varepsilon a_j + \varepsilon a_j = b
               \end{align*}
         \item Veamos que $x^0_\varepsilon \geq 0$.
               $$x^0_\varepsilon \geq 0 \Leftrightarrow x^0_i - \varepsilon a_{ij} \geq 0 \; \forall i \in \{1, \dots, m\}$$
@@ -108,8 +103,7 @@ es solución básica.
 
     El valor de la función objetivo en $x^0_\varepsilon$ es:
     \begin{align*}
-         & c_1(x^0_1 - \varepsilon a_{1j}) + \dots + c_m(x^0_m - \varepsilon a_{mj}) + \varepsilon c_j =  \\
-         & = c_1x^0_1 + \dots + c_mx^0_m - \varepsilon(c_1a_{1j} + \dots + c_ma_{mj}) + \varepsilon c_j = \\
+         & c_1(x^0_1 - \varepsilon a_{1j}) + \dots + c_m(x^0_m - \varepsilon a_{mj}) + \varepsilon c_j = c_1x^0_1 + \dots + c_mx^0_m - \varepsilon(c_1a_{1j} + \dots + c_ma_{mj}) + \varepsilon c_j = \\
          & = z_0 - \varepsilon z_j + \varepsilon c_j = z_0 - \varepsilon(z_j - c_j) < z_0
     \end{align*}
 
@@ -169,17 +163,14 @@ es solución básica.
     Como por hipótesis $b = a_1x^0_1 + \dots + a_mx^0_m$, con $\{a_1, \dots, a_m\}$ sistema linealmente independiente, entonces $\sum_{j=1}^n a_{ij}y_j = x^0_i$.
 
     Por otro lado,
-    \begin{align*}
-        z_1y_1 + \dots + z_ny_n & = \left(\sum_{i=1}^ma_{i1}c_i\right)y_1 + \dots + \left(\sum_{i=1}^ma_{in}c_i\right)y_n = \\
-                                & = \left(\sum_{j=1}^na_{1j}y_j\right)c_1 + \dots + \left(\sum_{j=1}^na_{mj}y_j\right)c_m
-    \end{align*}
+    $$z_1y_1 + \dots + z_ny_n = \left(\sum_{i=1}^ma_{i1}c_i\right)y_1 + \dots + \left(\sum_{i=1}^ma_{in}c_i\right)y_n = \left(\sum_{j=1}^na_{1j}y_j\right)c_1 + \dots + \left(\sum_{j=1}^na_{mj}y_j\right)c_m$$
 
     Por la igualdad anterior tenemos que:
     $$z_1y_1 + \dots + z_ny_n = x^0_1c_1 + \dots + x^0_mc_m = z_0$$
 \end{proof}
 
 \subsection*{Algoritmo del símplex}
-Formamos la tabla correspondiente a una solución posible básica no degenerada $x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 0)$.
+Formamos la tabla correspondiente a una solución posible básica no degenerada de la forma $x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 0)$.
 \begin{enumerate}
     \item \begin{itemize}
               \item Si $z_j - c_j \leq 0 \; \forall j = 1, \dots, n$, entonces $x^0$ es solución óptima y termina el algoritmo.
@@ -216,8 +207,10 @@ Sea $x^0$ una solución posible básica, $x^0 = (x^0_1, \dots, x^0_m, 0, \dots, 
 Supongamos que existe $j \in \{m+1, \dots, n\}$ tal que $z_j-c_j > 0$.
 Sabemos que $a_j = a_{1j}a_1 + \dots + a_{mj}a_m$.
 
-Sea $\varepsilon > 0$, $x^0_\varepsilon = (x^0_1 - \varepsilon a_{1j}, \dots, x^0_m - \varepsilon a_{mj}, 0, \dots, 0, \dots, 0, \varepsilon, 0, \dots, 0)$.
-Consideramos $\vec{d} = (-a_{ij}, -a_{2j}, \dots, -a_{mj}, 0, \dots, 0, 1, 0, \dots, 0) \in \mathbb{R}^n$.
+Sea $\varepsilon > 0$,
+$$x^0_\varepsilon = (x^0_1 - \varepsilon a_{1j}, \dots, x^0_m - \varepsilon a_{mj}, 0, \dots, 0, \dots, 0, \varepsilon, 0, \dots, 0)$$
+Consideramos
+$$\vec{d} = (-a_{ij}, -a_{2j}, \dots, -a_{mj}, 0, \dots, 0, 1, 0, \dots, 0) \in \mathbb{R}^n$$
 
 Tenemos que:
 $$z_j = a_{1j}c_1 + \dots + a_{mj}c_m \Rightarrow z_j-c_j = a_{1j}c_1 + \dots + a_{mj}c_m - c_j = -\vec{c}'\vec{d}$$
