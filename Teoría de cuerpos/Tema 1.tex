@@ -30,7 +30,7 @@
 \begin{example}
     $\mathbb{Z}$ es un dominio de integridad, pero no todo elemento de $\mathbb{Z}$ es invertible. Luego $\mathbb{Z}$ no es un cuerpo.\\
     En $\mathbb{Q}[x]$, no todo polinomio tiene una inversa. Sin embargo, como $\mathbb{Q}[x]$ es un dominio de integridad, podemos construir su cuerpo de fracciones.
-    $$\mathbb{Q}(x) = \{ \frac{p(x)}{q(x)} : p, q \in \mathbb{Q}[x], q(x) \neq 0 \}$$
+    $$\mathbb{Q}(x) = \left\{ \frac{p(x)}{q(x)} : p, q \in \mathbb{Q}[x], q(x) \neq 0 \right\}$$
     Este es el cuerpo más pequeño que contiene a $\mathbb{Q}[x]$.
 \end{example}
 
@@ -197,11 +197,11 @@
 
 \begin{definition}
     Sea $K/F$ una extensión de cuerpos y $X$ un subconjunto de $K$.
-    El menor subcuerpo de $K$ que contiene a $F \bigcup X$ se denota por $F(X)$ y se llama subcuerpo de $K$ generado por $X$ sobre $F$.
+    El menor subcuerpo de $K$ que contiene a $F \cup X$ se denota por $F(X)$ y se llama subcuerpo de $K$ generado por $X$ sobre $F$.
 \end{definition}
 
 \begin{definition}
-    El subanillo más pequeño de $K$ que contiene a $F \bigcup X$ se denota por $F[X]$.
+    El subanillo más pequeño de $K$ que contiene a $F \cup X$ se denota por $F[X]$.
     Siempre se tiene que $F[X] \subseteq F(X) \subseteq K$ y $F[X]$ es un dominio de integridad.
 \end{definition}
 
@@ -213,12 +213,12 @@
 \begin{proposition}
     Sea $K/F$ una extensión de cuerpos, $u, u_i \in K, X \subseteq K$.
     \begin{enumerate}
-        \item $F[u] = \{ f(u) : f(x) \in F[x] \}$
-        \item $F[u_1, \dots, u_n] = \{ f(u_1, \dots, u_n) : f(x_1, \dots, x_n) \in F[x_1, \dots, x_n] \}$
-        \item $F[X] = \{ f(u_1, \dots, u_n) : n \in N, u_i \in X, f(x_1, \dots, x_n) \in F[x_1, \dots, x_n] \}$
-        \item $F(u) = \{ \frac{f(u)}{g(u)} : f(x), g(x) \in F[x], g(x) \neq 0 \}$
-        \item $F(u_1, \dots, u_n) = \{ \frac{a}{b} : a, b \in F[u_1, \dots, u_n], b \neq 0 \}$
-        \item $F(X) = \{ \frac{a}{b} : a, b \in F[x], b \neq 0 \}$
+        \item $F[u] = \{ f(u) : f(x) \in F[x] \}$.
+        \item $F[u_1, \dots, u_n] = \{ f(u_1, \dots, u_n) : f(x_1, \dots, x_n) \in F[x_1, \dots, x_n] \}$.
+        \item $F[X] = \{ f(u_1, \dots, u_n) : n \in N, u_i \in X, f(x_1, \dots, x_n) \in F[x_1, \dots, x_n] \}$.
+        \item $F(u) = \left\{ \frac{f(u)}{g(u)} : f(x), g(x) \in F[x], g(x) \neq 0 \right\}$.
+        \item $F(u_1, \dots, u_n) = \left\{ \frac{a}{b} : a, b \in F[u_1, \dots, u_n], b \neq 0 \right\}$.
+        \item $F(X) = \left\{ \frac{a}{b} : a, b \in F[x], b \neq 0 \right\}$.
     \end{enumerate}
 \end{proposition}
 

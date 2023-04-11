@@ -15,10 +15,8 @@
     Esta aplicación deja fijo a todo número racional y envía $x$ a $\sqrt{3}$.
     Entonces, si $p(x) = a_0 + a_1x + \dots + a_mx^m \in \mathbb{Q}[x]$:
     \begin{align*}
-        \varphi(p(x)) & = \varphi(a_0 + a_1x + \dots + a_mx^m)                                     \\
-                      & = \varphi(a_0) + \varphi(a_1x) + \dots + \varphi(a_mx^m)                   \\
-                      & = \varphi(a_0) + \varphi(a_1)\varphi(x) + \dots + \varphi(a_m)\varphi(x^m) \\
-                      & = a_0 + a_1\sqrt{3} + \dots + a_m\sqrt{3^m} = p(\sqrt{3})
+        \varphi(p(x)) & = \varphi(a_0 + a_1x + \dots + a_mx^m) = \varphi(a_0) + \varphi(a_1x) + \dots + \varphi(a_mx^m)                   \\
+                      & = \varphi(a_0) + \varphi(a_1)\varphi(x) + \dots + \varphi(a_m)\varphi(x^m) = a_0 + a_1\sqrt{3} + \dots + a_m\sqrt{3^m} = p(\sqrt{3})
     \end{align*}
     Su núcleo es el conjunto:
     $$Ker(\varphi) = \{ f(x) \in \mathbb{Q}[x] : f(\sqrt{3}) = 0 \} = (x^2 - 3)$$
