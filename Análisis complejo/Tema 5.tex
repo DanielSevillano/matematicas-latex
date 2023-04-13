@@ -1,0 +1,114 @@
+\chapter{El teorema de factorización de Weierstrass}
+Si $P(z)$ es un polinomio con ceros $z_1, \dots, z_n$, entonces podemos factorizar $P(z)$ como
+$$P(z) = c\prod_{k=1}^n (z-z_k)$$
+El objetivo es factorizar una función holomorfa usando sus ceros.
+
+\section{Funciones holomorfas sin ceros o con finitos ceros}
+\begin{theorem}
+    Sea $D$ un dominio simplemente conexo y sea $f$ una función holomorfa en $D$ sin ceros.
+    Entonces existe $g$ holomorfa en $D$ tal que $f = e^g$.
+\end{theorem}
+
+\begin{theorem}
+    Sea $D$ un dominio simplemente conexo y sea $f$ una función holomorfa en $D$ con un número finito de ceros $z_1, \dots, z_n$.
+    Entonces existe $g$ holomorfa en $D$ tal que
+    $$f(z) = e^{g(z)} \prod_{n=1}^N (z-z_n)$$
+\end{theorem}
+
+\begin{proof}
+    Sea
+    $$h(z) = \frac{f(z)}{(z-z_1)\dots(z-z_N)}$$
+    Solucionando las singularidades evitables, $h$ es holomorfa en $D$ y sin ceros.
+    Entonces por el teorema anterior existe $g$ holomorfa en $D$ tal que
+    $$e^{g(z)} = h(z) = \frac{f(z)}{(z-z_1)\dots(z-z_N)} \Rightarrow f(z) = e^{g(z)} \prod_{n=1}^N (z-z_n)$$
+\end{proof}
+
+Desde otro punto de vista, sea $D$ un dominio simplemente conexo y $\{z_\alpha\}_{\alpha \in \mathcal{F}} \subset D$, podemos plantearnos si existe $f$ holomorfa en $D$ tal que $f$ tiene ceros $\{z_\alpha\}_{\alpha \in \mathcal{F}}$.
+
+Si $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ tiene un punto de acumulación en $D$ entonces, por el teorema de identidad de Weierstrass, $f \equiv 0$.
+Nos interesa el caso en el que $\{z_n\}_{n=1}^\infty$ es numerable y sin puntos de acumulación en $D$.
+
+Sea $D = \mathbb{C}$ y sea $\{z_n\}_{n=1}^\infty$ numerable y sin puntos de acumulación.
+Habría que definir $\prod_{n=1}^\infty (z-z_n)$, por ejemplo de la forma
+$$\prod_{n=1}^\infty (z-z_n) = \lim_{N \to \infty} \prod_{n=1}^N (z-z_n)$$
+Como $\{z_n\}_{n=1}^\infty$ es infinito, entonces necesariamente $|z_n| \to \infty$.
+En caso contrario, $\{z_n\}$ tendría un punto de acumulación en $\mathbb{C}$.
+Si fijamos $z \in \mathbb{C}$, existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ entonces $|z-z_n| > 2$, así que
+$$\lim_{N \to \infty} \prod_{n=n_0}^\infty |z-z_n| = \infty$$
+
+\section{Productos infinitos}
+Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
+Queremos darle sentido a $\prod_{n=1}^\infty a_n$.
+Por ejemplo, si $P_N = \prod_{n=1}^N a_n$, podemos definir
+$$\prod_{n=1}^\infty a_n = \lim_{N \to \infty} P_N = \lim_{N \to \infty} \prod_{n=1}^N a_n$$
+Sin embargo, esta definición plantea algunos problemas.
+\begin{enumerate}
+    \item Si tenemos una multiplicación de números complejos cuyo resultado es 0, queremos que uno de ellos sea cero.
+          Sin embargo, si $a_n = \frac{1}{n}$, entonces $P_N = \prod_{n=1}^N \frac{1}{n} = \frac{1}{N!}$ y $\lim\limits_{n \to \infty} P_N = 0$, con $a_n \neq 0$ para todo $n \in \mathbb{N}$.
+
+    \item Queremos que la convergencia depende de la cola.
+          Sin embargo, con esta definición depende de un número finito de términos.
+
+          Sea $a_1 = a$ y $a_n = n$ para $n \geq 2$, entonces $\lim\limits_{N \to \infty} P_N = 0$ porque $P_N = 0$ para todo $N \in \mathbb{N}$.
+          Sin embargo, si $a_n = n+1$ para todo $n \geq 2$, entonces $\lim\limits_{N \to \infty} P_N = \infty$.
+\end{enumerate}
+
+\begin{definition}
+    Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
+    Diremos que el producto infinito asociado a $\{a_n\}_{n=1}^\infty$, que denotamos por $\prod_{n=1}^\infty a_n$, converge si:
+    \begin{enumerate}
+        \item Existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$.
+        \item Existe $\lim\limits_{N \to \infty} \prod_{n=1}^N a_n$ y además es distinto de cero.
+    \end{enumerate}
+    Si converge, entonces $\prod_{n=1}^\infty a_n = \lim\limits_{N \to \infty} \prod_{n=1}^N a_n$.
+\end{definition}
+
+\begin{example}
+    \hfill
+    \begin{enumerate}
+        \item Sea $a_n = \frac{1}{n}$, $n \in \mathbb{N}$.
+              Observamos que $a_n \neq 0$ para todo $n \in \mathbb{N}$.
+              Sin embargo,
+              $$\lim_{N \to \infty} \prod_{n=1}^N a_n = \lim_{N \to \infty} \frac{1}{N!} = 0$$
+              Por tanto, $\prod_{n=1}^\infty a_n$ no converge.
+
+        \item Sea $a_1 = 0$ y $a_n = 1 - \frac{1}{n}$, $n \geq 2$.
+              Se verifica que $a_n \neq 0$ para $n \geq 2$.
+              Ahora bien,
+              $$\prod_{n=2}^N \left(1-\frac{1}{n}\right) = \prod_{n=2}^N \frac{n-1}{n} = \frac{1}{2}\frac{2}{3}\dots\frac{N-1}{N} = \frac{1}{N} \xrightarrow[N \to \infty]{} 0$$
+              Por tanto, $\prod_{n=1}^\infty a_n$ no converge.
+
+        \item Sea $a_1 = 0$ y $a_n = 1 - \frac{1}{n^2}$, $n \geq 2$.
+              Es claro que $a_n \neq 0$ para $n \geq 2$.
+              Además,
+              \begin{align*}
+                   & \prod_{n=2}^N \left(1-\frac{1}{n^2}\right) = \prod_{n=2}^N \frac{n^2-1}{n^2} = \prod_{n=2}^N \frac{(n-1)(n+1)}{n^2} = \left(\prod_{n=2}^N \frac{n-1}{n}\right)\left(\prod_{n=2}^N \frac{n+1}{n}\right) = \\
+                   & = \frac{1}{N}\frac{N+1}{2} \to \frac{1}{2}
+              \end{align*}
+              Por tanto, $\prod_{n=1}^\infty a_n$ converge.
+    \end{enumerate}
+\end{example}
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
+    Entonces $\prod_{n=1}^\infty a_n$ converge si ocurre lo siguiente.
+    \begin{enumerate}
+        \item El conjunto $\{a_n : a_n = 0\}$ es finito.
+        \item Si existe $M \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq M$, entonces existe $\lim\limits_{N \to \infty} \prod_{n=M}^N a_n$ y es distinto de 0.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty$ tal que $\prod_{n=1}^\infty a_n$ converge.
+    Entonces:
+    \begin{enumerate}
+        \item $\lim\limits_{n \to \infty} a_n = 1$.
+        \item $\prod_{n=1}^\infty a_n = 0$ si y solo si existe $n_0 \in \mathbb{N}$ tal que $a_{n_0} = 0$.
+        \item Sea $N \in \mathbb{N}$.
+              Entonces $\prod_{n=1}^\infty a_{n+N}$ converge y además
+              $$\prod_{n=1}^\infty a_n = \left(\prod_{n=1}^N a_n\right) \left(\prod_{n=1}^\infty a_{n+N}\right)$$
+        \item Sea $\{b_n\}_{n=1}^\infty$ tal que $\prod_{n=1}^\infty b_n$ converge.
+              Entonces $\prod_{n=1}^\infty a_nb_n$ converge y además
+              $$\prod_{n=1}^\infty a_nb_n = \left(\prod_{n=1}^\infty a_n\right) \left(\prod_{n=1}^\infty b_n\right)$$
+    \end{enumerate}
+\end{theorem}
