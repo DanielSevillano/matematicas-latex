@@ -112,3 +112,126 @@ Sin embargo, esta definición plantea algunos problemas.
               $$\prod_{n=1}^\infty a_nb_n = \left(\prod_{n=1}^\infty a_n\right) \left(\prod_{n=1}^\infty b_n\right)$$
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    \hfill
+    \begin{enumerate}
+        \item Como $\prod_{n=1}^\infty a_n$ converge, existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\lim\limits_{N \to \infty} \prod_{n=n_0}^N a_n = q$, con $q > 0$.
+              Si $M > n_0$,
+              $$a_M = \frac{\prod_{n=n_0}^M a_n}{\prod_{n=n_0}^{M-1} a_n} \xrightarrow[M \to \infty]{} \frac{q}{q} = 1$$
+
+        \item Supongamos que existe $n_0 \in \mathbb{N}$ tal que $a_{n_0} = 0$.
+              Como $\prod_{n=1}^\infty a_n$ converge, entonces
+              $$\prod_{n=1}^\infty a_n = \lim_{N \to \infty} \prod_{n=1}^N a_n = \lim_{N \to \infty} P_N \to 0$$
+              Si $N > n_0$, entonces $P_N = a_1\dots a_{n_0-1}0a_{n_0+1}\dots a_N = 0$.
+
+              Recíprocamente, si $a_n \neq 0$ para todo $n \in \mathbb{N}$, entonces $\prod_{n=1}^\infty a_n \neq 0$ y $\prod_{n=1}^\infty a_n$ converge.
+
+        \item Tomemos $N \in \mathbb{N}$.
+              Si $\prod_{n=1}^\infty a_n$ converge, entonces existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\lim\limits_{M \to \infty} \prod_{n=n_0}^M a_n = q$ con $q \neq 0$.
+              Entonces $a_{n+N} \neq 0$ para todo $n \geq n_0$ y además
+              $$\prod_{n=n_0}^M a_{n+N} = \prod_{n=n_0+N}^{M+N} a_n = \frac{\prod_{n=n_0}^{M+N} a_n}{a_{n_0}\dots a_{n_0+N-1}} \to \frac{q}{a_{n_0}\dots a_{n_0+N-1}} \neq 0$$
+              Por tanto, $\prod_{n=1}^\infty a_{n+N}$ converge.
+
+        \item $\prod_{n=1}^\infty a_n$ y $\prod_{n=1}^\infty b_n$ convergen.
+              Entonces:
+              \begin{itemize}
+                  \item Existe $n_a \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_a$ y $\lim\limits_{N \to \infty} \prod_{n=n_a}^N a_n = l_a \neq 0$.
+                  \item Existe $n_b \in \mathbb{N}$ tal que $b_n \neq 0$ para todo $n \geq n_b$ y $\lim\limits_{N \to \infty} \prod_{n=n_b}^N b_n = l_b \neq 0$.
+              \end{itemize}
+              Sea $n_0 = \max\{n_a, n_b\}$.
+              Entonces $a_nb_n \neq 0$ para todo $n \geq n_0$.
+              $$\lim_{N \to \infty} \prod_{n=n_0}^N a_nb_n \to c \neq 0$$
+              Como los productos convergen,
+              $$\prod_{n=1}^\infty a_nb_n = \lim_{N \to \infty} \left(\prod_{n=1}^N a_n\right) \left(\prod_{n=1}^N b_n\right) = \left(\lim_{N \to \infty} \prod_{n=1}^N a_n\right) \left(\lim_{N \to \infty} \prod_{n=1}^N b_n\right) = \left(\prod_{n=1}^\infty a_n\right) \left(\prod_{n=1}^\infty b_n\right)$$
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\prod_{n=1}^\infty a_n$ converge.
+        \item Existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\sum_{n=n_0}^\infty \Log(a_n)$ converge.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \hfill
+    \begin{itemize}
+        \item[$\Rightarrow$] Como $\prod_{n=1}^\infty a_n$ converge, existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y además $\prod_{n=n_0}^N \to q$ con $q \neq 0$.
+            Sea $S_N = \sum_{n=n_0}^N \Log(a_n)$.
+            Entonces:
+            $$e^{S_N} = e^{\sum_{n=1}^N \Log(a_n)} = \prod_{n=n_0}^N a_n = q_N \Rightarrow S_N \in \log(q_n) \Rightarrow S_N = \Log(a_n) + 2\pi k_Ni, \quad k_N \in \mathbb{Z}$$
+            Distinguimos dos casos:
+            \begin{enumerate}
+                \item Supongamos que $q \notin (-\infty, 0)$.
+                      Como $q_N \to q$, entonces existe $N_0 \in \mathbb{N}$ tal que $q_N \notin (-\infty, 0]$ para todo $N \geq N_0$.
+                      Así que $\lim\limits_{N \to \infty} \Log(q_N) = \Log(q)$.
+                      $$\begin{cases}
+                              S_{N+1}-S_N = \Log(q_{N+1})-\Log(q_N) + 2\pi(k_{N+1}-k_N)i \\
+                              S_{N+1}-S_N = \Log(a_{N+1}) \xrightarrow[N \to \infty]{} 0
+                          \end{cases} \Rightarrow \lim_{N \to \infty} (k_{N+1}-k_N) = 0$$
+                      Como $k \in \mathbb{Z}$, entonces existe $j \in \mathbb{N}$ tal que $k_N = k$ para todo $N \geq j$.
+
+                \item Supongamos que $q \in (-\infty, 0)$.
+                      Definimos una nueva sucesión $\tilde{a}_{n_0} = -a_{n_0}$ y $\tilde{a}_n = a_n$ para $n > n_0$.
+                      $$\tilde{q}_N = \prod_{n=n_0}^N \tilde{a}_n = -\prod_{n=n_0}^N a_n \to -q > 0$$
+                      Por el caso anterior. $\tilde{S}_N = \sum_{n=n_0}^N \Log(\tilde{a}_n)$ converge.
+                      Equivalentemente, $S_N$ converge.
+            \end{enumerate}
+
+        \item[$\Leftarrow$] Falta ver que $\prod_{n=n_0}^N a_n \to q \neq 0$.
+            Sabemos que $S_N = \sum_{n=n_0}^N \Log(a_n) \to p$ y $q_N = e^{S_N}$.
+            Tomando límites,
+            $$\lim_{N \to \infty} q_N = \lim_{N \to \infty} e^{S_N} = e^{\lim_{N \to \infty} S_N} = e^p = q \neq 0$$
+    \end{itemize}
+\end{proof}
+
+\begin{corollary}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\prod_{n=1}^\infty a_n$ converge.
+        \item $\sum_{n=1}^\infty \Log(a_n)$ converge.
+    \end{enumerate}
+    Además,
+    $$\prod_{n=1}^\infty a_n = e^{\sum_{n=1}^\infty \Log(a_n)}$$
+\end{corollary}
+
+Queremos encontrar una noción de convergencia absoluta.
+Para las series sabemos lo siguiente.
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty a_n$ converge absolutamente.
+        \item Dada $\sigma: \mathbb{N} \to \mathbb{N}$ permutación, $\sum_{n=1}^\infty a_{\sigma(n)}$ converge y es igual a $\sum_{n=1}^\infty a_n$.
+        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
+              Entonces $\sum_{k \in A_n} a_k$ converge y además
+              $$\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty \left(\sum_{k \in A_n} a_n\right)$$
+    \end{enumerate}
+\end{theorem}
+
+Como consecuencia, si $\sum_{n=1}^\infty a_n$ converge absolutamente, en particular converge.
+
+Uniendo los teoremas anteriores, obtenemos el siguiente resultado.
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty \Log(a_n)$ converge absolutamente.
+        \item Dada $\sigma: \mathbb{N} \to \mathbb{N}$ permutación, $\prod_{n=1}^\infty a_{\sigma(n)}$ converge y su valor es
+              $$\prod_{n=1}^\infty a_n = e^{\sum_{n=1}^\infty \Log(a_n)}$$
+        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
+              Entonces $\prod_{k \in A_n} a_k$ converge y además
+              $$\prod_{n=1}^\infty a_n = \prod_{n=1}^\infty \left(\prod_{k \in A_n} a_n\right)$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \subset \{0\}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty \Log(a_n)$ converge absolutamente.
+        \item $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
+    \end{enumerate}
+\end{lemma}
