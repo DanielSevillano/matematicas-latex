@@ -54,3 +54,9 @@ Estos apuntes están abiertos a correcciones y mejoras.
 2. El problema de Dirichlet para el disco unidad
 3. La integral de Poisson
 4. Desigualdades de Harnack
+
+### 5. El teorema de factorización de Weierstrass
+
+1. Funciones holomorfas sin ceros o con finitos ceros
+2. Productos infinitos
+3. Funciones holomorfas definidas por productos infinitos

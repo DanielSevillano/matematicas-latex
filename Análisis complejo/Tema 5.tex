@@ -229,9 +229,103 @@ Uniendo los teoremas anteriores, obtenemos el siguiente resultado.
 \end{theorem}
 
 \begin{lemma}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \subset \{0\}$, entonces son equivalentes:
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, entonces son equivalentes:
     \begin{enumerate}
         \item $\sum_{n=1}^\infty \Log(a_n)$ converge absolutamente.
         \item $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
     \end{enumerate}
 \end{lemma}
+
+\begin{proof}
+    Empecemos por $\frac{1}{1-z} = \sum_{n=0}^\infty z^n$, entonces
+    $$\Log(1-z) = -\sum_{n=0}^\infty \frac{z^{n+1}}{n+1}$$
+    Además,
+    $$\Log(1+z) = \sum_{n=0}^\infty \frac{(-1)^nz^{n+1}}{n+1}$$
+    Queremos analizar
+    $$\left|\frac{\Log(1+z)}{z} - 1\right| = \left|\sum_{n=0}^\infty \frac{(-1)^nz^{n+1}}{n+1} - 1\right| = \left|\sum_{n=1}^\infty \frac{(-1)^nz^n}{n+1}\right| \leq \frac{1}{2}\sum_{n=1}^\infty |z|^n = \frac{1}{2}\frac{|z|}{1-|z|}$$
+    Si $|z| < \frac{1}{2}$, entonces
+    $$\left|\frac{\Log(1+z)}{z} - 1\right| = \frac{1}{2}\frac{|z|}{1-|z|} \leq \frac{1}{2}$$
+    Así que
+    $$\left|\left|\frac{\Log(1+z)}{z}\right| - 1\right| \leq \left|\frac{\Log(1+z)}{z} - 1\right| \leq \frac{1}{2} \Rightarrow \frac{1}{2} \leq \left|\frac{\Log(1+z)}{z}\right| \leq \frac{3}{2}$$
+    Por último, sea $z = w-1$, entonces si $|w-1| = |z| \leq \frac{1}{2}$,
+    $$\frac{1}{2} \leq \left|\frac{\Log(w)}{1-w}\right| \leq \frac{3}{2}$$
+    Basta ver que existe $n_0 \in \mathbb{N}$ tal que $|1-a_n| < \frac{1}{2}$.
+    \begin{itemize}
+        \item[$\Leftarrow$] Como $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente, $a_n \to 1$.
+            Por tanto, existe $n_0 \in \mathbb{N}$ tal que $|1-a_n| \leq \frac{1}{2}$ para todo $n \geq n_0$.
+        \item[$\Rightarrow$] Análogo.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
+        \item Existe $n_0 \in \mathbb{N}$ tal que para todo $n \geq n_0$ se tiene que $|1-a_n| \leq \frac{1}{2}$ y $\sum_{n=n_0}^\infty \Log(a_n)$ converge uniformemente.
+        \item Para cada permutación $\sigma: \mathbb{N} \to \mathbb{N}$ se tiene que $\prod_{n=1}^\infty a_{\sigma(n)}$ converge y además
+              $$\prod_{n=1}^\infty a_{\sigma(n)} = \prod_{n=1}^\infty a_n$$
+        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
+              Entonces $\prod_{k \in A_n} a_k$ converge y además
+              $$\prod_{n=1}^\infty a_n = \prod_{n=1}^\infty \left(\prod_{k \in A_n} a_n\right)$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}[Convergencia absoluta]
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, su producto infinito asociado converge absolutamente si $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Si $\prod_{n=1}^\infty a_n$ converge absolutamente, entonces converge.
+        \item Si $\prod_{n=1}^\infty a_n$ converge absolutamente, entonces $\prod_{n=1}^\infty \left(1 + |1-a_n|\right)$ converge absolutamente.
+              \begin{proof}
+                  $\prod_{n=1}^\infty \left(1 + |1-a_n|\right)$ converge absolutamente si y solo si $\prod_{n=1}^\infty \left(1 - 1 - |1-a_n|\right) = -\sum_{n=1}^\infty |1-a_n|$ converge absolutamente.
+              \end{proof}
+    \end{enumerate}
+\end{remark}
+
+\section{Funciones holomorfas definidas por productos infinitos}
+\begin{theorem}
+    Sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en un dominio $D$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty (1-f_n)$ es absoluta y uniformemente convergente en compactos de $D$.
+        \item Para cada compacto $K$ en $D$ existe $n_K \in \mathbb{N}$ tal que para todo $n \geq n_K$ se tiene que $|1-f_n(z)| \leq \frac{1}{2}$ y $\sum_{n=n_K}^\infty \Log(f_n)$ converge absoluta y uniformemente en $K$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+    Sea $\{u_k\}_{k=1}^\infty \subset \mathbb{C}$.
+    Entonces
+    $$\left|\prod_{k=1}^n (1+u_k)-1\right| \leq \prod_{k=1}^n (1+|u_k|)-1, \quad \forall n \in \mathbb{N}$$
+\end{lemma}
+
+\begin{proof}
+    Razonamos por inducción.
+    \begin{itemize}
+        \item Para $n = 1$,
+              $$|1+u-1-1| = |u_1| \leq |u_1|$$
+
+        \item Supongamos que es cierto para $n$ y veamos para el caso $n+1$.
+              \begin{align*}
+                   & \left|\prod_{k=1}^{n+1} (1+u_k) - 1\right| = \left|(1+u_{n+1})\prod_{k=1}^{n+1} (1+u_k) - 1\right| = \left|(1+u_{n+1})\left(\prod_{k=1}^\infty (1+u_k) - 1\right) + u_{n+1}\right| \leq \\
+                   & \leq |1+u_{n+1}|\left|\prod_{k=1}^\infty (1+u_k) - 1\right| + |u_{n+1}| \leq |1+u_{n+1}|\left|\prod_{k=1}^\infty (1+|u_k|) - 1\right| + |u_{n+1}| \leq                                  \\
+                   & \leq (1 + |u_{n+1}|)\left|\prod_{k=1}^\infty (1+|u_k|) - 1\right| + |u_{n+1}| = \prod_{k=1}^{n+1} (1+|u_k|) - 1
+              \end{align*}
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}
+    Sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en $D$.
+    Si $\sum_{n=1}^\infty (1-f_n)$ converge absoluta y uniformemente en compactos de $D$, entonces:
+    \begin{enumerate}
+        \item $\prod_{k=1}^n$ converge uniformemente en cada compacto de $D$ a una función holomorfa $P$ que denotamos por $\prod_{n=1}^\infty f_n$.
+        \item La convergencia de $\prod_{k=1}^n f_k$ no depende de reordenaciones.
+        \item Para cada $z_0 \in D$ tenemos que $ord(z_0, P) = \sum_{k=1}^\infty ord(z_0, f_k)$, donde $ord(z_0, f)$ es el orden de $z_0$ como cero de $f$.
+        \item Las derivadas logarítmicas $\frac{P'}{P}$ y $\frac{f_n'}{f_n}$ existen como funciones meromorfas.
+              Además,
+              $$\frac{P'}{P} = \sum_{k=1}^\infty \frac{f_k'}{f_k}$$
+              Si $R > 0$ y $\overline{D(z_0, R)} \subset D$ existe $n_0 \in \mathbb{N}$ tal que $f_n$ no tiene ceros en $\overline{D(z_0, R)}$ para todo $n \geq n_0$ y $\sum_{n=n_0+1}^\infty \frac{f_n'}{f_n}$ converge absoluta y uniformemente en $\overline{D(z_0, R)}$.
+    \end{enumerate}
+\end{theorem}
