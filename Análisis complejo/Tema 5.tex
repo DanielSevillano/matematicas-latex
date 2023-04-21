@@ -329,3 +329,112 @@ Uniendo los teoremas anteriores, obtenemos el siguiente resultado.
               Si $R > 0$ y $\overline{D(z_0, R)} \subset D$ existe $n_0 \in \mathbb{N}$ tal que $f_n$ no tiene ceros en $\overline{D(z_0, R)}$ para todo $n \geq n_0$ y $\sum_{n=n_0+1}^\infty \frac{f_n'}{f_n}$ converge absoluta y uniformemente en $\overline{D(z_0, R)}$.
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    \hfill
+    \begin{enumerate}
+        \item Sea $K$ compacto de $D$ y sea $P_n = \prod_{k=1}^n f_k$.
+              Basta ver que $P_n$ es uniformemente de Cauchy.
+
+              En primer lugar, veamos que $P_n$ es uniformemente acotado en $K$.
+              Como $\sum_{n=1}^\infty (1-f_n)$ converge absoluta y uniformemente en $K$, entonces existe $c_K$ tal que $\sum_{n=1}^\infty |1-f_n(z)| < c_K$.
+              Entonces:
+              \begin{align*}
+                  |P_n| & = \left|\prod_{k=1}^n f_k\right| = \left|\prod_{k=1}^n (1+f_k-1)\right| \leq \prod_{k=1}^n (1+|1-f_k|) \leq \prod_{k=1}^n e^{|1-f_k|} = e^{\sum_{k=1}^n |1-f_k|} \leq \\
+                        & \leq e^{\sum_{k=1}^\infty |1-f_k|} < e^{c_K}
+              \end{align*}
+
+              Ahora, veamos que $\{f_n\}$ es uniformemente de Cauchy en $K$.
+              Sea $\varepsilon > 0$, existe $\delta > 0$ de modo que si $|x| < \delta$ entonces $e^{c_K}|e^x-1| < \varepsilon$.
+              Como $\sum_{n=1}^\infty (1-f_n)$ es de Cauchy uniformemente en $K$, existe $n_K$ tal que si $m \leq n \leq n_K$, entonces $\sum_{k=n}^m |1-f_k| < \delta$.
+              Por tanto, si $m \geq n \geq n_K$,
+              \begin{align*}
+                  |P_m - P_n| & = \left|\prod_{k=1}^m f_k - \prod_{k=1}^n f_k\right| = |P_n|\left|\left(\prod_{k=n+1}^m f_k\right) - 1\right| \leq e^{c_K}\left|\prod_{k=n+1}^m (1+f_k-1) - 1\right| \leq \\
+                              & \leq e^{c_K}\left(\prod_{k=n+1}^m (1+|1-f_k|) - 1\right) \leq e^{c_K}\left(e^{\sum_{k=n+1}^m |1-f_k|}-1\right) < \varepsilon
+              \end{align*}
+
+        \item Es consecuencia de (1).
+
+        \item Sabemos que existe $n_0 \in \mathbb{N}$ tal que $\sum_{n=n_0}^\infty |1-f_n(z)| < \frac{1}{2}$ para todo $z \in \overline{D(z_0, R')}$, con $\overline{D(z_0, R)} \subset D(z_0, R')$.
+              Entonces, en particular $|1-f_n(z)| < \frac{1}{2}$ para todo $n \geq n_0+1$.
+              Así que $f_n$ no se anula en $\overline{D(z_0, R')}$ para todo $n \geq n_0+1$.
+              Sea entonces $g_n = \prod_{k=n_0+1}^n f_k$.
+              Sabemos que $g_n$ converge uniformemente en $\overline{D(z_0, R')}$ a una función $g$.
+              \begin{align*}
+                  |g_n(z)-1| & = \left|\left(\prod_{k=n_0+1}^n f_k(z)\right)-1\right| = \left|\prod_{k=n_0+1}^n (1+f_k(z)-1)-1\right| \leq                              \\
+                             & \leq \prod_{k=n_0+1}^n (1+|f_k(z)-1|)-1 \leq e^{\sum_{k=n_0}^n |1-f_k(z)|} - 1 \leq e^{1/2}-1, \quad \forall z \in \overline{D(z_0, R')}
+              \end{align*}
+              Por tanto, $g$ no tiene ceros en $\overline{D(z_0, R')}$.
+              Entonces
+              $$P = f_1\dots f_{n_0}\prod_{n=n_0+1}^\infty f_n = f_1\dots f_{n_0}g$$
+              Como $g$ es no nula,
+              $$ord(z_0, P) = \sum_{n=1}^{n_0} ord(z_0, f_n) + ord(z_0, g) = \sum_{n=1}^\infty ord(z_0, f_n)$$
+
+        \item De la expresión anterior tenemos que
+              $$\frac{P'}{P} = \sum_{n=1}^{n_0} \frac{f_n'}{f_n} + \frac{g'}{g}$$
+              Falta ver que $\sum_{n=n_0+1}^N \frac{f_n'}{f_n} \to \frac{g'}{g}$.
+              Como $\sum_{n=n_0+1}^N f_k = \frac{g_N'}{g_N}$, podemos ver equivalentemente que $\frac{g_N'}{g_N} \to \frac{g'}{g}$ uniformemente en $\overline{D(0, R')}$.
+              \begin{align*}
+                  \left|\frac{g_N'(z)}{g_N(z)} - \frac{g'(z)}{g(z)}\right| & = \left|\frac{g_N'(z)g(z)-g'(z)g_N(z)}{g_N(z)g(z)}\right| =                              \\
+                                                                           & = \left|\frac{g_N'(z)g(z) - g(z)g'(z) + g(z)g'(z) - g'(z)g_N(z)}{g_N(z)g(z)}\right| \leq \\
+                                                                           & \leq \frac{|g(z)||g_N'(z)-g'(z)| + |g'(z)||g_N(z)-g(z)|}{|g_N(z)||g(z)|}
+              \end{align*}
+              Sabemos que
+              \begin{align*}
+                  ||g_n(z)|-1| \leq |g_n(z)-1| < e^{1/2}-1 & \Leftrightarrow 2-e^{1/2} < |g_n(z)| < e^{1/2} \\
+                  ||g(z)|-1| \leq |g(z)-1| < e^{1/2}-1     & \Leftrightarrow 2-e^{1/2} < |g(z)| < e^{1/2}   \\
+              \end{align*}
+              Además, existe $c_K = \max_{z \in \overline{D(z_0, R')}} (|g(z)|+|g'(z)|)$.
+              Por tanto,
+              $$\left|\frac{g_N'(z)}{g_N(z)}-\frac{g'(z)}{g(z)}\right| \to 0$$
+              uniformemente en $\overline{D(z_0, R')}$.
+    \end{enumerate}
+\end{proof}
+
+\begin{example}
+    \hfil
+    \begin{enumerate}
+        \item $\prod_{n=1}^\infty \left(1-\frac{z}{n^2}\right)$.
+              Veamos que converge uniformemente en compactos de $\mathbb{C}$.
+
+              Sea $K$ compacto de $\mathbb{C}$.
+              Entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+              $$\sum_{n=1}^\infty \left|1-\left(1-\frac{z}{n^2}\right)\right| = \sum_{n=1}^\infty \frac{|z|}{n^2} \leq R\sum_{n=1}^\infty \frac{1}{n^2} \leq Rc$$
+              Por el teorema anterior, el producto converge uniformemente en $K$.
+              Además, $\prod_{n=1}^\infty \left(1-\frac{z}{n^2}\right)$ se anula en $\{n^2 : n \in \mathbb{N}\}$.
+
+        \item Busquemos una función entera que se anule en $\mathbb{Z}$ y cuyos ceros tengan orden 1.
+              Consideramos $P(z) = z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)$.
+              Sea $K$ un compacto en $\mathbb{C}$, existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+              $$\sum_{n=1}^\infty \left|\frac{z^2}{n^2}\right| = \sum_{n=1}^\infty \frac{|z|^2}{n^2} \leq R^2c$$
+              Por tanto, converge uniformemente en $K$.
+
+              La función $z \mapsto \sin(\pi z)$ tiene las mismas características que buscábamos en $P$.
+              Por tanto, la función
+              $$z \mapsto \frac{\sin(\pi z)}{P(z)} = \frac{\sin(\pi z)}{z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)}$$
+              es una función holomorfa sin ceros y se puede factorizar de la forma
+              $$\frac{\sin(\pi z)}{z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)} = e^{\varphi(z)}$$
+    \end{enumerate}
+\end{example}
+
+\section{El teorema de factorización de Weierstrass}
+Sea $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ una colección de puntos de $\mathbb{C}$.
+Nuestro objetivo era encontrar una función entera que se anule en $\{z_\alpha\}_{\alpha \in \mathcal{F}}$.
+\begin{itemize}
+    \item Si $\{z_k\}_{k=1}^N$ es finita, esta función es $\prod_{n=1}^N (z-z_n)$.
+    \item Si $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ tiene un punto de acumulación, entonces la función tiene que ser nula.
+\end{itemize}
+En el caso restante, $\{z_k\}_{k=1}^\infty$ tiene $\lim\limits_{k \to \infty} |z_k| = \infty$.
+Consideramos la expresión
+$$\prod_{k=1}^\infty \left(1 - \frac{z}{z_k}\right)$$
+Si $z \in \overline{D(0, R)}$ con $R > 0$,
+$$\sum_{k=1}^\infty \left|1-\left(1-\frac{z}{z_k}\right)\right| = \sum_{k=1}^\infty \frac{|z|}{|z_k|} \leq R\sum_{k=1}^\infty \frac{1}{|z_k|}$$
+
+\begin{theorem}
+    Sea $\{z_k\}_{k=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\sum_{k=1}^\infty \frac{1}{|z_k|}$ converge y $\lim\limits_{k \to \infty} |z_k| = \infty$.
+    Entonces $\prod_{k=1}^\infty \left(1-\frac{z}{z_k}\right)$ converge absoluta y uniformemente en compactos de $\mathbb{C}$ y además tiene como ceros $\{z_k\}_{k=1}^\infty$.
+\end{theorem}
+
+\begin{remark}
+    La función $z^N\prod_{n=1}^\infty \left(1-\frac{z}{z_n}\right)$ tiene como ceros $\{z_n\}_{n=1}^\infty$ y además el 0 es un cero de multiplicidad $N$.
+\end{remark}

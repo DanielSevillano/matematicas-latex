@@ -60,3 +60,4 @@ Estos apuntes están abiertos a correcciones y mejoras.
 1. Funciones holomorfas sin ceros o con finitos ceros
 2. Productos infinitos
 3. Funciones holomorfas definidas por productos infinitos
+4. El teorema de factorización de Weierstrass
