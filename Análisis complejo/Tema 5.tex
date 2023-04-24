@@ -533,3 +533,120 @@ $$\sum_{k=k_0}^\infty \frac{|w|^{p_k+1}}{p_k+1} < \infty$$
     Además,
     $$E_n\left(\frac{a_n}{a_n}\right) = E_n(1) = 0$$
 \end{proof}
+
+\begin{theorem}[Teorema de factorización de Weierstrass: segunda versión]
+    Sea $f$ una función entera tal que en $z = 0$ tiene un cero de orden $N$ y los demás ceros de $f$ son $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$.
+    Entonces existe $\{p_n\}_{n=1}^\infty \subset \mathbb{N} \cup \{0\}$ y una función entera $g$ tal que
+    $$f(z) = e^{g(z)}z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)$$
+\end{theorem}
+
+\begin{proof}
+    Suponemos $\{a_n\}$ conjunto infinito.
+    Por el teorema anterior, existe una función entera que se anula en $\{a_n\}_{n=1}^\infty$.
+    Entonces
+    $$\frac{f(z)}{z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)}$$
+    es entera y no se anula en $\mathbb{C}$.
+    Por tanto, existe $g$ entera tal que
+    $$\frac{f(z)}{z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)} = e^{g(z)}$$
+\end{proof}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item La factorización no es única.
+              Si la sucesión $\{p_n\}_{n=1}^\infty$ da una descomposición, entonces una sucesión $\{q_n\}_{n=1}^\infty$ tal que $p_n \leq q_n$ para todo $n \in \mathbb{N}$ también sirve.
+
+        \item Si $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ y existe $p$ tal que $\sum_{n=1}^\infty \frac{1}{|a|^{p+1}}$ converge, entonces
+              $$\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
+              converge absoluta y uniformemente en compactos de $\mathbb{C}$.
+              \begin{proof}
+                  Sea $K$ compacto de $\mathbb{C}$, entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+                  Como $\lim\limits_{n \to \infty} |a_n| = \infty$, existe $n_0 \in \mathbb{N}$ tal que para todo $n \geq n_0$ se tiene que
+                  $$|a_n| \geq 2R \Rightarrow \left|\frac{z}{a_n}\right| \leq \frac{1}{2} < 1$$
+                  Por el lema anterior,
+                  $$\sum_{n=n_0}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right| \leq \sum_{n=n_0}^\infty \left|\frac{z}{a_n}\right|^{p+1} \leq R^{p+1}\sum_{n=n_0}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
+              \end{proof}
+    \end{enumerate}
+\end{remark}
+
+\section{Exponente de convergencia y género de una sucesión}
+A partir de las observaciones anteriores, introducimos la siguiente definición.
+
+\begin{definition}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\lim\limits_{n \to \infty} |a_n| = \infty$.
+    Definimos el exponente de convergencia de la sucesión como
+    $$\sigma = \inf\left\{s \in \mathbb{R} : \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty\right\}$$
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Si $s \in \mathbb{R}$ satisface que $\sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty$, entonces si $t > s$ se cumple que $\sum_{n=1}^\infty \frac{1}{|a_n|^t} < \infty$.
+        \item Diremos que $\inf\emptyset = +\infty$, es decir, $\sigma = +\infty$ cuando ningún $s \in \mathbb{R}$ satisface que $\sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty$.
+        \item Si $\sigma < \infty$,
+              \begin{align*}
+                   & \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty \text{ si } s \in (\sigma, +\infty) \\
+                   & \sum_{n=1}^\infty \frac{1}{|a_n|^s} = \infty \text{ si } s \in (-\infty, \sigma)
+              \end{align*}
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\lim\limits_{n \to \infty} |a_n| = \infty$ y $\sigma < \infty$.
+    Entonces el género de la sucesión es el menor entero $p$ tal que
+    $$\sum_{n=1}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item $\sigma > 0$ siempre.
+              Además, $\sum_{n=1}^\infty \frac{1}{|a_n|^0} = \infty$ así que $p \geq 0$.
+        \item $p \leq \sigma \leq p+1$.
+    \end{enumerate}
+\end{remark}
+
+Si $\{a_n\}$ es finita entonces diremos que $\sigma = p = 0$.
+
+\begin{example}
+    \hfill
+    \begin{enumerate}
+        \item Sea $a_n = n+1$.
+              $$\sum_{n=1}^\infty \frac{1}{(n+1)^s} < \infty \Leftrightarrow s < 1 \Rightarrow \sigma = 1, p = 1$$
+        \item Sea $a_n = (n+1)^2$.
+              $$\sum_{n=1}^\infty \frac{1}{(n+1)^{2s}} < \infty \Leftrightarrow s > \frac{1}{2} \Rightarrow \sigma = \frac{1}{2}, p = 0$$
+        \item Sea $a_n = (n+1)\log^2(n+1)$.
+              $$\sum_{n=1}^\infty \frac{1}{(n+1)^s\log^{2s}(n+1)} < \infty \Leftrightarrow s \geq 1 \Rightarrow \sigma = 1, p = 0$$
+              Para el caso $s = 1$,
+              $$\sum_{n=1}^\infty \frac{1}{(n+1)\log^2(n+1)} \sim \int_1^\infty \frac{1}{(x+1)\log^2(x+1)}dx = \left.-\frac{1}{\log(x+1)}\right]_1^\infty = \frac{1}{\log(2)}$$
+        \item Sea $a_n = \log(n+1)$.
+              $$\sum_{n=1}^\infty \frac{1}{\log^s(n+1)} = \infty \; \forall s \in \mathbb{R} \Rightarrow \sigma = \infty$$
+        \item Sea $a_n = 2^n$.
+              $$\sum_{n=1}^\infty \frac{1}{2^{ns}} = \sum_{n=1}^\infty \frac{1}{(2^s)^n} < \infty \; \forall s > 0 \Rightarrow \sigma = 0, p = 0$$
+    \end{enumerate}
+\end{example}
+
+\section{Factorización canónica de una función entera}
+Con las definiciones anteriores vamos a tener el siguiente teorema.
+
+\begin{theorem}[Teorema de factorización canónica]
+    Sea $f$ una función entera con $z = 0$ un cero de orden $N$ y $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ los demás ceros de $f$.
+    Si $\lim\limits_{n \to \infty} |a_n| = \infty$ y $\sigma < \infty$, entonces
+    $$f(z) = e^{g(z)}z^N\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
+    donde $p$ es el género de $\{a_n\}_{n=1}^\infty$.
+\end{theorem}
+
+\begin{proof}
+    Sea $K$ compacto de $\mathbb{C}$, entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+    Queremos ver que $\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$ converge absoluta y uniformemente en $K$.
+    Basta ver que $\sum_{n=1}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right|$ converge uniformemente en $K$.
+    Como $|a_n| \to \infty$, existe $n_0 \in \mathbb{N}$ tal que $|a_n| \geq 2R$ para todo $n \geq n_0$.
+    Entonces, como $p$ es el género de $\{a_n\}_{n=1}^\infty$,
+    $$\sum_{n=n_0}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right| \leq \sum_{n=n_0}^\infty \frac{|z|^{p+1}}{|a_n|^{p+1}} \leq R^{p+1} \sum_{n=n_0}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
+\end{proof}
+
+\section{Factorización de funciones holomorfas en un dominio}
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{a_n\}_{n=1}^\infty \subset D \setminus \{0\}$ sin puntos de acumulación en $D$.
+    Entonces existe una función holomorfa en $D$ que se anula en $\{a_n\}_{n=1}^\infty$.
+\end{theorem}

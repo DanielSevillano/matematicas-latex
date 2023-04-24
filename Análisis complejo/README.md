@@ -61,3 +61,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 2. Productos infinitos
 3. Funciones holomorfas definidas por productos infinitos
 4. El teorema de factorización de Weierstrass
+5. Exponente de convergencia y género de una sucesión
+6. Factorización de funciones holomorfas en un dominio
