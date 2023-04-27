@@ -1,0 +1,36 @@
+\chapter{Funciones enteras. Crecimiento y distribución de los ceros}
+\begin{theorem}[Teorema de Liouville]
+    Si $f$ es una función entera y acotada, entonces $f$ es constante.
+\end{theorem}
+
+\begin{theorem}[Generalización del teorema de Liouville]
+    Sea $f$ entera tal que existen $\alpha > 0$, $c > 0$ y $R_0 > 0$ con $|f(z)| \leq c|z|^\alpha$ para todo $|z| \geq R_0$.
+    Entonces $f$ es un polinomio de grado $E(\alpha)$ y por tanto tiene $E(\alpha)$ ceros.
+\end{theorem}
+
+\begin{proof}
+    Sea $f(z) = \sum_{n=0}^\infty a_nz^n$.
+    Sea $R > 0$,
+    $$a_n = \frac{f^{(n)}(0)}{n!} = \frac{1}{2\pi i} \int_{|z|=R} \frac{f(z)}{z^{n+1}}dz \leq \max_{|z|=R} |f(z)|\frac{1}{R^n} \leq c\frac{|z|^\alpha}{R} = cR^{\alpha-n} \xrightarrow[R \to \infty, n > E(\alpha)]{} 0$$
+    Por tanto, $a_n = 0$ para todo $n > E(\alpha)$.
+\end{proof}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Parece que si el crecimiento está controlado, el número de ceros también lo está.
+        \item Al revés esto no ocurre.
+              Por ejemplo, con la exponencial.
+    \end{enumerate}
+\end{remark}
+
+\section{Fórmula de Jensen}
+La fórmula de Jensen permite controlar el número de ceros de una función holomorfa sabiendo restricciones sobre su crecimiento.
+
+\begin{theorem}[Fórmula de Jensen]
+    Sea $f$ una función holomorfa en $D(0, R)$ con $f(0) \neq 0$ y tal que tiene ceros $\{a_n\}$ de modo que
+    $$|a_1| \leq |a_2| \leq |a_3| \leq \dots$$
+    Sea $\rho \in (0, R)$ y $n(\rho, f) = \#\{a_n : |a_n| \leq \rho\}$.
+    Entonces
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)| + \sum_{k=0}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)$$
+\end{theorem}

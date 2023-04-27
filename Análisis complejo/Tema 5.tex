@@ -650,3 +650,57 @@ Con las definiciones anteriores vamos a tener el siguiente teorema.
     Sea $D$ un dominio en $\mathbb{C}$ y sea $\{a_n\}_{n=1}^\infty \subset D \setminus \{0\}$ sin puntos de acumulación en $D$.
     Entonces existe una función holomorfa en $D$ que se anula en $\{a_n\}_{n=1}^\infty$.
 \end{theorem}
+
+\begin{proof}
+    Si $\{a_n\}_{N=1}^\infty$ es finito, entonces dicha función es $\prod_{n=1}^N (z-a_n)$.
+    Si $\{a_n\}_{n=1}^\infty$, entonces definimos $\delta_n = \dist(a_n, \mathbb{C} \setminus D)$.
+    Consideramos primero dos casos.
+    \begin{enumerate}
+        \item Existe $N_0 \in \mathbb{N}$ tal que $|a_n|\delta_n \geq 1$ para todo $n \geq N_0$.
+              Veamos que $\lim\limits_{n \to \infty} |a_n| = \infty$.
+              Supongamos por reducción al absurdo que $\lim\limits_{n \to \infty} |a_n| \neq \infty$.
+              Entonces existe una subsucesión $\{a_{n_k}\}_{k=1}^\infty$ acotada.
+              Así que existe una subsucesión $\{a_m\}_{m=1}^\infty$ de $\{a_{n_k}\}$ convergente a $a_0 \in \mathbb{C} \setminus D$.
+              Si $D = \mathbb{C}$, esto es imposible.
+              En otro caso,
+              $$1 \leq |a_m|\delta_m \leq |a_m||a_m-w|, \quad \forall w \in \mathbb{C} \setminus D$$
+              Tomando límites,
+              $$1 \leq |a_0||a_0-w|, \quad \forall w \in \mathbb{C} \setminus D$$
+              Como necesariamente $|a_0| \neq 0$, entonces
+              $$|a_0-w| \geq \frac{1}{|a_0|} \Rightarrow a_0 \notin \mathbb{C} \setminus D \Rightarrow a_0 \in D$$
+              Esto es una contradicción.
+
+        \item Existe $N_0 \in \mathbb{N}$ tal que $|a_n|\delta_n \leq 1$ para todo $n \geq N_0$.
+              Veamos por reducción al absurdo que $\delta_n \xrightarrow[n \to \infty]{} 0$.
+              Supongamos que existen una subsucesión $\{\delta_{n_k}\}_{k=1}^\infty$ y $\varepsilon > 0$ tales que $\delta_{n_k} \geq \varepsilon > 0$ para todo $k \in \mathbb{N}$.
+              Entonces existe una subsucesión $\{\delta_m\}_{m=1}^\infty$ de $\{\delta_{n_k}\}$ que converge a un cierto $\delta_0 \geq \varepsilon$.
+              Como además $|a_m| < \frac{1}{\varepsilon}$, existe una subsucesión $\{a_l\}_{l=1}^\infty$ de $\{a_m\}$ que converge a $a_0$.
+              Así que
+              $$\varepsilon \leq \delta_l \leq |a_l-w|, \quad \forall w \in \mathbb{C} \setminus \{0\}$$
+              Tomando límites,
+              $$\varepsilon \leq \delta_0 \leq |a_0-w|, \quad \forall w \in \mathbb{C} \setminus \{0\} \Rightarrow a_0 \in D$$
+              Esto contradice que $\{a_n\}$ no tenga puntos de acumulación.
+
+              Construyamos ahora una función holomorfa $f$ con ceros en $\{a_n\}$.
+              Para cada $a_n$ existe un $b_n \in \mathbb{C} \setminus D$ de modo que $|a_n-b_n| \leq \frac{3}{2}\delta_n$.
+              Entonces definimos
+              $$\prod_{n=1}^\infty E_n\left(\frac{a_n-b_n}{z-b_n}\right)$$
+              cuyos ceros son $\{a_n\}_{n=1}^\infty$.
+
+              Sea $K$ un compacto de $D$ y sea $d = \dist(K, \mathbb{C} \setminus D)$.
+              Observamos que $d > 0$.
+              Como $\delta_n \to 0$, podemos tomar $n_0 \in \mathbb{N}$ tal que $\delta_n < \frac{d}{2}$ para todo $n \geq n_0$.
+              $$|a_n-b_n| \leq \frac{3}{2}\delta_n < \frac{3}{4}d \leq \frac{3}{4}|z-b_n|, \quad \forall z \in K$$
+              Así que
+              $$\sum_{n=n_0}^\infty \left|1-E_n\left(\frac{a_n-b_n}{z-b_n}\right)\right| \leq \sum_{n=n_0}^\infty \left|\frac{a_n-b_n}{z-b_n}\right|^{n+1} \leq \sum_{n=n_0}^\infty \left(\frac{3}{4}\right)^{n+1} < \infty$$
+              Por tanto,
+              $$\prod_{n=1}^\infty E_n\left(\frac{a_n-b_n}{z-b_n}\right)$$
+              converge absoluta y uniformemente en compactos de $D$.
+    \end{enumerate}
+
+    En general, la sucesión $\{a_n\}_{n=1}^\infty$ se puede separar en $\{b_n\}_{n=1}^\infty$ y $\{c_n\}_{n=1}^\infty$, con $\{b_n\}$ en el caso 1 y $\{c_n\}$ en el caso 2.
+    Por el caso 1, existe $f$ holomorfa en $D$ con ceros $\{b_n\}_{n=1}^\infty$.
+    De igual forma, por el caso 2 existe $g$ holomorfa en $D$ con ceros $\{c_n\}_{n=1}^\infty$.
+    Consideramos $h = fg$.
+    $h$ es holomorfa en $D$ con ceros $\{a_n\}_{n=1}^\infty$.
+\end{proof}
