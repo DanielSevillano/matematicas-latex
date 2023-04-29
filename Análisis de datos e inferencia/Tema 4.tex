@@ -754,7 +754,9 @@ Calculamos la distribución predictiva.
      & f(x_{n+1}|\vec{x}) = \int_0^\infty f(x_{n+1}|\sigma^2)f(\sigma^2|\vec{x})d\sigma^2 =                                                                                                 \\
      & = \int_0^\infty \frac{1}{\sqrt{2\pi\sigma^2}}\frac{a_n^{p_n}}{\Gamma(p_n)} \int_0^\infty (\sigma^2)^{-(p_n+\frac{1}{2}+1)} e^{-\frac{1}{2\sigma^2}((x_{n+1}-\mu)^2 + 2a_n)}d\sigma^2
 \end{align*}
-Observamos que el interior de la integral es la función de densidad de una distribución $GaI\left(\frac{(x_{n+1}-\mu)^2}{2} + a_n, p_n + \frac{1}{2}\right)$ salvo constantes.
+Observamos que el interior de la integral es la función de densidad de una distribución
+$$GaI\left(\frac{(x_{n+1}-\mu)^2}{2} + a_n, p_n + \frac{1}{2}\right)$$
+salvo constantes.
 Por tanto:
 $$f(x_{n+1}|\vec{x}) = \frac{1}{\sqrt{2\pi\sigma^2}}\frac{a_n^{p_n}}{\Gamma(p_n)} \frac{\Gamma\left(p_n+\frac{1}{2}\right)}{\left(\frac{(x_n-\mu)^2}{2}+a_n\right)^{p_n+\frac{1}{2}}}$$
 
