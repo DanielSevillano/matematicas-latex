@@ -120,6 +120,49 @@ Entonces:
             \frac{x}{4} - \frac{5}{8} & \text{si } 4 \leq x < 5 \\
             1 - \frac{5}{4x}          & \text{si } x \geq 5     \\
         \end{cases}$$
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[axis lines = middle, ymax = 1]
+                \addplot [
+                    domain = -1:0,
+                    samples = 2,
+                    color = red,
+                    style = ultra thick
+                ] {0};
+
+                \addplot [
+                    domain = 0:2,
+                    samples = 100,
+                    color = red,
+                ] {x^2/16};
+
+                \addplot [
+                    domain = 2:4,
+                    xtick = {4},
+                    samples = 2,
+                    color = red,
+                ] {1/4};
+
+                \addplot[color = red, mark = *] coordinates { (4, 3/8) };
+
+                \addplot [
+                    domain = 4:5,
+                    samples = 2,
+                    color = red,
+                ] {x/4 - 5/8};
+
+                \addplot[color = red, mark = *] coordinates { (5, 3/4) };
+
+                \addplot [
+                    domain = 5:8,
+                    samples = 100,
+                    color = red,
+                ] {1-5/(4*x)};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
     Estudiamos sus puntos de discontinuidad y la probabilidad en ellos.
     $$D(F) = \{4, 5\}, \quad \begin{cases}
             p(4) = F(4) - F(4^-) = \frac{1}{8} \\
@@ -467,6 +510,34 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
             0 & \text{si } x < \frac{1}{n}    \\
             1 & \text{si } x \geq \frac{1}{n}
         \end{cases}$$
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    title = {Gráfica para $n = 2$},
+                    axis lines = middle,
+                    ymax = 1,
+                    extra x ticks = {1/2}, extra x tick label = {$\frac{1}{n}$}
+                ]
+
+                \addplot [
+                    domain = -2:1/2,
+                    samples = 2,
+                    color = red,
+                    style = ultra thick
+                ] {0};
+
+                \addplot[color = red, mark = *] coordinates { (1/2, 1) };
+
+                \addplot [
+                    domain = 1/2:2,
+                    samples = 2,
+                    color = red,
+                ] {1};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
     Calculamos el límite puntual de la sucesión:
     $$F(x) = \lim\limits_{n \to \infty} F_n(x) = \begin{cases}
             0 & \text{si } x \leq 0 \\
@@ -491,7 +562,35 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
             0 & \text{si } x < -\frac{1}{n}    \\
             1 & \text{si } x \geq -\frac{1}{n}
         \end{cases}$$
-    y su límite puntual es:
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    title = {Gráfica para $n = 2$},
+                    axis lines = middle,
+                    ymax = 1,
+                    extra x ticks = {-1/2}, extra x tick label = {$-\frac{1}{n}$}
+                ]
+
+                \addplot [
+                    domain = -2:-1/2,
+                    samples = 2,
+                    color = red,
+                    style = ultra thick
+                ] {0};
+
+                \addplot[color = red, mark = *] coordinates { (-1/2, 1) };
+
+                \addplot [
+                    domain = -1/2:2,
+                    samples = 2,
+                    color = red,
+                ] {1};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
+    Su límite puntual es:
     $$F_Y(y) = \lim\limits_{n \to \infty} F_{Y_n}(y) = \begin{cases}
             0 & \text{si } x < 0    \\
             1 & \text{si } x \geq 0
@@ -512,6 +611,38 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
             \frac{nx+1}{2} & \text{si } -\frac{1}{n} \leq x < \frac{1}{n} \\
             1              & \text{si } x \geq \frac{1}{n}
         \end{cases}$$
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    title = {Gráfica para $n = 2$},
+                    axis lines = middle,
+                    ymax = 1,
+                    extra x ticks = {-1/2, 1/2}, extra x tick labels = {$-\frac{1}{n}$, $\frac{1}{n}$}
+                ]
+
+                \addplot [
+                    domain = -2:-1/2,
+                    samples = 2,
+                    color = red,
+                    style = ultra thick
+                ] {0};
+
+                \addplot [
+                    domain = -1/2:1/2,
+                    samples = 2,
+                    color = red,
+                ] {(2*x+1)/2};
+
+                \addplot [
+                    domain = 1/2:2,
+                    samples = 2,
+                    color = red,
+                ] {1};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
     El límite puntual es:
     $$F(x) = \begin{cases}
             0           & \text{si } x < 0 \\
@@ -534,6 +665,39 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
             \frac{1}{2} + \frac{x}{2n} & \text{si } 0 \leq x < n \\
             1                          & \text{si } x \geq n
         \end{cases}$$
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                    title = {Gráfica para $n = 2$},
+                    axis lines = middle,
+                    ymax = 1
+                ]
+
+                \addplot [
+                    domain = -2:0,
+                    samples = 2,
+                    color = red,
+                    style = ultra thick
+                ] {0};
+
+                \addplot[color = red, mark = *] coordinates { (0, 1/2) };
+
+                \addplot [
+                    domain = 0:2,
+                    samples = 2,
+                    color = red,
+                ] {1/2 + x/4};
+
+                \addplot [
+                    domain = 2:4,
+                    samples = 2,
+                    color = red,
+                ] {1};
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+
     Su límite puntual es:
     $$F(x) = \begin{cases}
             0           & \text{si } x < 0    \\
@@ -795,20 +959,20 @@ $\{X_n\}_n$ tiene una sucesión asociada $\{F_n\}_n$ de funciones de distribuci�
         \end{cases}$$
     Calculamos la función de distribución de $X_n$:
     \begin{align*}
-        F_n(x) & = P(X_n^{-1}((-\infty,x])) = P(X_n^{-1}([0,x])) = P(X_n^{-1}([0,e^{-nk}])) = P(\{ \omega \in \Omega : \omega \geq k \}) = \\
-               & = 1 - P(\{ \omega \in \Omega : \omega < k \}) = 1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} =    \\
+        F_n(x) & = P(X_n^{-1}((-\infty,x])) = P(X_n^{-1}([0,x])) = P(X_n^{-1}([0,e^{-nk}])) = P(\{ \omega \in \Omega : \omega \geq k \}) =               \\
+               & = 1 - P(\{ \omega \in \Omega : \omega < k \}) = 1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} =                  \\
                & = \begin{cases}
-            0                                                                    & \text{si } x <= 0                                              \\
-            1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} & \text{si } e^{-nk} \leq x < e^{-n(k-1)}, \quad k = 1, 2, \dots \\
-            1                                                                    & \text{si } x \geq 1
-        \end{cases}                                                                                             \\
+                       0                                                                    & \text{si } x <= 0                                              \\
+                       1 - \sum_{\omega=0}^{k-1} e^{-\lambda}\frac{\lambda^\omega}{\omega!} & \text{si } e^{-nk} \leq x < e^{-n(k-1)}, \quad k = 1, 2, \dots \\
+                       1                                                                    & \text{si } x \geq 1
+                   \end{cases} \\
                & = \begin{cases}
-            0                           & \text{si } x <= 0                  \\
-            \vdots                                                           \\
-            1 - e^{-\lambda}(1+\lambda) & \text{si } e^{-2n} \leq x < e^{-n} \\
-            1 - e^{-\lambda}            & \text{si } e^{-n} \leq x < 1       \\
-            1                           & \text{si } x \geq 1
-        \end{cases}
+                       0                           & \text{si } x <= 0                  \\
+                       \vdots                                                           \\
+                       1 - e^{-\lambda}(1+\lambda) & \text{si } e^{-2n} \leq x < e^{-n} \\
+                       1 - e^{-\lambda}            & \text{si } e^{-n} \leq x < 1       \\
+                       1                           & \text{si } x \geq 1
+                   \end{cases}
     \end{align*}
     Observamos que $F_n(x)$ tiene como límite puntual:
     $$G(x) = \begin{cases}
