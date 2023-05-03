@@ -16,3 +16,8 @@ Una recopilación de apuntes del grado en Matemáticas escritos en $\LaTeX$.
 
 -   [Optimización](https://github.com/DanielSevillano/matematicas-latex/tree/main/Optimización)
 -   [Análisis complejo](https://github.com/DanielSevillano/matematicas-latex/tree/main/Análisis%20complejo)
+
+### Próximamente
+
+-   Probabilidad
+-   Inferencia estadística
