@@ -67,4 +67,5 @@ Estos apuntes están abiertos a correcciones y mejoras.
 
 ### 6. Funciones enteras. Crecimiento y distribución de los ceros
 
-1. Fórmula de Jensen
+1. La fórmula de Jensen
+2. La fórmula de Poisson-Jensen

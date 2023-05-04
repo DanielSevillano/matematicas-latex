@@ -24,7 +24,7 @@
     \end{enumerate}
 \end{remark}
 
-\section{Fórmula de Jensen}
+\section{La fórmula de Jensen}
 La fórmula de Jensen permite controlar el número de ceros de una función holomorfa sabiendo restricciones sobre su crecimiento.
 
 \begin{lemma}
@@ -60,5 +60,59 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
     \begin{enumerate}
         \item $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{k=1}^{n(\rho, f)} \frac{\rho}{|a_k|} = \sum_{k=1}^\infty \log^+\left(\frac{\rho}{|a_k|}\right)$$
         \item $$N(\rho, f) = \int_0^\rho \frac{n(t, f)}{t}dt$$
+              % Demostración
     \end{enumerate}
 \end{remark}
+
+Existen diversas generalizaciones de la fórmula de Jensen.
+
+\begin{theorem}
+    Sea $f(z) = c_Nz^N + c_{N+1}z^{N+1} + \dots$ una función holomorfa en $D(0, R)$ y sea $\rho \in [0, R)$ tal que $\{a_n\}_{n=1}^\infty$ son los ceros de $f$ en $D(0, R)$ y además están ordenados respetando la multiplicidad.
+    Entonces:
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)$$
+\end{theorem}
+
+% Demostración
+
+Vamos a ver cómo aplicar la fórmula de Jensen para ver que si el crecimiento de $f$ está controlado entonces sus ceros también lo están.
+
+\begin{definition}
+    Llamamos módulo máximo de $f$ a
+    $$M_\infty(\rho, f) = \sup_{|z|=\rho} |f(z)|$$
+\end{definition}
+
+\begin{remark}
+    Si $f$ es holomorfa,
+    $$M_\infty(\rho, f) = \max_{|z|=\rho} |f(z)| = \max_{|z|\leq\rho} |f(z)|$$
+\end{remark}
+
+\begin{theorem}
+    Sea $f$ holomorfa en $D(0, R)$ tal que $f(0) \neq 0$ y $0 \leq s \leq \rho < R$.
+    Entonces:
+    $$n(s, f)\log\left(\frac{\rho}{s}\right) \leq \log(M_\infty(\rho, f)) - \log|f(0)|$$
+\end{theorem}
+
+\begin{proof}
+    \begin{align*}
+        n(s, f)\log\left(\frac{\rho}{s}\right) & = n(s, f)\int_s^\rho \frac{1}{t}dt \leq \int_s^\rho \frac{n(t, f)}{t}dt \leq \int_0^\rho \frac{n(t, f)}{t}dt =           \\
+                                               & = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \log|f(0)| \leq \log(M_\infty(\rho, f)) - \log|f(0)|
+    \end{align*}
+\end{proof}
+
+\begin{example}
+    Sea $f$ entera con $|f(0)| = 1$ y sea $\rho = es$.
+    Entonces:
+    $$n(s, f) \leq \log(M_\infty(es, f))$$
+\end{example}
+
+\begin{remark}
+    Si $f(z) = c_Nz^N + \dots$, el teorema anterior se puede escribir de la forma:
+    $$n(s, f)\log\left(\frac{\rho}{s}\right) \leq \log(M_\infty(\rho, f)) - \log|c_N\rho^N|$$
+\end{remark}
+
+\section{La fórmula de Poisson-Jensen}
+\begin{theorem}
+    Sea $0 < R \leq \infty$ y sea $f$ holomorfa en $D(0, R)$.
+    Sean $s \in (0, R)$ y $z \in D(0, s)$, entonces:
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta = \log|f(z)| + \sum_{\{|a_n| \leq s, a_n \text{ cero de } f\}} \log^+\left|\frac{s^2-\bar{a}_nz}{s(z-a_n)}\right|$$
+\end{theorem}
