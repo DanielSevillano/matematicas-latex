@@ -38,7 +38,40 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
         \end{cases}$$
 \end{lemma}
 
-% Demostración
+\begin{proof}
+    Sabemos que $\Log(1-z)$ es holomorfa en $\mathbb{D}$.
+    \begin{itemize}
+        \item Si $s < 1$, entonces por el teorema del valor medio
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi \Log|1-se^{i\theta}|d\theta = 0$$
+
+        \item Si $s > 1$,
+              \begin{align*}
+                   & \frac{1}{2\pi} \int_{-\pi}^\pi \log|1-se^{i\theta}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|se^{i\theta}\left(\frac{1}{s}e^{-i\theta}-1\right)\right|d\theta =                                                                   \\
+                   & = \frac{1}{2\pi} \int_{-\pi}^\pi \log(s)d\theta + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{1}{s}e^{-i\theta}\right|d\theta = \log(s) - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{1}{s}e^{i\varphi}\right|d\varphi = \log(s)
+              \end{align*}
+
+        \item Sea $s = 1$.
+              $$|1-e^{i\theta}|^2 = (1-e^{i\theta})(1-e^{-i\theta}) = 2-2\cos(\theta)$$
+              Sabemos que
+              $$\cos(\theta) = \cos\left(2\frac{\theta}{2}\right) = \cos^2\left(\frac{\theta}{2}\right) - \sin^2\left(\frac{\theta}{2}\right) = 1-2\sin^2\left(\frac{\theta}{2}\right)$$
+              Luego $|1-e^{i\theta}|^2 = 4\sin^2\left(\frac{\theta}{2}\right)$.
+              \begin{align*}
+                   & \frac{1}{2\pi} \int_{-\pi}^\pi \log|1-e^{i\theta}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(2\left|\sin\left(\frac{\theta}{2}\right)\right|\right)d\theta = \log(2) + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|\sin\left(\frac{\theta}{2}\right)\right|d\theta = \\
+                   & = \log(2) + \frac{1}{\pi} \int_0^{\pi} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta = \log(2) + \frac{2}{\pi} \int_{0}^{\pi/2} \log(\sin(\varphi))d\varphi
+              \end{align*}
+              Ahora bien,
+              \begin{align*}
+                   & \int_0^{\pi/2} \log(\sin(\theta))d\theta = \int_0^{\pi/2} \log\left(2\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right)\right)d\theta =                                        \\
+                   & = \frac{\pi}{2}\log(2) + \int_0^{\pi/2} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta + \int_0^{\pi/2} \log\left(\cos\left(\frac{\theta}{2}\right)\right)d\theta =                 \\
+                   & = \frac{\pi}{2}\log(2) + \int_0^{\pi/2} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta + \int_0^{\pi/2} \log\left(\sin\left(\frac{\pi}{2} - \frac{\theta}{2}\right)\right)d\theta = \\
+                   & = \frac{\pi}{2}\log(2) + 2\int_0^{\pi/2} \log(\sin(\varphi))d\varphi - 2\int_{\pi/2}^{\pi/4} \log(\sin(\varphi))d\varphi = \frac{\pi}{2}\log(2) + 2\int_0^{\pi/2} \log(\sin(\varphi))d\varphi
+              \end{align*}
+              Así que
+              $$\int_0^{\pi/2} \log(\sin(\theta))d\theta = -\frac{\pi}{2}\log(2)$$
+              Por tanto,
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|1-e^{i\theta}|d\theta = 0$$
+    \end{itemize}
+\end{proof}
 
 \begin{theorem}[Fórmula de Jensen]
     Sea $f$ una función holomorfa en $D(0, R)$ con $f(0) \neq 0$ y tal que tiene ceros $\{a_n\}$ de modo que
@@ -48,7 +81,31 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
     $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)$$
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Si $\rho = 0$,
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(0)|d\theta = \log|f(0)|$$
+    Sea ahora $\rho \in (0, R)$.
+    Supongamos que $f$ no tiene ceros en $\overline{D(0, \rho)}$.
+    Entonces existe $\rho'$ con $0 < \rho < \rho' < R$ tal que $f$ es holomorfa en $D(0, \rho')$ y $f$ no tiene ceros en $D(0, \rho')$.
+    Así, como $\Log(f(z))$ es holomorfa en $D(0, \rho')$, tenemos que $\log|f(z)|$ es armónica en $D(0, \rho')$.
+    Por el teorema del valor medio,
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)|$$
+    En general, consideramos
+    $$F(z) = \frac{f(z)}{\prod_{k=1}^{n(\rho, f)} (z-a_k)}$$
+    Es holomorfa en $D(0, R)$ y no se anula en $\overline{D(0, \rho)}$.
+    Por el caso anterior,
+    \begin{align*}
+         & \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(\frac{|f(\rho e^{i\theta})|}{\prod_{k=1}^{n(\rho, f)} |\rho e^{i\theta} - a_k|}\right)d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(\prod_{k=1}^{n(\rho, f)} |\rho e^{i\theta} - a_k|\right)d\theta = \\
+         & = \log|f(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{1}{|a_k|}\right)
+    \end{align*}
+    Sin embargo, para dar este paso es necesario que las integrales converjan por separado.
+    Sea $a_k = \rho_ke^{i\theta_k}$.
+    \begin{align*}
+         & \frac{1}{2\pi} \int_{-\pi}^\pi \log|\rho e^{i\theta} - \rho_ke^{i\theta_k}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|\rho e^{i\theta}\left(1-\frac{\rho_k}{\rho}e^{i(\theta_k-\theta)}\right)\right|d\theta = \\
+         & = \frac{1}{2\pi} \int_{-\pi}^\pi \log|\rho e^{i\theta}|d\theta + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{\rho_k}{\rho}e^{i(\theta_k-\theta)}\right|d\theta =                                                  \\
+         & = \log(\rho) - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{\rho_k}{\rho}e^{i\varphi}\right|d\varphi = \log(\rho)
+    \end{align*}
+\end{proof}
 
 \begin{definition}
     Se llama función contadora de Nevanlinna a la cantidad
@@ -60,7 +117,22 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
     \begin{enumerate}
         \item $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{k=1}^{n(\rho, f)} \frac{\rho}{|a_k|} = \sum_{k=1}^\infty \log^+\left(\frac{\rho}{|a_k|}\right)$$
         \item $$N(\rho, f) = \int_0^\rho \frac{n(t, f)}{t}dt$$
-              % Demostración
+              \begin{proof}
+                  Sean $f$ y $\rho$.
+                  Por simplicidad, llamamos $n(\rho) = n(\rho, f)$.
+                  Existen $a_1, \dots, a_{n(\rho)}$ ceros de $f$ de modo que
+                  $$|a_1| \leq |a_2| \leq \dots \leq |a_{n(\rho)}|$$
+                  Van a existir $p$ radios $\rho_1 < \dots < \rho_p$ tal que cada cero $a_k$ va a tener asociado un único $\rho_j$ de la forma $|a_k| = \rho_j$.
+                  Entenderemos que $n(\rho_0) = 0$.
+                  \begin{align*}
+                       & N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{j=1}^p \sum_{\{n : |a_n| \leq \rho_j\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{j=1}^p \log\left(\frac{\rho}{\rho_j}\right) \sum_{\{n : |a_n| \leq \rho_j\}} 1 =      \\
+                       & = \sum_{j=1}^p \log\left(\frac{\rho}{\rho_j}\right)\left(n(\rho_j)-n(\rho_{j-1})\right) =                                                                                                                                                                         \\
+                       & = \log\left(\frac{\rho}{\rho_1}\right)(n(\rho_1)-n(\rho_0)) + \log\left(\frac{\rho}{\rho_2}\right)(n(\rho_2)-n(\rho_1)) + \dots + \log\left(\frac{\rho}{\rho_p}\right)(n(\rho_p)-n(\rho_{p-1})) =                                                                 \\
+                       & = n(\rho_1)\left(\log\left(\frac{\rho}{\rho_1}\right) - \log\left(\frac{\rho}{\rho_2}\right)\right) + n(\rho_2)\left(\log\left(\frac{\rho}{\rho_2}\right) - \log\left(\frac{\rho}{\rho_3}\right)\right) + \dots + n(\rho_p)\log\left(\frac{\rho}{\rho_p}\right) = \\
+                       & = n(\rho_1)\log\left(\frac{\rho_2}{\rho_1}\right) + n(\rho_2)\log\left(\frac{\rho_3}{\rho_2}\right) + \dots + n(\rho_{p-1})\log\left(\frac{\rho_p}{\rho_{p-1}}\right) + n(\rho_p)\log\left(\frac{\rho}{\rho_p}\right) =                                           \\
+                       & = \int_{\rho_1}^{\rho_2} \frac{n(t)}{t}dt + \int_{\rho_2}^{\rho^3} \frac{n(t)}{t}dt + \dots + \int_{\rho_{p-1}}^{\rho_p} \frac{n(t)}{dt}dt + \int_{\rho_p}^\rho \frac{n(t)}{t}dt = \int_{\rho_1}^\rho \frac{n(t)}{t}dt = \int_0^\rho \frac{n(t)}{t}dt
+                  \end{align*}
+              \end{proof}
     \end{enumerate}
 \end{remark}
 
@@ -72,7 +144,18 @@ Existen diversas generalizaciones de la fórmula de Jensen.
     $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)$$
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Consideramos
+    $$F(z) = \frac{f(z)}{c_Nz^N}$$
+    $F$ es holomorfa en $D(0, R)$, $F(0) = 1$ y los ceros de $F$ son los mismos que los de $f$.
+
+    Aplicando la fórmula de Jensen,
+    \begin{align*}
+         & \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})d\theta = \log|F(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) \Leftrightarrow                                                             \\
+         & \Leftrightarrow \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \frac{1}{2\pi} \int_{-\pi}^\pi \log|c_N\rho^N|d\theta = \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) \Leftrightarrow \\
+         & \Leftrightarrow \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)
+    \end{align*}
+\end{proof}
 
 Vamos a ver cómo aplicar la fórmula de Jensen para ver que si el crecimiento de $f$ está controlado entonces sus ceros también lo están.
 
