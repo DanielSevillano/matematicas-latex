@@ -199,3 +199,68 @@ Vamos a ver cómo aplicar la fórmula de Jensen para ver que si el crecimiento d
     Sean $s \in (0, R)$ y $z \in D(0, s)$, entonces:
     $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta = \log|f(z)| + \sum_{\{|a_n| \leq s, a_n \text{ cero de } f\}} \log^+\left|\frac{s^2-\bar{a}_nz}{s(z-a_n)}\right|$$
 \end{theorem}
+
+% Demostración
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Sea $|z| < s$.
+              Entonces:
+              $$\frac{|s^2-a_nz|}{|s(z-a_n)|} = \frac{1}{|\psi^{-1}(a_n)} \geq 1 \Rightarrow \log|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})|\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta$$
+        \item Sea $z = \rho e^{i\varphi}$ con $0 < \varphi < s$.
+              Entonces:
+              \begin{align*}
+                   & \max_{0 \leq \varphi \leq 2\pi} \log|f(\rho e^{i\varphi})| \leq \max_{0 \leq \varphi \leq 2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})|\frac{s^2-\rho^2}{|s-\rho e^{i\varphi}e^{-i\theta}|^2}d\theta \leq \\
+                   & \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log(M_\infty(s, f))\frac{s+\rho}{s-\rho}d\theta = \log(M_\infty(s, f))\frac{s+\rho}{s-\rho} \leq \log^+(M_\infty(s, f))\frac{s+\rho}{s-\rho}
+              \end{align*}
+    \end{enumerate}
+\end{remark}
+
+\section{Introducción a los espacios de Hardy}
+\begin{theorem}[Condición de Blaschke]
+    Sea $f$ una función holomorfa en $\mathbb{D}$ con la sucesión de ceros ordenados $\{a_n\}_{n=1}^\infty$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
+        \item $$\sum_{n=1}^\infty (1-|a_n|) < \infty$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Si $f(z) = c_Nz^N + \dots$, por la fórmula de Jensen generalizada
+    $$\log|c_N\rho^N| + \sum_{\{n : |a_n|\leq\rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta$$
+    \begin{itemize}
+        \item[$\Rightarrow$] $$\log|c_N\rho^N| + \sum_{\{n : |a_n|\leq\rho\}} \log\left(\frac{\rho}{|a_n|}\right) \leq \sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
+            Tomando límite $\rho \to 1$ a la izquierda,
+            $$\log|c_N| + \sum_{n=1}^\infty \log\left(\frac{1}{|a_n|}\right) < \infty \Rightarrow \sum_{n=1}^\infty (1-|a_n|) < \infty$$
+        \item[$\Leftarrow$] $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})d\theta \leq \log|c_N| + \sum_{n=1}^\infty \log\left(\frac{1}{|a_n|}\right) < \infty$$
+            Por tanto,
+            $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
+    \end{itemize}
+\end{proof}
+
+\begin{definition}
+    Se define la función característica de Nevanlinna como
+    $$T(\rho, f) = \frac{1}{2\pi} \int_{-\pi}^\pi \log^+|f(\rho e^{i\theta})|d\theta$$
+\end{definition}
+
+\begin{definition}
+    Sea $0 < p < \infty$, se define la media integral de orden $p$ como
+    $$M_p(\rho, f) = \left(\frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})|^pd\theta\right)^{1/p}$$
+\end{definition}
+
+\begin{definition}
+    Se define el módulo máximo de $f$ como
+    $$M_\infty(\rho, f) = \max_{\theta \in [0, 2\pi]} |f(\rho e^{i\theta})|$$
+\end{definition}
+
+\begin{definition}
+    Se define la clase de Nevanlinna como
+    $$\mathcal{N} = \{f \in Hol(\mathbb{D}) : \sup_{0<\rho<1} T(\rho, f) < \infty\}$$
+\end{definition}
+
+\begin{definition}
+    Sea $0 < p \leq \infty$, se define el espacio de Hardy como
+    $$H^p = \{f \in Hol(\mathbb{D}) : \sup_{0<\rho<1} M_p(\rho, f) < \infty\}$$
+\end{definition}
