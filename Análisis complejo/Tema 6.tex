@@ -264,3 +264,121 @@ Vamos a ver cómo aplicar la fórmula de Jensen para ver que si el crecimiento d
     Sea $0 < p \leq \infty$, se define el espacio de Hardy como
     $$H^p = \{f \in Hol(\mathbb{D}) : \sup_{0<\rho<1} M_p(\rho, f) < \infty\}$$
 \end{definition}
+
+\begin{theorem}
+    Si $0 < p < q < \infty$, $H^\infty \subset H^q \subset H^p \subset \mathcal{N}$.
+\end{theorem}
+
+% Demostración
+
+\begin{theorem}
+    Sea $f \in \mathcal{N}$, entonces la sucesión de sus ceros cumple la condición de Blaschke.
+\end{theorem}
+
+% Demostración
+
+\begin{remark}
+    Si $f \in H^p$ para $0 < p \leq \infty$, entonces $f \in \mathcal{N}$.
+    Por tanto, sus ceros cumplen la condición de Blaschke.
+\end{remark}
+
+Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{D}$ una sucesión de puntos que cumplen $\sum (1-|a_n|) < \infty$.
+Queremos ver si existe una función $f \in \mathcal{N}$ tal que $f$ tiene como ceros la sucesión $\{a_n\}_{n=1}^\infty$.
+
+\begin{theorem}[Producto infinito de Blaschke]
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{D}$ tal que $\{a_n\}_{n=1}^\infty$ cumple la condición de Blaschke.
+    Definimos:
+    $$b_n = \begin{cases}
+            z                                                             & \text{si } a_n = 0    \\
+            \dfrac{\overline{a_n}}{|a_n|}\dfrac{a_n-z}{1-\overline{a_n}z} & \text{si } a_n \neq 0
+        \end{cases}$$
+    Consideramos $B(z) = \prod_{n=1}^\infty b_n$.
+    Entonces $B(z)$ converge absoluta y uniformemente en compactos de $\mathbb{D}$ y además $|B(z)| < 1$ para todo $z \in \mathbb{D}$.
+\end{theorem}
+
+% Demostración
+
+\begin{remark}
+    Si $\{a_n\}_{n=1}^\infty$ cumple la condición de Blaschke, entonces existe $f \in H^\infty$ que tiene como ceros $\{a_n\}_{n=1}^\infty$.
+\end{remark}
+
+\section{Orden de crecimiento de una función entera}
+Sean $h, \varphi: \mathbb{C} \to [0, +\infty)$.
+Entendemos por $h(R) = O(\varphi(R))$, con $R \to \infty$, que existen una constante $C$ y un $R_0$ tales que $h(R) \leq C\varphi(R)$ para todo $R \geq R_0$.
+Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ entera.
+\begin{itemize}
+    \item Si $M_\infty(s, f)$ es acotado, entonces $f$ es constante.
+    \item Si $M_\infty(s, f) = O(s^\alpha)$, con $s \to \infty$ y $\alpha > 0$, entonces $f$ es un polinomio.
+\end{itemize}
+
+\begin{definition}
+    Sea $f$ una función entera, definimos el orden de crecimiento de $f$ como
+    $$p(f) = \inf\{\alpha \geq 0 : M_\infty(s, f) = O(e^{s^\alpha})\}$$
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Si no existe $\alpha \geq 0$ tal que $M_\infty(s, f) = C(e^{s^\alpha})$, diremos que $p(f) = \infty$.
+        \item Si $M_\infty(s, f) = O(e^{s^{\alpha_0}})$, entonces $M_\infty(s, f) = O(e^{s^\alpha})$ con $\alpha \geq \alpha_0$.
+        \item Si $f$ es un polinomio, entonces $p(f) = 0$.
+              % Demostración
+        \item Si $a \in \mathbb{C} \setminus \{0\}$, entonces $p(e^{\alpha z^\alpha}) = \alpha$.
+              % Demostración
+        \item $f(z) = e^{e^z}$ tiene orden infinito.
+              $M_\infty(s, f) = e^{e^s}$.
+    \end{enumerate}
+\end{remark}
+
+\begin{proposition}
+    Sea $f$ entera y no constante.
+    Entonces
+    $$p(f) = \limsup_{s \to \infty} \frac{\log(\log(M_\infty(s, f)))}{\log(s)} = \limsup_{s \to \infty} \frac{\log(T(s, f))}{\log(s)}$$
+    donde
+    $$T(s, f) = \frac{1}{2\pi} \int_0^{2\pi} \log^+|f(se^{i\theta})|d\theta$$
+\end{proposition}
+
+% Observaciones y demostración
+
+\section{Propiedades aritméticas}
+\begin{lemma}
+    \hfill
+    \begin{enumerate}
+        \item $x = x^+ - (-x)^+$, $x \in \mathbb{R}$.
+        \item $(x+y)^+ \leq x^+ + y^+$, $x, y \in \mathbb{R}$.
+        \item $\log(a) = \log^+(a) - \log^+\left(\frac{1}{a}\right)$, $a > 0$.
+        \item $\log(a+b) \leq \log(2) + \log^+(a) + \log^+(b)$, $a, b > 0$.
+        \item $\log^+(a+b) \leq \log(2) + \log^+(a) + \log^+(b)$, $a, b > 0$.
+        \item $\log^+(a,b) \leq \log^+(a) + \log^+(b)$, $a, b > 0$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{remark}
+    Veamos un par de observaciones sobre
+    $$p(f) = \limsup_{s \to \infty} \frac{\log(\log(M_\infty(s, f)))}{\log(s)} = \limsup_{s \to \infty} \frac{\log(T(s, f))}{\log(s)}$$
+    \begin{enumerate}
+        \item Si $p(f) < \alpha$, entonces existe $s_\alpha$ tal que si $s \geq s_\alpha$ entonces
+              $$\log(M_\infty(s, f)) \leq s^\alpha \Leftrightarrow M_\infty(s, f) \leq e^{s^\alpha}$$
+              y $T(s, f) \leq s^\alpha$.
+
+        \item Si existen constantes $c, c_1, c_2, \beta > 0$ y $\delta_0 > 0$ tales que
+              $$M_\infty(s, f) \leq c + c_1s^\beta + c_2s^\alpha, \quad \forall s \geq s_0$$
+              entonces $p(f) \leq \alpha$.
+              % Demostración
+
+        \item Si existen constantes $c_1, c_2, c_3, \alpha > 0$ tales que
+              $$T(s, f) \leq c_1 + c_2\log(s) + c_3s^\alpha$$
+              si $s \geq s_0 > 1$, entonces $p(f) \leq \alpha$.
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}[Teorema del álgebra del orden de crecimiento]
+    Sean $f$ y $g$ enteras.
+    Entonces
+    \begin{enumerate}
+        \item $p(cf) = p(f)$, si $c \in \mathbb{C} \setminus \{0\}$.
+        \item $p(f+g) \leq \max\{p(f), p(g)\}$, con igualdad si $p(f) \neq p(g)$.
+        \item $p(fg) \leq \max\{p(f), p(g)\}$, con igualdad si $p(f) \neq p(g)$.
+        \item $p(f) = p(f')$.
+    \end{enumerate}
+\end{theorem}
