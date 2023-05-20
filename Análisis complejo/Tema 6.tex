@@ -115,7 +115,7 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
 \begin{remark}
     \hfill
     \begin{enumerate}
-        \item $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{k=1}^{n(\rho, f)} \frac{\rho}{|a_k|} = \sum_{k=1}^\infty \log^+\left(\frac{\rho}{|a_k|}\right)$$
+        \item $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) = \sum_{k=1}^\infty \log^+\left(\frac{\rho}{|a_k|}\right)$$
         \item $$N(\rho, f) = \int_0^\rho \frac{n(t, f)}{t}dt$$
               \begin{proof}
                   Sean $f$ y $\rho$.
@@ -323,7 +323,7 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
         \item Si $M_\infty(s, f) = O(e^{s^{\alpha_0}})$, entonces $M_\infty(s, f) = O(e^{s^\alpha})$ con $\alpha \geq \alpha_0$.
         \item Si $f$ es un polinomio, entonces $\rho(f) = 0$.
               % Demostración
-        \item Si $a \in \mathbb{C} \setminus \{0\}$, entonces $p(e^{\alpha z^\alpha}) = \alpha$.
+        \item Si $a \in \mathbb{C} \setminus \{0\}$, entonces $\rho(e^{az^\alpha}) = \alpha$.
               % Demostración
         \item $f(z) = e^{e^z}$ tiene orden infinito.
               $M_\infty(s, f) = e^{e^s}$.
@@ -377,7 +377,7 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
     Sean $f$ y $g$ enteras.
     Entonces
     \begin{enumerate}
-        \item $p(cf) = \rho(f)$, si $c \in \mathbb{C} \setminus \{0\}$.
+        \item $\rho(cf) = \rho(f)$, si $c \in \mathbb{C} \setminus \{0\}$.
         \item $\rho(f+g) \leq \max\{\rho(f), \rho(g)\}$, con igualdad si $\rho(f) \neq \rho(g)$.
         \item $\rho(fg) \leq \max\{\rho(f), \rho(g)\}$, con igualdad si $\rho(f) \neq \rho(g)$.
         \item $\rho(f) = \rho(f')$.
@@ -433,7 +433,18 @@ El género de $\{a_n\}_{n=1}^\infty$ es el menor $p \in \mathbb{N} \cup \{0\}$ d
 $$\sum_{n=1}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
 Teníamos que $p \leq \sigma \leq p+1$.
 
-% Ejemplos
+\begin{example}
+    \hfill
+    \begin{enumerate}
+        \item Si en cada circunferencia de radio $n^2$ ponemos un cero para todo $n \in \mathbb{N}$,
+              $$\sum_{n=1}^\infty \frac{1}{|a_n|^s} = \sum_{n=1}^\infty \frac{1}{n^{2s}} < \infty, \quad \forall s > \frac{1}{2}$$
+              Por tanto, $\sigma = \frac{1}{2}$.
+
+        \item Si en cada circunferencia de radio $n^2$ ponemos dos ceros para todo $n \in \mathbb{N}$,
+              $$\sum_{n=1}^\infty \frac{1}{|a_n|^s} = \sum_{n=1}^\infty \frac{1}{n^{s}} < \infty, \quad \forall s > 1$$
+              Por tanto, $\sigma = 1$.
+    \end{enumerate}
+\end{example}
 
 \begin{lemma}
     Sea $\{a_n\} \subset \mathbb{C} \setminus \{0\}$, con $|a_n| \to \infty$.
@@ -462,7 +473,13 @@ Queremos ver si existen funciones tales que $\sigma(f) = \rho(f)$.
     tiene orden de convergencia $\rho(F) = \rho(\{a_n\})$.
 \end{theorem}
 
-% Ejemplo
+\begin{example}
+    Sea $\alpha > 0$ y sea $\{a_n\}_{n=1}^\infty$ con $a_n = n^\alpha$ para $n \in \mathbb{N}$.
+    Sabemos que $\sigma(\{a_n\}_{n=1}^\infty) = \frac{1}{\alpha}$.
+    Entonces su género es $p = E(1/\alpha)$ y la función
+    $$F(z) = \prod_{n=1}^\infty E_p\left(\frac{z}{n^\alpha}\right)$$
+    tiene orden de crecimiento $\rho(F) = \frac{1}{\alpha}$.
+\end{example}
 
 \section{Factorización de Hadamard}
 Sea $f$ una función entera no constante con $\{a_n\}_{n=1}^\infty$ su sucesión de ceros no nulos, tal que $\sigma(\{a_n\}) < \infty$ y con género $p$.
@@ -480,9 +497,9 @@ Además, $g$ es única salvo constantes $2\pi i$.
 \begin{theorem}[Factorización de Hadamard]
     Sea $f$ una función entera no constante con ceros no nulos $\{a_n\}_{n=1}^\infty$, $\sigma = \sigma(\{a_n\}) < \infty$ y género $p$.
     Además, sea $N$ la multiplicidad del origen como cero de $f$.
-    Entonces existe un polinomio $g$ con $grad(p) \leq \rho(f)$, satisfaciendo que
+    Entonces existe un polinomio $g$ con $\deg(p) \leq \rho(f)$, satisfaciendo que
     $$f(z) = e^{g(z)}z^N \prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
-    $g$ es única salvo constantes $2\pi i$ y $\rho(f) = \max\{grad(p), \sigma\}$.
+    $g$ es única salvo constantes $2\pi i$ y $\rho(f) = \max\{\deg(p), \sigma\}$.
 \end{theorem}
 
 % Demostración
