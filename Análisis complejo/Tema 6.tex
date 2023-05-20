@@ -319,7 +319,7 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
 \begin{remark}
     \hfill
     \begin{enumerate}
-        \item Si no existe $\alpha \geq 0$ tal que $M_\infty(s, f) = C(e^{s^\alpha})$, diremos que $\rho(f) = \infty$.
+        \item Si no existe $\alpha \geq 0$ tal que $M_\infty(s, f) = O(e^{s^\alpha})$, diremos que $\rho(f) = \infty$.
         \item Si $M_\infty(s, f) = O(e^{s^{\alpha_0}})$, entonces $M_\infty(s, f) = O(e^{s^\alpha})$ con $\alpha \geq \alpha_0$.
         \item Si $f$ es un polinomio, entonces $\rho(f) = 0$.
               % Demostración
@@ -424,7 +424,13 @@ $$\frac{\log(n)}{\log|c_n|^{-1/n}} = \rho \Rightarrow \log(n) = \log|c_n|^{-\rho
     Entonces $F$ es entera y su orden de crecimiento es $\rho$.
 \end{corollary}
 
-% Demostración
+\begin{proof}
+    En primer lugar calculamos $\frac{1}{R}$, con $R$ su radio de convergencia.
+    $$\limsup_{n \to \infty} |n^{-n/\rho}|^{1/n} = \limsup_{n \to \infty} \frac{1}{n^{1/\rho}} = 0$$
+    Por tanto, $F$ es entera.
+    Por otro lado,
+    $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{\log(n)}{\frac{1}{\rho}\log(n)} = \rho$$
+\end{proof}
 
 \section{Relación entre el orden de crecimiento y el exponente de convergencia de los ceros de la función}
 Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, se definía el exponente de convergencia como
@@ -492,7 +498,13 @@ Además, $g$ es única salvo constantes $2\pi i$.
     $\rho(f) = \max\{\rho(e^g), \sigma\}$.
 \end{proposition}
 
-% Demostración
+\begin{proof}
+    Por el teorema del álgebra del orden de crecimiento,
+    $$\rho(f) \leq \max\left\{\rho(e^g), \rho\left(\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)\right)\right\} = \max\{\rho(e^g), \sigma\}$$
+    Además, se tiene la igualdad si $\sigma \neq \rho(e^g)$.
+    Si $\sigma = \rho(e^g)$, entonces por un teorema previo
+    $$\sigma \leq \rho(f) \leq \sigma \Rightarrow \rho(f) = \sigma = \max\{\rho(e^g), \sigma\}$$
+\end{proof}
 
 \begin{theorem}[Factorización de Hadamard]
     Sea $f$ una función entera no constante con ceros no nulos $\{a_n\}_{n=1}^\infty$, $\sigma = \sigma(\{a_n\}) < \infty$ y género $p$.
