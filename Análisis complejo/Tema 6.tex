@@ -1,517 +1,706 @@
-\chapter{Funciones enteras. Crecimiento y distribución de los ceros}
-\begin{theorem}[Teorema de Liouville]
-    Si $f$ es una función entera y acotada, entonces $f$ es constante.
+\chapter{El teorema de factorización de Weierstrass}
+Si $P(z)$ es un polinomio con ceros $z_1, \dots, z_n$, entonces podemos factorizar $P(z)$ como
+$$P(z) = c\prod_{k=1}^n (z-z_k)$$
+El objetivo es factorizar una función holomorfa usando sus ceros.
+
+\section{Funciones holomorfas sin ceros o con finitos ceros}
+\begin{theorem}
+    Sea $D$ un dominio simplemente conexo y sea $f$ una función holomorfa en $D$ sin ceros.
+    Entonces existe $g$ holomorfa en $D$ tal que $f = e^g$.
 \end{theorem}
 
-\begin{theorem}[Generalización del teorema de Liouville]
-    Sea $f$ entera tal que existen $\alpha > 0$, $c > 0$ y $R_0 > 0$ con $|f(z)| \leq c|z|^\alpha$ para todo $|z| \geq R_0$.
-    Entonces $f$ es un polinomio de grado $E(\alpha)$ y por tanto tiene $E(\alpha)$ ceros.
+\begin{theorem}
+    Sea $D$ un dominio simplemente conexo y sea $f$ una función holomorfa en $D$ con un número finito de ceros $z_1, \dots, z_n$.
+    Entonces existe $g$ holomorfa en $D$ tal que
+    $$f(z) = e^{g(z)} \prod_{n=1}^N (z-z_n)$$
 \end{theorem}
 
 \begin{proof}
-    Sea $f(z) = \sum_{n=0}^\infty a_nz^n$.
-    Sea $R > 0$,
-    $$a_n = \frac{f^{(n)}(0)}{n!} = \frac{1}{2\pi i} \int_{|z|=R} \frac{f(z)}{z^{n+1}}dz \leq \max_{|z|=R} |f(z)|\frac{1}{R^n} \leq c\frac{|z|^\alpha}{R} = cR^{\alpha-n} \xrightarrow[R \to \infty, n > E(\alpha)]{} 0$$
-    Por tanto, $a_n = 0$ para todo $n > E(\alpha)$.
+    Sea
+    $$h(z) = \frac{f(z)}{(z-z_1)\dots(z-z_N)}$$
+    Solucionando las singularidades evitables, $h$ es holomorfa en $D$ y sin ceros.
+    Entonces por el teorema anterior existe $g$ holomorfa en $D$ tal que
+    $$e^{g(z)} = h(z) = \frac{f(z)}{(z-z_1)\dots(z-z_N)} \Rightarrow f(z) = e^{g(z)} \prod_{n=1}^N (z-z_n)$$
 \end{proof}
 
-\begin{remark}
+Desde otro punto de vista, sea $D$ un dominio simplemente conexo y $\{z_\alpha\}_{\alpha \in \mathcal{F}} \subset D$, podemos plantearnos si existe $f$ holomorfa en $D$ tal que $f$ tiene ceros $\{z_\alpha\}_{\alpha \in \mathcal{F}}$.
+
+Si $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ tiene un punto de acumulación en $D$ entonces, por el teorema de identidad de Weierstrass, $f \equiv 0$.
+Nos interesa el caso en el que $\{z_n\}_{n=1}^\infty$ es numerable y sin puntos de acumulación en $D$.
+
+Sea $D = \mathbb{C}$ y sea $\{z_n\}_{n=1}^\infty$ numerable y sin puntos de acumulación.
+Habría que definir $\prod_{n=1}^\infty (z-z_n)$, por ejemplo de la forma
+$$\prod_{n=1}^\infty (z-z_n) = \lim_{N \to \infty} \prod_{n=1}^N (z-z_n)$$
+Como $\{z_n\}_{n=1}^\infty$ es infinito, entonces necesariamente $|z_n| \to \infty$.
+En caso contrario, $\{z_n\}$ tendría un punto de acumulación en $\mathbb{C}$.
+Si fijamos $z \in \mathbb{C}$, existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ entonces $|z-z_n| > 2$, así que
+$$\lim_{N \to \infty} \prod_{n=n_0}^\infty |z-z_n| = \infty$$
+
+\section{Productos infinitos}
+Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
+Queremos darle sentido a $\prod_{n=1}^\infty a_n$.
+Por ejemplo, si $P_N = \prod_{n=1}^N a_n$, podemos definir
+$$\prod_{n=1}^\infty a_n = \lim_{N \to \infty} P_N = \lim_{N \to \infty} \prod_{n=1}^N a_n$$
+Sin embargo, esta definición plantea algunos problemas.
+\begin{enumerate}
+    \item Si tenemos una multiplicación de números complejos cuyo resultado es 0, queremos que uno de ellos sea cero.
+          Sin embargo, si $a_n = \frac{1}{n}$, entonces $P_N = \prod_{n=1}^N \frac{1}{n} = \frac{1}{N!}$ y $\lim\limits_{n \to \infty} P_N = 0$, con $a_n \neq 0$ para todo $n \in \mathbb{N}$.
+
+    \item Queremos que la convergencia depende de la cola.
+          Sin embargo, con esta definición depende de un número finito de términos.
+
+          Sea $a_1 = a$ y $a_n = n$ para $n \geq 2$, entonces $\lim\limits_{N \to \infty} P_N = 0$ porque $P_N = 0$ para todo $N \in \mathbb{N}$.
+          Sin embargo, si $a_n = n+1$ para todo $n \geq 2$, entonces $\lim\limits_{N \to \infty} P_N = \infty$.
+\end{enumerate}
+
+\begin{definition}
+    Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
+    Diremos que el producto infinito asociado a $\{a_n\}_{n=1}^\infty$, que denotamos por $\prod_{n=1}^\infty a_n$, converge si:
+    \begin{enumerate}
+        \item Existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$.
+        \item Existe $\lim\limits_{N \to \infty} \prod_{n=1}^N a_n$ y además es distinto de cero.
+    \end{enumerate}
+    Si converge, entonces $\prod_{n=1}^\infty a_n = \lim\limits_{N \to \infty} \prod_{n=1}^N a_n$.
+\end{definition}
+
+\begin{example}
     \hfill
     \begin{enumerate}
-        \item Parece que si el crecimiento está controlado, el número de ceros también lo está.
-        \item Al revés esto no ocurre.
-              Por ejemplo, con la exponencial.
+        \item Sea $a_n = \frac{1}{n}$, $n \in \mathbb{N}$.
+              Observamos que $a_n \neq 0$ para todo $n \in \mathbb{N}$.
+              Sin embargo,
+              $$\lim_{N \to \infty} \prod_{n=1}^N a_n = \lim_{N \to \infty} \frac{1}{N!} = 0$$
+              Por tanto, $\prod_{n=1}^\infty a_n$ no converge.
+
+        \item Sea $a_1 = 0$ y $a_n = 1 - \frac{1}{n}$, $n \geq 2$.
+              Se verifica que $a_n \neq 0$ para $n \geq 2$.
+              Ahora bien,
+              $$\prod_{n=2}^N \left(1-\frac{1}{n}\right) = \prod_{n=2}^N \frac{n-1}{n} = \frac{1}{2}\frac{2}{3}\dots\frac{N-1}{N} = \frac{1}{N} \xrightarrow[N \to \infty]{} 0$$
+              Por tanto, $\prod_{n=1}^\infty a_n$ no converge.
+
+        \item Sea $a_1 = 0$ y $a_n = 1 - \frac{1}{n^2}$, $n \geq 2$.
+              Es claro que $a_n \neq 0$ para $n \geq 2$.
+              Además,
+              \begin{align*}
+                   & \prod_{n=2}^N \left(1-\frac{1}{n^2}\right) = \prod_{n=2}^N \frac{n^2-1}{n^2} = \prod_{n=2}^N \frac{(n-1)(n+1)}{n^2} = \left(\prod_{n=2}^N \frac{n-1}{n}\right)\left(\prod_{n=2}^N \frac{n+1}{n}\right) = \\
+                   & = \frac{1}{N}\frac{N+1}{2} \to \frac{1}{2}
+              \end{align*}
+              Por tanto, $\prod_{n=1}^\infty a_n$ converge.
     \end{enumerate}
-\end{remark}
+\end{example}
 
-\section{La fórmula de Jensen}
-La fórmula de Jensen permite controlar el número de ceros de una función holomorfa sabiendo restricciones sobre su crecimiento.
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
+    Entonces $\prod_{n=1}^\infty a_n$ converge si ocurre lo siguiente.
+    \begin{enumerate}
+        \item El conjunto $\{a_n : a_n = 0\}$ es finito.
+        \item Si existe $M \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq M$, entonces existe $\lim\limits_{N \to \infty} \prod_{n=M}^N a_n$ y es distinto de 0.
+    \end{enumerate}
+\end{theorem}
 
-\begin{lemma}
-    Sea $s > 0$.
-    Entonces
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|1+se^{i\theta}|d\theta = \log^+(s)$$
-    donde
-    $$\log^+(s) = \begin{cases}
-            \log(s) & \text{si } s \geq 1  \\
-            0       & \text{si } 0 < s < 1
-        \end{cases}$$
-\end{lemma}
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty$ tal que $\prod_{n=1}^\infty a_n$ converge.
+    Entonces:
+    \begin{enumerate}
+        \item $\lim\limits_{n \to \infty} a_n = 1$.
+        \item $\prod_{n=1}^\infty a_n = 0$ si y solo si existe $n_0 \in \mathbb{N}$ tal que $a_{n_0} = 0$.
+        \item Sea $N \in \mathbb{N}$.
+              Entonces $\prod_{n=1}^\infty a_{n+N}$ converge y además
+              $$\prod_{n=1}^\infty a_n = \left(\prod_{n=1}^N a_n\right) \left(\prod_{n=1}^\infty a_{n+N}\right)$$
+        \item Sea $\{b_n\}_{n=1}^\infty$ tal que $\prod_{n=1}^\infty b_n$ converge.
+              Entonces $\prod_{n=1}^\infty a_nb_n$ converge y además
+              $$\prod_{n=1}^\infty a_nb_n = \left(\prod_{n=1}^\infty a_n\right) \left(\prod_{n=1}^\infty b_n\right)$$
+    \end{enumerate}
+\end{theorem}
 
 \begin{proof}
-    Sabemos que $\Log(1-z)$ es holomorfa en $\mathbb{D}$.
+    \hfill
+    \begin{enumerate}
+        \item Como $\prod_{n=1}^\infty a_n$ converge, existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\lim\limits_{N \to \infty} \prod_{n=n_0}^N a_n = q$, con $q > 0$.
+              Si $M > n_0$,
+              $$a_M = \frac{\prod_{n=n_0}^M a_n}{\prod_{n=n_0}^{M-1} a_n} \xrightarrow[M \to \infty]{} \frac{q}{q} = 1$$
+
+        \item Supongamos que existe $n_0 \in \mathbb{N}$ tal que $a_{n_0} = 0$.
+              Como $\prod_{n=1}^\infty a_n$ converge, entonces
+              $$\prod_{n=1}^\infty a_n = \lim_{N \to \infty} \prod_{n=1}^N a_n = \lim_{N \to \infty} P_N \to 0$$
+              Si $N > n_0$, entonces $P_N = a_1\dots a_{n_0-1}0a_{n_0+1}\dots a_N = 0$.
+
+              Recíprocamente, si $a_n \neq 0$ para todo $n \in \mathbb{N}$, entonces $\prod_{n=1}^\infty a_n \neq 0$ y $\prod_{n=1}^\infty a_n$ converge.
+
+        \item Tomemos $N \in \mathbb{N}$.
+              Si $\prod_{n=1}^\infty a_n$ converge, entonces existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\lim\limits_{M \to \infty} \prod_{n=n_0}^M a_n = q$ con $q \neq 0$.
+              Entonces $a_{n+N} \neq 0$ para todo $n \geq n_0$ y además
+              $$\prod_{n=n_0}^M a_{n+N} = \prod_{n=n_0+N}^{M+N} a_n = \frac{\prod_{n=n_0}^{M+N} a_n}{a_{n_0}\dots a_{n_0+N-1}} \to \frac{q}{a_{n_0}\dots a_{n_0+N-1}} \neq 0$$
+              Por tanto, $\prod_{n=1}^\infty a_{n+N}$ converge.
+
+        \item $\prod_{n=1}^\infty a_n$ y $\prod_{n=1}^\infty b_n$ convergen.
+              Entonces:
+              \begin{itemize}
+                  \item Existe $n_a \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_a$ y $\lim\limits_{N \to \infty} \prod_{n=n_a}^N a_n = l_a \neq 0$.
+                  \item Existe $n_b \in \mathbb{N}$ tal que $b_n \neq 0$ para todo $n \geq n_b$ y $\lim\limits_{N \to \infty} \prod_{n=n_b}^N b_n = l_b \neq 0$.
+              \end{itemize}
+              Sea $n_0 = \max\{n_a, n_b\}$.
+              Entonces $a_nb_n \neq 0$ para todo $n \geq n_0$.
+              $$\lim_{N \to \infty} \prod_{n=n_0}^N a_nb_n \to c \neq 0$$
+              Como los productos convergen,
+              $$\prod_{n=1}^\infty a_nb_n = \lim_{N \to \infty} \left(\prod_{n=1}^N a_n\right) \left(\prod_{n=1}^N b_n\right) = \left(\lim_{N \to \infty} \prod_{n=1}^N a_n\right) \left(\lim_{N \to \infty} \prod_{n=1}^N b_n\right) = \left(\prod_{n=1}^\infty a_n\right) \left(\prod_{n=1}^\infty b_n\right)$$
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\prod_{n=1}^\infty a_n$ converge.
+        \item Existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\sum_{n=n_0}^\infty \Log(a_n)$ converge.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \hfill
     \begin{itemize}
-        \item Si $s < 1$, entonces por el teorema del valor medio
-              $$\frac{1}{2\pi} \int_{-\pi}^\pi \Log|1-se^{i\theta}|d\theta = 0$$
+        \item[$\Rightarrow$] Como $\prod_{n=1}^\infty a_n$ converge, existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y además $\prod_{n=n_0}^N \to q$ con $q \neq 0$.
+            Sea $S_N = \sum_{n=n_0}^N \Log(a_n)$.
+            Entonces:
+            $$e^{S_N} = e^{\sum_{n=1}^N \Log(a_n)} = \prod_{n=n_0}^N a_n = q_N \Rightarrow S_N \in \log(q_n) \Rightarrow S_N = \Log(a_n) + 2\pi k_Ni, \quad k_N \in \mathbb{Z}$$
+            Distinguimos dos casos:
+            \begin{enumerate}
+                \item Supongamos que $q \notin (-\infty, 0)$.
+                      Como $q_N \to q$, entonces existe $N_0 \in \mathbb{N}$ tal que $q_N \notin (-\infty, 0]$ para todo $N \geq N_0$.
+                      Así que $\lim\limits_{N \to \infty} \Log(q_N) = \Log(q)$.
+                      $$\begin{cases}
+                              S_{N+1}-S_N = \Log(q_{N+1})-\Log(q_N) + 2\pi(k_{N+1}-k_N)i \\
+                              S_{N+1}-S_N = \Log(a_{N+1}) \xrightarrow[N \to \infty]{} 0
+                          \end{cases} \Rightarrow \lim_{N \to \infty} (k_{N+1}-k_N) = 0$$
+                      Como $k \in \mathbb{Z}$, entonces existe $j \in \mathbb{N}$ tal que $k_N = k$ para todo $N \geq j$.
 
-        \item Si $s > 1$,
-              \begin{align*}
-                   & \frac{1}{2\pi} \int_{-\pi}^\pi \log|1-se^{i\theta}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|se^{i\theta}\left(\frac{1}{s}e^{-i\theta}-1\right)\right|d\theta =                                                                   \\
-                   & = \frac{1}{2\pi} \int_{-\pi}^\pi \log(s)d\theta + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{1}{s}e^{-i\theta}\right|d\theta = \log(s) - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{1}{s}e^{i\varphi}\right|d\varphi = \log(s)
-              \end{align*}
+                \item Supongamos que $q \in (-\infty, 0)$.
+                      Definimos una nueva sucesión $\tilde{a}_{n_0} = -a_{n_0}$ y $\tilde{a}_n = a_n$ para $n > n_0$.
+                      $$\tilde{q}_N = \prod_{n=n_0}^N \tilde{a}_n = -\prod_{n=n_0}^N a_n \to -q > 0$$
+                      Por el caso anterior. $\tilde{S}_N = \sum_{n=n_0}^N \Log(\tilde{a}_n)$ converge.
+                      Equivalentemente, $S_N$ converge.
+            \end{enumerate}
 
-        \item Sea $s = 1$.
-              $$|1-e^{i\theta}|^2 = (1-e^{i\theta})(1-e^{-i\theta}) = 2-2\cos(\theta)$$
-              Sabemos que
-              $$\cos(\theta) = \cos\left(2\frac{\theta}{2}\right) = \cos^2\left(\frac{\theta}{2}\right) - \sin^2\left(\frac{\theta}{2}\right) = 1-2\sin^2\left(\frac{\theta}{2}\right)$$
-              Luego $|1-e^{i\theta}|^2 = 4\sin^2\left(\frac{\theta}{2}\right)$.
-              \begin{align*}
-                   & \frac{1}{2\pi} \int_{-\pi}^\pi \log|1-e^{i\theta}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(2\left|\sin\left(\frac{\theta}{2}\right)\right|\right)d\theta = \log(2) + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|\sin\left(\frac{\theta}{2}\right)\right|d\theta = \\
-                   & = \log(2) + \frac{1}{\pi} \int_0^{\pi} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta = \log(2) + \frac{2}{\pi} \int_{0}^{\pi/2} \log(\sin(\varphi))d\varphi
-              \end{align*}
-              Ahora bien,
-              \begin{align*}
-                   & \int_0^{\pi/2} \log(\sin(\theta))d\theta = \int_0^{\pi/2} \log\left(2\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right)\right)d\theta =                                        \\
-                   & = \frac{\pi}{2}\log(2) + \int_0^{\pi/2} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta + \int_0^{\pi/2} \log\left(\cos\left(\frac{\theta}{2}\right)\right)d\theta =                 \\
-                   & = \frac{\pi}{2}\log(2) + \int_0^{\pi/2} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta + \int_0^{\pi/2} \log\left(\sin\left(\frac{\pi}{2} - \frac{\theta}{2}\right)\right)d\theta = \\
-                   & = \frac{\pi}{2}\log(2) + 2\int_0^{\pi/2} \log(\sin(\varphi))d\varphi - 2\int_{\pi/2}^{\pi/4} \log(\sin(\varphi))d\varphi = \frac{\pi}{2}\log(2) + 2\int_0^{\pi/2} \log(\sin(\varphi))d\varphi
-              \end{align*}
-              Así que
-              $$\int_0^{\pi/2} \log(\sin(\theta))d\theta = -\frac{\pi}{2}\log(2)$$
-              Por tanto,
-              $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|1-e^{i\theta}|d\theta = 0$$
+        \item[$\Leftarrow$] Falta ver que $\prod_{n=n_0}^N a_n \to q \neq 0$.
+            Sabemos que $S_N = \sum_{n=n_0}^N \Log(a_n) \to p$ y $q_N = e^{S_N}$.
+            Tomando límites,
+            $$\lim_{N \to \infty} q_N = \lim_{N \to \infty} e^{S_N} = e^{\lim_{N \to \infty} S_N} = e^p = q \neq 0$$
     \end{itemize}
 \end{proof}
 
-\begin{theorem}[Fórmula de Jensen]
-    Sea $f$ una función holomorfa en $D(0, R)$ con $f(0) \neq 0$ y tal que tiene ceros $\{a_n\}$ de modo que
-    $$|a_1| \leq |a_2| \leq |a_3| \leq \dots$$
-    Sea $\rho \in (0, R)$ y $n(\rho, f) = \#\{a_n : |a_n| \leq \rho\}$.
-    Entonces
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)$$
+\begin{corollary}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\prod_{n=1}^\infty a_n$ converge.
+        \item $\sum_{n=1}^\infty \Log(a_n)$ converge.
+    \end{enumerate}
+    Además,
+    $$\prod_{n=1}^\infty a_n = e^{\sum_{n=1}^\infty \Log(a_n)}$$
+\end{corollary}
+
+Queremos encontrar una noción de convergencia absoluta.
+Para las series sabemos lo siguiente.
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty a_n$ converge absolutamente.
+        \item Dada $\sigma: \mathbb{N} \to \mathbb{N}$ permutación, $\sum_{n=1}^\infty a_{\sigma(n)}$ converge y es igual a $\sum_{n=1}^\infty a_n$.
+        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
+              Entonces $\sum_{k \in A_n} a_k$ converge y además
+              $$\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty \left(\sum_{k \in A_n} a_n\right)$$
+    \end{enumerate}
 \end{theorem}
 
+Como consecuencia, si $\sum_{n=1}^\infty a_n$ converge absolutamente, en particular converge.
+
+Uniendo los teoremas anteriores, obtenemos el siguiente resultado.
+
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty \Log(a_n)$ converge absolutamente.
+        \item Dada $\sigma: \mathbb{N} \to \mathbb{N}$ permutación, $\prod_{n=1}^\infty a_{\sigma(n)}$ converge y su valor es
+              $$\prod_{n=1}^\infty a_n = e^{\sum_{n=1}^\infty \Log(a_n)}$$
+        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
+              Entonces $\prod_{k \in A_n} a_k$ converge y además
+              $$\prod_{n=1}^\infty a_n = \prod_{n=1}^\infty \left(\prod_{k \in A_n} a_n\right)$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty \Log(a_n)$ converge absolutamente.
+        \item $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
+    \end{enumerate}
+\end{lemma}
+
 \begin{proof}
-    Si $\rho = 0$,
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(0)|d\theta = \log|f(0)|$$
-    Sea ahora $\rho \in (0, R)$.
-    Supongamos que $f$ no tiene ceros en $\overline{D(0, \rho)}$.
-    Entonces existe $\rho'$ con $0 < \rho < \rho' < R$ tal que $f$ es holomorfa en $D(0, \rho')$ y $f$ no tiene ceros en $D(0, \rho')$.
-    Así, como $\Log(f(z))$ es holomorfa en $D(0, \rho')$, tenemos que $\log|f(z)|$ es armónica en $D(0, \rho')$.
-    Por el teorema del valor medio,
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)|$$
-    En general, consideramos
-    $$F(z) = \frac{f(z)}{\prod_{k=1}^{n(\rho, f)} (z-a_k)}$$
-    Es holomorfa en $D(0, R)$ y no se anula en $\overline{D(0, \rho)}$.
-    Por el caso anterior,
-    \begin{align*}
-         & \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(\frac{|f(\rho e^{i\theta})|}{\prod_{k=1}^{n(\rho, f)} |\rho e^{i\theta} - a_k|}\right)d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(\prod_{k=1}^{n(\rho, f)} |\rho e^{i\theta} - a_k|\right)d\theta = \\
-         & = \log|f(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{1}{|a_k|}\right)
-    \end{align*}
-    Sin embargo, para dar este paso es necesario que las integrales converjan por separado.
-    Sea $a_k = \rho_ke^{i\theta_k}$.
-    \begin{align*}
-         & \frac{1}{2\pi} \int_{-\pi}^\pi \log|\rho e^{i\theta} - \rho_ke^{i\theta_k}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|\rho e^{i\theta}\left(1-\frac{\rho_k}{\rho}e^{i(\theta_k-\theta)}\right)\right|d\theta = \\
-         & = \frac{1}{2\pi} \int_{-\pi}^\pi \log|\rho e^{i\theta}|d\theta + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{\rho_k}{\rho}e^{i(\theta_k-\theta)}\right|d\theta =                                                  \\
-         & = \log(\rho) - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{\rho_k}{\rho}e^{i\varphi}\right|d\varphi = \log(\rho)
-    \end{align*}
+    Empecemos por $\frac{1}{1-z} = \sum_{n=0}^\infty z^n$, entonces
+    $$\Log(1-z) = -\sum_{n=0}^\infty \frac{z^{n+1}}{n+1}$$
+    Además,
+    $$\Log(1+z) = \sum_{n=0}^\infty \frac{(-1)^nz^{n+1}}{n+1}$$
+    Queremos analizar
+    $$\left|\frac{\Log(1+z)}{z} - 1\right| = \left|\sum_{n=0}^\infty \frac{(-1)^nz^{n+1}}{n+1} - 1\right| = \left|\sum_{n=1}^\infty \frac{(-1)^nz^n}{n+1}\right| \leq \frac{1}{2}\sum_{n=1}^\infty |z|^n = \frac{1}{2}\frac{|z|}{1-|z|}$$
+    Si $|z| < \frac{1}{2}$, entonces
+    $$\left|\frac{\Log(1+z)}{z} - 1\right| = \frac{1}{2}\frac{|z|}{1-|z|} \leq \frac{1}{2}$$
+    Así que
+    $$\left|\left|\frac{\Log(1+z)}{z}\right| - 1\right| \leq \left|\frac{\Log(1+z)}{z} - 1\right| \leq \frac{1}{2} \Rightarrow \frac{1}{2} \leq \left|\frac{\Log(1+z)}{z}\right| \leq \frac{3}{2}$$
+    Por último, sea $z = w-1$, entonces si $|w-1| = |z| \leq \frac{1}{2}$,
+    $$\frac{1}{2} \leq \left|\frac{\Log(w)}{1-w}\right| \leq \frac{3}{2}$$
+    Basta ver que existe $n_0 \in \mathbb{N}$ tal que $|1-a_n| < \frac{1}{2}$.
+    \begin{itemize}
+        \item[$\Leftarrow$] Como $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente, $a_n \to 1$.
+            Por tanto, existe $n_0 \in \mathbb{N}$ tal que $|1-a_n| \leq \frac{1}{2}$ para todo $n \geq n_0$.
+        \item[$\Rightarrow$] Análogo.
+    \end{itemize}
 \end{proof}
 
-\begin{definition}
-    Se llama función contadora de Nevanlinna a la cantidad
-    $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right)$$
+\begin{theorem}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
+        \item Existe $n_0 \in \mathbb{N}$ tal que para todo $n \geq n_0$ se tiene que $|1-a_n| \leq \frac{1}{2}$ y $\sum_{n=n_0}^\infty \Log(a_n)$ converge uniformemente.
+        \item Para cada permutación $\sigma: \mathbb{N} \to \mathbb{N}$ se tiene que $\prod_{n=1}^\infty a_{\sigma(n)}$ converge y además
+              $$\prod_{n=1}^\infty a_{\sigma(n)} = \prod_{n=1}^\infty a_n$$
+        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
+              Entonces $\prod_{k \in A_n} a_k$ converge y además
+              $$\prod_{n=1}^\infty a_n = \prod_{n=1}^\infty \left(\prod_{k \in A_n} a_n\right)$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}[Convergencia absoluta]
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, su producto infinito asociado converge absolutamente si $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
 \end{definition}
 
 \begin{remark}
     \hfill
     \begin{enumerate}
-        \item $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) = \sum_{k=1}^\infty \log^+\left(\frac{\rho}{|a_k|}\right)$$
-        \item $$N(\rho, f) = \int_0^\rho \frac{n(t, f)}{t}dt$$
+        \item Si $\prod_{n=1}^\infty a_n$ converge absolutamente, entonces converge.
+        \item Si $\prod_{n=1}^\infty a_n$ converge absolutamente, entonces $\prod_{n=1}^\infty \left(1 + |1-a_n|\right)$ converge absolutamente.
               \begin{proof}
-                  Sean $f$ y $\rho$.
-                  Por simplicidad, llamamos $n(\rho) = n(\rho, f)$.
-                  Existen $a_1, \dots, a_{n(\rho)}$ ceros de $f$ de modo que
-                  $$|a_1| \leq |a_2| \leq \dots \leq |a_{n(\rho)}|$$
-                  Van a existir $p$ radios $\rho_1 < \dots < \rho_p$ tal que cada cero $a_k$ va a tener asociado un único $\rho_j$ de la forma $|a_k| = \rho_j$.
-                  Entenderemos que $n(\rho_0) = 0$.
-                  \begin{align*}
-                       & N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{j=1}^p \sum_{\{n : |a_n| \leq \rho_j\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{j=1}^p \log\left(\frac{\rho}{\rho_j}\right) \sum_{\{n : |a_n| \leq \rho_j\}} 1 =      \\
-                       & = \sum_{j=1}^p \log\left(\frac{\rho}{\rho_j}\right)\left(n(\rho_j)-n(\rho_{j-1})\right) =                                                                                                                                                                         \\
-                       & = \log\left(\frac{\rho}{\rho_1}\right)(n(\rho_1)-n(\rho_0)) + \log\left(\frac{\rho}{\rho_2}\right)(n(\rho_2)-n(\rho_1)) + \dots + \log\left(\frac{\rho}{\rho_p}\right)(n(\rho_p)-n(\rho_{p-1})) =                                                                 \\
-                       & = n(\rho_1)\left(\log\left(\frac{\rho}{\rho_1}\right) - \log\left(\frac{\rho}{\rho_2}\right)\right) + n(\rho_2)\left(\log\left(\frac{\rho}{\rho_2}\right) - \log\left(\frac{\rho}{\rho_3}\right)\right) + \dots + n(\rho_p)\log\left(\frac{\rho}{\rho_p}\right) = \\
-                       & = n(\rho_1)\log\left(\frac{\rho_2}{\rho_1}\right) + n(\rho_2)\log\left(\frac{\rho_3}{\rho_2}\right) + \dots + n(\rho_{p-1})\log\left(\frac{\rho_p}{\rho_{p-1}}\right) + n(\rho_p)\log\left(\frac{\rho}{\rho_p}\right) =                                           \\
-                       & = \int_{\rho_1}^{\rho_2} \frac{n(t)}{t}dt + \int_{\rho_2}^{\rho^3} \frac{n(t)}{t}dt + \dots + \int_{\rho_{p-1}}^{\rho_p} \frac{n(t)}{dt}dt + \int_{\rho_p}^\rho \frac{n(t)}{t}dt = \int_{\rho_1}^\rho \frac{n(t)}{t}dt = \int_0^\rho \frac{n(t)}{t}dt
-                  \end{align*}
+                  $\prod_{n=1}^\infty \left(1 + |1-a_n|\right)$ converge absolutamente si y solo si $\prod_{n=1}^\infty \left(1 - 1 - |1-a_n|\right) = -\prod_{n=1}^\infty |1-a_n|$ converge absolutamente.
               \end{proof}
     \end{enumerate}
 \end{remark}
 
-Existen diversas generalizaciones de la fórmula de Jensen.
-
+\section{Funciones holomorfas definidas por productos infinitos}
 \begin{theorem}
-    Sea $f(z) = c_Nz^N + c_{N+1}z^{N+1} + \dots$ una función holomorfa en $D(0, R)$ y sea $\rho \in [0, R)$ tal que $\{a_n\}_{n=1}^\infty$ son los ceros de $f$ en $D(0, R)$ y además están ordenados respetando la multiplicidad.
-    Entonces:
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)$$
+    Sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en un dominio $D$.
+    Entonces son equivalentes:
+    \begin{enumerate}
+        \item $\sum_{n=1}^\infty (1-f_n)$ es absoluta y uniformemente convergente en compactos de $D$.
+        \item Para cada compacto $K$ en $D$ existe $n_K \in \mathbb{N}$ tal que para todo $n \geq n_K$ se tiene que $|1-f_n(z)| \leq \frac{1}{2}$ y $\sum_{n=n_K}^\infty \Log(f_n)$ converge absoluta y uniformemente en $K$.
+    \end{enumerate}
 \end{theorem}
 
-\begin{proof}
-    Consideramos
-    $$F(z) = \frac{f(z)}{c_Nz^N}$$
-    $F$ es holomorfa en $D(0, R)$, $F(0) = 1$ y los ceros de $F$ son los mismos que los de $f$.
+\begin{lemma}
+    Sea $\{u_k\}_{k=1}^\infty \subset \mathbb{C}$.
+    Entonces
+    $$\left|\prod_{k=1}^n (1+u_k)-1\right| \leq \prod_{k=1}^n (1+|u_k|)-1, \quad \forall n \in \mathbb{N}$$
+\end{lemma}
 
-    Aplicando la fórmula de Jensen,
-    \begin{align*}
-         & \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})d\theta = \log|F(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) \Leftrightarrow                                                             \\
-         & \Leftrightarrow \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \frac{1}{2\pi} \int_{-\pi}^\pi \log|c_N\rho^N|d\theta = \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) \Leftrightarrow \\
-         & \Leftrightarrow \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)
-    \end{align*}
+\begin{proof}
+    Razonamos por inducción.
+    \begin{itemize}
+        \item Para $n = 1$,
+              $$|1+u-1-1| = |u_1| \leq |u_1|$$
+
+        \item Supongamos que es cierto para $n$ y veamos para el caso $n+1$.
+              \begin{align*}
+                   & \left|\prod_{k=1}^{n+1} (1+u_k) - 1\right| = \left|(1+u_{n+1})\prod_{k=1}^{n+1} (1+u_k) - 1\right| = \left|(1+u_{n+1})\left(\prod_{k=1}^\infty (1+u_k) - 1\right) + u_{n+1}\right| \leq \\
+                   & \leq |1+u_{n+1}|\left|\prod_{k=1}^\infty (1+u_k) - 1\right| + |u_{n+1}| \leq |1+u_{n+1}|\left|\prod_{k=1}^\infty (1+|u_k|) - 1\right| + |u_{n+1}| \leq                                  \\
+                   & \leq (1 + |u_{n+1}|)\left|\prod_{k=1}^\infty (1+|u_k|) - 1\right| + |u_{n+1}| = \prod_{k=1}^{n+1} (1+|u_k|) - 1
+              \end{align*}
+    \end{itemize}
 \end{proof}
 
-Vamos a ver cómo aplicar la fórmula de Jensen para ver que si el crecimiento de $f$ está controlado entonces sus ceros también lo están.
-
-\begin{definition}
-    Llamamos módulo máximo de $f$ a
-    $$M_\infty(\rho, f) = \sup_{|z|=\rho} |f(z)|$$
-\end{definition}
-
-\begin{remark}
-    Si $f$ es holomorfa,
-    $$M_\infty(\rho, f) = \max_{|z|=\rho} |f(z)| = \max_{|z|\leq\rho} |f(z)|$$
-\end{remark}
-
 \begin{theorem}
-    Sea $f$ holomorfa en $D(0, R)$ tal que $f(0) \neq 0$ y $0 \leq s \leq \rho < R$.
-    Entonces:
-    $$n(s, f)\log\left(\frac{\rho}{s}\right) \leq \log(M_\infty(\rho, f)) - \log|f(0)|$$
+    Sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en $D$.
+    Si $\sum_{n=1}^\infty (1-f_n)$ converge absoluta y uniformemente en compactos de $D$, entonces:
+    \begin{enumerate}
+        \item $\prod_{k=1}^n$ converge uniformemente en cada compacto de $D$ a una función holomorfa $P$ que denotamos por $\prod_{n=1}^\infty f_n$.
+        \item La convergencia de $\prod_{k=1}^n f_k$ no depende de reordenaciones.
+        \item Para cada $z_0 \in D$ tenemos que $ord(z_0, P) = \sum_{k=1}^\infty ord(z_0, f_k)$, donde $ord(z_0, f)$ es el orden de $z_0$ como cero de $f$.
+        \item Las derivadas logarítmicas $\frac{P'}{P}$ y $\frac{f_n'}{f_n}$ existen como funciones meromorfas.
+              Además,
+              $$\frac{P'}{P} = \sum_{k=1}^\infty \frac{f_k'}{f_k}$$
+              Si $R > 0$ y $\overline{D(z_0, R)} \subset D$ existe $n_0 \in \mathbb{N}$ tal que $f_n$ no tiene ceros en $\overline{D(z_0, R)}$ para todo $n \geq n_0$ y $\sum_{n=n_0+1}^\infty \frac{f_n'}{f_n}$ converge absoluta y uniformemente en $\overline{D(z_0, R)}$.
+    \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-    \begin{align*}
-        n(s, f)\log\left(\frac{\rho}{s}\right) & = n(s, f)\int_s^\rho \frac{1}{t}dt \leq \int_s^\rho \frac{n(t, f)}{t}dt \leq \int_0^\rho \frac{n(t, f)}{t}dt =           \\
-                                               & = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \log|f(0)| \leq \log(M_\infty(\rho, f)) - \log|f(0)|
-    \end{align*}
+    \hfill
+    \begin{enumerate}
+        \item Sea $K$ compacto de $D$ y sea $P_n = \prod_{k=1}^n f_k$.
+              Basta ver que $P_n$ es uniformemente de Cauchy.
+
+              En primer lugar, veamos que $P_n$ es uniformemente acotado en $K$.
+              Como $\sum_{n=1}^\infty (1-f_n)$ converge absoluta y uniformemente en $K$, entonces existe $c_K$ tal que $\sum_{n=1}^\infty |1-f_n(z)| < c_K$.
+              Entonces:
+              \begin{align*}
+                  |P_n| & = \left|\prod_{k=1}^n f_k\right| = \left|\prod_{k=1}^n (1+f_k-1)\right| \leq \prod_{k=1}^n (1+|1-f_k|) \leq \prod_{k=1}^n e^{|1-f_k|} = e^{\sum_{k=1}^n |1-f_k|} \leq \\
+                        & \leq e^{\sum_{k=1}^\infty |1-f_k|} < e^{c_K}
+              \end{align*}
+
+              Ahora, veamos que $\{f_n\}$ es uniformemente de Cauchy en $K$.
+              Sea $\varepsilon > 0$, existe $\delta > 0$ de modo que si $|x| < \delta$ entonces $e^{c_K}|e^x-1| < \varepsilon$.
+              Como $\sum_{n=1}^\infty (1-f_n)$ es de Cauchy uniformemente en $K$, existe $n_K$ tal que si $m \leq n \leq n_K$, entonces $\sum_{k=n}^m |1-f_k| < \delta$.
+              Por tanto, si $m \geq n \geq n_K$,
+              \begin{align*}
+                  |P_m - P_n| & = \left|\prod_{k=1}^m f_k - \prod_{k=1}^n f_k\right| = |P_n|\left|\left(\prod_{k=n+1}^m f_k\right) - 1\right| \leq e^{c_K}\left|\prod_{k=n+1}^m (1+f_k-1) - 1\right| \leq \\
+                              & \leq e^{c_K}\left(\prod_{k=n+1}^m (1+|1-f_k|) - 1\right) \leq e^{c_K}\left(e^{\sum_{k=n+1}^m |1-f_k|}-1\right) < \varepsilon
+              \end{align*}
+
+        \item Es consecuencia de (1).
+
+        \item Sabemos que existe $n_0 \in \mathbb{N}$ tal que $\sum_{n=n_0}^\infty |1-f_n(z)| < \frac{1}{2}$ para todo $z \in \overline{D(z_0, R')}$, con $\overline{D(z_0, R)} \subset D(z_0, R')$.
+              Entonces, en particular $|1-f_n(z)| < \frac{1}{2}$ para todo $n \geq n_0+1$.
+              Así que $f_n$ no se anula en $\overline{D(z_0, R')}$ para todo $n \geq n_0+1$.
+              Sea entonces $g_n = \prod_{k=n_0+1}^n f_k$.
+              Sabemos que $g_n$ converge uniformemente en $\overline{D(z_0, R')}$ a una función $g$.
+              \begin{align*}
+                  |g_n(z)-1| & = \left|\left(\prod_{k=n_0+1}^n f_k(z)\right)-1\right| = \left|\prod_{k=n_0+1}^n (1+f_k(z)-1)-1\right| \leq                              \\
+                             & \leq \prod_{k=n_0+1}^n (1+|f_k(z)-1|)-1 \leq e^{\sum_{k=n_0}^n |1-f_k(z)|} - 1 \leq e^{1/2}-1, \quad \forall z \in \overline{D(z_0, R')}
+              \end{align*}
+              Por tanto, $g$ no tiene ceros en $\overline{D(z_0, R')}$.
+              Entonces
+              $$P = f_1\dots f_{n_0}\prod_{n=n_0+1}^\infty f_n = f_1\dots f_{n_0}g$$
+              Como $g$ es no nula,
+              $$ord(z_0, P) = \sum_{n=1}^{n_0} ord(z_0, f_n) + ord(z_0, g) = \sum_{n=1}^\infty ord(z_0, f_n)$$
+
+        \item De la expresión anterior tenemos que
+              $$\frac{P'}{P} = \sum_{n=1}^{n_0} \frac{f_n'}{f_n} + \frac{g'}{g}$$
+              Falta ver que $\sum_{n=n_0+1}^N \frac{f_n'}{f_n} \to \frac{g'}{g}$.
+              Como $\sum_{n=n_0+1}^N f_k = \frac{g_N'}{g_N}$, podemos ver equivalentemente que $\frac{g_N'}{g_N} \to \frac{g'}{g}$ uniformemente en $\overline{D(0, R')}$.
+              \begin{align*}
+                  \left|\frac{g_N'(z)}{g_N(z)} - \frac{g'(z)}{g(z)}\right| & = \left|\frac{g_N'(z)g(z)-g'(z)g_N(z)}{g_N(z)g(z)}\right| =                              \\
+                                                                           & = \left|\frac{g_N'(z)g(z) - g(z)g'(z) + g(z)g'(z) - g'(z)g_N(z)}{g_N(z)g(z)}\right| \leq \\
+                                                                           & \leq \frac{|g(z)||g_N'(z)-g'(z)| + |g'(z)||g_N(z)-g(z)|}{|g_N(z)||g(z)|}
+              \end{align*}
+              Sabemos que
+              \begin{align*}
+                  ||g_n(z)|-1| \leq |g_n(z)-1| < e^{1/2}-1 & \Leftrightarrow 2-e^{1/2} < |g_n(z)| < e^{1/2} \\
+                  ||g(z)|-1| \leq |g(z)-1| < e^{1/2}-1     & \Leftrightarrow 2-e^{1/2} < |g(z)| < e^{1/2}   \\
+              \end{align*}
+              Además, existe $c_K = \max_{z \in \overline{D(z_0, R')}} (|g(z)|+|g'(z)|)$.
+              Por tanto,
+              $$\left|\frac{g_N'(z)}{g_N(z)}-\frac{g'(z)}{g(z)}\right| \to 0$$
+              uniformemente en $\overline{D(z_0, R')}$.
+    \end{enumerate}
 \end{proof}
 
 \begin{example}
-    Sea $f$ entera con $|f(0)| = 1$ y sea $\rho = es$.
-    Entonces:
-    $$n(s, f) \leq \log(M_\infty(es, f))$$
+    \hfil
+    \begin{enumerate}
+        \item $\prod_{n=1}^\infty \left(1-\frac{z}{n^2}\right)$.
+              Veamos que converge uniformemente en compactos de $\mathbb{C}$.
+
+              Sea $K$ compacto de $\mathbb{C}$.
+              Entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+              $$\sum_{n=1}^\infty \left|1-\left(1-\frac{z}{n^2}\right)\right| = \sum_{n=1}^\infty \frac{|z|}{n^2} \leq R\sum_{n=1}^\infty \frac{1}{n^2} \leq Rc$$
+              Por el teorema anterior, el producto converge uniformemente en $K$.
+              Además, $\prod_{n=1}^\infty \left(1-\frac{z}{n^2}\right)$ se anula en $\{n^2 : n \in \mathbb{N}\}$.
+
+        \item Busquemos una función entera que se anule en $\mathbb{Z}$ y cuyos ceros tengan orden 1.
+              Consideramos $P(z) = z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)$.
+              Sea $K$ un compacto en $\mathbb{C}$, existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+              $$\sum_{n=1}^\infty \left|\frac{z^2}{n^2}\right| = \sum_{n=1}^\infty \frac{|z|^2}{n^2} \leq R^2c$$
+              Por tanto, converge uniformemente en $K$.
+
+              La función $z \mapsto \sin(\pi z)$ tiene las mismas características que buscábamos en $P$.
+              Por tanto, la función
+              $$z \mapsto \frac{\sin(\pi z)}{P(z)} = \frac{\sin(\pi z)}{z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)}$$
+              es una función holomorfa sin ceros y se puede factorizar de la forma
+              $$\frac{\sin(\pi z)}{z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)} = e^{\varphi(z)}$$
+    \end{enumerate}
 \end{example}
 
-\begin{remark}
-    Si $f(z) = c_Nz^N + \dots$, el teorema anterior se puede escribir de la forma:
-    $$n(s, f)\log\left(\frac{\rho}{s}\right) \leq \log(M_\infty(\rho, f)) - \log|c_N\rho^N|$$
-\end{remark}
+\section{El teorema de factorización de Weierstrass}
+Sea $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ una colección de puntos de $\mathbb{C}$.
+Nuestro objetivo era encontrar una función entera que se anule en $\{z_\alpha\}_{\alpha \in \mathcal{F}}$.
+\begin{itemize}
+    \item Si $\{z_k\}_{k=1}^N$ es finita, esta función es $\prod_{n=1}^N (z-z_n)$.
+    \item Si $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ tiene un punto de acumulación, entonces la función tiene que ser nula.
+\end{itemize}
+En el caso restante, $\{z_k\}_{k=1}^\infty$ tiene $\lim\limits_{k \to \infty} |z_k| = \infty$.
+Consideramos la expresión
+$$\prod_{k=1}^\infty \left(1 - \frac{z}{z_k}\right)$$
+Si $z \in \overline{D(0, R)}$ con $R > 0$,
+$$\sum_{k=1}^\infty \left|1-\left(1-\frac{z}{z_k}\right)\right| = \sum_{k=1}^\infty \frac{|z|}{|z_k|} \leq R\sum_{k=1}^\infty \frac{1}{|z_k|}$$
 
-\section{La fórmula de Poisson-Jensen}
 \begin{theorem}
-    Sea $0 < R \leq \infty$ y sea $f$ holomorfa en $D(0, R)$.
-    Sean $s \in (0, R)$ y $z \in D(0, s)$, entonces:
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta = \log|f(z)| + \sum_{\{|a_n| \leq s, a_n \text{ cero de } f\}} \log^+\left|\frac{s^2-\bar{a}_nz}{s(z-a_n)}\right|$$
+    Sea $\{z_k\}_{k=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\sum_{k=1}^\infty \frac{1}{|z_k|}$ converge y $\lim\limits_{k \to \infty} |z_k| = \infty$.
+    Entonces $\prod_{k=1}^\infty \left(1-\frac{z}{z_k}\right)$ converge absoluta y uniformemente en compactos de $\mathbb{C}$ y además tiene como ceros $\{z_k\}_{k=1}^\infty$.
 \end{theorem}
 
-% Demostración
+\begin{remark}
+    La función $z^N\prod_{n=1}^\infty \left(1-\frac{z}{z_n}\right)$ tiene como ceros $\{z_n\}_{n=1}^\infty$ y además el 0 es un cero de multiplicidad $N$.
+\end{remark}
+
+Falta por ver qué ocurre cuando $\sum_{k=1}^\infty \frac{1}{|z_k|}$ no converge, donde $\{z_k\}_{k=1}^\infty$ con $\lim\limits_{k \to \infty} |z_k| = \infty$.
+Consideramos
+$$\prod_{k=1}^\infty \left(1-\frac{z}{z_k}\right)e^{q_k\left(\frac{z}{z_k}\right)}$$
+
+Veamos un razonamiento intuitivo.
+Que el producto absoluto converja absoluta y uniformemente en compactos de $\mathbb{C}$ es análogo a que converja la serie
+$$\sum_{k=1}^\infty \left|\Log\left(\left(1-\frac{z}{z_k}\right)e^{q_k\left(\frac{z}{z_k}\right)}\right)\right| = \sum_{k=1}^\infty \left|\Log\left(1-\frac{z}{z_k}\right) + q_k\left(\frac{z}{z_k}\right)\right|$$
+Si conseguimos que
+$$\sup_{|z|\leq R} \left|\Log\left(1-\frac{z}{z_k}\right) + q_k\left(\frac{z}{z_k}\right)\right| < M_K(R)$$
+y además $\sum_{k=1}^\infty M_K(R) < \infty$, por el criterio de la mayorante de Weierstrass se tiene la convergencia.
+Para $k \geq k_0$, tenemos que
+$$\frac{|z|}{|z_k|} \leq \frac{R}{2R} = \frac{1}{2} < 1$$
+Sea $w = \frac{z}{z_k}$,
+$$|\Log(1-w)+q_k(w)| = \left|-\Log\left(\frac{1}{1-w}\right) + q_k(w)\right| = \left|\sum_{n=1}^\infty \frac{w^n}{n} - q_k(w)\right|$$
+Entonces, si $q_k(w) = \sum_{n=1}^k \frac{w^n}{n}$,
+$$\left|\sum_{n=1}^\infty \frac{w^n}{n} - q_k(w)\right| = \left|\sum_{n=k+1}^\infty \frac{w^n}{n}\right| \leq \frac{1}{k+1}\sum_{n=k+1}^\infty |w|^n = \frac{|w|^{k+1}}{k+1}\frac{1}{1-|w|}$$
+Tenemos que $\frac{1}{1-|w|} < 2$.
+Por tanto, queremos que
+$$\sum_{k=k_0}^\infty \frac{|w|^{k+1}}{k+1} < \infty$$
+Esta serie siempre converge.
+En lugar de considerar $q_k$ podemos tomar $q_{p_k}$, donde $\{p_k\}_{k=1}^\infty \subset \mathbb{N} \cup \{0\}$.
+Basta tomar $p_k$ tal que
+$$\sum_{k=k_0}^\infty \frac{|w|^{p_k+1}}{p_k+1} < \infty$$
+
+\begin{definition}[Factores primos de Weierstrass]
+    Los factores primos de Weierstrass son
+    \begin{align*}
+        E_0(z) & = 1-z                                                                      \\
+        E_p(z) & = (1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right), \quad p \in \mathbb{N}
+    \end{align*}
+    donde $\sum_{k=1}^p \frac{z^k}{k}$ es el polinomio de Taylor de orden $p$ de $\log\left(\frac{1}{1-z}\right)$.
+\end{definition}
+
+\begin{remark}
+    Para todo $p \in \mathbb{N} \cup \{0\}$, $E_p(0) = 1$, $E_p(1) = 0$ y $E_p$ es entera.
+\end{remark}
+
+\begin{lemma}
+    Sea $p \in \mathbb{N} \cup \{0\}$ y $|z| < 1$, entonces $|1-E_p(z)| \leq |z|^{p+1}$.
+\end{lemma}
+
+\begin{proof}
+    Si $p = 0$,
+    $$|1-E_0(z)| = |1-(1-z)| = |z|$$
+    Si $p \in \mathbb{N}$, como $E_p$ es una función entera,
+    $$E_p(z) = \sum_{n=0}^\infty a_nz^n$$
+    Como $E_p(0) = 1$, entonces $a_0 = 1$.
+    Así que
+    $$E_p(z) = 1 + \sum_{n=1}^\infty a_nz^n$$
+    Además, como $E_p(1) = 0$, entonces $\sum_{n=1}^\infty a_n = -1$.
+    De la expresión anterior,
+    $$-\sum_{n=1}^\infty a_nz^n = 1-E_p(z) = 1-(1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right)$$
+    Derivando,
+    \begin{align*}
+        -\sum_{n=1}^\infty na_nz^{n-1} & = \exp\left(\sum_{k=1}^n \frac{z^k}{k}\right) - (1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right)\left(\sum_{k=1}^p z^{k-1}\right) =                             \\
+                                       & =\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right)\left(1-(1-z)\sum_{k=0}^{p-1} z^k\right) = \exp\left(\sum_{k=1}^p \frac{z^k}{k}\right)z^p =                         \\
+                                       & = z^p\left(1 + \sum_{k=1}^p \frac{z^k}{k} + \frac{\left(\sum_{k=1}^p \frac{z^k}{k}\right)^2}{2!} + \dots\right) = z^p + A_{p+1}z^{p+1} + A_{p+2}z^{p+2} + \dots
+    \end{align*}
+    Por tanto, $a_n = 0$ para todo $1 \leq n \leq p$.
+    Además,
+    $$-(p+1)a_{p+1} = 1 \Rightarrow a_{p+1} = -\frac{1}{p+1}$$
+    En general, para todo $n > p+1$,
+    $$na_n = -A_{n-1} < 0 \Rightarrow a_n < 0$$
+    Así que
+    \begin{align*}
+        |1-E_p(z)| & = \left|\sum_{n=1}^\infty a_nz^n\right| = \left|\sum_{n=p+1}^\infty a_nz^n\right| = |z|^{p+1}\left|\sum_{n=p+1}^\infty a_nz^{n-(p+1)}\right| \leq \\
+                   & \leq |z|^{p+1} \sum_{n=p+1}^\infty |a_n||z|^{n-(p+1)} \leq |z|^{p+1} \sum_{n=p+1}^\infty |a_n| = |z|^{p+1}\left(-\sum_{n=p+1}^\infty a_n\right) = \\
+                   & = |z|^{p+1} \left(-\sum_{n=1}^\infty a_n\right) = |z|^{p+1}
+    \end{align*}
+\end{proof}
+
+\begin{remark}
+    Hemos visto que
+    $$E_p(z) = 1 - \frac{z^{p+1}}{p+1} + \sum_{n=p+2}^\infty a_nz^n$$
+\end{remark}
+
+\begin{theorem}[Teorema de factorización de Weierstrass: primera versión]
+    Sea $\{a_n\} \subset \mathbb{C} \setminus \{0\}$ con $\lim\limits_{n \to \infty} |a_n| = \infty$.
+    Entonces existe una sucesión de números $\{p_n\} \subset \mathbb{N} \cup 0$ de modo que
+    $$\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)$$
+    converge absoluta y uniformemente en compactos de $\mathbb{C}$ y además define una función entera cuyos ceros son $\{a_n\}_{n=1}^\infty$.
+\end{theorem}
+
+\begin{proof}
+    Sea $K$ compacto de $\mathbb{C}$, entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+    Como $\{a_n\} \to \infty$, existe $n_0 \in \mathbb{N}$ tal que para todo $n \geq n_0$ se tiene que $\frac{|z|}{|a_n|} \leq \frac{R}{2R} < 1$.
+    Por el lema anterior,
+    $$\left|1-E_{p_n}\left(\frac{z}{a_n}\right)\right| \leq \left|\frac{z}{a_n}\right|^{p_n+1} \leq \left(\frac{1}{2}\right)^{p_n+1}$$
+    Si consideramos $p_n = n$, por el criterio de la mayorante de Weierstrass tenemos que
+    $$\sum_{n=n_0}^\infty \left|1-E_n\left(\frac{z}{a_n}\right)\right|$$
+    converge uniformemente en $K$.
+    Además,
+    $$E_n\left(\frac{a_n}{a_n}\right) = E_n(1) = 0$$
+\end{proof}
+
+\begin{theorem}[Teorema de factorización de Weierstrass: segunda versión]
+    Sea $f$ una función entera tal que en $z = 0$ tiene un cero de orden $N$ y los demás ceros de $f$ son $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$.
+    Entonces existe $\{p_n\}_{n=1}^\infty \subset \mathbb{N} \cup \{0\}$ y una función entera $g$ tal que
+    $$f(z) = e^{g(z)}z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)$$
+\end{theorem}
+
+\begin{proof}
+    Suponemos $\{a_n\}$ conjunto infinito.
+    Por el teorema anterior, existe una función entera que se anula en $\{a_n\}_{n=1}^\infty$.
+    Entonces
+    $$\frac{f(z)}{z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)}$$
+    es entera y no se anula en $\mathbb{C}$.
+    Por tanto, existe $g$ entera tal que
+    $$\frac{f(z)}{z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)} = e^{g(z)}$$
+\end{proof}
 
 \begin{remark}
     \hfill
     \begin{enumerate}
-        \item Sea $|z| < s$.
-              Entonces:
-              $$\frac{|s^2-a_nz|}{|s(z-a_n)|} = \frac{1}{|\psi^{-1}(a_n)} \geq 1 \Rightarrow \log|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})|\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta$$
-        \item Sea $z = \rho e^{i\varphi}$ con $0 < \varphi < s$.
-              Entonces:
+        \item La factorización no es única.
+              Si la sucesión $\{p_n\}_{n=1}^\infty$ da una descomposición, entonces una sucesión $\{q_n\}_{n=1}^\infty$ tal que $p_n \leq q_n$ para todo $n \in \mathbb{N}$ también sirve.
+
+        \item Si $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ y existe $p$ tal que $\sum_{n=1}^\infty \frac{1}{|a|^{p+1}}$ converge, entonces
+              $$\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
+              converge absoluta y uniformemente en compactos de $\mathbb{C}$.
+              \begin{proof}
+                  Sea $K$ compacto de $\mathbb{C}$, entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+                  Como $\lim\limits_{n \to \infty} |a_n| = \infty$, existe $n_0 \in \mathbb{N}$ tal que para todo $n \geq n_0$ se tiene que
+                  $$|a_n| \geq 2R \Rightarrow \left|\frac{z}{a_n}\right| \leq \frac{1}{2} < 1$$
+                  Por el lema anterior,
+                  $$\sum_{n=n_0}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right| \leq \sum_{n=n_0}^\infty \left|\frac{z}{a_n}\right|^{p+1} \leq R^{p+1}\sum_{n=n_0}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
+              \end{proof}
+    \end{enumerate}
+\end{remark}
+
+\section{Exponente de convergencia y género de una sucesión}
+A partir de las observaciones anteriores, introducimos la siguiente definición.
+
+\begin{definition}
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\lim\limits_{n \to \infty} |a_n| = \infty$.
+    Definimos el exponente de convergencia de la sucesión como
+    $$\sigma = \inf\left\{s \in \mathbb{R} : \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty\right\}$$
+\end{definition}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Si $s \in \mathbb{R}$ satisface que $\sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty$, entonces si $t > s$ se cumple que $\sum_{n=1}^\infty \frac{1}{|a_n|^t} < \infty$.
+        \item Diremos que $\inf\emptyset = +\infty$, es decir, $\sigma = +\infty$ cuando ningún $s \in \mathbb{R}$ satisface que $\sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty$.
+        \item Si $\sigma < \infty$,
               \begin{align*}
-                   & \max_{0 \leq \varphi \leq 2\pi} \log|f(\rho e^{i\varphi})| \leq \max_{0 \leq \varphi \leq 2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})|\frac{s^2-\rho^2}{|s-\rho e^{i\varphi}e^{-i\theta}|^2}d\theta \leq \\
-                   & \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log(M_\infty(s, f))\frac{s+\rho}{s-\rho}d\theta = \log(M_\infty(s, f))\frac{s+\rho}{s-\rho} \leq \log^+(M_\infty(s, f))\frac{s+\rho}{s-\rho}
+                   & \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty \text{ si } s \in (\sigma, +\infty) \\
+                   & \sum_{n=1}^\infty \frac{1}{|a_n|^s} = \infty \text{ si } s \in (-\infty, \sigma)
               \end{align*}
     \end{enumerate}
 \end{remark}
 
-\section{Introducción a los espacios de Hardy}
-\begin{theorem}[Condición de Blaschke]
-    Sea $f$ una función holomorfa en $\mathbb{D}$ con la sucesión de ceros ordenados $\{a_n\}_{n=1}^\infty$.
-    Entonces son equivalentes:
-    \begin{enumerate}
-        \item $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
-        \item $$\sum_{n=1}^\infty (1-|a_n|) < \infty$$
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    Si $f(z) = c_Nz^N + \dots$, por la fórmula de Jensen generalizada
-    $$\log|c_N\rho^N| + \sum_{\{n : |a_n|\leq\rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta$$
-    \begin{itemize}
-        \item[$\Rightarrow$] $$\log|c_N\rho^N| + \sum_{\{n : |a_n|\leq\rho\}} \log\left(\frac{\rho}{|a_n|}\right) \leq \sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
-            Tomando límite $\rho \to 1$ a la izquierda,
-            $$\log|c_N| + \sum_{n=1}^\infty \log\left(\frac{1}{|a_n|}\right) < \infty \Rightarrow \sum_{n=1}^\infty (1-|a_n|) < \infty$$
-        \item[$\Leftarrow$] $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})d\theta \leq \log|c_N| + \sum_{n=1}^\infty \log\left(\frac{1}{|a_n|}\right) < \infty$$
-            Por tanto,
-            $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
-    \end{itemize}
-\end{proof}
-
 \begin{definition}
-    Se define la función característica de Nevanlinna como
-    $$T(\rho, f) = \frac{1}{2\pi} \int_{-\pi}^\pi \log^+|f(\rho e^{i\theta})|d\theta$$
-\end{definition}
-
-\begin{definition}
-    Sea $0 < p < \infty$, se define la media integral de orden $p$ como
-    $$M_p(\rho, f) = \left(\frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})|^pd\theta\right)^{1/p}$$
-\end{definition}
-
-\begin{definition}
-    Se define el módulo máximo de $f$ como
-    $$M_\infty(\rho, f) = \max_{\theta \in [0, 2\pi]} |f(\rho e^{i\theta})|$$
-\end{definition}
-
-\begin{definition}
-    Se define la clase de Nevanlinna como
-    $$\mathcal{N} = \{f \in Hol(\mathbb{D}) : \sup_{0<\rho<1} T(\rho, f) < \infty\}$$
-\end{definition}
-
-\begin{definition}
-    Sea $0 < p \leq \infty$, se define el espacio de Hardy como
-    $$H^p = \{f \in Hol(\mathbb{D}) : \sup_{0<\rho<1} M_p(\rho, f) < \infty\}$$
-\end{definition}
-
-\begin{theorem}
-    Si $0 < p < q < \infty$, $H^\infty \subset H^q \subset H^p \subset \mathcal{N}$.
-\end{theorem}
-
-% Demostración
-
-\begin{theorem}
-    Sea $f \in \mathcal{N}$, entonces la sucesión de sus ceros cumple la condición de Blaschke.
-\end{theorem}
-
-% Demostración
-
-\begin{remark}
-    Si $f \in H^p$ para $0 < p \leq \infty$, entonces $f \in \mathcal{N}$.
-    Por tanto, sus ceros cumplen la condición de Blaschke.
-\end{remark}
-
-Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{D}$ una sucesión de puntos que cumplen $\sum (1-|a_n|) < \infty$.
-Queremos ver si existe una función $f \in \mathcal{N}$ tal que $f$ tiene como ceros la sucesión $\{a_n\}_{n=1}^\infty$.
-
-\begin{theorem}[Producto infinito de Blaschke]
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{D}$ tal que $\{a_n\}_{n=1}^\infty$ cumple la condición de Blaschke.
-    Definimos:
-    $$b_n = \begin{cases}
-            z                                                             & \text{si } a_n = 0    \\
-            \dfrac{\overline{a_n}}{|a_n|}\dfrac{a_n-z}{1-\overline{a_n}z} & \text{si } a_n \neq 0
-        \end{cases}$$
-    Consideramos $B(z) = \prod_{n=1}^\infty b_n$.
-    Entonces $B(z)$ converge absoluta y uniformemente en compactos de $\mathbb{D}$ y además $|B(z)| < 1$ para todo $z \in \mathbb{D}$.
-\end{theorem}
-
-% Demostración
-
-\begin{remark}
-    Si $\{a_n\}_{n=1}^\infty$ cumple la condición de Blaschke, entonces existe $f \in H^\infty$ que tiene como ceros $\{a_n\}_{n=1}^\infty$.
-\end{remark}
-
-\section{Orden de crecimiento de una función entera}
-Sean $h, \varphi: \mathbb{C} \to [0, +\infty)$.
-Entendemos por $h(R) = O(\varphi(R))$, con $R \to \infty$, que existen una constante $C$ y un $R_0$ tales que $h(R) \leq C\varphi(R)$ para todo $R \geq R_0$.
-Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ entera.
-\begin{itemize}
-    \item Si $M_\infty(s, f)$ es acotado, entonces $f$ es constante.
-    \item Si $M_\infty(s, f) = O(s^\alpha)$, con $s \to \infty$ y $\alpha > 0$, entonces $f$ es un polinomio.
-\end{itemize}
-
-\begin{definition}
-    Sea $f$ una función entera, definimos el orden de crecimiento de $f$ como
-    $$\rho(f) = \inf\{\alpha \geq 0 : M_\infty(s, f) = O(e^{s^\alpha})\}$$
+    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\lim\limits_{n \to \infty} |a_n| = \infty$ y $\sigma < \infty$.
+    Entonces el género de la sucesión es el menor entero $p$ tal que
+    $$\sum_{n=1}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
 \end{definition}
 
 \begin{remark}
     \hfill
     \begin{enumerate}
-        \item Si no existe $\alpha \geq 0$ tal que $M_\infty(s, f) = O(e^{s^\alpha})$, diremos que $\rho(f) = \infty$.
-        \item Si $M_\infty(s, f) = O(e^{s^{\alpha_0}})$, entonces $M_\infty(s, f) = O(e^{s^\alpha})$ con $\alpha \geq \alpha_0$.
-        \item Si $f$ es un polinomio, entonces $\rho(f) = 0$.
-              % Demostración
-        \item Si $a \in \mathbb{C} \setminus \{0\}$, entonces $\rho(e^{az^\alpha}) = \alpha$.
-              % Demostración
-        \item $f(z) = e^{e^z}$ tiene orden infinito.
-              $M_\infty(s, f) = e^{e^s}$.
+        \item $\sigma > 0$ siempre.
+              Además, $\sum_{n=1}^\infty \frac{1}{|a_n|^0} = \infty$ así que $p \geq 0$.
+        \item $p \leq \sigma \leq p+1$.
     \end{enumerate}
 \end{remark}
 
-\begin{proposition}
-    Sea $f$ entera y no constante.
-    Entonces
-    $$\rho(f) = \limsup_{s \to \infty} \frac{\log(\log(M_\infty(s, f)))}{\log(s)} = \limsup_{s \to \infty} \frac{\log(T(s, f))}{\log(s)}$$
-    donde
-    $$T(s, f) = \frac{1}{2\pi} \int_0^{2\pi} \log^+|f(se^{i\theta})|d\theta$$
-\end{proposition}
-
-% Observaciones y demostración
-
-\section{Propiedades aritméticas}
-\begin{lemma}
-    \hfill
-    \begin{enumerate}
-        \item $x = x^+ - (-x)^+$, $x \in \mathbb{R}$.
-        \item $(x+y)^+ \leq x^+ + y^+$, $x, y \in \mathbb{R}$.
-        \item $\log(a) = \log^+(a) - \log^+\left(\frac{1}{a}\right)$, $a > 0$.
-        \item $\log(a+b) \leq \log(2) + \log^+(a) + \log^+(b)$, $a, b > 0$.
-        \item $\log^+(a+b) \leq \log(2) + \log^+(a) + \log^+(b)$, $a, b > 0$.
-        \item $\log^+(a-b) \leq \log^+(a) + \log^+(b)$, $a, b > 0$.
-        \item $\log^+(ab) \leq \log^+(a) + \log^+(b)$, $a, b > 0$.
-    \end{enumerate}
-\end{lemma}
-
-\begin{remark}
-    Veamos un par de observaciones sobre
-    $$\rho(f) = \limsup_{s \to \infty} \frac{\log(\log(M_\infty(s, f)))}{\log(s)} = \limsup_{s \to \infty} \frac{\log(T(s, f))}{\log(s)}$$
-    \begin{enumerate}
-        \item Si $\rho(f) < \alpha$, entonces existe $s_\alpha$ tal que si $s \geq s_\alpha$ entonces
-              $$\log(M_\infty(s, f)) \leq s^\alpha \Leftrightarrow M_\infty(s, f) \leq e^{s^\alpha}$$
-              y $T(s, f) \leq s^\alpha$.
-
-        \item Si existen constantes $c, c_1, c_2, \beta > 0$ y $s > 0$ tales que
-              $$M_\infty(s, f) \leq c + c_1s^\beta + c_2s^\alpha, \quad \forall s \geq s_0$$
-              entonces $\rho(f) \leq \alpha$.
-              % Demostración
-
-        \item Si existen constantes $c_1, c_2, c_3, \alpha > 0$ tales que
-              $$T(s, f) \leq c_1 + c_2\log(s) + c_3s^\alpha$$
-              si $s \geq s_0 > 1$, entonces $\rho(f) \leq \alpha$.
-    \end{enumerate}
-\end{remark}
-
-\begin{theorem}[Teorema del álgebra del orden de crecimiento]
-    Sean $f$ y $g$ enteras.
-    Entonces
-    \begin{enumerate}
-        \item $\rho(cf) = \rho(f)$, si $c \in \mathbb{C} \setminus \{0\}$.
-        \item $\rho(f+g) \leq \max\{\rho(f), \rho(g)\}$, con igualdad si $\rho(f) \neq \rho(g)$.
-        \item $\rho(fg) \leq \max\{\rho(f), \rho(g)\}$, con igualdad si $\rho(f) \neq \rho(g)$.
-        \item $\rho(f) = \rho(f')$.
-    \end{enumerate}
-\end{theorem}
-
-% Demostración
-
-\section{Orden de los factores primos de Weierstrass}
-Recordemos que los factores primos de Weierstrass son
-\begin{align*}
-    E_0(z) & = 1-z                                                                      \\
-    E_p(z) & = (1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right), \quad p \in \mathbb{N}
-\end{align*}
-
-Como $E_0$ es un polinomio, $\rho(E_0) = 0$.
-Veamos que $\rho(E_p) = p$.
-Como $\rho(e^c) = 0$ y $\rho(e^{c_1z}) = 1$,
-$$\rho(e^{c+c_1z}) = \rho(e^ce^{c_1z}) = \max\{\rho(e^c), \rho(e^{c_1z})\} = \max\{0, 1\} = 1$$
-Por inducción se prueba el resultado.
-
-\section{Orden de una función entera expresada en sus coeficientes de Taylor}
-Queremos ver si existe una función entera con orden cualquier número $\rho > 0$.
-
-Sea $f(z) = \sum_{n=0}^\infty c_nz^n$ entera.
-Si $R$ es su radio de convergencia, como $R = \infty$,
-$$\frac{1}{R} = \limsup_{n \to \infty} |c_n|^{1/n} \Rightarrow \limsup_{n \to \infty} |c_n|^{1/n} = 0$$
-
-\begin{theorem}
-    Sea $f$ una función entera no constante tal que $f(z) = \sum_{n=0}^\infty c_nz^n$.
-    Entonces:
-    $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{n\log(n)}{\log\left(\frac{1}{|c_n|}\right)}$$
-\end{theorem}
-
-% Demostración
-
-Sea $\rho > 0$,
-$$\frac{\log(n)}{\log|c_n|^{-1/n}} = \rho \Rightarrow \log(n) = \log|c_n|^{-\rho/n} \Rightarrow |c_n|^{\rho/n} = n^{-1} \Rightarrow |c_n| = n^{-n/\rho}$$
-
-\begin{corollary}
-    Sea
-    $$F(z) = \sum_{n=1}^\infty n^{-n/\rho}z^n$$
-    con $\rho > 0$.
-    Entonces $F$ es entera y su orden de crecimiento es $\rho$.
-\end{corollary}
-
-\begin{proof}
-    En primer lugar calculamos $\frac{1}{R}$, con $R$ su radio de convergencia.
-    $$\limsup_{n \to \infty} |n^{-n/\rho}|^{1/n} = \limsup_{n \to \infty} \frac{1}{n^{1/\rho}} = 0$$
-    Por tanto, $F$ es entera.
-    Por otro lado,
-    $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{\log(n)}{\frac{1}{\rho}\log(n)} = \rho$$
-\end{proof}
-
-\section{Relación entre el orden de crecimiento y el exponente de convergencia de los ceros de la función}
-Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, se definía el exponente de convergencia como
-$$\sigma = \inf\left\{s > 0 : \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty\right\}$$
-El género de $\{a_n\}_{n=1}^\infty$ es el menor $p \in \mathbb{N} \cup \{0\}$ de modo que
-$$\sum_{n=1}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
-Teníamos que $p \leq \sigma \leq p+1$.
+Si $\{a_n\}$ es finita entonces diremos que $\sigma = p = 0$.
 
 \begin{example}
     \hfill
     \begin{enumerate}
-        \item Si en cada circunferencia de radio $n^2$ ponemos un cero para todo $n \in \mathbb{N}$,
-              $$\sum_{n=1}^\infty \frac{1}{|a_n|^s} = \sum_{n=1}^\infty \frac{1}{n^{2s}} < \infty, \quad \forall s > \frac{1}{2}$$
-              Por tanto, $\sigma = \frac{1}{2}$.
-
-        \item Si en cada circunferencia de radio $n^2$ ponemos dos ceros para todo $n \in \mathbb{N}$,
-              $$\sum_{n=1}^\infty \frac{1}{|a_n|^s} = \sum_{n=1}^\infty \frac{1}{n^{s}} < \infty, \quad \forall s > 1$$
-              Por tanto, $\sigma = 1$.
+        \item Sea $a_n = n+1$.
+              $$\sum_{n=1}^\infty \frac{1}{(n+1)^s} < \infty \Leftrightarrow s < 1 \Rightarrow \sigma = 1, p = 1$$
+        \item Sea $a_n = (n+1)^2$.
+              $$\sum_{n=1}^\infty \frac{1}{(n+1)^{2s}} < \infty \Leftrightarrow s > \frac{1}{2} \Rightarrow \sigma = \frac{1}{2}, p = 0$$
+        \item Sea $a_n = (n+1)\log^2(n+1)$.
+              $$\sum_{n=1}^\infty \frac{1}{(n+1)^s\log^{2s}(n+1)} < \infty \Leftrightarrow s \geq 1 \Rightarrow \sigma = 1, p = 0$$
+              Para el caso $s = 1$,
+              $$\sum_{n=1}^\infty \frac{1}{(n+1)\log^2(n+1)} \sim \int_1^\infty \frac{1}{(x+1)\log^2(x+1)}dx = \left.-\frac{1}{\log(x+1)}\right]_1^\infty = \frac{1}{\log(2)}$$
+        \item Sea $a_n = \log(n+1)$.
+              $$\sum_{n=1}^\infty \frac{1}{\log^s(n+1)} = \infty \; \forall s \in \mathbb{R} \Rightarrow \sigma = \infty$$
+        \item Sea $a_n = 2^n$.
+              $$\sum_{n=1}^\infty \frac{1}{2^{ns}} = \sum_{n=1}^\infty \frac{1}{(2^s)^n} < \infty \; \forall s > 0 \Rightarrow \sigma = 0, p = 0$$
     \end{enumerate}
 \end{example}
 
-\begin{lemma}
-    Sea $\{a_n\} \subset \mathbb{C} \setminus \{0\}$, con $|a_n| \to \infty$.
-    Entonces
-    $$\sigma = \limsup_{R \to \infty} \frac{\log(n(R))}{\log(R)}$$
-    con $n(R) = \#\{a_n : |a_n| \leq R\}$.
-\end{lemma}
+\section{Factorización canónica de una función entera}
+Con las definiciones anteriores vamos a tener el siguiente teorema.
 
-% Demostración
-
-\begin{theorem}
-    Sea $f$ una función entera no constante cuyo orden de crecimiento es $\rho(f)$ y tiene como ceros no nulos la sucesión $\{a_n\}_{n=1}^\infty$.
-    Entonces:
-    $$\sigma(\{a_n\}_{n=1}^\infty) \leq \rho(f)$$
+\begin{theorem}[Teorema de factorización canónica]
+    Sea $f$ una función entera con $z = 0$ un cero de orden $N$ y $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ los demás ceros de $f$.
+    Si $\lim\limits_{n \to \infty} |a_n| = \infty$ y $\sigma < \infty$, entonces
+    $$f(z) = e^{g(z)}z^N\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
+    donde $p$ es el género de $\{a_n\}_{n=1}^\infty$.
 \end{theorem}
-
-% Demostración
-
-\section{Orden de los productos canónicas de Weierstrass}
-Queremos ver si existen funciones tales que $\sigma(f) = \rho(f)$.
-
-\begin{theorem}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que el exponente de convergencia de $\{a_n\}_{n=1}^\infty$ es finito y tiene género $p$.
-    Entonces la función
-    $$F(z) = \prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
-    tiene orden de convergencia $\rho(F) = \rho(\{a_n\})$.
-\end{theorem}
-
-\begin{example}
-    Sea $\alpha > 0$ y sea $\{a_n\}_{n=1}^\infty$ con $a_n = n^\alpha$ para $n \in \mathbb{N}$.
-    Sabemos que $\sigma(\{a_n\}_{n=1}^\infty) = \frac{1}{\alpha}$.
-    Entonces su género es $p = E(1/\alpha)$ y la función
-    $$F(z) = \prod_{n=1}^\infty E_p\left(\frac{z}{n^\alpha}\right)$$
-    tiene orden de crecimiento $\rho(F) = \frac{1}{\alpha}$.
-\end{example}
-
-\section{Factorización de Hadamard}
-Sea $f$ una función entera no constante con $\{a_n\}_{n=1}^\infty$ su sucesión de ceros no nulos, tal que $\sigma(\{a_n\}) < \infty$ y con género $p$.
-Entonces la factorización canónica de Weierstrass permite expresar
-$$f(z) = e^{g(z)}z^N \prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
-donde $N$ es la multiplicidad del origen como 0.
-Además, $g$ es única salvo constantes $2\pi i$.
-
-\begin{proposition}
-    $\rho(f) = \max\{\rho(e^g), \sigma\}$.
-\end{proposition}
 
 \begin{proof}
-    Por el teorema del álgebra del orden de crecimiento,
-    $$\rho(f) \leq \max\left\{\rho(e^g), \rho\left(\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)\right)\right\} = \max\{\rho(e^g), \sigma\}$$
-    Además, se tiene la igualdad si $\sigma \neq \rho(e^g)$.
-    Si $\sigma = \rho(e^g)$, entonces por un teorema previo
-    $$\sigma \leq \rho(f) \leq \sigma \Rightarrow \rho(f) = \sigma = \max\{\rho(e^g), \sigma\}$$
+    Sea $K$ compacto de $\mathbb{C}$, entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
+    Queremos ver que $\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$ converge absoluta y uniformemente en $K$.
+    Basta ver que $\sum_{n=1}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right|$ converge uniformemente en $K$.
+    Como $|a_n| \to \infty$, existe $n_0 \in \mathbb{N}$ tal que $|a_n| \geq 2R$ para todo $n \geq n_0$.
+    Entonces, como $p$ es el género de $\{a_n\}_{n=1}^\infty$,
+    $$\sum_{n=n_0}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right| \leq \sum_{n=n_0}^\infty \frac{|z|^{p+1}}{|a_n|^{p+1}} \leq R^{p+1} \sum_{n=n_0}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
 \end{proof}
 
-\begin{theorem}[Factorización de Hadamard]
-    Sea $f$ una función entera no constante con ceros no nulos $\{a_n\}_{n=1}^\infty$, $\sigma = \sigma(\{a_n\}) < \infty$ y género $p$.
-    Además, sea $N$ la multiplicidad del origen como cero de $f$.
-    Entonces existe un polinomio $g$ con $\deg(p) \leq \rho(f)$, satisfaciendo que
-    $$f(z) = e^{g(z)}z^N \prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
-    $g$ es única salvo constantes $2\pi i$ y $\rho(f) = \max\{\deg(p), \sigma\}$.
+\section{Factorización de funciones holomorfas en un dominio}
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{a_n\}_{n=1}^\infty \subset D \setminus \{0\}$ sin puntos de acumulación en $D$.
+    Entonces existe una función holomorfa en $D$ que se anula en $\{a_n\}_{n=1}^\infty$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Si $\{a_n\}_{N=1}^\infty$ es finito, entonces dicha función es $\prod_{n=1}^N (z-a_n)$.
+    Si $\{a_n\}_{n=1}^\infty$, entonces definimos $\delta_n = \dist(a_n, \mathbb{C} \setminus D)$.
+    Consideramos primero dos casos.
+    \begin{enumerate}
+        \item Existe $N_0 \in \mathbb{N}$ tal que $|a_n|\delta_n \geq 1$ para todo $n \geq N_0$.
+              Veamos que $\lim\limits_{n \to \infty} |a_n| = \infty$.
+              Supongamos por reducción al absurdo que $\lim\limits_{n \to \infty} |a_n| \neq \infty$.
+              Entonces existe una subsucesión $\{a_{n_k}\}_{k=1}^\infty$ acotada.
+              Así que existe una subsucesión $\{a_m\}_{m=1}^\infty$ de $\{a_{n_k}\}$ convergente a $a_0 \in \mathbb{C} \setminus D$.
+              Si $D = \mathbb{C}$, esto es imposible.
+              En otro caso,
+              $$1 \leq |a_m|\delta_m \leq |a_m||a_m-w|, \quad \forall w \in \mathbb{C} \setminus D$$
+              Tomando límites,
+              $$1 \leq |a_0||a_0-w|, \quad \forall w \in \mathbb{C} \setminus D$$
+              Como necesariamente $|a_0| \neq 0$, entonces
+              $$|a_0-w| \geq \frac{1}{|a_0|} \Rightarrow a_0 \notin \mathbb{C} \setminus D \Rightarrow a_0 \in D$$
+              Esto es una contradicción.
+
+        \item Existe $N_0 \in \mathbb{N}$ tal que $|a_n|\delta_n \leq 1$ para todo $n \geq N_0$.
+              Veamos por reducción al absurdo que $\delta_n \xrightarrow[n \to \infty]{} 0$.
+              Supongamos que existen una subsucesión $\{\delta_{n_k}\}_{k=1}^\infty$ y $\varepsilon > 0$ tales que $\delta_{n_k} \geq \varepsilon > 0$ para todo $k \in \mathbb{N}$.
+              Entonces existe una subsucesión $\{\delta_m\}_{m=1}^\infty$ de $\{\delta_{n_k}\}$ que converge a un cierto $\delta_0 \geq \varepsilon$.
+              Como además $|a_m| < \frac{1}{\varepsilon}$, existe una subsucesión $\{a_l\}_{l=1}^\infty$ de $\{a_m\}$ que converge a $a_0$.
+              Así que
+              $$\varepsilon \leq \delta_l \leq |a_l-w|, \quad \forall w \in \mathbb{C} \setminus \{0\}$$
+              Tomando límites,
+              $$\varepsilon \leq \delta_0 \leq |a_0-w|, \quad \forall w \in \mathbb{C} \setminus \{0\} \Rightarrow a_0 \in D$$
+              Esto contradice que $\{a_n\}$ no tenga puntos de acumulación.
+
+              Construyamos ahora una función holomorfa $f$ con ceros en $\{a_n\}$.
+              Para cada $a_n$ existe un $b_n \in \mathbb{C} \setminus D$ de modo que $|a_n-b_n| \leq \frac{3}{2}\delta_n$.
+              Entonces definimos
+              $$\prod_{n=1}^\infty E_n\left(\frac{a_n-b_n}{z-b_n}\right)$$
+              cuyos ceros son $\{a_n\}_{n=1}^\infty$.
+
+              Sea $K$ un compacto de $D$ y sea $d = \dist(K, \mathbb{C} \setminus D)$.
+              Observamos que $d > 0$.
+              Como $\delta_n \to 0$, podemos tomar $n_0 \in \mathbb{N}$ tal que $\delta_n < \frac{d}{2}$ para todo $n \geq n_0$.
+              $$|a_n-b_n| \leq \frac{3}{2}\delta_n < \frac{3}{4}d \leq \frac{3}{4}|z-b_n|, \quad \forall z \in K$$
+              Así que
+              $$\sum_{n=n_0}^\infty \left|1-E_n\left(\frac{a_n-b_n}{z-b_n}\right)\right| \leq \sum_{n=n_0}^\infty \left|\frac{a_n-b_n}{z-b_n}\right|^{n+1} \leq \sum_{n=n_0}^\infty \left(\frac{3}{4}\right)^{n+1} < \infty$$
+              Por tanto,
+              $$\prod_{n=1}^\infty E_n\left(\frac{a_n-b_n}{z-b_n}\right)$$
+              converge absoluta y uniformemente en compactos de $D$.
+    \end{enumerate}
+
+    En general, la sucesión $\{a_n\}_{n=1}^\infty$ se puede separar en $\{b_n\}_{n=1}^\infty$ y $\{c_n\}_{n=1}^\infty$, con $\{b_n\}$ en el caso 1 y $\{c_n\}$ en el caso 2.
+    Por el caso 1, existe $f$ holomorfa en $D$ con ceros $\{b_n\}_{n=1}^\infty$.
+    De igual forma, por el caso 2 existe $g$ holomorfa en $D$ con ceros $\{c_n\}_{n=1}^\infty$.
+    Consideramos $h = fg$.
+    $h$ es holomorfa en $D$ con ceros $\{a_n\}_{n=1}^\infty$.
+\end{proof}

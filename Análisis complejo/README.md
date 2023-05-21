@@ -19,11 +19,14 @@ Estos apuntes están abiertos a correcciones y mejoras.
 
 ## 📖 Índice
 
-### Preliminares
+### 1. Introducción
 
--   Aplicaciones conformes
+1. Series complejas con índice en los enteros
+2. Singularidades aisladas
+3. Aplicaciones conformes
+4. Transformaciones de Möbius
 
-### 1. Conformalidad y funciones abiertas en el disco unidad
+### 2. Conformalidad y funciones abiertas en el disco unidad
 
 1. Funciones meromorfas
 2. Aplicaciones conformes
@@ -33,14 +36,14 @@ Estos apuntes están abiertos a correcciones y mejoras.
 6. Subordinación
 7. La métrica de Poincaré
 
-### 2. Familias normales
+### 3. Familias normales
 
 1. Familias normales
 2. El teorema de Montel
 3. El teorema de Stieltjes-Vitali
 4. Teoremas de Hurwitz
 
-### 3. El teorema de Riemann de la aplicación conforme
+### 4. El teorema de Riemann de la aplicación conforme
 
 1. Preliminares
 2. Dominios simplemente conexos
@@ -48,14 +51,14 @@ Estos apuntes están abiertos a correcciones y mejoras.
 4. Clasificación de los dominios simplemente conexos
 5. El teorema de extensión de Carathéodory
 
-### 4. Funciones armónicas
+### 5. Funciones armónicas
 
 1. Funciones armónicas y funciones holomorfas
 2. El problema de Dirichlet para el disco unidad
 3. La integral de Poisson
 4. Desigualdades de Harnack
 
-### 5. El teorema de factorización de Weierstrass
+### 6. El teorema de factorización de Weierstrass
 
 1. Funciones holomorfas sin ceros o con finitos ceros
 2. Productos infinitos
@@ -65,7 +68,7 @@ Estos apuntes están abiertos a correcciones y mejoras.
 6. Factorización canónica de una función entera
 7. Factorización de funciones holomorfas en un dominio
 
-### 6. Funciones enteras. Crecimiento y distribución de los ceros
+### 7. Funciones enteras. Crecimiento y distribución de los ceros
 
 1. La fórmula de Jensen
 2. La fórmula de Poisson-Jensen

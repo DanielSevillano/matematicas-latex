@@ -1,199 +1,381 @@
-\chapter{Funciones armónicas}
+\chapter{El teorema de Riemann de la aplicación conforme}
 
-\section{Funciones armónicas y funciones holomorfas}
-\begin{definition}
-    Sea $D$ un abierto en $\mathbb{R}^n$ y sea $f: D \to \mathbb{R}$.
-    Decimos que $f$ es armónica en $D$ si $f \in \mathcal{C}^2(D)$ y
-    $$\Delta f = \frac{\partial^2f}{\partial x_1^2} + \frac{\partial^2f}{\partial x_2^2} + \dots + \frac{\partial^2f}{\partial x_n^2}$$
-\end{definition}
+\section{Preliminares}
+Recordemos algunos conceptos y resultados.
 
 \begin{definition}
-    Dado $D$ abierto en $\mathbb{C}$ y $u: D \to \mathbb{R}$, con $u \in \mathcal{C}^2(D)$.
-    El laplaciano de $u$ se define como:
-    $$\Delta u = \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}$$
-\end{definition}
-
-\begin{definition}
-    Sea $D$ abierto en $\mathbb{D}$ y sea $u: D \to \mathbb{R}$, con $u \in \mathcal{C}^2(D)$.
-    Diremos que $u$ es armónica en $D$ si $\Delta u = 0$.
-\end{definition}
-
-\begin{example}
-    \hfill
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $f$ una función holomorfa en $D$.
     \begin{itemize}
-        \item Las funciones constantes.
-              $u(z) = a$, $a \in \mathbb{R}$, es armónica en $\mathbb{C}$.
-        \item La función parte real es armónica en $\mathbb{C}$.
-              \begin{align*}
-                  \Re: \mathbb{C} & \to \mathbb{R}                         \\
-                  z               & \mapsto \Re(z) = \frac{z + \bar{z}}{2} \\
-                  (x, y)          & \mapsto x
-              \end{align*}
-        \item La función parte imaginaria es armónica en $\mathbb{C}$.
-              \begin{align*}
-                  \Im: \mathbb{C} & \to \mathbb{R}                          \\
-                  z               & \mapsto \Im(z) = \frac{z - \bar{z}}{2i} \\
-                  (x, y)          & \mapsto y
-              \end{align*}
-        \item Si $D$ es un abierto en $\mathbb{C}$ y $u$ y $v$ son armónicas en $D$, entonces $u+v$ es armónica en $D$.
-        \item Si $D$ es un abierto en $\mathbb{C}$, $u$ es armónica en $D$ y $c \in \mathbb{R}$, entonces $cu$ es armónica en $D$.
+        \item $g$ es una rama de $\sqrt{f}$ en $D$ si $g: D \to \mathbb{C}$ es una función continua tal que $g(z)^2 = f(z)$ para todo $z \in D$.
+        \item $g$ es una rama de $\log(f)$ en $D$ si $g: D \to \mathbb{C}$ es una función continua tal que $e^{g(z)} = f(z)$ para todo $z \in D$.
     \end{itemize}
-\end{example}
+\end{definition}
+
+\begin{proposition}
+    Sean $D$ un dominio en $\mathbb{C}$ y $f$ una función holomorfa y nunca nula en $D$.
+    \begin{enumerate}
+        \item Si $g$ es una rama de $\sqrt{f}$ en $D$, entonces $g$ es holomorfa en $D$ y $g'(z) = \frac{f'(z)}{2g(z)}$ para todo $z \in D$.
+        \item Si $g$ es un rama de $\log(f)$ en $D$, entonces $g$ es holomorfa en $D$ y $g'(z) = \frac{f'(z)}{f(z)}$ para todo $z \in D$.
+        \item Existe una rama de $\log(f)$ en $D$ si y solo si $\frac{f'}{f}$ tiene primitiva en $D$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+    Sean $D$ un dominio en $\mathbb{C}$ y $f: D \to \mathbb{C}$ una función continua en $D$.
+    Entonces $f$ tiene primitiva en $D$ si y solo si $\int_\gamma f(z)dz = 0$ para todo camino cerrado $\gamma$ en $D$.
+\end{proposition}
+
+\begin{definition}
+    Si $D$ es un dominio en $\mathbb{C}$ y $\Gamma$ es un ciclo en $D$, se dice que $\Gamma$ es homólogo a cero módulo $D$, y se denota $\Gamma \sim 0 (mod D)$, si $n(\Gamma, a) = 0$ para todo $a \in \mathbb{C} \setminus D$.
+\end{definition}
+
+\begin{theorem}[Versión general del teorema de Cauchy]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\Gamma$ un ciclo en $D$.
+    Las dos siguientes condiciones son equivalentes:
+    \begin{enumerate}
+        \item $\Gamma \sim 0 (mod D)$.
+        \item $\int_\Gamma f(z)dz = 0$ para toda función $f$ holomorfa en $D$.
+    \end{enumerate}
+\end{theorem}
+
+\section{Dominios simplemente conexos}
+\begin{definition}
+    Si $D$ es un dominio en $\mathbb{C}$, se dice que $D$ es simplemente conexo si $\mathbb{C}^\ast \setminus D$ es conexo.
+\end{definition}
+
+Hay una serie de caracterizaciones para los dominios simplemente conexos, que se pueden deducir de los resultados anteriores.
 
 \begin{theorem}
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $f$ una función holomorfa en $D$.
-    Entonces $\Re(f)$ e $\Im(f)$ son armónicas en $D$.
+    Sea $D$ un dominio en $\mathbb{C}$.
+    Las siguientes condiciones son equivalentes:
+    \begin{enumerate}
+        \item $D$ es simplemente conexo.
+        \item Todo ciclo en $D$ es homólogo a cero módulo $D$.
+        \item Todo camino cerrado en $D$ es homólogo a cero módulo $D$.
+        \item $\int_\Gamma f(z)dz = 0$ para toda $f$ holomorfa en $D$ y para todo ciclo $\Gamma$ en $D$.
+        \item $\int_\gamma f(z)dz = 0$ para toda $f$ holomorfa en $D$ y para todo camino cerrado $\gamma$ en $D$.
+        \item Toda función holomorfa en $D$ tiene primitiva.
+        \item Para toda función $f$ holomorfa y nunca nula en $D$, existe una rama de $\log(f)$ en $D$.
+        \item Para toda función $f$ holomorfa y nunca nula en $D$, existe una rama de $\sqrt{f}$ en $D$.
+    \end{enumerate}
+\end{theorem}
+
+Recordamos que:
+\begin{itemize}
+    \item Dos dominios $D_1$ y $D_2$ en $\mathbb{C}^\ast$ son conformemente equivalentes si existe una aplicación conforme $f$ de $D_1$ sobre $D_2$.
+    \item En el conjunto de los dominios en $\mathbb{C}^\ast$, el ser conformemente equivalentes es una relación de equivalencia.
+    \item Si $D_1$ y $D_2$ son dos dominios en $\mathbb{C}^\ast$ que son conformemente equivalentes, entonces $D_1$ es simplemente conexo si y solo si $D_2$ es simplemente conexo.
+    \item $\mathbb{C}^\ast$, $\mathbb{C}$ y el disco unidad $\mathbb{D} = \{z \in \mathbb{C} : |z| < 1\}$ son tres dominios simplemente conexos en $\mathbb{C}^\ast$, que no son conformemente equivalentes.
+    \item El único dominio en $\mathbb{C}^\ast$ conformemente equivalente a $\mathbb{C}^\ast$ es $\mathbb{C}^\ast$.
+\end{itemize}
+
+Vamos a ver que, además de $\mathbb{C}\ast$, $\mathbb{C}$ y $\mathbb{D}$, no hay más dominios simplemente conexos en $\mathbb{C}^\ast$ módulo la relación de equivalencia.
+Es decir, si $D$ es un dominio simplemente conexo en $\mathbb{C}^\ast$, entonces $D$ es conformemente equivalente a uno de los tres: $\mathbb{C}^\ast$, $\mathbb{C}$ o $\mathbb{D}$.
+Por tanto se tendrá que, si $D$ es un dominio simplemente conexo en $\mathbb{C}$, con $D \neq \mathbb{C}$, entonces $D$ es conformemente equivalente a $\mathbb{D}$.
+
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}^\ast$.
+    Llamamos automorfismos de $D$ a aquellas aplicaciones conformes de $D$ sobre $D$.
+    El conjunto de todos los automorfismos de $D$ se denota $\Aut(D)$, y tiene estructura de grupo con la composición.
+\end{definition}
+
+Tenemos que
+\begin{align*}
+    \Aut(\mathbb{C}^\ast) & = \mathcal{M}                                                                                                                                                       \\
+    \Aut(\mathbb{C})      & = \{f_{\alpha, \beta} : f_{\alpha, \beta}(z) = \alpha z + \beta, \alpha, \beta \in \mathbb{C}, \alpha \neq 0\} = \{T \in \mathcal{M} : T(\mathbb{C}) = \mathbb{C}\} \\
+    \Aut(\mathbb{D})      & = \{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{T \in \mathcal{M} : T(\mathbb{D}) = \mathbb{D}\}
+\end{align*}
+
+\begin{example}
+    Veamos algunos ejemplos de dominios en $\mathbb{C}$ para los que podemos encontrar una aplicación conforme del dominio sobre $\mathbb{D}$.
+    \begin{enumerate}
+        \item Un disco abierto, $D(a, R)$, $a \in \mathbb{C}, R > 0$.
+              \begin{align*}
+                  \mathbb{D} & \to D(a, R)    \\
+                  z          & \mapsto a + rz
+              \end{align*}
+        \item Un semiplano.
+              \begin{align*}
+                  \mathbb{D} & \to \mathbb{H} = \{z \in \mathbb{C} : \Re(z) > 0\} \\
+                  z          & \mapsto P(z)
+              \end{align*}
+              donde $P(z) = \frac{1+z}{1-z}$, es una aplicación conforme.
+
+              Componiendo con una rotación y una traslación, vemos que $\mathbb{D}$ es conformemente equivalente a cualquier semiplano.
+              \begin{align*}
+                  \mathbb{D} & \to \mathbb{C}              \\
+                  z          & \mapsto a + e^{i\theta}P(z)
+              \end{align*}
+              con $a \in \mathbb{C}$ y $\theta \in \mathbb{R}$.
+        \item El exterior de un disco, $\{z \in \mathbb{C} : |z-a| > R\} \cup \{\infty\}$, $a \in \mathbb{C}, R > 0$.
+              \begin{align*}
+                  D(a, R) & \to \{z \in \mathbb{C} : |z-a| > R\} \cup \{\infty\} \\
+                  z       & \mapsto \frac{1}{z}
+              \end{align*}
+        \item El plano menos una semirrecta, $\mathbb{C} \setminus \{a + re^{i\theta}, r \geq 0\}$, $a \in \mathbb{C}, \theta \in \mathbb{R}$.
+              \begin{align*}
+                  \mathbb{H} & \to \mathbb{C} \setminus (-\infty, 0] \\
+                  z          & \mapsto z^2
+              \end{align*}
+              es una aplicación conforme.
+              Así que
+              \begin{align*}
+                  \mathbb{H} & \to \mathbb{C} \setminus (-\infty, 0]           \\
+                  z          & \mapsto P(z)^2 = \left(\frac{1+z}{1-z}\right)^2
+              \end{align*}
+              es una aplicación conforme.
+
+              Componiendo con una rotación y una traslación, vemos que $\mathbb{D}$ es conformemente equivalente al plano menos una semirrecta cualquiera.
+        \item La función exponencial no es inyectiva.
+              $$z = x + iy_0 \mapsto e^z = e^{x + iy_0} = e^x(\cos(y_0) + i\sin(y_0))$$
+              Es inyectiva en cualquier banda horizontal abierta de amplitud menor o igual que $2\pi$.
+              Por ejemplo,
+              $$\exp: \left\{z \in \mathbb{C} : |\Im(z)| < \frac{\pi}{2}\right\} \to \mathbb{H}$$
+              es una aplicación conforme.
+              Como $\mathbb{H}$ es conformemente equivalente a $\mathbb{D}$, tenemos que esta banda es conformemente equivalente a $\mathbb{D}$.
+
+              Componiendo con el producto por un número real, una rotación y una traslación, vemos que $\mathbb{D}$ es conformemente equivalente a cualquier banda.
+        \item Sectores.
+              $$\left\{z \in \mathbb{C} : |\Im(z)| < \frac{\alpha}{2}\right\} \xrightarrow{\exp} S$$
+              donde $S$ es el sector de vértice 0 y amplitud $\alpha$, es una aplicación conforme.
+        \item $\mathbb{D}^+ = \{z \in \mathbb{D} : \Im(z) > 0\}$.
+              $$\mathbb{D}^+ \xrightarrow{P} \{z \in \mathbb{C} : \Re(z) > 0, \Im(z) > 0\}$$
+              es una aplicación conforme. El dominio $\{z \in \mathbb{C} : \Re(z) > 0, \Im(z) > 0\}$ es un sector, así que es conformemente equivalente a $\mathbb{D}$.
+    \end{enumerate}
+\end{example}
+
+\section{El teorema de Riemann de la aplicación conforme}
+\begin{theorem}[Teorema de Riemann de la aplicación conforme]
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ y sea $z_0 \in D$.
+    Entonces existe una única aplicación conforme $f$ de $D$ sobre $\mathbb{D}$ tal que $f(z_0) = 0$ y $f'(z_0) > 0$.
+\end{theorem}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item Existen infinitas aplicaciones conformes de $D$ sobre $\mathbb{D}$.
+              Basta cambiar el punto $z_0$ o componer con una rotación.
+        \item Para la demostración, las condiciones
+              \begin{enumerate}
+                  \item $D$ simplemente conexo.
+                  \item $D \neq \mathbb{C}$.
+              \end{enumerate}
+              solo las vamos a utilizar para deducir que:
+              \begin{itemize}
+                  \item $\mathbb{C} \setminus D$ tiene más de un punto.
+                  \item Si $h$ es holomorfa y nunca nula en $D$, existe una rama de $\sqrt{h}$ en $D$.
+              \end{itemize}
+    \end{enumerate}
+\end{remark}
+
+\begin{theorem}
+    Sea $D$ un dominio en $\mathbb{C}$ tal que:
+    \begin{enumerate}
+        \item $\mathbb{C} \setminus D$ tiene más de un punto.
+        \item Para toda función $h$ holomorfa y nunca nula en $D$, existe una rama de $\sqrt{h}$ en $D$.
+    \end{enumerate}
+    Sea $z_0 \in D$.
+    Entonces existe una única aplicación conforme $f$ de $D$ sobre $\mathbb{D}$ tal que $f(z_0) = 0$ y $f'(z_0) > 0$.
+\end{theorem}
+
+
+\begin{proof}
+    Sea $\mathcal{F} = \{f : f \text{ es holomorfa e inyectiva en } D, f(D) \subset \mathbb{D}, f(z_0) = 0\}$.
+    \begin{enumerate}
+        \item Veamos que $\mathcal{F} \neq \emptyset$.
+              Por (1), existen $a, b \in \mathbb{C} \setminus D$ con $a \neq b$.
+              Sea $\varphi(z) = \frac{z-a}{z-b}$, $z \in D$.
+              $$\begin{vmatrix}
+                      1 & -a \\
+                      1 & -b
+                  \end{vmatrix} = -b + a \neq 0 \Rightarrow \varphi \in \mathcal{M}$$
+              $\varphi$ es holomorfa e inyectiva en $D$ y $\varphi$ es nunca nula en $D$, porque $a, b \notin D$.
+              Por (2), existe $\psi$ rama de $\sqrt{\varphi}$ en $D$.
+              $\psi$ es holomorfa e inyectiva en $D$ y $\psi$ es nunca nula.
+
+              Además, se tiene que si $w \in \psi(D)$, entonces $-w \notin \psi(D)$.
+              Veámoslo.
+              Supongamos que $w \in \psi(D)$ y $-w \in \psi(D)$.
+              Entonces:
+              \begin{align*}
+                  w  & = \psi(z_1), \quad z_1 \in D \\
+                  -w & = \psi(z_2), \quad z_2 \in D
+              \end{align*}
+              $$\psi(z_1)^2 = w^2 = (-w)^2 = \psi(z_2)^2 \Leftrightarrow \varphi(z_1) = \varphi(z_2) \Leftrightarrow z_1 = z_2 \Leftrightarrow w = -w \Leftrightarrow w = 0 \in \psi(D)$$
+              Sin embargo, $\psi$ es nunca nula en $D$.
+
+              Tomamos $w_0 \in \psi(D)$.
+              Como $\psi(D)$ es abierto, existe $r > 0$ tal que $\overline{D}(0, r) \subset \psi(D)$.
+              Entonces, si $z \in D$ se tiene que $\psi(z) \in \psi(D)$ y por tanto $-\psi(z) \notin \psi(D)$, de manera que $-\psi(z) \notin \overline{D}(w_0, r)$.
+              Es decir,
+              $$|-\psi(z)-w_0| > r \Leftrightarrow |\psi(z)+w_0| > r > 0 \Leftrightarrow \frac{r}{|\psi(z)+w_0} < 1$$
+              Sea $h(z) = \frac{r}{\psi(z)+w_0}$, $z \in D$.
+              $h$ es holomorfa e inyectiva en $D$ y $|h(z)| < 1$ para todo $z \in D$, luego $h(D) \subset \mathbb{D}$.
+              Consideramos la transformación de Möbius $S_{h(z_0)}(z) = \frac{z-h(z_0)}{1-\overline{h(z_0)}z}$.
+              Sabemos que $S_{h(z_0)}(\mathbb{D}) = \mathbb{D}$ y $S_{h(z_0)}(h(z_0)) = 0$.
+              Por tanto, $f = S_{h(z_0)} \circ h \in \mathcal{F}$.
+
+        \item $\mathcal{F}$ está uniformemente acotada en $D$.
+              Por el teorema de Montel, $\mathcal{F}$ es finitamente normal.
+
+        \item Sea $M = \sup_{f \in \mathcal{F}} |f'(z_0)|$, $0 \leq M \leq \infty$.
+              Si $f \in \mathcal{F}$, $f$ es holomorfa e inyectiva en $D$, por lo que $f'(z_0) \neq 0$.
+              Entonces $M \neq 0$.
+              Como $\mathcal{F}' = \{f' : f \in \mathcal{F}\}$ es finitamente normal, entonces está uniformemente acotada en $\{z_0\}$.
+              Entonces $\{f'(z_0) : f \in \mathcal{F}\}$ está acotado, así que $M = \sup_{f \in \mathcal{F}} |f'(z_0)| < \infty$.
+              Por tanto, $0 < M < \infty$.
+
+              Tomamos una sucesión $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ tal que $\lim\limits_{n \to \infty} |f_n'(z_0)| = M$.
+              Como $\mathcal{F}$ es finitamente normal, existe $\{f_{n_k}\}_{k=1}^\infty$ subsucesión de $\{f_n\}$ que converge a una función $F$ uniformemente en cada subconjunto comapcto de $D$.
+              Entonces $F$ es holomorfa en $D$ y cada $f_{n_k}$ es holomorfa e inyectiva en $D$.
+              Por el segundo teorema de Hurwitz, $F$ es inyectiva o constante.
+              Como $f_{n_k}' \to F'$ uniformemente en cada subconjunto compacto de $D$, se tiene que $f_{n_k}'(z_0) \to F'(z_0)$, así que $|f_{n_k}'(z_0)| \to |F'(z_0)| = M > 0$.
+              Luego $F$ no es constante.
+              Entonces $F$ es inyectiva.
+              Además, $F(z_0)= \lim\limits_{k \to \infty} f_{n_k}(z_0) = 0$ porque $f_{n_z}(z_0) = 0$.
+              Si $z \in D$, $F(z) = \lim\limits_{k \to \infty} f_{n_k}(z)$, así que $|F(z)| = \lim\limits_{k \to \infty} |f_{n_z}(z)| \leq 1$ porque $|f_{n_z}(z)| < 1$.
+              Pero si $|F(z)| = 1$ para algún $z \in D$, por el principio del máximo $F$ sería constante, lo cual es imposible.
+              Por tanto, $|F(z)| < 1$ para todo $z \in D$, luego $F(D) \subset \mathbb{D}$.
+              Entonces $F \in \mathcal{F}$ y $|F'(z_0)| = M$.
+
+        \item Veamos que $F(D) = \mathbb{D}$.
+              Supongamos por reducción al absurdo que existe $\alpha \in \mathbb{D} \setminus F(D)$.
+              Consideramos $S_\alpha(z) = \frac{z-\alpha}{1-\bar{\alpha}z}$ transformación de Möbius con $S_\alpha(\mathbb{D}) = \mathbb{D}$ y $S_\alpha(\alpha) = 0$.
+              Sea $h = S_\alpha \circ F$.
+              $h$ es holomorfa e inyectiva en $D$.
+              Además, $h$ es nunca nula en $D$ y $h(D) \subset \mathbb{D}$.
+              Por (2), existe $g$ una rama de $\sqrt{h}$ en $D$, es decir, $g^2 = h$ en $D$.
+              $g$ es holomorfa, inyectiva y nunca nula en $D$, con $g(D) \subset \mathbb{D}$.
+              Sea $G = S_{g(z_0)} \circ g$.
+              $G$ es holomorfa e inyectiva en $D$, con $G(D) \subset \mathbb{D}$ y $G(z_0) = 0$.
+              Por tanto, $G \in \mathcal{F}$.
+
+              Calculemos $|G'(z_0)|$.
+              $$G'(z_0) = g'(z_0)S_{g(z_0)}'(g(z_0))$$
+              En primer lugar, hallamos la derivada de $S_a$.
+              $$S_a'(z) = \frac{1-\bar{a}z + (z-a)\bar{a}}{(1-\bar{a}z)^2} = \frac{1-|a|^2}{(1-\bar{a}z)^2}$$
+              Observamos que $S_a'(a) = \frac{1}{1-|a|^2}$ y $S_a'(0) = 1-|a|^2$.
+              Así que:
+              $$G'(z_0) = g'(z_0)\frac{1}{1-|g(z_0)|^2} \Rightarrow |G'(z_0)| = \frac{|g'(z_0)|}{1-|g(z_0)|^2}$$
+              Como $g^2 = h$ en $D$, también tenemos que $2gg' = h$ en $D$.
+              Luego $|g(z_0)|^2 = |h(z_0)|$ y también $2|g(z_0)||g'(z_0)| = |h'(z_0)|$.
+              Entonces:
+              $$|G'(z_0)| = \frac{|h'(z_0)|}{2|g(z_0)|}\frac{1}{1-|g(z_0)|^2} = \frac{|h'(z_0)|}{2\sqrt{|h(z)|}}\frac{1}{1-|h(z_0)|}$$
+              Calculamos también:
+              \begin{align*}
+                  h'(z_0) & = F'(z_0)S_\alpha'(F(z_0)) = F'(z_0)S_\alpha'(0) = F'(z_0)(1-|\alpha|^2)   \\
+                  h(z_0)  & = S_\alpha(F(z_0)) = S_\alpha(0) = -\alpha \Rightarrow |h(z_0)| = |\alpha|
+              \end{align*}
+              Por tanto:
+              $$|G'(z_0)| = \frac{|F'(z_0)|(1-|\alpha|^2)}{2\sqrt{|\alpha|}(1-|\alpha|)} = M\frac{1-|\alpha|^2}{2\sqrt{|\alpha|}(1-|\alpha|)} = M\frac{1+|\alpha|}{2\sqrt{|\alpha|}}$$
+
+              Veamos que $\frac{1+|\alpha|}{2\sqrt{|\alpha|}} > 1$.
+              \begin{align*}
+                   & \frac{1+|\alpha|}{2\sqrt{|\alpha|}} > 1 \Leftrightarrow 1+|\alpha| > 2\sqrt{|\alpha|} \Leftrightarrow 1+\alpha - 2\sqrt{|\alpha|} > 0 \Leftrightarrow (1-\sqrt{|\alpha|})^2 > 0 \Leftrightarrow 1-\sqrt{|\alpha|} \neq 0 \Leftrightarrow \\
+                   & \Leftrightarrow \sqrt{|\alpha|} \neq 1 \Leftrightarrow |\alpha| \neq 1
+              \end{align*}
+              Como $\alpha \in \mathbb{D}$, la desigualdad se cumple.
+              Por tanto, tenemos que $|G'(z_0)| > M$, con $G \in \mathcal{F}$ y $M = \sup_{f \in \mathcal{F}} |f'(z_0)|$, luego llegamos a contradicción.
+              Entonces, $F(D) = \mathbb{D}$.
+
+        \item Tenemos $F \in \mathcal{F}$, $|F'(z_0)| = M$ y $F(D) = \mathbb{D}$.
+              $F$ es una aplicación conforme de $D$ sobre $\mathbb{D}$ con $F(z_0) = 0$.
+              Falta que $F'(z_0) > 0$.
+
+              Queremos encontrar $\lambda \in \mathbb{C}$ con $|\lambda| = 1$ tal que $f = \lambda F$ verifique que $f'(z_0) > 0$.
+              $$f'(z_0) = \lambda F'(z_0) > 0 \Leftrightarrow f'(z_0) = |\lambda||F'(z_0)| = |F'(z_0)| = M \Rightarrow \lambda = \frac{M}{F'(z_0)}$$
+              Sea $\lambda = \frac{M}{F'(z_0)} \in \mathbb{C}$, con $|\lambda| = \frac{M}{|F'(z_0)|} = 1$, $F'(z_0) \neq 0$.
+              Sea $f = \lambda F$.
+              $f$ es holomorfa e inyectiva en $D$, con $f(D) = \mathbb{D}$, $f(z_0) = 0$ y $f'(z_0) = \lambda F'(z_0) = \frac{M}{F'(z_0)}F'(z_0) = M > 0$.
+
+        \item Veamos que esta aplicación conforme es única.
+              Supongamos $f_1, f_2: D \to \mathbb{D}$ aplicación conforme, con $f_j(z_0) = 0$, $f_j'(z_0) > 0$.
+              Sea $g = f_1 \circ f_2^{-1}$.
+              $$g: \mathbb{D} \xrightarrow{f_2^{-1}} D \xrightarrow{f_1} \mathbb{D}$$
+              $g$ es una aplicación conforme de $\mathbb{D}$ sobre $\mathbb{D}$, así que es de la forma
+              $$g(z) = \lambda T_a(z) = \lambda \frac{z+a}{1+\bar{a}z}, \quad \lambda \in \mathbb{C}, \; |\lambda| = 1, \; a \in \mathbb{D}$$
+              Como $g(0) = 0$,
+              $$g(0) = \lambda a = 0 \Rightarrow a = 0 \Rightarrow g(z) = \lambda z$$
+              Como $g \circ f_2 = f_1$ en $D$,
+              $$f_2'(z_0)g'(f_2(z_0)) = f_1'(z_0) \Leftrightarrow f_2'(z_0)g'(0) = f_1'(z_0) \Leftrightarrow g'(0) = \frac{f_1'(z_0)}{f_2'(z_0)} > 0$$
+              Como $g'(0) = \lambda > 0$ y $|\lambda| = 1$, entonces $\lambda = 1$.
+              Por tanto, $g(z) = z \Leftrightarrow f_1 = f_2$.
+    \end{enumerate}
+\end{proof}
+
+\subsection*{Otros enunciados equivalentes}
+\begin{theorem}[Teorema de Riemann]
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ y sea $z_0 \in D$.
+    Entonces existe una única aplicación conforme de $\mathbb{D}$ sobre $D$ tal que $f(0) = z_0$ y $f'(0) > 0$.
+\end{theorem}
+
+
+\begin{theorem}[Teorema de Riemann: enunciado equivalente]
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ y sea $z_0 \in D$.
+    Entonces existe un único $R > 0$ tal que existe una aplicación conforme $f$ de $D$ sobre $D(0, R)$ con $f(z_0) = 0$ y $f'(z_0) = 1$.
+    Además, esta $f$ es única.
+
+    A este número $R$ se le denomina radio conforme interior a $D$ en $z_0$ y se denota $r(D, z_0)$.
 \end{theorem}
 
 \begin{proof}
-    Sean $u = \Re(f)$ y $v = \Im(f)$, $u, v: D \to \mathbb{R}$, con $u, v \in \mathcal{C}^\infty(D) \subset \mathcal{C}^2(D)$.
-    Se verifican las condiciones de Cauchy-Riemann:
-    $$\begin{cases}
-            u_x = v_y \\
-            u_y = -v_x
-        \end{cases}$$
-    Por tanto:
-    \begin{align*}
-        \Delta u & = u_{xx} + u_{yy} = v_{yx} - v_{xy} = 0  \\
-        \Delta v & = v_{xx} + v_{yy} = -u_{yx} + u_{xy} = 0
-    \end{align*}
+    Este enunciado es equivalente al teorema de Riemann.
+    Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ y $z_0 \in D$.
+    \begin{enumerate}
+        \item Si $f: D \to \mathbb{D}$ aplicación conforme, $f(z_0) = 0$ y $f'(z_0) > 0$, entonces si $R = \frac{1}{f'(z_0)} > 0$ se tiene que $g = Rf: D \to D(0, R)$ es una aplicación conforme con $g(z_0) = 0$ y $g'(z_0) = 1$.
+        \item Si $R > 0$, $g: D \to D(0, R)$ es una aplicación conforme con $g(z_0) = 0$ y $g'(z_0) = 1$, entonces $f = \frac{1}{R}g: D \to \mathbb{D}$ es una aplicación conforme con $f(z_0) = 0$ y $f'(z_0) = \frac{1}{R}g'(z_0) = \frac{1}{R} > 0$.
+    \end{enumerate}
 \end{proof}
 
-El recíproco no es cierto.
-Es decir, dado $D$ abierto en $\mathbb{C}$, $u$ y $v$ armónicas en $D$ y $f = u + iv: D \to \mathbb{C}$, no se cumple en general que $f$ sea holomorfa en $D$.
+\begin{remark}
+    Hemos visto que cualquier dominio $D$ simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$ es conformemente equivalente a $\mathbb{D}$.
+    Entonces, si $D_1$ y $D_2$ son dominios simplemente conexos en $\mathbb{C}$ con $D_1, D_2 \neq \mathbb{C}$, $D_1$ y $D_2$ son conformemente equivalentes.
+\end{remark}
 
-\begin{example}[Contraejemplo]
-    Sea $D = \mathbb{C}$ y sean $u(z) = \Re(z)$ y $v(z) = \Im(z)$.
-    $u$ y $v$ son armónicas en $\mathbb{C}$.
-    Sin embargo, $f(z) = u(z) + iv(z) = \bar{z}$ no es holomorfa.
-\end{example}
+\section{Clasificación de los dominios simplemente conexos}
 
-\begin{definition}
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Diremos que $v: D \to \mathbb{R}$ es una conjugada armónica de $u$ en $D$ si la función $f = u + iv$ es holomorfa en $D$.
-\end{definition}
+En $\mathbb{C}^\ast$ tenemos el siguiente resultado.
 
-\begin{properties}
+\begin{theorem}
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}^\ast$ tal que $\mathbb{C}^\ast \setminus D$ tiene más de un punto.
+    Entonces $D$ es conformemente equivalente a $\mathbb{D}$.
+\end{theorem}
+
+\begin{proof}
     \hfill
     \begin{itemize}
-        \item Si existe una conjugada armónica de $u$ en $D$, entonces es una función armónica en $D$.
-        \item Si $u$ es una conjugada armónica de $u$ en $D$, entonces $u + c$ es conjugada armónica de $u$ en $D$ para todo $c \in \mathbb{R}$.
-        \item Si $D$ es un dominio en $\mathbb{C}$, $u$ es armónica en $D$ y $v_1, v_2$ son conjugadas armónicas de $u$ en $\mathbb{C}$, entonces existe $c \in \mathbb{R}$ tal que $v_1-v_2 = c$.
-              \begin{proof}
-                  $f_1 = u + iv_1$ y $f_2 = u + iv_2$ son holomorfas en $D$, así que $f_2 - f_1 = i(v_2-v_1)$ es holomorfa en $D$.
-                  Como $\Re(f_2-f_1) = 0$ en $D$ con $D$ dominio, entonces $f_2 - f_1$ es constante.
-                  Es decir, existe $c \in \mathbb{R}$ con $f_2-f_1 = ic$.
-                  Por tanto:
-                  $$i(v_2-v_1) = ic \Rightarrow v_2 - v_1 = c$$
-              \end{proof}
-    \end{itemize}
-\end{properties}
+        \item Si $D \subset \mathbb{C}$, entonces $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$, ya que $\mathbb{C}^\ast \setminus D$ tiene más de un punto.
+              Entonces $D$ es conformemente equivalente a $\mathbb{D}$.
+        \item Si $\infty \in D$, entonces tomamos $a, b \in \mathbb{C}^\ast \setminus D$ con $a \neq b$.
+              Entonces $a, b \in \mathbb{C} \setminus D$.
+              Sea $T(z) = \frac{1}{z-a}$, $z \in \mathbb{C} \setminus \{a\}$, con $T(a) = \infty$ y $T(\infty) = 0$.
+              $T: \mathbb{C}^\ast \to \mathbb{C}\ast$ es una aplicación conforme.
+              Entonces $D \xrightarrow{T} T(D) = D'$ es una aplicación conforme y $D'$ es un dominio simplemente conexo en $\mathbb{C}^\ast$.
 
-No tiene por qué existir la conjugada armónica.
-
-\begin{example}[Contraejemplo]
-    Sea $D = \mathbb{C} \setminus \{0\}$ abierto en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$, $u(z) = \Log|z|$.
-    Si escribimos $z = x +iy$,
-    $$u(z) = \Log(x^2 + y^2)^{1/2} = \frac{1}{2}\Log(x^2+y^2)$$
-    Calculamos sus derivadas parciales:
-    \begin{align*}
-        u_x(z)    & = \frac{1}{2} \frac{2x}{x^2+y^2} = \frac{x}{x^2+y^2}             & u_y(z) & = \frac{y}{x^2+y^2}           \\
-        u_{xx}(z) & = \frac{x^2+y^2-2x^2}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2} & u_{yy} & = \frac{x^2-y^2}{(x^2+y^2)^2}
-    \end{align*}
-    $\Delta u = 0$, así que $u$ es armónica en $D$.
-
-    Supongamos que $v$ es una conjugada armónica de $u$ en $D$.
-    Entonces $v: \mathbb{C} \setminus \{0\} \to \mathbb{R}$, con $f = u + iv$ holomorfa en $\mathbb{C} \setminus \{0\}$.
-    Consideramos:
-    \begin{align*}
-        g = \Log: \mathbb{C} \setminus (-\infty, 0] & \to \mathbb{C}                       \\
-        z                                           & \mapsto \Log(z) = \log|z| + i\Arg(z)
-    \end{align*}
-    $f$ y $g$ son holomorfas en $\mathbb{C} \setminus (-\infty, 0]$, luego $f-g$ es holomorfa en $\mathbb{C} \setminus (-\infty, 0]$.
-    Como $\Re(f-g) = 0$, entonces $f-g = ic$, con $c \in \mathbb{R}$.
-    Así que $g = f - ic$.
-    Sin embargo, $g$ no se extiende de forma continua a $\mathbb{C} \setminus \{0\}$.
-    Esto es una contradicción.
-\end{example}
-
-Hemos probado que la función $u(z) = \Log|z|$ es armónica en $\mathbb{C} \setminus \{0\}$.
-
-\begin{lemma}
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $f$ una función holomorfa y nunca nula en $D$.
-    Entonces la función $u = \Log|f|$ es armónica en $D$.
-\end{lemma}
-
-\begin{proof}
-    Sean $z_0 \in D$ y $R > 0$ tales que $D(z_0, R) \subset D$.
-    Como $D(z_0, R)$ es un dominio simplemente conexo en $\mathbb{C}$, existe $g$ una rama de $\log(f)$ en $D(z_0, R)$.
-    $g$ es holomorfa en $D(z_0, R)$, con
-    $$\Re(g(z)) = \Log|f(z)|, \quad z \in D(z_0, R)$$
-    $Re(g) = \Log|f|$ es armónica en $D(z_0, R)$.
-\end{proof}
-
-\begin{proposition}
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Entonces la función $u_x - iu_y$ es holomorfa en $D$.
-\end{proposition}
-
-\begin{corollary}
-    Sea $D$ abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Entonces $u \in \mathcal{C}^\infty(D)$.
-\end{corollary}
-
-\begin{proof}
-    Sea $u$ armónica en $D$.
-    Entonces $f = u_x - iu_y$ es holomorfa en $D$.
-    Así que $u_x, u_y \in \mathcal{C}^\infty(D)$.
-    Como además $u \in \mathcal{C}^2(D)$, entonces $u \in \mathcal{C}^\infty(D)$.
-\end{proof}
-
-\begin{proposition}
-    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Entonces existe $F$ holomorfa en $D$ tal que $\Re(F) = u$ en $D$.
-    Además, esta $F$ es única salvo adición de constantes imaginarias.
-\end{proposition}
-
-\begin{proof}
-    Sea $f = u_x - iu_y$, que es holomorfa en $D$.
-    Como $D$ es simplemente conexo, existe $g$ primitiva de $f$ en $D$.
-    $g$ es holomorfa en $D$ y $g' = f$ en $D$.
-    Escribimos $g = U + iV$, con $U = \Re(f)$ y $V = \Im(f)$.
-    Como $g$ es holomorfa, $U_x = V_y$ y $U_y = -V_x$.
-    Además, $g' = U_x + iV_x = u_x - iu_y$, así que $U_x = u_x$ y $V_x = -u_y$.
-
-    Sea $F = u + iV$, $F: D \to \mathbb{C}$, con $u \in \mathcal{C}^2(D)$.
-    $V$ es armónica en $D$, $V \in \mathcal{C}^\infty(D)$.
-    $F$ es diferenciable en sentido real.
-    Además,
-    $$\begin{cases}
-            u_x = U_x = V_y \\
-            u_y = -V_x
-        \end{cases}$$
-    Luego $F$ es holomorfa en $D$, con $\Re(F) = u$ en $D$.
-
-    Veamos que $F$ es única salvo adición de constantes imaginarias.
-    \begin{itemize}
-        \item Si $c \in \mathbb{R}$, está claro que si $G = F + ic$, entonces $G$ es holomorfa en $D$ y $\Re(G) = u$ en $D$.
-        \item Si $G$ es holomorfa en $D$ y $\Re(G) = u$ en $D$.
-              Entonces $F-G$ es holomorfa y $\Re(F-G) = 0$ en $D$.
-              Por tanto $F-G$ es constante, así que existe $c \in \mathbb{R}$ con $F-G = ic \Leftrightarrow G = F - ic$.
+              Como $a, b \notin D$, $T(a) = \infty \notin D'$, así que $D'$ es un dominio en $\mathbb{C}$.
+              Además, $T(b) \notin D'$ con $T(b) \in \mathbb{C}$, luego $D \neq \mathbb{C}$.
+              $D'$ es un dominio simplemente conexo en $\mathbb{C}$, con $D' \neq \mathbb{C}$.
+              Por tanto, $D'$ es conformemente equivalente a $\mathbb{D}$.
+              Como $D'$ es conformemente equivalente a $D$, entonces $D$ es conformemente equivalente a $\mathbb{D}$.
     \end{itemize}
 \end{proof}
 
-\begin{corollary}
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Si $z_0 \in D$ y $R > 0$ con $D(z_0, R) \subset D$, entonces existe $F$ holomorfa en $D(z_0, R)$ tal que $\Re(F) = u$ en $D(z_0, R)$.
-\end{corollary}
+Ya tenemos clasificados los dominios simplemente conexos en $\mathbb{C}^\ast$ módulo la relación de equivalencia ser conformemente equivalentes.
 
-Toda función armónica, localmente, es la parte real de una función holomorfa.
+Sea $D$ un dominio simplemente conexo en $\mathbb{C}^\ast$.
+\begin{enumerate}
+    \item Si $\mathbb{C}^\ast \setminus D = \emptyset$, entonces $D = \mathbb{C}^\ast$, que es el único dominio conformemente equivalente a $\mathbb{C}^\ast$.
+    \item Si $\mathbb{C}^\ast \setminus D$ se reduce a un punto, entonces $D = \mathbb{C}$ o bien $D = \mathbb{C}^\ast \setminus \{\alpha\}$, $\alpha \in \mathbb{C}$.
+          Estos son los dominios en $\mathbb{C}^\ast$ que son conformemente equivalentes a $\mathbb{C}$.
+    \item Si $\mathbb{C}^\ast \setminus D$ tiene más de un punto, entonces $D$ es conformemente equivalente al disco unidad $\mathbb{D}$.
+\end{enumerate}
 
 \begin{theorem}
     Sea $D$ un dominio en $\mathbb{C}$.
     Son equivalentes:
     \begin{enumerate}
         \item $D$ es simplemente conexo.
-        \item Toda función armónica tiene conjugada armónica.
+        \item Para toda función $f$ holomorfa y nunca nula en $D$, existe una rama de $\sqrt{f}$ en $D$.
     \end{enumerate}
 \end{theorem}
 
@@ -201,907 +383,173 @@ Toda función armónica, localmente, es la parte real de una función holomorfa.
     \hfill
     \begin{itemize}
         \item[$\Rightarrow$] Lo sabemos.
-        \item[$\Leftarrow$] Sea $f$ holomorfa y nunca nula en $D$.
-            Veamos que existe un rama de $\log(f)$ en $D$.
-            Sea $u = \Log|f|$, que es una función armónica en $D$.
-            Sea $v$ una conjugada armónica de $u$ en $D$.
-            Entonces $F = u + iv$ es holomorfa en $D$.
-            Sea $h = fe^{-F}$ holomorfa en $D$.
-            Como $|e^F| = |e^{u+iv}| = e^u = e^{\Log|f|} = |f|$, entonces
-            $$|h| = \frac{|f|}{|e^F|} = 1$$
-            Entonces $h$ es constante.
-            Es decir, existe $\xi = e^{ic}$ con $c \in \mathbb{R}$ tal que $h(z) = \xi$ para todo $z \in D$.
-            $$h = \frac{f}{e^F} \Rightarrow f = \xi e^F = e^{ic}e^F = e^{F + ic}$$
-            La función $F + ic$ es una rama de $\log(f)$ en $D$.
+        \item[$\Leftarrow$] Hay tres posibilidades.
+            \begin{enumerate}
+                \item $D = \mathbb{C}$.
+                      Entonces $D$ es simplemente conexo.
 
-            Toda función holomorfa y nunca nula en $D$ tiene una rama del logaritmo.
-            Luego $D$ es simplemente conexo.
+                \item $\mathbb{C} \setminus D$ se reduce a un punto.
+                      Entonces $\mathbb{C} \setminus D = \{a\}$, $a \in \mathbb{C}$.
+                      Queremos llegar a contradicción, ya que $D$ no es simplemente conexo.
+
+                      Sea $f(z) = \frac{1}{z-a}$, $z \in D$.
+                      $f$ es holomorfa y nunca nula en $D$.
+                      Sea $g$ una rama de $\sqrt{f}$ en $D$.
+                      Entonces $g$ es holomorfa y nunca nula en $D$, y $g^2 = f$ en $D$.
+
+                      Sea $R > 0$ y sea $\gamma$ la circunferencia $|z-a| = R$.
+                      Sea $\Gamma$ la curva imagen de $\gamma$ por $g$.
+                      Entonces $\Gamma$ es un camino cerrado que no pasa por 0.
+                      Unas parametrizaciones de $\gamma$ y $\Gamma$ son:
+                      \begin{align*}
+                          \gamma: [0, 2\pi] & \to \mathbb{C}      & \Gamma: [0, 2\pi] & \to \mathbb{C}         \\
+                          t                 & \mapsto a + Re^{it} & t                 & \mapsto g(a + Re^{it})
+                      \end{align*}
+                      Entonces:
+                      $$n(\Gamma, 0) = \frac{1}{2\pi i} \int_\Gamma \frac{dw}{w} = \frac{1}{2\pi i} \int_0^{2\pi} \frac{\Gamma'(t)}{\Gamma(t)}dt = \frac{1}{2\pi i} \int_0^{2\pi} \frac{g'(a + Re^{it})Rie^{it}}{g(a + Re^{it})}dt = \frac{1}{2\pi i} \int_\gamma \frac{g'(z)}{g(z)}dz$$
+                      Como $g^2 = f$, entonces además $2gg' = f'$.
+                      Luego:
+                      $$\frac{2gg'}{g^2} = \frac{f'}{g^2} \Leftrightarrow \frac{g'}{g} = \frac{1}{2}\frac{f'}{f}$$
+                      Como $f'(z) = -\frac{1}{(z-a)^2}$,
+                      $$\frac{f'(z)}{f(z)} = -\frac{z-a}{(z-a)^2} = -\frac{1}{z-a}$$
+                      Por tanto:
+                      $$n(\Gamma, 0) = \frac{1}{2\pi i} \int_\gamma \frac{g'(z)}{g(z)}dz = \frac{1}{2\pi i}\frac{1}{2} \int_\gamma \frac{f'(z)}{f(z)}dz = -\frac{1}{2}\frac{1}{2\pi i} \int_\gamma \frac{1}{z-a}dz = -\frac{1}{2}n(\gamma, a) = -\frac{1}{2}$$
+                      Luego $n(\Gamma, 0) = -\frac{1}{2} \notin \mathbb{Z}$.
+                      Esto es imposible.
+
+                \item $\mathbb{C} \setminus D$ tiene más de un punto.
+                      Por el teorema que probamos para la demostración del teorema de Riemann, tenemos que $D$ es conformemente equivalente a $\mathbb{D}$.
+                      Por tanto $D$ es simplemente conexo.
+            \end{enumerate}
     \end{itemize}
 \end{proof}
 
-\begin{theorem}[Propiedad del valor medio]
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Sea $z_0 \in D$ y $R > 0$ con $D(z_0, R) \subset D$.
-    Entonces:
-    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad 0 \leq 0 < R$$
-\end{theorem}
+\section{El teorema de extensión de Carathéodory}
 
-\begin{proof}
-    Si $r = 0$ es trivial.
-    Supongamos $0 < r < R$.
-    Existe $F$ holomorfa en $D(z_0, R)$ con $\Re(F) = u$ en $D(z_0, R)$.
-    Por la fórmula de Cauchy,
-    $$F(z_0) = \frac{1}{2\pi i} \int_{|z-z_0|=r} \frac{F(z)}{z-z_0}dz = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{F(z_0 + re^{it})}{z_0 + re^{it} - z_0}rie^{it}dt = \frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt$$
-    Tomando parte real,
-    $$u(z_0) = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \Re(F(z_0 + re^{it}))dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + Re^{it})dt$$
-\end{proof}
-
-\begin{theorem}[Forma débil del principio del máximo para funciones armónicas]
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Si $u$ tiene un máximo local en un punto $z_0 \in D$, entonces existe $r > 0$ con $D(z_0, R) \subset D$ tal que $u$ es constante en $D(z_0, R)$.
-\end{theorem}
-
-\begin{proof}
-    Sea $r > 0$ con $D(z_0, r) \subset D$.
-    Existe $F$ holomorfa en $D(z_0, r)$ tal que $\Re(F) = u$ en $D(z_0, r)$.
-    Sea $f = e^F$, que es holomorfa en $D(z_0, r)$.
-    En $D(z_0, r)$ tenemos que:
-    $$|f| = |e^F| = e^{\Re(F)} = e^u$$
-    Existe $r_1$ con $0 < r_1 < r$, tal que $u(z) \leq u(z_0)$ si $z \in D(z_0, r_1)$.
-    Entonces
-    $$|e^{F(z)}| = e^{u(z)} \leq e^{u(z_0)} = |e^{F(z_0)}|$$
-    $|e^F|$ tiene un máximo local en $z_0$.
-    Por el principio del máximo, tenemos que $e^F$ es constante en $D(z_0, r)$.
-    Entonces $|e^F| = e^u$ es constante, así que $u$ es constante en $D(z_0, r)$.
-\end{proof}
-
-Sea $D$ dominio en $\mathbb{C}$, sean $u$, $v$ armónicas en $D$ y sea $A \subset D$, $A$ con puntos de acumulación en $D$.
-$u = v$ en $A$ no implica en general que $u = v$ en $D$.
-
-\begin{example}[Contraejemplo]
-    Sea $D = \mathbb{C}$ y sean $u(z) = \Re(z)$ y $v(z) = 0$ armónicas.
-    $u = v$ en el eje imaginario, que tiene puntos de acumulación en $\mathbb{C}$, pero $u \neq v$ en $\mathbb{C}$.
-\end{example}
-
-\begin{remark}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$.
-    Si existen $u_x$ y $u_y$ en $D$ y $u_x = u_y = 0$ en $D$, entonces $u$ es constante en $D$.
-\end{remark}
-
-\begin{theorem}[Teorema de identidad para funciones armónicas]
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Si existe $G \subset D$, $G$ abierto y no vacío tal que $u = 0$ en $G$, entonces $u = 0$ en $D$.
-\end{theorem}
-
-\begin{proof}
-    Sea $f = u_x - iu_y$ holomorfa en $D$.
-    Como $u = 0$ en $G$, tenemos que $u_x = u_y = 0$ en $G$.
-    Entonces $f = 0$ en $G$.
-    Por el teorema de identidad, $f = 0$ en $D$.
-    Entonces $u_x = u_y = 0$ en $D$, luego $u$ es constante en $D$.
-    Como $u = 0$ en $G$, entonces $u = 0$ en $D$.
-\end{proof}
+Recordemos que $\mathbb{C}$ y $\mathbb{D}$ son homeomorfos, aunque no conformemente equivalentes.
 
 \begin{corollary}
-    Sea $D$ un dominio en $\mathbb{C}$ y sean $u$ y $v$ armónicas en $D$.
-    Si existe $G \subset D$, $G$ abierto y no vacío tal que $u = v$ en $G$, entonces $u = v$ en $D$.
+    Si $D_1$ y $D_2$ son dominios simplemente conexos en $\mathbb{C}$, entonces $D_1$ y $D_2$ son homeomorfos.
 \end{corollary}
 
-\begin{theorem}[Principio del máximo para funciones armónicas: primera versión]
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Si $u$ tiene un máximo local en un punto $z_0 \in D$, entonces $u$ es constante en $D$.
-\end{theorem}
-
 \begin{proof}
-    Existe $R > 0$ con $D(z_0, R) \subset D$ tal que $u$ es constante en $D(z_0, R)$.
-    Es decir, $u(z) = c$, $z \in D(z_0, R)$, $c \in \mathbb{R}$.
-    Sea $v(z) = c$, $z \in D$.
-    $u$ y $v$ son armónicas en $D$ y $u = v$ en $D(z_0, R)$.
-    Entonces $u = v$ en $D$, es decir, $u(z) = c$ para todo $z \in D$.
+    \hfill
+    \begin{itemize}
+        \item Si $D_1 = D_2 = \mathbb{C}$, son iguales.
+        \item Si $D_1 = \mathbb{C}$, $D_2 \neq \mathbb{C}$, entonces por el teorema de Riemann $D_2$ es conformemente equivalente y por tanto homeomorfo a $\mathbb{D}$.
+              Además, $D_1 = \mathbb{C}$ es homeomorfo a $\mathbb{D}$.
+              Entonces $D_1$ y $D_2$ son homeomorfos.
+        \item Si $D_1, D_2 \neq \mathbb{C}$, entonces $D_1$ y $D_2$ son conformemente equivalentes y por tanto homeomorfos a $\mathbb{D}$.
+              Entonces $D_1$ y $D_2$ son homeomorfos.
+    \end{itemize}
 \end{proof}
 
+Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$, por el teorema de Riemann existe una aplicación conforme $f$ de $\mathbb{D}$ sobre $D$.
+
 \begin{notation}
-    Si $D$ es un dominio en $\mathbb{C}$, $\bar{D}$ denotará la clausura de $D$ como subconjunto de $\mathbb{C}^\ast$.
+    Si $D \subset \mathbb{C}$, denotamos $\partial_\infty D$ a la frontera de $D$ como subconjunto de $\mathbb{C}^\ast$.
+    Es decir,
     \begin{itemize}
-        \item Si $D$ es acotado, entonces $\partial_\infty D = \partial D$.
-              $$\bar{D} = D \cup \partial_\infty D = D \cup \partial D$$
-        \item Si $D$ no es acotado, entonces $\partial_\infty D = \partial D \cup \{\infty\}$.
-              $$\bar{D} = D \cup \partial_\infty D = D \cup \partial D \cup \{\infty\}$$
+        \item Si $D$ es acotado, $\partial_\infty D = \partial D$.
+        \item Si $D$ no es acotado, $\partial_\infty D = \partial D \cup \{\infty\}$.
     \end{itemize}
 \end{notation}
 
-\begin{theorem}[Principio del máximo para funciones armónicas: segunda versión]
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    Si existe $M \in \mathbb{R}$ tal que
-    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D$$
-    entonces $u(z) \leq M$ para todo $z \in D$.
-    Además, si $u(z_0) = M$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
-\end{theorem}
-
-\begin{proof}
-    Sea $K = \sup_{z \in D} u(z) \in \mathbb{R} \cup \{\infty\}$.
-    Hay que probar que $K \leq M$.
-    Existe $\{z_n\}_{n=1}^\infty$ en $D$ tal que $\lim\limits_{n \to \infty} u(z_n) = K$.
-    Podemos suponer, pasando si es necesario a una subsucesión, que existe $\lim\limits_{n \to \infty} z_n = z^\ast \in \mathbb{C}^\ast$.
-    Entonces $z^\ast \in \bar{D} = D \cup \partial_\infty D$.
-    \begin{itemize}
-        \item Si $z^\ast \in \partial_\infty D$, entonces
-              $$K \leq \limsup_{z \to z^\ast. z \in D} u(z) \leq M$$
-        \item Si $z^\ast \in D$, como $\lim\limits_{n \to \infty} z_n = z^\ast$, se tiene que $\lim\limits_{n \to \infty} u(z_n) = u(z^\ast) = K$.
-              Luego
-              $$u(z) \leq u(z^\ast) \quad \forall z \in D$$
-              Por la primera versión del principio del máximo, $u$ es constante en $D$, es decir, $u(z) = K$ para todo $z \in D$.
-              Aplicando la hipótesis a un punto $\xi$ cualquiera de $\partial_\infty D$, vemos que $K \leq M$.
-              Observamos que $\partial_\infty D \neq \emptyset$.
-              Si $\partial_\infty D = \emptyset$, entonces $\bar{D} = D$, luego $D$ sería abierto y cerrado en $\mathbb{C}^\ast$.
-              Por tanto, $D = \emptyset$ o $D = \mathbb{C}^\ast$, lo que es imposible.
-    \end{itemize}
-\end{proof}
-
-\begin{theorem}[Principio del mínimo para funciones armónicas]
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
-    \begin{enumerate}
-        \item Si $u$ tiene un mínimo local en un punto $z_0 \in D$, entonces $u$ es constante en $D$.
-        \item Si existe $m \in \mathbb{R}$ tal que
-              $$\liminf_{z \to \xi, z \in D} u(z) \geq m, \quad \forall \xi \in \partial_infty D$$
-              entonces $u(z) \geq m$ para todo $z \in D$.
-              Además, si $u(z_0) = m$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
-    \end{enumerate}
-\end{theorem}
-
-\begin{corollary}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
-    Entonces:
-    \begin{align*}
-        \max_{z \in \bar{D}} u(z) & = \max_{z \in \partial_\infty D} u(z) \\
-        \min_{z \in \bar{D}} u(z) & = \min_{z \in \partial_\infty D} u(z)
-    \end{align*}
-\end{corollary}
-
-\begin{corollary}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
-    Si $u = 0$ en $\partial_\infty D$, entonces $u = 0$ en $D$.
-\end{corollary}
-
-\begin{corollary}
-    Sea $D$ un dominio en $\mathbb{C}$ y sean $u, v: \bar{D} \to \mathbb{R}$ armónicas en $D$ y continuas en $\bar{D}$.
-    Si $u = v$ en $\partial_\infty D$, entonces $u = v$ en $D$.
-\end{corollary}
-
-\begin{remark}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
-    Entonces los valores de $u$ en $D$ están completamente determinados por los valores de $u$ en $\partial_\infty D$.
-\end{remark}
-
-\section{El problema de Dirichlet para el disco unidad}
-Esto da lugar a la siguiente cuestión.
-Sea $D$ un dominio en $\mathbb{C}$ y sea $f: \partial_\infty D \to \mathbb{R}$ continua.
-Queremos estudiar si existe $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$ tal que $u = f$ en $D$.
-Esto es el problema de Dirichlet en $D$ con valores frontera $f$.
-Si existe una solución del problema de Dirichlet en $D$ con valores frontera $f$, esta es única.
-
-Si $D$ es un dominio en $\mathbb{C}$, se dice que $D$ es regular para el problema de Dirichlet si para toda $f: \partial_\infty D \to \mathbb{R}$ continua existe la solución del problema de Dirichlet con valores frontera $f$.
-Queremos resolver el problema de Dirichlet en el disco unidad.
-
-Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
-Vamos a expresar $u(z)$ para $z \in \mathbb{D}$ en función de $u(\xi)$, con $\xi \in \partial\mathbb{D}$.
-Por la propiedad del valor medio, si $0 < r < 1$,
-$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(re^{it})dt$$
-Si consideramos las funciones
-$$u_r(t) = u(re^{it}), \quad t \in [-\pi, \pi]$$
-vemos que $u_r \xrightarrow[r \to 1^-]{} u_1$ uniformemente porque $u$ es uniformemente continua en $\bar{\mathbb{D}}$.
-Así que:
-$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u_r(t)dt \xrightarrow[r \to 1^-]{} \frac{1}{2\pi} \int_{-\pi}^\pi u_1(t)dt \Rightarrow u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
-
-\begin{lemma}
-    Sean $G_1$ y $G_2$ dos abiertos en $\mathbb{C}$, sea $f$ holomorfa en $G_1$ con $f(G_1) \subset G_2$ y sea $u$ armónica en $G_2$.
-    Entonces $u \circ f$ es armónica en $G_1$.
-\end{lemma}
-
-\begin{proof}
-    $u \circ f \in \mathcal{C}^2(G_1)$.
-    Se puede comprobar que $\Delta(u \circ f) = 0$.
-    De otra manera, sea $z_0 \in G_1$, entonces $f(z_0) \in G_2$.
-    Tomamos $R > 0$ con $D(f(z_0), R) \subset G_2$.
-    Como $f$ es continua en $z_0$, existe $\delta > 0$ tal que $D(z_0, \delta) \subset G_1$ y $f(D(z_0, \delta)) \subset D(f(z_0), R)$.
-
-    Como $u$ es armónica en $D(f(z_0), R)$, existe $F$ holomorfa en $D(f(z), R)$ tal que $u = \Re(F)$ en $D(f(z_0), R)$.
-    $$D(z_0, \delta) \xrightarrow{f} D(f(z_0), R) \xrightarrow{F} \mathbb{C}$$
-    $F \circ f$ es holomorfa en $D(z_0, \delta)$, así que $\Re(f \circ F)$ es armónica en $D(z_0, \delta)$.
-    Si $z \in D(z_0, \delta)$, tenemos que $f(z) \in D(f(z_0), R)$.
-    $$\Re(F \circ f)(z) = \Re(F(f(z))) = u(f(z))$$
-    Entonces $\Re(F \circ f) = u \circ f$.
-    Por tanto $u \circ f$ es armónica en $D(z_0, \delta)$.
-    Entonces $u \circ f$ es armónica en $D$.
-
-    Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
-    Hemos visto que:
-    $$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
-    Sea $a \in \mathbb{D}$.
-    Consideramos $T_a(z) = \frac{z+a}{1+\bar{a}z}$, con $T_a(0) = a$ y $T_a(\bar{\mathbb{D}}) = \bar{\mathbb{D}}$.
-    Sea $v = u \circ T_a$.
-    $$\bar{\mathbb{D}} \xrightarrow{T_a} \bar{\mathbb{D}} \xrightarrow{u} \mathbb{R}$$
-    $v$ es continua en $\bar{\mathbb{D}}$ y armónica en $\mathbb{D}$.
-    $$u(a) = v(0) \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt$$
-    Hacemos el cambio de variable:
-    $$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi})$$
-    Derivando,
-    $$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi$$
-    Recordamos que $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
-    $$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
-    Entonces la integral queda de la forma:
-    $$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
-\end{proof}
-
-Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
-Hemos visto que:
-$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
-Sea $a \in \mathbb{D}$.
-Consideramos $T_a(z) = \frac{z+a}{1+\bar{a}z}$, con $T_a(0) = a$ y $T(\bar{\mathbb{D}}) = \bar{\mathbb{D}}$.
-Sea $v = u \circ T_a$.
-$$\bar{\mathbb{D}} \xrightarrow{T_a} \bar{\mathbb{D}} \xrightarrow{u} \mathbb{R}$$
-$v$ es continua en $\bar{\mathbb{D}}$ y armónica en $\mathbb{D}$.
-$$u(a) = v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt$$
-Hacemos el cambio de variable:
-$$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi})$$
-Derivando,
-$$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi$$
-Recordamos que $S_a(z) = \frac{z-a}{1-\bar{a}z}$ y $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
-$$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{-i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
-Entonces la integral queda de la forma:
-$$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
-
-\begin{theorem}
-    Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
-    Entonces
-    $$u(z) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|z|^2}{|1-ze^{-it}|^2}dt, \quad \forall z \in \mathbb{D}$$
-\end{theorem}
-
-Si $f: \partial_\infty D \to \mathbb{R}$ es una función continua, sabemos que la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $f$, de existir, es única.
-Además, tendría que ser la siguiente:
-$$u: \bar{\mathbb{D}} \to \mathbb{R}, \quad
-    u(z) = \begin{cases}
-        \dfrac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\dfrac{1-|z|^2}{|1-ze^{-it}|^2}dt & \text{si } z \in \mathbb{D}         \\
-        u(z) = f(z)                                                                & \text{si } z \in \partial\mathbb{D}
-    \end{cases}$$
-
-\section{La integral de Poisson}
-Una primera expresión del núcleo de Poisson es
-$$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2}, \quad z \in \mathbb{D}, \; t \in \mathbb{R}$$
-Si $z = re^{i\theta}$, $0 \leq r < 1$, $\theta \in \mathbb{R}$,
-$$P(z, e^{it}) = \frac{1-r^2}{|1-re^{i\theta}e^{-it}|^2} = \frac{1-r^2}{|1-re^{i(\theta-t)}|^2}$$
-De esta forma llegamos a una segunda expresión del núcleo de Poisson:
-$$P_r(t) = \frac{1-r^2}{|1-re^{it}|^2}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
-Podemos escribir el denominador de otra forma:
-$$|1-re^{it}|^2 = (1-re^{it})(1-re^{-it}) = 1 - re^{-it} - re^{it} + r^2 = 1 - r(e^{it}+e^{-it}) + r^2 = 1 - 2r\cos(t) + r^2$$
-Luego
-$$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb{R}$$
-
-\begin{remark}
-    \hfill
-    \begin{enumerate}
-        \item Si $0 \leq r < 1$, $\theta \in \mathbb{R}$, $t \in \mathbb{R}$ y $z = re^{i\theta}$, entonces $P(z, e^{it}) = P_r(\theta-t)$.
-        \item Si $0 \leq r < 1$, $t \in \mathbb{R}$ y $z = re^{it}$, entonces $P_r(t) = P(z, e^{i0}) = P(z, 1)$.
-    \end{enumerate}
-\end{remark}
-
-\begin{properties}
-    \hfill
-    \begin{enumerate}
-        \item $P(z, e^{it}) > 0$ si $z \in \mathbb{D}$ y $t \in \mathbb{R}$.
-              Equivalentemente, $P_r(t) > 0$ si $0 \leq r < 1$ y $t \in \mathbb{R}$.
-
-        \item Fijando $t \in \mathbb{R}$, la función $z \in \mathbb{D} \mapsto P(z, e^{it}) > 0$ es armónica en $\mathbb{D}$.
-              \begin{proof}
-                  \hfill
-                  \begin{itemize}
-                      \item Si $t = 0$ y $z \in \mathbb{D}$,
-                            \begin{align*}
-                                P(z, e^{i0}) & = \frac{1-|z|^2}{|1-z|^2} = \frac{1-z\bar{z}}{(1-z)(1-\bar{z})} = \frac{1-z+z-z\bar{z}}{(1-z)(1-\bar{z})} = \frac{1}{1-\bar{z}} + \frac{z}{1-z} = \\
-                                             & = \frac{1}{1-\bar{z}} + \frac{z-1+1}{1-z} = \frac{1}{1-\bar{z}} - 1 + \frac{1}{1-z} = -1 + \Re\left(\frac{1}{1-z}\right) =                        \\
-                                             & = \Re\left(-1 + \frac{2}{1-z}\right) = \Re\left(\frac{1+z}{1-z}\right)
-                            \end{align*}
-                            La función $z \in \mathbb{D} \mapsto P(z, e^{i0}) = \Re\left(\frac{1+z}{1-z}\right)$ es armónica en $\mathbb{D}$.
-
-                      \item Si $t \in \mathbb{R}$ y $z \in \mathbb{D}$, tomamos $w = ze^{-it} \in \mathbb{D}$, con $|w| = |z|$.
-                            Entonces:
-                            $$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2} = \frac{1-|w|^2}{|1-w|^2} = \Re\left(\frac{1+w}{1-w}\right) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)$$
-                            La función $z \in \mathbb{D} \mapsto P(z, e^{it})$ es armónica en $\mathbb{D}$.
-                  \end{itemize}
-              \end{proof}
-
-        \item Si $z \in \mathbb{D}$ y $t \in \mathbb{R}$,
-              $$P(z, e^{it}) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)$$
-              Si $0 \leq r < 1$ y $t \in \mathbb{R}$,
-              $$P_r(t) = \Re\left(\frac{1+re^{it}}{1-re^{it}}\right)$$
-
-        \item Fijado $r \in [0, 1)$, tenemos la función
-              \begin{align*}
-                  P_r: \mathbb{R} & \to \mathbb{R}                                                               \\
-                  t               & \mapsto P_r(t) = \frac{1-r^2}{|1-re^{it}|^2} = \frac{1-r^2}{1+r^2-2r\cos(t)}
-              \end{align*}
-              que es continua, positiva, periódica de periodo $2\pi$, par y decreciente en $[0, \pi]$.
-              Observamos que:
-              \begin{align*}
-                  P_r(0)               & = \frac{1-r^2}{(1-r)^2} = \frac{1+r}{1-r} \xrightarrow[r \to 1^-]{} \infty \\
-                  P_r(\pi) = P_r(-\pi) & = \frac{1-r^2}{(1+r)^2} = \frac{1-r}{1+r} \xrightarrow[r \to 1^-]{} 0
-              \end{align*}
-              Tenemos entonces la desigualdad:
-              $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
-              Además, si en el teorema anterior tomamos $u \equiv 1$ y $z = r$, tenemos:
-              $$1 = u(r) = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(\theta - t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt$$
-              Por tanto,
-              $$\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t) = 1$$
-
-        \item Para cada $t \in [-\pi, 0) \cup (0, \pi]$ se tiene que $P_r(t) \xrightarrow[r \to 1^-]{} 0$.
-              Además, si $\delta \in (0, \pi)$, se tiene que $P_r(t) \xrightarrow[r \to 1^-]{} 0$ uniformemente en $[-\pi, -\delta] \cup [\delta, \pi]$.
-
-              Si $t \in [-\pi, 0) \cup (0, \pi]$, $\cos(t) \neq 1$, así que:
-              $$\lim_{r \to 1^-} P_r(t) = \frac{0}{2-2\cos(t)} = 0$$
-              Si $\delta \in [0, \pi)$, entonces:
-              $$P_r(t) \leq P_r(\delta) \xrightarrow[r \to 1^-]{} 0$$
-    \end{enumerate}
-\end{properties}
-
-\begin{definition}
-    Sea $f: \partial\mathbb{D} \to \mathbb{R}$ continua.
-    Se define la integral de Poisson de $f$, y se denota $P[f]$, como la función
-    \begin{align*}
-        P[f]: \mathbb{D} & \to \mathbb{R}                                                           \\
-        z                & \mapsto P[f](z) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt
-    \end{align*}
-    Equivalentemente, si $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$, entonces
-    $$P[f](z) = P[f](re^{it}) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta - t)dt$$
-\end{definition}
-
-\begin{theorem}
-    El disco unidad $\mathbb{D}$ es un dominio regular para el problema de Dirichlet.
-    En concreto, si $f: \partial\mathbb{D} \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $f$ es la función:
-    \begin{align*}
-        u: \bar{\mathbb{D}} & \to \mathbb{R}                       \\
-        u(z)                & = \begin{cases}
-                                    P[f](z) & z \in \mathbb{D}         \\
-                                    f(z)    & z \in \partial\mathbb{D}
-                                \end{cases}
-    \end{align*}
-    Es decir, $u$ es armónica en $\mathbb{D}$, continua en $\bar{\mathbb{D}}$ y $u = f$ en $\partial\mathbb{D}$.
-\end{theorem}
-
-\begin{proof}
-    \hfill
-    \begin{enumerate}
-        \item $P[f]$ es armónica en $\mathbb{D}$.
-              Si $z \in \mathbb{D}$, tenemos que
-              \begin{align*}
-                  P[f](z) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt =                                \\
-                          & = \frac{1}{2\pi} \int_{-\pi}^\pi \Re\left(f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt\right)
-              \end{align*}
-              Veamos que $\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt$ es una función holomorfa en $\mathbb{D}$ expresándola como serie de potencias.
-
-              Si $z \in \mathbb{D}$,
-              $$\frac{1+z}{1-z} = \frac{1}{1-z} + \frac{z}{1-z} = \sum_{n=0}^\infty z^n + \sum_{n=0}^\infty z^{n+1} = 1 + 2\sum_{n=1}^\infty z^n$$
-              converge uniformemente en cada subconjunto compacto de $\mathbb{D}$.
-              Así que:
-              $$\frac{1+ze^{-it}}{1-ze^{-it}} = 1 + 2\sum_{n=1}^\infty z^ne^{-int}, \quad t \in [-\pi, \pi]$$
-              con convergencia uniforme.
-              Entonces:
-              \begin{align*}
-                  P[f](z) & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\left(1 + 2\sum_{n=1}^\infty z^ne^{-int}\right)dt\right) =                                          \\
-                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{it}) + 2\sum_{n=1}^\infty f(e^{it})z^ne^{-int}\right)dt\right) =                                  \\
-                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + \frac{1}{2\pi} \int_{-\pi}^\pi \left(2\sum_{n=1}^\infty f(e^{it})z^ne^{-int}\right)dt\right) = \\
-                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + 2\sum_{n=1}^\infty\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt\right)z^n\right)
-              \end{align*}
-
-              Sea
-              $$a_n = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt, \quad n = 0, 1, 2, \dots$$
-              Entonces:
-              $$P[f](z) = \Re\left(a_0 + 2\sum_{n=1}^\infty a_nz^n\right)$$
-              Esta es una serie de potencias centrada en 0 que converge para todo $z \in \mathbb{D}$.
-              Su radio de convergencia es mayor o igual que 1.
-              Por tanto, define una función holomorfa en $\mathbb{D}$.
-              Entonces la función $z \in \mathbb{D} \mapsto P[f](z)$ es armónica en $\mathbb{D}$.
-
-        \item Veamos que:
-              $$\lim_{z \to 1, z \in \mathbb{D}} u(z) = f(1)$$
-              Si $z \in \mathbb{D}$, $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$.
-              \begin{align*}
-                  u(z) - f(1) & = P[f](z) - f(1) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta-t)dt - f(1) =                                         \\
-                              & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta-t)dt - f(1)\frac{1}{2\pi} \int_{-\pi}^\pi P_r(s)ds =                   \\
-                              & = \frac{1}{2\pi} \int_{-\pi+\theta}^{\pi+\theta} f(e^{i(\theta-s)})P_r(s)ds - \frac{1}{2\pi} \int_{-\pi}^\pi f(1)P_r(s)ds = \\
-                              & = \frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{i(\theta-s)}) - f(e^{i0})\right)P_r(s)ds
-              \end{align*}
-              Así que
-              $$|u(z)-f(1)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt$$
-              Sea $\varepsilon > 0$, como la función $t \in [-\pi, \pi] \mapsto f(e^{it})$ es uniformemente continua, existe $\delta_1 \in (0, \pi)$ tal que si $t, s \in [-\pi, \pi]$ con $|t-s| < \delta_1$, entonces $|f(e^{it})-f(e^{is})| < \frac{\varepsilon}{2}$.
-              Como $f$ está acotada en $\partial\mathbb{D}$, existe $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in \partial\mathbb{D}$.
-              Tomamos $\delta = \frac{\delta_1}{2} \in \left(0, \frac{\pi}{2}\right)$.
-              Como $P_r(t) \xrightarrow[r \to 1^-]{} 0$ uniformemente en $[-\pi, -\delta] \cup [\delta, \pi]$, existe $r_0 \in (0, 1)$ tal que
-              $$\begin{cases}
-                      r_0 < r < 1 \\
-                      t \in [-\pi, -\delta] \cup [\delta, \pi]
-                  \end{cases} \Rightarrow P_r(t) < \frac{\varepsilon}{4M}$$
-              Entonces, si $r_0 < r < 1$ y $|\theta| < \delta$, vamos a ver que $|u(z)-f(1)| < \varepsilon$.
-              \begin{align*}
-                  |u(z)-f(1)| \leq & \frac{1}{2\pi} \int_{-\delta}^\delta \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt +                        \\
-                  +                & \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt
-              \end{align*}
-              Si $t \in [-\delta, \delta]$, tenemos que
-              $$|\theta-t-0| \leq |\theta| + |t| < \delta + \delta = 2\delta = \delta_1 < \pi$$
-              Además, $\theta-t, 0 \in [-\pi, \pi]$.
-              Así que:
-              $$\left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right| < \frac{\varepsilon}{2}$$
-              Luego:
-              \begin{align*}
-                  |u(z)-f(1)| & \leq \frac{1}{2\pi} \int_{-\delta}^\delta \frac{\varepsilon}{2}P_r(t)dt + \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} 2M\frac{\varepsilon}{4M}dt =                     \\
-                              & \leq \frac{\varepsilon}{2}\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt + \frac{1}{2\pi} \int_{-\pi}^\pi \frac{\varepsilon}{2}dt = \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
-              \end{align*}
-
-        \item Veamos que
-              $$\lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi), \quad \forall \xi \in \partial\mathbb{D}$$
-              Sea $g: \partial\mathbb{D} \to \mathbb{R}$, $g(z) = f(\xi z)$, es continua.
-              Sea $v = P[g]: \mathbb{D} \to \mathbb{R}$.
-              Sabemos que $\lim\limits_{z \to 1, z \in \mathbb{D}} v(z) = g(1)$.
-              Veamos que $v(z) = u(\xi z)$ para todo $z \in \mathbb{D}$.
-
-              Sea $z \in \mathbb{D}$, $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$.
-              $$v(z) = P[g](z) = \frac{1}{2\pi} \int_{-\pi}^\pi g(e^{it})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{it})P_r(\theta-t)dt$$
-              Si escribimos $\xi = e^{i\theta_0}$, con $\theta_0 \in \mathbb{R}$, entonces:
-              \begin{align*}
-                  v(z) & = \frac{1}{2\pi} f(\xi e^{i(\theta_0-t)})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{is})P_r(\theta+\theta_0-s)ds = P[f](re^{i(\theta-\theta_0)}) = \\
-                       & = P[f](\xi z) = u(\xi z)
-              \end{align*}
-              Entonces:
-              $$\lim_{z \to 1, z \in \mathbb{D}} u(\xi z) = f(\xi) \Rightarrow \lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi)$$
-
-        \item Veamos que $u$ es continua en $\bar{\mathbb{D}}$.
-              $u$ es continua en $\mathbb{D}$ porque es armónica en $\mathbb{D}$.
-              Dado $\xi \in \partial\mathbb{D}$, hay que probar que
-              $$\lim_{z \to \xi, z \in \bar{\mathbb{D}}} f(\xi)$$
-
-              Dada $\{z_n\}_{n=1}\infty$ sucesión en $\bar{\mathbb{D}}$ con $z_n \to \xi$, definimos la sucesión $\{w_n\}_{n=1}^\infty$ como sigue.
-              \begin{itemize}
-                  \item Si $z_n \in \mathbb{D}$, tomamos $w_n = z_n$.
-                  \item Si $z_n \in \partial\mathbb{D}$, tomamos $w_n \in \mathbb{D}$ con $|z_n-w_n| < \frac{1}{n}$ y $|u(z_n)-u(w_n)| < \frac{1}{n}$.
-                        Esto se puede hacer porque $\lim\limits_{z \to z_n, z \in \mathbb{D}} u(z) = u(z_n)$.
-
-                        Hay que probar que $u(z_n) \to f(\xi)$.
-                        $$|u(z_n)-f(\xi)| \leq |u(z_n)-u(w_n)| + |u(w_n)-f(\xi)|$$
-                        Observamos que
-                        $$|w_n-\xi| \leq |w_n-z_n| + |z_n-\xi| \to 0$$
-                        Además, sabemos que $\lim\limits_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi)$, así que $u(w_n) \to f(\xi)$.
-                        Por tanto,
-                        $$|u(z_n) - f(\xi)| \to 0$$
-              \end{itemize}
-    \end{enumerate}
-\end{proof}
-
-\begin{theorem}
-    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$.
-    Supongamos que existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$ que se puede extender a un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D} = D \cup \partial_\infty D$.
-    Entonces $D$ es regular para el problema de Dirichlet.
-
-    En concreto, si $f: \partial_\infty D \to \mathbb{R} \to \mathbb{R}$ continua, la función $u: \bar{D} \to \mathbb{R}$ definida por
-    $$u(z) = \begin{cases}
-            f(z)                           & z \in \partial_\infty D \\
-            u(z) = P[f \circ F](F^{-1}(z)) & z \in D
-        \end{cases}$$
-    es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
-\end{theorem}
-
-\begin{proof}
-    $F: \mathbb{D} \to D$ se puede extender a una homeomorfismo $F: \bar{\mathbb{D}} \to \bar{D}$.
-    Observamos que $F$ es un homeomorfismo de $\partial\mathbb{D}$ sobre $\partial_\infty D$.
-    Sea $g = f \circ F$.
-    $$g: \partial\mathbb{D} \xrightarrow{F} \partial_\infty D \xrightarrow{f} \mathbb{R}$$
-    $g$ es continua.
-    Sea $v$ la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $g$.
-    $v: \bar{\mathbb{D}} \to \mathbb{R}$ es armónica en $\mathbb{D}$, continua en $\bar{\mathbb{D}}$ y con $v = g$ en $\partial\mathbb{D}$.
-
-    Sea $u: \bar{D} \to \mathbb{R}$, $u = v \circ F^{-1}$.
-    $u$ es continua en $\bar{D}$ y armónica en $D$.
-    Si $z \in \partial_\infty D$,
-    $$u(z) = v(F^{-1}(z)) = g(F^{-1}(z)) = f(z)$$
-    Luego $u = f$ en $\partial_\infty D$.
-\end{proof}
-
-\begin{example}
-    Cualquier disco abierto es un dominio regular para el problema de Dirichlet.
-
-    Sea $a \in \mathbb{C}$ y $R > 0$.
-    Sea $D = D(a, R)$.
-    Sea $F: \mathbb{D} \to D$, $F(z) = a + Rz$.
-    $D$ es regular para el problema de Dirichlet.
-
-    Si $f: \partial D(a, R) \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $f$ es $u: \bar{D}(a, R) \to \mathbb{R}$, con
-    $$u(z) = f(z), \quad z \in \partial D(a, R)$$
-    Si $z \in D(a, R)$, $z = a + re^{i\theta}$ con $0 \leq r < R$ y $\theta \in \mathbb{R}$,
-    \begin{align*}
-        u(z) & = P[f \circ F](F^{-1}(z)) = P[f \circ F]\left(\frac{z-a}{R}\right) = P[f \circ F]\left(\frac{r}{R}e^{i\theta}\right) =                                                                                      \\
-             & = \frac{1}{2\pi} \int_{-\pi}^\pi (f \circ F)(e^{it})P_{r/R}(\theta-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{1-\left(\frac{r}{R}\right)^2}{\left|1-\frac{r}{R}e^{i(\theta-t)}\right|^2}dt = \\
-             & = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{R^2-r^2}{|R-re^{i(\theta-t)}|^2}dt
-    \end{align*}
-\end{example}
-
-Sea $D$ el dominio interior a una curva de Jordan en $\mathbb{C}$.
-Entonces $D$ es un dominio simplemente conexo en $D$, con $D \neq \mathbb{C}$.
-Por el teorema de Riemann, existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$, que se puede extender a un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D}$ por el teorema de extensión de Carathéodory.
-Por el teorema anterior, $D$ es regular para el problema de Dirichlet.
-Si $f: \partial D \to \mathbb{R}$ es continua, entonces la función $u: \bar{D} \to \mathbb{R}$ dada por
-$$u(z) = \begin{cases}
-        f(z)                    & z \in \partial D \\
-        P[f \circ F](F^{-1}(z)) & z \in D
-    \end{cases}$$
-es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
-
-\begin{theorem}[Principio del máximo para funciones armónicas: tercera versión]
-    Sea $D$ un dominio acotado en $\mathbb{C}$ y sea $u$ una función armónica y acotada superiormente en $D$.
-    Si existen $M \in \mathbb{R}$ y $\{\xi_1, \xi_2, \dots, \xi_n\} \in \partial D$ tales que
-    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial D \setminus \{\xi_1, \xi_2, \dots \xi_n\}$$
-    entonces $u(z) \leq M$ para todo $z \in D$.
-\end{theorem}
-
-\begin{proof}
-    Sea $\alpha = diam(D) = \sup \{|z-w| : z, w \in D\}$.
-    Entonces $0 < \alpha < \infty$.
-    Dado $\varepsilon > 0$, sea $u_\varepsilon: D \to \mathbb{R}$ dada por
-    $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{i=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)$$
-    Si $z \in D$ y $j \in \{1, \dots, n\}$, como $|z-w| \leq \alpha$ para todo $w \in D$, se tiene que
-    $$0 < |z-\xi_j| \leq \alpha \Rightarrow 0 < \frac{|z-\xi_j|}{\alpha} \leq 1 \Rightarrow \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq 0$$
-    Entonces $u_\varepsilon \leq u$ en $D$.
-    Como la función $z \mapsto \frac{z-\xi_j}{\alpha}$ es holomorfa y nunca nula en $D$, se tiene que $\Log\left(\frac{|z-\xi_j|}{\alpha}\right)$ es armónica en $D$ para cada $j$.
-    Por tanto, $u_\varepsilon$ es armónica en $D$.
-
-    Sea $\xi \in \partial D \setminus \{\xi_1, \xi_2, \dots, \xi_n\}$.
-    Entonces:
-    $$\limsup_{z \to \xi, z \in D} u_\varepsilon(z) \leq \limsup_{z \to \xi, z \in D} u(z) \leq M$$
-    Sea $j_0 \in \{1, \dots, n\}$.
-    $$\limsup_{z \to \xi_{j_0}, z \in D} u_\varepsilon(z) = \limsup_{z \to \xi_{j_0}, z \in D} \left(u(z) + \varepsilon\Log\left(\frac{|z-\xi_{j_0}|}{\alpha}\right) + \varepsilon \sum_{j = 1, j \neq j_0}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)\right) = -\infty \leq M$$
-
-    Por la segunda versión del principio del máximo, $u_\varepsilon(z) \leq M$ para todo $z \in D$.
-    Entonces hemos probado que, dado $\varepsilon > 0$, se tiene que
-    $$u(z) + \varepsilon \sum_{j=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq M, \quad \forall z \in D$$
-    Haciendo $\varepsilon \to 0$, tenemos que $u(z) \leq M$ para todo $z \in D$.
-\end{proof}
-
-\begin{theorem}[Principio del máximo para funciones armónicas: cuarta versión]
-    Sea $D$ un dominio en $\mathbb{C}$ con exterior no vacío y sea $u$ una función armónica y acotada superiormente en $D$.
-    Supongamos que existen $M \in \mathbb{R}$ y $\{\xi_1, \xi_2, \dots, \xi_n\} \in \partial_\infty D$ tales que
-    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D \setminus \{\xi_1, \xi_2, \dots \xi_n\}$$
-    Entonces $u(z) \leq M$ para todo $z \in D$.
-\end{theorem}
-
-\begin{proof}
-    Sea $a \in \mathbb{C}$ un punto exterior a $D$.
-    Existe $R > 0$ tal que $D(a, R) \cap D = \emptyset$.
-    Entonces $|z-a| \geq R$ para todo $z \in D$.
-    Para cada $j \in \{1, \dots, n\}$ vamos a construir una función $h_j$ holomorfa y nunca nula en $D$, con $|h_j| \leq 1$ en $D$ y tal que $\lim\limits_{z \to \xi_j, z \in D} h_j(z) = 0$ y $\lim\limits_{z \to \xi_i, x \in D} h_j(z)$ existe en $\mathbb{C} \setminus \{0\}$ si $i \neq j$.
-    \begin{itemize}
-        \item Si $\xi_j = \infty$,
-              $$h_j(z) = \frac{R}{z-a}, \quad z \in D$$
-              $h_j$ es holomorfa y nunca nula en $D$ con $|h_j| \leq 1$ en $D$.
-
-        \item Si $\xi_j \in \mathbb{C}$,
-              $$\left|\frac{z-\xi_j}{z-a}\right| = \left|\frac{z-a+a-\xi_j}{z-a}\right| \leq \frac{|z-a|+|a-\xi_j|}{|z-a|} = 1 + \frac{|a-\xi_j|}{|z-a|} \leq 1 + \frac{|a-\xi_j|}{R} = K_j > 0$$
-              Sea
-              $$h_j(z) = \frac{1}{K_j}\frac{z-\xi_j}{z-a}$$
-              $h_j$ es holomorfa y nunca nula en $D$, con
-              $$|h_j(z)| = \frac{1}{K_j}\left|\frac{z-\xi_j}{z-a}\right| \leq \frac{1}{K_j}K_j = 1, \quad \forall z \in D$$
-              Además,
-              $$\begin{cases}
-                      \lim_{z \to \xi_j, z \in D} h_j(z) = 0                                                                                  \\
-                      \lim_{z \to \xi_i, z \in D} h_j(z) = \frac{1}{K_j}\frac{\xi_i-\xi_j}{\xi_i-a} \in \mathbb{C} \setminus \{0\} & i \neq j
-                  \end{cases}$$
-              Sea $\varepsilon > 0$, definimos:
-              $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{n=1}^\infty \Log|h_j(z)|, \quad z \in D$$
-              Se sigue como en la demostración del teorema anterior.
-    \end{itemize}
-\end{proof}
-
-\begin{theorem}[Teorema de la singularidad evitable para funciones armónicas]
-    Sean $a \in \mathbb{C}$ y $R > 0$.
-    Si $u$ es armónica y acotada en $D(a, R) \setminus \{a\}$, entonces $u$ se puede extender a una función armónica en $D(a, R)$.
-\end{theorem}
-
-\begin{proof}
-    Sea $f = u|_{\partial D(a, R/2)}$, $f: \partial D(a, R/2) \to \mathbb{R}$ es continua.
-    Como $D(a, R/2)$ es regular para el problema de Dirichlet, existe $v: \bar{D}(a, R/2) \to \mathbb{R}$ armónica en $D(a, R/2)$, continua en $\bar{D}(a, R/2)$ y con $v = f$ en $\partial D(a, R/2)$.
-
-    Sea $D = D(a, R/2) \setminus \{a\}$.
-    $u$ y $v$ son armónicas en $D$, $u-v$ y $v-u$ también.
-    Aplicamos la tercera versión del principio del máximo a $u-v$ y $v-u$ en $D$.
-    $D$ es un dominio acotado en $\mathbb{C}$, $u$ está acotada en $D$ y $v$ es continua en $\bar{D}(a, R/2)$, así que $v$ está acotada en $D$.
-    Luego $u-v$ y $v-u$ están acotadas en $D$.
-
-    Si $\xi \in \partial D(a, R/2) = \partial D \setminus \{a\}$,
-    \begin{align*}
-        \limsup_{z \to \xi, z \in D} (u(z) - v(z)) & \leq u(\xi) - v(\xi) = 0 \\
-        \limsup_{z \to \xi, z \in D} (v(z) - u(z)) & \leq v(\xi) - u(\xi) = 0
-    \end{align*}
-
-    Por tanto, $u(z) - v(z) \leq 0$ y $v(z) - u(z) \leq 0$ para todo $z \in D$.
-    Luego $u(z) = v(z)$ para todo $z \in D = D(a, R/2) \setminus \{a\}$, con $v$ armónica en $D(a, R/2)$.
-    Definiendo $u(a) = v(a)$, vemos que $u$ se puede extender a una función armónica en $D(a, R)$.
-\end{proof}
-
-\begin{theorem}
-    $\mathbb{D} \setminus \{0\}$ es un dominio en $\mathbb{C}$ que no es regular para el problema de Dirichlet.
-\end{theorem}
-
-\begin{proof}
-    $D = \mathbb{D} \setminus \{0\}$, $\partial D = \partial\mathbb{D} \cup \{0\}$.
-    Sea $f: \partial D \to \mathbb{R}$, $f(z) = 0$ si $|z| = 1$ y $f(0) = 1$.
-    $f$ es continua en $\partial D$.
-    Supongamos que existe $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D} \setminus \{0\}$, continua en $\bar{\mathbb{D}}$ y con $u = f$ en $\partial D$.
-    Como $u$ es armónica y acotada en $\mathbb{D} \setminus \{0\}$, por el teorema anterior $u$ se puede extender a una función armónica en $\mathbb{D}$.
-    Entonces $u$ es armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
-    Por tanto,
-    $$\max_{z \in \bar{\mathbb{D}}} u(z) = \max_{z \in \partial\mathbb{D}} u(z) = 0$$
-    Sin embargo, esto contradice que $u(0) = 1 \neq 0$.
-\end{proof}
-
-\begin{remark}
-    La condición de que $u$ está acotada superiormente no se puede suprimir en la tercera versión del principio del máximo.
-\end{remark}
-
-\begin{example}
-    Sea $D = \mathbb{D} \setminus \{0\}$ dominio acotado en $\mathbb{C}$ y sea $u(z) = \Log\left(\frac{1}{|z|}\right)$, $z \in D$.
-    Como la función $z \mapsto \frac{1}{z}$ es holomorfa y nunca nula en $D$, entonces $u$ es armónica en $D$.
-    $u$ no está acotada superiormente en $D$.
-    $$\partial D = \partial\mathbb{D} \cup \{0\}$$
-    Si $\xi \in \partial\mathbb{D}$,
-    $$\limsup_{z \to \xi, z \in D} u(z) = \limsup_{z \to \xi, z \in \mathbb{D}} \Log\left(\frac{1}{|z|}\right) = 0 = M$$
-    Pero no es cierto que $u(z) \leq 0$ para todo $z \in D$.
-    De hecho, $u(z) > 0$ para todo $z \in D$.
-\end{example}
-
-\begin{lemma}
-    Sean $a \in \mathbb{C}$ y $R > 0$.
-    Sea $u: \bar{D}(a, R) \to \mathbb{R}$ una función continua, con $u \equiv 0$ en $\partial D(a, R)$.
-    Supongamos que para cada $z_0 \in D(a, R)$ existe $r_{z_0} > 0$ con $D(z_0, r_{z_0}) \subset D(a, R)$ tal que
-    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad r \in [0, r_{z_0}]$$
-    Entonces $u \equiv 0$ en $D(a, R)$.
-\end{lemma}
-
-\begin{proof}
-    Sea $M = \max\{u(z) : z \in \bar{D}(a, R)\}$ y sea $K = \{z \in \bar{D}(a, R) : u(z) = M\}$.
-    $K$ es un compacto no vacío con $K \subset \bar{D}(a, R)$.
-    Como la función $z \in \mathbb{C} \mapsto |z-a|$ es continua, alcanza el máximo en $K$.
-    Tomamos $z_0 \in K$ tal que $|z_0-a| = \max\{|z-a| : z \in K\}$.
-
-    Supongamos por reducción al absurdo que $z_0 \in D(a, R)$.
-    Tomamos $r_{z_0} > 0$, que existe por hipótesis, y fijamos $r \in (0, r_{z_0})$.
-    Entonces
-    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt$$
-    Sean $E_1 = \{t \in [-\pi, \pi] : |z_0+re^{it}-a| \leq |z_0-a|\}$ y $E_2 = \{t \in [-\pi, \pi] : |z_0+re^{it}-a| > |z_0-a|\}$.
-    Observamos que $E_2 \neq \emptyset$.
-    Si $t \in E_2$, se tiene que $z_0 + re^{it} \notin K$.
-    Así que $u(z_0 + re^{it}) < M$.
-    Entonces
-    $$u(z_0) = \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt + \frac{1}{2\pi} \int_{E_2} u(z_0 + re^{it})dt$$
-    Observamos que:
-    \begin{align*}
-        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt \leq \frac{1}{2\pi} \int_{E_1} Mdt \\
-        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt < \frac{1}{2\pi} \int_{E_2} Mdt
-    \end{align*}
-    Por tanto,
-    $$u(z_0) < \frac{1}{2\pi} \int_{E_1} Mdt + \frac{1}{2\pi} \int_{E_2} Mdt = \frac{1}{2\pi} \int_{-\pi}^\pi Mdt = M$$
-    Esto contradice que $z_0 \in K$.
-    Entonces $z_0 \in \partial D(a, R)$, así que por hipótesis $u(z_0) = 0$.
-    Es decir,
-    $$u(z_0) = M = \max\{u(z) : z \in \bar{D}(a, R)\} = 0$$
-    Por tanto, $u(z) \leq 0$ para todo $z \in D(a, R)$.
-
-    Aplicando la parte del lema que acabamos de ver a la función $-u$, tenemos que $-u(z) \leq 0$ para todo $z \in D(a, R)$.
-    Por tanto, $u \equiv 0$ en $D(a, R)$.
-\end{proof}
-
-\begin{theorem}[Caracterización de la armonicidad por la propiedad del valor medio]
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$ continua.
-    Supongamos que para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$, tal que
-    $$u(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt, \quad r \in [0, r_a]$$
-    Entonces $u$ es armónica en $D$.
-\end{theorem}
-
-\begin{proof}
-    Sea $a \in D$.
-    Tomamos $r_a > 0$ y $R = \frac{r_a}{2}$.
-    Sea $v$ la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $u$.
-    Entonces $v: \bar{D}(a, R) \to \mathbb{R}$ es armónica en $D(a, R)$, continua en $\bar{D}(a, R)$ y con $u = v$ en $\partial D(a, R)$.
-    Vamos a aplicar el lema a $u-v$.
-    $u-v: \bar{D}(a, R) \to \mathbb{R}$ es continua y $u-v \equiv 0$ en $\partial D(a, R)$.
-    Sea $z_0 \in D(a, R)$.
-    Tomamos $r_{z_0} > 0$, que elegimos suficientemente pequeño para que $D(z_0, r_{z_0}) \subset D(a, R)$.
-    Si $r \in [0, r_{z_0})$, tenemos que
-    $$u(z_0)-v(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt - frac{1}{2\pi} \int_{-\pi}^\pi v(z_0 + re^{it})dt = frac{1}{2\pi} \int_{-\pi}^\pi (u-v)(z_0 + re^{it})dt$$
-    Por el lema, $u-v = 0$ en $D(a, R)$.
-    Como $v$ es armónica en $D(a, R)$, $u$ es armónica en $D(a, R)$.
-    Para cada $a \in D$ hemos encontrado $R > 0$ con $D(a, R) \subset D$ tal que $u$ es armónica en $D(a, R)$.
-    Entonces $u$ es armónica en $D$.
-\end{proof}
-
-\begin{remark}
-    Esta es la forma débil de la propiedad del valor medio.
-    Como $u$ es armónica en $D$, tenemos que $u$ verifica la propiedad del valor medio.
-\end{remark}
-
-\begin{theorem}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión de funciones armónicas en $D$.
-    Supongamos que $\{u_n\}$ converge uniformemente en cada subconjunto compacto de $D$.
-    Sea $u(z) = \lim\limits_{n \to \infty} u_n(z)$, $z \in D$.
-    Entonces $u$ es armónica en $D$.
-\end{theorem}
-
-\begin{proof}
-    Tenemos $u: D \to \mathbb{R}$.
-    Si $K \subset D$, $K$ compacto, tenemos que $u_n \to u$ uniformemente en $K$ y $u_n$ es continua en $K$ para cada $n \in \mathbb{N}$.
-    Así que $u$ es continua en $K$, luego $u$ es continua en $D$.
-    Sea $a \in D$ y sea $R > 0$ con $D(a, R) \subset D$.
-    Sea $r \in [0, R)$.
-    Tenemos que
-    $$u_n(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt, \quad \forall n \in \mathbb{N}$$
-    Haciendo $n \to \infty$,
-    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt$$
-    Como $u_n \to u$ uniformemente en $\partial D(a, r)$,
-    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi \lim_{n \to \infty} u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt$$
-    Por el teorema anterior, $u$ es armónica en $D$.
-\end{proof}
-
-Vamos a ver qué sucede al cambiar la condición de convergencia uniforme en compactos por la condición de que $\{u_n\}$ sea creciente.
-
-\section{Desigualdades de Harnack}
-Sean $a \in \mathbb{C}$ y $R > 0$.
-Sea $u$ una función armónica y no negativa en $D(a, R)$.
-Entonces, si $r \in (0, R)$, se tiene que
-$$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}, \quad \forall z \in \bar{D}(a, R)$$
-Por tanto, tomando $r = \frac{R}{2}$, tenemos
-$$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\right)$$
-
-\begin{proof}
-    Fijamos $r \in (0, R)$.
-    Tomamos $\rho$ con $r < \rho < R$.
-    Sea $v: \bar{\mathbb{D}} \to \mathbb{R}$, $v(z) = u(a + \rho z)$.
-    \begin{align*}
-        v: \mathbb{D} & \to D(a, R) \xrightarrow{u} \mathbb{R} \\
-        z             & \mapsto a + \rho z
-    \end{align*}
-    $v$ es continua en $\bar{\mathbb{D}}$, armónica en $\mathbb{D}$ y no negativa en $\bar{\mathbb{D}}$.
-
-    Sea $z \in \partial D\left(0, \frac{r}{\rho}\right)$.
-    $z$ es de la forma $z = \frac{r}{\rho}e^{i\theta}$, con $\theta \in \mathbb{R}$.
-    Entonces:
-    $$v(z) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt$$
-    Además,
-    $$v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt$$
-    Recordemos que
-    $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
-    Entonces, si $\theta \in \mathbb{R}$ y $z = \frac{r}{\rho}e^{i\theta}$, tenemos:
-    \begin{align*}
-         & \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1-r/\rho}{1+r/\rho}dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1+r/\rho}{1-r/\rho}dt \Leftrightarrow                    \\
-         & \Leftrightarrow \frac{\rho-r}{\rho+r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \leq v(z) \leq \frac{\rho+r}{\rho-r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \Leftrightarrow \frac{\rho-r}{\rho+r}v(0) \leq v(z) \leq \frac{\rho+r}{\rho-r}v(0)
-    \end{align*}
-    En términos de $u$,
-    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R), \; z = \frac{r}{\rho}e^{i\theta}$$
-    Como $u(a+\rho z) = u\left(a + \rho\frac{r}{\rho}e^{i\theta}\right) = u(a + re^{i\theta})$, entonces
-    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R)$$
-
-    Haciendo $\rho \to R^-$, tenemos que:
-    $$\frac{R-r}{R+r}u(a) \leq u(a+re^{i\theta}) \leq \frac{R+r}{R-r}u(a), \quad \forall \theta \in \mathbb{R}$$
-    Entonces:
-    $$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}u(a), \quad z \in \partial D(a, r)$$
-    Como $u$ es continua en $\bar{D}(a, r)$ y armónica en $D(a, r)$, por el principio del máximo y el principio del mínimo,
-    \begin{align*}
-        \max_{z \in \bar{D}(a, r)} u(z) & = \max_{z \in \partial D(a, r)} u(z) \\
-        \min_{z \in \bar{D}(a, r)} u(z) & = \min_{z \in \partial D(a, r)} u(z)
-    \end{align*}
-    Entonces tenemos la desigualdad para todo $z \in \bar{D}(a, r)$.
-\end{proof}
-
 \begin{proposition}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión de funciones armónicas y no negativas en $D$.
-    Si existe $z_0 \in D$ tal que $\lim\limits_{n \to \infty} u_n(z_0) = \infty$, entonces
-    $$\lim_{n \to \infty} u_n(z) = \infty, \quad \forall z \in D$$
-    siendo la convergencia uniforme en cada subconjunto compacto de $D$.
+    Sean $D_1$ y $D_2$ dos dominios en $\mathbb{C}$ y sea $f$ un homeomorfismo de $D_1$ sobre $D_2$.
+    Sea $\{z_n\}_{n=1}^\infty$ una sucesión en $D_1$ y supongamos que existe $\lim\limits_{n \to \infty} z_n = \xi \in \partial_\infty D_1$.
+    Entonces todos los puntos de acumulación de la sucesión $\{f(z_n)\}$ están en $\partial_\infty D_2$.
 \end{proposition}
 
 \begin{proof}
-    Para cada $n \in \mathbb{N}$ tenemos $u_n: D \to \mathbb{R}$ armónica no negativa.
-    Sea
-    $$A = \{z \in D : \lim\limits_{n \to \infty} u_n(z) = \infty\}$$
-    $A \neq \emptyset$ porque $z_0 \in A$.
-    Veamos que $A$ es abierto y cerrado en $D$.
-
-    \begin{enumerate}
-        \item Probemos que $A$ es abierto.
-              Queremos ver que si $a \in A$ y $R > 0$ tal que $D(a, R) \subset D$, entonces $D(a, R/2) \subset A$ y $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en $D(a, R/2)$.
-
-              Basta ver la convergencia uniforme.
-              Sea $M > 0$, veamos que existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ y $z \in D(a, R/2)$, entonces $u_n(z) > M$.
-              Como $a \in A$, tenemos que $\lim\limits_{n \to \infty} u_n(a) = \infty$.
-              Por tanto, existe $n_0 \in \mathbb{N}$ tal que
-              $$n \geq n_0 \Rightarrow u_n(a) > 3M$$
-              Entonces, si $n \geq n_0$ y $z \in D(a, R/2)$, por las desigualdades de Harnack tenemos
-              $$u_n(z) \geq \frac{1}{3}u_n(a) > \frac{1}{3}3M = M$$
-              Por tanto, $A$ es abierto.
-
-        \item Veamos que $A$ es cerrado en $D$, es decir, que $D \setminus A$ es abierto.
-
-              Sea $a \in D \setminus A$ y sea $R > 0$ con $D(a, R) \subset D$.
-              $D(a, R/2) \subset D \setminus A$, ya que si $z \in D(a, R/2)$, entonces $u_n(z) \leq 3u_n(a)$ para todo $n \in \mathbb{N}$ y $z \in D$.
-              Si $z \in A$, $\lim\limits_{n \to \infty} u_n(z) = \infty$ y $\lim\limits_{n \to \infty} u_n(a) = \infty$, pero $a \notin A$.
-              Así que $D \setminus A$ es abierto.
-    \end{enumerate}
-
-    $A$ es abierto y cerrado en $D$, que es conexo.
-    Como $A \neq \emptyset$, tenemos que $A = D$.
-    Entonces $\lim\limits_{n \to \infty} u_n(z) = \infty$ para todo $z \in D$.
-    Sabemos que, dado $a \in D$ y $R > 0$ con $D(a, R) \subset D$, se tiene que $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en $D(a, R/2)$.
-    Entonces $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en cada subconjunto compacto de $D$.
+    Supongamos por reducción al absurdo que existe un punto de acumulación de $\{f(z_n)\}$ que está en $\mathbb{C}^\ast \setminus \partial_\infty D_2$.
+    Le llamamos $w_0$.
+    Existe $\{z_{n_k}\}_{k=1}\infty$ subsucesión de $\{z_n\}$ tal que $f(z_{n_k}) \xrightarrow[k \to \infty]{} w_0 \in D_2$.
+    $f^{-1}$ es continua en $w_0$.
+    Además,
+    $$f^{-1}(f(z_{n_k})) \to f^{-1}(w_0) \in D_1$$
+    Sin embargo, $f^{-1}(f(z_{n_k})) = z_{n_k}$ y $z_{n_k} \to \xi \in \partial_\infty D_1$.
 \end{proof}
 
-\begin{theorem}[Teorema de Harnack]
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión creciente de funciones armónicas en $D$.
-    Para cada $z \in D$, sea $u(z) = \lim\limits_{n \to \infty} u_n(z) \in \mathbb{R} \cup \{\infty\}$.
-    Entonces se da una de las dos siguientes posibilidades:
-    \begin{enumerate}
-        \item $u \equiv \infty$.
-              En este caso, $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en cada subconjunto compacto de $D$.
-        \item $u(z) \in \mathbb{R}$ para todo $z \in D$.
-              En este caso, $u$ es armónica en $D$ y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
-    \end{enumerate}
-\end{theorem}
+\begin{proposition}
+    Sean $D_1$ y $D_2$ dos dominios en $\mathbb{C}$ y $f$ un homeomorfismo de $D_1$ sobre $D_2$.
+    Supongamos que $f$ se extiende de forma continua a $\overline{D_1}$ y le llamamos $f$ a la extensión $f: \overline{D_1} \to \mathbb{C}^\ast$.
+    Entonces $f(\overline{D_1}) = \overline{D_2}$, $f(D_1) = D_2$ y $f(\partial_\infty D_1) = \partial_\infty D_2$.
+\end{proposition}
 
 \begin{proof}
-    Supongamos en primer lugar que $u_n$ es no negativa para cada $n \in \mathbb{N}$.
-    Hay dos posibilidades:
-    \begin{itemize}
-        \item Existe $z_0 \in D$ tal que $u(z_0) = \infty$.
-              Entonces $u(z) = \lim\limits_{n \to \infty} u_n(z) = \infty$ y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
-              Se verifica (1).
+    Sea $\xi \in \partial_\infty D_1$.
+    Existe una sucesión $\{z_n\}_{n=1}^\infty$ en $D_1$ con $z_n \to \xi$, y podemos tomar todos los $z_n$ distintos.
+    Como $f$ es continua en $\xi$, tenemos que $f(z_n) \xrightarrow[n \to \infty]{} f(\xi) \in \mathbb{C}^\ast$.
+    Como todos los $f(z_n)$ son distintos, $f(\xi)$ es un punto de acumulación de $\{f(z_n)\}$.
 
-        \item $u(z) \in \mathbb{R}$ para todo $z \in D$.
-              Entonces $u: D \to \mathbb{R}$.
-              Sea $a \in D$ y $R > 0$ con $D(a, R) \subset D$.
-              Veamos que $\{u_n\}$ es uniformemente de Cauchy en $D(a, R/2)$.
-
-              Sea $\varepsilon > 0$.
-              Como $\{u_n(a)\}_{n=1}^\infty$ es una sucesión de Cauchy por ser convergente, tenemos que existe $n_0 \in \mathbb{N}$ tal que
-              $$n \geq m > n_0 \Rightarrow 0 \leq u_n(a)-u_m(a) < \frac{\varepsilon}{3}$$
-              ya que $u_n-u_m$ es armónica en $D(a, R)$ y no negativa.
-              Por tanto, $\{u_n\}_{n=1}^\infty$ converge uniformemente en $D(a, R/2)$.
-
-              Entonces, dado $a \in D$ y $R > 0$ con $D(a, R) \subset D$, hemos visto que $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en $D(a, R/2)$.
-              Por tanto, $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
-              Entonces $u$ es armónica en $D$, así que se verifica (2).
-    \end{itemize}
-
-    Consideramos ahora el caso general.
-    Para cada $n \in \mathbb{N}$, sea $v_n = u_n - u_1$.
-    Entonces $\{v_n\}_{n=1}^\infty$ es una sucesión creciente de funciones armónicas no negativas.
-    Para cada $z \in D$, sea
-    $$v(z) = \lim\limits_{n \to \infty} v_n(z) \in \mathbb{R} \cup \{\infty\}$$
-    Si $z \in D$,
-    $$v(z) = \lim\limits_{n \to \infty} (u_n(z)-u_1(z)) = \begin{cases}
-            \infty        & \text{si } u(z) = \infty       \\
-            u(z) - u_1(z) & \text{si } u(z) \in \mathbb{R}
-        \end{cases}$$
-    Por el caso anterior se da una de las dos siguientes posibilidades:
-    \begin{itemize}
-        \item $v \equiv \infty$.
-              Veamos que $v_n \to \infty$ uniformemente en cada subconjunto compacto de $D$.
-
-              Sea $K \subset D$, $K$ compacto.
-              Sea $A = \min_{z \in K} u_1(z)$.
-              Como $v_n \to \infty$ uniformemente en $D$, existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ y $z \in K$, entonces $v(z) > M-A$, con $M \in \mathbb{R}$.
-              Entonces, si $n \geq n_0$ y $z \in K$, $u_n(z) = u_1(z) + v_n(z) > A + M - A = M$.
-              Por tanto, se verifica (1).
-
-        \item $v(z) \in \mathbb{R}$ para todo $z \in D$.
-              Veamos que $u$ es armónica y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
-
-              Sabemos que
-              $$v(z) = u(z) - u_1(z) \Leftrightarrow u(z) = u_1(z) + v(z), \quad z \in D$$
-              Entonces $u(z) \in \mathbb{R}$ para todo $z \in D$ y $u$ es armónica en $D$.
-              Además, $u_n - u_1 \xrightarrow[n \to \infty]{} u-u_1$ uniformemente en cada subconjunto compacto de $D$.
-              Por tanto, $u_n \to u$ uniformemente en cada subconjunto compacto de $D$, así que se verifica (2).
-    \end{itemize}
+    Por la proposición anterior, $f(\xi) \in \partial_\infty D_2$.
+    Por tanto, $f(\partial_\infty D_1) \subset \partial_\infty D_2$.
+    Además, sabemos que $f(D_1) = D_2$.
+    Entonces $f(\overline{D_1}) \subset \overline{D_2}$.
+    Ahora tenemos que
+    $$D_2 = f(D_1) \subset f(\overline{D_1}) \subset \overline{D_2}$$
+    $\overline{D_1}$ es cerrado en $\mathbb{C}^\ast$ y compacto.
+    Como $f: \overline{D_1} \to \mathbb{C}^\ast$ es continua, entonces $f(\overline{D_1})$ es compacto y por tanto cerrado.
+    $$D_2 \subset f(\overline{D_1}) \subset \overline{D_2} \Rightarrow f(\overline{D_1}) = \overline{D_2}$$
+    Entonces también tenemos que $f(\partial_\infty D_1) = \partial_\infty D_2$.
 \end{proof}
+
+\begin{remark}
+    \hfill
+    \begin{enumerate}
+        \item $f(\partial_\infty D_1) = \partial_\infty D_2$ pero no tiene por qué ser inyectiva.
+              Lo mismo para $f(\overline{D_1}) = \overline{D_2}$.
+        \item Puede ocurrir que la extensión $f$ no exista.
+              Por ejemplo.
+              $$D = \{z = x + iy : 0 < x < 1, 0 < y < 1\} \setminus \bigcup_{i=1}^\infty \left\{\frac{1}{2^n} + iy : 0 < y \leq \frac{1}{2}\right\}$$
+              $D$ es un dominio simplemente conexo en $\mathbb{C}$.
+              Entonces existe $f: \mathbb{D} \to D$ aplicación conforme.
+              Supongamos que $f$ se extiende de manera continua $f: \bar{\mathbb{D}} \to \bar{D}$ continua, con $f(\partial\mathbb{D}) = \partial D$ y $f(\bar{\mathbb{D}}) = \bar{D}$.
+              Como $0 \in \partial D$, entonces $0 = f(\xi)$ con $\xi \in \partial \partial\mathbb{D}$.
+              Sea $\gamma$ el segmento $[0, \xi]$.
+              Sea $\Gamma$ la curva imagen de $\gamma$ por $f$.
+              Unas parametrizaciones son:
+              \begin{align*}
+                  \gamma: [0, 1] & \to \mathbb{C} & \Gamma: [0, 1] & \to \mathbb{C}  \\
+                  t              & \mapsto t\xi   & t              & \mapsto f(t\xi)
+              \end{align*}
+              $\Gamma$ tiene origen en $f(0) \in D$ y extremo 0.
+              El soporte de $\gamma$ está en $D$ salvo por el extremo.
+    \end{enumerate}
+\end{remark}
+
+Una curva de Jordan es una curva en $\mathbb{C}$ que tiene alguna parametrización $\gamma: [a, b] \to \mathbb{C}$ inyectiva en $[a, b)$ con $\gamma(a) = \gamma(b)$.
+Si esto ocurre para una parametrización, entonces pasa para todas.
+
+Si $J$ es el soporte de una curva de Jordan en $\mathbb{C}$, entonces $\mathbb{C} \setminus J$ tiene dos componentes conexas.
+\begin{itemize}
+    \item $I(J)$ es la componente acotada y se le llama dominio interior a $J$.
+    \item $E(J)$ es la componente no acotada y se le llama dominio exterior a $J$.
+\end{itemize}
+Además, $J$ es la frontera de ambas.
+Observamos que $I(J)$ y $E(J)$ son dominios en $\mathbb{C}$.
+Como $\mathbb{C} \setminus J$ es abierto, sus componentes conexas son abiertas.
+
+Además, $I(J)$ es un dominio simplemente conexo en $\mathbb{C}$.
+\begin{align*}
+    \mathbb{C}^\ast \setminus I(J) & = J \cup E(J) \cup  \{\infty\}                      \\
+    \partial_\infty E(J)           & = \partial E(J) \cup \{\infty\} = J \cup \{\infty\}
+\end{align*}
+Observamos que $\mathbb{C}^\ast \setminus I(J)$ es la clausura en $\mathbb{C}^\ast$ de $E(J)$.
+Como $E(J)$ es conexo, $\mathbb{C}^\ast \setminus I(J)$ también lo es.
+Luego $I(J)$ es simplemente conexo.
+Observamos además que $I(J) \cup J$ es compacto.
+
+Sea $D = I(J)$, $D$ es un dominio simplemente conexo con $D \neq \mathbb{C}$.
+Por el teorema de Riemann, existe una aplicación conforme $f$ de $\mathbb{D}$ sobre $D$.
+
+\begin{theorem}[Teorema de extensión de Carathéodory]
+    Sea $J$ una curva de Jordan en $\mathbb{C}$ y sea $D$ el dominio interior a $J$.
+    Sea $f$ una aplicación conforme de $\mathbb{D}$ sobre $D$.
+    Entonces $f$ se extiende de forma continua a $\bar{\mathbb{D}}$, y esta extensión es un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D} = I(J) \cup J$.
+\end{theorem}
+
+\begin{remark}
+    Como consecuencia, la extensión también es un homeomorfismo de $\partial\mathbb{D}$ sobre $\partial D = J$.
+\end{remark}

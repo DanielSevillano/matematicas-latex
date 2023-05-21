@@ -1,493 +1,840 @@
-\chapter{Familias normales}
+\chapter{Conformalidad y funciones abiertas en el disco unidad}
 
-\section{Familias normales}
-\begin{theorem}[Teorema de convergencia de Weierstrass]
-    Sea $D$ abierto en $\mathbb{C}$ y sean $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en $D$ y $f: D \to \mathbb{C}$.
-    Si $f_n \xrightarrow[n \to \infty]{} f$ uniformemente en cada subconjunto compacto de $D$, entonces $f$ es holomorfa en $D$ y $f_n' \xrightarrow[n \to \infty]{} f'$ uniformemente en cada subconjunto compacto.
-    Para todo $k \in \mathbb{N}$, $f^{(k)}_n \xrightarrow[n \to \infty]{} f^{(k)}$ uniformemente en cada compacto.
+\section{Funciones meromorfas}
+\begin{definition}
+    Sea $D$ un abierto en $\mathbb{C}^\ast$.
+    La función $f: D \to \mathbb{C}^\ast$ es meromorfa en $D$ si dado $a \in D$ se verifica una de las siguientes posibilidades:
+    \begin{itemize}
+        \item $a \in \mathbb{C}$ y $f$ es holomorfa en $a$.
+        \item $a \in \mathbb{C}$ y $f$ tiene un polo en $a$, es decir, $f(a) = \infty$..
+        \item $a = \infty$ y $f$ tiene una singularidad evitable en $\infty$, es decir, $\lim\limits_{z \to \infty} f(z) = f(\infty) \in \mathbb{C}$.
+        \item $a = \infty$ y $f$ tiene un polo en $a$, es decir, $f(\infty) = \infty$.
+    \end{itemize}
+
+    Entonces $f: D \to \mathbb{C}^\ast$ es continua.
+\end{definition}
+
+\begin{remark}
+    En el caso $D \subset \mathbb{C}$, la definición es la que ya conocíamos de función meromorfa.
+    Si además $f(D) \subset \mathbb{C}$, se tiene una función holomorfa en $D$.
+\end{remark}
+
+\begin{remark}
+    Sea $D$ abierto en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$ continua.
+    Supongamos que $f$ es holomorfa en $\{z \in D \cap \mathbb{C} : f(z) \in \mathbb{C}\}$ y que el conjunto $\{z \in D : f(z) = z\}$ no tiene puntos de acumulación en $D$.
+    Entonces $f$ es meromorfa en $D$.
+\end{remark}
+
+\begin{remark}
+    Sea $D$ abierto en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$, $f$ meromorfa e inyectiva en $ A = \{z \in D \cap \mathbb{C} : f(z) \in \mathbb{C}\}$.
+    Entonces $f$ tiene a lo sumo un polo y tal polo es simple.
+    Además, $f'(a) \neq 0$ para todo $a \in A$, por lo que $f$ es conforme en $a$ para todo $a \in A$.
+\end{remark}
+
+\begin{theorem}[Teorema de la aplicación abierta]
+    Sea $D$ un dominio en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$ una función meromorfa y no constante en $D$.
+    Entonces $f$ es una aplicación abierta.
+    En particular, $f(D)$ es un dominio en $\mathbb{C}^\ast$.
 \end{theorem}
 
+Sea $D$ un dominio en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$ meromorfa e inyectiva, con $D' = f(D)$.
+Entonces:
+\begin{enumerate}
+    \item $D'$ es un dominio en $\mathbb{C}^\ast$.
+    \item $f^{-1}: D' \to D$ es meromorfa e inyectiva.
+\end{enumerate}
+
+Veamos que (2) es cierto.
+Como $f$ es una aplicación abierta, se tiene que $f^{-1}$ es continua.
+Sea $w \in D' \cap \mathbb{C}$ tal que $z = f^{-1}(w) \in \mathbb{C}$, veamos que $f^{-1}$ es holomorfa en $w$.
+Como $z \in \mathbb{C} \cap D$ y $f(z) \in \mathbb{C}$, $f$ es holomorfa en $z$ con $f'(z) \neq 0$.
+Por el teorema de la función inversa, $f^{-1}$ es holomorfa en $w$.
+
+\section{Aplicaciones conformes}
 \begin{definition}
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$.
-    Diremos que $\mathcal{F}$ es finitamente normal si para cada sucesión $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$.
+    Sea $D$ un dominio en $\mathbb{C}^\ast$ y sea $f: D \to \mathbb{C}^\ast$ meromorfa e inyectiva en $D$.
+    Sea $D' = f(D)$.
+    Entonces diremos que $f$ es una aplicación conforme de $D$ sobre $D'$.
 \end{definition}
 
+En este caso, se tiene que $D'$ es un dominio en $\mathbb{C}^\ast$ y que $f^{-1}: D' \to D$ es meromorfa e inyectiva en $D'$.
+Por tanto, $f: D \to D'$ es un homeomorfismo, con $f$ y $f^{-1}$ meromorfas.
+
 \begin{remark}
-    El límite $f$ de tal subsucesión es una función holomorfa en $D$, pero no tiene por qué pertenecer a $\mathcal{F}$.
+    \hfill
+    \begin{enumerate}
+        \item Si $f$ es una aplicación conforme de $D$ sobre $D'$, entonces $f^{-1}$ es una aplicación conforme de $D'$ sobre $D$.
+        \item Si $D_1$, $D_2$ y $D_3$ son dominios en $\mathbb{C}^\ast$, con $f$ aplicación conforme de $D_1$ sobre $D_2$ y $g$ aplicación conforme de $D_2$ sobre $D_3$, entonces $g \circ f$ es una aplicación conforme de $D_1$ sobre $D_3$.
+    \end{enumerate}
 \end{remark}
+
+Se puede comprobar que, sean $G_1, G_2$ abiertos en $\mathbb{C}^\ast$ y $f: G_1 \to \mathbb{C}, g: G_2 \to \mathbb{C}$ meroformas tal que $f(G_1) \subset G_2$, entonces $g \circ f: G_1 \to \mathbb{C}^\ast$ es meromorfa.
 
 \begin{definition}
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$.
-    Diremos que $\mathcal{F}$ es compacta si para cada sucesión $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$ a una función que pertenece a $\mathcal{F}$.
+    Sean $D_1$ y $D_2$ dominios en $\mathbb{C}^\ast$.
+    Diremos que $D_1$ y $D_2$ son conformemente equivalentes si existe una aplicación conforme $f$ de $D_1$ sobre $D_2$.
+
+    En el conjunto de los dominios en $\mathbb{C}^\ast$, el ser conformemente equivalentes es una relación de equivalencia.
 \end{definition}
 
-En el conjunto $Hol(D)$ de las funciones holomorfas en $D$, con $D$ abierto en $\mathbb{C}$, se puede definir una distancia $d$ tal que $(Hol(D), d)$ es un espacio métrico completo, y en el que:
-$$f_n \xrightarrow{d} f \Leftrightarrow f_n \to f \text{ uniformemente en cada subconjunto compacto de } D$$
-Si $\mathcal{F} \subset Hol(D)$, $\mathcal{F}$ es finitamente normal si y solo si $\mathcal{F}$ es relativamente compacto.
-Los compactos coinciden con la definición de familia compacta dada.
+\begin{definition}
+    Sea $D$ un dominio en $\mathbb{C}^\ast$.
+    Diremos que $D$ es simplemente conexo si $\mathbb{C}^\ast \setminus D$ es conexo.
+\end{definition}
 
-\section{El teorema de Montel}
+\begin{example}
+    \hfill
+    \begin{itemize}
+        \item $D = \mathbb{C}$.
+        \item $D = \mathbb{C}^\ast \setminus \{a\}$, $a \in \mathbb{C}$.
+        \item $D = \mathbb{C}^\ast \setminus \overline{D}(a, R)$, $a \in \mathbb{C}$, $R > 0$.
+        \item $D = D(a, R)$, $a \in \mathbb{C}$, $R > 0$.
+        \item Un semiplano sin $\infty$.
+        \item Un sector sin $\infty$.
+        \item El plano menos dos semirrectas.
+        \item $D = \mathbb{C} \setminus \{a\}$, $a \in \mathbb{C}$, no es simplemente conexo, porque $\mathbb{C}^\ast \setminus D = \{a, \infty\}$ no es conexo.
+    \end{itemize}
+\end{example}
+
 \begin{lemma}
-    Sea $D$ un abierto en $\mathbb{C}$ y $\mathcal{F}$ una familia de funciones holomorfas en $D$.
-    Entonces son equivalentes:
-    \begin{enumerate}
-        \item $\mathcal{F}$ está uniformemente acotada en cada subconjunto compacto de $D$.
-        \item Para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$ y $f$ está uniformemente acotada en $D(a, r_a)$.
-    \end{enumerate}
+    Dado $a \in \mathbb{C}$, la transformación $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$, $T(z) = \frac{1}{z-a}$ si $z \in \mathbb{C} \setminus \{a\}$, $T(a) = \infty$ y $T(\infty) = 0$, es una aplicación conforme de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
 \end{lemma}
 
 \begin{lemma}
-    Sea $D$ abierto en $\mathbb{C}$ y sean $f_n: D \to \mathbb{C}$ para $n = 1, 2, \dots$ y $f: D \to \mathbb{C}$.
-    Entonces son equivalentes:
-    \begin{enumerate}
-        \item $f_n \to f$ uniformemente en cada subconjunto compacto de $D$.
-        \item Para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$ tal que $f_n \to f$ uniformemente en $D(a, r_a)$.
-    \end{enumerate}
+    Sea $H$ un homeomorfismo de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
+    Si $D$ es un dominio simplemente conexo en $\mathbb{C}^\ast$, entonces $H(D)$ es un dominio simplemente conexo en $\mathbb{C}^\ast$.
 \end{lemma}
 
-\begin{lemma}
-    Sean $C_1, C_2 \in \mathbb{C}$, con $C_1 \cap C_2 = \emptyset$ y $C_1, C_2 \neq \emptyset$.
-    Si $C_1$ es compacto y $C_2$ es cerrado, entonces:
-    $$dist(C_1, C_2) = \inf\{|z_1-z_2| : z_1 \in C_1, z_2 \in C_2\} > 0$$
-\end{lemma}
+\begin{proof}
+    Como $H: \mathbb{C}^\ast \to \mathbb{C}^\ast$ y $D$ es abierto y conexo en $\mathbb{C}^\ast$, entonces $H(D)$ es abierto y conexo en $\mathbb{C}^\ast$.
+    Luego $H(D)$ es un dominio en $\mathbb{C}^\ast$.
+    Como además $\mathbb{C}^\ast \setminus D$ es conexo, entonces $\mathbb{C}^\ast \setminus H(D) = H(\mathbb{C}^\ast \setminus D)$ es conexo.
+    Por tanto, $H(D)$ es un dominio simplemente conexo.
+\end{proof}
 
-\begin{remark}
-    Si $C_1$ no es compacto no es cierto en general.
-\end{remark}
+\begin{theorem}
+    Sean $D_1$ y $D_2$ dos dominios en $\mathbb{C}^\ast$ que son conformemente equivalentes.
+    Entonces $D_1$ es simplemente conexo si y solo si $D_2$ es simplemente conexo.
+\end{theorem}
 
-\begin{lemma}
-    Sea $A \subset \mathbb{C}$, $A \neq \emptyset$ y sea
-    $$F: \mathbb{C} \to \mathbb{R}, \; F(z) = dist(z, A) = \inf \{|z-a| : a \in A\}$$
-    Entonces $F$ es continua y $F(z) = 0$ para todo $z \in A$.
-    Si además $A$ es cerrado, entonces $F(z) = \min \{|z-a| : a \in A\}$ para todo $z \in \mathbb{C}$.
-\end{lemma}
+\begin{proof}
+    Sea $F: D_1 \to D_2$ aplicación conforme.
+    Consideramos todos los posibles casos teniendo en cuenta que los papeles de $D_1$ y $D_2$ son intercambiables.
+    \begin{itemize}
+        \item Si $D_1, D_2 \subset \mathbb{C}$, se cumple.
+        \item Si $D_1 = \mathbb{C}^\ast$, como $\mathbb{C}^\ast$ es cerrado y $F$ es un homeomorfismo, se tiene que $D_2$ es compacto y por tanto cerrado.
+              Entonces $D_2$ es abierto y cerrado en $\mathbb{C}^\ast$, que es conexo.
+              Por tanto, $D_2 = \mathbb{C}^\ast = D_1$, ambos simplemente conexos.
+        \item Si $D_1, D_2 \neq \mathbb{C}^\ast$, consideramos dos casos.
+              \begin{itemize}
+                  \item Supongamos que $\infty \notin D_1$ y $\infty \in D_2$.
+                        $D$ es un dominio en $\mathbb{C}$ y $D_2$ es un dominio en $\mathbb{C}^\ast$.
+                        Sea $a \in \mathbb{C}^\ast \setminus D_2$, de hecho $a \in \mathbb{C} \setminus D_2$.
+                        Tomamos la aplicación conforme $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$, $T(z) = \frac{1}{z-a}$ si $z \in \mathbb{C}^\ast \setminus \{a\}$, $T(a) = \infty$.
+                        Tenemos el diagrama:
+                        $$D_1 \xrightarrow{F} D_2 \xrightarrow{T} T(D_2)$$
+                        $T(D_2)$ es un dominio en $\mathbb{C}^\ast$.
+                        Como $a \notin D_2$, entonces $T(a) = \infty \notin T(D_2)$.
+                        Así que $T(D_2)$ es un dominio en $\mathbb{C}$ conformemente equivalente a $D_1$.
+                        Luego $D_1$ es simplemente conexo si y solo si $T(D_2)$ es simplemente conexo.
+                        Por el lema anterior, esto es equivalente a que $D_2$ sea simplemente conexo.
 
-\begin{lemma}
-    Sea $A \subset \mathbb{C}$, $A \neq \emptyset$ y sea $\varepsilon > 0$.
-    Consideramos los conjuntos:
-    \begin{align*}
-        B & = \{z \in \mathbb{C} : dist(z, A) < \varepsilon\}    \\
-        C & = \{z \in \mathbb{C} : dist(z, A) \leq \varepsilon\}
-    \end{align*}
-    Entonces $B$ es abierto y $C$ es cerrado, con $A \subset B \subset C$.
-    Si además $A$ es acotado, entonces $B$ es acotado y $C$ es compacto.
-\end{lemma}
+                  \item Supongamos que $\infty \in D_1, D_2$.
+                        Se sigue de un razonamiento similar usando el apartado anterior.
+              \end{itemize}
+    \end{itemize}
+\end{proof}
+
+\section{Dominios conformemente equivalentes al plano complejo y al plano complejo extendido}
+Veremos que hay tres clases de equivalencia de dominios simplemente conexos en $\mathbb{C}^\ast$: $\mathbb{C}^\ast$, $\mathbb{C}$ y el disco unidad $\mathbb{D} = D(0, 1) = \{z \in \mathbb{C} : |z| < 1\}$.
+
+$\mathbb{C}^\ast$ es compacto.
+Si $D$ es un dominio en $\mathbb{C}^\ast$ que es conformemente equivalente a $\mathbb{C}^\ast$, entonces $D$ es compacto y por tanto cerrado.
+Como $D$ es abierto, entonces $D = \mathbb{C}^\ast$.
+
+$\mathbb{C}$ y $\mathbb{D}$ son homeomorfos.
+Por ejemplo, $T: \mathbb{D} \to \mathbb{C}$, $T(z) = \frac{z}{1-|z|}$ es un homeomorfismo.
 
 \begin{proposition}
-    Sea $D$ un abierto en $\mathbb{C}$ y $\mathcal{F}$ una familia de funciones holomorfas en $D$.
-    Supongamos que $\mathcal{F}$ está uniformemente acotada en $D$.
-    Sea $K$ un subconjunto compacto de $D$.
-    Entonces existe $A > 0$ tal que:
-    $$|f(z_2)-f(z_1)| \leq A|z_2-z_1|, \quad \forall z_1, z_2 \in K, \; \forall f \in \mathcal{F}$$
+    $\mathbb{C}$ y $\mathbb{D}$ no son conformemente equivalentes.
 \end{proposition}
 
 \begin{proof}
-    Sea $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in D$ y para toda $f \in \mathcal{F}$.
-    Sean $K \subset D$, $K$ compacto.
-    Sea $d > 0$ con $d < dist(K, \mathbb{C} \setminus D)$.
-    Si $D = \mathbb{C}$, tomamos $d > 0$ cualquiera.
-    Sea $z_0 \in K$.
-    Entonces $D(z_0, d) \subset D$.
-    De hecho, podemos tomar $\varepsilon > 0$ tal que $D(z_0, d+\varepsilon) \subset D$.
-    Dada $f \in \mathcal{F}$, por la fórmula de Cauchy,
-    $$f'(z) = \frac{1}{2\pi i} \int_{|\xi-z_0|=d} \frac{f(\xi)}{(\xi-z)^2}d\xi \quad \text{si } z \in D\left(z_0, \frac{d}{2}\right)$$
-    Entonces:
-    $$|f'(z)| \leq \frac{1}{2\pi}2\pi \max_{|\xi-z_0|=d} \frac{|f(\xi)|}{|\xi-z|^2}$$
-    Podemos acotar:
-    $$|\xi-z| = |(\xi-z_0) + (z_0-z)| \geq |\xi-z_0| - |z_0-z| \geq d - \frac{d}{2} = \frac{d}{2}$$
-    Así que $|\xi-z|^2 \geq \frac{d^2}{4} > 0$.
-    Luego:
-    $$|f'(z)| \leq d\frac{M}{d^2/4} = \frac{4M}{d}$$
-    Hemos probado que si $z_0 \in K$, $f \in \mathcal{F}$ y $z \in D\left(z_0, \frac{d}{2}\right) \subset D$, entonces $|f'(z)| \leq \frac{4M}{d}$.
-
-    Ahora, sean $z_1, z_2 \in K$ y $f \in \mathcal{F}$.
-    Supongamos que $|z_1-z_2| < \frac{d}{2}$.
-    Si $\xi \in [z_1, z_2]$, entonces $z_2 \in D\left(z_1, \frac{d}{2}\right) \subset D$ y $|\xi-z_1| \leq |z_1-z_2| < \frac{d}{2}$, $\xi \in D\left(z_1, \frac{d}{2}\right)$.
-    Entonces $\xi \in D$ y $|f'(\xi)| \leq \frac{4M}{d}$.
-    Por tanto:
-    $$|f(z_2)-f(z_1)| = \left|\int_{[z_1, z_2]} f'(\xi)d\xi\right| \leq |z_2-z_1| \max_{\xi \in [z_1, z_2]} |f'(\xi)| \leq |z_2-z_1| \frac{4M}{d}$$
-    Entonces, si $z_1, z_2 \in K$, $|z_1-z_2| < \frac{d}{2}$ y $f \in \mathcal{F}$, se tiene que:
-    $$|f(z_2)-f(z_1)| \leq A|z_2-z_1|$$
-
-    Ahora, si $z_1, z_2 \in K$, $|z_2-z_1| \geq \frac{d}{2}$ y $f \in \mathcal{F}$, tenemos:
-    $$|f(z_2)-f(z_1)| \leq |f(z_2)| + |f(z_1)| \leq 2M = 2M \frac{d}{2}\frac{2}{d} \leq \frac{4M}{d}|z_2-z_1| = A|z_2-z_1|$$
+    Supongamos que existe una aplicación conforme $F$ de $\mathbb{C}$ sobre $\mathbb{D}$.
+    Entonces $F: \mathbb{C} \to \mathbb{D}$ es entera y acotada.
+    Por el teorema de Liouville, $F$ es constante.
+    Esto contradice que $F$ sea una aplicación conforme.
 \end{proof}
 
-\begin{theorem}[Teorema de Arzelá-Ascoli]
-    Sean $(X_1, d_1)$ y $(X_2, d_2)$ dos espacios métricos, siendo $(X_1, d_1)$ separable y $(X_2, d_2)$ completo.
-    Sea $\mathcal{F}$ una familia de aplicaciones continuas de $X_1$ en $X_2$ que verifica:
-    \begin{enumerate}
-        \item $\mathcal{F}$ es puntualmente equicontinua.
-              Es decir, dado $x \in X_1$ se verifica que, para todo $\varepsilon > 0$, existe $\delta > 0$ tal que si $y \in X_1$ con $d_1(x, y) < \delta$, entonces $d_2(f(x), f(y)) < \varepsilon$ para toda $f \in \mathcal{F}$.
-        \item Para todo $x \in X_1$, el conjunto $\{f(x) : f \in \mathcal{F}\}$ es relativamente compacto.
-    \end{enumerate}
-    Entonces, si $\{f_n\}_{n=1}^\infty$ es una sucesión en $\mathcal{F}$, existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $X_1$.
-\end{theorem}
+\begin{proposition}
+    Sea $f$ entera e inyectiva, entonces $f$ es de la forma
+    $$f(z) = \alpha z + \beta, \quad \alpha, \beta \in \mathbb{C}, \; \alpha \neq 0$$
+\end{proposition}
 
-\begin{theorem}[Teorema de Montel]
-    Sea $D$ un abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$.
-    Entonces son equivalentes:
-    \begin{enumerate}
-        \item $\mathcal{F}$ es finitamente normal.
-        \item $\mathcal{F}$ está uniformemente acotada en cada subconjunto compacto de $D$.
-              Es decir, para cada $K \subset D$, $K$ compacto, existe $M_K > 0$ tal que $|f(z)| \leq M_K$ para toda $f \in \mathcal{F}$ y para todo $z \in K$.
-    \end{enumerate}
+\begin{proof}
+    Sea $f(z) = \sum_{n=0}^\infty a_nz^n$, $z \in \mathbb{C}$, el desarrollo de Taylor de $f$ en 0.
+    Entonces $\infty$ es una singularidad aislada de $f$ y el desarrollo anterior coincide con el desarrollo de Laurent de $f$ en $\infty$.
+    \begin{itemize}
+        \item Si $\infty$ es una singularidad evitable de $f$, entonces $a_n = 0$ si $n \geq 1$, así que $f$ es constante.
+              Esto no es posible.
+        \item Si $\infty$ es un polo de orden $N$ de $f$, entonces $a_N \neq 0$ y $a_n = 0$ si $n > N$.
+              Luego $f$ es un polinomio de grado $N$.
+              $f'$ es un polinomio de grado $N-1$, con $f'(z) \neq 0$ para todo $z \in \mathbb{C}$.
+              Así que $f'$ es constante, por tanto $N - 1 = 0 \Rightarrow N = 1$.
+        \item Si $\infty$ es una singularidad esencial de $f$, entonces $f(\{z \in \mathbb{C} : |z| > 1\})$ es denso en $\mathbb{C}$.
+              Por el teorema de la aplicación abierta, $f(\{z \in \mathbb{C} : |z| < 1\})$ es abierto en $\mathbb{C}$.
+              Estos conjuntos son disjuntos por ser $f$ inyectiva, y esto no es posible.
+    \end{itemize}
+\end{proof}
+
+Si $D$ es un dominio en $\mathbb{C}$ que es conformemente equivalente a $\mathbb{C}$, entonces $D = \mathbb{C}$.
+Veamos que esto es verdad.
+Sea $f: \mathbb{C} \to D$ aplicación conforme.
+$f$ es entera e inyectiva, así que $f(z) = \alpha z + \beta$, con $\alpha, \beta \in \mathbb{C}$, $\alpha \neq 0$.
+Luego $D = f(\mathbb{C}) = \mathbb{C}$.
+
+Las aplicaciones conformes de $\mathbb{C}$ sobre $\mathbb{C}$ son de la forma:
+$$f(z) = \alpha z + \beta, \quad \alpha, \beta \in \mathbb{C}, \; \alpha \neq 0$$
+
+Sea $D$ un dominio en $\mathbb{C}^\ast$ que es conformemente equivalente a $\mathbb{C}$.
+\begin{itemize}
+    \item Si $\infty \notin D$, entonces $D$ es un dominio en $\mathbb{C}$ conformemente equivalente a $\mathbb{C}$ y, por tanto, $D = \mathbb{C}$.
+    \item Si $\infty \in D$, consideramos $F: \mathbb{C} \to D$ aplicación conforme.
+          Como sabemos que $D \neq \mathbb{C}^\ast$, existe $\alpha \in \mathbb{C}^\ast \setminus D$, de hecho $\alpha \in \mathbb{C} \setminus D$.
+          Sea
+          $$T: D \to T(D), \quad T(z) = \frac{1}{z-\alpha}$$
+          Tenemos el diagrama:
+          $$\mathbb{C} \xrightarrow[]{F} D \xrightarrow[]{T} T(D) = D'$$
+          $D'$ es un dominio en $\mathbb{C}$ conformemente equivalente a $\mathbb{C}$, así que $D' = \mathbb{C} = \mathbb{C}^\ast \setminus \{\infty\}$.
+          Por tanto, $D = \mathbb{C}^\ast \setminus \{\alpha\}$.
+\end{itemize}
+
+Hemos probado que si $D$ es un dominio en $\mathbb{C}^\ast$ conformemente equivalente a $\mathbb{C}$, entonces $D = \mathbb{C}$ o $D = \mathbb{C}^\ast \setminus \{\alpha\}$, con $\alpha \in \mathbb{C}$.
+Es decir, $D = \mathbb{C}^\ast \setminus \{\alpha\}$, $\alpha \in \mathbb{C}^\ast$.
+
+Los dominios en $\mathbb{C}^\ast$ que son conformemente equivalentes a $\mathbb{C}$ son $\mathbb{C}^\ast \setminus \{\alpha\}$, $\alpha \in \mathbb{C}^\ast$.
+
+\subsection*{Aplicaciones conformes de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$}
+Sea $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ aplicación conforme.
+Sea $a \in \mathbb{C}^\ast$ tal que $T(a) = \infty$.
+Consideramos dos casos:
+\begin{enumerate}
+    \item Si $a = \infty$, $T(\infty) = \infty$.
+          $T: \mathbb{C} \to \mathbb{C}$ es una aplicación conforme, así que $T(z) = \alpha z + \beta$, con $\alpha, \beta \in \mathbb{C}$, $\alpha \neq 0$.
+    \item Si $a \in \mathbb{C}$, $T(a) = \infty$.
+          $T$ es holomorfa en $\mathbb{C} \setminus \{a\}$, así que $a$ es un polo simple de $T$.
+          Consideramos el desarrollo de Laurent de $T$ en $a$.
+          $$T(z) = \frac{A_{-1}}{z-a} + \sum_{n=0}^\infty A_n(z-a)^n, \quad z \in \mathbb{C} \setminus \{a\}, \; A_{-1} \neq 0$$
+          $\infty$ es una singularidad aislada de $T$.
+          De hecho, es una singularidad evitable.
+
+          Sea $F(z) = T(z) - \frac{A_{-1}}{z-a}$, $z \in \mathbb{C} \setminus \{a\}$.
+          $F$ es holomorfa en $\mathbb{C} \setminus \{a\}$.
+          $a$ es singularidad evitable de $F$ y $\lim\limits_{z \to \infty} F(z) = T(\infty) \in \mathbb{C}$, así que $\infty$ es una singularidad evitable también.
+          Evitando la singularidad de $F$ en $a$, tenemos que $F$ es entera y acotada.
+          Por tanto $F$ es constante.
+          Así que $F(z) = a_0$, para todo $z \in \mathbb{C}$.
+          Entonces:
+          $$T(z) = F(z) + \frac{A_{-1}}{z-a} = a_0 + \frac{A_{-1}}{z-a} = \frac{a_0z + (A_{-1}-a_0a)}{z-a}$$
+\end{enumerate}
+
+En cualquiera de los dos casos, $T$ es de la forma:
+$$T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad \alpha, \beta, \gamma, \delta \in \mathbb{C}$$
+
+No todas las aplicaciones de esta forma son aplicaciones conformes de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
+
+\begin{example}[Contraejemplo]
+    No es una aplicación conforme si $\alpha = \beta = 0$ o $(\alpha, \beta)$ y $(\gamma, \delta)$ son proporcionales.
+    Por ejemplo:
+    $$T(z) = \frac{3z + 2}{6z + 4} = \frac{1}{2}$$
+\end{example}
+
+Para que las aplicaciones de esa forma sean aplicaciones conformes de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$, se tiene que verificar que:
+$$\begin{vmatrix}
+        \alpha & \beta  \\
+        \gamma & \delta
+    \end{vmatrix} \neq 0$$
+
+En el caso (1), $T(z) = Az + B = \frac{Az + B}{0z + 1}$, con $A, B \in \mathbb{C}$, $A \neq 0$, luego:
+$$\begin{vmatrix}
+        A & B \\
+        0 & 1
+    \end{vmatrix} = A \neq 0$$
+
+En el caso (2),
+$$\begin{vmatrix}
+        a_0 & A_{-1} - a_0a \\
+        1   & -a
+    \end{vmatrix} = -a_0a - A_{-1} + a_0a = -A_{-1} \neq 0$$
+
+\begin{theorem}
+    Las aplicaciones conformes de $\mathbb{C}^\ast$ en $\mathbb{C}^\ast$ son de la forma:
+    $$T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad \alpha, \beta, \gamma, \delta \in \mathbb{C}, \; \alpha\delta - \beta\gamma \neq 0$$
 \end{theorem}
 
 \begin{proof}
-    \hfill
+    Sea $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ una aplicación de esa forma.
     \begin{itemize}
-        \item[$\Rightarrow$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, con $\mathcal{F}$ finitamente normal.
-            Supongamos por reducción al absurdo que existe $K \subset D$, $K$ compacto, tal que $\mathcal{F}$ no está uniformemente acotada en $K$.
-            Entonces existen $\{z_n\}_{n=1}^\infty$ en $K$ y $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ tales que $|f_n(z_n)| \to \infty$.
+        \item Si $\gamma = 0$, entonces:
+              $$T(z) = \frac{\alpha z + \beta}{\delta} = \frac{\alpha}{\delta}z + \frac{\beta}{\delta}, \quad \alpha, \delta \neq 0$$
 
-            Como $\mathcal{F}$ es una familia finitamente normal, existe $\{f_{n_k}\}_{k=1}^\infty$ subsucesión de $\{f_n\}$ tal que $\{f_{n_k}\}$ converge uniformemente en cada subconjunto compacto de $D$ a una función $f$ holomorfa en $D$.
-            Como $f$ es continua en $K$ y $K$ es compacto, existe $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in K$.
-            Por otro lado, como $f_{n_k} \xrightarrow[k \to \infty]{} f$ uniformemente en $K$, existe $k_0 \in \mathbb{N}$ tal que $k \geq k_0$, $z \in K$ $\Rightarrow$ $|f_{n_k}(z)-f(z)| < 1$.
-            Entonces $|f_{n_k}(z)| \leq |f_{n_k}(z)-f(z)| + |f(z)| < 1 + M$, $z \in K$, $k \geq k_0$.
-            En particular, $|f_{n_k}(z_{n_k})| < 1 + M$ si $k \geq k_0$.
-            Esta es una contradicción.
+              $T$ es una aplicación conforme de $\mathbb{C}$ sobre $\mathbb{C}$, con $\lim\limits_{z \to \infty} T(z) = \infty$.
+              Definiendo $T(\infty) = \infty$, tenemos que $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ es una aplicación conforme.
 
-        \item[$\Leftarrow$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, uniformemente acotada en cada subconjunto compacto de $D$.
-            Tomamos $X_1 = D$ y $X_2 = \mathbb{C}$.
+        \item Si $\gamma \neq 0$, entonces $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$,
+              \begin{align*}
+                   & T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\} \\
+                   & T\left(-\frac{\delta}{\gamma}\right) = \infty                                                                             \\
+                   & T(\infty) = \frac{\alpha}{\gamma}
+              \end{align*}
 
-            \begin{enumerate}
-                \item Sea $z_0 \in \mathbb{C}$.
-                      Dado $\varepsilon > 0$, veamos que existe $\delta > 0$ tal que, si $z_1 \in D$, $|z_1-z_0| < \delta$, $f \in \mathcal{F}$, entonces $|f(z_1) - f(z_0)| < \varepsilon$.
-                      Sea $R > 0$ con $\overline{D}(0, R) \subset D$.
-                      $\mathcal{F}$ está uniformemente acotada en $\overline{D}(z_0, R)$ y por tanto en $D(z_0, R)$.
-                      Sea $K = \overline{D}(z_0, \frac{R}{2})$, que es un subconjunto compacto de $D(z_0, R)$.
-                      Por la proposición anterior, existe $A > 0$ tal que
-                      $$|f(z_2) - f(z_1)| \leq A|z_2-z_1|, \quad \text{si } z_1, z_2 \in K, f \in \mathcal{F}$$
-                      Entonces, si $\delta = \min \left(\frac{\varepsilon}{A}, \frac{R}{2}\right)$, $z_1 \in D$, $|z_1-z_0| < \delta$ y $f \in \mathcal{F}$, entonces $z_1 \in \overline{D}(z_0, \frac{R}{2}) = K$, así que:
-                      $$|f(z_1) - f(z_0)| \leq A|z_1-z_0| < A\delta \leq A\frac{\varepsilon}{A} = \varepsilon$$
+              $T$ es meromorfa en $\mathbb{C}^\ast$ y $T$ es inyectiva.
 
-                \item Sea $z \in D$.
-                      El conjunto $\{f(z) : f \in \mathcal{F}\}$ está acotado, ya que $\mathcal{F}$ está uniformemente acotada en $\{z\}$.
-                      Por tanto, su clausura es compacta.
-            \end{enumerate}
+              Veamos que $T$ es sobreyectiva.
+              Sea $w \in \mathbb{C} \setminus \{\frac{\alpha}{\gamma}\}$ y sea $z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\}$.
+              Entonces:
+              $$T(z) = w \Leftrightarrow \frac{\alpha z + \beta}{\gamma z + \delta} = w \Leftarrow \alpha z + \beta = \gamma zw + \delta w \Leftrightarrow (\alpha - \gamma w)z = \delta w - \beta \Leftrightarrow z = \frac{\delta w - \beta}{-\gamma w + \alpha}$$
 
-            Entonces, por el teorema de Arzelá-Ascoli, existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$.
-            Por tanto, $\mathcal{F}$ es finitamente normal.
+              Por tanto, $T$ es una aplicación conforme de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
     \end{itemize}
+
+    Además, hemos probado que $T^{-1}$ es de la forma:
+    $$T^{-1}(z) = \frac{\delta z - \beta}{-\gamma z + \alpha}, \quad \begin{vmatrix}
+            \delta  & -\beta \\
+            -\gamma & \alpha
+        \end{vmatrix} = \alpha\delta - \beta\gamma \neq 0$$
+    Si $\gamma = 0$, también es válida esta expresión.
+\end{proof}
+
+\section{Funciones holomorfas en el disco unidad}
+\begin{theorem}[Lema de Schwarz]
+    Sea $\varphi$ una función holomorfa en $\mathbb{D}$ tal que $\varphi(0) = 0$ y $\varphi(\mathbb{D}) \subset \mathbb{D}$.
+    Entonces:
+    \begin{enumerate}
+        \item $|\varphi(z)| \leq |z|$ para todo $z \in \mathbb{D}$.
+        \item $|\varphi'(0)| \leq 1$.
+    \end{enumerate}
+
+    Además, se da la igualdad en (1) para algún $z \in \mathbb{D}$ con $z \neq 0$ o bien se da la igualdad en (2) si y solo si $\varphi$ es una rotación de $\mathbb{D}$, es decir, si existe $\lambda \in \mathbb{C}$ con $|\lambda| = 1$ tal que $\varphi(z) = \lambda z$ para todo $z \in \mathbb{D}$.
+\end{theorem}
+
+\begin{remark}
+    Si $\varphi$ es una rotación, entonces se da la igualdad en (1) para todo $z \in \mathbb{D}$ y se da la igualdad en (2).
+\end{remark}
+
+\begin{remark}
+    El teorema se puede enunciar de forma equivalente con la condición $\varphi(\mathbb{D}) \subset \overline{\mathbb{D}}$ en lugar de $\varphi(\mathbb{D}) \subset \mathbb{D}$.
+    Es decir, si $\varphi$ es holomorfa en $\mathbb{D}$ con $\varphi(0) = 0$ y $\varphi(\mathbb{D}) \subset \overline{\mathbb{D}}$, entonces $\varphi(\mathbb{D}) \subset \mathbb{D}$. \\
+    Veamos que esto es cierto.
+    Supongamos que existe $z_0 \in \mathbb{D}$ con $|\varphi(z_0)| = 1$.
+    Como $|\varphi(z)| \leq 1$ para todo $z \in \mathbb{D}$, por el principio del máximo $\varphi$ es constante, luego $\varphi \equiv \varphi(0) = 0$.
+    Esto contradice que $|\varphi(z_0)| = 1$.
+\end{remark}
+
+Sea $f$ holomorfa en $\mathbb{D}$ con $(\mathbb{D}) \subset \mathbb{D}$.
+Sea $a \in \mathbb{D}$ y $b = f(a) \in \mathbb{D}$.
+Definimos:
+\begin{align*}
+    T_a(z) & = \frac{z+a}{1 + \bar{a}z}, & T_a \in \mathcal{M}, \; T_a(\mathbb{D}) = \mathbb{D}, \; T_a(0) = a \\
+    S_b(z) & = \frac{z-b}{1 - \bar{b}z}, & S_b \in \mathcal{M}, \; S_b(\mathbb{D}) = \mathbb{D}, \; S_b(b) = 0
+\end{align*}
+
+Sea $\varphi = S_b \circ f \circ T_a$.
+$\varphi$ es holomorfa en $\mathbb{D}$, con $\varphi(\mathbb{D}) \subset \mathbb{D}$ y $\varphi(0) = 0$.
+Por el lema de Schwarz,
+\begin{enumerate}
+    \item $|\varphi(z)| \leq |z|$ para todo $z \in \mathbb{D}$.
+    \item $|\varphi(0)| \leq 1$.
+\end{enumerate}
+
+Además, se da la igualdad en (1) para algún $z \in \mathbb{D}$, $z \neq 0$, o bien se da la igualdad en (2) si y solo si $\varphi$ es una rotación.
+
+Desarrollamos las dos expresiones:
+\begin{enumerate}
+    \item Sea $z \in \mathbb{D}$.
+          Consideramos $T_a^{-1}(z) \in \mathbb{D}$.
+          \begin{align*}
+               & |\varphi(T_a^{-1}(z))| \leq |T_a^{-1}(z)| \Leftrightarrow |S_b(f(z))| \leq |S_a(z)| \Leftrightarrow \left|\frac{f(z)-b}{1-\bar{z}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right| \Leftrightarrow \\
+               & \Leftrightarrow \left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|, \quad \forall z \in \mathbb{D}
+          \end{align*}
+
+          Además, si se da la igualdad para algún $z \in \mathbb{D}$, $z \neq a$, entonces $\varphi$ es una rotación.
+          Entonces, $f = S_b^{-1} \circ \varphi \circ T_a^{-1} \in \mathcal{M}$, con $f(\mathbb{D}) = \mathbb{D}$.
+
+    \item Por la regla de la cadena, $\varphi'(0) = T_a'(0) f'(a) S_b'(b)$.
+          \begin{align*}
+              T_a'(z) & = \frac{1 + \bar{a}z - (z+a)\bar{a}}{(1 + \bar{a}z)^2}, & T_a'(0) & = 1 - |a|^2                                     \\
+              S_b'(z) & = \frac{1 - \bar{b}z + (z-b)\bar{b}}{(1 - \bar{b}z)^2}, & S_b'(b) & = \frac{1-|b|^2}{(1-|b|^2)} = \frac{1}{1-|b|^2}
+          \end{align*}
+
+          Así que:
+          $$\varphi'(0) = (1-|a|^2)f'(a)\frac{1}{1-|b|^2}$$
+
+          Por tanto:
+          $$|\varphi'(0)| \leq 1 \Leftrightarrow (1-|a|^2)f'(a)\frac{1}{1-|b|^2} \leq 1 \Leftrightarrow \frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}$$
+
+          Además, si se da la igualdad, entonces $\varphi$ es una rotación y por tanto $f \in \mathcal{M}$, con $f(\mathbb{D}) \subset \mathbb{D}$.
+\end{enumerate}
+
+Por tanto, hemos probado lo siguiente:
+\begin{enumerate}
+    \item Para todo $z \in \mathbb{D}$,
+          $$\left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|$$
+          Si se da la igualdad para algún $z \in \mathbb{D}$ con $z \neq a$ entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
+    \item $$\frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}$$
+          Si se da la igualdad entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
+\end{enumerate}
+
+\section{El teorema de Schwarz-Pick}
+\begin{theorem}[Teorema de Schwarz-Pick]
+    Sea $f$ holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$.
+    Entonces:
+    \begin{enumerate}
+        \item Para todo $z_1, z_2 \in \mathbb{D}$,
+              $$\left|\frac{f(z_2)-f(z_1)}{1-\overline{f(z_1)}f(z_2)}\right| \leq \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+        \item Para todo $z \in \mathbb{D}$,
+              $$\frac{|f'(z)|}{1-|f(z)|^2} \leq \frac{1}{1-|z|^2}$$
+    \end{enumerate}
+
+    Además, se da la igualdad en (1) para algún par de puntos $z_1, z_2 \in \mathbb{D}$ con $z_1 \neq z_2$ o bien se da la igualdad en (2) para algún $z \in \mathbb{D}$ si y solo si $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$, en cuyo caso se da la igualdad en (1) para todo $z_1, z_2 \in \mathbb{D}$ y se da la igualdad en (2) para todo $z \in \mathbb{D}$.
+\end{theorem}
+
+\begin{proposition}
+    Sea $T \in \mathcal{M}$ con $T(\mathbb{D}) = \mathbb{D}$.
+    Entonces:
+    \begin{enumerate}
+        \item Para todo $z_1, z_2 \in \mathbb{D}$,
+              $$\left|\frac{T(z_2)-T(z_1)}{1-\overline{T(z_1)}T(z_2)}\right| = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+        \item Para todo $z \in \mathbb{D}$,
+              $$\frac{|T'(z)|}{1-|T(z)|^2} \leq \frac{1}{1-|z|^2}$$
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}
+    Dados $z_1, z_2 \in \mathbb{D}$, definimos:
+    $$\rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+
+    Observamos que si $1-\overline{z_1}z_2 = 0$ entonces $\overline{z_1}z_2 = 1 \Rightarrow |z_1||z_2| = 1$.
+    Como esto no ocurre, $\rho$ está bien definida.
+\end{definition}
+
+La primera parte del teorema de Schwarz-Pick se puede reescribir usando $\rho$.
+
+Sea $f$ holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$.
+Entonces:
+$$\rho(f(z_1), f(z_2)) \leq \rho(z_1, z_2), \quad \text{si } z_1, z_2 \in \mathbb{D}$$
+Además, se da la igualdad para algún par de puntos distintos $z_1, z_2 \in \mathbb{D}$ si y solo si $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$, en cuyo caso se da la igualdad para todo $z_1, z_2 \in \mathbb{D}$.
+
+Vamos a ver que $\rho$ es una distancia en $\mathbb{D}$.
+\begin{align*}
+    \rho: & D \times D \to \mathbb{R}                                                            \\
+          & (z_1, z_2) \mapsto \rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|
+\end{align*}
+
+\begin{itemize}
+    \item $\rho(z_1, z_2) \leq 0$.
+    \item $\rho(z_1, z_2) = \rho(z_2, z_1)$.
+    \item $\rho(z_1, z_2) = 0 \Leftrightarrow z_1 = z_2$.
+    \item $\rho(z_1, z_3) \leq \rho(z_1, z_2) + \rho(z_2, z_3)$.
+\end{itemize}
+
+\begin{lemma}
+    Para todo $a, z \in \mathbb{D}$,
+    $$\frac{||z|-|a||}{1-|a||z|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|a||z|}$$
+\end{lemma}
+
+Observamos que si $a, z \in \mathbb{D}$, tenemos:
+$$\rho(a, z) = \left|\frac{z-a}{1-\bar{a}z}\right| = |S_a(z)| < 1, \quad S_a \in \mathcal{M}, S_a(\mathbb{D}) = \mathbb{D}$$
+
+Dados $a \in \mathbb{D}$ y $0 < r < 1$, denotamos:
+$$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}$$
+Entonces, dado $z \in \mathbb{D}$, se tiene que:
+$$z \in \Delta(a, r) \Leftrightarrow \rho(z, a) < r \Leftrightarrow |S_a(z)| < r \Leftrightarrow S_a(z) \in D(0, r) \Leftrightarrow z \in S_a^{-1}(D(0, r)) \Leftrightarrow z \in T_a(D(0, r))$$
+Entonces $\Delta(a, r) = T_a(D(0, r))$.
+
+$T_a(\partial D(0, r))$ es una circunferencia $C$ contenida en $\mathbb{D}$.
+Sean $c$ y $R$ el centro y el radio de $C$, con $c \in \mathbb{C}$, $R > 0$.
+Entonces $T_a(D(0, r)) = D(c, R)$.
+Por tanto:
+$$\Delta(a, r) = T_a(D(0, r)) = D(c, R)$$
+Así que $\Delta(a, r)$ es un disco euclídeo.
+Como $T_a(0) = a$ tenemos que $a \in \Delta(a, r)$, pero $a$ no tiene por qué ser el centro del disco.
+
+Vamos a calcular $c$ y $R$.
+Si $a = 0$, $T_a(z) = z$ luego $T_a(D(0, r)) = D(0, r)$.
+Supongamos que $a \neq 0$.
+Sea $L$ la recta que pasa por 0 y $a$.
+Calculamos $S_a(L)$ hallando la imagen de tres puntos.
+$$S_a(0) = -a, \quad S_a(a) = 0, \quad S_a\left(\frac{1}{\bar{a}}\right) = \infty$$
+$L' = S_a(L)$ es la recta que pasa por 0 y por $-a$, luego $L'$ coincide con $L$.
+Como $L'$ es perpendicular a $\partial D(0, r)$ en los dos puntos de corte y $T_a$ preserva ángulos en esos dos puntos, entonces $L$ es perpendicular a $C$.
+Por tanto $c$ está en $L$.
+
+El diámetro $\left[-r\frac{a}{|a|}, r\frac{a}{|a|}\right]$ se aplica mediante $T_a$ en un diámetro de $C$, que es:
+$$\left[T_a\left(-r\frac{a}{|a|}\right), T_a\left(r\frac{a}{|a|}\right)\right]$$
+Entonces:
+\begin{align*}
+    c & = \frac{1}{2} \left(T_a\left(-r\frac{a}{|a|}\right) + T_a\left(r\frac{a}{|a|}\right)\right) \\
+    R & = \frac{1}{2} \left|T_a\left(r\frac{a}{|a|}\right) - T_a\left(-r\frac{a}{|a|}\right)\right|
+\end{align*}
+
+Calculamos:
+\begin{align*}
+    T_a\left(-r\frac{a}{|a|}\right) = \frac{-r\frac{a}{|a|}+a}{1-\bar{a}r\frac{a}{|a|}} = \frac{-ra+a|a|}{|a|-r|a|^2} = \frac{a(|a|-r)}{|a|(1-r|a|)} \\
+    T_a\left(r\frac{a}{|a|}\right) = \frac{r\frac{a}{|a|}+a}{1+\bar{a}r\frac{a}{|a|}} = \frac{ra+a|a|}{|a|+r|a|^2} = \frac{a(|a|+r)}{|a|(1+r|a|)}
+\end{align*}
+Se llega a que:
+\begin{align*}
+    c & = \frac{1-r^2}{1-r^2|a|^2}a     \\
+    R & = \frac{r(1-|a|^2)}{1-r^2|a|^2}
+\end{align*}
+
+Observamos que los puntos de mayor y menor módulo de $C$ son $T_a\left(-r\frac{a}{|a|}\right)$ y $T_a\left(r\frac{a}{|a|}\right)$
+Veamos que, de hecho,
+$$\left|T_a\left(-r\frac{a}{|a|}\right)\right| = \frac{||a|-r|}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} = \left|T_a\left(r\frac{a}{|a|}\right)\right|$$
+\begin{itemize}
+    \item Si $|a| \geq r$,
+          $$\frac{|a|-r}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow |a| + r|a|^2 - r - r^2|a| \leq r + |a| - r^2|a| - r|a|^2 \Leftrightarrow 2r|a|^2 \leq 2r \Leftrightarrow |a| \leq 1$$
+    \item Si $|a| < r$ se razona de forma análoga.
+\end{itemize}
+
+Entonces, para todo $z \in \partial D(0, r)$ se tiene que:
+\begin{align*}
+     & \frac{||a|-r|}{1-r|a|} \leq T_a(z) \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \frac{||a|-r|}{1-r|a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \\
+     & \Leftrightarrow \frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|
+\end{align*}
+Hemos probado esto para $a, z \in \mathbb{D}$, $a, z \neq 0$.
+Pero si $a = 0$ o $z = 0$ la desigualdad es trivial.
+Por tanto, esta cadena de desigualdades es cierta para todo $a, z \in \mathbb{D}$.
+
+Cambiando $a$ por $-a$, tenemos:
+$$\frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|, \quad z, a \in \mathbb{D}$$
+Las desigualdades primera y segunda corresponden al último lema.
+
+Por otro lado,
+$$\rho(a, z) \leq |z| + |a|, \quad z, a \in \mathbb{D}$$
+Como $\rho(z_1, 0) = |z_1|$ y $\rho(0, z_2) = |z_2|$, entonces:
+$$\rho(a, z) \leq \rho(a, 0) + \rho(0, z), \quad a, z \in \mathbb{D}$$
+Esto es un caso particular de la desigualdad triangular.
+
+Sean $z_1, z_2, z_3 \in \mathbb{D}$.
+Tenemos, usando el teorema de Schwarz-Pick,
+\begin{align*}
+    \rho(z_1, z_3) & = \rho(S_{z_2}(z_1), S_{z_2}(z_3)) \leq \rho(S_{z_2}(z_1, 0)) + \rho(0, S_{z_2}(z_3)) =                 \\
+                   & = \rho(S_{z_2}(z_1), S_{z_2}(z_2)) + \rho(S_{z_2}(z_2), S_{z_2}(z_3)) = \rho(z_1, z_2) + \rho(z_2, z_3)
+\end{align*}
+Así que $\rho$ verifica la desigualdad triangular.
+Por tanto, $\rho$ es una distancia en $\mathbb{D}$ que se denomina distancia pseudohiperbólica en $\mathbb{D}$.
+$$\rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right| = |S_{z_1}(z_2)| < 1$$
+
+Si $a \in \mathbb{D}$ y $0 < r < 1$, el disco pseudohiperbólico de centro $a$ y radio $r$ es:
+$$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}$$
+No consideramos $r \geq 1$ porque $\Delta(a, r) = \mathbb{D}$.
+Sabemos que $\Delta(a, r)$ es un disco euclídeo, en concreto un disco abierto de centro $\frac{1-r^2}{1-r^2|a|^2}a$ y radio $\frac{r(1-|a|^2)}{1-r^2|a|^2}$.
+Si $a = 0$, $\Delta(a, r) = D(0, r)$.
+
+Esta distancia es equivalente a la distancia euclídea en $\mathbb{D}$.
+
+Si $T \in \mathcal{M}$ con $T(\mathbb{D}) = \mathbb{D}$, se tiene que:
+$$\rho(T(z_1), T(z_2)) = \rho(z_1, z_2), \quad z_1, z_2 \in \mathbb{D}$$
+Además, si $f$ es holomorfa en $\mathbb{D}$ y $f(\mathbb{D}) \subset \mathbb{D}$, se tiene que:
+$$\rho(f(z_1), f(z_2)) \leq \rho(z_1, z_2), \quad z_1, z_2 \in \mathbb{D}$$
+
+\section{Subordinación}
+\begin{definition}
+    Sean $f, F$ holomorfas en $\mathbb{D}$.
+    Diremos que $f$ está subordinada a $F$, $f \prec F$, si existe $w$ holomorfa en $\mathbb{D}$, con $w(0) = 0$ y $w(\mathbb{D}) \subset \mathbb{D}$ tal que $f = F \circ w$.
+\end{definition}
+
+\begin{remark}
+    $w$ está en las condiciones del lema de Schwarz.
+\end{remark}
+
+Veamos algunas propiedades:
+\begin{itemize}
+    \item $f(0) = F(w(0)) = F(0)$.
+    \item $f(\mathbb{D}) = F(w(\mathbb{D})) \subset F(\mathbb{D})$.
+    \item Si $0 < r < 1$, veamos que
+          $$f(D(0, r)) \subset F(D(0, r))$$
+          Si $z \in D(0, r)$, $f(z) = F(w(z))$.
+          Por el lema de Schwarz,
+          $$|w(z)| \leq |z| < r$$
+    \item Si $0 < r < 1$, veamos que
+          $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|$$
+          Si $|z| = r$, como por el lema de Schwarz $|w(z)| \leq |z| = r$, entonces:
+          $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|$$
+    \item Si $|z| = r$, como por el lema de Schwarz $|w'(0)| \leq 1$ y además $f'(0) = F'(w(0))w'(0) = F'(0)w'(0)$, entonces:
+          $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|$$
+    \item No se verifica para todo $r \in (0, 1)$ que
+          $$\max_{|z|=r} |f'(z)| \leq \max_{|z|=r} |F'(z)|$$
+\end{itemize}
+
+\begin{example}[Contraejemplo]
+    Sean $f(z) = z^2$ y $F(z) = z$.
+    Podemos tomar $w(z) = z^2$, que verifica $w(0) = 0$ y $w(\mathbb{D}) \subset \mathbb{D}$, luego $f \prec F$.
+    Si $0 < r < 1$,
+    \begin{align*}
+        \max_{|z|=r} |f'(z)| & = \max_{|z|=r} 2|z| = 2r \\
+        \max_{|z|=r} |F'(z)| & = 1
+    \end{align*}
+    Observamos que no se cumple que $2r \leq 1$ para todo $r \in (0, 1)$.
+\end{example}
+
+Por la segunda parte del teorema de Schwarz-Pick,
+$$\frac{|w'(z)|}{1-|w(z)|^2} \leq \frac{1}{1-|z|^2}, \quad z \in \mathbb{D}$$
+Entonces, si $z \in \mathbb{D}$,
+$$|f'(z)| = |F'(w(z))||w'(z)| \leq |F'(w(z))|\frac{1-|w(z)|^2}{1-|z|^2} \Leftrightarrow (1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))|$$
+Entonces, si $0 < r \leq 1$, tenemos que:
+$$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+
+Veamos que esto es cierto.
+Si $|z| < r$, como $|w(z)| \leq |z| < r$,
+$$(1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+
+\begin{proposition}
+    Sean $f, F$ holomorfas en $\mathbb{D}$, con $f \prec F$.
+    Entonces:
+    \begin{enumerate}
+        \item $f(0) = F(0)$.
+        \item $f(\mathbb{D}) \subset F(\mathbb{D})$.
+        \item Para todo $r \in (0, 1)$,
+              $$f(D(0, r)) \subset F(D(0, r))$$
+        \item Para todo $r \in (0, 1)$,
+              $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|$$
+        \item $|f'(0)| \leq |F'(0)|$.
+        \item Para todo $r \in (0, 1]$,
+              $$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+    \end{enumerate}
+\end{proposition}
+
+La última propiedad tiene mucha relación con el espacio de Bloch $\mathcal{B}$ de las funciones holomorfas en $\mathbb{D}$ que satisfacen:
+$$\sup_{z \in \mathbb{D}} (1-|z|^2)|f'(z)| < \infty$$
+
+\begin{remark}
+    Veamos qué se puede decir sobre los coeficientes de Taylor.
+    Sean $f$ y $F$ holomorfas en $\mathbb{D}$ con $f \prec F$.
+    Consideramos los desarrollos de Taylor de $f$ y $F$ para $z \in \mathbb{D}$:
+    \begin{align*}
+        f(z) & = \sum_{n=0}^\infty a_nz^n \\
+        F(z) & = \sum_{n=0}^\infty A_nz^n
+    \end{align*}
+
+    Usando (1), observamos que:
+    $$\begin{cases}
+            a_0 = f(0) \\
+            A_0 = F(0)
+        \end{cases} \Rightarrow a_0 = A_0$$
+
+    Con (2), vemos que:
+    $$\begin{cases}
+            a_1 = f'(0) \\
+            A_1 = F'(0)
+        \end{cases} \Rightarrow |a_1| \leq |A_1|$$
+
+    No podemos decir nada más.
+    Por ejemplo, dado $N \geq 2$, podemos considerar $f(z) = z^N$ y $F(z) = z$.
+    Observamos que $f \prec F$ con $w(z) = z^N$.
+    Observamos que $a_N = 1$ y $A_N = 0$, luego no es cierto que $|a_n| \leq |A_n|$.
+\end{remark}
+
+Veamos ahora un ejemplo importante de subordinación.
+Sea $F$ una aplicación conforme de $\mathbb{D}$ sobre $D$, siendo $D$ un dominio en $\mathbb{C}$.
+Si $f$ es holomorfa en $\mathbb{D}$ tal que $f(\mathbb{D}) \subset D$ y $f(0) = F(0)$, entonces $f \prec F$.
+
+Sea $w = F^{-1} \circ f$.
+$w$ es holomorfa en $\mathbb{D}$, $w(0) = F^{-1}(f(0)) = F^{-1}(F(0)) = 0$ y $w(\mathbb{D}) \subset \mathbb{D}$.
+Además, $f = F \circ w$.
+
+Por ejemplo:
+$$P(z) = \frac{1+z}{1-z}$$
+Esta es una transformación de Möbius que aplica $\partial \mathbb{D}$ en el eje imaginario.
+$P(\mathbb{D})$ es el semiplano de la derecha $\{z \in \mathbb{C} : \Re(z) > 0\}$ y $P(0) = 1$.
+Entonces, si $f$ es holomorfa en $\mathbb{D}$, $f(\mathbb{D}) \subset \{z \in \mathbb{C} : \Re(z) > 0\}$ y $f(0) = P(0)$, entonces $f \prec P$.
+Es decir, si $f$ es holomorfa en $\mathbb{D}$, $\Re(f(z)) > 0$ para todo $z \in \mathbb{D}$ y $f(0) = 1$, entonces $f \prec F$.
+
+Sea $\mathcal{P} = \{f \text{ holomorfa en } \mathbb{D} : \Re(f(z)) > 0 \; \forall z \in \mathbb{D}, f(0) = 1\}$.
+Entonces:
+\begin{itemize}
+    \item $P \in \mathcal{P}$.
+    \item $f \in \mathcal{P} \Rightarrow f \prec P$.
+          De hecho, $\mathcal{P} = \{f \text{ holomorfa en } \mathbb{D} : f \prec P\}$.
+    \item $f \in \mathcal{P} \Rightarrow \frac{1}{f} \in \mathcal{P}$.
+\end{itemize}
+
+\begin{theorem}
+    Si $f \in \mathcal{P}$, entonces:
+    \begin{enumerate}
+        \item Para todo $z \in \mathbb{D}$,
+              $$\frac{1-|z|}{1+|z|} \leq |f(z)| \leq \frac{1+|z|}{1-|z|}$$
+        \item $|f'(0)| \leq 2$
+    \end{enumerate}
+\end{theorem}
+
+Veamos cuáles son las aplicaciones conformes de $\mathbb{D}$ sobre $\mathbb{D}$.
+
+Sea $f$ una aplicación conforme de $\mathbb{D}$ sobre $\mathbb{D}$.
+Sea $a = f(0) \in \mathbb{D}$.
+Aplicando la segunda parte del teorema de Schwarz-Pick a $f$ en 0, tenemos:
+$$\frac{|f'(0)|}{1-|a|^2} \leq 1$$
+y si se diera igualdad, $f$ sería una transformación de Möbius.
+
+Sea $g = f^{-1}$, que es holomorfa en $\mathbb{D}$ y $g(\mathbb{D}) \subset \mathbb{D}$.
+Aplicando lo mismo en el punto $a$ tenemos:
+$$|g'(a)| \leq \frac{1}{1-|a|^2}$$
+y si se diera igualdad, $g$ sería una transformación de Möbius.
+
+Tenemos que:
+$$|f'(0)| \leq 1-|a|^2 \leq \frac{1}{|g'(a)|} = |f'(0)|$$
+Por tanto se da igualdad, así que $f$ es una transformación de Möbius con $f(\mathbb{D}) = \mathbb{D}$.
+En conclusión, las aplicaciones conformes de $\mathbb{D}$ sobre $\mathbb{D}$ son:
+$$\{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{\lambda S_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{\lambda \varphi_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\}$$
+
+\section{La métrica de Poincaré}
+Si $\gamma$ es un camino en $\mathbb{C}$ y $f: \sop(\gamma) \to \mathbb{C}$ es continua, entonces:
+\begin{align*}
+    \int_\gamma f(z)dz   & = \int_a^b f(\gamma(t))\gamma'(t)dt   \\
+    \int_\gamma f(z)|dz| & = \int_a^b f(\gamma(t))|\gamma'(t)|dt
+\end{align*}
+siendo $\gamma: [a, b] \to \mathbb{C}$ una parametrización $\mathcal{C}^1$ a trozos de $\gamma$.
+
+Veamos algunas propiedades:
+\begin{enumerate}
+    \item Si $f$ es real, entonces $\int_\gamma f(z)|dz| \in \mathbb{R}$.
+          Si además $f$ es no negativa, entonces $\int_\gamma f(z)|dz| \geq 0$.
+    \item Si $f(z) = 1$,
+          $$\int_\gamma f(z)|dz| = \int_a^b |\gamma'(t)|dt = long(\gamma)$$
+    \item $$\left|\int_\gamma f(z)dz\right| \leq \int_\gamma |f(z)||dz| \leq \max_{z \in \sop(\gamma)} |f(z)|long(\gamma)$$
+    \item Si $f, g: \sop(\gamma) \to \mathbb{R}$ continuas y $f \leq g$, entonces:
+          $$\int_\gamma f(z)|dz| \leq \int_\gamma g(z)|dz|$$
+    \item $$\int_{\gamma_1 + \gamma_2} f(z)|dz| = \int_{\gamma_1} f(z)|dz| + \int_{\gamma_2} f(z)|dz|$$
+    \item $$\int_{-\gamma} f(z)|dz| = \int_\gamma f(z)|dz|$$
+    \item $$\int_\gamma (af(z) + bg(z))|dz| = a\int_\gamma f(z)|dz| + b\int_\gamma g(z)|dz|, \quad a, b \in \mathbb{C}$$
+\end{enumerate}
+
+Sean $z_1, z_2 \in \mathbb{D}$.
+Sea $\gamma$ un camino en $\mathbb{D}$ con origen $z_1$ y extremo $z_2$.
+Podemos considerar la integral
+$$\int_\gamma \frac{1}{1-|z|^2}|dz| = \int_\gamma \frac{|dz|}{1-|z|^2}$$
+Como la función $z \in \mathbb{D} \mapsto \frac{1}{1-|z|^2}$ es real y positiva, entonces la integral es no negativa.
+Definimos:
+$$\delta(z_1, z_2) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } z_1 \text{ y extremo } z_2\right\}$$
+Entonces:
+\begin{itemize}
+    \item $\delta(z_1, z_2) \geq 0$.
+    \item $\delta(z_1, z_2) = \delta(z_2, z_1)$.
+    \item $\delta(z_1, z_2) = 0 \Leftrightarrow z_1 = z_2$.
+\end{itemize}
+
+Sean $z_1, z_2, z_3 \in \mathbb{D}$.
+Consideramos:
+$$A_{12} = \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } z_1 \text{ y extremo } z_2\right\}$$
+Se definen de manera análoga $A_{13}$ y $A_{23}$.
+Observamos que $A_{12} + A_{23} \subset A_{13}$.
+Por tanto:
+$$\inf(A_{12} + A_{13}) = \inf A_{12} + \inf A_{23} \geq \inf A_{13} \Leftrightarrow \delta(z_1, z_3) \leq \delta(z_1, z_2) + \delta(z_2, z_3)$$
+
+$\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en $\mathbb{D}$.
+
+\begin{proposition}
+    \hfill
+    \begin{enumerate}
+        \item Si $f$ es holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$, entonces:
+              $$\delta(f(z_1), f(z_2)) \leq \delta(z_1, z_2), \quad \forall z_1, z_2 \in \mathbb{D}$$
+        \item Si $T \in \mathcal{M}$ con $T(\mathbb{D}) = \mathbb{D}$, entonces:
+              $$\delta(T(z_1), T(z_2)) = \delta(z_1, z_2), \quad \forall z_1, z_2 \in \mathbb{D}$$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \hfill
+    \begin{enumerate}
+        \item Sea $f$ holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$ y sean $z_1, z_2 \in \mathbb{D}$.
+              \begin{align*}
+                  \delta(z_1, z_2)       & = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino de } z_1 \text{ a } z_2\right\}       \\
+                  \delta(f(z_1), f(z_2)) & = \inf \left\{\int_\Gamma \frac{|dw|}{1-|w|^2} : \Gamma \text{ camino de } f(z_1) \text{ a } f(z_2)\right\}
+              \end{align*}
+
+              Sea $\gamma$ un camino en $\mathbb{D}$ con origen $z_1$ y extremo $z_2$, con parametrización $\mathcal{C}^1$ a trozos $\gamma: [a, b] \to \mathbb{C}$.
+              Entonces $\Gamma = f \circ \gamma: [a, b] \to \mathbb{C}$ es una parametrización $\mathcal{C}^1$ a trozos de un camino $\Gamma$ en $\mathbb{D}$ con origen $f(z_1)$ y extremo $f(z_2)$.
+              Tenemos:
+              $$\int_\Gamma \frac{|dw|}{1-|w|^2} = \int_a^b \frac{|\Gamma'(t)|}{1-|\Gamma(t)|^2}dt = \int_a^b \frac{|f'(\gamma(t))||\gamma'(t)|}{1-|f(\gamma(t))|^2}dt$$
+              Usando la segunda parte del teorema de Schwarz-Pick:
+              $$\int_a^b \frac{|f'(\gamma(t))||\gamma'(t)|}{1-|f(\gamma(t))|^2}dt \leq \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt = \int_\gamma \frac{|dz|}{1-|z|^2}$$
+
+              Luego tenemos que:
+              $$\delta(f(z_1), f(z_2)) \leq \int_\gamma \frac{|dz|}{1-|z|^2}, \quad \forall \gamma$$
+              Por tanto, $\delta(f(z_1), f(z_2)) \leq \gamma(z_1, z_2)$.
+
+        \item Se tiene aplicando (1) a $T$ y $T^{-1}$.
+    \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+    Si $z_1, z_2 \in \mathbb{D}$, entonces:
+    $$\delta(z_1, z_2) = \frac{1}{2} \Log \frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
+\end{proposition}
+
+\begin{proof}
+    Si $z_1 = z_2$ es trivial.
+    Supongamos $z_1 \neq z_2$.
+    Consideramos:
+    $$S_{z_1}(z) = \frac{z-z_1}{1-\overline{z_1}z}$$
+    Se tiene que $S_{z_1} \in \mathcal{M}$, $S_{z_1}(\mathbb{D}) = \mathbb{D}$ y $S_{z_1}(z_1) = 0$.
+    Sabemos que $S_{z_1}(z_2) \neq 0$.
+    Además,
+    $$\delta(z_1, z_2) = \delta(0, S_{z_1}(z_2))$$
+
+    Tomamos $\lambda \in \mathbb{C}$, $|\lambda| = 1$, tal que $\lambda S_{z_1}(z_2) \in (0, 1)$.
+    Sea $r = \lambda S_{z_1}(z_2)$.
+    Entonces:
+    $$\delta(z_1, z_2) = \delta(0, S_{z_1}(z_2)) = \delta(0, r)$$
+    Además, $r = |\lambda S_{z_1}(z_2)| = |S_{z_1}(z_2)| = \rho(z_1, z_2)$.
+    Calculamos $\delta(0, r)$.
+    $$\delta(0, r) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } 0 \text{ y extremo } r\right\}$$
+    Si $\gamma = [0, r]$,
+    \begin{align*}
+         & \int_\gamma \frac{|dz|}{1-|z|^2} = \int_0^r \frac{dt}{1-t^2} = \frac{1}{2} \int_0^r \left(\frac{1}{1-t} + \frac{1}{1+t}\right)dt = = \frac{1}{2} \left[-\Log(1-t) + \Log(1+t)\right]_0^r = \\
+         & = \frac{1}{2} \left[\Log \frac{1+t}{1-t}\right]_0^r = \frac{1}{2} \Log\frac{1+r}{1-r}
+    \end{align*}
+    Luego $\delta(0, r) \leq \frac{1}{2} \Log\frac{1+r}{1-r}$.
+
+    Sea $\gamma$ un camino en $\mathbb{D}$ con origen 0 y extremo $r$.
+    Veamos que
+    $$\int_\gamma \frac{|dz|}{1-|z|^2} \geq \frac{1}{2} \Log\frac{1+r}{1-r}$$
+    Sea $\gamma: [a, b] \to \mathbb{C}$ una parametrización $\mathcal{C}^1$ a trozos de $\gamma$.
+    Sean $u = \Re(f)$ y $v= \Im(f)$, de forma que $\gamma = u + iv$.
+    $u, v: [a, b] \to \mathbb{R}$, $\mathcal{C}^1$ a trozos.
+    $$\int_\gamma \frac{|dz|}{1+|z|^2} = \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt$$
+    Tenemos que:
+    $$\begin{cases}
+            |\gamma(t)|^2 \geq u(t)^2 \Rightarrow 0 < 1-|\gamma(t)|^2 \leq 1-u(t)^2 \Rightarrow \frac{1}{1-|\gamma(t)|^2} \geq \frac{1}{1-u(t)^2} \\
+            |\gamma'(t)| \geq |u'(t)| \geq 0
+        \end{cases}$$
+    Así que:
+    $$\frac{|\gamma'(t)|}{1-|\gamma(t)|^2} \geq \frac{|u'(t)|}{1-u(t)^2} \geq \frac{u'(t)}{1-u(t)^2}$$
+    Luego:
+    \begin{align*}
+         & \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt \geq \int_a^b \frac{u'(t)}{1-u(t)^2}dt = \frac{1}{2} \int_a^b \left(\frac{u'(t)}{1-u(t)} + \frac{u'(t)}{1+u(t)}\right)dt = \\
+         & = \frac{1}{2} \left[-\Log(1-u(t)) + \Log(1+u(t))\right]_a^b = \frac{1}{2} \left[\Log \frac{1+u(t)}{1-u(t)}\right]_a^b = \frac{1}{2} \Log\frac{1+r}{1-r}
+    \end{align*}
+    porque $u(a) = 0$ y $u(b) = r$.
+    Por tanto,
+    $$\delta(z_1, z_2) = \delta(0, r) = \frac{1}{2} \Log\frac{1+r}{1-r} = \frac{1}{2} \log\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
 \end{proof}
 
 \begin{remark}
-    \hfill
-    \begin{enumerate}
-        \item Sea $D$ un abierto en $\mathbb{C}$.
-              Si $\mathcal{F}$ es una familia finitamente normal de funciones holomorfas en $D$, entonces la familia $\mathcal{F}' = \{f' : f \in \mathcal{F}\}$ es finitamente normal.
-              En general, si $k \in \mathbb{N}$, la familia $\mathcal{F}^{(k)} = \{f^{(k)} : f \in \mathcal{F}\}$ es finitamente normal.
-
-              Sea $\{g_n\}_{n=1}^\infty$ en $\mathcal{F}'$.
-              Entonces $g_n = f_n'$, $f_n \in \mathcal{F}$.
-              Existe $\{f_{n_k}\}_{k=1}^\infty$ subsucesión de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$ a una función $f$ holomorfa en $D$.
-              Entonces $g_{n_k} = f_{n_k}' \to f'$ uniformemente en cada subconjunto compacto de $D$.
-
-        \item Sea $D$ abierto en $\mathcal{C}$ y sea $\mathcal{G}$ familia finitamente normal de funciones holomorfas en $D$ con $\mathcal{F} \subset \mathcal{G}$.
-              Entonces $\mathcal{F}$ es finitamente normal.
-
-        \item Si $a \in \mathbb{C}$, $R > 0$ y $K \subset D(a, R)$, $K$ compacto, entonces existe $r \in (0, R)$ tal que $K \subset \overline{D}(a, r)$.
-    \end{enumerate}
+    Sea $h(x) = \frac{1}{2} \Log \frac{1+x}{1-x}$, $x \in [0, 1)$.
+    Observamos que si $x < 1$, entonces $1+x \geq 1-x > 0 \Rightarrow \frac{1+x}{1-x} \geq 1$, así que $h: [0, 1) \to [0, \infty)$.
+    $h$ es creciente, con $h(0) = 0$ y $\lim\limits_{x \to 1^-} h(x) = \infty$.
+    Podemos escribir $\delta = h \circ \rho : \mathbb{D} \times \mathbb{D} \xrightarrow{\rho} [0, 1) \xrightarrow{h} [0, \infty)$.
+    Fijado $a \in \mathbb{D}$, si $\{z_n\}_{n=1}^\infty$ está en $\mathbb{D}$ con $|z_n| \to 1$, entonces:
+    $$\rho(a, z_n) = |S_a(z_n)| \xrightarrow[n \to \infty]{} 1$$
+    Por tanto, $\delta(a, z_n) \xrightarrow[n \to \infty]{} \infty$.
 \end{remark}
 
-\begin{example}
-    \hfill
-    \begin{enumerate}
-        \item $\mathcal{F} = \{f : f \text{ es entera y } |f(z)| \leq n \text{ si } |z| = n, n = 1, 2, \dots\}$.
-              Sea $K \subset \mathbb{C}$, $K$ compacto, y sea $f \in \mathcal{F}$.
-              Existe $n_0 \in \mathbb{N}$ tal que $K \subset \overline{D}(0, n_0)$.
-              Además, $|f(z_0)| \leq n_0$ si $|z| = n_0$.
-              Por el principio del máximo, $|f(z)| \leq n_0$ si $|z| \leq n_0$.
-              En particular, $|f(z)| \leq n_0$ si $z \in K$ y $f \in \mathcal{F}$.
-              $\mathcal{F}$ está uniformemente acotada en $K$.
-              Por el teorema de Montel, $\mathcal{F}$ es finitamente normal.
-
-        \item $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f(0) = 1, \Re(f(z)) > 0 \; \forall z \in \mathbb{D}\}$.
-              Sea $K \subset \mathbb{D}$, $K$ compacto.
-              Si $f \in \mathcal{P}$ y $z \in K$,
-              $$|f(z)| \leq \frac{1+|z|}{1-|z|}$$
-              Existe $R \in (0, 1)$ tal que $K \subset \overline{D}(0, R)$.
-              Entonces, si $f \in \mathcal{P}$ y $z \in K$,
-              $$|f(z)| \leq \frac{1+|z|}{1-|z|} \leq \frac{1+R}{1-R}$$
-              $\mathcal{P}$ está uniformemente acotada en $K$ para todo subconjunto compacto $K$ de $\mathbb{D}$.
-              Por el teorema de Montel, $\mathcal{P}$ es finitamente normal.
-
-              \begin{remark}
-                  Si quitamos la condición $f(0) = 1$ en $\mathcal{P}$, la familia deja de ser finitamente normal.
-                  Por ejemplo, $f_n(z) = n$, $n = 1, 2, \dots$, $\{f_n : n = 1, 2, \dots\} \subset \mathcal{P}$.
-                  Si tomamos $K = \{0\}$, $\mathcal{P}$ no está uniformemente acotada en $K$, así que $\mathcal{P}$ no es finitamente normal.
-              \end{remark}
-
-              Recordemos que $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f \prec P\}$, con $P(z) = \frac{1+z}{1-z}$.
-              Esto es un caso particular del siguiente ejemplo.
-
-        \item Sea $F$ holomorfa en $\mathbb{D}$ y sea
-              $$\mathcal{F}_F = \{f : f \text{ holomorfa en } \mathbb{D}, f \prec F\}$$
-              Entonces $\mathcal{F}_F$ es finitamente normal.
-
-        \item Sean $a \in \mathbb{C}$ y $R > 0$.
-              Sea $\mathcal{F}$ una familia finitamente normal de funciones holomorfas en $D(a, R)$.
-              Para cada $f \in \mathcal{F}$, consideramos el desarrollo de Taylor de $f$ centrado en $a$
-              $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, R)$$
-              Entonces $M_n = \sup_{f \in \mathcal{F}} |a_n(f)| < \infty$ para cada $n$ y la serie de potencias $\sum_{n=0}^\infty M_n(z-a)^n$ tiene radio de convergencia mayor o igual que $R$, y por tanto define una función holomorfa en $D(a, R)$.
-
-              \begin{proof}
-                  Fijado $n$, si $f \in \mathcal{F}$ tenemos:
-                  $$a_n(f) = \frac{f^{(n)}(a)}{n!} \Rightarrow |a_n(f)| = \frac{|f^{(n)}(a)|}{n!}$$
-                  La familia $\mathcal{F}^{(n)}$ es finitamente normal y por tanto está uniformemente acotada en el conjunto $\{a\}$, por lo que $\{f^{(n)}(a) : f \in \mathcal{F}\}$ está acotado.
-                  Es decir, $\sup_{f \in \mathcal{F}} |f^{(n)}(a)| < \infty$.
-                  Entonces $M_n = \sup_{f \in \mathcal{F}} |a_n(f)| = \sup_{f \in \mathcal{F}} \frac{|f^{(n)}(a)|}{n!} < \infty$.
-                  Consideramos la serie de potencias:
-                  $$\sum_{n=0}^\infty M_n(z-a)^n$$
-                  Si $r \in (0, R)$, tenemos que $\mathcal{F}$ está uniformemente acotada en $\overline{D}(a, r)$, y por tanto existe $M(r) > 0$ tal que $|f(z)| \leq M(r)$ si $z \in \overline{D}(a, r)$ y $f \in \mathcal{F}$.
-                  Si $f \in \mathcal{F}$, por la fórmula de Cauchy,
-                  $$a_n(f) = \frac{f^{(n)}(a)}{n!} = \frac{1}{2\pi i} \int_{|z-a|=r} \frac{f(z)}{(z-a)^{n+1}}dz, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots$$
-                  Así que:
-                  $$|a_n(f)| \leq \frac{1}{2\pi} 2\pi r \max_{|z-a|=r} \frac{|f(z)|}{|z-a|^{n+1}} \leq r\frac{M(r)}{r^{n+1}} = \frac{M(r)}{r^n}, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots, f \in \mathcal{F}$$
-                  Tomando supremo en $f \in \mathcal{F}$ tenemos que:
-                  $$|M_n| = M_n \leq \frac{M(r)}{r^n} \Rightarrow \sqrt[n]{M_n} \leq \frac{\sqrt[n]{M(r)}}{r}, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots$$
-                  Por tanto:
-                  $$\limsup_{n \to \infty} \sqrt[n]{M_n} \leq \lim_{n \to \infty} \frac{\sqrt[n]{M(r)}}{r} = \frac{1}{r}, \quad \text{si } r \in (0, R)$$
-                  Haciendo $r \to R$,
-                  $$\limsup_{n \to \infty} \sqrt[n]{M_n} \leq \frac{1}{R}$$
-                  Entonces el radio de convergencia es mayor o igual que $R$.
-              \end{proof}
-
-        \item $\mathcal{F} = \{f : f \text{ es holomorfa en } \mathbb{D} \text{ y } \iint_\mathbb{D} |f(z)|dxdy \leq M\}$, siendo $M > 0$.
-              Veamos que $\mathcal{F}$ es finitamente normal.
-
-              Sea $K \subset \mathbb{D}$, $K$ compacto.
-              Tomamos $r \in (0, 1)$ con $K \subset D(0, r)$.
-              Sea $f \in \mathcal{F}$ y $z \in K$, por la fórmula de Cauchy
-              $$f(z) = \frac{1}{2\pi i} \int_{|z| = \rho} \frac{f(\xi)}{\xi-z}d\xi = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{f(\rho e^{i\theta})}{\rho e^{i\theta} - z}\rho d\rho, \quad r \leq \rho < 1$$
-
-              $$|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\rho, \quad r \leq \rho < 1$$
-
-              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho \leq \frac{1}{2\pi} \int_{\frac{1+r}{2}}^1 \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\theta d\rho = \frac{1}{2\pi} \iint_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy$$
-              Como $|w-z| \geq |w| - |z| > \frac{1+r}{2}-r = \frac{1-r}{2} > 0$,
-              \begin{align*}
-                   & \frac{1}{2\pi} \iint_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy \leq \frac{1}{2\pi} \frac{2}{1-r} \iint_{\frac{1+r}{2} < |w| < 1} |f(w)| dxdy \leq \\
-                   & \leq \frac{1}{\pi(1-r)} \iint_\mathbb{D} |f(w)|dxdy \leq \frac{M}{\pi(1-r)}
-              \end{align*}
-              Por otro lado,
-              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho = |f(z)|\left(1 - \frac{1+r}{2}\right) = |f(z)|\frac{1-r}{2}$$
-              Entonces:
-              $$|f(z)|\frac{1-r}{2} \leq \frac{M}{\pi(1-r)} \Rightarrow |f(z)| \leq \frac{2M}{\pi(1-r)^2}$$
-              Por tanto, $\mathcal{F}$ está uniformemente acotada en $K$.
-    \end{enumerate}
-\end{example}
-
-\begin{theorem}
-    Sean $a \in \mathbb{C}$ y $R > 0$.
-    Sea $\mathcal{F}$ una familia de funciones holomorfas en $D(a, R)$.
-    Las siguientes condiciones son equivalentes:
-    \begin{enumerate}
-        \item $\mathcal{F}$ es finitamente normal.
-        \item Existe una sucesión $\{M_n\}_{n=0}^\infty$ con $M_n \geq 0$ para todo $n$ tal que la serie de potencias $\sum_{n=0}^\infty M_n(z-a)^n$ tiene radio de convergencia mayor o igual que $R$ y tal que, si para cada $f \in \mathcal{F}$,
-              $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, r)$$
-              se tiene que $|a_n(f)| \leq M_n$ para todo $n$ y para toda $f \in \mathcal{F}$.
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    \hfill
-    \begin{itemize}
-        \item[$\Rightarrow$] $M_n = \sup_{f \in \mathcal{F}} |a_n(f)|$.
-        \item[$\Leftarrow$] Sea $K \subset D(a, R)$, $K$ compacto.
-            Existe $r \in (0, R)$ tal que $K \subset \overline{D}(a, r)$.
-            Si $z \in K$ y $f \in \mathcal{F}$, se tiene:
-            $$|f(z)| = \left|\sum_{n=0}^\infty a_n(f)(z-a)^n\right| \leq \sum_{n=0}^\infty |a_n(f)||z-a|^n \leq \sum_{n=0}^\infty M_n|z-a|^n \leq \sum_{n=0}^\infty M_nr^n < \infty$$
-            ya que $\sum_{n=0}^\infty M_n(z-a)^n$ converge para $z = a+r$.
-            $\mathcal{F}$ está uniformemente acotada en $K$.
-    \end{itemize}
-\end{proof}
-
-\section{El teorema de Stieltjes-Vitali}
-\begin{theorem}[Teorema de Stieltjes-Vitali]
-    Sea $D$ un dominio en $\mathbb{C}$ y $\mathcal{F}$ una familia finitamente normal de funciones holomorfas en $D$.
-    Sea $\{f_n\}_{n=1}^\infty$ una sucesión en $\mathcal{F}$.
-    Si existe $A \subset D$ tal que $A$ tiene algún punto de acumulación en $D$, para el que existe $\lim\limits_{n \to \infty} f_n(a) \in \mathbb{C}$ para todo $a \in A$, entonces $\{f_n\}$ converge uniformemente en cada subconjunto compacto de $D$.
-\end{theorem}
-
-\begin{proof}
-    \hfill
-    \begin{enumerate}
-        \item Veamos que $\{f_n\}$ converge puntualmente en $D$.
-              Sea $z^\ast \in D$.
-              Supongamos por reducción al absurdo que $\{f_n(z^\ast)\}$ no converge.
-              Como $\mathcal{F}$ está uniformemente acotada en el conjunto $\{z^\ast\}$, tenemos que $\{f_n(z^\ast)\}$ está acotado.
-              Por tanto, existen $\{f_{n_i}\}_{i=1}^\infty$ y $\{f_{m_i}\}_{i=1}^\infty$ subsucesiones de $\{f_n\}$, y $w_1, w_2 \in \mathbb{C}$ distintos, tales que $f_{n_i}(z^\ast) \xrightarrow[i \to \infty]{} w_1$, $f_{m_i}(z^\ast) \xrightarrow[i \to \infty]{} w_2$.
-              Como $\mathcal{F}$ es finitamente normal, existen $\{g_k\}_{k=1}^\infty$ y $\{h_k\}_{k=1}^\infty$ subsucesiones de $\{f_{n_i}\}$ y $\{f_{m_i}\}$, respectivamente, que convergen uniformemente en cada subconjunto compacto de $D$.
-              Sean $g$ y $h$ los respectivos límites.
-              Entonces $g$ y $h$ son holomorfas en $D$.
-              Tenemos que:
-              \begin{align*}
-                  g_k(z^\ast) & \xrightarrow[k \to \infty]{} w_1, & g(z^\ast) & = w_1 \\
-                  h_k(z^\ast) & \xrightarrow[k \to \infty]{} w_2, & h(z^\ast) & = w_2
-              \end{align*}
-              Si $a \in A$, existe $\lim\limits_{n \to \infty} f_n(a) \in \mathbb{C}$, así que $g(a) = h(a)$.
-              $g$ y $h$ son holomorfas en $D$, $g = h$ en $A$ y $A$ tiene algún punto de acumulación en $D$.
-              Por el teorema de identidad, $g = h$ en $D$.
-              Pero $g(z^\ast) = w_1 \neq w_2 = h(z^\ast)$.
-              Esto contradice nuestro supuesto.
-
-        \item Sea $K \subset D$, $K$ compacto.
-              Sea $\alpha > 0$ tal que $2\alpha < dist(K, \mathbb{C} \setminus D)$.
-              Si $D = \mathbb{C}$, tomamos $\alpha > 0$ cualquiera.
-              Sean $G = \{z \in \mathbb{C} : dist(z, K) < \alpha\}$ y $K_1 = \{z \in \mathbb{C} : dist(z, K) \leq \alpha\}$.
-              $G$ es abierto, $K_1$ es compacto y $K \subset G \subset K_1 \subset D$.
-
-              Veamos que $K_1 \subset D$.
-              Si $z \in K_1$, $dist(z, K) \leq \alpha$.
-              Supongamos que $z \in D$.
-              Tomamos $w \in K$ con $|z-w| < 2\alpha$.
-              Entonces $2\alpha < dist(K, \mathbb{C} \setminus D) \leq |w-z| < 2\alpha$.
-              Esto contradice nuestra hipótesis.
-
-              $\mathcal{F}$ está uniformemente acotada en $K_1$ y por tanto en $G$.
-              $K \subset G$, $K$ compacto.
-              Por una proposición previa, existe $A > 0$ tal que $|f(z_2)-f(z_1)| \leq A|z_2-z_1|$ si $z_1, z_2 \in K$ y $f \in \mathcal{F}$.
-              Vamos a ver que $\{f_n\}$ es uniformemente de Cauchy en $K$.
-              Sea $\varepsilon > 0$ y sea $\delta = \frac{\varepsilon}{3A} > 0$.
-              Tenemos que si $z_1, z_2 \in K$, $|z_1-z_2| < \delta$ y $n \in \mathbb{N}$, entonces $|f_n(z_1)-f_n(z_2)| \leq A|z_1-z_2| < A\delta = \frac{\varepsilon}{3}$.
-              Consideramos la familia $\{D(z, \delta) : z \in K\}$.
-              Como $K$ es compacto, existen $z_1, z_2, \dots, z_N \in K$ tales que $K \subset \bigcup_{j=1}^N D(z_j, \delta)$.
-              Para cada $j \in \{1, \dots, N\}$, la sucesión $\{f_n(z_j)\}_{n=1}^\infty$ es de Cauchy, ya que $\{f_n\}$ converge puntualmente en $D$.
-              Por tanto, exsite $n_j \in \mathbb{N}$ tal que $n, m \geq n_j \Rightarrow |f_n(z_j)-f_m(z_j)| < \frac{\varepsilon}{3}$.
-              Sea $n_0 = \max \{n_j : j = 1, \dots, N\}$.
-              Si $n, n \geq n_j$ y $z \in K$, hay que probar que $|f_n(z)-f_m(z)| < \varepsilon$.
-              Tomamos $j \in \{1, \dots, N\}$ con $z \in D(z_j, \delta)$.
-              $$|f_n(z)-f_m(z)| \leq |f_n(z)-f_n(z_j)| + |f_n(z_j)-f_m(z_j)| + |f_m(z_j)-f_m(z)| < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon$$
-    \end{enumerate}
-\end{proof}
-
-\begin{example}
-    Para $x \geq 0$, tenemos que $\left(1 + \frac{x}{n}\right)^n$ es una sucesión creciente y
-    $$\lim\limits_{n \to \infty} \left(1 + \frac{x}{n}\right)^n = e^x$$
-    Veamos que $\lim\limits_{n \to \infty} \left(1 + \frac{z}{n}\right)^n = e^z$ para todo $z \in \mathbb{C}$, siendo la convergencia uniforme en cada subconjunto compacto de $\mathbb{C}$.
-
-    Sea $D = \mathbb{C}$, $f_n(z) = \left(1 + \frac{z}{n}\right)^n$, $n \in \mathbb{N}$.
-    Cada $f_n$ es una función entera.
-    Veamos que $\mathcal{F}$ es finitamente normal.
-
-    Sea $K \subset \mathbb{C}$, $K$ compacto.
-    Tomamos $R > 0$ con $K \subset \overline{D}(0, R)$.
-    Si $k \in K$ y $n \in \mathbb{N}$,
-    $$|f_n(z)| = \left|1 + \frac{z}{n}\right|^n \leq \left(1 + \frac{|z|}{n}\right)^n \leq \left(1 + \frac{R}{n}\right)^n \leq e^R$$
-    Sea $A = [0, 1]$.
-    $A$ tiene puntos de acumulación en $\mathbb{C}$ y $\lim\limits_{n \to \infty} f_n(x) = e^x$ para todo $x \in A$.
-    Por el teorema de Stieltjes-Vitali, $\{f_n\}$ converge uniformemente en cada subconjunto compacto de $\mathbb{C}$.
-    Sea $f$ el límite, entonces $f$ es entera.
-    Si $x \in A$, $\lim\limits_{n \to \infty} f_n(x) = f(x) = e^x$.
-    Por el teorema de identidad, $f(z) = e^z$ si $z \in \mathbb{C}$.
-\end{example}
-
-\begin{theorem}[Teorema de Lindelöf]
-    Sea $f$ holomorfa y acotada en $\mathbb{D}$.
-    Sea $\xi \in \partial \mathbb{D}$ y supongamos que existe el límite radial, es decir, $\lim\limits_{r \to 1^-} f(r\xi) = L \in \mathbb{C}$.
-    Entonces para todo $\alpha \in (0, \frac{\pi}{2})$ existe el límite tangencial de $f$ en $\xi$, es decir,
-    $$\lim\limits_{z \to \xi, z \in S_\alpha(\xi)} f(z) = L$$
-    siendo $S_\alpha(\xi)$ el vector de vértice $\xi$ y ángulo $2\alpha$, simétrico con respecto al segmento $[0, \xi]$.
-\end{theorem}
-
-\begin{theorem}
-    Sea $f$ holomorfa y acotada en $D(1, 1)$.
-    Supongamos que existe $\lim\limits_{x \to 0^+} f(x) = L \in \mathbb{C}$.
-    Entonces para todo $\alpha \in (0, \frac{\pi}{2})$ existe
-    $$\lim\limits_{z \to 0, |\Arg(z)| < \alpha} f(z) = L$$
-\end{theorem}
-
-\begin{proof}
-    Sea $M > 0$ tal que $|f(z)| \leq M$ si $z \in D(1, 1)$.
-    Consideramos la sucesión $\{f_n\}_{n=1}^\infty$, $f_n(z) = f\left(\frac{z}{n}\right)$.
-    Cada $f_n$ es holomorfa en $D(1, 1)$.
-    La familia $\mathcal{F} = \{f_n : n \in \mathbb{N}\}$ está uniformemente acotada en $D$, porque si $z \in D$ y $n \in \mathbb{N}$ se tiene que $|f_n(z)| = \left|f\left(\frac{z}{n}\right)\right| \leq M$.
-    Así que $\mathcal{F}$ es finitamente normal.
-
-    Sea $A = (0, 1)$.
-    Si $x \in A$, $\lim\limits_{n \to \infty} f_n(x) = \lim\limits_{n \to \infty} f\left(\frac{x}{n}\right) = L$.
-    Por el teorema de Stieltjes-Vitali, $\{f_n\}$ converge uniformemente en cada subconjunto compacto de $D(1, 1)$.
-    Sea $g$ el límite, entonces $g$ es holomorfa en $D(1, 1)$ y $g(x) = L$ para todo $x \in A$.
-    Por el teorema de identidad, $g(z) = L$ para todo $z \in D(1, 1)$.
-    Hemos probado que $f_n \xrightarrow[n \to \infty]{} L$ uniformemente en cada subconjunto compacto de $D$.
-
-    Sea $\alpha \in (0, \frac{\pi}{2})$.
-    Sea $K = \left\{z \in \mathbb{C} : \frac{\cos(\alpha)}{2} \leq |z| \leq \cos(\alpha), |\Arg(z)| \leq \alpha\right\}$.
-    $K$ es un subconjunto compacto de $D(1, 1)$, así que $f_n \xrightarrow[n \to \infty]{} L$ uniformemente en $K$.
-    Es decir, existe $n_0 \in \mathbb{N}$ tal que, si $n \geq n_0$ y $z \in K$, entonces $|f_n(z)-L| < \varepsilon$.
-
-    Sea $\delta = \frac{\cos(\alpha)}{2n_0} > 0$.
-    Sea $z$ tal que $0 < |z| < \delta$ y $|\Arg(z)| < \alpha$.
-    Observamos que $|z| < \frac{\cos(\alpha)}{2n_0} \leq \frac{\cos(\alpha)}{2}$.
-    Tomamos $n_z$ el primer natural para el que $n_z|z| \geq \frac{\cos(\alpha)}{2}$.
-    Como $|z| < \frac{\cos(\alpha)}{2n_0} \Leftrightarrow n_0|z| < \frac{\cos(\alpha)}{2}$, entonces $1 \leq n_0 < n_z$.
-    Por otro lado,
-    $$(n_z-1)|z| < \frac{\cos(\alpha)}{2} \Leftrightarrow n_z|z| - |z| < \frac{\cos(\alpha)}{2} \Leftrightarrow n_z|z| < |z| + \frac{\cos(\alpha)}{2} < \frac{\cos(\alpha)}{2} + \frac{\cos(\alpha)}{2} = \cos(\alpha)$$
-    Así que $\frac{\cos(\alpha)}{2} \leq n_z|z| = |n_zz| < \cos(\alpha)$.
-    Además, $|\Arg(n_zz)| = |\Arg(z)| < \alpha$.
-    Por tanto, $n_zz \in K$.
-    Entonces:
-    $$|f_{n_k}(n_zz) - L| = |f(z) - L| < \varepsilon$$
-\end{proof}
-
-\section{Teoremas de Hurwitz}
-\begin{theorem}[Teorema de Rouché]
-    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ y sea $J$ un camino de Jordan en $D$.
-    Sean $f$ y $g$ funciones holomorfas en $D$ tales que
-    $$|f(z) - g(z)| < |f(z)| \quad \text{si } z \in J$$
-    Entonces:
-    \begin{enumerate}
-        \item $I(J) \subset D$.
-        \item Ni $f$ ni $g$ se anulan en $J$.
-        \item $f$ y $g$ tienen el mismo número de ceros en $I(J)$.
-    \end{enumerate}
-\end{theorem}
-
-\begin{theorem}[Primer teorema de Hurwitz]
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas y nunca nulas en $D$, que converge uniformemente en cada subconjunto de $D$ a una función $f$.
-    Entonces $f$ es nunca nula en $D$ o bien $f$ es idénticamente nula en $D$.
-\end{theorem}
-
-\begin{proof}
-    Si $f \equiv 0$ en $D$, no hay nada que hacer.
-    Supongamos que $f \not\equiv 0$ en $D$.
-    Supongamos por reducción al absurdo que existe $a \in D$ con $f(a) = 0$.
-    Entonces $a$ es un cero aislado de $f$.
-    Podemos tomar $R > 0$ tal que $D(a, 2R) \subset D$ y $f$ no tiene ceros en $D(a, 2R) \setminus \{a\}$.
-
-    Sea $C_R$ la circunferencia $|z-a| = R$.
-    Como $f$ no tiene ceros en $C_R$, existe $\alpha > 0$ tal que $|f(z)| > \alpha$ para todo $z \in C_R$.
-    Como $f_n \to f$ uniformemente en $C_R$, existe $n_0 \in \mathbb{N}$ tal que $n \geq n_0, z \in C_R \Rightarrow |f_n(z) - f(z)| < \alpha$.
-    Entonces, si $n \geq n_0$ y $z \in C_R$, se tiene que
-    $$|f_n(z) - f(z)| < \alpha < |f(z)|$$
-    Por el teorema de Rouché, $f_n$ y $f$ tienen el mismo número de ceros en $D(a, R)$.
-    Pero $f_n$ es nunca nula en $D$, por lo que no tiene ceros en $D(a, R)$, mientras que $f(a) = 0$.
-    Esta es una contradicción.
-    Entonces $f$ es nunca nula en $D$.
-\end{proof}
-
-\begin{theorem}[Segundo teorema de Hurwitz]
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas e inyectivas en $D$.
-    Si $\{f_n\}$ converge uniformemente a $f$ en cada subconjunto compacto de $D$, entonces $f$ es inyectiva o constante.
-\end{theorem}
-
-\begin{proof}
-    Sabemos que $f$ es holomorfa en $D$.
-    Supongamos que $f$ no es constante.
-    Sean $a, b \in D$ con $a \neq b$.
-    Veamos que $f(a) \neq f(b)$.
-    $D \setminus \{a\}$ es un dominio en $\mathbb{C}$.
-    Para cada $n \in \mathbb{N}$, sea $g_n(z) = f_n(z) - f_n(a)$ si $z \in D \setminus \{a\}$.
-    Cada $g_n$ es holomorfa y nunca nula en $D \setminus \{a\}$.
-    $f_n \to f$ uniformemente en cada subconjunto compacto de $D$.
-    Sea $g(z) = f(z) - f(a)$, $z \in D \setminus \{a\}$.
-    Entonces $g_n \to g$ uniformemente en cada subconjunto compacto de $D \setminus \{a\}$.
-    Por el teorema anterior, $g \equiv 0$ en $D \setminus \{a\}$ o bien $g$ es nunca nula en $D \setminus \{a\}$.
-
-    \begin{enumerate}
-        \item Si $g \equiv 0$ en $D \setminus \{a\}$, entonces $f(z) = f(a)$ si $z \in D \setminus \{a\}$ $\Rightarrow$ $f(z) = f(a)$ si $z \in D$.
-              $f$ es constante, lo que contradice nuestra hipótesis.
-        \item Si $g(z) \neq 0$ si $z \in D \setminus \{a\}$, en particular $g(b) = f(b) - f(a) \neq 0 \Rightarrow f(a) \neq f(b)$.
-    \end{enumerate}
-\end{proof}
+$\mathbb{D}$ con esta distancia $\delta$ es un modelo de la geometría hiperbólica.
+Si $\gamma$ es un camino en $\mathbb{D}$, la longitud de $\gamma$ es
+$$\int_\gamma \frac{|dz|}{1-|z|^2}$$
+La geodésica que une $z_1, z_2 \in \mathbb{D}$ es el camino $\gamma$ para el que:
+$$\delta(z_1, z_2) = \int_\gamma \frac{|dz|}{1-|z|^2}$$
+Las geodésicas con respecto a $\delta$ son los diámetros de $\partial \mathbb{D}$ y los arcos de circunferencia ortogonales a $\partial \mathbb{D}$.

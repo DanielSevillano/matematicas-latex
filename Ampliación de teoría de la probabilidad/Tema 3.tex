@@ -310,10 +310,10 @@ Esta norma induce una métrica:
     \begin{align*}
         E(|X_n - X|^p) & = E(|X_n|^p) = 0^pP(X_n = 0) + n^pP(X_n = n) = n^pm\left(\left[0, \frac{1}{n}\right]\right) = \\
                        & = \frac{n^p}{n} = n^{p-1} \xrightarrow[n \to \infty]{} \begin{cases}
-            0      & \text{si } p < 1 \\
-            1      & \text{si } p = 1 \\
-            \infty & \text{si } p > 1
-        \end{cases}
+                                                                                    0      & \text{si } p < 1 \\
+                                                                                    1      & \text{si } p = 1 \\
+                                                                                    \infty & \text{si } p > 1
+                                                                                \end{cases}
     \end{align*}
     Luego $X_n$ converge a $X$ en $L^p$ si $p < 1$.
 \end{example}
@@ -566,7 +566,7 @@ $$\frac{S_n - a_n}{b_n} \xrightarrow{p} 0$$
             \frac{1}{2n^2}                          & \text{si } a = -e^n, e^n \\
             0                                       & \text{en el resto}
         \end{cases}$$
-    Observamos que $X_n$ es discreta, con $sop(X_n) = \{-e^n, -1, 1, e^n\}$.
+    Observamos que $X_n$ es discreta, con $\sop(X_n) = \{-e^n, -1, 1, e^n\}$.
 
     Queremos ver que $\{X_n\}$ verifica la ley fuerte de los grandes números.
     Sin embargo:

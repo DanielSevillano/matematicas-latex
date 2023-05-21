@@ -1,706 +1,1107 @@
-\chapter{El teorema de factorización de Weierstrass}
-Si $P(z)$ es un polinomio con ceros $z_1, \dots, z_n$, entonces podemos factorizar $P(z)$ como
-$$P(z) = c\prod_{k=1}^n (z-z_k)$$
-El objetivo es factorizar una función holomorfa usando sus ceros.
+\chapter{Funciones armónicas}
 
-\section{Funciones holomorfas sin ceros o con finitos ceros}
-\begin{theorem}
-    Sea $D$ un dominio simplemente conexo y sea $f$ una función holomorfa en $D$ sin ceros.
-    Entonces existe $g$ holomorfa en $D$ tal que $f = e^g$.
-\end{theorem}
-
-\begin{theorem}
-    Sea $D$ un dominio simplemente conexo y sea $f$ una función holomorfa en $D$ con un número finito de ceros $z_1, \dots, z_n$.
-    Entonces existe $g$ holomorfa en $D$ tal que
-    $$f(z) = e^{g(z)} \prod_{n=1}^N (z-z_n)$$
-\end{theorem}
-
-\begin{proof}
-    Sea
-    $$h(z) = \frac{f(z)}{(z-z_1)\dots(z-z_N)}$$
-    Solucionando las singularidades evitables, $h$ es holomorfa en $D$ y sin ceros.
-    Entonces por el teorema anterior existe $g$ holomorfa en $D$ tal que
-    $$e^{g(z)} = h(z) = \frac{f(z)}{(z-z_1)\dots(z-z_N)} \Rightarrow f(z) = e^{g(z)} \prod_{n=1}^N (z-z_n)$$
-\end{proof}
-
-Desde otro punto de vista, sea $D$ un dominio simplemente conexo y $\{z_\alpha\}_{\alpha \in \mathcal{F}} \subset D$, podemos plantearnos si existe $f$ holomorfa en $D$ tal que $f$ tiene ceros $\{z_\alpha\}_{\alpha \in \mathcal{F}}$.
-
-Si $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ tiene un punto de acumulación en $D$ entonces, por el teorema de identidad de Weierstrass, $f \equiv 0$.
-Nos interesa el caso en el que $\{z_n\}_{n=1}^\infty$ es numerable y sin puntos de acumulación en $D$.
-
-Sea $D = \mathbb{C}$ y sea $\{z_n\}_{n=1}^\infty$ numerable y sin puntos de acumulación.
-Habría que definir $\prod_{n=1}^\infty (z-z_n)$, por ejemplo de la forma
-$$\prod_{n=1}^\infty (z-z_n) = \lim_{N \to \infty} \prod_{n=1}^N (z-z_n)$$
-Como $\{z_n\}_{n=1}^\infty$ es infinito, entonces necesariamente $|z_n| \to \infty$.
-En caso contrario, $\{z_n\}$ tendría un punto de acumulación en $\mathbb{C}$.
-Si fijamos $z \in \mathbb{C}$, existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ entonces $|z-z_n| > 2$, así que
-$$\lim_{N \to \infty} \prod_{n=n_0}^\infty |z-z_n| = \infty$$
-
-\section{Productos infinitos}
-Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
-Queremos darle sentido a $\prod_{n=1}^\infty a_n$.
-Por ejemplo, si $P_N = \prod_{n=1}^N a_n$, podemos definir
-$$\prod_{n=1}^\infty a_n = \lim_{N \to \infty} P_N = \lim_{N \to \infty} \prod_{n=1}^N a_n$$
-Sin embargo, esta definición plantea algunos problemas.
-\begin{enumerate}
-    \item Si tenemos una multiplicación de números complejos cuyo resultado es 0, queremos que uno de ellos sea cero.
-          Sin embargo, si $a_n = \frac{1}{n}$, entonces $P_N = \prod_{n=1}^N \frac{1}{n} = \frac{1}{N!}$ y $\lim\limits_{n \to \infty} P_N = 0$, con $a_n \neq 0$ para todo $n \in \mathbb{N}$.
-
-    \item Queremos que la convergencia depende de la cola.
-          Sin embargo, con esta definición depende de un número finito de términos.
-
-          Sea $a_1 = a$ y $a_n = n$ para $n \geq 2$, entonces $\lim\limits_{N \to \infty} P_N = 0$ porque $P_N = 0$ para todo $N \in \mathbb{N}$.
-          Sin embargo, si $a_n = n+1$ para todo $n \geq 2$, entonces $\lim\limits_{N \to \infty} P_N = \infty$.
-\end{enumerate}
+\section{Funciones armónicas y funciones holomorfas}
+\begin{definition}
+    Sea $D$ un abierto en $\mathbb{R}^n$ y sea $f: D \to \mathbb{R}$.
+    Decimos que $f$ es armónica en $D$ si $f \in \mathcal{C}^2(D)$ y
+    $$\Delta f = \frac{\partial^2f}{\partial x_1^2} + \frac{\partial^2f}{\partial x_2^2} + \dots + \frac{\partial^2f}{\partial x_n^2}$$
+\end{definition}
 
 \begin{definition}
-    Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
-    Diremos que el producto infinito asociado a $\{a_n\}_{n=1}^\infty$, que denotamos por $\prod_{n=1}^\infty a_n$, converge si:
-    \begin{enumerate}
-        \item Existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$.
-        \item Existe $\lim\limits_{N \to \infty} \prod_{n=1}^N a_n$ y además es distinto de cero.
-    \end{enumerate}
-    Si converge, entonces $\prod_{n=1}^\infty a_n = \lim\limits_{N \to \infty} \prod_{n=1}^N a_n$.
+    Dado $D$ abierto en $\mathbb{C}$ y $u: D \to \mathbb{R}$, con $u \in \mathcal{C}^2(D)$.
+    El laplaciano de $u$ se define como:
+    $$\Delta u = \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}$$
+\end{definition}
+
+\begin{definition}
+    Sea $D$ abierto en $\mathbb{D}$ y sea $u: D \to \mathbb{R}$, con $u \in \mathcal{C}^2(D)$.
+    Diremos que $u$ es armónica en $D$ si $\Delta u = 0$.
 \end{definition}
 
 \begin{example}
     \hfill
-    \begin{enumerate}
-        \item Sea $a_n = \frac{1}{n}$, $n \in \mathbb{N}$.
-              Observamos que $a_n \neq 0$ para todo $n \in \mathbb{N}$.
-              Sin embargo,
-              $$\lim_{N \to \infty} \prod_{n=1}^N a_n = \lim_{N \to \infty} \frac{1}{N!} = 0$$
-              Por tanto, $\prod_{n=1}^\infty a_n$ no converge.
-
-        \item Sea $a_1 = 0$ y $a_n = 1 - \frac{1}{n}$, $n \geq 2$.
-              Se verifica que $a_n \neq 0$ para $n \geq 2$.
-              Ahora bien,
-              $$\prod_{n=2}^N \left(1-\frac{1}{n}\right) = \prod_{n=2}^N \frac{n-1}{n} = \frac{1}{2}\frac{2}{3}\dots\frac{N-1}{N} = \frac{1}{N} \xrightarrow[N \to \infty]{} 0$$
-              Por tanto, $\prod_{n=1}^\infty a_n$ no converge.
-
-        \item Sea $a_1 = 0$ y $a_n = 1 - \frac{1}{n^2}$, $n \geq 2$.
-              Es claro que $a_n \neq 0$ para $n \geq 2$.
-              Además,
+    \begin{itemize}
+        \item Las funciones constantes.
+              $u(z) = a$, $a \in \mathbb{R}$, es armónica en $\mathbb{C}$.
+        \item La función parte real es armónica en $\mathbb{C}$.
               \begin{align*}
-                   & \prod_{n=2}^N \left(1-\frac{1}{n^2}\right) = \prod_{n=2}^N \frac{n^2-1}{n^2} = \prod_{n=2}^N \frac{(n-1)(n+1)}{n^2} = \left(\prod_{n=2}^N \frac{n-1}{n}\right)\left(\prod_{n=2}^N \frac{n+1}{n}\right) = \\
-                   & = \frac{1}{N}\frac{N+1}{2} \to \frac{1}{2}
+                  \Re: \mathbb{C} & \to \mathbb{R}                         \\
+                  z               & \mapsto \Re(z) = \frac{z + \bar{z}}{2} \\
+                  (x, y)          & \mapsto x
               \end{align*}
-              Por tanto, $\prod_{n=1}^\infty a_n$ converge.
-    \end{enumerate}
+        \item La función parte imaginaria es armónica en $\mathbb{C}$.
+              \begin{align*}
+                  \Im: \mathbb{C} & \to \mathbb{R}                          \\
+                  z               & \mapsto \Im(z) = \frac{z - \bar{z}}{2i} \\
+                  (x, y)          & \mapsto y
+              \end{align*}
+        \item Si $D$ es un abierto en $\mathbb{C}$ y $u$ y $v$ son armónicas en $D$, entonces $u+v$ es armónica en $D$.
+        \item Si $D$ es un abierto en $\mathbb{C}$, $u$ es armónica en $D$ y $c \in \mathbb{R}$, entonces $cu$ es armónica en $D$.
+    \end{itemize}
 \end{example}
 
 \begin{theorem}
-    Sea $\{a_n\}_{n=1}^\infty$ una sucesión de números complejos.
-    Entonces $\prod_{n=1}^\infty a_n$ converge si ocurre lo siguiente.
-    \begin{enumerate}
-        \item El conjunto $\{a_n : a_n = 0\}$ es finito.
-        \item Si existe $M \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq M$, entonces existe $\lim\limits_{N \to \infty} \prod_{n=M}^N a_n$ y es distinto de 0.
-    \end{enumerate}
-\end{theorem}
-
-\begin{theorem}
-    Sea $\{a_n\}_{n=1}^\infty$ tal que $\prod_{n=1}^\infty a_n$ converge.
-    Entonces:
-    \begin{enumerate}
-        \item $\lim\limits_{n \to \infty} a_n = 1$.
-        \item $\prod_{n=1}^\infty a_n = 0$ si y solo si existe $n_0 \in \mathbb{N}$ tal que $a_{n_0} = 0$.
-        \item Sea $N \in \mathbb{N}$.
-              Entonces $\prod_{n=1}^\infty a_{n+N}$ converge y además
-              $$\prod_{n=1}^\infty a_n = \left(\prod_{n=1}^N a_n\right) \left(\prod_{n=1}^\infty a_{n+N}\right)$$
-        \item Sea $\{b_n\}_{n=1}^\infty$ tal que $\prod_{n=1}^\infty b_n$ converge.
-              Entonces $\prod_{n=1}^\infty a_nb_n$ converge y además
-              $$\prod_{n=1}^\infty a_nb_n = \left(\prod_{n=1}^\infty a_n\right) \left(\prod_{n=1}^\infty b_n\right)$$
-    \end{enumerate}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $f$ una función holomorfa en $D$.
+    Entonces $\Re(f)$ e $\Im(f)$ son armónicas en $D$.
 \end{theorem}
 
 \begin{proof}
-    \hfill
-    \begin{enumerate}
-        \item Como $\prod_{n=1}^\infty a_n$ converge, existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\lim\limits_{N \to \infty} \prod_{n=n_0}^N a_n = q$, con $q > 0$.
-              Si $M > n_0$,
-              $$a_M = \frac{\prod_{n=n_0}^M a_n}{\prod_{n=n_0}^{M-1} a_n} \xrightarrow[M \to \infty]{} \frac{q}{q} = 1$$
-
-        \item Supongamos que existe $n_0 \in \mathbb{N}$ tal que $a_{n_0} = 0$.
-              Como $\prod_{n=1}^\infty a_n$ converge, entonces
-              $$\prod_{n=1}^\infty a_n = \lim_{N \to \infty} \prod_{n=1}^N a_n = \lim_{N \to \infty} P_N \to 0$$
-              Si $N > n_0$, entonces $P_N = a_1\dots a_{n_0-1}0a_{n_0+1}\dots a_N = 0$.
-
-              Recíprocamente, si $a_n \neq 0$ para todo $n \in \mathbb{N}$, entonces $\prod_{n=1}^\infty a_n \neq 0$ y $\prod_{n=1}^\infty a_n$ converge.
-
-        \item Tomemos $N \in \mathbb{N}$.
-              Si $\prod_{n=1}^\infty a_n$ converge, entonces existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\lim\limits_{M \to \infty} \prod_{n=n_0}^M a_n = q$ con $q \neq 0$.
-              Entonces $a_{n+N} \neq 0$ para todo $n \geq n_0$ y además
-              $$\prod_{n=n_0}^M a_{n+N} = \prod_{n=n_0+N}^{M+N} a_n = \frac{\prod_{n=n_0}^{M+N} a_n}{a_{n_0}\dots a_{n_0+N-1}} \to \frac{q}{a_{n_0}\dots a_{n_0+N-1}} \neq 0$$
-              Por tanto, $\prod_{n=1}^\infty a_{n+N}$ converge.
-
-        \item $\prod_{n=1}^\infty a_n$ y $\prod_{n=1}^\infty b_n$ convergen.
-              Entonces:
-              \begin{itemize}
-                  \item Existe $n_a \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_a$ y $\lim\limits_{N \to \infty} \prod_{n=n_a}^N a_n = l_a \neq 0$.
-                  \item Existe $n_b \in \mathbb{N}$ tal que $b_n \neq 0$ para todo $n \geq n_b$ y $\lim\limits_{N \to \infty} \prod_{n=n_b}^N b_n = l_b \neq 0$.
-              \end{itemize}
-              Sea $n_0 = \max\{n_a, n_b\}$.
-              Entonces $a_nb_n \neq 0$ para todo $n \geq n_0$.
-              $$\lim_{N \to \infty} \prod_{n=n_0}^N a_nb_n \to c \neq 0$$
-              Como los productos convergen,
-              $$\prod_{n=1}^\infty a_nb_n = \lim_{N \to \infty} \left(\prod_{n=1}^N a_n\right) \left(\prod_{n=1}^N b_n\right) = \left(\lim_{N \to \infty} \prod_{n=1}^N a_n\right) \left(\lim_{N \to \infty} \prod_{n=1}^N b_n\right) = \left(\prod_{n=1}^\infty a_n\right) \left(\prod_{n=1}^\infty b_n\right)$$
-    \end{enumerate}
+    Sean $u = \Re(f)$ y $v = \Im(f)$, $u, v: D \to \mathbb{R}$, con $u, v \in \mathcal{C}^\infty(D) \subset \mathcal{C}^2(D)$.
+    Se verifican las condiciones de Cauchy-Riemann:
+    $$\begin{cases}
+            u_x = v_y \\
+            u_y = -v_x
+        \end{cases}$$
+    Por tanto:
+    \begin{align*}
+        \Delta u & = u_{xx} + u_{yy} = v_{yx} - v_{xy} = 0  \\
+        \Delta v & = v_{xx} + v_{yy} = -u_{yx} + u_{xy} = 0
+    \end{align*}
 \end{proof}
 
-\begin{theorem}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
-    \begin{enumerate}
-        \item $\prod_{n=1}^\infty a_n$ converge.
-        \item Existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y $\sum_{n=n_0}^\infty \Log(a_n)$ converge.
-    \end{enumerate}
-\end{theorem}
+El recíproco no es cierto.
+Es decir, dado $D$ abierto en $\mathbb{C}$, $u$ y $v$ armónicas en $D$ y $f = u + iv: D \to \mathbb{C}$, no se cumple en general que $f$ sea holomorfa en $D$.
 
-\begin{proof}
+\begin{example}[Contraejemplo]
+    Sea $D = \mathbb{C}$ y sean $u(z) = \Re(z)$ y $v(z) = \Im(z)$.
+    $u$ y $v$ son armónicas en $\mathbb{C}$.
+    Sin embargo, $f(z) = u(z) + iv(z) = \bar{z}$ no es holomorfa.
+\end{example}
+
+\begin{definition}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Diremos que $v: D \to \mathbb{R}$ es una conjugada armónica de $u$ en $D$ si la función $f = u + iv$ es holomorfa en $D$.
+\end{definition}
+
+\begin{properties}
     \hfill
     \begin{itemize}
-        \item[$\Rightarrow$] Como $\prod_{n=1}^\infty a_n$ converge, existe $n_0 \in \mathbb{N}$ tal que $a_n \neq 0$ para todo $n \geq n_0$ y además $\prod_{n=n_0}^N \to q$ con $q \neq 0$.
-            Sea $S_N = \sum_{n=n_0}^N \Log(a_n)$.
-            Entonces:
-            $$e^{S_N} = e^{\sum_{n=1}^N \Log(a_n)} = \prod_{n=n_0}^N a_n = q_N \Rightarrow S_N \in \log(q_n) \Rightarrow S_N = \Log(a_n) + 2\pi k_Ni, \quad k_N \in \mathbb{Z}$$
-            Distinguimos dos casos:
-            \begin{enumerate}
-                \item Supongamos que $q \notin (-\infty, 0)$.
-                      Como $q_N \to q$, entonces existe $N_0 \in \mathbb{N}$ tal que $q_N \notin (-\infty, 0]$ para todo $N \geq N_0$.
-                      Así que $\lim\limits_{N \to \infty} \Log(q_N) = \Log(q)$.
-                      $$\begin{cases}
-                              S_{N+1}-S_N = \Log(q_{N+1})-\Log(q_N) + 2\pi(k_{N+1}-k_N)i \\
-                              S_{N+1}-S_N = \Log(a_{N+1}) \xrightarrow[N \to \infty]{} 0
-                          \end{cases} \Rightarrow \lim_{N \to \infty} (k_{N+1}-k_N) = 0$$
-                      Como $k \in \mathbb{Z}$, entonces existe $j \in \mathbb{N}$ tal que $k_N = k$ para todo $N \geq j$.
+        \item Si existe una conjugada armónica de $u$ en $D$, entonces es una función armónica en $D$.
+        \item Si $u$ es una conjugada armónica de $u$ en $D$, entonces $u + c$ es conjugada armónica de $u$ en $D$ para todo $c \in \mathbb{R}$.
+        \item Si $D$ es un dominio en $\mathbb{C}$, $u$ es armónica en $D$ y $v_1, v_2$ son conjugadas armónicas de $u$ en $\mathbb{C}$, entonces existe $c \in \mathbb{R}$ tal que $v_1-v_2 = c$.
+              \begin{proof}
+                  $f_1 = u + iv_1$ y $f_2 = u + iv_2$ son holomorfas en $D$, así que $f_2 - f_1 = i(v_2-v_1)$ es holomorfa en $D$.
+                  Como $\Re(f_2-f_1) = 0$ en $D$ con $D$ dominio, entonces $f_2 - f_1$ es constante.
+                  Es decir, existe $c \in \mathbb{R}$ con $f_2-f_1 = ic$.
+                  Por tanto:
+                  $$i(v_2-v_1) = ic \Rightarrow v_2 - v_1 = c$$
+              \end{proof}
+    \end{itemize}
+\end{properties}
 
-                \item Supongamos que $q \in (-\infty, 0)$.
-                      Definimos una nueva sucesión $\tilde{a}_{n_0} = -a_{n_0}$ y $\tilde{a}_n = a_n$ para $n > n_0$.
-                      $$\tilde{q}_N = \prod_{n=n_0}^N \tilde{a}_n = -\prod_{n=n_0}^N a_n \to -q > 0$$
-                      Por el caso anterior. $\tilde{S}_N = \sum_{n=n_0}^N \Log(\tilde{a}_n)$ converge.
-                      Equivalentemente, $S_N$ converge.
-            \end{enumerate}
+No tiene por qué existir la conjugada armónica.
 
-        \item[$\Leftarrow$] Falta ver que $\prod_{n=n_0}^N a_n \to q \neq 0$.
-            Sabemos que $S_N = \sum_{n=n_0}^N \Log(a_n) \to p$ y $q_N = e^{S_N}$.
-            Tomando límites,
-            $$\lim_{N \to \infty} q_N = \lim_{N \to \infty} e^{S_N} = e^{\lim_{N \to \infty} S_N} = e^p = q \neq 0$$
+\begin{example}[Contraejemplo]
+    Sea $D = \mathbb{C} \setminus \{0\}$ abierto en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$, $u(z) = \Log|z|$.
+    Si escribimos $z = x +iy$,
+    $$u(z) = \Log(x^2 + y^2)^{1/2} = \frac{1}{2}\Log(x^2+y^2)$$
+    Calculamos sus derivadas parciales:
+    \begin{align*}
+        u_x(z)    & = \frac{1}{2} \frac{2x}{x^2+y^2} = \frac{x}{x^2+y^2}             & u_y(z) & = \frac{y}{x^2+y^2}           \\
+        u_{xx}(z) & = \frac{x^2+y^2-2x^2}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2} & u_{yy} & = \frac{x^2-y^2}{(x^2+y^2)^2}
+    \end{align*}
+    $\Delta u = 0$, así que $u$ es armónica en $D$.
+
+    Supongamos que $v$ es una conjugada armónica de $u$ en $D$.
+    Entonces $v: \mathbb{C} \setminus \{0\} \to \mathbb{R}$, con $f = u + iv$ holomorfa en $\mathbb{C} \setminus \{0\}$.
+    Consideramos:
+    \begin{align*}
+        g = \Log: \mathbb{C} \setminus (-\infty, 0] & \to \mathbb{C}                       \\
+        z                                           & \mapsto \Log(z) = \log|z| + i\Arg(z)
+    \end{align*}
+    $f$ y $g$ son holomorfas en $\mathbb{C} \setminus (-\infty, 0]$, luego $f-g$ es holomorfa en $\mathbb{C} \setminus (-\infty, 0]$.
+    Como $\Re(f-g) = 0$, entonces $f-g = ic$, con $c \in \mathbb{R}$.
+    Así que $g = f - ic$.
+    Sin embargo, $g$ no se extiende de forma continua a $\mathbb{C} \setminus \{0\}$.
+    Esto es una contradicción.
+\end{example}
+
+Hemos probado que la función $u(z) = \Log|z|$ es armónica en $\mathbb{C} \setminus \{0\}$.
+
+\begin{lemma}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $f$ una función holomorfa y nunca nula en $D$.
+    Entonces la función $u = \Log|f|$ es armónica en $D$.
+\end{lemma}
+
+\begin{proof}
+    Sean $z_0 \in D$ y $R > 0$ tales que $D(z_0, R) \subset D$.
+    Como $D(z_0, R)$ es un dominio simplemente conexo en $\mathbb{C}$, existe $g$ una rama de $\log(f)$ en $D(z_0, R)$.
+    $g$ es holomorfa en $D(z_0, R)$, con
+    $$\Re(g(z)) = \Log|f(z)|, \quad z \in D(z_0, R)$$
+    $Re(g) = \Log|f|$ es armónica en $D(z_0, R)$.
+\end{proof}
+
+\begin{proposition}
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Entonces la función $u_x - iu_y$ es holomorfa en $D$.
+\end{proposition}
+
+\begin{corollary}
+    Sea $D$ abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Entonces $u \in \mathcal{C}^\infty(D)$.
+\end{corollary}
+
+\begin{proof}
+    Sea $u$ armónica en $D$.
+    Entonces $f = u_x - iu_y$ es holomorfa en $D$.
+    Así que $u_x, u_y \in \mathcal{C}^\infty(D)$.
+    Como además $u \in \mathcal{C}^2(D)$, entonces $u \in \mathcal{C}^\infty(D)$.
+\end{proof}
+
+\begin{proposition}
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Entonces existe $F$ holomorfa en $D$ tal que $\Re(F) = u$ en $D$.
+    Además, esta $F$ es única salvo adición de constantes imaginarias.
+\end{proposition}
+
+\begin{proof}
+    Sea $f = u_x - iu_y$, que es holomorfa en $D$.
+    Como $D$ es simplemente conexo, existe $g$ primitiva de $f$ en $D$.
+    $g$ es holomorfa en $D$ y $g' = f$ en $D$.
+    Escribimos $g = U + iV$, con $U = \Re(f)$ y $V = \Im(f)$.
+    Como $g$ es holomorfa, $U_x = V_y$ y $U_y = -V_x$.
+    Además, $g' = U_x + iV_x = u_x - iu_y$, así que $U_x = u_x$ y $V_x = -u_y$.
+
+    Sea $F = u + iV$, $F: D \to \mathbb{C}$, con $u \in \mathcal{C}^2(D)$.
+    $V$ es armónica en $D$, $V \in \mathcal{C}^\infty(D)$.
+    $F$ es diferenciable en sentido real.
+    Además,
+    $$\begin{cases}
+            u_x = U_x = V_y \\
+            u_y = -V_x
+        \end{cases}$$
+    Luego $F$ es holomorfa en $D$, con $\Re(F) = u$ en $D$.
+
+    Veamos que $F$ es única salvo adición de constantes imaginarias.
+    \begin{itemize}
+        \item Si $c \in \mathbb{R}$, está claro que si $G = F + ic$, entonces $G$ es holomorfa en $D$ y $\Re(G) = u$ en $D$.
+        \item Si $G$ es holomorfa en $D$ y $\Re(G) = u$ en $D$.
+              Entonces $F-G$ es holomorfa y $\Re(F-G) = 0$ en $D$.
+              Por tanto $F-G$ es constante, así que existe $c \in \mathbb{R}$ con $F-G = ic \Leftrightarrow G = F - ic$.
     \end{itemize}
 \end{proof}
 
 \begin{corollary}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, entonces son equivalentes:
-    \begin{enumerate}
-        \item $\prod_{n=1}^\infty a_n$ converge.
-        \item $\sum_{n=1}^\infty \Log(a_n)$ converge.
-    \end{enumerate}
-    Además,
-    $$\prod_{n=1}^\infty a_n = e^{\sum_{n=1}^\infty \Log(a_n)}$$
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si $z_0 \in D$ y $R > 0$ con $D(z_0, R) \subset D$, entonces existe $F$ holomorfa en $D(z_0, R)$ tal que $\Re(F) = u$ en $D(z_0, R)$.
 \end{corollary}
 
-Queremos encontrar una noción de convergencia absoluta.
-Para las series sabemos lo siguiente.
+Toda función armónica, localmente, es la parte real de una función holomorfa.
 
 \begin{theorem}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
+    Sea $D$ un dominio en $\mathbb{C}$.
+    Son equivalentes:
     \begin{enumerate}
-        \item $\sum_{n=1}^\infty a_n$ converge absolutamente.
-        \item Dada $\sigma: \mathbb{N} \to \mathbb{N}$ permutación, $\sum_{n=1}^\infty a_{\sigma(n)}$ converge y es igual a $\sum_{n=1}^\infty a_n$.
-        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
-              Entonces $\sum_{k \in A_n} a_k$ converge y además
-              $$\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty \left(\sum_{k \in A_n} a_n\right)$$
+        \item $D$ es simplemente conexo.
+        \item Toda función armónica tiene conjugada armónica.
     \end{enumerate}
 \end{theorem}
-
-Como consecuencia, si $\sum_{n=1}^\infty a_n$ converge absolutamente, en particular converge.
-
-Uniendo los teoremas anteriores, obtenemos el siguiente resultado.
-
-\begin{theorem}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$.
-    Entonces son equivalentes:
-    \begin{enumerate}
-        \item $\sum_{n=1}^\infty \Log(a_n)$ converge absolutamente.
-        \item Dada $\sigma: \mathbb{N} \to \mathbb{N}$ permutación, $\prod_{n=1}^\infty a_{\sigma(n)}$ converge y su valor es
-              $$\prod_{n=1}^\infty a_n = e^{\sum_{n=1}^\infty \Log(a_n)}$$
-        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
-              Entonces $\prod_{k \in A_n} a_k$ converge y además
-              $$\prod_{n=1}^\infty a_n = \prod_{n=1}^\infty \left(\prod_{k \in A_n} a_n\right)$$
-    \end{enumerate}
-\end{theorem}
-
-\begin{lemma}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, entonces son equivalentes:
-    \begin{enumerate}
-        \item $\sum_{n=1}^\infty \Log(a_n)$ converge absolutamente.
-        \item $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
-    \end{enumerate}
-\end{lemma}
 
 \begin{proof}
-    Empecemos por $\frac{1}{1-z} = \sum_{n=0}^\infty z^n$, entonces
-    $$\Log(1-z) = -\sum_{n=0}^\infty \frac{z^{n+1}}{n+1}$$
-    Además,
-    $$\Log(1+z) = \sum_{n=0}^\infty \frac{(-1)^nz^{n+1}}{n+1}$$
-    Queremos analizar
-    $$\left|\frac{\Log(1+z)}{z} - 1\right| = \left|\sum_{n=0}^\infty \frac{(-1)^nz^{n+1}}{n+1} - 1\right| = \left|\sum_{n=1}^\infty \frac{(-1)^nz^n}{n+1}\right| \leq \frac{1}{2}\sum_{n=1}^\infty |z|^n = \frac{1}{2}\frac{|z|}{1-|z|}$$
-    Si $|z| < \frac{1}{2}$, entonces
-    $$\left|\frac{\Log(1+z)}{z} - 1\right| = \frac{1}{2}\frac{|z|}{1-|z|} \leq \frac{1}{2}$$
-    Así que
-    $$\left|\left|\frac{\Log(1+z)}{z}\right| - 1\right| \leq \left|\frac{\Log(1+z)}{z} - 1\right| \leq \frac{1}{2} \Rightarrow \frac{1}{2} \leq \left|\frac{\Log(1+z)}{z}\right| \leq \frac{3}{2}$$
-    Por último, sea $z = w-1$, entonces si $|w-1| = |z| \leq \frac{1}{2}$,
-    $$\frac{1}{2} \leq \left|\frac{\Log(w)}{1-w}\right| \leq \frac{3}{2}$$
-    Basta ver que existe $n_0 \in \mathbb{N}$ tal que $|1-a_n| < \frac{1}{2}$.
+    \hfill
     \begin{itemize}
-        \item[$\Leftarrow$] Como $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente, $a_n \to 1$.
-            Por tanto, existe $n_0 \in \mathbb{N}$ tal que $|1-a_n| \leq \frac{1}{2}$ para todo $n \geq n_0$.
-        \item[$\Rightarrow$] Análogo.
+        \item[$\Rightarrow$] Lo sabemos.
+        \item[$\Leftarrow$] Sea $f$ holomorfa y nunca nula en $D$.
+            Veamos que existe un rama de $\log(f)$ en $D$.
+            Sea $u = \Log|f|$, que es una función armónica en $D$.
+            Sea $v$ una conjugada armónica de $u$ en $D$.
+            Entonces $F = u + iv$ es holomorfa en $D$.
+            Sea $h = fe^{-F}$ holomorfa en $D$.
+            Como $|e^F| = |e^{u+iv}| = e^u = e^{\Log|f|} = |f|$, entonces
+            $$|h| = \frac{|f|}{|e^F|} = 1$$
+            Entonces $h$ es constante.
+            Es decir, existe $\xi = e^{ic}$ con $c \in \mathbb{R}$ tal que $h(z) = \xi$ para todo $z \in D$.
+            $$h = \frac{f}{e^F} \Rightarrow f = \xi e^F = e^{ic}e^F = e^{F + ic}$$
+            La función $F + ic$ es una rama de $\log(f)$ en $D$.
+
+            Toda función holomorfa y nunca nula en $D$ tiene una rama del logaritmo.
+            Luego $D$ es simplemente conexo.
     \end{itemize}
 \end{proof}
 
-\begin{theorem}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, entonces son equivalentes:
+\begin{theorem}[Propiedad del valor medio]
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Sea $z_0 \in D$ y $R > 0$ con $D(z_0, R) \subset D$.
+    Entonces:
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad 0 \leq 0 < R$$
+\end{theorem}
+
+\begin{proof}
+    Si $r = 0$ es trivial.
+    Supongamos $0 < r < R$.
+    Existe $F$ holomorfa en $D(z_0, R)$ con $\Re(F) = u$ en $D(z_0, R)$.
+    Por la fórmula de Cauchy,
+    $$F(z_0) = \frac{1}{2\pi i} \int_{|z-z_0|=r} \frac{F(z)}{z-z_0}dz = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{F(z_0 + re^{it})}{z_0 + re^{it} - z_0}rie^{it}dt = \frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt$$
+    Tomando parte real,
+    $$u(z_0) = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \Re(F(z_0 + re^{it}))dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + Re^{it})dt$$
+\end{proof}
+
+\begin{theorem}[Forma débil del principio del máximo para funciones armónicas]
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si $u$ tiene un máximo local en un punto $z_0 \in D$, entonces existe $r > 0$ con $D(z_0, R) \subset D$ tal que $u$ es constante en $D(z_0, R)$.
+\end{theorem}
+
+\begin{proof}
+    Sea $r > 0$ con $D(z_0, r) \subset D$.
+    Existe $F$ holomorfa en $D(z_0, r)$ tal que $\Re(F) = u$ en $D(z_0, r)$.
+    Sea $f = e^F$, que es holomorfa en $D(z_0, r)$.
+    En $D(z_0, r)$ tenemos que:
+    $$|f| = |e^F| = e^{\Re(F)} = e^u$$
+    Existe $r_1$ con $0 < r_1 < r$, tal que $u(z) \leq u(z_0)$ si $z \in D(z_0, r_1)$.
+    Entonces
+    $$|e^{F(z)}| = e^{u(z)} \leq e^{u(z_0)} = |e^{F(z_0)}|$$
+    $|e^F|$ tiene un máximo local en $z_0$.
+    Por el principio del máximo, tenemos que $e^F$ es constante en $D(z_0, r)$.
+    Entonces $|e^F| = e^u$ es constante, así que $u$ es constante en $D(z_0, r)$.
+\end{proof}
+
+Sea $D$ dominio en $\mathbb{C}$, sean $u$, $v$ armónicas en $D$ y sea $A \subset D$, $A$ con puntos de acumulación en $D$.
+$u = v$ en $A$ no implica en general que $u = v$ en $D$.
+
+\begin{example}[Contraejemplo]
+    Sea $D = \mathbb{C}$ y sean $u(z) = \Re(z)$ y $v(z) = 0$ armónicas.
+    $u = v$ en el eje imaginario, que tiene puntos de acumulación en $\mathbb{C}$, pero $u \neq v$ en $\mathbb{C}$.
+\end{example}
+
+\begin{remark}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$.
+    Si existen $u_x$ y $u_y$ en $D$ y $u_x = u_y = 0$ en $D$, entonces $u$ es constante en $D$.
+\end{remark}
+
+\begin{theorem}[Teorema de identidad para funciones armónicas]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si existe $G \subset D$, $G$ abierto y no vacío tal que $u = 0$ en $G$, entonces $u = 0$ en $D$.
+\end{theorem}
+
+\begin{proof}
+    Sea $f = u_x - iu_y$ holomorfa en $D$.
+    Como $u = 0$ en $G$, tenemos que $u_x = u_y = 0$ en $G$.
+    Entonces $f = 0$ en $G$.
+    Por el teorema de identidad, $f = 0$ en $D$.
+    Entonces $u_x = u_y = 0$ en $D$, luego $u$ es constante en $D$.
+    Como $u = 0$ en $G$, entonces $u = 0$ en $D$.
+\end{proof}
+
+\begin{corollary}
+    Sea $D$ un dominio en $\mathbb{C}$ y sean $u$ y $v$ armónicas en $D$.
+    Si existe $G \subset D$, $G$ abierto y no vacío tal que $u = v$ en $G$, entonces $u = v$ en $D$.
+\end{corollary}
+
+\begin{theorem}[Principio del máximo para funciones armónicas: primera versión]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si $u$ tiene un máximo local en un punto $z_0 \in D$, entonces $u$ es constante en $D$.
+\end{theorem}
+
+\begin{proof}
+    Existe $R > 0$ con $D(z_0, R) \subset D$ tal que $u$ es constante en $D(z_0, R)$.
+    Es decir, $u(z) = c$, $z \in D(z_0, R)$, $c \in \mathbb{R}$.
+    Sea $v(z) = c$, $z \in D$.
+    $u$ y $v$ son armónicas en $D$ y $u = v$ en $D(z_0, R)$.
+    Entonces $u = v$ en $D$, es decir, $u(z) = c$ para todo $z \in D$.
+\end{proof}
+
+\begin{notation}
+    Si $D$ es un dominio en $\mathbb{C}$, $\bar{D}$ denotará la clausura de $D$ como subconjunto de $\mathbb{C}^\ast$.
+    \begin{itemize}
+        \item Si $D$ es acotado, entonces $\partial_\infty D = \partial D$.
+              $$\bar{D} = D \cup \partial_\infty D = D \cup \partial D$$
+        \item Si $D$ no es acotado, entonces $\partial_\infty D = \partial D \cup \{\infty\}$.
+              $$\bar{D} = D \cup \partial_\infty D = D \cup \partial D \cup \{\infty\}$$
+    \end{itemize}
+\end{notation}
+
+\begin{theorem}[Principio del máximo para funciones armónicas: segunda versión]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
+    Si existe $M \in \mathbb{R}$ tal que
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D$$
+    entonces $u(z) \leq M$ para todo $z \in D$.
+    Además, si $u(z_0) = M$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
+\end{theorem}
+
+\begin{proof}
+    Sea $K = \sup_{z \in D} u(z) \in \mathbb{R} \cup \{\infty\}$.
+    Hay que probar que $K \leq M$.
+    Existe $\{z_n\}_{n=1}^\infty$ en $D$ tal que $\lim\limits_{n \to \infty} u(z_n) = K$.
+    Podemos suponer, pasando si es necesario a una subsucesión, que existe $\lim\limits_{n \to \infty} z_n = z^\ast \in \mathbb{C}^\ast$.
+    Entonces $z^\ast \in \bar{D} = D \cup \partial_\infty D$.
+    \begin{itemize}
+        \item Si $z^\ast \in \partial_\infty D$, entonces
+              $$K \leq \limsup_{z \to z^\ast. z \in D} u(z) \leq M$$
+        \item Si $z^\ast \in D$, como $\lim\limits_{n \to \infty} z_n = z^\ast$, se tiene que $\lim\limits_{n \to \infty} u(z_n) = u(z^\ast) = K$.
+              Luego
+              $$u(z) \leq u(z^\ast) \quad \forall z \in D$$
+              Por la primera versión del principio del máximo, $u$ es constante en $D$, es decir, $u(z) = K$ para todo $z \in D$.
+              Aplicando la hipótesis a un punto $\xi$ cualquiera de $\partial_\infty D$, vemos que $K \leq M$.
+              Observamos que $\partial_\infty D \neq \emptyset$.
+              Si $\partial_\infty D = \emptyset$, entonces $\bar{D} = D$, luego $D$ sería abierto y cerrado en $\mathbb{C}^\ast$.
+              Por tanto, $D = \emptyset$ o $D = \mathbb{C}^\ast$, lo que es imposible.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}[Principio del mínimo para funciones armónicas]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
     \begin{enumerate}
-        \item $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
-        \item Existe $n_0 \in \mathbb{N}$ tal que para todo $n \geq n_0$ se tiene que $|1-a_n| \leq \frac{1}{2}$ y $\sum_{n=n_0}^\infty \Log(a_n)$ converge uniformemente.
-        \item Para cada permutación $\sigma: \mathbb{N} \to \mathbb{N}$ se tiene que $\prod_{n=1}^\infty a_{\sigma(n)}$ converge y además
-              $$\prod_{n=1}^\infty a_{\sigma(n)} = \prod_{n=1}^\infty a_n$$
-        \item Sea $\{A_n\}$ una partición de $\mathbb{N}$ con infinitos elementos.
-              Entonces $\prod_{k \in A_n} a_k$ converge y además
-              $$\prod_{n=1}^\infty a_n = \prod_{n=1}^\infty \left(\prod_{k \in A_n} a_n\right)$$
+        \item Si $u$ tiene un mínimo local en un punto $z_0 \in D$, entonces $u$ es constante en $D$.
+        \item Si existe $m \in \mathbb{R}$ tal que
+              $$\liminf_{z \to \xi, z \in D} u(z) \geq m, \quad \forall \xi \in \partial_infty D$$
+              entonces $u(z) \geq m$ para todo $z \in D$.
+              Además, si $u(z_0) = m$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
     \end{enumerate}
 \end{theorem}
 
-\begin{definition}[Convergencia absoluta]
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C}$, su producto infinito asociado converge absolutamente si $\sum_{n=1}^\infty (1-a_n)$ converge absolutamente.
-\end{definition}
+\begin{corollary}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Entonces:
+    \begin{align*}
+        \max_{z \in \bar{D}} u(z) & = \max_{z \in \partial_\infty D} u(z) \\
+        \min_{z \in \bar{D}} u(z) & = \min_{z \in \partial_\infty D} u(z)
+    \end{align*}
+\end{corollary}
+
+\begin{corollary}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Si $u = 0$ en $\partial_\infty D$, entonces $u = 0$ en $D$.
+\end{corollary}
+
+\begin{corollary}
+    Sea $D$ un dominio en $\mathbb{C}$ y sean $u, v: \bar{D} \to \mathbb{R}$ armónicas en $D$ y continuas en $\bar{D}$.
+    Si $u = v$ en $\partial_\infty D$, entonces $u = v$ en $D$.
+\end{corollary}
+
+\begin{remark}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Entonces los valores de $u$ en $D$ están completamente determinados por los valores de $u$ en $\partial_\infty D$.
+\end{remark}
+
+\section{El problema de Dirichlet para el disco unidad}
+Esto da lugar a la siguiente cuestión.
+Sea $D$ un dominio en $\mathbb{C}$ y sea $f: \partial_\infty D \to \mathbb{R}$ continua.
+Queremos estudiar si existe $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$ tal que $u = f$ en $D$.
+Esto es el problema de Dirichlet en $D$ con valores frontera $f$.
+Si existe una solución del problema de Dirichlet en $D$ con valores frontera $f$, esta es única.
+
+Si $D$ es un dominio en $\mathbb{C}$, se dice que $D$ es regular para el problema de Dirichlet si para toda $f: \partial_\infty D \to \mathbb{R}$ continua existe la solución del problema de Dirichlet con valores frontera $f$.
+Queremos resolver el problema de Dirichlet en el disco unidad.
+
+Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+Vamos a expresar $u(z)$ para $z \in \mathbb{D}$ en función de $u(\xi)$, con $\xi \in \partial\mathbb{D}$.
+Por la propiedad del valor medio, si $0 < r < 1$,
+$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(re^{it})dt$$
+Si consideramos las funciones
+$$u_r(t) = u(re^{it}), \quad t \in [-\pi, \pi]$$
+vemos que $u_r \xrightarrow[r \to 1^-]{} u_1$ uniformemente porque $u$ es uniformemente continua en $\bar{\mathbb{D}}$.
+Así que:
+$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u_r(t)dt \xrightarrow[r \to 1^-]{} \frac{1}{2\pi} \int_{-\pi}^\pi u_1(t)dt \Rightarrow u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
+
+\begin{lemma}
+    Sean $G_1$ y $G_2$ dos abiertos en $\mathbb{C}$, sea $f$ holomorfa en $G_1$ con $f(G_1) \subset G_2$ y sea $u$ armónica en $G_2$.
+    Entonces $u \circ f$ es armónica en $G_1$.
+\end{lemma}
+
+\begin{proof}
+    $u \circ f \in \mathcal{C}^2(G_1)$.
+    Se puede comprobar que $\Delta(u \circ f) = 0$.
+    De otra manera, sea $z_0 \in G_1$, entonces $f(z_0) \in G_2$.
+    Tomamos $R > 0$ con $D(f(z_0), R) \subset G_2$.
+    Como $f$ es continua en $z_0$, existe $\delta > 0$ tal que $D(z_0, \delta) \subset G_1$ y $f(D(z_0, \delta)) \subset D(f(z_0), R)$.
+
+    Como $u$ es armónica en $D(f(z_0), R)$, existe $F$ holomorfa en $D(f(z), R)$ tal que $u = \Re(F)$ en $D(f(z_0), R)$.
+    $$D(z_0, \delta) \xrightarrow{f} D(f(z_0), R) \xrightarrow{F} \mathbb{C}$$
+    $F \circ f$ es holomorfa en $D(z_0, \delta)$, así que $\Re(f \circ F)$ es armónica en $D(z_0, \delta)$.
+    Si $z \in D(z_0, \delta)$, tenemos que $f(z) \in D(f(z_0), R)$.
+    $$\Re(F \circ f)(z) = \Re(F(f(z))) = u(f(z))$$
+    Entonces $\Re(F \circ f) = u \circ f$.
+    Por tanto $u \circ f$ es armónica en $D(z_0, \delta)$.
+    Entonces $u \circ f$ es armónica en $D$.
+
+    Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Hemos visto que:
+    $$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
+    Sea $a \in \mathbb{D}$.
+    Consideramos $T_a(z) = \frac{z+a}{1+\bar{a}z}$, con $T_a(0) = a$ y $T_a(\bar{\mathbb{D}}) = \bar{\mathbb{D}}$.
+    Sea $v = u \circ T_a$.
+    $$\bar{\mathbb{D}} \xrightarrow{T_a} \bar{\mathbb{D}} \xrightarrow{u} \mathbb{R}$$
+    $v$ es continua en $\bar{\mathbb{D}}$ y armónica en $\mathbb{D}$.
+    $$u(a) = v(0) \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt$$
+    Hacemos el cambio de variable:
+    $$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi})$$
+    Derivando,
+    $$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi$$
+    Recordamos que $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
+    $$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
+    Entonces la integral queda de la forma:
+    $$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
+\end{proof}
+
+Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+Hemos visto que:
+$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
+Sea $a \in \mathbb{D}$.
+Consideramos $T_a(z) = \frac{z+a}{1+\bar{a}z}$, con $T_a(0) = a$ y $T(\bar{\mathbb{D}}) = \bar{\mathbb{D}}$.
+Sea $v = u \circ T_a$.
+$$\bar{\mathbb{D}} \xrightarrow{T_a} \bar{\mathbb{D}} \xrightarrow{u} \mathbb{R}$$
+$v$ es continua en $\bar{\mathbb{D}}$ y armónica en $\mathbb{D}$.
+$$u(a) = v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt$$
+Hacemos el cambio de variable:
+$$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi})$$
+Derivando,
+$$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi$$
+Recordamos que $S_a(z) = \frac{z-a}{1-\bar{a}z}$ y $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
+$$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{-i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
+Entonces la integral queda de la forma:
+$$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
+
+\begin{theorem}
+    Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Entonces
+    $$u(z) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|z|^2}{|1-ze^{-it}|^2}dt, \quad \forall z \in \mathbb{D}$$
+\end{theorem}
+
+Si $f: \partial_\infty D \to \mathbb{R}$ es una función continua, sabemos que la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $f$, de existir, es única.
+Además, tendría que ser la siguiente:
+$$u: \bar{\mathbb{D}} \to \mathbb{R}, \quad
+    u(z) = \begin{cases}
+        \dfrac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\dfrac{1-|z|^2}{|1-ze^{-it}|^2}dt & \text{si } z \in \mathbb{D}         \\
+        u(z) = f(z)                                                                & \text{si } z \in \partial\mathbb{D}
+    \end{cases}$$
+
+\section{La integral de Poisson}
+Una primera expresión del núcleo de Poisson es
+$$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2}, \quad z \in \mathbb{D}, \; t \in \mathbb{R}$$
+Si $z = re^{i\theta}$, $0 \leq r < 1$, $\theta \in \mathbb{R}$,
+$$P(z, e^{it}) = \frac{1-r^2}{|1-re^{i\theta}e^{-it}|^2} = \frac{1-r^2}{|1-re^{i(\theta-t)}|^2}$$
+De esta forma llegamos a una segunda expresión del núcleo de Poisson:
+$$P_r(t) = \frac{1-r^2}{|1-re^{it}|^2}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+Podemos escribir el denominador de otra forma:
+$$|1-re^{it}|^2 = (1-re^{it})(1-re^{-it}) = 1 - re^{-it} - re^{it} + r^2 = 1 - r(e^{it}+e^{-it}) + r^2 = 1 - 2r\cos(t) + r^2$$
+Luego
+$$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb{R}$$
 
 \begin{remark}
     \hfill
     \begin{enumerate}
-        \item Si $\prod_{n=1}^\infty a_n$ converge absolutamente, entonces converge.
-        \item Si $\prod_{n=1}^\infty a_n$ converge absolutamente, entonces $\prod_{n=1}^\infty \left(1 + |1-a_n|\right)$ converge absolutamente.
-              \begin{proof}
-                  $\prod_{n=1}^\infty \left(1 + |1-a_n|\right)$ converge absolutamente si y solo si $\prod_{n=1}^\infty \left(1 - 1 - |1-a_n|\right) = -\prod_{n=1}^\infty |1-a_n|$ converge absolutamente.
-              \end{proof}
+        \item Si $0 \leq r < 1$, $\theta \in \mathbb{R}$, $t \in \mathbb{R}$ y $z = re^{i\theta}$, entonces $P(z, e^{it}) = P_r(\theta-t)$.
+        \item Si $0 \leq r < 1$, $t \in \mathbb{R}$ y $z = re^{it}$, entonces $P_r(t) = P(z, e^{i0}) = P(z, 1)$.
     \end{enumerate}
 \end{remark}
 
-\section{Funciones holomorfas definidas por productos infinitos}
-\begin{theorem}
-    Sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en un dominio $D$.
-    Entonces son equivalentes:
+\begin{properties}
+    \hfill
     \begin{enumerate}
-        \item $\sum_{n=1}^\infty (1-f_n)$ es absoluta y uniformemente convergente en compactos de $D$.
-        \item Para cada compacto $K$ en $D$ existe $n_K \in \mathbb{N}$ tal que para todo $n \geq n_K$ se tiene que $|1-f_n(z)| \leq \frac{1}{2}$ y $\sum_{n=n_K}^\infty \Log(f_n)$ converge absoluta y uniformemente en $K$.
-    \end{enumerate}
-\end{theorem}
+        \item $P(z, e^{it}) > 0$ si $z \in \mathbb{D}$ y $t \in \mathbb{R}$.
+              Equivalentemente, $P_r(t) > 0$ si $0 \leq r < 1$ y $t \in \mathbb{R}$.
 
-\begin{lemma}
-    Sea $\{u_k\}_{k=1}^\infty \subset \mathbb{C}$.
-    Entonces
-    $$\left|\prod_{k=1}^n (1+u_k)-1\right| \leq \prod_{k=1}^n (1+|u_k|)-1, \quad \forall n \in \mathbb{N}$$
-\end{lemma}
+        \item Fijando $t \in \mathbb{R}$, la función $z \in \mathbb{D} \mapsto P(z, e^{it}) > 0$ es armónica en $\mathbb{D}$.
+              \begin{proof}
+                  \hfill
+                  \begin{itemize}
+                      \item Si $t = 0$ y $z \in \mathbb{D}$,
+                            \begin{align*}
+                                P(z, e^{i0}) & = \frac{1-|z|^2}{|1-z|^2} = \frac{1-z\bar{z}}{(1-z)(1-\bar{z})} = \frac{1-z+z-z\bar{z}}{(1-z)(1-\bar{z})} = \frac{1}{1-\bar{z}} + \frac{z}{1-z} = \\
+                                             & = \frac{1}{1-\bar{z}} + \frac{z-1+1}{1-z} = \frac{1}{1-\bar{z}} - 1 + \frac{1}{1-z} = -1 + \Re\left(\frac{1}{1-z}\right) =                        \\
+                                             & = \Re\left(-1 + \frac{2}{1-z}\right) = \Re\left(\frac{1+z}{1-z}\right)
+                            \end{align*}
+                            La función $z \in \mathbb{D} \mapsto P(z, e^{i0}) = \Re\left(\frac{1+z}{1-z}\right)$ es armónica en $\mathbb{D}$.
 
-\begin{proof}
-    Razonamos por inducción.
-    \begin{itemize}
-        \item Para $n = 1$,
-              $$|1+u-1-1| = |u_1| \leq |u_1|$$
+                      \item Si $t \in \mathbb{R}$ y $z \in \mathbb{D}$, tomamos $w = ze^{-it} \in \mathbb{D}$, con $|w| = |z|$.
+                            Entonces:
+                            $$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2} = \frac{1-|w|^2}{|1-w|^2} = \Re\left(\frac{1+w}{1-w}\right) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)$$
+                            La función $z \in \mathbb{D} \mapsto P(z, e^{it})$ es armónica en $\mathbb{D}$.
+                  \end{itemize}
+              \end{proof}
 
-        \item Supongamos que es cierto para $n$ y veamos para el caso $n+1$.
+        \item Si $z \in \mathbb{D}$ y $t \in \mathbb{R}$,
+              $$P(z, e^{it}) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)$$
+              Si $0 \leq r < 1$ y $t \in \mathbb{R}$,
+              $$P_r(t) = \Re\left(\frac{1+re^{it}}{1-re^{it}}\right)$$
+
+        \item Fijado $r \in [0, 1)$, tenemos la función
               \begin{align*}
-                   & \left|\prod_{k=1}^{n+1} (1+u_k) - 1\right| = \left|(1+u_{n+1})\prod_{k=1}^{n+1} (1+u_k) - 1\right| = \left|(1+u_{n+1})\left(\prod_{k=1}^\infty (1+u_k) - 1\right) + u_{n+1}\right| \leq \\
-                   & \leq |1+u_{n+1}|\left|\prod_{k=1}^\infty (1+u_k) - 1\right| + |u_{n+1}| \leq |1+u_{n+1}|\left|\prod_{k=1}^\infty (1+|u_k|) - 1\right| + |u_{n+1}| \leq                                  \\
-                   & \leq (1 + |u_{n+1}|)\left|\prod_{k=1}^\infty (1+|u_k|) - 1\right| + |u_{n+1}| = \prod_{k=1}^{n+1} (1+|u_k|) - 1
+                  P_r: \mathbb{R} & \to \mathbb{R}                                                               \\
+                  t               & \mapsto P_r(t) = \frac{1-r^2}{|1-re^{it}|^2} = \frac{1-r^2}{1+r^2-2r\cos(t)}
               \end{align*}
-    \end{itemize}
-\end{proof}
+              que es continua, positiva, periódica de periodo $2\pi$, par y decreciente en $[0, \pi]$.
+              Observamos que:
+              \begin{align*}
+                  P_r(0)               & = \frac{1-r^2}{(1-r)^2} = \frac{1+r}{1-r} \xrightarrow[r \to 1^-]{} \infty \\
+                  P_r(\pi) = P_r(-\pi) & = \frac{1-r^2}{(1+r)^2} = \frac{1-r}{1+r} \xrightarrow[r \to 1^-]{} 0
+              \end{align*}
+              Tenemos entonces la desigualdad:
+              $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+              Además, si en el teorema anterior tomamos $u \equiv 1$ y $z = r$, tenemos:
+              $$1 = u(r) = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(\theta - t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt$$
+              Por tanto,
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t) = 1$$
+
+        \item Para cada $t \in [-\pi, 0) \cup (0, \pi]$ se tiene que $P_r(t) \xrightarrow[r \to 1^-]{} 0$.
+              Además, si $\delta \in (0, \pi)$, se tiene que $P_r(t) \xrightarrow[r \to 1^-]{} 0$ uniformemente en $[-\pi, -\delta] \cup [\delta, \pi]$.
+
+              Si $t \in [-\pi, 0) \cup (0, \pi]$, $\cos(t) \neq 1$, así que:
+              $$\lim_{r \to 1^-} P_r(t) = \frac{0}{2-2\cos(t)} = 0$$
+              Si $\delta \in [0, \pi)$, entonces:
+              $$P_r(t) \leq P_r(\delta) \xrightarrow[r \to 1^-]{} 0$$
+    \end{enumerate}
+\end{properties}
+
+\begin{definition}
+    Sea $f: \partial\mathbb{D} \to \mathbb{R}$ continua.
+    Se define la integral de Poisson de $f$, y se denota $P[f]$, como la función
+    \begin{align*}
+        P[f]: \mathbb{D} & \to \mathbb{R}                                                           \\
+        z                & \mapsto P[f](z) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt
+    \end{align*}
+    Equivalentemente, si $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$, entonces
+    $$P[f](z) = P[f](re^{it}) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta - t)dt$$
+\end{definition}
 
 \begin{theorem}
-    Sea $\{f_n\}_{n=1}^\infty$ una sucesión de funciones holomorfas en $D$.
-    Si $\sum_{n=1}^\infty (1-f_n)$ converge absoluta y uniformemente en compactos de $D$, entonces:
-    \begin{enumerate}
-        \item $\prod_{k=1}^n$ converge uniformemente en cada compacto de $D$ a una función holomorfa $P$ que denotamos por $\prod_{n=1}^\infty f_n$.
-        \item La convergencia de $\prod_{k=1}^n f_k$ no depende de reordenaciones.
-        \item Para cada $z_0 \in D$ tenemos que $ord(z_0, P) = \sum_{k=1}^\infty ord(z_0, f_k)$, donde $ord(z_0, f)$ es el orden de $z_0$ como cero de $f$.
-        \item Las derivadas logarítmicas $\frac{P'}{P}$ y $\frac{f_n'}{f_n}$ existen como funciones meromorfas.
-              Además,
-              $$\frac{P'}{P} = \sum_{k=1}^\infty \frac{f_k'}{f_k}$$
-              Si $R > 0$ y $\overline{D(z_0, R)} \subset D$ existe $n_0 \in \mathbb{N}$ tal que $f_n$ no tiene ceros en $\overline{D(z_0, R)}$ para todo $n \geq n_0$ y $\sum_{n=n_0+1}^\infty \frac{f_n'}{f_n}$ converge absoluta y uniformemente en $\overline{D(z_0, R)}$.
-    \end{enumerate}
+    El disco unidad $\mathbb{D}$ es un dominio regular para el problema de Dirichlet.
+    En concreto, si $f: \partial\mathbb{D} \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $f$ es la función:
+    \begin{align*}
+        u: \bar{\mathbb{D}} & \to \mathbb{R}                       \\
+        u(z)                & = \begin{cases}
+                                    P[f](z) & z \in \mathbb{D}         \\
+                                    f(z)    & z \in \partial\mathbb{D}
+                                \end{cases}
+    \end{align*}
+    Es decir, $u$ es armónica en $\mathbb{D}$, continua en $\bar{\mathbb{D}}$ y $u = f$ en $\partial\mathbb{D}$.
 \end{theorem}
 
 \begin{proof}
     \hfill
     \begin{enumerate}
-        \item Sea $K$ compacto de $D$ y sea $P_n = \prod_{k=1}^n f_k$.
-              Basta ver que $P_n$ es uniformemente de Cauchy.
+        \item $P[f]$ es armónica en $\mathbb{D}$.
+              Si $z \in \mathbb{D}$, tenemos que
+              \begin{align*}
+                  P[f](z) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt =                                \\
+                          & = \frac{1}{2\pi} \int_{-\pi}^\pi \Re\left(f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt\right)
+              \end{align*}
+              Veamos que $\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt$ es una función holomorfa en $\mathbb{D}$ expresándola como serie de potencias.
 
-              En primer lugar, veamos que $P_n$ es uniformemente acotado en $K$.
-              Como $\sum_{n=1}^\infty (1-f_n)$ converge absoluta y uniformemente en $K$, entonces existe $c_K$ tal que $\sum_{n=1}^\infty |1-f_n(z)| < c_K$.
+              Si $z \in \mathbb{D}$,
+              $$\frac{1+z}{1-z} = \frac{1}{1-z} + \frac{z}{1-z} = \sum_{n=0}^\infty z^n + \sum_{n=0}^\infty z^{n+1} = 1 + 2\sum_{n=1}^\infty z^n$$
+              converge uniformemente en cada subconjunto compacto de $\mathbb{D}$.
+              Así que:
+              $$\frac{1+ze^{-it}}{1-ze^{-it}} = 1 + 2\sum_{n=1}^\infty z^ne^{-int}, \quad t \in [-\pi, \pi]$$
+              con convergencia uniforme.
               Entonces:
               \begin{align*}
-                  |P_n| & = \left|\prod_{k=1}^n f_k\right| = \left|\prod_{k=1}^n (1+f_k-1)\right| \leq \prod_{k=1}^n (1+|1-f_k|) \leq \prod_{k=1}^n e^{|1-f_k|} = e^{\sum_{k=1}^n |1-f_k|} \leq \\
-                        & \leq e^{\sum_{k=1}^\infty |1-f_k|} < e^{c_K}
+                  P[f](z) & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\left(1 + 2\sum_{n=1}^\infty z^ne^{-int}\right)dt\right) =                                          \\
+                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{it}) + 2\sum_{n=1}^\infty f(e^{it})z^ne^{-int}\right)dt\right) =                                  \\
+                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + \frac{1}{2\pi} \int_{-\pi}^\pi \left(2\sum_{n=1}^\infty f(e^{it})z^ne^{-int}\right)dt\right) = \\
+                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + 2\sum_{n=1}^\infty\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt\right)z^n\right)
               \end{align*}
 
-              Ahora, veamos que $\{f_n\}$ es uniformemente de Cauchy en $K$.
-              Sea $\varepsilon > 0$, existe $\delta > 0$ de modo que si $|x| < \delta$ entonces $e^{c_K}|e^x-1| < \varepsilon$.
-              Como $\sum_{n=1}^\infty (1-f_n)$ es de Cauchy uniformemente en $K$, existe $n_K$ tal que si $m \leq n \leq n_K$, entonces $\sum_{k=n}^m |1-f_k| < \delta$.
-              Por tanto, si $m \geq n \geq n_K$,
+              Sea
+              $$a_n = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt, \quad n = 0, 1, 2, \dots$$
+              Entonces:
+              $$P[f](z) = \Re\left(a_0 + 2\sum_{n=1}^\infty a_nz^n\right)$$
+              Esta es una serie de potencias centrada en 0 que converge para todo $z \in \mathbb{D}$.
+              Su radio de convergencia es mayor o igual que 1.
+              Por tanto, define una función holomorfa en $\mathbb{D}$.
+              Entonces la función $z \in \mathbb{D} \mapsto P[f](z)$ es armónica en $\mathbb{D}$.
+
+        \item Veamos que:
+              $$\lim_{z \to 1, z \in \mathbb{D}} u(z) = f(1)$$
+              Si $z \in \mathbb{D}$, $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$.
               \begin{align*}
-                  |P_m - P_n| & = \left|\prod_{k=1}^m f_k - \prod_{k=1}^n f_k\right| = |P_n|\left|\left(\prod_{k=n+1}^m f_k\right) - 1\right| \leq e^{c_K}\left|\prod_{k=n+1}^m (1+f_k-1) - 1\right| \leq \\
-                              & \leq e^{c_K}\left(\prod_{k=n+1}^m (1+|1-f_k|) - 1\right) \leq e^{c_K}\left(e^{\sum_{k=n+1}^m |1-f_k|}-1\right) < \varepsilon
+                  u(z) - f(1) & = P[f](z) - f(1) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta-t)dt - f(1) =                                         \\
+                              & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta-t)dt - f(1)\frac{1}{2\pi} \int_{-\pi}^\pi P_r(s)ds =                   \\
+                              & = \frac{1}{2\pi} \int_{-\pi+\theta}^{\pi+\theta} f(e^{i(\theta-s)})P_r(s)ds - \frac{1}{2\pi} \int_{-\pi}^\pi f(1)P_r(s)ds = \\
+                              & = \frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{i(\theta-s)}) - f(e^{i0})\right)P_r(s)ds
+              \end{align*}
+              Así que
+              $$|u(z)-f(1)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt$$
+              Sea $\varepsilon > 0$, como la función $t \in [-\pi, \pi] \mapsto f(e^{it})$ es uniformemente continua, existe $\delta_1 \in (0, \pi)$ tal que si $t, s \in [-\pi, \pi]$ con $|t-s| < \delta_1$, entonces $|f(e^{it})-f(e^{is})| < \frac{\varepsilon}{2}$.
+              Como $f$ está acotada en $\partial\mathbb{D}$, existe $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in \partial\mathbb{D}$.
+              Tomamos $\delta = \frac{\delta_1}{2} \in \left(0, \frac{\pi}{2}\right)$.
+              Como $P_r(t) \xrightarrow[r \to 1^-]{} 0$ uniformemente en $[-\pi, -\delta] \cup [\delta, \pi]$, existe $r_0 \in (0, 1)$ tal que
+              $$\begin{cases}
+                      r_0 < r < 1 \\
+                      t \in [-\pi, -\delta] \cup [\delta, \pi]
+                  \end{cases} \Rightarrow P_r(t) < \frac{\varepsilon}{4M}$$
+              Entonces, si $r_0 < r < 1$ y $|\theta| < \delta$, vamos a ver que $|u(z)-f(1)| < \varepsilon$.
+              \begin{align*}
+                  |u(z)-f(1)| \leq & \frac{1}{2\pi} \int_{-\delta}^\delta \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt +                        \\
+                  +                & \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt
+              \end{align*}
+              Si $t \in [-\delta, \delta]$, tenemos que
+              $$|\theta-t-0| \leq |\theta| + |t| < \delta + \delta = 2\delta = \delta_1 < \pi$$
+              Además, $\theta-t, 0 \in [-\pi, \pi]$.
+              Así que:
+              $$\left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right| < \frac{\varepsilon}{2}$$
+              Luego:
+              \begin{align*}
+                  |u(z)-f(1)| & \leq \frac{1}{2\pi} \int_{-\delta}^\delta \frac{\varepsilon}{2}P_r(t)dt + \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} 2M\frac{\varepsilon}{4M}dt =                     \\
+                              & \leq \frac{\varepsilon}{2}\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt + \frac{1}{2\pi} \int_{-\pi}^\pi \frac{\varepsilon}{2}dt = \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
               \end{align*}
 
-        \item Es consecuencia de (1).
+        \item Veamos que
+              $$\lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi), \quad \forall \xi \in \partial\mathbb{D}$$
+              Sea $g: \partial\mathbb{D} \to \mathbb{R}$, $g(z) = f(\xi z)$, es continua.
+              Sea $v = P[g]: \mathbb{D} \to \mathbb{R}$.
+              Sabemos que $\lim\limits_{z \to 1, z \in \mathbb{D}} v(z) = g(1)$.
+              Veamos que $v(z) = u(\xi z)$ para todo $z \in \mathbb{D}$.
 
-        \item Sabemos que existe $n_0 \in \mathbb{N}$ tal que $\sum_{n=n_0}^\infty |1-f_n(z)| < \frac{1}{2}$ para todo $z \in \overline{D(z_0, R')}$, con $\overline{D(z_0, R)} \subset D(z_0, R')$.
-              Entonces, en particular $|1-f_n(z)| < \frac{1}{2}$ para todo $n \geq n_0+1$.
-              Así que $f_n$ no se anula en $\overline{D(z_0, R')}$ para todo $n \geq n_0+1$.
-              Sea entonces $g_n = \prod_{k=n_0+1}^n f_k$.
-              Sabemos que $g_n$ converge uniformemente en $\overline{D(z_0, R')}$ a una función $g$.
+              Sea $z \in \mathbb{D}$, $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$.
+              $$v(z) = P[g](z) = \frac{1}{2\pi} \int_{-\pi}^\pi g(e^{it})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{it})P_r(\theta-t)dt$$
+              Si escribimos $\xi = e^{i\theta_0}$, con $\theta_0 \in \mathbb{R}$, entonces:
               \begin{align*}
-                  |g_n(z)-1| & = \left|\left(\prod_{k=n_0+1}^n f_k(z)\right)-1\right| = \left|\prod_{k=n_0+1}^n (1+f_k(z)-1)-1\right| \leq                              \\
-                             & \leq \prod_{k=n_0+1}^n (1+|f_k(z)-1|)-1 \leq e^{\sum_{k=n_0}^n |1-f_k(z)|} - 1 \leq e^{1/2}-1, \quad \forall z \in \overline{D(z_0, R')}
+                  v(z) & = \frac{1}{2\pi} f(\xi e^{i(\theta_0-t)})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{is})P_r(\theta+\theta_0-s)ds = P[f](re^{i(\theta-\theta_0)}) = \\
+                       & = P[f](\xi z) = u(\xi z)
               \end{align*}
-              Por tanto, $g$ no tiene ceros en $\overline{D(z_0, R')}$.
-              Entonces
-              $$P = f_1\dots f_{n_0}\prod_{n=n_0+1}^\infty f_n = f_1\dots f_{n_0}g$$
-              Como $g$ es no nula,
-              $$ord(z_0, P) = \sum_{n=1}^{n_0} ord(z_0, f_n) + ord(z_0, g) = \sum_{n=1}^\infty ord(z_0, f_n)$$
+              Entonces:
+              $$\lim_{z \to 1, z \in \mathbb{D}} u(\xi z) = f(\xi) \Rightarrow \lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi)$$
 
-        \item De la expresión anterior tenemos que
-              $$\frac{P'}{P} = \sum_{n=1}^{n_0} \frac{f_n'}{f_n} + \frac{g'}{g}$$
-              Falta ver que $\sum_{n=n_0+1}^N \frac{f_n'}{f_n} \to \frac{g'}{g}$.
-              Como $\sum_{n=n_0+1}^N f_k = \frac{g_N'}{g_N}$, podemos ver equivalentemente que $\frac{g_N'}{g_N} \to \frac{g'}{g}$ uniformemente en $\overline{D(0, R')}$.
-              \begin{align*}
-                  \left|\frac{g_N'(z)}{g_N(z)} - \frac{g'(z)}{g(z)}\right| & = \left|\frac{g_N'(z)g(z)-g'(z)g_N(z)}{g_N(z)g(z)}\right| =                              \\
-                                                                           & = \left|\frac{g_N'(z)g(z) - g(z)g'(z) + g(z)g'(z) - g'(z)g_N(z)}{g_N(z)g(z)}\right| \leq \\
-                                                                           & \leq \frac{|g(z)||g_N'(z)-g'(z)| + |g'(z)||g_N(z)-g(z)|}{|g_N(z)||g(z)|}
-              \end{align*}
-              Sabemos que
-              \begin{align*}
-                  ||g_n(z)|-1| \leq |g_n(z)-1| < e^{1/2}-1 & \Leftrightarrow 2-e^{1/2} < |g_n(z)| < e^{1/2} \\
-                  ||g(z)|-1| \leq |g(z)-1| < e^{1/2}-1     & \Leftrightarrow 2-e^{1/2} < |g(z)| < e^{1/2}   \\
-              \end{align*}
-              Además, existe $c_K = \max_{z \in \overline{D(z_0, R')}} (|g(z)|+|g'(z)|)$.
-              Por tanto,
-              $$\left|\frac{g_N'(z)}{g_N(z)}-\frac{g'(z)}{g(z)}\right| \to 0$$
-              uniformemente en $\overline{D(z_0, R')}$.
+        \item Veamos que $u$ es continua en $\bar{\mathbb{D}}$.
+              $u$ es continua en $\mathbb{D}$ porque es armónica en $\mathbb{D}$.
+              Dado $\xi \in \partial\mathbb{D}$, hay que probar que
+              $$\lim_{z \to \xi, z \in \bar{\mathbb{D}}} f(\xi)$$
+
+              Dada $\{z_n\}_{n=1}\infty$ sucesión en $\bar{\mathbb{D}}$ con $z_n \to \xi$, definimos la sucesión $\{w_n\}_{n=1}^\infty$ como sigue.
+              \begin{itemize}
+                  \item Si $z_n \in \mathbb{D}$, tomamos $w_n = z_n$.
+                  \item Si $z_n \in \partial\mathbb{D}$, tomamos $w_n \in \mathbb{D}$ con $|z_n-w_n| < \frac{1}{n}$ y $|u(z_n)-u(w_n)| < \frac{1}{n}$.
+                        Esto se puede hacer porque $\lim\limits_{z \to z_n, z \in \mathbb{D}} u(z) = u(z_n)$.
+
+                        Hay que probar que $u(z_n) \to f(\xi)$.
+                        $$|u(z_n)-f(\xi)| \leq |u(z_n)-u(w_n)| + |u(w_n)-f(\xi)|$$
+                        Observamos que
+                        $$|w_n-\xi| \leq |w_n-z_n| + |z_n-\xi| \to 0$$
+                        Además, sabemos que $\lim\limits_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi)$, así que $u(w_n) \to f(\xi)$.
+                        Por tanto,
+                        $$|u(z_n) - f(\xi)| \to 0$$
+              \end{itemize}
     \end{enumerate}
 \end{proof}
 
-\begin{example}
-    \hfil
-    \begin{enumerate}
-        \item $\prod_{n=1}^\infty \left(1-\frac{z}{n^2}\right)$.
-              Veamos que converge uniformemente en compactos de $\mathbb{C}$.
-
-              Sea $K$ compacto de $\mathbb{C}$.
-              Entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
-              $$\sum_{n=1}^\infty \left|1-\left(1-\frac{z}{n^2}\right)\right| = \sum_{n=1}^\infty \frac{|z|}{n^2} \leq R\sum_{n=1}^\infty \frac{1}{n^2} \leq Rc$$
-              Por el teorema anterior, el producto converge uniformemente en $K$.
-              Además, $\prod_{n=1}^\infty \left(1-\frac{z}{n^2}\right)$ se anula en $\{n^2 : n \in \mathbb{N}\}$.
-
-        \item Busquemos una función entera que se anule en $\mathbb{Z}$ y cuyos ceros tengan orden 1.
-              Consideramos $P(z) = z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)$.
-              Sea $K$ un compacto en $\mathbb{C}$, existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
-              $$\sum_{n=1}^\infty \left|\frac{z^2}{n^2}\right| = \sum_{n=1}^\infty \frac{|z|^2}{n^2} \leq R^2c$$
-              Por tanto, converge uniformemente en $K$.
-
-              La función $z \mapsto \sin(\pi z)$ tiene las mismas características que buscábamos en $P$.
-              Por tanto, la función
-              $$z \mapsto \frac{\sin(\pi z)}{P(z)} = \frac{\sin(\pi z)}{z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)}$$
-              es una función holomorfa sin ceros y se puede factorizar de la forma
-              $$\frac{\sin(\pi z)}{z\prod_{n=1}^\infty \left(1-\frac{z^2}{n^2}\right)} = e^{\varphi(z)}$$
-    \end{enumerate}
-\end{example}
-
-\section{El teorema de factorización de Weierstrass}
-Sea $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ una colección de puntos de $\mathbb{C}$.
-Nuestro objetivo era encontrar una función entera que se anule en $\{z_\alpha\}_{\alpha \in \mathcal{F}}$.
-\begin{itemize}
-    \item Si $\{z_k\}_{k=1}^N$ es finita, esta función es $\prod_{n=1}^N (z-z_n)$.
-    \item Si $\{z_\alpha\}_{\alpha \in \mathcal{F}}$ tiene un punto de acumulación, entonces la función tiene que ser nula.
-\end{itemize}
-En el caso restante, $\{z_k\}_{k=1}^\infty$ tiene $\lim\limits_{k \to \infty} |z_k| = \infty$.
-Consideramos la expresión
-$$\prod_{k=1}^\infty \left(1 - \frac{z}{z_k}\right)$$
-Si $z \in \overline{D(0, R)}$ con $R > 0$,
-$$\sum_{k=1}^\infty \left|1-\left(1-\frac{z}{z_k}\right)\right| = \sum_{k=1}^\infty \frac{|z|}{|z_k|} \leq R\sum_{k=1}^\infty \frac{1}{|z_k|}$$
-
 \begin{theorem}
-    Sea $\{z_k\}_{k=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\sum_{k=1}^\infty \frac{1}{|z_k|}$ converge y $\lim\limits_{k \to \infty} |z_k| = \infty$.
-    Entonces $\prod_{k=1}^\infty \left(1-\frac{z}{z_k}\right)$ converge absoluta y uniformemente en compactos de $\mathbb{C}$ y además tiene como ceros $\{z_k\}_{k=1}^\infty$.
+    Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$.
+    Supongamos que existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$ que se puede extender a un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D} = D \cup \partial_\infty D$.
+    Entonces $D$ es regular para el problema de Dirichlet.
+
+    En concreto, si $f: \partial_\infty D \to \mathbb{R} \to \mathbb{R}$ continua, la función $u: \bar{D} \to \mathbb{R}$ definida por
+    $$u(z) = \begin{cases}
+            f(z)                           & z \in \partial_\infty D \\
+            u(z) = P[f \circ F](F^{-1}(z)) & z \in D
+        \end{cases}$$
+    es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
 \end{theorem}
 
-\begin{remark}
-    La función $z^N\prod_{n=1}^\infty \left(1-\frac{z}{z_n}\right)$ tiene como ceros $\{z_n\}_{n=1}^\infty$ y además el 0 es un cero de multiplicidad $N$.
-\end{remark}
+\begin{proof}
+    $F: \mathbb{D} \to D$ se puede extender a una homeomorfismo $F: \bar{\mathbb{D}} \to \bar{D}$.
+    Observamos que $F$ es un homeomorfismo de $\partial\mathbb{D}$ sobre $\partial_\infty D$.
+    Sea $g = f \circ F$.
+    $$g: \partial\mathbb{D} \xrightarrow{F} \partial_\infty D \xrightarrow{f} \mathbb{R}$$
+    $g$ es continua.
+    Sea $v$ la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $g$.
+    $v: \bar{\mathbb{D}} \to \mathbb{R}$ es armónica en $\mathbb{D}$, continua en $\bar{\mathbb{D}}$ y con $v = g$ en $\partial\mathbb{D}$.
 
-Falta por ver qué ocurre cuando $\sum_{k=1}^\infty \frac{1}{|z_k|}$ no converge, donde $\{z_k\}_{k=1}^\infty$ con $\lim\limits_{k \to \infty} |z_k| = \infty$.
-Consideramos
-$$\prod_{k=1}^\infty \left(1-\frac{z}{z_k}\right)e^{q_k\left(\frac{z}{z_k}\right)}$$
+    Sea $u: \bar{D} \to \mathbb{R}$, $u = v \circ F^{-1}$.
+    $u$ es continua en $\bar{D}$ y armónica en $D$.
+    Si $z \in \partial_\infty D$,
+    $$u(z) = v(F^{-1}(z)) = g(F^{-1}(z)) = f(z)$$
+    Luego $u = f$ en $\partial_\infty D$.
+\end{proof}
 
-Veamos un razonamiento intuitivo.
-Que el producto absoluto converja absoluta y uniformemente en compactos de $\mathbb{C}$ es análogo a que converja la serie
-$$\sum_{k=1}^\infty \left|\Log\left(\left(1-\frac{z}{z_k}\right)e^{q_k\left(\frac{z}{z_k}\right)}\right)\right| = \sum_{k=1}^\infty \left|\Log\left(1-\frac{z}{z_k}\right) + q_k\left(\frac{z}{z_k}\right)\right|$$
-Si conseguimos que
-$$\sup_{|z|\leq R} \left|\Log\left(1-\frac{z}{z_k}\right) + q_k\left(\frac{z}{z_k}\right)\right| < M_K(R)$$
-y además $\sum_{k=1}^\infty M_K(R) < \infty$, por el criterio de la mayorante de Weierstrass se tiene la convergencia.
-Para $k \geq k_0$, tenemos que
-$$\frac{|z|}{|z_k|} \leq \frac{R}{2R} = \frac{1}{2} < 1$$
-Sea $w = \frac{z}{z_k}$,
-$$|\Log(1-w)+q_k(w)| = \left|-\Log\left(\frac{1}{1-w}\right) + q_k(w)\right| = \left|\sum_{n=1}^\infty \frac{w^n}{n} - q_k(w)\right|$$
-Entonces, si $q_k(w) = \sum_{n=1}^k \frac{w^n}{n}$,
-$$\left|\sum_{n=1}^\infty \frac{w^n}{n} - q_k(w)\right| = \left|\sum_{n=k+1}^\infty \frac{w^n}{n}\right| \leq \frac{1}{k+1}\sum_{n=k+1}^\infty |w|^n = \frac{|w|^{k+1}}{k+1}\frac{1}{1-|w|}$$
-Tenemos que $\frac{1}{1-|w|} < 2$.
-Por tanto, queremos que
-$$\sum_{k=k_0}^\infty \frac{|w|^{k+1}}{k+1} < \infty$$
-Esta serie siempre converge.
-En lugar de considerar $q_k$ podemos tomar $q_{p_k}$, donde $\{p_k\}_{k=1}^\infty \subset \mathbb{N} \cup \{0\}$.
-Basta tomar $p_k$ tal que
-$$\sum_{k=k_0}^\infty \frac{|w|^{p_k+1}}{p_k+1} < \infty$$
+\begin{example}
+    Cualquier disco abierto es un dominio regular para el problema de Dirichlet.
 
-\begin{definition}[Factores primos de Weierstrass]
-    Los factores primos de Weierstrass son
+    Sea $a \in \mathbb{C}$ y $R > 0$.
+    Sea $D = D(a, R)$.
+    Sea $F: \mathbb{D} \to D$, $F(z) = a + Rz$.
+    $D$ es regular para el problema de Dirichlet.
+
+    Si $f: \partial D(a, R) \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $f$ es $u: \bar{D}(a, R) \to \mathbb{R}$, con
+    $$u(z) = f(z), \quad z \in \partial D(a, R)$$
+    Si $z \in D(a, R)$, $z = a + re^{i\theta}$ con $0 \leq r < R$ y $\theta \in \mathbb{R}$,
     \begin{align*}
-        E_0(z) & = 1-z                                                                      \\
-        E_p(z) & = (1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right), \quad p \in \mathbb{N}
+        u(z) & = P[f \circ F](F^{-1}(z)) = P[f \circ F]\left(\frac{z-a}{R}\right) = P[f \circ F]\left(\frac{r}{R}e^{i\theta}\right) =                                                                                      \\
+             & = \frac{1}{2\pi} \int_{-\pi}^\pi (f \circ F)(e^{it})P_{r/R}(\theta-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{1-\left(\frac{r}{R}\right)^2}{\left|1-\frac{r}{R}e^{i(\theta-t)}\right|^2}dt = \\
+             & = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{R^2-r^2}{|R-re^{i(\theta-t)}|^2}dt
     \end{align*}
-    donde $\sum_{k=1}^p \frac{z^k}{k}$ es el polinomio de Taylor de orden $p$ de $\log\left(\frac{1}{1-z}\right)$.
-\end{definition}
+\end{example}
+
+Sea $D$ el dominio interior a una curva de Jordan en $\mathbb{C}$.
+Entonces $D$ es un dominio simplemente conexo en $D$, con $D \neq \mathbb{C}$.
+Por el teorema de Riemann, existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$, que se puede extender a un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D}$ por el teorema de extensión de Carathéodory.
+Por el teorema anterior, $D$ es regular para el problema de Dirichlet.
+Si $f: \partial D \to \mathbb{R}$ es continua, entonces la función $u: \bar{D} \to \mathbb{R}$ dada por
+$$u(z) = \begin{cases}
+        f(z)                    & z \in \partial D \\
+        P[f \circ F](F^{-1}(z)) & z \in D
+    \end{cases}$$
+es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
+
+\begin{theorem}[Principio del máximo para funciones armónicas: tercera versión]
+    Sea $D$ un dominio acotado en $\mathbb{C}$ y sea $u$ una función armónica y acotada superiormente en $D$.
+    Si existen $M \in \mathbb{R}$ y $\{\xi_1, \xi_2, \dots, \xi_n\} \in \partial D$ tales que
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial D \setminus \{\xi_1, \xi_2, \dots \xi_n\}$$
+    entonces $u(z) \leq M$ para todo $z \in D$.
+\end{theorem}
+
+\begin{proof}
+    Sea $\alpha = diam(D) = \sup \{|z-w| : z, w \in D\}$.
+    Entonces $0 < \alpha < \infty$.
+    Dado $\varepsilon > 0$, sea $u_\varepsilon: D \to \mathbb{R}$ dada por
+    $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{i=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)$$
+    Si $z \in D$ y $j \in \{1, \dots, n\}$, como $|z-w| \leq \alpha$ para todo $w \in D$, se tiene que
+    $$0 < |z-\xi_j| \leq \alpha \Rightarrow 0 < \frac{|z-\xi_j|}{\alpha} \leq 1 \Rightarrow \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq 0$$
+    Entonces $u_\varepsilon \leq u$ en $D$.
+    Como la función $z \mapsto \frac{z-\xi_j}{\alpha}$ es holomorfa y nunca nula en $D$, se tiene que $\Log\left(\frac{|z-\xi_j|}{\alpha}\right)$ es armónica en $D$ para cada $j$.
+    Por tanto, $u_\varepsilon$ es armónica en $D$.
+
+    Sea $\xi \in \partial D \setminus \{\xi_1, \xi_2, \dots, \xi_n\}$.
+    Entonces:
+    $$\limsup_{z \to \xi, z \in D} u_\varepsilon(z) \leq \limsup_{z \to \xi, z \in D} u(z) \leq M$$
+    Sea $j_0 \in \{1, \dots, n\}$.
+    $$\limsup_{z \to \xi_{j_0}, z \in D} u_\varepsilon(z) = \limsup_{z \to \xi_{j_0}, z \in D} \left(u(z) + \varepsilon\Log\left(\frac{|z-\xi_{j_0}|}{\alpha}\right) + \varepsilon \sum_{j = 1, j \neq j_0}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)\right) = -\infty \leq M$$
+
+    Por la segunda versión del principio del máximo, $u_\varepsilon(z) \leq M$ para todo $z \in D$.
+    Entonces hemos probado que, dado $\varepsilon > 0$, se tiene que
+    $$u(z) + \varepsilon \sum_{j=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq M, \quad \forall z \in D$$
+    Haciendo $\varepsilon \to 0$, tenemos que $u(z) \leq M$ para todo $z \in D$.
+\end{proof}
+
+\begin{theorem}[Principio del máximo para funciones armónicas: cuarta versión]
+    Sea $D$ un dominio en $\mathbb{C}$ con exterior no vacío y sea $u$ una función armónica y acotada superiormente en $D$.
+    Supongamos que existen $M \in \mathbb{R}$ y $\{\xi_1, \xi_2, \dots, \xi_n\} \in \partial_\infty D$ tales que
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D \setminus \{\xi_1, \xi_2, \dots \xi_n\}$$
+    Entonces $u(z) \leq M$ para todo $z \in D$.
+\end{theorem}
+
+\begin{proof}
+    Sea $a \in \mathbb{C}$ un punto exterior a $D$.
+    Existe $R > 0$ tal que $D(a, R) \cap D = \emptyset$.
+    Entonces $|z-a| \geq R$ para todo $z \in D$.
+    Para cada $j \in \{1, \dots, n\}$ vamos a construir una función $h_j$ holomorfa y nunca nula en $D$, con $|h_j| \leq 1$ en $D$ y tal que $\lim\limits_{z \to \xi_j, z \in D} h_j(z) = 0$ y $\lim\limits_{z \to \xi_i, x \in D} h_j(z)$ existe en $\mathbb{C} \setminus \{0\}$ si $i \neq j$.
+    \begin{itemize}
+        \item Si $\xi_j = \infty$,
+              $$h_j(z) = \frac{R}{z-a}, \quad z \in D$$
+              $h_j$ es holomorfa y nunca nula en $D$ con $|h_j| \leq 1$ en $D$.
+
+        \item Si $\xi_j \in \mathbb{C}$,
+              $$\left|\frac{z-\xi_j}{z-a}\right| = \left|\frac{z-a+a-\xi_j}{z-a}\right| \leq \frac{|z-a|+|a-\xi_j|}{|z-a|} = 1 + \frac{|a-\xi_j|}{|z-a|} \leq 1 + \frac{|a-\xi_j|}{R} = K_j > 0$$
+              Sea
+              $$h_j(z) = \frac{1}{K_j}\frac{z-\xi_j}{z-a}$$
+              $h_j$ es holomorfa y nunca nula en $D$, con
+              $$|h_j(z)| = \frac{1}{K_j}\left|\frac{z-\xi_j}{z-a}\right| \leq \frac{1}{K_j}K_j = 1, \quad \forall z \in D$$
+              Además,
+              $$\begin{cases}
+                      \lim_{z \to \xi_j, z \in D} h_j(z) = 0                                                                                  \\
+                      \lim_{z \to \xi_i, z \in D} h_j(z) = \frac{1}{K_j}\frac{\xi_i-\xi_j}{\xi_i-a} \in \mathbb{C} \setminus \{0\} & i \neq j
+                  \end{cases}$$
+              Sea $\varepsilon > 0$, definimos:
+              $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{n=1}^\infty \Log|h_j(z)|, \quad z \in D$$
+              Se sigue como en la demostración del teorema anterior.
+    \end{itemize}
+\end{proof}
+
+\begin{theorem}[Teorema de la singularidad evitable para funciones armónicas]
+    Sean $a \in \mathbb{C}$ y $R > 0$.
+    Si $u$ es armónica y acotada en $D(a, R) \setminus \{a\}$, entonces $u$ se puede extender a una función armónica en $D(a, R)$.
+\end{theorem}
+
+\begin{proof}
+    Sea $f = u|_{\partial D(a, R/2)}$, $f: \partial D(a, R/2) \to \mathbb{R}$ es continua.
+    Como $D(a, R/2)$ es regular para el problema de Dirichlet, existe $v: \bar{D}(a, R/2) \to \mathbb{R}$ armónica en $D(a, R/2)$, continua en $\bar{D}(a, R/2)$ y con $v = f$ en $\partial D(a, R/2)$.
+
+    Sea $D = D(a, R/2) \setminus \{a\}$.
+    $u$ y $v$ son armónicas en $D$, $u-v$ y $v-u$ también.
+    Aplicamos la tercera versión del principio del máximo a $u-v$ y $v-u$ en $D$.
+    $D$ es un dominio acotado en $\mathbb{C}$, $u$ está acotada en $D$ y $v$ es continua en $\bar{D}(a, R/2)$, así que $v$ está acotada en $D$.
+    Luego $u-v$ y $v-u$ están acotadas en $D$.
+
+    Si $\xi \in \partial D(a, R/2) = \partial D \setminus \{a\}$,
+    \begin{align*}
+        \limsup_{z \to \xi, z \in D} (u(z) - v(z)) & \leq u(\xi) - v(\xi) = 0 \\
+        \limsup_{z \to \xi, z \in D} (v(z) - u(z)) & \leq v(\xi) - u(\xi) = 0
+    \end{align*}
+
+    Por tanto, $u(z) - v(z) \leq 0$ y $v(z) - u(z) \leq 0$ para todo $z \in D$.
+    Luego $u(z) = v(z)$ para todo $z \in D = D(a, R/2) \setminus \{a\}$, con $v$ armónica en $D(a, R/2)$.
+    Definiendo $u(a) = v(a)$, vemos que $u$ se puede extender a una función armónica en $D(a, R)$.
+\end{proof}
+
+\begin{theorem}
+    $\mathbb{D} \setminus \{0\}$ es un dominio en $\mathbb{C}$ que no es regular para el problema de Dirichlet.
+\end{theorem}
+
+\begin{proof}
+    $D = \mathbb{D} \setminus \{0\}$, $\partial D = \partial\mathbb{D} \cup \{0\}$.
+    Sea $f: \partial D \to \mathbb{R}$, $f(z) = 0$ si $|z| = 1$ y $f(0) = 1$.
+    $f$ es continua en $\partial D$.
+    Supongamos que existe $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D} \setminus \{0\}$, continua en $\bar{\mathbb{D}}$ y con $u = f$ en $\partial D$.
+    Como $u$ es armónica y acotada en $\mathbb{D} \setminus \{0\}$, por el teorema anterior $u$ se puede extender a una función armónica en $\mathbb{D}$.
+    Entonces $u$ es armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Por tanto,
+    $$\max_{z \in \bar{\mathbb{D}}} u(z) = \max_{z \in \partial\mathbb{D}} u(z) = 0$$
+    Sin embargo, esto contradice que $u(0) = 1 \neq 0$.
+\end{proof}
 
 \begin{remark}
-    Para todo $p \in \mathbb{N} \cup \{0\}$, $E_p(0) = 1$, $E_p(1) = 0$ y $E_p$ es entera.
+    La condición de que $u$ está acotada superiormente no se puede suprimir en la tercera versión del principio del máximo.
 \end{remark}
+
+\begin{example}
+    Sea $D = \mathbb{D} \setminus \{0\}$ dominio acotado en $\mathbb{C}$ y sea $u(z) = \Log\left(\frac{1}{|z|}\right)$, $z \in D$.
+    Como la función $z \mapsto \frac{1}{z}$ es holomorfa y nunca nula en $D$, entonces $u$ es armónica en $D$.
+    $u$ no está acotada superiormente en $D$.
+    $$\partial D = \partial\mathbb{D} \cup \{0\}$$
+    Si $\xi \in \partial\mathbb{D}$,
+    $$\limsup_{z \to \xi, z \in D} u(z) = \limsup_{z \to \xi, z \in \mathbb{D}} \Log\left(\frac{1}{|z|}\right) = 0 = M$$
+    Pero no es cierto que $u(z) \leq 0$ para todo $z \in D$.
+    De hecho, $u(z) > 0$ para todo $z \in D$.
+\end{example}
 
 \begin{lemma}
-    Sea $p \in \mathbb{N} \cup \{0\}$ y $|z| < 1$, entonces $|1-E_p(z)| \leq |z|^{p+1}$.
+    Sean $a \in \mathbb{C}$ y $R > 0$.
+    Sea $u: \bar{D}(a, R) \to \mathbb{R}$ una función continua, con $u \equiv 0$ en $\partial D(a, R)$.
+    Supongamos que para cada $z_0 \in D(a, R)$ existe $r_{z_0} > 0$ con $D(z_0, r_{z_0}) \subset D(a, R)$ tal que
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad r \in [0, r_{z_0}]$$
+    Entonces $u \equiv 0$ en $D(a, R)$.
 \end{lemma}
 
 \begin{proof}
-    Si $p = 0$,
-    $$|1-E_0(z)| = |1-(1-z)| = |z|$$
-    Si $p \in \mathbb{N}$, como $E_p$ es una función entera,
-    $$E_p(z) = \sum_{n=0}^\infty a_nz^n$$
-    Como $E_p(0) = 1$, entonces $a_0 = 1$.
-    Así que
-    $$E_p(z) = 1 + \sum_{n=1}^\infty a_nz^n$$
-    Además, como $E_p(1) = 0$, entonces $\sum_{n=1}^\infty a_n = -1$.
-    De la expresión anterior,
-    $$-\sum_{n=1}^\infty a_nz^n = 1-E_p(z) = 1-(1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right)$$
-    Derivando,
-    \begin{align*}
-        -\sum_{n=1}^\infty na_nz^{n-1} & = \exp\left(\sum_{k=1}^n \frac{z^k}{k}\right) - (1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right)\left(\sum_{k=1}^p z^{k-1}\right) =                             \\
-                                       & =\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right)\left(1-(1-z)\sum_{k=0}^{p-1} z^k\right) = \exp\left(\sum_{k=1}^p \frac{z^k}{k}\right)z^p =                         \\
-                                       & = z^p\left(1 + \sum_{k=1}^p \frac{z^k}{k} + \frac{\left(\sum_{k=1}^p \frac{z^k}{k}\right)^2}{2!} + \dots\right) = z^p + A_{p+1}z^{p+1} + A_{p+2}z^{p+2} + \dots
-    \end{align*}
-    Por tanto, $a_n = 0$ para todo $1 \leq n \leq p$.
-    Además,
-    $$-(p+1)a_{p+1} = 1 \Rightarrow a_{p+1} = -\frac{1}{p+1}$$
-    En general, para todo $n > p+1$,
-    $$na_n = -A_{n-1} < 0 \Rightarrow a_n < 0$$
-    Así que
-    \begin{align*}
-        |1-E_p(z)| & = \left|\sum_{n=1}^\infty a_nz^n\right| = \left|\sum_{n=p+1}^\infty a_nz^n\right| = |z|^{p+1}\left|\sum_{n=p+1}^\infty a_nz^{n-(p+1)}\right| \leq \\
-                   & \leq |z|^{p+1} \sum_{n=p+1}^\infty |a_n||z|^{n-(p+1)} \leq |z|^{p+1} \sum_{n=p+1}^\infty |a_n| = |z|^{p+1}\left(-\sum_{n=p+1}^\infty a_n\right) = \\
-                   & = |z|^{p+1} \left(-\sum_{n=1}^\infty a_n\right) = |z|^{p+1}
-    \end{align*}
-\end{proof}
+    Sea $M = \max\{u(z) : z \in \bar{D}(a, R)\}$ y sea $K = \{z \in \bar{D}(a, R) : u(z) = M\}$.
+    $K$ es un compacto no vacío con $K \subset \bar{D}(a, R)$.
+    Como la función $z \in \mathbb{C} \mapsto |z-a|$ es continua, alcanza el máximo en $K$.
+    Tomamos $z_0 \in K$ tal que $|z_0-a| = \max\{|z-a| : z \in K\}$.
 
-\begin{remark}
-    Hemos visto que
-    $$E_p(z) = 1 - \frac{z^{p+1}}{p+1} + \sum_{n=p+2}^\infty a_nz^n$$
-\end{remark}
-
-\begin{theorem}[Teorema de factorización de Weierstrass: primera versión]
-    Sea $\{a_n\} \subset \mathbb{C} \setminus \{0\}$ con $\lim\limits_{n \to \infty} |a_n| = \infty$.
-    Entonces existe una sucesión de números $\{p_n\} \subset \mathbb{N} \cup 0$ de modo que
-    $$\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)$$
-    converge absoluta y uniformemente en compactos de $\mathbb{C}$ y además define una función entera cuyos ceros son $\{a_n\}_{n=1}^\infty$.
-\end{theorem}
-
-\begin{proof}
-    Sea $K$ compacto de $\mathbb{C}$, entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
-    Como $\{a_n\} \to \infty$, existe $n_0 \in \mathbb{N}$ tal que para todo $n \geq n_0$ se tiene que $\frac{|z|}{|a_n|} \leq \frac{R}{2R} < 1$.
-    Por el lema anterior,
-    $$\left|1-E_{p_n}\left(\frac{z}{a_n}\right)\right| \leq \left|\frac{z}{a_n}\right|^{p_n+1} \leq \left(\frac{1}{2}\right)^{p_n+1}$$
-    Si consideramos $p_n = n$, por el criterio de la mayorante de Weierstrass tenemos que
-    $$\sum_{n=n_0}^\infty \left|1-E_n\left(\frac{z}{a_n}\right)\right|$$
-    converge uniformemente en $K$.
-    Además,
-    $$E_n\left(\frac{a_n}{a_n}\right) = E_n(1) = 0$$
-\end{proof}
-
-\begin{theorem}[Teorema de factorización de Weierstrass: segunda versión]
-    Sea $f$ una función entera tal que en $z = 0$ tiene un cero de orden $N$ y los demás ceros de $f$ son $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$.
-    Entonces existe $\{p_n\}_{n=1}^\infty \subset \mathbb{N} \cup \{0\}$ y una función entera $g$ tal que
-    $$f(z) = e^{g(z)}z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)$$
-\end{theorem}
-
-\begin{proof}
-    Suponemos $\{a_n\}$ conjunto infinito.
-    Por el teorema anterior, existe una función entera que se anula en $\{a_n\}_{n=1}^\infty$.
+    Supongamos por reducción al absurdo que $z_0 \in D(a, R)$.
+    Tomamos $r_{z_0} > 0$, que existe por hipótesis, y fijamos $r \in (0, r_{z_0})$.
     Entonces
-    $$\frac{f(z)}{z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)}$$
-    es entera y no se anula en $\mathbb{C}$.
-    Por tanto, existe $g$ entera tal que
-    $$\frac{f(z)}{z^N\prod_{n=1}^\infty E_{p_n}\left(\frac{z}{a_n}\right)} = e^{g(z)}$$
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt$$
+    Sean $E_1 = \{t \in [-\pi, \pi] : |z_0+re^{it}-a| \leq |z_0-a|\}$ y $E_2 = \{t \in [-\pi, \pi] : |z_0+re^{it}-a| > |z_0-a|\}$.
+    Observamos que $E_2 \neq \emptyset$.
+    Si $t \in E_2$, se tiene que $z_0 + re^{it} \notin K$.
+    Así que $u(z_0 + re^{it}) < M$.
+    Entonces
+    $$u(z_0) = \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt + \frac{1}{2\pi} \int_{E_2} u(z_0 + re^{it})dt$$
+    Observamos que:
+    \begin{align*}
+        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt \leq \frac{1}{2\pi} \int_{E_1} Mdt \\
+        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt < \frac{1}{2\pi} \int_{E_2} Mdt
+    \end{align*}
+    Por tanto,
+    $$u(z_0) < \frac{1}{2\pi} \int_{E_1} Mdt + \frac{1}{2\pi} \int_{E_2} Mdt = \frac{1}{2\pi} \int_{-\pi}^\pi Mdt = M$$
+    Esto contradice que $z_0 \in K$.
+    Entonces $z_0 \in \partial D(a, R)$, así que por hipótesis $u(z_0) = 0$.
+    Es decir,
+    $$u(z_0) = M = \max\{u(z) : z \in \bar{D}(a, R)\} = 0$$
+    Por tanto, $u(z) \leq 0$ para todo $z \in D(a, R)$.
+
+    Aplicando la parte del lema que acabamos de ver a la función $-u$, tenemos que $-u(z) \leq 0$ para todo $z \in D(a, R)$.
+    Por tanto, $u \equiv 0$ en $D(a, R)$.
 \end{proof}
 
-\begin{remark}
-    \hfill
-    \begin{enumerate}
-        \item La factorización no es única.
-              Si la sucesión $\{p_n\}_{n=1}^\infty$ da una descomposición, entonces una sucesión $\{q_n\}_{n=1}^\infty$ tal que $p_n \leq q_n$ para todo $n \in \mathbb{N}$ también sirve.
-
-        \item Si $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ y existe $p$ tal que $\sum_{n=1}^\infty \frac{1}{|a|^{p+1}}$ converge, entonces
-              $$\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
-              converge absoluta y uniformemente en compactos de $\mathbb{C}$.
-              \begin{proof}
-                  Sea $K$ compacto de $\mathbb{C}$, entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
-                  Como $\lim\limits_{n \to \infty} |a_n| = \infty$, existe $n_0 \in \mathbb{N}$ tal que para todo $n \geq n_0$ se tiene que
-                  $$|a_n| \geq 2R \Rightarrow \left|\frac{z}{a_n}\right| \leq \frac{1}{2} < 1$$
-                  Por el lema anterior,
-                  $$\sum_{n=n_0}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right| \leq \sum_{n=n_0}^\infty \left|\frac{z}{a_n}\right|^{p+1} \leq R^{p+1}\sum_{n=n_0}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
-              \end{proof}
-    \end{enumerate}
-\end{remark}
-
-\section{Exponente de convergencia y género de una sucesión}
-A partir de las observaciones anteriores, introducimos la siguiente definición.
-
-\begin{definition}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\lim\limits_{n \to \infty} |a_n| = \infty$.
-    Definimos el exponente de convergencia de la sucesión como
-    $$\sigma = \inf\left\{s \in \mathbb{R} : \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty\right\}$$
-\end{definition}
-
-\begin{remark}
-    \hfill
-    \begin{enumerate}
-        \item Si $s \in \mathbb{R}$ satisface que $\sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty$, entonces si $t > s$ se cumple que $\sum_{n=1}^\infty \frac{1}{|a_n|^t} < \infty$.
-        \item Diremos que $\inf\emptyset = +\infty$, es decir, $\sigma = +\infty$ cuando ningún $s \in \mathbb{R}$ satisface que $\sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty$.
-        \item Si $\sigma < \infty$,
-              \begin{align*}
-                   & \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty \text{ si } s \in (\sigma, +\infty) \\
-                   & \sum_{n=1}^\infty \frac{1}{|a_n|^s} = \infty \text{ si } s \in (-\infty, \sigma)
-              \end{align*}
-    \end{enumerate}
-\end{remark}
-
-\begin{definition}
-    Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ tal que $\lim\limits_{n \to \infty} |a_n| = \infty$ y $\sigma < \infty$.
-    Entonces el género de la sucesión es el menor entero $p$ tal que
-    $$\sum_{n=1}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
-\end{definition}
-
-\begin{remark}
-    \hfill
-    \begin{enumerate}
-        \item $\sigma > 0$ siempre.
-              Además, $\sum_{n=1}^\infty \frac{1}{|a_n|^0} = \infty$ así que $p \geq 0$.
-        \item $p \leq \sigma \leq p+1$.
-    \end{enumerate}
-\end{remark}
-
-Si $\{a_n\}$ es finita entonces diremos que $\sigma = p = 0$.
-
-\begin{example}
-    \hfill
-    \begin{enumerate}
-        \item Sea $a_n = n+1$.
-              $$\sum_{n=1}^\infty \frac{1}{(n+1)^s} < \infty \Leftrightarrow s < 1 \Rightarrow \sigma = 1, p = 1$$
-        \item Sea $a_n = (n+1)^2$.
-              $$\sum_{n=1}^\infty \frac{1}{(n+1)^{2s}} < \infty \Leftrightarrow s > \frac{1}{2} \Rightarrow \sigma = \frac{1}{2}, p = 0$$
-        \item Sea $a_n = (n+1)\log^2(n+1)$.
-              $$\sum_{n=1}^\infty \frac{1}{(n+1)^s\log^{2s}(n+1)} < \infty \Leftrightarrow s \geq 1 \Rightarrow \sigma = 1, p = 0$$
-              Para el caso $s = 1$,
-              $$\sum_{n=1}^\infty \frac{1}{(n+1)\log^2(n+1)} \sim \int_1^\infty \frac{1}{(x+1)\log^2(x+1)}dx = \left.-\frac{1}{\log(x+1)}\right]_1^\infty = \frac{1}{\log(2)}$$
-        \item Sea $a_n = \log(n+1)$.
-              $$\sum_{n=1}^\infty \frac{1}{\log^s(n+1)} = \infty \; \forall s \in \mathbb{R} \Rightarrow \sigma = \infty$$
-        \item Sea $a_n = 2^n$.
-              $$\sum_{n=1}^\infty \frac{1}{2^{ns}} = \sum_{n=1}^\infty \frac{1}{(2^s)^n} < \infty \; \forall s > 0 \Rightarrow \sigma = 0, p = 0$$
-    \end{enumerate}
-\end{example}
-
-\section{Factorización canónica de una función entera}
-Con las definiciones anteriores vamos a tener el siguiente teorema.
-
-\begin{theorem}[Teorema de factorización canónica]
-    Sea $f$ una función entera con $z = 0$ un cero de orden $N$ y $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$ los demás ceros de $f$.
-    Si $\lim\limits_{n \to \infty} |a_n| = \infty$ y $\sigma < \infty$, entonces
-    $$f(z) = e^{g(z)}z^N\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
-    donde $p$ es el género de $\{a_n\}_{n=1}^\infty$.
+\begin{theorem}[Caracterización de la armonicidad por la propiedad del valor medio]
+    Sea $D$ un abierto en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$ continua.
+    Supongamos que para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$, tal que
+    $$u(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt, \quad r \in [0, r_a]$$
+    Entonces $u$ es armónica en $D$.
 \end{theorem}
 
 \begin{proof}
-    Sea $K$ compacto de $\mathbb{C}$, entonces existe $R > 0$ tal que $K \subset \overline{D(0, R)}$.
-    Queremos ver que $\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$ converge absoluta y uniformemente en $K$.
-    Basta ver que $\sum_{n=1}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right|$ converge uniformemente en $K$.
-    Como $|a_n| \to \infty$, existe $n_0 \in \mathbb{N}$ tal que $|a_n| \geq 2R$ para todo $n \geq n_0$.
-    Entonces, como $p$ es el género de $\{a_n\}_{n=1}^\infty$,
-    $$\sum_{n=n_0}^\infty \left|1-E_p\left(\frac{z}{a_n}\right)\right| \leq \sum_{n=n_0}^\infty \frac{|z|^{p+1}}{|a_n|^{p+1}} \leq R^{p+1} \sum_{n=n_0}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
+    Sea $a \in D$.
+    Tomamos $r_a > 0$ y $R = \frac{r_a}{2}$.
+    Sea $v$ la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $u$.
+    Entonces $v: \bar{D}(a, R) \to \mathbb{R}$ es armónica en $D(a, R)$, continua en $\bar{D}(a, R)$ y con $u = v$ en $\partial D(a, R)$.
+    Vamos a aplicar el lema a $u-v$.
+    $u-v: \bar{D}(a, R) \to \mathbb{R}$ es continua y $u-v \equiv 0$ en $\partial D(a, R)$.
+    Sea $z_0 \in D(a, R)$.
+    Tomamos $r_{z_0} > 0$, que elegimos suficientemente pequeño para que $D(z_0, r_{z_0}) \subset D(a, R)$.
+    Si $r \in [0, r_{z_0})$, tenemos que
+    $$u(z_0)-v(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt - frac{1}{2\pi} \int_{-\pi}^\pi v(z_0 + re^{it})dt = frac{1}{2\pi} \int_{-\pi}^\pi (u-v)(z_0 + re^{it})dt$$
+    Por el lema, $u-v = 0$ en $D(a, R)$.
+    Como $v$ es armónica en $D(a, R)$, $u$ es armónica en $D(a, R)$.
+    Para cada $a \in D$ hemos encontrado $R > 0$ con $D(a, R) \subset D$ tal que $u$ es armónica en $D(a, R)$.
+    Entonces $u$ es armónica en $D$.
 \end{proof}
 
-\section{Factorización de funciones holomorfas en un dominio}
+\begin{remark}
+    Esta es la forma débil de la propiedad del valor medio.
+    Como $u$ es armónica en $D$, tenemos que $u$ verifica la propiedad del valor medio.
+\end{remark}
+
 \begin{theorem}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{a_n\}_{n=1}^\infty \subset D \setminus \{0\}$ sin puntos de acumulación en $D$.
-    Entonces existe una función holomorfa en $D$ que se anula en $\{a_n\}_{n=1}^\infty$.
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión de funciones armónicas en $D$.
+    Supongamos que $\{u_n\}$ converge uniformemente en cada subconjunto compacto de $D$.
+    Sea $u(z) = \lim\limits_{n \to \infty} u_n(z)$, $z \in D$.
+    Entonces $u$ es armónica en $D$.
 \end{theorem}
 
 \begin{proof}
-    Si $\{a_n\}_{N=1}^\infty$ es finito, entonces dicha función es $\prod_{n=1}^N (z-a_n)$.
-    Si $\{a_n\}_{n=1}^\infty$, entonces definimos $\delta_n = \dist(a_n, \mathbb{C} \setminus D)$.
-    Consideramos primero dos casos.
+    Tenemos $u: D \to \mathbb{R}$.
+    Si $K \subset D$, $K$ compacto, tenemos que $u_n \to u$ uniformemente en $K$ y $u_n$ es continua en $K$ para cada $n \in \mathbb{N}$.
+    Así que $u$ es continua en $K$, luego $u$ es continua en $D$.
+    Sea $a \in D$ y sea $R > 0$ con $D(a, R) \subset D$.
+    Sea $r \in [0, R)$.
+    Tenemos que
+    $$u_n(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt, \quad \forall n \in \mathbb{N}$$
+    Haciendo $n \to \infty$,
+    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt$$
+    Como $u_n \to u$ uniformemente en $\partial D(a, r)$,
+    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi \lim_{n \to \infty} u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt$$
+    Por el teorema anterior, $u$ es armónica en $D$.
+\end{proof}
+
+Vamos a ver qué sucede al cambiar la condición de convergencia uniforme en compactos por la condición de que $\{u_n\}$ sea creciente.
+
+\section{Desigualdades de Harnack}
+Sean $a \in \mathbb{C}$ y $R > 0$.
+Sea $u$ una función armónica y no negativa en $D(a, R)$.
+Entonces, si $r \in (0, R)$, se tiene que
+$$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}, \quad \forall z \in \bar{D}(a, R)$$
+Por tanto, tomando $r = \frac{R}{2}$, tenemos
+$$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\right)$$
+
+\begin{proof}
+    Fijamos $r \in (0, R)$.
+    Tomamos $\rho$ con $r < \rho < R$.
+    Sea $v: \bar{\mathbb{D}} \to \mathbb{R}$, $v(z) = u(a + \rho z)$.
+    \begin{align*}
+        v: \mathbb{D} & \to D(a, R) \xrightarrow{u} \mathbb{R} \\
+        z             & \mapsto a + \rho z
+    \end{align*}
+    $v$ es continua en $\bar{\mathbb{D}}$, armónica en $\mathbb{D}$ y no negativa en $\bar{\mathbb{D}}$.
+
+    Sea $z \in \partial D\left(0, \frac{r}{\rho}\right)$.
+    $z$ es de la forma $z = \frac{r}{\rho}e^{i\theta}$, con $\theta \in \mathbb{R}$.
+    Entonces:
+    $$v(z) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt$$
+    Además,
+    $$v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt$$
+    Recordemos que
+    $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+    Entonces, si $\theta \in \mathbb{R}$ y $z = \frac{r}{\rho}e^{i\theta}$, tenemos:
+    \begin{align*}
+         & \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1-r/\rho}{1+r/\rho}dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1+r/\rho}{1-r/\rho}dt \Leftrightarrow                    \\
+         & \Leftrightarrow \frac{\rho-r}{\rho+r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \leq v(z) \leq \frac{\rho+r}{\rho-r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \Leftrightarrow \frac{\rho-r}{\rho+r}v(0) \leq v(z) \leq \frac{\rho+r}{\rho-r}v(0)
+    \end{align*}
+    En términos de $u$,
+    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R), \; z = \frac{r}{\rho}e^{i\theta}$$
+    Como $u(a+\rho z) = u\left(a + \rho\frac{r}{\rho}e^{i\theta}\right) = u(a + re^{i\theta})$, entonces
+    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R)$$
+
+    Haciendo $\rho \to R^-$, tenemos que:
+    $$\frac{R-r}{R+r}u(a) \leq u(a+re^{i\theta}) \leq \frac{R+r}{R-r}u(a), \quad \forall \theta \in \mathbb{R}$$
+    Entonces:
+    $$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}u(a), \quad z \in \partial D(a, r)$$
+    Como $u$ es continua en $\bar{D}(a, r)$ y armónica en $D(a, r)$, por el principio del máximo y el principio del mínimo,
+    \begin{align*}
+        \max_{z \in \bar{D}(a, r)} u(z) & = \max_{z \in \partial D(a, r)} u(z) \\
+        \min_{z \in \bar{D}(a, r)} u(z) & = \min_{z \in \partial D(a, r)} u(z)
+    \end{align*}
+    Entonces tenemos la desigualdad para todo $z \in \bar{D}(a, r)$.
+\end{proof}
+
+\begin{proposition}
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión de funciones armónicas y no negativas en $D$.
+    Si existe $z_0 \in D$ tal que $\lim\limits_{n \to \infty} u_n(z_0) = \infty$, entonces
+    $$\lim_{n \to \infty} u_n(z) = \infty, \quad \forall z \in D$$
+    siendo la convergencia uniforme en cada subconjunto compacto de $D$.
+\end{proposition}
+
+\begin{proof}
+    Para cada $n \in \mathbb{N}$ tenemos $u_n: D \to \mathbb{R}$ armónica no negativa.
+    Sea
+    $$A = \{z \in D : \lim\limits_{n \to \infty} u_n(z) = \infty\}$$
+    $A \neq \emptyset$ porque $z_0 \in A$.
+    Veamos que $A$ es abierto y cerrado en $D$.
+
     \begin{enumerate}
-        \item Existe $N_0 \in \mathbb{N}$ tal que $|a_n|\delta_n \geq 1$ para todo $n \geq N_0$.
-              Veamos que $\lim\limits_{n \to \infty} |a_n| = \infty$.
-              Supongamos por reducción al absurdo que $\lim\limits_{n \to \infty} |a_n| \neq \infty$.
-              Entonces existe una subsucesión $\{a_{n_k}\}_{k=1}^\infty$ acotada.
-              Así que existe una subsucesión $\{a_m\}_{m=1}^\infty$ de $\{a_{n_k}\}$ convergente a $a_0 \in \mathbb{C} \setminus D$.
-              Si $D = \mathbb{C}$, esto es imposible.
-              En otro caso,
-              $$1 \leq |a_m|\delta_m \leq |a_m||a_m-w|, \quad \forall w \in \mathbb{C} \setminus D$$
-              Tomando límites,
-              $$1 \leq |a_0||a_0-w|, \quad \forall w \in \mathbb{C} \setminus D$$
-              Como necesariamente $|a_0| \neq 0$, entonces
-              $$|a_0-w| \geq \frac{1}{|a_0|} \Rightarrow a_0 \notin \mathbb{C} \setminus D \Rightarrow a_0 \in D$$
-              Esto es una contradicción.
+        \item Probemos que $A$ es abierto.
+              Queremos ver que si $a \in A$ y $R > 0$ tal que $D(a, R) \subset D$, entonces $D(a, R/2) \subset A$ y $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en $D(a, R/2)$.
 
-        \item Existe $N_0 \in \mathbb{N}$ tal que $|a_n|\delta_n \leq 1$ para todo $n \geq N_0$.
-              Veamos por reducción al absurdo que $\delta_n \xrightarrow[n \to \infty]{} 0$.
-              Supongamos que existen una subsucesión $\{\delta_{n_k}\}_{k=1}^\infty$ y $\varepsilon > 0$ tales que $\delta_{n_k} \geq \varepsilon > 0$ para todo $k \in \mathbb{N}$.
-              Entonces existe una subsucesión $\{\delta_m\}_{m=1}^\infty$ de $\{\delta_{n_k}\}$ que converge a un cierto $\delta_0 \geq \varepsilon$.
-              Como además $|a_m| < \frac{1}{\varepsilon}$, existe una subsucesión $\{a_l\}_{l=1}^\infty$ de $\{a_m\}$ que converge a $a_0$.
-              Así que
-              $$\varepsilon \leq \delta_l \leq |a_l-w|, \quad \forall w \in \mathbb{C} \setminus \{0\}$$
-              Tomando límites,
-              $$\varepsilon \leq \delta_0 \leq |a_0-w|, \quad \forall w \in \mathbb{C} \setminus \{0\} \Rightarrow a_0 \in D$$
-              Esto contradice que $\{a_n\}$ no tenga puntos de acumulación.
+              Basta ver la convergencia uniforme.
+              Sea $M > 0$, veamos que existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ y $z \in D(a, R/2)$, entonces $u_n(z) > M$.
+              Como $a \in A$, tenemos que $\lim\limits_{n \to \infty} u_n(a) = \infty$.
+              Por tanto, existe $n_0 \in \mathbb{N}$ tal que
+              $$n \geq n_0 \Rightarrow u_n(a) > 3M$$
+              Entonces, si $n \geq n_0$ y $z \in D(a, R/2)$, por las desigualdades de Harnack tenemos
+              $$u_n(z) \geq \frac{1}{3}u_n(a) > \frac{1}{3}3M = M$$
+              Por tanto, $A$ es abierto.
 
-              Construyamos ahora una función holomorfa $f$ con ceros en $\{a_n\}$.
-              Para cada $a_n$ existe un $b_n \in \mathbb{C} \setminus D$ de modo que $|a_n-b_n| \leq \frac{3}{2}\delta_n$.
-              Entonces definimos
-              $$\prod_{n=1}^\infty E_n\left(\frac{a_n-b_n}{z-b_n}\right)$$
-              cuyos ceros son $\{a_n\}_{n=1}^\infty$.
+        \item Veamos que $A$ es cerrado en $D$, es decir, que $D \setminus A$ es abierto.
 
-              Sea $K$ un compacto de $D$ y sea $d = \dist(K, \mathbb{C} \setminus D)$.
-              Observamos que $d > 0$.
-              Como $\delta_n \to 0$, podemos tomar $n_0 \in \mathbb{N}$ tal que $\delta_n < \frac{d}{2}$ para todo $n \geq n_0$.
-              $$|a_n-b_n| \leq \frac{3}{2}\delta_n < \frac{3}{4}d \leq \frac{3}{4}|z-b_n|, \quad \forall z \in K$$
-              Así que
-              $$\sum_{n=n_0}^\infty \left|1-E_n\left(\frac{a_n-b_n}{z-b_n}\right)\right| \leq \sum_{n=n_0}^\infty \left|\frac{a_n-b_n}{z-b_n}\right|^{n+1} \leq \sum_{n=n_0}^\infty \left(\frac{3}{4}\right)^{n+1} < \infty$$
-              Por tanto,
-              $$\prod_{n=1}^\infty E_n\left(\frac{a_n-b_n}{z-b_n}\right)$$
-              converge absoluta y uniformemente en compactos de $D$.
+              Sea $a \in D \setminus A$ y sea $R > 0$ con $D(a, R) \subset D$.
+              $D(a, R/2) \subset D \setminus A$, ya que si $z \in D(a, R/2)$, entonces $u_n(z) \leq 3u_n(a)$ para todo $n \in \mathbb{N}$ y $z \in D$.
+              Si $z \in A$, $\lim\limits_{n \to \infty} u_n(z) = \infty$ y $\lim\limits_{n \to \infty} u_n(a) = \infty$, pero $a \notin A$.
+              Así que $D \setminus A$ es abierto.
     \end{enumerate}
 
-    En general, la sucesión $\{a_n\}_{n=1}^\infty$ se puede separar en $\{b_n\}_{n=1}^\infty$ y $\{c_n\}_{n=1}^\infty$, con $\{b_n\}$ en el caso 1 y $\{c_n\}$ en el caso 2.
-    Por el caso 1, existe $f$ holomorfa en $D$ con ceros $\{b_n\}_{n=1}^\infty$.
-    De igual forma, por el caso 2 existe $g$ holomorfa en $D$ con ceros $\{c_n\}_{n=1}^\infty$.
-    Consideramos $h = fg$.
-    $h$ es holomorfa en $D$ con ceros $\{a_n\}_{n=1}^\infty$.
+    $A$ es abierto y cerrado en $D$, que es conexo.
+    Como $A \neq \emptyset$, tenemos que $A = D$.
+    Entonces $\lim\limits_{n \to \infty} u_n(z) = \infty$ para todo $z \in D$.
+    Sabemos que, dado $a \in D$ y $R > 0$ con $D(a, R) \subset D$, se tiene que $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en $D(a, R/2)$.
+    Entonces $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en cada subconjunto compacto de $D$.
+\end{proof}
+
+\begin{theorem}[Teorema de Harnack]
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión creciente de funciones armónicas en $D$.
+    Para cada $z \in D$, sea $u(z) = \lim\limits_{n \to \infty} u_n(z) \in \mathbb{R} \cup \{\infty\}$.
+    Entonces se da una de las dos siguientes posibilidades:
+    \begin{enumerate}
+        \item $u \equiv \infty$.
+              En este caso, $u_n \xrightarrow[n \to \infty]{} \infty$ uniformemente en cada subconjunto compacto de $D$.
+        \item $u(z) \in \mathbb{R}$ para todo $z \in D$.
+              En este caso, $u$ es armónica en $D$ y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    Supongamos en primer lugar que $u_n$ es no negativa para cada $n \in \mathbb{N}$.
+    Hay dos posibilidades:
+    \begin{itemize}
+        \item Existe $z_0 \in D$ tal que $u(z_0) = \infty$.
+              Entonces $u(z) = \lim\limits_{n \to \infty} u_n(z) = \infty$ y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
+              Se verifica (1).
+
+        \item $u(z) \in \mathbb{R}$ para todo $z \in D$.
+              Entonces $u: D \to \mathbb{R}$.
+              Sea $a \in D$ y $R > 0$ con $D(a, R) \subset D$.
+              Veamos que $\{u_n\}$ es uniformemente de Cauchy en $D(a, R/2)$.
+
+              Sea $\varepsilon > 0$.
+              Como $\{u_n(a)\}_{n=1}^\infty$ es una sucesión de Cauchy por ser convergente, tenemos que existe $n_0 \in \mathbb{N}$ tal que
+              $$n \geq m > n_0 \Rightarrow 0 \leq u_n(a)-u_m(a) < \frac{\varepsilon}{3}$$
+              ya que $u_n-u_m$ es armónica en $D(a, R)$ y no negativa.
+              Por tanto, $\{u_n\}_{n=1}^\infty$ converge uniformemente en $D(a, R/2)$.
+
+              Entonces, dado $a \in D$ y $R > 0$ con $D(a, R) \subset D$, hemos visto que $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en $D(a, R/2)$.
+              Por tanto, $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
+              Entonces $u$ es armónica en $D$, así que se verifica (2).
+    \end{itemize}
+
+    Consideramos ahora el caso general.
+    Para cada $n \in \mathbb{N}$, sea $v_n = u_n - u_1$.
+    Entonces $\{v_n\}_{n=1}^\infty$ es una sucesión creciente de funciones armónicas no negativas.
+    Para cada $z \in D$, sea
+    $$v(z) = \lim\limits_{n \to \infty} v_n(z) \in \mathbb{R} \cup \{\infty\}$$
+    Si $z \in D$,
+    $$v(z) = \lim\limits_{n \to \infty} (u_n(z)-u_1(z)) = \begin{cases}
+            \infty        & \text{si } u(z) = \infty       \\
+            u(z) - u_1(z) & \text{si } u(z) \in \mathbb{R}
+        \end{cases}$$
+    Por el caso anterior se da una de las dos siguientes posibilidades:
+    \begin{itemize}
+        \item $v \equiv \infty$.
+              Veamos que $v_n \to \infty$ uniformemente en cada subconjunto compacto de $D$.
+
+              Sea $K \subset D$, $K$ compacto.
+              Sea $A = \min_{z \in K} u_1(z)$.
+              Como $v_n \to \infty$ uniformemente en $D$, existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ y $z \in K$, entonces $v(z) > M-A$, con $M \in \mathbb{R}$.
+              Entonces, si $n \geq n_0$ y $z \in K$, $u_n(z) = u_1(z) + v_n(z) > A + M - A = M$.
+              Por tanto, se verifica (1).
+
+        \item $v(z) \in \mathbb{R}$ para todo $z \in D$.
+              Veamos que $u$ es armónica y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
+
+              Sabemos que
+              $$v(z) = u(z) - u_1(z) \Leftrightarrow u(z) = u_1(z) + v(z), \quad z \in D$$
+              Entonces $u(z) \in \mathbb{R}$ para todo $z \in D$ y $u$ es armónica en $D$.
+              Además, $u_n - u_1 \xrightarrow[n \to \infty]{} u-u_1$ uniformemente en cada subconjunto compacto de $D$.
+              Por tanto, $u_n \to u$ uniformemente en cada subconjunto compacto de $D$, así que se verifica (2).
+    \end{itemize}
 \end{proof}
