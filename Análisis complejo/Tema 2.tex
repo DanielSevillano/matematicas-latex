@@ -132,7 +132,7 @@ Se puede comprobar que, sean $G_1, G_2$ abiertos en $\mathbb{C}^\ast$ y $f: G_1 
                         Sea $a \in \mathbb{C}^\ast \setminus D_2$, de hecho $a \in \mathbb{C} \setminus D_2$.
                         Tomamos la aplicación conforme $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$, $T(z) = \frac{1}{z-a}$ si $z \in \mathbb{C}^\ast \setminus \{a\}$, $T(a) = \infty$.
                         Tenemos el diagrama:
-                        $$D_1 \xrightarrow{F} D_2 \xrightarrow{T} T(D_2)$$
+                        $$D_1 \xrightarrow{F} D_2 \xrightarrow{T} T(D_2).$$
                         $T(D_2)$ es un dominio en $\mathbb{C}^\ast$.
                         Como $a \notin D_2$, entonces $T(a) = \infty \notin T(D_2)$.
                         Así que $T(D_2)$ es un dominio en $\mathbb{C}$ conformemente equivalente a $D_1$.
@@ -168,7 +168,7 @@ Por ejemplo, $T: \mathbb{D} \to \mathbb{C}$, $T(z) = \frac{z}{1-|z|}$ es un home
 
 \begin{proposition}
     Sea $f$ entera e inyectiva, entonces $f$ es de la forma
-    $$f(z) = \alpha z + \beta, \quad \alpha, \beta \in \mathbb{C}, \; \alpha \neq 0$$
+    $$f(z) = \alpha z + \beta, \quad \alpha, \beta \in \mathbb{C}, \; \alpha \neq 0.$$
 \end{proposition}
 
 \begin{proof}
@@ -194,7 +194,7 @@ $f$ es entera e inyectiva, así que $f(z) = \alpha z + \beta$, con $\alpha, \bet
 Luego $D = f(\mathbb{C}) = \mathbb{C}$.
 
 Las aplicaciones conformes de $\mathbb{C}$ sobre $\mathbb{C}$ son de la forma:
-$$f(z) = \alpha z + \beta, \quad \alpha, \beta \in \mathbb{C}, \; \alpha \neq 0$$
+$$f(z) = \alpha z + \beta, \quad \alpha, \beta \in \mathbb{C}, \; \alpha \neq 0.$$
 
 Sea $D$ un dominio en $\mathbb{C}^\ast$ que es conformemente equivalente a $\mathbb{C}$.
 \begin{itemize}
@@ -202,9 +202,9 @@ Sea $D$ un dominio en $\mathbb{C}^\ast$ que es conformemente equivalente a $\mat
     \item Si $\infty \in D$, consideramos $F: \mathbb{C} \to D$ aplicación conforme.
           Como sabemos que $D \neq \mathbb{C}^\ast$, existe $\alpha \in \mathbb{C}^\ast \setminus D$, de hecho $\alpha \in \mathbb{C} \setminus D$.
           Sea
-          $$T: D \to T(D), \quad T(z) = \frac{1}{z-\alpha}$$
+          $$T: D \to T(D), \quad T(z) = \frac{1}{z-\alpha}.$$
           Tenemos el diagrama:
-          $$\mathbb{C} \xrightarrow[]{F} D \xrightarrow[]{T} T(D) = D'$$
+          $$\mathbb{C} \xrightarrow[]{F} D \xrightarrow[]{T} T(D) = D'.$$
           $D'$ es un dominio en $\mathbb{C}$ conformemente equivalente a $\mathbb{C}$, así que $D' = \mathbb{C} = \mathbb{C}^\ast \setminus \{\infty\}$.
           Por tanto, $D = \mathbb{C}^\ast \setminus \{\alpha\}$.
 \end{itemize}
@@ -224,7 +224,7 @@ Consideramos dos casos:
     \item Si $a \in \mathbb{C}$, $T(a) = \infty$.
           $T$ es holomorfa en $\mathbb{C} \setminus \{a\}$, así que $a$ es un polo simple de $T$.
           Consideramos el desarrollo de Laurent de $T$ en $a$.
-          $$T(z) = \frac{A_{-1}}{z-a} + \sum_{n=0}^\infty A_n(z-a)^n, \quad z \in \mathbb{C} \setminus \{a\}, \; A_{-1} \neq 0$$
+          $$T(z) = \frac{A_{-1}}{z-a} + \sum_{n=0}^\infty A_n(z-a)^n, \quad z \in \mathbb{C} \setminus \{a\}, \; A_{-1} \neq 0.$$
           $\infty$ es una singularidad aislada de $T$.
           De hecho, es una singularidad evitable.
 
@@ -235,57 +235,57 @@ Consideramos dos casos:
           Por tanto $F$ es constante.
           Así que $F(z) = a_0$, para todo $z \in \mathbb{C}$.
           Entonces:
-          $$T(z) = F(z) + \frac{A_{-1}}{z-a} = a_0 + \frac{A_{-1}}{z-a} = \frac{a_0z + (A_{-1}-a_0a)}{z-a}$$
+          $$T(z) = F(z) + \frac{A_{-1}}{z-a} = a_0 + \frac{A_{-1}}{z-a} = \frac{a_0z + (A_{-1}-a_0a)}{z-a}.$$
 \end{enumerate}
 
 En cualquiera de los dos casos, $T$ es de la forma:
-$$T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad \alpha, \beta, \gamma, \delta \in \mathbb{C}$$
+$$T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad \alpha, \beta, \gamma, \delta \in \mathbb{C}.$$
 
 No todas las aplicaciones de esta forma son aplicaciones conformes de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
 
 \begin{example}[Contraejemplo]
     No es una aplicación conforme si $\alpha = \beta = 0$ o $(\alpha, \beta)$ y $(\gamma, \delta)$ son proporcionales.
     Por ejemplo:
-    $$T(z) = \frac{3z + 2}{6z + 4} = \frac{1}{2}$$
+    $$T(z) = \frac{3z + 2}{6z + 4} = \frac{1}{2}.$$
 \end{example}
 
 Para que las aplicaciones de esa forma sean aplicaciones conformes de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$, se tiene que verificar que:
 $$\begin{vmatrix}
         \alpha & \beta  \\
         \gamma & \delta
-    \end{vmatrix} \neq 0$$
+    \end{vmatrix} \neq 0.$$
 
 En el caso (1), $T(z) = Az + B = \frac{Az + B}{0z + 1}$, con $A, B \in \mathbb{C}$, $A \neq 0$, luego:
 $$\begin{vmatrix}
         A & B \\
         0 & 1
-    \end{vmatrix} = A \neq 0$$
+    \end{vmatrix} = A \neq 0.$$
 
 En el caso (2),
 $$\begin{vmatrix}
         a_0 & A_{-1} - a_0a \\
         1   & -a
-    \end{vmatrix} = -a_0a - A_{-1} + a_0a = -A_{-1} \neq 0$$
+    \end{vmatrix} = -a_0a - A_{-1} + a_0a = -A_{-1} \neq 0.$$
 
 \begin{theorem}
     Las aplicaciones conformes de $\mathbb{C}^\ast$ en $\mathbb{C}^\ast$ son de la forma:
-    $$T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad \alpha, \beta, \gamma, \delta \in \mathbb{C}, \; \alpha\delta - \beta\gamma \neq 0$$
+    $$T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad \alpha, \beta, \gamma, \delta \in \mathbb{C}, \; \alpha\delta - \beta\gamma \neq 0.$$
 \end{theorem}
 
 \begin{proof}
     Sea $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ una aplicación de esa forma.
     \begin{itemize}
         \item Si $\gamma = 0$, entonces:
-              $$T(z) = \frac{\alpha z + \beta}{\delta} = \frac{\alpha}{\delta}z + \frac{\beta}{\delta}, \quad \alpha, \delta \neq 0$$
+              $$T(z) = \frac{\alpha z + \beta}{\delta} = \frac{\alpha}{\delta}z + \frac{\beta}{\delta}, \quad \alpha, \delta \neq 0.$$
 
               $T$ es una aplicación conforme de $\mathbb{C}$ sobre $\mathbb{C}$, con $\lim\limits_{z \to \infty} T(z) = \infty$.
               Definiendo $T(\infty) = \infty$, tenemos que $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ es una aplicación conforme.
 
         \item Si $\gamma \neq 0$, entonces $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$,
               \begin{align*}
-                   & T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\} \\
-                   & T\left(-\frac{\delta}{\gamma}\right) = \infty                                                                             \\
-                   & T(\infty) = \frac{\alpha}{\gamma}
+                   & T(z) = \frac{\alpha z + \beta}{\gamma z + \delta}, \quad z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\}, \\
+                   & T\left(-\frac{\delta}{\gamma}\right) = \infty,                                                                             \\
+                   & T(\infty) = \frac{\alpha}{\gamma}.
               \end{align*}
 
               $T$ es meromorfa en $\mathbb{C}^\ast$ y $T$ es inyectiva.
@@ -293,7 +293,7 @@ $$\begin{vmatrix}
               Veamos que $T$ es sobreyectiva.
               Sea $w \in \mathbb{C} \setminus \{\frac{\alpha}{\gamma}\}$ y sea $z \in \mathbb{C} \setminus \left\{-\frac{\delta}{\gamma}\right\}$.
               Entonces:
-              $$T(z) = w \Leftrightarrow \frac{\alpha z + \beta}{\gamma z + \delta} = w \Leftarrow \alpha z + \beta = \gamma zw + \delta w \Leftrightarrow (\alpha - \gamma w)z = \delta w - \beta \Leftrightarrow z = \frac{\delta w - \beta}{-\gamma w + \alpha}$$
+              $$T(z) = w \Leftrightarrow \frac{\alpha z + \beta}{\gamma z + \delta} = w \Leftarrow \alpha z + \beta = \gamma zw + \delta w \Leftrightarrow (\alpha - \gamma w)z = \delta w - \beta \Leftrightarrow z = \frac{\delta w - \beta}{-\gamma w + \alpha}.$$
 
               Por tanto, $T$ es una aplicación conforme de $\mathbb{C}^\ast$ sobre $\mathbb{C}^\ast$.
     \end{itemize}
@@ -302,7 +302,7 @@ $$\begin{vmatrix}
     $$T^{-1}(z) = \frac{\delta z - \beta}{-\gamma z + \alpha}, \quad \begin{vmatrix}
             \delta  & -\beta \\
             -\gamma & \alpha
-        \end{vmatrix} = \alpha\delta - \beta\gamma \neq 0$$
+        \end{vmatrix} = \alpha\delta - \beta\gamma \neq 0.$$
     Si $\gamma = 0$, también es válida esta expresión.
 \end{proof}
 
@@ -335,8 +335,8 @@ Sea $f$ holomorfa en $\mathbb{D}$ con $(\mathbb{D}) \subset \mathbb{D}$.
 Sea $a \in \mathbb{D}$ y $b = f(a) \in \mathbb{D}$.
 Definimos:
 \begin{align*}
-    T_a(z) & = \frac{z+a}{1 + \bar{a}z}, & T_a \in \mathcal{M}, \; T_a(\mathbb{D}) = \mathbb{D}, \; T_a(0) = a \\
-    S_b(z) & = \frac{z-b}{1 - \bar{b}z}, & S_b \in \mathcal{M}, \; S_b(\mathbb{D}) = \mathbb{D}, \; S_b(b) = 0
+    T_a(z) & = \frac{z+a}{1 + \bar{a}z}, \quad T_a \in \mathcal{M}, \; T_a(\mathbb{D}) = \mathbb{D}, \; T_a(0) = a, \\
+    S_b(z) & = \frac{z-b}{1 - \bar{b}z}, \quad S_b \in \mathcal{M}, \; S_b(\mathbb{D}) = \mathbb{D}, \; S_b(b) = 0.
 \end{align*}
 
 Sea $\varphi = S_b \circ f \circ T_a$.
@@ -355,7 +355,7 @@ Desarrollamos las dos expresiones:
           Consideramos $T_a^{-1}(z) \in \mathbb{D}$.
           \begin{align*}
                & |\varphi(T_a^{-1}(z))| \leq |T_a^{-1}(z)| \Leftrightarrow |S_b(f(z))| \leq |S_a(z)| \Leftrightarrow \left|\frac{f(z)-b}{1-\bar{z}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right| \Leftrightarrow \\
-               & \Leftrightarrow \left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|, \quad \forall z \in \mathbb{D}
+               & \Leftrightarrow \left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|, \quad \forall z \in \mathbb{D}.
           \end{align*}
 
           Además, si se da la igualdad para algún $z \in \mathbb{D}$, $z \neq a$, entonces $\varphi$ es una rotación.
@@ -363,15 +363,15 @@ Desarrollamos las dos expresiones:
 
     \item Por la regla de la cadena, $\varphi'(0) = T_a'(0) f'(a) S_b'(b)$.
           \begin{align*}
-              T_a'(z) & = \frac{1 + \bar{a}z - (z+a)\bar{a}}{(1 + \bar{a}z)^2}, & T_a'(0) & = 1 - |a|^2                                     \\
-              S_b'(z) & = \frac{1 - \bar{b}z + (z-b)\bar{b}}{(1 - \bar{b}z)^2}, & S_b'(b) & = \frac{1-|b|^2}{(1-|b|^2)} = \frac{1}{1-|b|^2}
+              T_a'(z) & = \frac{1 + \bar{a}z - (z+a)\bar{a}}{(1 + \bar{a}z)^2}, \quad T_a'(0) = 1 - |a|^2,                                     \\
+              S_b'(z) & = \frac{1 - \bar{b}z + (z-b)\bar{b}}{(1 - \bar{b}z)^2}, \quad S_b'(b) = \frac{1-|b|^2}{(1-|b|^2)} = \frac{1}{1-|b|^2}.
           \end{align*}
 
           Así que:
-          $$\varphi'(0) = (1-|a|^2)f'(a)\frac{1}{1-|b|^2}$$
+          $$\varphi'(0) = (1-|a|^2)f'(a)\frac{1}{1-|b|^2}.$$
 
           Por tanto:
-          $$|\varphi'(0)| \leq 1 \Leftrightarrow (1-|a|^2)f'(a)\frac{1}{1-|b|^2} \leq 1 \Leftrightarrow \frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}$$
+          $$|\varphi'(0)| \leq 1 \Leftrightarrow (1-|a|^2)f'(a)\frac{1}{1-|b|^2} \leq 1 \Leftrightarrow \frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}.$$
 
           Además, si se da la igualdad, entonces $\varphi$ es una rotación y por tanto $f \in \mathcal{M}$, con $f(\mathbb{D}) \subset \mathbb{D}$.
 \end{enumerate}
@@ -379,9 +379,9 @@ Desarrollamos las dos expresiones:
 Por tanto, hemos probado lo siguiente:
 \begin{enumerate}
     \item Para todo $z \in \mathbb{D}$,
-          $$\left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|$$
+          $$\left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|.$$
           Si se da la igualdad para algún $z \in \mathbb{D}$ con $z \neq a$ entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
-    \item $$\frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}$$
+    \item $$\frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}.$$
           Si se da la igualdad entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
 \end{enumerate}
 
@@ -391,9 +391,9 @@ Por tanto, hemos probado lo siguiente:
     Entonces:
     \begin{enumerate}
         \item Para todo $z_1, z_2 \in \mathbb{D}$,
-              $$\left|\frac{f(z_2)-f(z_1)}{1-\overline{f(z_1)}f(z_2)}\right| \leq \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+              $$\left|\frac{f(z_2)-f(z_1)}{1-\overline{f(z_1)}f(z_2)}\right| \leq \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|.$$
         \item Para todo $z \in \mathbb{D}$,
-              $$\frac{|f'(z)|}{1-|f(z)|^2} \leq \frac{1}{1-|z|^2}$$
+              $$\frac{|f'(z)|}{1-|f(z)|^2} \leq \frac{1}{1-|z|^2}.$$
     \end{enumerate}
 
     Además, se da la igualdad en (1) para algún par de puntos $z_1, z_2 \in \mathbb{D}$ con $z_1 \neq z_2$ o bien se da la igualdad en (2) para algún $z \in \mathbb{D}$ si y solo si $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$, en cuyo caso se da la igualdad en (1) para todo $z_1, z_2 \in \mathbb{D}$ y se da la igualdad en (2) para todo $z \in \mathbb{D}$.
@@ -404,15 +404,15 @@ Por tanto, hemos probado lo siguiente:
     Entonces:
     \begin{enumerate}
         \item Para todo $z_1, z_2 \in \mathbb{D}$,
-              $$\left|\frac{T(z_2)-T(z_1)}{1-\overline{T(z_1)}T(z_2)}\right| = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+              $$\left|\frac{T(z_2)-T(z_1)}{1-\overline{T(z_1)}T(z_2)}\right| = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|.$$
         \item Para todo $z \in \mathbb{D}$,
-              $$\frac{|T'(z)|}{1-|T(z)|^2} \leq \frac{1}{1-|z|^2}$$
+              $$\frac{|T'(z)|}{1-|T(z)|^2} = \frac{1}{1-|z|^2}.$$
     \end{enumerate}
 \end{proposition}
 
 \begin{definition}
     Dados $z_1, z_2 \in \mathbb{D}$, definimos:
-    $$\rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|$$
+    $$\rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|.$$
 
     Observamos que si $1-\overline{z_1}z_2 = 0$ entonces $\overline{z_1}z_2 = 1 \Rightarrow |z_1||z_2| = 1$.
     Como esto no ocurre, $\rho$ está bien definida.
@@ -422,13 +422,13 @@ La primera parte del teorema de Schwarz-Pick se puede reescribir usando $\rho$.
 
 Sea $f$ holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$.
 Entonces:
-$$\rho(f(z_1), f(z_2)) \leq \rho(z_1, z_2), \quad \text{si } z_1, z_2 \in \mathbb{D}$$
+$$\rho(f(z_1), f(z_2)) \leq \rho(z_1, z_2), \quad \text{si } z_1, z_2 \in \mathbb{D}.$$
 Además, se da la igualdad para algún par de puntos distintos $z_1, z_2 \in \mathbb{D}$ si y solo si $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$, en cuyo caso se da la igualdad para todo $z_1, z_2 \in \mathbb{D}$.
 
 Vamos a ver que $\rho$ es una distancia en $\mathbb{D}$.
 \begin{align*}
-    \rho: & D \times D \to \mathbb{R}                                                            \\
-          & (z_1, z_2) \mapsto \rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|
+    \rho: & D \times D \to \mathbb{R},                                                            \\
+          & (z_1, z_2) \mapsto \rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right|.
 \end{align*}
 
 \begin{itemize}
@@ -440,23 +440,23 @@ Vamos a ver que $\rho$ es una distancia en $\mathbb{D}$.
 
 \begin{lemma}
     Para todo $a, z \in \mathbb{D}$,
-    $$\frac{||z|-|a||}{1-|a||z|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|a||z|}$$
+    $$\frac{||z|-|a||}{1-|a||z|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|a||z|}.$$
 \end{lemma}
 
 Observamos que si $a, z \in \mathbb{D}$, tenemos:
-$$\rho(a, z) = \left|\frac{z-a}{1-\bar{a}z}\right| = |S_a(z)| < 1, \quad S_a \in \mathcal{M}, S_a(\mathbb{D}) = \mathbb{D}$$
+$$\rho(a, z) = \left|\frac{z-a}{1-\bar{a}z}\right| = |S_a(z)| < 1, \quad S_a \in \mathcal{M}, S_a(\mathbb{D}) = \mathbb{D}.$$
 
 Dados $a \in \mathbb{D}$ y $0 < r < 1$, denotamos:
-$$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}$$
+$$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}.$$
 Entonces, dado $z \in \mathbb{D}$, se tiene que:
-$$z \in \Delta(a, r) \Leftrightarrow \rho(z, a) < r \Leftrightarrow |S_a(z)| < r \Leftrightarrow S_a(z) \in D(0, r) \Leftrightarrow z \in S_a^{-1}(D(0, r)) \Leftrightarrow z \in T_a(D(0, r))$$
+$$z \in \Delta(a, r) \Leftrightarrow \rho(z, a) < r \Leftrightarrow |S_a(z)| < r \Leftrightarrow S_a(z) \in D(0, r) \Leftrightarrow z \in S_a^{-1}(D(0, r)) \Leftrightarrow z \in T_a(D(0, r)).$$
 Entonces $\Delta(a, r) = T_a(D(0, r))$.
 
 $T_a(\partial D(0, r))$ es una circunferencia $C$ contenida en $\mathbb{D}$.
 Sean $c$ y $R$ el centro y el radio de $C$, con $c \in \mathbb{C}$, $R > 0$.
 Entonces $T_a(D(0, r)) = D(c, R)$.
 Por tanto:
-$$\Delta(a, r) = T_a(D(0, r)) = D(c, R)$$
+$$\Delta(a, r) = T_a(D(0, r)) = D(c, R).$$
 Así que $\Delta(a, r)$ es un disco euclídeo.
 Como $T_a(0) = a$ tenemos que $a \in \Delta(a, r)$, pero $a$ no tiene por qué ser el centro del disco.
 
@@ -465,70 +465,70 @@ Si $a = 0$, $T_a(z) = z$ luego $T_a(D(0, r)) = D(0, r)$.
 Supongamos que $a \neq 0$.
 Sea $L$ la recta que pasa por 0 y $a$.
 Calculamos $S_a(L)$ hallando la imagen de tres puntos.
-$$S_a(0) = -a, \quad S_a(a) = 0, \quad S_a\left(\frac{1}{\bar{a}}\right) = \infty$$
+$$S_a(0) = -a, \quad S_a(a) = 0, \quad S_a\left(\frac{1}{\bar{a}}\right) = \infty.$$
 $L' = S_a(L)$ es la recta que pasa por 0 y por $-a$, luego $L'$ coincide con $L$.
 Como $L'$ es perpendicular a $\partial D(0, r)$ en los dos puntos de corte y $T_a$ preserva ángulos en esos dos puntos, entonces $L$ es perpendicular a $C$.
 Por tanto $c$ está en $L$.
 
 El diámetro $\left[-r\frac{a}{|a|}, r\frac{a}{|a|}\right]$ se aplica mediante $T_a$ en un diámetro de $C$, que es:
-$$\left[T_a\left(-r\frac{a}{|a|}\right), T_a\left(r\frac{a}{|a|}\right)\right]$$
+$$\left[T_a\left(-r\frac{a}{|a|}\right), T_a\left(r\frac{a}{|a|}\right)\right].$$
 Entonces:
 \begin{align*}
-    c & = \frac{1}{2} \left(T_a\left(-r\frac{a}{|a|}\right) + T_a\left(r\frac{a}{|a|}\right)\right) \\
-    R & = \frac{1}{2} \left|T_a\left(r\frac{a}{|a|}\right) - T_a\left(-r\frac{a}{|a|}\right)\right|
+    c & = \frac{1}{2} \left(T_a\left(-r\frac{a}{|a|}\right) + T_a\left(r\frac{a}{|a|}\right)\right), \\
+    R & = \frac{1}{2} \left|T_a\left(r\frac{a}{|a|}\right) - T_a\left(-r\frac{a}{|a|}\right)\right|.
 \end{align*}
 
 Calculamos:
 \begin{align*}
-    T_a\left(-r\frac{a}{|a|}\right) = \frac{-r\frac{a}{|a|}+a}{1-\bar{a}r\frac{a}{|a|}} = \frac{-ra+a|a|}{|a|-r|a|^2} = \frac{a(|a|-r)}{|a|(1-r|a|)} \\
-    T_a\left(r\frac{a}{|a|}\right) = \frac{r\frac{a}{|a|}+a}{1+\bar{a}r\frac{a}{|a|}} = \frac{ra+a|a|}{|a|+r|a|^2} = \frac{a(|a|+r)}{|a|(1+r|a|)}
+    T_a\left(-r\frac{a}{|a|}\right) = \frac{-r\frac{a}{|a|}+a}{1-\bar{a}r\frac{a}{|a|}} = \frac{-ra+a|a|}{|a|-r|a|^2} = \frac{a(|a|-r)}{|a|(1-r|a|)}, \\
+    T_a\left(r\frac{a}{|a|}\right) = \frac{r\frac{a}{|a|}+a}{1+\bar{a}r\frac{a}{|a|}} = \frac{ra+a|a|}{|a|+r|a|^2} = \frac{a(|a|+r)}{|a|(1+r|a|)}.
 \end{align*}
 Se llega a que:
 \begin{align*}
-    c & = \frac{1-r^2}{1-r^2|a|^2}a     \\
-    R & = \frac{r(1-|a|^2)}{1-r^2|a|^2}
+    c & = \frac{1-r^2}{1-r^2|a|^2}a,     \\
+    R & = \frac{r(1-|a|^2)}{1-r^2|a|^2}.
 \end{align*}
 
 Observamos que los puntos de mayor y menor módulo de $C$ son $T_a\left(-r\frac{a}{|a|}\right)$ y $T_a\left(r\frac{a}{|a|}\right)$
 Veamos que, de hecho,
-$$\left|T_a\left(-r\frac{a}{|a|}\right)\right| = \frac{||a|-r|}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} = \left|T_a\left(r\frac{a}{|a|}\right)\right|$$
+$$\left|T_a\left(-r\frac{a}{|a|}\right)\right| = \frac{||a|-r|}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} = \left|T_a\left(r\frac{a}{|a|}\right)\right|.$$
 \begin{itemize}
     \item Si $|a| \geq r$,
-          $$\frac{|a|-r}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow |a| + r|a|^2 - r - r^2|a| \leq r + |a| - r^2|a| - r|a|^2 \Leftrightarrow 2r|a|^2 \leq 2r \Leftrightarrow |a| \leq 1$$
+          $$\frac{|a|-r}{1-r|a|} \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow |a| + r|a|^2 - r - r^2|a| \leq r + |a| - r^2|a| - r|a|^2 \Leftrightarrow 2r|a|^2 \leq 2r \Leftrightarrow |a| \leq 1.$$
     \item Si $|a| < r$ se razona de forma análoga.
 \end{itemize}
 
 Entonces, para todo $z \in \partial D(0, r)$ se tiene que:
 \begin{align*}
      & \frac{||a|-r|}{1-r|a|} \leq T_a(z) \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \frac{||a|-r|}{1-r|a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \\
-     & \Leftrightarrow \frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|
+     & \Leftrightarrow \frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|.
 \end{align*}
 Hemos probado esto para $a, z \in \mathbb{D}$, $a, z \neq 0$.
 Pero si $a = 0$ o $z = 0$ la desigualdad es trivial.
 Por tanto, esta cadena de desigualdades es cierta para todo $a, z \in \mathbb{D}$.
 
 Cambiando $a$ por $-a$, tenemos:
-$$\frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|, \quad z, a \in \mathbb{D}$$
+$$\frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|, \quad z, a \in \mathbb{D}.$$
 Las desigualdades primera y segunda corresponden al último lema.
 
 Por otro lado,
-$$\rho(a, z) \leq |z| + |a|, \quad z, a \in \mathbb{D}$$
+$$\rho(a, z) \leq |z| + |a|, \quad z, a \in \mathbb{D}.$$
 Como $\rho(z_1, 0) = |z_1|$ y $\rho(0, z_2) = |z_2|$, entonces:
-$$\rho(a, z) \leq \rho(a, 0) + \rho(0, z), \quad a, z \in \mathbb{D}$$
-Esto es un caso particular de la desigualdad triangular.
+$$\rho(a, z) \leq \rho(a, 0) + \rho(0, z), \quad a, z \in \mathbb{D}.$$
+Este es un caso particular de la desigualdad triangular.
 
 Sean $z_1, z_2, z_3 \in \mathbb{D}$.
 Tenemos, usando el teorema de Schwarz-Pick,
 \begin{align*}
-    \rho(z_1, z_3) & = \rho(S_{z_2}(z_1), S_{z_2}(z_3)) \leq \rho(S_{z_2}(z_1, 0)) + \rho(0, S_{z_2}(z_3)) =                 \\
-                   & = \rho(S_{z_2}(z_1), S_{z_2}(z_2)) + \rho(S_{z_2}(z_2), S_{z_2}(z_3)) = \rho(z_1, z_2) + \rho(z_2, z_3)
+    \rho(z_1, z_3) & = \rho(S_{z_2}(z_1), S_{z_2}(z_3)) \leq \rho(S_{z_2}(z_1, 0)) + \rho(0, S_{z_2}(z_3)) =                  \\
+                   & = \rho(S_{z_2}(z_1), S_{z_2}(z_2)) + \rho(S_{z_2}(z_2), S_{z_2}(z_3)) = \rho(z_1, z_2) + \rho(z_2, z_3).
 \end{align*}
 Así que $\rho$ verifica la desigualdad triangular.
 Por tanto, $\rho$ es una distancia en $\mathbb{D}$ que se denomina distancia pseudohiperbólica en $\mathbb{D}$.
-$$\rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right| = |S_{z_1}(z_2)| < 1$$
+$$\rho(z_1, z_2) = \left|\frac{z_2-z_1}{1-\overline{z_1}z_2}\right| = |S_{z_1}(z_2)| < 1.$$
 
 Si $a \in \mathbb{D}$ y $0 < r < 1$, el disco pseudohiperbólico de centro $a$ y radio $r$ es:
-$$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}$$
+$$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}.$$
 No consideramos $r \geq 1$ porque $\Delta(a, r) = \mathbb{D}$.
 Sabemos que $\Delta(a, r)$ es un disco euclídeo, en concreto un disco abierto de centro $\frac{1-r^2}{1-r^2|a|^2}a$ y radio $\frac{r(1-|a|^2)}{1-r^2|a|^2}$.
 Si $a = 0$, $\Delta(a, r) = D(0, r)$.
@@ -536,9 +536,9 @@ Si $a = 0$, $\Delta(a, r) = D(0, r)$.
 Esta distancia es equivalente a la distancia euclídea en $\mathbb{D}$.
 
 Si $T \in \mathcal{M}$ con $T(\mathbb{D}) = \mathbb{D}$, se tiene que:
-$$\rho(T(z_1), T(z_2)) = \rho(z_1, z_2), \quad z_1, z_2 \in \mathbb{D}$$
+$$\rho(T(z_1), T(z_2)) = \rho(z_1, z_2), \quad z_1, z_2 \in \mathbb{D}.$$
 Además, si $f$ es holomorfa en $\mathbb{D}$ y $f(\mathbb{D}) \subset \mathbb{D}$, se tiene que:
-$$\rho(f(z_1), f(z_2)) \leq \rho(z_1, z_2), \quad z_1, z_2 \in \mathbb{D}$$
+$$\rho(f(z_1), f(z_2)) \leq \rho(z_1, z_2), \quad z_1, z_2 \in \mathbb{D}.$$
 
 \section{Subordinación}
 \begin{definition}
@@ -555,18 +555,18 @@ Veamos algunas propiedades:
     \item $f(0) = F(w(0)) = F(0)$.
     \item $f(\mathbb{D}) = F(w(\mathbb{D})) \subset F(\mathbb{D})$.
     \item Si $0 < r < 1$, veamos que
-          $$f(D(0, r)) \subset F(D(0, r))$$
+          $$f(D(0, r)) \subset F(D(0, r)).$$
           Si $z \in D(0, r)$, $f(z) = F(w(z))$.
           Por el lema de Schwarz,
-          $$|w(z)| \leq |z| < r$$
+          $$|w(z)| \leq |z| < r.$$
     \item Si $0 < r < 1$, veamos que
-          $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|$$
+          $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|.$$
           Si $|z| = r$, como por el lema de Schwarz $|w(z)| \leq |z| = r$, entonces:
-          $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|$$
+          $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|.$$
     \item Si $|z| = r$, como por el lema de Schwarz $|w'(0)| \leq 1$ y además $f'(0) = F'(w(0))w'(0) = F'(0)w'(0)$, entonces:
-          $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|$$
+          $$|f(z)| = |F(w(z))| \leq \max_{|z| \leq r} |F(z)| \Rightarrow \max_{|z|=r} |f(z)| \leq \max_{|z| \leq r} |F(z)|.$$
     \item No se verifica para todo $r \in (0, 1)$ que
-          $$\max_{|z|=r} |f'(z)| \leq \max_{|z|=r} |F'(z)|$$
+          $$\max_{|z|=r} |f'(z)| \leq \max_{|z|=r} |F'(z)|.$$
 \end{itemize}
 
 \begin{example}[Contraejemplo]
@@ -574,22 +574,22 @@ Veamos algunas propiedades:
     Podemos tomar $w(z) = z^2$, que verifica $w(0) = 0$ y $w(\mathbb{D}) \subset \mathbb{D}$, luego $f \prec F$.
     Si $0 < r < 1$,
     \begin{align*}
-        \max_{|z|=r} |f'(z)| & = \max_{|z|=r} 2|z| = 2r \\
-        \max_{|z|=r} |F'(z)| & = 1
+        \max_{|z|=r} |f'(z)| & = \max_{|z|=r} 2|z| = 2r, \\
+        \max_{|z|=r} |F'(z)| & = 1.
     \end{align*}
     Observamos que no se cumple que $2r \leq 1$ para todo $r \in (0, 1)$.
 \end{example}
 
 Por la segunda parte del teorema de Schwarz-Pick,
-$$\frac{|w'(z)|}{1-|w(z)|^2} \leq \frac{1}{1-|z|^2}, \quad z \in \mathbb{D}$$
+$$\frac{|w'(z)|}{1-|w(z)|^2} \leq \frac{1}{1-|z|^2}, \quad z \in \mathbb{D}.$$
 Entonces, si $z \in \mathbb{D}$,
-$$|f'(z)| = |F'(w(z))||w'(z)| \leq |F'(w(z))|\frac{1-|w(z)|^2}{1-|z|^2} \Leftrightarrow (1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))|$$
+$$|f'(z)| = |F'(w(z))||w'(z)| \leq |F'(w(z))|\frac{1-|w(z)|^2}{1-|z|^2} \Leftrightarrow (1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))|.$$
 Entonces, si $0 < r \leq 1$, tenemos que:
-$$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+$$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|.$$
 
 Veamos que esto es cierto.
 Si $|z| < r$, como $|w(z)| \leq |z| < r$,
-$$(1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+$$(1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|.$$
 
 \begin{proposition}
     Sean $f, F$ holomorfas en $\mathbb{D}$, con $f \prec F$.
@@ -598,38 +598,35 @@ $$(1-|z|^2)|f'(z)| \leq (1-|w(z)|^2)|F'(w(z))| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)
         \item $f(0) = F(0)$.
         \item $f(\mathbb{D}) \subset F(\mathbb{D})$.
         \item Para todo $r \in (0, 1)$,
-              $$f(D(0, r)) \subset F(D(0, r))$$
+              $$f(D(0, r)) \subset F(D(0, r)).$$
         \item Para todo $r \in (0, 1)$,
-              $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|$$
+              $$\max_{|z|=r} |f(z)| \leq \max_{|z|=r} |F(z)|.$$
         \item $|f'(0)| \leq |F'(0)|$.
         \item Para todo $r \in (0, 1]$,
-              $$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|$$
+              $$\sup_{|z|<r} (1-|z|^2)|f'(z)| \leq \sup_{|z|<r} (1-|z|^2)|F'(z)|.$$
     \end{enumerate}
 \end{proposition}
 
 La última propiedad tiene mucha relación con el espacio de Bloch $\mathcal{B}$ de las funciones holomorfas en $\mathbb{D}$ que satisfacen:
-$$\sup_{z \in \mathbb{D}} (1-|z|^2)|f'(z)| < \infty$$
+$$\sup_{z \in \mathbb{D}} (1-|z|^2)|f'(z)| < \infty.$$
 
 \begin{remark}
     Veamos qué se puede decir sobre los coeficientes de Taylor.
     Sean $f$ y $F$ holomorfas en $\mathbb{D}$ con $f \prec F$.
     Consideramos los desarrollos de Taylor de $f$ y $F$ para $z \in \mathbb{D}$:
-    \begin{align*}
-        f(z) & = \sum_{n=0}^\infty a_nz^n \\
-        F(z) & = \sum_{n=0}^\infty A_nz^n
-    \end{align*}
+    $$f(z) = \sum_{n=0}^\infty a_nz^n, \quad F(z) = \sum_{n=0}^\infty A_nz^n.$$
 
     Usando (1), observamos que:
     $$\begin{cases}
             a_0 = f(0) \\
             A_0 = F(0)
-        \end{cases} \Rightarrow a_0 = A_0$$
+        \end{cases} \Rightarrow a_0 = A_0.$$
 
     Con (2), vemos que:
     $$\begin{cases}
             a_1 = f'(0) \\
             A_1 = F'(0)
-        \end{cases} \Rightarrow |a_1| \leq |A_1|$$
+        \end{cases} \Rightarrow |a_1| \leq |A_1|.$$
 
     No podemos decir nada más.
     Por ejemplo, dado $N \geq 2$, podemos considerar $f(z) = z^N$ y $F(z) = z$.
@@ -646,7 +643,7 @@ $w$ es holomorfa en $\mathbb{D}$, $w(0) = F^{-1}(f(0)) = F^{-1}(F(0)) = 0$ y $w(
 Además, $f = F \circ w$.
 
 Por ejemplo:
-$$P(z) = \frac{1+z}{1-z}$$
+$$P(z) = \frac{1+z}{1-z}.$$
 Esta es una transformación de Möbius que aplica $\partial \mathbb{D}$ en el eje imaginario.
 $P(\mathbb{D})$ es el semiplano de la derecha $\{z \in \mathbb{C} : \Re(z) > 0\}$ y $P(0) = 1$.
 Entonces, si $f$ es holomorfa en $\mathbb{D}$, $f(\mathbb{D}) \subset \{z \in \mathbb{C} : \Re(z) > 0\}$ y $f(0) = P(0)$, entonces $f \prec P$.
@@ -665,7 +662,7 @@ Entonces:
     Si $f \in \mathcal{P}$, entonces:
     \begin{enumerate}
         \item Para todo $z \in \mathbb{D}$,
-              $$\frac{1-|z|}{1+|z|} \leq |f(z)| \leq \frac{1+|z|}{1-|z|}$$
+              $$\frac{1-|z|}{1+|z|} \leq |f(z)| \leq \frac{1+|z|}{1-|z|}.$$
         \item $|f'(0)| \leq 2$
     \end{enumerate}
 \end{theorem}
@@ -674,26 +671,26 @@ Veamos cuáles son las aplicaciones conformes de $\mathbb{D}$ sobre $\mathbb{D}$
 
 Sea $f$ una aplicación conforme de $\mathbb{D}$ sobre $\mathbb{D}$.
 Sea $a = f(0) \in \mathbb{D}$.
-Aplicando la segunda parte del teorema de Schwarz-Pick a $f$ en 0, tenemos:
-$$\frac{|f'(0)|}{1-|a|^2} \leq 1$$
-y si se diera igualdad, $f$ sería una transformación de Möbius.
+Aplicando la segunda parte del teorema de Schwarz-Pick a $f$ en 0, tenemos que
+$$\frac{|f'(0)|}{1-|a|^2} \leq 1,$$
+y si se diera igualdad $f$ sería una transformación de Möbius.
 
 Sea $g = f^{-1}$, que es holomorfa en $\mathbb{D}$ y $g(\mathbb{D}) \subset \mathbb{D}$.
-Aplicando lo mismo en el punto $a$ tenemos:
-$$|g'(a)| \leq \frac{1}{1-|a|^2}$$
-y si se diera igualdad, $g$ sería una transformación de Möbius.
+Aplicando lo mismo en el punto $a$ tenemos que
+$$|g'(a)| \leq \frac{1}{1-|a|^2},$$
+y si se diera igualdad $g$ sería una transformación de Möbius.
 
 Tenemos que:
-$$|f'(0)| \leq 1-|a|^2 \leq \frac{1}{|g'(a)|} = |f'(0)|$$
+$$|f'(0)| \leq 1-|a|^2 \leq \frac{1}{|g'(a)|} = |f'(0)|.$$
 Por tanto se da igualdad, así que $f$ es una transformación de Möbius con $f(\mathbb{D}) = \mathbb{D}$.
 En conclusión, las aplicaciones conformes de $\mathbb{D}$ sobre $\mathbb{D}$ son:
-$$\{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{\lambda S_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{\lambda \varphi_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\}$$
+$$\{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{\lambda S_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{\lambda \varphi_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\}.$$
 
 \section{La métrica de Poincaré}
 Si $\gamma$ es un camino en $\mathbb{C}$ y $f: \sop(\gamma) \to \mathbb{C}$ es continua, entonces:
 \begin{align*}
-    \int_\gamma f(z)dz   & = \int_a^b f(\gamma(t))\gamma'(t)dt   \\
-    \int_\gamma f(z)|dz| & = \int_a^b f(\gamma(t))|\gamma'(t)|dt
+    \int_\gamma f(z)dz   & = \int_a^b f(\gamma(t))\gamma'(t)dt,   \\
+    \int_\gamma f(z)|dz| & = \int_a^b f(\gamma(t))|\gamma'(t)|dt.
 \end{align*}
 siendo $\gamma: [a, b] \to \mathbb{C}$ una parametrización $\mathcal{C}^1$ a trozos de $\gamma$.
 
@@ -702,22 +699,22 @@ Veamos algunas propiedades:
     \item Si $f$ es real, entonces $\int_\gamma f(z)|dz| \in \mathbb{R}$.
           Si además $f$ es no negativa, entonces $\int_\gamma f(z)|dz| \geq 0$.
     \item Si $f(z) = 1$,
-          $$\int_\gamma f(z)|dz| = \int_a^b |\gamma'(t)|dt = long(\gamma)$$
-    \item $$\left|\int_\gamma f(z)dz\right| \leq \int_\gamma |f(z)||dz| \leq \max_{z \in \sop(\gamma)} |f(z)|long(\gamma)$$
+          $$\int_\gamma f(z)|dz| = \int_a^b |\gamma'(t)|dt = long(\gamma).$$
+    \item $$\left|\int_\gamma f(z)dz\right| \leq \int_\gamma |f(z)||dz| \leq \max_{z \in \sop(\gamma)} |f(z)|long(\gamma).$$
     \item Si $f, g: \sop(\gamma) \to \mathbb{R}$ continuas y $f \leq g$, entonces:
-          $$\int_\gamma f(z)|dz| \leq \int_\gamma g(z)|dz|$$
-    \item $$\int_{\gamma_1 + \gamma_2} f(z)|dz| = \int_{\gamma_1} f(z)|dz| + \int_{\gamma_2} f(z)|dz|$$
-    \item $$\int_{-\gamma} f(z)|dz| = \int_\gamma f(z)|dz|$$
-    \item $$\int_\gamma (af(z) + bg(z))|dz| = a\int_\gamma f(z)|dz| + b\int_\gamma g(z)|dz|, \quad a, b \in \mathbb{C}$$
+          $$\int_\gamma f(z)|dz| \leq \int_\gamma g(z)|dz|.$$
+    \item $$\int_{\gamma_1 + \gamma_2} f(z)|dz| = \int_{\gamma_1} f(z)|dz| + \int_{\gamma_2} f(z)|dz|.$$
+    \item $$\int_{-\gamma} f(z)|dz| = \int_\gamma f(z)|dz|.$$
+    \item $$\int_\gamma (af(z) + bg(z))|dz| = a\int_\gamma f(z)|dz| + b\int_\gamma g(z)|dz|, \quad a, b \in \mathbb{C}.$$
 \end{enumerate}
 
 Sean $z_1, z_2 \in \mathbb{D}$.
 Sea $\gamma$ un camino en $\mathbb{D}$ con origen $z_1$ y extremo $z_2$.
 Podemos considerar la integral
-$$\int_\gamma \frac{1}{1-|z|^2}|dz| = \int_\gamma \frac{|dz|}{1-|z|^2}$$
+$$\int_\gamma \frac{1}{1-|z|^2}|dz| = \int_\gamma \frac{|dz|}{1-|z|^2}.$$
 Como la función $z \in \mathbb{D} \mapsto \frac{1}{1-|z|^2}$ es real y positiva, entonces la integral es no negativa.
 Definimos:
-$$\delta(z_1, z_2) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } z_1 \text{ y extremo } z_2\right\}$$
+$$\delta(z_1, z_2) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } z_1 \text{ y extremo } z_2\right\}.$$
 Entonces:
 \begin{itemize}
     \item $\delta(z_1, z_2) \geq 0$.
@@ -727,11 +724,11 @@ Entonces:
 
 Sean $z_1, z_2, z_3 \in \mathbb{D}$.
 Consideramos:
-$$A_{12} = \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } z_1 \text{ y extremo } z_2\right\}$$
+$$A_{12} = \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } z_1 \text{ y extremo } z_2\right\}.$$
 Se definen de manera análoga $A_{13}$ y $A_{23}$.
 Observamos que $A_{12} + A_{23} \subset A_{13}$.
 Por tanto:
-$$\inf(A_{12} + A_{13}) = \inf A_{12} + \inf A_{23} \geq \inf A_{13} \Leftrightarrow \delta(z_1, z_3) \leq \delta(z_1, z_2) + \delta(z_2, z_3)$$
+$$\inf(A_{12} + A_{13}) = \inf A_{12} + \inf A_{23} \geq \inf A_{13} \Leftrightarrow \delta(z_1, z_3) \leq \delta(z_1, z_2) + \delta(z_2, z_3).$$
 
 $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en $\mathbb{D}$.
 
@@ -739,9 +736,9 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
     \hfill
     \begin{enumerate}
         \item Si $f$ es holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$, entonces:
-              $$\delta(f(z_1), f(z_2)) \leq \delta(z_1, z_2), \quad \forall z_1, z_2 \in \mathbb{D}$$
+              $$\delta(f(z_1), f(z_2)) \leq \delta(z_1, z_2), \quad \forall z_1, z_2 \in \mathbb{D}.$$
         \item Si $T \in \mathcal{M}$ con $T(\mathbb{D}) = \mathbb{D}$, entonces:
-              $$\delta(T(z_1), T(z_2)) = \delta(z_1, z_2), \quad \forall z_1, z_2 \in \mathbb{D}$$
+              $$\delta(T(z_1), T(z_2)) = \delta(z_1, z_2), \quad \forall z_1, z_2 \in \mathbb{D}.$$
     \end{enumerate}
 \end{proposition}
 
@@ -750,19 +747,19 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
     \begin{enumerate}
         \item Sea $f$ holomorfa en $\mathbb{D}$ con $f(\mathbb{D}) \subset \mathbb{D}$ y sean $z_1, z_2 \in \mathbb{D}$.
               \begin{align*}
-                  \delta(z_1, z_2)       & = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino de } z_1 \text{ a } z_2\right\}       \\
-                  \delta(f(z_1), f(z_2)) & = \inf \left\{\int_\Gamma \frac{|dw|}{1-|w|^2} : \Gamma \text{ camino de } f(z_1) \text{ a } f(z_2)\right\}
+                  \delta(z_1, z_2)       & = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino de } z_1 \text{ a } z_2\right\},       \\
+                  \delta(f(z_1), f(z_2)) & = \inf \left\{\int_\Gamma \frac{|dw|}{1-|w|^2} : \Gamma \text{ camino de } f(z_1) \text{ a } f(z_2)\right\}.
               \end{align*}
 
               Sea $\gamma$ un camino en $\mathbb{D}$ con origen $z_1$ y extremo $z_2$, con parametrización $\mathcal{C}^1$ a trozos $\gamma: [a, b] \to \mathbb{C}$.
               Entonces $\Gamma = f \circ \gamma: [a, b] \to \mathbb{C}$ es una parametrización $\mathcal{C}^1$ a trozos de un camino $\Gamma$ en $\mathbb{D}$ con origen $f(z_1)$ y extremo $f(z_2)$.
               Tenemos:
-              $$\int_\Gamma \frac{|dw|}{1-|w|^2} = \int_a^b \frac{|\Gamma'(t)|}{1-|\Gamma(t)|^2}dt = \int_a^b \frac{|f'(\gamma(t))||\gamma'(t)|}{1-|f(\gamma(t))|^2}dt$$
+              $$\int_\Gamma \frac{|dw|}{1-|w|^2} = \int_a^b \frac{|\Gamma'(t)|}{1-|\Gamma(t)|^2}dt = \int_a^b \frac{|f'(\gamma(t))||\gamma'(t)|}{1-|f(\gamma(t))|^2}dt.$$
               Usando la segunda parte del teorema de Schwarz-Pick:
-              $$\int_a^b \frac{|f'(\gamma(t))||\gamma'(t)|}{1-|f(\gamma(t))|^2}dt \leq \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt = \int_\gamma \frac{|dz|}{1-|z|^2}$$
+              $$\int_a^b \frac{|f'(\gamma(t))||\gamma'(t)|}{1-|f(\gamma(t))|^2}dt \leq \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt = \int_\gamma \frac{|dz|}{1-|z|^2}.$$
 
               Luego tenemos que:
-              $$\delta(f(z_1), f(z_2)) \leq \int_\gamma \frac{|dz|}{1-|z|^2}, \quad \forall \gamma$$
+              $$\delta(f(z_1), f(z_2)) \leq \int_\gamma \frac{|dz|}{1-|z|^2}, \quad \text{para todo camino } \gamma.$$
               Por tanto, $\delta(f(z_1), f(z_2)) \leq \gamma(z_1, z_2)$.
 
         \item Se tiene aplicando (1) a $T$ y $T^{-1}$.
@@ -771,70 +768,70 @@ $\delta$ es una distancia en $\mathbb{D}$, denominada distancia hiperbólica en 
 
 \begin{proposition}
     Si $z_1, z_2 \in \mathbb{D}$, entonces:
-    $$\delta(z_1, z_2) = \frac{1}{2} \Log \frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
+    $$\delta(z_1, z_2) = \frac{1}{2} \Log\left(\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}\right).$$
 \end{proposition}
 
 \begin{proof}
     Si $z_1 = z_2$ es trivial.
     Supongamos $z_1 \neq z_2$.
     Consideramos:
-    $$S_{z_1}(z) = \frac{z-z_1}{1-\overline{z_1}z}$$
+    $$S_{z_1}(z) = \frac{z-z_1}{1-\overline{z_1}z}.$$
     Se tiene que $S_{z_1} \in \mathcal{M}$, $S_{z_1}(\mathbb{D}) = \mathbb{D}$ y $S_{z_1}(z_1) = 0$.
     Sabemos que $S_{z_1}(z_2) \neq 0$.
     Además,
-    $$\delta(z_1, z_2) = \delta(0, S_{z_1}(z_2))$$
+    $$\delta(z_1, z_2) = \delta(0, S_{z_1}(z_2)).$$
 
     Tomamos $\lambda \in \mathbb{C}$, $|\lambda| = 1$, tal que $\lambda S_{z_1}(z_2) \in (0, 1)$.
     Sea $r = \lambda S_{z_1}(z_2)$.
     Entonces:
-    $$\delta(z_1, z_2) = \delta(0, S_{z_1}(z_2)) = \delta(0, r)$$
+    $$\delta(z_1, z_2) = \delta(0, S_{z_1}(z_2)) = \delta(0, r).$$
     Además, $r = |\lambda S_{z_1}(z_2)| = |S_{z_1}(z_2)| = \rho(z_1, z_2)$.
     Calculamos $\delta(0, r)$.
-    $$\delta(0, r) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } 0 \text{ y extremo } r\right\}$$
+    $$\delta(0, r) = \inf \left\{\int_\gamma \frac{|dz|}{1-|z|^2} : \gamma \text{ camino en } \mathbb{D} \text{ con origen } 0 \text{ y extremo } r\right\}.$$
     Si $\gamma = [0, r]$,
     \begin{align*}
-         & \int_\gamma \frac{|dz|}{1-|z|^2} = \int_0^r \frac{dt}{1-t^2} = \frac{1}{2} \int_0^r \left(\frac{1}{1-t} + \frac{1}{1+t}\right)dt = = \frac{1}{2} \left[-\Log(1-t) + \Log(1+t)\right]_0^r = \\
-         & = \frac{1}{2} \left[\Log \frac{1+t}{1-t}\right]_0^r = \frac{1}{2} \Log\frac{1+r}{1-r}
+         & \int_\gamma \frac{|dz|}{1-|z|^2} = \int_0^r \frac{dt}{1-t^2} = \frac{1}{2} \int_0^r \left(\frac{1}{1-t} + \frac{1}{1+t}\right)dt = \frac{1}{2} \left[-\Log(1-t) + \Log(1+t)\right]_0^r = \\
+         & = \frac{1}{2} \left[\Log\left(\frac{1+t}{1-t}\right)\right]_0^r = \frac{1}{2} \Log\left(\frac{1+r}{1-r}\right).
     \end{align*}
-    Luego $\delta(0, r) \leq \frac{1}{2} \Log\frac{1+r}{1-r}$.
+    Luego $\delta(0, r) \leq \frac{1}{2} \Log\left(\frac{1+r}{1-r}\right)$.
 
     Sea $\gamma$ un camino en $\mathbb{D}$ con origen 0 y extremo $r$.
     Veamos que
-    $$\int_\gamma \frac{|dz|}{1-|z|^2} \geq \frac{1}{2} \Log\frac{1+r}{1-r}$$
+    $$\int_\gamma \frac{|dz|}{1-|z|^2} \geq \frac{1}{2} \Log\left(\frac{1+r}{1-r}\right).$$
     Sea $\gamma: [a, b] \to \mathbb{C}$ una parametrización $\mathcal{C}^1$ a trozos de $\gamma$.
     Sean $u = \Re(f)$ y $v= \Im(f)$, de forma que $\gamma = u + iv$.
     $u, v: [a, b] \to \mathbb{R}$, $\mathcal{C}^1$ a trozos.
-    $$\int_\gamma \frac{|dz|}{1+|z|^2} = \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt$$
+    $$\int_\gamma \frac{|dz|}{1+|z|^2} = \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt.$$
     Tenemos que:
     $$\begin{cases}
-            |\gamma(t)|^2 \geq u(t)^2 \Rightarrow 0 < 1-|\gamma(t)|^2 \leq 1-u(t)^2 \Rightarrow \frac{1}{1-|\gamma(t)|^2} \geq \frac{1}{1-u(t)^2} \\
-            |\gamma'(t)| \geq |u'(t)| \geq 0
+            |\gamma(t)|^2 \geq u(t)^2 \Rightarrow 0 < 1-|\gamma(t)|^2 \leq 1-u(t)^2 \Rightarrow \frac{1}{1-|\gamma(t)|^2} \geq \frac{1}{1-u(t)^2}, \\
+            |\gamma'(t)| \geq |u'(t)| \geq 0.
         \end{cases}$$
     Así que:
-    $$\frac{|\gamma'(t)|}{1-|\gamma(t)|^2} \geq \frac{|u'(t)|}{1-u(t)^2} \geq \frac{u'(t)}{1-u(t)^2}$$
+    $$\frac{|\gamma'(t)|}{1-|\gamma(t)|^2} \geq \frac{|u'(t)|}{1-u(t)^2} \geq \frac{u'(t)}{1-u(t)^2}.$$
     Luego:
     \begin{align*}
-         & \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt \geq \int_a^b \frac{u'(t)}{1-u(t)^2}dt = \frac{1}{2} \int_a^b \left(\frac{u'(t)}{1-u(t)} + \frac{u'(t)}{1+u(t)}\right)dt = \\
-         & = \frac{1}{2} \left[-\Log(1-u(t)) + \Log(1+u(t))\right]_a^b = \frac{1}{2} \left[\Log \frac{1+u(t)}{1-u(t)}\right]_a^b = \frac{1}{2} \Log\frac{1+r}{1-r}
+         & \int_a^b \frac{|\gamma'(t)|}{1-|\gamma(t)|^2}dt \geq \int_a^b \frac{u'(t)}{1-u(t)^2}dt = \frac{1}{2} \int_a^b \left(\frac{u'(t)}{1-u(t)} + \frac{u'(t)}{1+u(t)}\right)dt =        \\
+         & = \frac{1}{2} \left[-\Log(1-u(t)) + \Log(1+u(t))\right]_a^b = \frac{1}{2} \left[\Log\left(\frac{1+u(t)}{1-u(t)}\right)\right]_a^b = \frac{1}{2} \Log\left(\frac{1+r}{1-r}\right),
     \end{align*}
     porque $u(a) = 0$ y $u(b) = r$.
     Por tanto,
-    $$\delta(z_1, z_2) = \delta(0, r) = \frac{1}{2} \Log\frac{1+r}{1-r} = \frac{1}{2} \log\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}$$
+    $$\delta(z_1, z_2) = \delta(0, r) = \frac{1}{2} \Log\left(\frac{1+r}{1-r}\right) = \frac{1}{2} \log\left(\frac{1+\rho(z_1, z_2)}{1-\rho(z_1, z_2)}\right).$$
 \end{proof}
 
 \begin{remark}
-    Sea $h(x) = \frac{1}{2} \Log \frac{1+x}{1-x}$, $x \in [0, 1)$.
+    Sea $h(x) = \frac{1}{2} \Log\left(\frac{1+x}{1-x}\right)$, $x \in [0, 1)$.
     Observamos que si $x < 1$, entonces $1+x \geq 1-x > 0 \Rightarrow \frac{1+x}{1-x} \geq 1$, así que $h: [0, 1) \to [0, \infty)$.
     $h$ es creciente, con $h(0) = 0$ y $\lim\limits_{x \to 1^-} h(x) = \infty$.
     Podemos escribir $\delta = h \circ \rho : \mathbb{D} \times \mathbb{D} \xrightarrow{\rho} [0, 1) \xrightarrow{h} [0, \infty)$.
     Fijado $a \in \mathbb{D}$, si $\{z_n\}_{n=1}^\infty$ está en $\mathbb{D}$ con $|z_n| \to 1$, entonces:
-    $$\rho(a, z_n) = |S_a(z_n)| \xrightarrow[n \to \infty]{} 1$$
+    $$\rho(a, z_n) = |S_a(z_n)| \xrightarrow[n \to \infty]{} 1.$$
     Por tanto, $\delta(a, z_n) \xrightarrow[n \to \infty]{} \infty$.
 \end{remark}
 
 $\mathbb{D}$ con esta distancia $\delta$ es un modelo de la geometría hiperbólica.
 Si $\gamma$ es un camino en $\mathbb{D}$, la longitud de $\gamma$ es
-$$\int_\gamma \frac{|dz|}{1-|z|^2}$$
+$$\int_\gamma \frac{|dz|}{1-|z|^2}.$$
 La geodésica que une $z_1, z_2 \in \mathbb{D}$ es el camino $\gamma$ para el que:
-$$\delta(z_1, z_2) = \int_\gamma \frac{|dz|}{1-|z|^2}$$
+$$\delta(z_1, z_2) = \int_\gamma \frac{|dz|}{1-|z|^2}.$$
 Las geodésicas con respecto a $\delta$ son los diámetros de $\partial \mathbb{D}$ y los arcos de circunferencia ortogonales a $\partial \mathbb{D}$.
