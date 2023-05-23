@@ -21,9 +21,9 @@
     Diremos que $\mathcal{F}$ es compacta si para cada sucesión $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$ a una función que pertenece a $\mathcal{F}$.
 \end{definition}
 
-En el conjunto $Hol(D)$ de las funciones holomorfas en $D$, con $D$ abierto en $\mathbb{C}$, se puede definir una distancia $d$ tal que $(Hol(D), d)$ es un espacio métrico completo, y en el que:
-$$f_n \xrightarrow{d} f \Leftrightarrow f_n \to f \text{ uniformemente en cada subconjunto compacto de } D$$
-Si $\mathcal{F} \subset Hol(D)$, $\mathcal{F}$ es finitamente normal si y solo si $\mathcal{F}$ es relativamente compacto.
+En el conjunto $\Hol(D)$ de las funciones holomorfas en $D$, con $D$ abierto en $\mathbb{C}$, se puede definir una distancia $d$ tal que $(\Hol(D), d)$ es un espacio métrico completo, y en el que:
+$$f_n \xrightarrow{d} f \Leftrightarrow f_n \to f \text{ uniformemente en cada subconjunto compacto de } D.$$
+Si $\mathcal{F} \subset \Hol(D)$, $\mathcal{F}$ es finitamente normal si y solo si $\mathcal{F}$ es relativamente compacto.
 Los compactos coinciden con la definición de familia compacta dada.
 
 \section{El teorema de Montel}
@@ -48,7 +48,7 @@ Los compactos coinciden con la definición de familia compacta dada.
 \begin{lemma}
     Sean $C_1, C_2 \in \mathbb{C}$, con $C_1 \cap C_2 = \emptyset$ y $C_1, C_2 \neq \emptyset$.
     Si $C_1$ es compacto y $C_2$ es cerrado, entonces:
-    $$dist(C_1, C_2) = \inf\{|z_1-z_2| : z_1 \in C_1, z_2 \in C_2\} > 0$$
+    $$\dist(C_1, C_2) = \inf\{|z_1-z_2| : z_1 \in C_1, z_2 \in C_2\} > 0.$$
 \end{lemma}
 
 \begin{remark}
@@ -57,7 +57,7 @@ Los compactos coinciden con la definición de familia compacta dada.
 
 \begin{lemma}
     Sea $A \subset \mathbb{C}$, $A \neq \emptyset$ y sea
-    $$F: \mathbb{C} \to \mathbb{R}, \; F(z) = dist(z, A) = \inf \{|z-a| : a \in A\}$$
+    $$F: \mathbb{C} \to \mathbb{R}, \; F(z) = \dist(z, A) = \inf \{|z-a| : a \in A\}.$$
     Entonces $F$ es continua y $F(z) = 0$ para todo $z \in A$.
     Si además $A$ es cerrado, entonces $F(z) = \min \{|z-a| : a \in A\}$ para todo $z \in \mathbb{C}$.
 \end{lemma}
@@ -66,8 +66,8 @@ Los compactos coinciden con la definición de familia compacta dada.
     Sea $A \subset \mathbb{C}$, $A \neq \emptyset$ y sea $\varepsilon > 0$.
     Consideramos los conjuntos:
     \begin{align*}
-        B & = \{z \in \mathbb{C} : dist(z, A) < \varepsilon\}    \\
-        C & = \{z \in \mathbb{C} : dist(z, A) \leq \varepsilon\}
+        B & = \{z \in \mathbb{C} : \dist(z, A) < \varepsilon\},    \\
+        C & = \{z \in \mathbb{C} : \dist(z, A) \leq \varepsilon\}.
     \end{align*}
     Entonces $B$ es abierto y $C$ es cerrado, con $A \subset B \subset C$.
     Si además $A$ es acotado, entonces $B$ es acotado y $C$ es compacto.
@@ -78,26 +78,26 @@ Los compactos coinciden con la definición de familia compacta dada.
     Supongamos que $\mathcal{F}$ está uniformemente acotada en $D$.
     Sea $K$ un subconjunto compacto de $D$.
     Entonces existe $A > 0$ tal que:
-    $$|f(z_2)-f(z_1)| \leq A|z_2-z_1|, \quad \forall z_1, z_2 \in K, \; \forall f \in \mathcal{F}$$
+    $$|f(z_2)-f(z_1)| \leq A|z_2-z_1|, \quad \forall z_1, z_2 \in K, \; \forall f \in \mathcal{F}.$$
 \end{proposition}
 
 \begin{proof}
     Sea $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in D$ y para toda $f \in \mathcal{F}$.
     Sean $K \subset D$, $K$ compacto.
-    Sea $d > 0$ con $d < dist(K, \mathbb{C} \setminus D)$.
+    Sea $d > 0$ con $d < \dist(K, \mathbb{C} \setminus D)$.
     Si $D = \mathbb{C}$, tomamos $d > 0$ cualquiera.
     Sea $z_0 \in K$.
     Entonces $D(z_0, d) \subset D$.
     De hecho, podemos tomar $\varepsilon > 0$ tal que $D(z_0, d+\varepsilon) \subset D$.
     Dada $f \in \mathcal{F}$, por la fórmula de Cauchy,
-    $$f'(z) = \frac{1}{2\pi i} \int_{|\xi-z_0|=d} \frac{f(\xi)}{(\xi-z)^2}d\xi \quad \text{si } z \in D\left(z_0, \frac{d}{2}\right)$$
+    $$f'(z) = \frac{1}{2\pi i} \int_{|\xi-z_0|=d} \frac{f(\xi)}{(\xi-z)^2}d\xi \quad \text{si } z \in D\left(z_0, \frac{d}{2}\right).$$
     Entonces:
-    $$|f'(z)| \leq \frac{1}{2\pi}2\pi \max_{|\xi-z_0|=d} \frac{|f(\xi)|}{|\xi-z|^2}$$
+    $$|f'(z)| \leq \frac{1}{2\pi}2\pi \max_{|\xi-z_0|=d} \frac{|f(\xi)|}{|\xi-z|^2}.$$
     Podemos acotar:
-    $$|\xi-z| = |(\xi-z_0) + (z_0-z)| \geq |\xi-z_0| - |z_0-z| \geq d - \frac{d}{2} = \frac{d}{2}$$
+    $$|\xi-z| = |(\xi-z_0) + (z_0-z)| \geq |\xi-z_0| - |z_0-z| \geq d - \frac{d}{2} = \frac{d}{2}.$$
     Así que $|\xi-z|^2 \geq \frac{d^2}{4} > 0$.
     Luego:
-    $$|f'(z)| \leq d\frac{M}{d^2/4} = \frac{4M}{d}$$
+    $$|f'(z)| \leq d\frac{M}{d^2/4} = \frac{4M}{d}.$$
     Hemos probado que si $z_0 \in K$, $f \in \mathcal{F}$ y $z \in D\left(z_0, \frac{d}{2}\right) \subset D$, entonces $|f'(z)| \leq \frac{4M}{d}$.
 
     Ahora, sean $z_1, z_2 \in K$ y $f \in \mathcal{F}$.
@@ -105,12 +105,12 @@ Los compactos coinciden con la definición de familia compacta dada.
     Si $\xi \in [z_1, z_2]$, entonces $z_2 \in D\left(z_1, \frac{d}{2}\right) \subset D$ y $|\xi-z_1| \leq |z_1-z_2| < \frac{d}{2}$, $\xi \in D\left(z_1, \frac{d}{2}\right)$.
     Entonces $\xi \in D$ y $|f'(\xi)| \leq \frac{4M}{d}$.
     Por tanto:
-    $$|f(z_2)-f(z_1)| = \left|\int_{[z_1, z_2]} f'(\xi)d\xi\right| \leq |z_2-z_1| \max_{\xi \in [z_1, z_2]} |f'(\xi)| \leq |z_2-z_1| \frac{4M}{d}$$
+    $$|f(z_2)-f(z_1)| = \left|\int_{[z_1, z_2]} f'(\xi)d\xi\right| \leq |z_2-z_1| \max_{\xi \in [z_1, z_2]} |f'(\xi)| \leq |z_2-z_1| \frac{4M}{d}.$$
     Entonces, si $z_1, z_2 \in K$, $|z_1-z_2| < \frac{d}{2}$ y $f \in \mathcal{F}$, se tiene que:
-    $$|f(z_2)-f(z_1)| \leq A|z_2-z_1|$$
+    $$|f(z_2)-f(z_1)| \leq A|z_2-z_1|.$$
 
     Ahora, si $z_1, z_2 \in K$, $|z_2-z_1| \geq \frac{d}{2}$ y $f \in \mathcal{F}$, tenemos:
-    $$|f(z_2)-f(z_1)| \leq |f(z_2)| + |f(z_1)| \leq 2M = 2M \frac{d}{2}\frac{2}{d} \leq \frac{4M}{d}|z_2-z_1| = A|z_2-z_1|$$
+    $$|f(z_2)-f(z_1)| \leq |f(z_2)| + |f(z_1)| \leq 2M = 2M \frac{d}{2}\frac{2}{d} \leq \frac{4M}{d}|z_2-z_1| = A|z_2-z_1|.$$
 \end{proof}
 
 \begin{theorem}[Teorema de Arzelá-Ascoli]
@@ -137,7 +137,7 @@ Los compactos coinciden con la definición de familia compacta dada.
 \begin{proof}
     \hfill
     \begin{itemize}
-        \item[$\Rightarrow$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, con $\mathcal{F}$ finitamente normal.
+        \item[$\boxed{\Rightarrow}$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, con $\mathcal{F}$ finitamente normal.
             Supongamos por reducción al absurdo que existe $K \subset D$, $K$ compacto, tal que $\mathcal{F}$ no está uniformemente acotada en $K$.
             Entonces existen $\{z_n\}_{n=1}^\infty$ en $K$ y $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ tales que $|f_n(z_n)| \to \infty$.
 
@@ -148,7 +148,7 @@ Los compactos coinciden con la definición de familia compacta dada.
             En particular, $|f_{n_k}(z_{n_k})| < 1 + M$ si $k \geq k_0$.
             Esta es una contradicción.
 
-        \item[$\Leftarrow$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, uniformemente acotada en cada subconjunto compacto de $D$.
+        \item[$\boxed{\Leftarrow}$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, uniformemente acotada en cada subconjunto compacto de $D$.
             Tomamos $X_1 = D$ y $X_2 = \mathbb{C}$.
 
             \begin{enumerate}
@@ -158,9 +158,9 @@ Los compactos coinciden con la definición de familia compacta dada.
                       $\mathcal{F}$ está uniformemente acotada en $\overline{D}(z_0, R)$ y por tanto en $D(z_0, R)$.
                       Sea $K = \overline{D}(z_0, \frac{R}{2})$, que es un subconjunto compacto de $D(z_0, R)$.
                       Por la proposición anterior, existe $A > 0$ tal que
-                      $$|f(z_2) - f(z_1)| \leq A|z_2-z_1|, \quad \text{si } z_1, z_2 \in K, f \in \mathcal{F}$$
+                      $$|f(z_2) - f(z_1)| \leq A|z_2-z_1|, \quad \text{si } z_1, z_2 \in K, f \in \mathcal{F}.$$
                       Entonces, si $\delta = \min \left(\frac{\varepsilon}{A}, \frac{R}{2}\right)$, $z_1 \in D$, $|z_1-z_0| < \delta$ y $f \in \mathcal{F}$, entonces $z_1 \in \overline{D}(z_0, \frac{R}{2}) = K$, así que:
-                      $$|f(z_1) - f(z_0)| \leq A|z_1-z_0| < A\delta \leq A\frac{\varepsilon}{A} = \varepsilon$$
+                      $$|f(z_1) - f(z_0)| \leq A|z_1-z_0| < A\delta \leq A\frac{\varepsilon}{A} = \varepsilon.$$
 
                 \item Sea $z \in D$.
                       El conjunto $\{f(z) : f \in \mathcal{F}\}$ está acotado, ya que $\mathcal{F}$ está uniformemente acotada en $\{z\}$.
@@ -206,10 +206,10 @@ Los compactos coinciden con la definición de familia compacta dada.
         \item $\mathcal{P} = \{f : f \text{ es holomorfa en } \mathbb{D}, f(0) = 1, \Re(f(z)) > 0 \; \forall z \in \mathbb{D}\}$.
               Sea $K \subset \mathbb{D}$, $K$ compacto.
               Si $f \in \mathcal{P}$ y $z \in K$,
-              $$|f(z)| \leq \frac{1+|z|}{1-|z|}$$
+              $$|f(z)| \leq \frac{1+|z|}{1-|z|}.$$
               Existe $R \in (0, 1)$ tal que $K \subset \overline{D}(0, R)$.
               Entonces, si $f \in \mathcal{P}$ y $z \in K$,
-              $$|f(z)| \leq \frac{1+|z|}{1-|z|} \leq \frac{1+R}{1-R}$$
+              $$|f(z)| \leq \frac{1+|z|}{1-|z|} \leq \frac{1+R}{1-R}.$$
               $\mathcal{P}$ está uniformemente acotada en $K$ para todo subconjunto compacto $K$ de $\mathbb{D}$.
               Por el teorema de Montel, $\mathcal{P}$ es finitamente normal.
 
@@ -223,34 +223,34 @@ Los compactos coinciden con la definición de familia compacta dada.
               Esto es un caso particular del siguiente ejemplo.
 
         \item Sea $F$ holomorfa en $\mathbb{D}$ y sea
-              $$\mathcal{F}_F = \{f : f \text{ holomorfa en } \mathbb{D}, f \prec F\}$$
+              $$\mathcal{F}_F = \{f : f \text{ holomorfa en } \mathbb{D}, f \prec F\}.$$
               Entonces $\mathcal{F}_F$ es finitamente normal.
 
         \item Sean $a \in \mathbb{C}$ y $R > 0$.
               Sea $\mathcal{F}$ una familia finitamente normal de funciones holomorfas en $D(a, R)$.
               Para cada $f \in \mathcal{F}$, consideramos el desarrollo de Taylor de $f$ centrado en $a$
-              $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, R)$$
+              $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, R).$$
               Entonces $M_n = \sup_{f \in \mathcal{F}} |a_n(f)| < \infty$ para cada $n$ y la serie de potencias $\sum_{n=0}^\infty M_n(z-a)^n$ tiene radio de convergencia mayor o igual que $R$, y por tanto define una función holomorfa en $D(a, R)$.
 
               \begin{proof}
                   Fijado $n$, si $f \in \mathcal{F}$ tenemos:
-                  $$a_n(f) = \frac{f^{(n)}(a)}{n!} \Rightarrow |a_n(f)| = \frac{|f^{(n)}(a)|}{n!}$$
+                  $$a_n(f) = \frac{f^{(n)}(a)}{n!} \Rightarrow |a_n(f)| = \frac{|f^{(n)}(a)|}{n!}.$$
                   La familia $\mathcal{F}^{(n)}$ es finitamente normal y por tanto está uniformemente acotada en el conjunto $\{a\}$, por lo que $\{f^{(n)}(a) : f \in \mathcal{F}\}$ está acotado.
                   Es decir, $\sup_{f \in \mathcal{F}} |f^{(n)}(a)| < \infty$.
                   Entonces $M_n = \sup_{f \in \mathcal{F}} |a_n(f)| = \sup_{f \in \mathcal{F}} \frac{|f^{(n)}(a)|}{n!} < \infty$.
                   Consideramos la serie de potencias:
-                  $$\sum_{n=0}^\infty M_n(z-a)^n$$
+                  $$\sum_{n=0}^\infty M_n(z-a)^n.$$
                   Si $r \in (0, R)$, tenemos que $\mathcal{F}$ está uniformemente acotada en $\overline{D}(a, r)$, y por tanto existe $M(r) > 0$ tal que $|f(z)| \leq M(r)$ si $z \in \overline{D}(a, r)$ y $f \in \mathcal{F}$.
                   Si $f \in \mathcal{F}$, por la fórmula de Cauchy,
-                  $$a_n(f) = \frac{f^{(n)}(a)}{n!} = \frac{1}{2\pi i} \int_{|z-a|=r} \frac{f(z)}{(z-a)^{n+1}}dz, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots$$
+                  $$a_n(f) = \frac{f^{(n)}(a)}{n!} = \frac{1}{2\pi i} \int_{|z-a|=r} \frac{f(z)}{(z-a)^{n+1}}dz, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots.$$
                   Así que:
-                  $$|a_n(f)| \leq \frac{1}{2\pi} 2\pi r \max_{|z-a|=r} \frac{|f(z)|}{|z-a|^{n+1}} \leq r\frac{M(r)}{r^{n+1}} = \frac{M(r)}{r^n}, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots, f \in \mathcal{F}$$
+                  $$|a_n(f)| \leq \frac{1}{2\pi} 2\pi r \max_{|z-a|=r} \frac{|f(z)|}{|z-a|^{n+1}} \leq r\frac{M(r)}{r^{n+1}} = \frac{M(r)}{r^n}, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots, f \in \mathcal{F}.$$
                   Tomando supremo en $f \in \mathcal{F}$ tenemos que:
-                  $$|M_n| = M_n \leq \frac{M(r)}{r^n} \Rightarrow \sqrt[n]{M_n} \leq \frac{\sqrt[n]{M(r)}}{r}, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots$$
+                  $$|M_n| = M_n \leq \frac{M(r)}{r^n} \Rightarrow \sqrt[n]{M_n} \leq \frac{\sqrt[n]{M(r)}}{r}, \quad \text{si } r \in (0, R), n = 0, 1, 2, \dots.$$
                   Por tanto:
-                  $$\limsup_{n \to \infty} \sqrt[n]{M_n} \leq \lim_{n \to \infty} \frac{\sqrt[n]{M(r)}}{r} = \frac{1}{r}, \quad \text{si } r \in (0, R)$$
+                  $$\limsup_{n \to \infty} \sqrt[n]{M_n} \leq \lim_{n \to \infty} \frac{\sqrt[n]{M(r)}}{r} = \frac{1}{r}, \quad \text{si } r \in (0, R).$$
                   Haciendo $r \to R$,
-                  $$\limsup_{n \to \infty} \sqrt[n]{M_n} \leq \frac{1}{R}$$
+                  $$\limsup_{n \to \infty} \sqrt[n]{M_n} \leq \frac{1}{R}.$$
                   Entonces el radio de convergencia es mayor o igual que $R$.
               \end{proof}
 
@@ -259,21 +259,23 @@ Los compactos coinciden con la definición de familia compacta dada.
 
               Sea $K \subset \mathbb{D}$, $K$ compacto.
               Tomamos $r \in (0, 1)$ con $K \subset D(0, r)$.
-              Sea $f \in \mathcal{F}$ y $z \in K$, por la fórmula de Cauchy
-              $$f(z) = \frac{1}{2\pi i} \int_{|z| = \rho} \frac{f(\xi)}{\xi-z}d\xi = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{f(\rho e^{i\theta})}{\rho e^{i\theta} - z}\rho d\rho, \quad r \leq \rho < 1$$
+              Sea $f \in \mathcal{F}$ y $z \in K$, por la fórmula de Cauchy:
+              $$f(z) = \frac{1}{2\pi i} \int_{|z| = \rho} \frac{f(\xi)}{\xi-z}d\xi = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{f(\rho e^{i\theta})}{\rho e^{i\theta} - z}\rho d\rho, \quad r \leq \rho < 1.$$
 
-              $$|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\rho, \quad r \leq \rho < 1$$
+              Podemos acotar
+              $$|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\rho, \quad r \leq \rho < 1.$$
 
-              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho \leq \frac{1}{2\pi} \int_{\frac{1+r}{2}}^1 \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\theta d\rho = \frac{1}{2\pi} \iint_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy$$
+              Entonces:
+              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho \leq \frac{1}{2\pi} \int_{\frac{1+r}{2}}^1 \int_{-\pi}^\pi \frac{|f(\rho e^{i\theta})|}{|\rho e^{i\theta} - z|}\rho d\theta d\rho = \frac{1}{2\pi} \iint_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy.$$
               Como $|w-z| \geq |w| - |z| > \frac{1+r}{2}-r = \frac{1-r}{2} > 0$,
               \begin{align*}
                    & \frac{1}{2\pi} \iint_{\frac{1+r}{2} < |w| < 1} \frac{|f(w)|}{|w-z|}dxdy \leq \frac{1}{2\pi} \frac{2}{1-r} \iint_{\frac{1+r}{2} < |w| < 1} |f(w)| dxdy \leq \\
-                   & \leq \frac{1}{\pi(1-r)} \iint_\mathbb{D} |f(w)|dxdy \leq \frac{M}{\pi(1-r)}
+                   & \leq \frac{1}{\pi(1-r)} \iint_\mathbb{D} |f(w)|dxdy \leq \frac{M}{\pi(1-r)}.
               \end{align*}
               Por otro lado,
-              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho = |f(z)|\left(1 - \frac{1+r}{2}\right) = |f(z)|\frac{1-r}{2}$$
+              $$\int_{\frac{1+r}{2}}^1 |f(z)|d\rho = |f(z)|\left(1 - \frac{1+r}{2}\right) = |f(z)|\frac{1-r}{2}.$$
               Entonces:
-              $$|f(z)|\frac{1-r}{2} \leq \frac{M}{\pi(1-r)} \Rightarrow |f(z)| \leq \frac{2M}{\pi(1-r)^2}$$
+              $$|f(z)|\frac{1-r}{2} \leq \frac{M}{\pi(1-r)} \Rightarrow |f(z)| \leq \frac{2M}{\pi(1-r)^2}.$$
               Por tanto, $\mathcal{F}$ está uniformemente acotada en $K$.
     \end{enumerate}
 \end{example}
@@ -284,8 +286,8 @@ Los compactos coinciden con la definición de familia compacta dada.
     Las siguientes condiciones son equivalentes:
     \begin{enumerate}
         \item $\mathcal{F}$ es finitamente normal.
-        \item Existe una sucesión $\{M_n\}_{n=0}^\infty$ con $M_n \geq 0$ para todo $n$ tal que la serie de potencias $\sum_{n=0}^\infty M_n(z-a)^n$ tiene radio de convergencia mayor o igual que $R$ y tal que, si para cada $f \in \mathcal{F}$,
-              $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, r)$$
+        \item Existe una sucesión $\{M_n\}_{n=0}^\infty$ con $M_n \geq 0$ para todo $n$ tal que la serie de potencias $\sum_{n=0}^\infty M_n(z-a)^n$ tiene radio de convergencia mayor o igual que $R$ y tal que, si para cada $f \in \mathcal{F}$
+              $$f(z) = \sum_{n=0}^\infty a_n(f)(z-a)^n, \quad z \in D(a, r)$$,
               se tiene que $|a_n(f)| \leq M_n$ para todo $n$ y para toda $f \in \mathcal{F}$.
     \end{enumerate}
 \end{theorem}
@@ -293,11 +295,11 @@ Los compactos coinciden con la definición de familia compacta dada.
 \begin{proof}
     \hfill
     \begin{itemize}
-        \item[$\Rightarrow$] $M_n = \sup_{f \in \mathcal{F}} |a_n(f)|$.
-        \item[$\Leftarrow$] Sea $K \subset D(a, R)$, $K$ compacto.
+        \item[$\boxed{\Rightarrow}$] $M_n = \sup_{f \in \mathcal{F}} |a_n(f)|$.
+        \item[$\boxed{\Leftarrow}$] Sea $K \subset D(a, R)$, $K$ compacto.
             Existe $r \in (0, R)$ tal que $K \subset \overline{D}(a, r)$.
-            Si $z \in K$ y $f \in \mathcal{F}$, se tiene:
-            $$|f(z)| = \left|\sum_{n=0}^\infty a_n(f)(z-a)^n\right| \leq \sum_{n=0}^\infty |a_n(f)||z-a|^n \leq \sum_{n=0}^\infty M_n|z-a|^n \leq \sum_{n=0}^\infty M_nr^n < \infty$$
+            Si $z \in K$ y $f \in \mathcal{F}$, se tiene que
+            $$|f(z)| = \left|\sum_{n=0}^\infty a_n(f)(z-a)^n\right| \leq \sum_{n=0}^\infty |a_n(f)||z-a|^n \leq \sum_{n=0}^\infty M_n|z-a|^n \leq \sum_{n=0}^\infty M_nr^n < \infty,$$
             ya que $\sum_{n=0}^\infty M_n(z-a)^n$ converge para $z = a+r$.
             $\mathcal{F}$ está uniformemente acotada en $K$.
     \end{itemize}
@@ -323,8 +325,8 @@ Los compactos coinciden con la definición de familia compacta dada.
               Entonces $g$ y $h$ son holomorfas en $D$.
               Tenemos que:
               \begin{align*}
-                  g_k(z^\ast) & \xrightarrow[k \to \infty]{} w_1, & g(z^\ast) & = w_1 \\
-                  h_k(z^\ast) & \xrightarrow[k \to \infty]{} w_2, & h(z^\ast) & = w_2
+                  g_k(z^\ast) & \xrightarrow[k \to \infty]{} w_1, \quad g(z^\ast) = w_1, \\
+                  h_k(z^\ast) & \xrightarrow[k \to \infty]{} w_2, \quad h(z^\ast) = w_2.
               \end{align*}
               Si $a \in A$, existe $\lim\limits_{n \to \infty} f_n(a) \in \mathbb{C}$, así que $g(a) = h(a)$.
               $g$ y $h$ son holomorfas en $D$, $g = h$ en $A$ y $A$ tiene algún punto de acumulación en $D$.
@@ -333,16 +335,16 @@ Los compactos coinciden con la definición de familia compacta dada.
               Esto contradice nuestro supuesto.
 
         \item Sea $K \subset D$, $K$ compacto.
-              Sea $\alpha > 0$ tal que $2\alpha < dist(K, \mathbb{C} \setminus D)$.
+              Sea $\alpha > 0$ tal que $2\alpha < \dist(K, \mathbb{C} \setminus D)$.
               Si $D = \mathbb{C}$, tomamos $\alpha > 0$ cualquiera.
-              Sean $G = \{z \in \mathbb{C} : dist(z, K) < \alpha\}$ y $K_1 = \{z \in \mathbb{C} : dist(z, K) \leq \alpha\}$.
+              Sean $G = \{z \in \mathbb{C} : \dist(z, K) < \alpha\}$ y $K_1 = \{z \in \mathbb{C} : \dist(z, K) \leq \alpha\}$.
               $G$ es abierto, $K_1$ es compacto y $K \subset G \subset K_1 \subset D$.
 
               Veamos que $K_1 \subset D$.
-              Si $z \in K_1$, $dist(z, K) \leq \alpha$.
+              Si $z \in K_1$, $\dist(z, K) \leq \alpha$.
               Supongamos que $z \in D$.
               Tomamos $w \in K$ con $|z-w| < 2\alpha$.
-              Entonces $2\alpha < dist(K, \mathbb{C} \setminus D) \leq |w-z| < 2\alpha$.
+              Entonces $2\alpha < \dist(K, \mathbb{C} \setminus D) \leq |w-z| < 2\alpha$.
               Esto contradice nuestra hipótesis.
 
               $\mathcal{F}$ está uniformemente acotada en $K_1$ y por tanto en $G$.
@@ -358,13 +360,13 @@ Los compactos coinciden con la definición de familia compacta dada.
               Sea $n_0 = \max \{n_j : j = 1, \dots, N\}$.
               Si $n, n \geq n_j$ y $z \in K$, hay que probar que $|f_n(z)-f_m(z)| < \varepsilon$.
               Tomamos $j \in \{1, \dots, N\}$ con $z \in D(z_j, \delta)$.
-              $$|f_n(z)-f_m(z)| \leq |f_n(z)-f_n(z_j)| + |f_n(z_j)-f_m(z_j)| + |f_m(z_j)-f_m(z)| < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon$$
+              $$|f_n(z)-f_m(z)| \leq |f_n(z)-f_n(z_j)| + |f_n(z_j)-f_m(z_j)| + |f_m(z_j)-f_m(z)| < \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon.$$
     \end{enumerate}
 \end{proof}
 
 \begin{example}
     Para $x \geq 0$, tenemos que $\left(1 + \frac{x}{n}\right)^n$ es una sucesión creciente y
-    $$\lim\limits_{n \to \infty} \left(1 + \frac{x}{n}\right)^n = e^x$$
+    $$\lim\limits_{n \to \infty} \left(1 + \frac{x}{n}\right)^n = e^x.$$
     Veamos que $\lim\limits_{n \to \infty} \left(1 + \frac{z}{n}\right)^n = e^z$ para todo $z \in \mathbb{C}$, siendo la convergencia uniforme en cada subconjunto compacto de $\mathbb{C}$.
 
     Sea $D = \mathbb{C}$, $f_n(z) = \left(1 + \frac{z}{n}\right)^n$, $n \in \mathbb{N}$.
@@ -374,7 +376,7 @@ Los compactos coinciden con la definición de familia compacta dada.
     Sea $K \subset \mathbb{C}$, $K$ compacto.
     Tomamos $R > 0$ con $K \subset \overline{D}(0, R)$.
     Si $k \in K$ y $n \in \mathbb{N}$,
-    $$|f_n(z)| = \left|1 + \frac{z}{n}\right|^n \leq \left(1 + \frac{|z|}{n}\right)^n \leq \left(1 + \frac{R}{n}\right)^n \leq e^R$$
+    $$|f_n(z)| = \left|1 + \frac{z}{n}\right|^n \leq \left(1 + \frac{|z|}{n}\right)^n \leq \left(1 + \frac{R}{n}\right)^n \leq e^R.$$
     Sea $A = [0, 1]$.
     $A$ tiene puntos de acumulación en $\mathbb{C}$ y $\lim\limits_{n \to \infty} f_n(x) = e^x$ para todo $x \in A$.
     Por el teorema de Stieltjes-Vitali, $\{f_n\}$ converge uniformemente en cada subconjunto compacto de $\mathbb{C}$.
@@ -387,7 +389,7 @@ Los compactos coinciden con la definición de familia compacta dada.
     Sea $f$ holomorfa y acotada en $\mathbb{D}$.
     Sea $\xi \in \partial \mathbb{D}$ y supongamos que existe el límite radial, es decir, $\lim\limits_{r \to 1^-} f(r\xi) = L \in \mathbb{C}$.
     Entonces para todo $\alpha \in (0, \frac{\pi}{2})$ existe el límite tangencial de $f$ en $\xi$, es decir,
-    $$\lim\limits_{z \to \xi, z \in S_\alpha(\xi)} f(z) = L$$
+    $$\lim\limits_{z \to \xi, z \in S_\alpha(\xi)} f(z) = L,$$
     siendo $S_\alpha(\xi)$ el vector de vértice $\xi$ y ángulo $2\alpha$, simétrico con respecto al segmento $[0, \xi]$.
 \end{theorem}
 
@@ -395,7 +397,7 @@ Los compactos coinciden con la definición de familia compacta dada.
     Sea $f$ holomorfa y acotada en $D(1, 1)$.
     Supongamos que existe $\lim\limits_{x \to 0^+} f(x) = L \in \mathbb{C}$.
     Entonces para todo $\alpha \in (0, \frac{\pi}{2})$ existe
-    $$\lim\limits_{z \to 0, |\Arg(z)| < \alpha} f(z) = L$$
+    $$\lim\limits_{z \to 0, |\Arg(z)| < \alpha} f(z) = L.$$
 \end{theorem}
 
 \begin{proof}
@@ -423,19 +425,19 @@ Los compactos coinciden con la definición de familia compacta dada.
     Tomamos $n_z$ el primer natural para el que $n_z|z| \geq \frac{\cos(\alpha)}{2}$.
     Como $|z| < \frac{\cos(\alpha)}{2n_0} \Leftrightarrow n_0|z| < \frac{\cos(\alpha)}{2}$, entonces $1 \leq n_0 < n_z$.
     Por otro lado,
-    $$(n_z-1)|z| < \frac{\cos(\alpha)}{2} \Leftrightarrow n_z|z| - |z| < \frac{\cos(\alpha)}{2} \Leftrightarrow n_z|z| < |z| + \frac{\cos(\alpha)}{2} < \frac{\cos(\alpha)}{2} + \frac{\cos(\alpha)}{2} = \cos(\alpha)$$
+    $$(n_z-1)|z| < \frac{\cos(\alpha)}{2} \Leftrightarrow n_z|z| - |z| < \frac{\cos(\alpha)}{2} \Leftrightarrow n_z|z| < |z| + \frac{\cos(\alpha)}{2} < \frac{\cos(\alpha)}{2} + \frac{\cos(\alpha)}{2} = \cos(\alpha).$$
     Así que $\frac{\cos(\alpha)}{2} \leq n_z|z| = |n_zz| < \cos(\alpha)$.
     Además, $|\Arg(n_zz)| = |\Arg(z)| < \alpha$.
     Por tanto, $n_zz \in K$.
     Entonces:
-    $$|f_{n_k}(n_zz) - L| = |f(z) - L| < \varepsilon$$
+    $$|f_{n_k}(n_zz) - L| = |f(z) - L| < \varepsilon.$$
 \end{proof}
 
 \section{Teoremas de Hurwitz}
 \begin{theorem}[Teorema de Rouché]
     Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ y sea $J$ un camino de Jordan en $D$.
     Sean $f$ y $g$ funciones holomorfas en $D$ tales que
-    $$|f(z) - g(z)| < |f(z)| \quad \text{si } z \in J$$
+    $$|f(z) - g(z)| < |f(z)| \quad \text{si } z \in J.$$
     Entonces:
     \begin{enumerate}
         \item $I(J) \subset D$.
@@ -460,7 +462,7 @@ Los compactos coinciden con la definición de familia compacta dada.
     Como $f$ no tiene ceros en $C_R$, existe $\alpha > 0$ tal que $|f(z)| > \alpha$ para todo $z \in C_R$.
     Como $f_n \to f$ uniformemente en $C_R$, existe $n_0 \in \mathbb{N}$ tal que $n \geq n_0, z \in C_R \Rightarrow |f_n(z) - f(z)| < \alpha$.
     Entonces, si $n \geq n_0$ y $z \in C_R$, se tiene que
-    $$|f_n(z) - f(z)| < \alpha < |f(z)|$$
+    $$|f_n(z) - f(z)| < \alpha < |f(z)|.$$
     Por el teorema de Rouché, $f_n$ y $f$ tienen el mismo número de ceros en $D(a, R)$.
     Pero $f_n$ es nunca nula en $D$, por lo que no tiene ceros en $D(a, R)$, mientras que $f(a) = 0$.
     Esta es una contradicción.
