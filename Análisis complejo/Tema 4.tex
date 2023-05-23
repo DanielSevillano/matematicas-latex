@@ -26,14 +26,14 @@ Recordemos algunos conceptos y resultados.
 \end{proposition}
 
 \begin{definition}
-    Si $D$ es un dominio en $\mathbb{C}$ y $\Gamma$ es un ciclo en $D$, se dice que $\Gamma$ es homólogo a cero módulo $D$, y se denota $\Gamma \sim 0 (mod D)$, si $n(\Gamma, a) = 0$ para todo $a \in \mathbb{C} \setminus D$.
+    Si $D$ es un dominio en $\mathbb{C}$ y $\Gamma$ es un ciclo en $D$, se dice que $\Gamma$ es homólogo a cero módulo $D$, y se denota $\Gamma \sim 0 \; (\text{mod } D)$, si $n(\Gamma, a) = 0$ para todo $a \in \mathbb{C} \setminus D$.
 \end{definition}
 
 \begin{theorem}[Versión general del teorema de Cauchy]
     Sea $D$ un dominio en $\mathbb{C}$ y sea $\Gamma$ un ciclo en $D$.
     Las dos siguientes condiciones son equivalentes:
     \begin{enumerate}
-        \item $\Gamma \sim 0 (mod D)$.
+        \item $\Gamma \sim 0 \; (\text{mod } D)$.
         \item $\int_\Gamma f(z)dz = 0$ para toda función $f$ holomorfa en $D$.
     \end{enumerate}
 \end{theorem}
@@ -69,7 +69,7 @@ Recordamos que:
     \item El único dominio en $\mathbb{C}^\ast$ conformemente equivalente a $\mathbb{C}^\ast$ es $\mathbb{C}^\ast$.
 \end{itemize}
 
-Vamos a ver que, además de $\mathbb{C}\ast$, $\mathbb{C}$ y $\mathbb{D}$, no hay más dominios simplemente conexos en $\mathbb{C}^\ast$ módulo la relación de equivalencia.
+Vamos a ver que, además de $\mathbb{C}^\ast$, $\mathbb{C}$ y $\mathbb{D}$, no hay más dominios simplemente conexos en $\mathbb{C}^\ast$ módulo la relación de equivalencia.
 Es decir, si $D$ es un dominio simplemente conexo en $\mathbb{C}^\ast$, entonces $D$ es conformemente equivalente a uno de los tres: $\mathbb{C}^\ast$, $\mathbb{C}$ o $\mathbb{D}$.
 Por tanto se tendrá que, si $D$ es un dominio simplemente conexo en $\mathbb{C}$, con $D \neq \mathbb{C}$, entonces $D$ es conformemente equivalente a $\mathbb{D}$.
 
@@ -81,9 +81,9 @@ Por tanto se tendrá que, si $D$ es un dominio simplemente conexo en $\mathbb{C}
 
 Tenemos que
 \begin{align*}
-    \Aut(\mathbb{C}^\ast) & = \mathcal{M}                                                                                                                                                       \\
-    \Aut(\mathbb{C})      & = \{f_{\alpha, \beta} : f_{\alpha, \beta}(z) = \alpha z + \beta, \alpha, \beta \in \mathbb{C}, \alpha \neq 0\} = \{T \in \mathcal{M} : T(\mathbb{C}) = \mathbb{C}\} \\
-    \Aut(\mathbb{D})      & = \{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{T \in \mathcal{M} : T(\mathbb{D}) = \mathbb{D}\}
+    \Aut(\mathbb{C}^\ast) & = \mathcal{M},                                                                                                                                                       \\
+    \Aut(\mathbb{C})      & = \{f_{\alpha, \beta} : f_{\alpha, \beta}(z) = \alpha z + \beta, \alpha, \beta \in \mathbb{C}, \alpha \neq 0\} = \{T \in \mathcal{M} : T(\mathbb{C}) = \mathbb{C}\}, \\
+    \Aut(\mathbb{D})      & = \{\lambda T_a : \lambda \in \mathbb{C}, |\lambda| = 1, a \in \mathbb{D}\} = \{T \in \mathcal{M} : T(\mathbb{D}) = \mathbb{D}\}.
 \end{align*}
 
 \begin{example}
@@ -127,7 +127,7 @@ Tenemos que
 
               Componiendo con una rotación y una traslación, vemos que $\mathbb{D}$ es conformemente equivalente al plano menos una semirrecta cualquiera.
         \item La función exponencial no es inyectiva.
-              $$z = x + iy_0 \mapsto e^z = e^{x + iy_0} = e^x(\cos(y_0) + i\sin(y_0))$$
+              $$z = x + iy_0 \mapsto e^z = e^{x + iy_0} = e^x(\cos(y_0) + i\sin(y_0)).$$
               Es inyectiva en cualquier banda horizontal abierta de amplitud menor o igual que $2\pi$.
               Por ejemplo,
               $$\exp: \left\{z \in \mathbb{C} : |\Im(z)| < \frac{\pi}{2}\right\} \to \mathbb{H}$$
@@ -136,7 +136,7 @@ Tenemos que
 
               Componiendo con el producto por un número real, una rotación y una traslación, vemos que $\mathbb{D}$ es conformemente equivalente a cualquier banda.
         \item Sectores.
-              $$\left\{z \in \mathbb{C} : |\Im(z)| < \frac{\alpha}{2}\right\} \xrightarrow{\exp} S$$
+              $$\left\{z \in \mathbb{C} : |\Im(z)| < \frac{\alpha}{2}\right\} \xrightarrow{\exp} S,$$
               donde $S$ es el sector de vértice 0 y amplitud $\alpha$, es una aplicación conforme.
         \item $\mathbb{D}^+ = \{z \in \mathbb{D} : \Im(z) > 0\}$.
               $$\mathbb{D}^+ \xrightarrow{P} \{z \in \mathbb{C} : \Re(z) > 0, \Im(z) > 0\}$$
@@ -188,7 +188,7 @@ Tenemos que
               $$\begin{vmatrix}
                       1 & -a \\
                       1 & -b
-                  \end{vmatrix} = -b + a \neq 0 \Rightarrow \varphi \in \mathcal{M}$$
+                  \end{vmatrix} = -b + a \neq 0 \Rightarrow \varphi \in \mathcal{M}.$$
               $\varphi$ es holomorfa e inyectiva en $D$ y $\varphi$ es nunca nula en $D$, porque $a, b \notin D$.
               Por (2), existe $\psi$ rama de $\sqrt{\varphi}$ en $D$.
               $\psi$ es holomorfa e inyectiva en $D$ y $\psi$ es nunca nula.
@@ -198,17 +198,17 @@ Tenemos que
               Supongamos que $w \in \psi(D)$ y $-w \in \psi(D)$.
               Entonces:
               \begin{align*}
-                  w  & = \psi(z_1), \quad z_1 \in D \\
-                  -w & = \psi(z_2), \quad z_2 \in D
+                  w  & = \psi(z_1), \quad z_1 \in D, \\
+                  -w & = \psi(z_2), \quad z_2 \in D.
               \end{align*}
-              $$\psi(z_1)^2 = w^2 = (-w)^2 = \psi(z_2)^2 \Leftrightarrow \varphi(z_1) = \varphi(z_2) \Leftrightarrow z_1 = z_2 \Leftrightarrow w = -w \Leftrightarrow w = 0 \in \psi(D)$$
+              $$\psi(z_1)^2 = w^2 = (-w)^2 = \psi(z_2)^2 \Leftrightarrow \varphi(z_1) = \varphi(z_2) \Leftrightarrow z_1 = z_2 \Leftrightarrow w = -w \Leftrightarrow w = 0 \in \psi(D).$$
               Sin embargo, $\psi$ es nunca nula en $D$.
 
               Tomamos $w_0 \in \psi(D)$.
               Como $\psi(D)$ es abierto, existe $r > 0$ tal que $\overline{D}(0, r) \subset \psi(D)$.
               Entonces, si $z \in D$ se tiene que $\psi(z) \in \psi(D)$ y por tanto $-\psi(z) \notin \psi(D)$, de manera que $-\psi(z) \notin \overline{D}(w_0, r)$.
               Es decir,
-              $$|-\psi(z)-w_0| > r \Leftrightarrow |\psi(z)+w_0| > r > 0 \Leftrightarrow \frac{r}{|\psi(z)+w_0} < 1$$
+              $$|-\psi(z)-w_0| > r \Leftrightarrow |\psi(z)+w_0| > r > 0 \Leftrightarrow \frac{r}{|\psi(z)+w_0} < 1.$$
               Sea $h(z) = \frac{r}{\psi(z)+w_0}$, $z \in D$.
               $h$ es holomorfa e inyectiva en $D$ y $|h(z)| < 1$ para todo $z \in D$, luego $h(D) \subset \mathbb{D}$.
               Consideramos la transformación de Möbius $S_{h(z_0)}(z) = \frac{z-h(z_0)}{1-\overline{h(z_0)}z}$.
@@ -251,28 +251,28 @@ Tenemos que
               Por tanto, $G \in \mathcal{F}$.
 
               Calculemos $|G'(z_0)|$.
-              $$G'(z_0) = g'(z_0)S_{g(z_0)}'(g(z_0))$$
+              $$G'(z_0) = g'(z_0)S_{g(z_0)}'(g(z_0)).$$
               En primer lugar, hallamos la derivada de $S_a$.
-              $$S_a'(z) = \frac{1-\bar{a}z + (z-a)\bar{a}}{(1-\bar{a}z)^2} = \frac{1-|a|^2}{(1-\bar{a}z)^2}$$
+              $$S_a'(z) = \frac{1-\bar{a}z + (z-a)\bar{a}}{(1-\bar{a}z)^2} = \frac{1-|a|^2}{(1-\bar{a}z)^2}.$$
               Observamos que $S_a'(a) = \frac{1}{1-|a|^2}$ y $S_a'(0) = 1-|a|^2$.
               Así que:
-              $$G'(z_0) = g'(z_0)\frac{1}{1-|g(z_0)|^2} \Rightarrow |G'(z_0)| = \frac{|g'(z_0)|}{1-|g(z_0)|^2}$$
+              $$G'(z_0) = g'(z_0)\frac{1}{1-|g(z_0)|^2} \Rightarrow |G'(z_0)| = \frac{|g'(z_0)|}{1-|g(z_0)|^2}.$$
               Como $g^2 = h$ en $D$, también tenemos que $2gg' = h$ en $D$.
               Luego $|g(z_0)|^2 = |h(z_0)|$ y también $2|g(z_0)||g'(z_0)| = |h'(z_0)|$.
               Entonces:
-              $$|G'(z_0)| = \frac{|h'(z_0)|}{2|g(z_0)|}\frac{1}{1-|g(z_0)|^2} = \frac{|h'(z_0)|}{2\sqrt{|h(z)|}}\frac{1}{1-|h(z_0)|}$$
+              $$|G'(z_0)| = \frac{|h'(z_0)|}{2|g(z_0)|}\frac{1}{1-|g(z_0)|^2} = \frac{|h'(z_0)|}{2\sqrt{|h(z)|}}\frac{1}{1-|h(z_0)|}.$$
               Calculamos también:
               \begin{align*}
-                  h'(z_0) & = F'(z_0)S_\alpha'(F(z_0)) = F'(z_0)S_\alpha'(0) = F'(z_0)(1-|\alpha|^2)   \\
-                  h(z_0)  & = S_\alpha(F(z_0)) = S_\alpha(0) = -\alpha \Rightarrow |h(z_0)| = |\alpha|
+                  h'(z_0) & = F'(z_0)S_\alpha'(F(z_0)) = F'(z_0)S_\alpha'(0) = F'(z_0)(1-|\alpha|^2),   \\
+                  h(z_0)  & = S_\alpha(F(z_0)) = S_\alpha(0) = -\alpha \Rightarrow |h(z_0)| = |\alpha|.
               \end{align*}
               Por tanto:
-              $$|G'(z_0)| = \frac{|F'(z_0)|(1-|\alpha|^2)}{2\sqrt{|\alpha|}(1-|\alpha|)} = M\frac{1-|\alpha|^2}{2\sqrt{|\alpha|}(1-|\alpha|)} = M\frac{1+|\alpha|}{2\sqrt{|\alpha|}}$$
+              $$|G'(z_0)| = \frac{|F'(z_0)|(1-|\alpha|^2)}{2\sqrt{|\alpha|}(1-|\alpha|)} = M\frac{1-|\alpha|^2}{2\sqrt{|\alpha|}(1-|\alpha|)} = M\frac{1+|\alpha|}{2\sqrt{|\alpha|}}.$$
 
               Veamos que $\frac{1+|\alpha|}{2\sqrt{|\alpha|}} > 1$.
               \begin{align*}
                    & \frac{1+|\alpha|}{2\sqrt{|\alpha|}} > 1 \Leftrightarrow 1+|\alpha| > 2\sqrt{|\alpha|} \Leftrightarrow 1+\alpha - 2\sqrt{|\alpha|} > 0 \Leftrightarrow (1-\sqrt{|\alpha|})^2 > 0 \Leftrightarrow 1-\sqrt{|\alpha|} \neq 0 \Leftrightarrow \\
-                   & \Leftrightarrow \sqrt{|\alpha|} \neq 1 \Leftrightarrow |\alpha| \neq 1
+                   & \Leftrightarrow \sqrt{|\alpha|} \neq 1 \Leftrightarrow |\alpha| \neq 1.
               \end{align*}
               Como $\alpha \in \mathbb{D}$, la desigualdad se cumple.
               Por tanto, tenemos que $|G'(z_0)| > M$, con $G \in \mathcal{F}$ y $M = \sup_{f \in \mathcal{F}} |f'(z_0)|$, luego llegamos a contradicción.
@@ -283,7 +283,7 @@ Tenemos que
               Falta que $F'(z_0) > 0$.
 
               Queremos encontrar $\lambda \in \mathbb{C}$ con $|\lambda| = 1$ tal que $f = \lambda F$ verifique que $f'(z_0) > 0$.
-              $$f'(z_0) = \lambda F'(z_0) > 0 \Leftrightarrow f'(z_0) = |\lambda||F'(z_0)| = |F'(z_0)| = M \Rightarrow \lambda = \frac{M}{F'(z_0)}$$
+              $$f'(z_0) = \lambda F'(z_0) > 0 \Leftrightarrow f'(z_0) = |\lambda||F'(z_0)| = |F'(z_0)| = M \Rightarrow \lambda = \frac{M}{F'(z_0)}.$$
               Sea $\lambda = \frac{M}{F'(z_0)} \in \mathbb{C}$, con $|\lambda| = \frac{M}{|F'(z_0)|} = 1$, $F'(z_0) \neq 0$.
               Sea $f = \lambda F$.
               $f$ es holomorfa e inyectiva en $D$, con $f(D) = \mathbb{D}$, $f(z_0) = 0$ y $f'(z_0) = \lambda F'(z_0) = \frac{M}{F'(z_0)}F'(z_0) = M > 0$.
@@ -291,13 +291,13 @@ Tenemos que
         \item Veamos que esta aplicación conforme es única.
               Supongamos $f_1, f_2: D \to \mathbb{D}$ aplicación conforme, con $f_j(z_0) = 0$, $f_j'(z_0) > 0$.
               Sea $g = f_1 \circ f_2^{-1}$.
-              $$g: \mathbb{D} \xrightarrow{f_2^{-1}} D \xrightarrow{f_1} \mathbb{D}$$
+              $$g: \mathbb{D} \xrightarrow{f_2^{-1}} D \xrightarrow{f_1} \mathbb{D}.$$
               $g$ es una aplicación conforme de $\mathbb{D}$ sobre $\mathbb{D}$, así que es de la forma
-              $$g(z) = \lambda T_a(z) = \lambda \frac{z+a}{1+\bar{a}z}, \quad \lambda \in \mathbb{C}, \; |\lambda| = 1, \; a \in \mathbb{D}$$
+              $$g(z) = \lambda T_a(z) = \lambda \frac{z+a}{1+\bar{a}z}, \quad \lambda \in \mathbb{C}, \; |\lambda| = 1, \; a \in \mathbb{D}.$$
               Como $g(0) = 0$,
               $$g(0) = \lambda a = 0 \Rightarrow a = 0 \Rightarrow g(z) = \lambda z$$
               Como $g \circ f_2 = f_1$ en $D$,
-              $$f_2'(z_0)g'(f_2(z_0)) = f_1'(z_0) \Leftrightarrow f_2'(z_0)g'(0) = f_1'(z_0) \Leftrightarrow g'(0) = \frac{f_1'(z_0)}{f_2'(z_0)} > 0$$
+              $$f_2'(z_0)g'(f_2(z_0)) = f_1'(z_0) \Leftrightarrow f_2'(z_0)g'(0) = f_1'(z_0) \Leftrightarrow g'(0) = \frac{f_1'(z_0)}{f_2'(z_0)} > 0.$$
               Como $g'(0) = \lambda > 0$ y $|\lambda| = 1$, entonces $\lambda = 1$.
               Por tanto, $g(z) = z \Leftrightarrow f_1 = f_2$.
     \end{enumerate}
@@ -349,7 +349,7 @@ En $\mathbb{C}^\ast$ tenemos el siguiente resultado.
         \item Si $\infty \in D$, entonces tomamos $a, b \in \mathbb{C}^\ast \setminus D$ con $a \neq b$.
               Entonces $a, b \in \mathbb{C} \setminus D$.
               Sea $T(z) = \frac{1}{z-a}$, $z \in \mathbb{C} \setminus \{a\}$, con $T(a) = \infty$ y $T(\infty) = 0$.
-              $T: \mathbb{C}^\ast \to \mathbb{C}\ast$ es una aplicación conforme.
+              $T: \mathbb{C}^\ast \to \mathbb{C}^\ast$ es una aplicación conforme.
               Entonces $D \xrightarrow{T} T(D) = D'$ es una aplicación conforme y $D'$ es un dominio simplemente conexo en $\mathbb{C}^\ast$.
 
               Como $a, b \notin D$, $T(a) = \infty \notin D'$, así que $D'$ es un dominio en $\mathbb{C}$.
@@ -382,8 +382,8 @@ Sea $D$ un dominio simplemente conexo en $\mathbb{C}^\ast$.
 \begin{proof}
     \hfill
     \begin{itemize}
-        \item[$\Rightarrow$] Lo sabemos.
-        \item[$\Leftarrow$] Hay tres posibilidades.
+        \item[$\boxed{\Rightarrow}$] Lo sabemos.
+        \item[$\boxed{\Leftarrow}$] Hay tres posibilidades.
             \begin{enumerate}
                 \item $D = \mathbb{C}$.
                       Entonces $D$ es simplemente conexo.
@@ -406,14 +406,14 @@ Sea $D$ un dominio simplemente conexo en $\mathbb{C}^\ast$.
                           t                 & \mapsto a + Re^{it} & t                 & \mapsto g(a + Re^{it})
                       \end{align*}
                       Entonces:
-                      $$n(\Gamma, 0) = \frac{1}{2\pi i} \int_\Gamma \frac{dw}{w} = \frac{1}{2\pi i} \int_0^{2\pi} \frac{\Gamma'(t)}{\Gamma(t)}dt = \frac{1}{2\pi i} \int_0^{2\pi} \frac{g'(a + Re^{it})Rie^{it}}{g(a + Re^{it})}dt = \frac{1}{2\pi i} \int_\gamma \frac{g'(z)}{g(z)}dz$$
+                      $$n(\Gamma, 0) = \frac{1}{2\pi i} \int_\Gamma \frac{dw}{w} = \frac{1}{2\pi i} \int_0^{2\pi} \frac{\Gamma'(t)}{\Gamma(t)}dt = \frac{1}{2\pi i} \int_0^{2\pi} \frac{g'(a + Re^{it})Rie^{it}}{g(a + Re^{it})}dt = \frac{1}{2\pi i} \int_\gamma \frac{g'(z)}{g(z)}dz.$$
                       Como $g^2 = f$, entonces además $2gg' = f'$.
                       Luego:
-                      $$\frac{2gg'}{g^2} = \frac{f'}{g^2} \Leftrightarrow \frac{g'}{g} = \frac{1}{2}\frac{f'}{f}$$
+                      $$\frac{2gg'}{g^2} = \frac{f'}{g^2} \Leftrightarrow \frac{g'}{g} = \frac{1}{2}\frac{f'}{f}.$$
                       Como $f'(z) = -\frac{1}{(z-a)^2}$,
-                      $$\frac{f'(z)}{f(z)} = -\frac{z-a}{(z-a)^2} = -\frac{1}{z-a}$$
+                      $$\frac{f'(z)}{f(z)} = -\frac{z-a}{(z-a)^2} = -\frac{1}{z-a}.$$
                       Por tanto:
-                      $$n(\Gamma, 0) = \frac{1}{2\pi i} \int_\gamma \frac{g'(z)}{g(z)}dz = \frac{1}{2\pi i}\frac{1}{2} \int_\gamma \frac{f'(z)}{f(z)}dz = -\frac{1}{2}\frac{1}{2\pi i} \int_\gamma \frac{1}{z-a}dz = -\frac{1}{2}n(\gamma, a) = -\frac{1}{2}$$
+                      $$n(\Gamma, 0) = \frac{1}{2\pi i} \int_\gamma \frac{g'(z)}{g(z)}dz = \frac{1}{2\pi i}\frac{1}{2} \int_\gamma \frac{f'(z)}{f(z)}dz = -\frac{1}{2}\frac{1}{2\pi i} \int_\gamma \frac{1}{z-a}dz = -\frac{1}{2}n(\gamma, a) = -\frac{1}{2}.$$
                       Luego $n(\Gamma, 0) = -\frac{1}{2} \notin \mathbb{Z}$.
                       Esto es imposible.
 
@@ -467,7 +467,7 @@ Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$,
     Existe $\{z_{n_k}\}_{k=1}\infty$ subsucesión de $\{z_n\}$ tal que $f(z_{n_k}) \xrightarrow[k \to \infty]{} w_0 \in D_2$.
     $f^{-1}$ es continua en $w_0$.
     Además,
-    $$f^{-1}(f(z_{n_k})) \to f^{-1}(w_0) \in D_1$$
+    $$f^{-1}(f(z_{n_k})) \to f^{-1}(w_0) \in D_1.$$
     Sin embargo, $f^{-1}(f(z_{n_k})) = z_{n_k}$ y $z_{n_k} \to \xi \in \partial_\infty D_1$.
 \end{proof}
 
@@ -488,10 +488,10 @@ Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$,
     Además, sabemos que $f(D_1) = D_2$.
     Entonces $f(\overline{D_1}) \subset \overline{D_2}$.
     Ahora tenemos que
-    $$D_2 = f(D_1) \subset f(\overline{D_1}) \subset \overline{D_2}$$
+    $$D_2 = f(D_1) \subset f(\overline{D_1}) \subset \overline{D_2}.$$
     $\overline{D_1}$ es cerrado en $\mathbb{C}^\ast$ y compacto.
     Como $f: \overline{D_1} \to \mathbb{C}^\ast$ es continua, entonces $f(\overline{D_1})$ es compacto y por tanto cerrado.
-    $$D_2 \subset f(\overline{D_1}) \subset \overline{D_2} \Rightarrow f(\overline{D_1}) = \overline{D_2}$$
+    $$D_2 \subset f(\overline{D_1}) \subset \overline{D_2} \Rightarrow f(\overline{D_1}) = \overline{D_2}.$$
     Entonces también tenemos que $f(\partial_\infty D_1) = \partial_\infty D_2$.
 \end{proof}
 
@@ -502,7 +502,7 @@ Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$,
               Lo mismo para $f(\overline{D_1}) = \overline{D_2}$.
         \item Puede ocurrir que la extensión $f$ no exista.
               Por ejemplo.
-              $$D = \{z = x + iy : 0 < x < 1, 0 < y < 1\} \setminus \bigcup_{i=1}^\infty \left\{\frac{1}{2^n} + iy : 0 < y \leq \frac{1}{2}\right\}$$
+              $$D = \{z = x + iy : 0 < x < 1, 0 < y < 1\} \setminus \bigcup_{i=1}^\infty \left\{\frac{1}{2^n} + iy : 0 < y \leq \frac{1}{2}\right\}.$$
               $D$ es un dominio simplemente conexo en $\mathbb{C}$.
               Entonces existe $f: \mathbb{D} \to D$ aplicación conforme.
               Supongamos que $f$ se extiende de manera continua $f: \bar{\mathbb{D}} \to \bar{D}$ continua, con $f(\partial\mathbb{D}) = \partial D$ y $f(\bar{\mathbb{D}}) = \bar{D}$.
@@ -533,8 +533,8 @@ Como $\mathbb{C} \setminus J$ es abierto, sus componentes conexas son abiertas.
 
 Además, $I(J)$ es un dominio simplemente conexo en $\mathbb{C}$.
 \begin{align*}
-    \mathbb{C}^\ast \setminus I(J) & = J \cup E(J) \cup  \{\infty\}                      \\
-    \partial_\infty E(J)           & = \partial E(J) \cup \{\infty\} = J \cup \{\infty\}
+    \mathbb{C}^\ast \setminus I(J) & = J \cup E(J) \cup  \{\infty\},                      \\
+    \partial_\infty E(J)           & = \partial E(J) \cup \{\infty\} = J \cup \{\infty\}.
 \end{align*}
 Observamos que $\mathbb{C}^\ast \setminus I(J)$ es la clausura en $\mathbb{C}^\ast$ de $E(J)$.
 Como $E(J)$ es conexo, $\mathbb{C}^\ast \setminus I(J)$ también lo es.
