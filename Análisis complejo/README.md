@@ -77,6 +77,6 @@ Estos apuntes están abiertos a correcciones y mejoras.
 5. Propiedades aritméticas
 6. Orden de los factores primos de Weierstrass
 7. Orden de una función entera expresada en sus coeficientes de Taylor
-8. Relación entre el orden de crecimiento y el exponente de convergencia de los ceros de la función
+8. Relación entre el orden de crecimiento y el exponente de convergencia de los ceros
 9. Orden de los productos canónicas de Weierstrass
 10. Factorización de Hadamard

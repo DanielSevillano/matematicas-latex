@@ -240,7 +240,7 @@ Tenemos que
 
         \item Veamos que $F(D) = \mathbb{D}$.
               Supongamos por reducción al absurdo que existe $\alpha \in \mathbb{D} \setminus F(D)$.
-              Consideramos $S_\alpha(z) = \frac{z-\alpha}{1-\bar{\alpha}z}$ transformación de Möbius con $S_\alpha(\mathbb{D}) = \mathbb{D}$ y $S_\alpha(\alpha) = 0$.
+              Consideramos $S_\alpha(z) = \frac{z-\alpha}{1-\overline{\alpha}z}$ transformación de Möbius con $S_\alpha(\mathbb{D}) = \mathbb{D}$ y $S_\alpha(\alpha) = 0$.
               Sea $h = S_\alpha \circ F$.
               $h$ es holomorfa e inyectiva en $D$.
               Además, $h$ es nunca nula en $D$ y $h(D) \subset \mathbb{D}$.
@@ -253,7 +253,7 @@ Tenemos que
               Calculemos $|G'(z_0)|$.
               $$G'(z_0) = g'(z_0)S_{g(z_0)}'(g(z_0)).$$
               En primer lugar, hallamos la derivada de $S_a$.
-              $$S_a'(z) = \frac{1-\bar{a}z + (z-a)\bar{a}}{(1-\bar{a}z)^2} = \frac{1-|a|^2}{(1-\bar{a}z)^2}.$$
+              $$S_a'(z) = \frac{1-\overline{a}z + (z-a)\overline{a}}{(1-\overline{a}z)^2} = \frac{1-|a|^2}{(1-\overline{a}z)^2}.$$
               Observamos que $S_a'(a) = \frac{1}{1-|a|^2}$ y $S_a'(0) = 1-|a|^2$.
               Así que:
               $$G'(z_0) = g'(z_0)\frac{1}{1-|g(z_0)|^2} \Rightarrow |G'(z_0)| = \frac{|g'(z_0)|}{1-|g(z_0)|^2}.$$
@@ -293,7 +293,7 @@ Tenemos que
               Sea $g = f_1 \circ f_2^{-1}$.
               $$g: \mathbb{D} \xrightarrow{f_2^{-1}} D \xrightarrow{f_1} \mathbb{D}.$$
               $g$ es una aplicación conforme de $\mathbb{D}$ sobre $\mathbb{D}$, así que es de la forma
-              $$g(z) = \lambda T_a(z) = \lambda \frac{z+a}{1+\bar{a}z}, \quad \lambda \in \mathbb{C}, \; |\lambda| = 1, \; a \in \mathbb{D}.$$
+              $$g(z) = \lambda T_a(z) = \lambda \frac{z+a}{1+\overline{a}z}, \quad \lambda \in \mathbb{C}, \; |\lambda| = 1, \; a \in \mathbb{D}.$$
               Como $g(0) = 0$,
               $$g(0) = \lambda a = 0 \Rightarrow a = 0 \Rightarrow g(z) = \lambda z$$
               Como $g \circ f_2 = f_1$ en $D$,
@@ -505,7 +505,7 @@ Si $D$ es un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$,
               $$D = \{z = x + iy : 0 < x < 1, 0 < y < 1\} \setminus \bigcup_{i=1}^\infty \left\{\frac{1}{2^n} + iy : 0 < y \leq \frac{1}{2}\right\}.$$
               $D$ es un dominio simplemente conexo en $\mathbb{C}$.
               Entonces existe $f: \mathbb{D} \to D$ aplicación conforme.
-              Supongamos que $f$ se extiende de manera continua $f: \bar{\mathbb{D}} \to \bar{D}$ continua, con $f(\partial\mathbb{D}) = \partial D$ y $f(\bar{\mathbb{D}}) = \bar{D}$.
+              Supongamos que $f$ se extiende de manera continua $f: \overline{\mathbb{D}} \to \overline{D}$ continua, con $f(\partial\mathbb{D}) = \partial D$ y $f(\overline{\mathbb{D}}) = \overline{D}$.
               Como $0 \in \partial D$, entonces $0 = f(\xi)$ con $\xi \in \partial \partial\mathbb{D}$.
               Sea $\gamma$ el segmento $[0, \xi]$.
               Sea $\Gamma$ la curva imagen de $\gamma$ por $f$.
@@ -547,7 +547,7 @@ Por el teorema de Riemann, existe una aplicación conforme $f$ de $\mathbb{D}$ s
 \begin{theorem}[Teorema de extensión de Carathéodory]
     Sea $J$ una curva de Jordan en $\mathbb{C}$ y sea $D$ el dominio interior a $J$.
     Sea $f$ una aplicación conforme de $\mathbb{D}$ sobre $D$.
-    Entonces $f$ se extiende de forma continua a $\bar{\mathbb{D}}$, y esta extensión es un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D} = I(J) \cup J$.
+    Entonces $f$ se extiende de forma continua a $\overline{\mathbb{D}}$, y esta extensión es un homeomorfismo de $\overline{\mathbb{D}}$ sobre $\overline{D} = I(J) \cup J$.
 \end{theorem}
 
 \begin{remark}

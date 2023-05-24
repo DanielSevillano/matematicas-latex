@@ -4,13 +4,13 @@
 \begin{definition}
     Sea $D$ un abierto en $\mathbb{R}^n$ y sea $f: D \to \mathbb{R}$.
     Decimos que $f$ es armónica en $D$ si $f \in \mathcal{C}^2(D)$ y
-    $$\Delta f = \frac{\partial^2f}{\partial x_1^2} + \frac{\partial^2f}{\partial x_2^2} + \dots + \frac{\partial^2f}{\partial x_n^2}$$
+    $$\Delta f = \frac{\partial^2f}{\partial x_1^2} + \frac{\partial^2f}{\partial x_2^2} + \dots + \frac{\partial^2f}{\partial x_n^2} = 0.$$
 \end{definition}
 
 \begin{definition}
     Dado $D$ abierto en $\mathbb{C}$ y $u: D \to \mathbb{R}$, con $u \in \mathcal{C}^2(D)$.
     El laplaciano de $u$ se define como:
-    $$\Delta u = \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}$$
+    $$\Delta u = \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2}.$$
 \end{definition}
 
 \begin{definition}
@@ -25,14 +25,14 @@
               $u(z) = a$, $a \in \mathbb{R}$, es armónica en $\mathbb{C}$.
         \item La función parte real es armónica en $\mathbb{C}$.
               \begin{align*}
-                  \Re: \mathbb{C} & \to \mathbb{R}                         \\
-                  z               & \mapsto \Re(z) = \frac{z + \bar{z}}{2} \\
+                  \Re: \mathbb{C} & \to \mathbb{R}                              \\
+                  z               & \mapsto \Re(z) = \frac{z + \overline{z}}{2} \\
                   (x, y)          & \mapsto x
               \end{align*}
         \item La función parte imaginaria es armónica en $\mathbb{C}$.
               \begin{align*}
-                  \Im: \mathbb{C} & \to \mathbb{R}                          \\
-                  z               & \mapsto \Im(z) = \frac{z - \bar{z}}{2i} \\
+                  \Im: \mathbb{C} & \to \mathbb{R}                               \\
+                  z               & \mapsto \Im(z) = \frac{z - \overline{z}}{2i} \\
                   (x, y)          & \mapsto y
               \end{align*}
         \item Si $D$ es un abierto en $\mathbb{C}$ y $u$ y $v$ son armónicas en $D$, entonces $u+v$ es armónica en $D$.
@@ -49,13 +49,13 @@
     Sean $u = \Re(f)$ y $v = \Im(f)$, $u, v: D \to \mathbb{R}$, con $u, v \in \mathcal{C}^\infty(D) \subset \mathcal{C}^2(D)$.
     Se verifican las condiciones de Cauchy-Riemann:
     $$\begin{cases}
-            u_x = v_y \\
-            u_y = -v_x
+            u_x = v_y, \\
+            u_y = -v_x.
         \end{cases}$$
     Por tanto:
     \begin{align*}
-        \Delta u & = u_{xx} + u_{yy} = v_{yx} - v_{xy} = 0  \\
-        \Delta v & = v_{xx} + v_{yy} = -u_{yx} + u_{xy} = 0
+        \Delta u & = u_{xx} + u_{yy} = v_{yx} - v_{xy} = 0,  \\
+        \Delta v & = v_{xx} + v_{yy} = -u_{yx} + u_{xy} = 0.
     \end{align*}
 \end{proof}
 
@@ -65,7 +65,7 @@ Es decir, dado $D$ abierto en $\mathbb{C}$, $u$ y $v$ armónicas en $D$ y $f = u
 \begin{example}[Contraejemplo]
     Sea $D = \mathbb{C}$ y sean $u(z) = \Re(z)$ y $v(z) = \Im(z)$.
     $u$ y $v$ son armónicas en $\mathbb{C}$.
-    Sin embargo, $f(z) = u(z) + iv(z) = \bar{z}$ no es holomorfa.
+    Sin embargo, $f(z) = u(z) + iv(z) = \overline{z}$ no es holomorfa.
 \end{example}
 
 \begin{definition}
@@ -77,14 +77,14 @@ Es decir, dado $D$ abierto en $\mathbb{C}$, $u$ y $v$ armónicas en $D$ y $f = u
     \hfill
     \begin{itemize}
         \item Si existe una conjugada armónica de $u$ en $D$, entonces es una función armónica en $D$.
-        \item Si $u$ es una conjugada armónica de $u$ en $D$, entonces $u + c$ es conjugada armónica de $u$ en $D$ para todo $c \in \mathbb{R}$.
+        \item Si $v$ es una conjugada armónica de $u$ en $D$, entonces $v + c$ es conjugada armónica de $u$ en $D$ para todo $c \in \mathbb{R}$.
         \item Si $D$ es un dominio en $\mathbb{C}$, $u$ es armónica en $D$ y $v_1, v_2$ son conjugadas armónicas de $u$ en $\mathbb{C}$, entonces existe $c \in \mathbb{R}$ tal que $v_1-v_2 = c$.
               \begin{proof}
                   $f_1 = u + iv_1$ y $f_2 = u + iv_2$ son holomorfas en $D$, así que $f_2 - f_1 = i(v_2-v_1)$ es holomorfa en $D$.
                   Como $\Re(f_2-f_1) = 0$ en $D$ con $D$ dominio, entonces $f_2 - f_1$ es constante.
                   Es decir, existe $c \in \mathbb{R}$ con $f_2-f_1 = ic$.
                   Por tanto:
-                  $$i(v_2-v_1) = ic \Rightarrow v_2 - v_1 = c$$
+                  $$i(v_2-v_1) = ic \Rightarrow v_2 - v_1 = c.$$
               \end{proof}
     \end{itemize}
 \end{properties}
@@ -94,11 +94,11 @@ No tiene por qué existir la conjugada armónica.
 \begin{example}[Contraejemplo]
     Sea $D = \mathbb{C} \setminus \{0\}$ abierto en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$, $u(z) = \Log|z|$.
     Si escribimos $z = x +iy$,
-    $$u(z) = \Log(x^2 + y^2)^{1/2} = \frac{1}{2}\Log(x^2+y^2)$$
+    $$u(z) = \Log(x^2 + y^2)^{1/2} = \frac{1}{2}\Log(x^2+y^2).$$
     Calculamos sus derivadas parciales:
     \begin{align*}
-        u_x(z)    & = \frac{1}{2} \frac{2x}{x^2+y^2} = \frac{x}{x^2+y^2}             & u_y(z) & = \frac{y}{x^2+y^2}           \\
-        u_{xx}(z) & = \frac{x^2+y^2-2x^2}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2} & u_{yy} & = \frac{x^2-y^2}{(x^2+y^2)^2}
+        u_x(z)    & = \frac{1}{2} \frac{2x}{x^2+y^2} = \frac{x}{x^2+y^2},             & u_y(z)    & = \frac{y}{x^2+y^2},           \\
+        u_{xx}(z) & = \frac{x^2+y^2-2x^2}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2}, & u_{yy}(z) & = \frac{x^2-y^2}{(x^2+y^2)^2}.
     \end{align*}
     $\Delta u = 0$, así que $u$ es armónica en $D$.
 
@@ -127,8 +127,8 @@ Hemos probado que la función $u(z) = \Log|z|$ es armónica en $\mathbb{C} \setm
     Sean $z_0 \in D$ y $R > 0$ tales que $D(z_0, R) \subset D$.
     Como $D(z_0, R)$ es un dominio simplemente conexo en $\mathbb{C}$, existe $g$ una rama de $\log(f)$ en $D(z_0, R)$.
     $g$ es holomorfa en $D(z_0, R)$, con
-    $$\Re(g(z)) = \Log|f(z)|, \quad z \in D(z_0, R)$$
-    $Re(g) = \Log|f|$ es armónica en $D(z_0, R)$.
+    $$\Re(g(z)) = \Log|f(z)|, \quad z \in D(z_0, R).$$
+    $\Re(g) = \Log|f|$ es armónica en $D(z_0, R)$.
 \end{proof}
 
 \begin{proposition}
@@ -167,8 +167,8 @@ Hemos probado que la función $u(z) = \Log|z|$ es armónica en $\mathbb{C} \setm
     $F$ es diferenciable en sentido real.
     Además,
     $$\begin{cases}
-            u_x = U_x = V_y \\
-            u_y = -V_x
+            u_x = U_x = V_y, \\
+            u_y = -V_x.
         \end{cases}$$
     Luego $F$ es holomorfa en $D$, con $\Re(F) = u$ en $D$.
 
@@ -200,18 +200,18 @@ Toda función armónica, localmente, es la parte real de una función holomorfa.
 \begin{proof}
     \hfill
     \begin{itemize}
-        \item[$\Rightarrow$] Lo sabemos.
-        \item[$\Leftarrow$] Sea $f$ holomorfa y nunca nula en $D$.
+        \item[$\boxed{\Rightarrow}$] Lo sabemos.
+        \item[$\boxed{\Leftarrow}$] Sea $f$ holomorfa y nunca nula en $D$.
             Veamos que existe un rama de $\log(f)$ en $D$.
             Sea $u = \Log|f|$, que es una función armónica en $D$.
             Sea $v$ una conjugada armónica de $u$ en $D$.
             Entonces $F = u + iv$ es holomorfa en $D$.
             Sea $h = fe^{-F}$ holomorfa en $D$.
             Como $|e^F| = |e^{u+iv}| = e^u = e^{\Log|f|} = |f|$, entonces
-            $$|h| = \frac{|f|}{|e^F|} = 1$$
+            $$|h| = \frac{|f|}{|e^F|} = 1.$$
             Entonces $h$ es constante.
             Es decir, existe $\xi = e^{ic}$ con $c \in \mathbb{R}$ tal que $h(z) = \xi$ para todo $z \in D$.
-            $$h = \frac{f}{e^F} \Rightarrow f = \xi e^F = e^{ic}e^F = e^{F + ic}$$
+            $$h = \frac{f}{e^F} \Rightarrow f = \xi e^F = e^{ic}e^F = e^{F + ic}.$$
             La función $F + ic$ es una rama de $\log(f)$ en $D$.
 
             Toda función holomorfa y nunca nula en $D$ tiene una rama del logaritmo.
@@ -223,7 +223,7 @@ Toda función armónica, localmente, es la parte real de una función holomorfa.
     Sea $D$ un abierto en $\mathbb{C}$ y sea $u$ armónica en $D$.
     Sea $z_0 \in D$ y $R > 0$ con $D(z_0, R) \subset D$.
     Entonces:
-    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad 0 \leq 0 < R$$
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad 0 \leq r < R.$$
 \end{theorem}
 
 \begin{proof}
@@ -231,9 +231,9 @@ Toda función armónica, localmente, es la parte real de una función holomorfa.
     Supongamos $0 < r < R$.
     Existe $F$ holomorfa en $D(z_0, R)$ con $\Re(F) = u$ en $D(z_0, R)$.
     Por la fórmula de Cauchy,
-    $$F(z_0) = \frac{1}{2\pi i} \int_{|z-z_0|=r} \frac{F(z)}{z-z_0}dz = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{F(z_0 + re^{it})}{z_0 + re^{it} - z_0}rie^{it}dt = \frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt$$
+    $$F(z_0) = \frac{1}{2\pi i} \int_{|z-z_0|=r} \frac{F(z)}{z-z_0}dz = \frac{1}{2\pi i} \int_{-\pi}^\pi \frac{F(z_0 + re^{it})}{z_0 + re^{it} - z_0}rie^{it}dt = \frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt.$$
     Tomando parte real,
-    $$u(z_0) = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \Re(F(z_0 + re^{it}))dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + Re^{it})dt$$
+    $$u(z_0) = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi F(z_0 + re^{it})dt\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \Re(F(z_0 + re^{it}))dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + Re^{it})dt.$$
 \end{proof}
 
 \begin{theorem}[Forma débil del principio del máximo para funciones armónicas]
@@ -246,10 +246,10 @@ Toda función armónica, localmente, es la parte real de una función holomorfa.
     Existe $F$ holomorfa en $D(z_0, r)$ tal que $\Re(F) = u$ en $D(z_0, r)$.
     Sea $f = e^F$, que es holomorfa en $D(z_0, r)$.
     En $D(z_0, r)$ tenemos que:
-    $$|f| = |e^F| = e^{\Re(F)} = e^u$$
+    $$|f| = |e^F| = e^{\Re(F)} = e^u.$$
     Existe $r_1$ con $0 < r_1 < r$, tal que $u(z) \leq u(z_0)$ si $z \in D(z_0, r_1)$.
     Entonces
-    $$|e^{F(z)}| = e^{u(z)} \leq e^{u(z_0)} = |e^{F(z_0)}|$$
+    $$|e^{F(z)}| = e^{u(z)} \leq e^{u(z_0)} = |e^{F(z_0)}|.$$
     $|e^F|$ tiene un máximo local en $z_0$.
     Por el principio del máximo, tenemos que $e^F$ es constante en $D(z_0, r)$.
     Entonces $|e^F| = e^u$ es constante, así que $u$ es constante en $D(z_0, r)$.
@@ -301,19 +301,19 @@ $u = v$ en $A$ no implica en general que $u = v$ en $D$.
 \end{proof}
 
 \begin{notation}
-    Si $D$ es un dominio en $\mathbb{C}$, $\bar{D}$ denotará la clausura de $D$ como subconjunto de $\mathbb{C}^\ast$.
+    Si $D$ es un dominio en $\mathbb{C}$, $\overline{D}$ denotará la clausura de $D$ como subconjunto de $\mathbb{C}^\ast$.
     \begin{itemize}
         \item Si $D$ es acotado, entonces $\partial_\infty D = \partial D$.
-              $$\bar{D} = D \cup \partial_\infty D = D \cup \partial D$$
+              $$\overline{D} = D \cup \partial_\infty D = D \cup \partial D.$$
         \item Si $D$ no es acotado, entonces $\partial_\infty D = \partial D \cup \{\infty\}$.
-              $$\bar{D} = D \cup \partial_\infty D = D \cup \partial D \cup \{\infty\}$$
+              $$\overline{D} = D \cup \partial_\infty D = D \cup \partial D \cup \{\infty\}.$$
     \end{itemize}
 \end{notation}
 
 \begin{theorem}[Principio del máximo para funciones armónicas: segunda versión]
     Sea $D$ un dominio en $\mathbb{C}$ y sea $u$ armónica en $D$.
     Si existe $M \in \mathbb{R}$ tal que
-    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D$$
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D,$$
     entonces $u(z) \leq M$ para todo $z \in D$.
     Además, si $u(z_0) = M$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
 \end{theorem}
@@ -323,17 +323,17 @@ $u = v$ en $A$ no implica en general que $u = v$ en $D$.
     Hay que probar que $K \leq M$.
     Existe $\{z_n\}_{n=1}^\infty$ en $D$ tal que $\lim\limits_{n \to \infty} u(z_n) = K$.
     Podemos suponer, pasando si es necesario a una subsucesión, que existe $\lim\limits_{n \to \infty} z_n = z^\ast \in \mathbb{C}^\ast$.
-    Entonces $z^\ast \in \bar{D} = D \cup \partial_\infty D$.
+    Entonces $z^\ast \in \overline{D} = D \cup \partial_\infty D$.
     \begin{itemize}
         \item Si $z^\ast \in \partial_\infty D$, entonces
-              $$K \leq \limsup_{z \to z^\ast. z \in D} u(z) \leq M$$
+              $$K \leq \limsup_{z \to z^\ast. z \in D} u(z) \leq M.$$
         \item Si $z^\ast \in D$, como $\lim\limits_{n \to \infty} z_n = z^\ast$, se tiene que $\lim\limits_{n \to \infty} u(z_n) = u(z^\ast) = K$.
               Luego
-              $$u(z) \leq u(z^\ast) \quad \forall z \in D$$
+              $$u(z) \leq u(z^\ast) \quad \forall z \in D.$$
               Por la primera versión del principio del máximo, $u$ es constante en $D$, es decir, $u(z) = K$ para todo $z \in D$.
               Aplicando la hipótesis a un punto $\xi$ cualquiera de $\partial_\infty D$, vemos que $K \leq M$.
               Observamos que $\partial_\infty D \neq \emptyset$.
-              Si $\partial_\infty D = \emptyset$, entonces $\bar{D} = D$, luego $D$ sería abierto y cerrado en $\mathbb{C}^\ast$.
+              Si $\partial_\infty D = \emptyset$, entonces $\overline{D} = D$, luego $D$ sería abierto y cerrado en $\mathbb{C}^\ast$.
               Por tanto, $D = \emptyset$ o $D = \mathbb{C}^\ast$, lo que es imposible.
     \end{itemize}
 \end{proof}
@@ -343,55 +343,55 @@ $u = v$ en $A$ no implica en general que $u = v$ en $D$.
     \begin{enumerate}
         \item Si $u$ tiene un mínimo local en un punto $z_0 \in D$, entonces $u$ es constante en $D$.
         \item Si existe $m \in \mathbb{R}$ tal que
-              $$\liminf_{z \to \xi, z \in D} u(z) \geq m, \quad \forall \xi \in \partial_infty D$$
+              $$\liminf_{z \to \xi, z \in D} u(z) \geq m, \quad \forall \xi \in \partial_infty D,$$
               entonces $u(z) \geq m$ para todo $z \in D$.
               Además, si $u(z_0) = m$ para algún $z_0 \in D$, entonces $u$ es constante en $D$.
     \end{enumerate}
 \end{theorem}
 
 \begin{corollary}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \overline{D} \to \mathbb{R}$ armónica en $D$ y continua en $\overline{D}$.
     Entonces:
     \begin{align*}
-        \max_{z \in \bar{D}} u(z) & = \max_{z \in \partial_\infty D} u(z) \\
-        \min_{z \in \bar{D}} u(z) & = \min_{z \in \partial_\infty D} u(z)
+        \max_{z \in \overline{D}} u(z) & = \max_{z \in \partial_\infty D} u(z), \\
+        \min_{z \in \overline{D}} u(z) & = \min_{z \in \partial_\infty D} u(z).
     \end{align*}
 \end{corollary}
 
 \begin{corollary}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \overline{D} \to \mathbb{R}$ armónica en $D$ y continua en $\overline{D}$.
     Si $u = 0$ en $\partial_\infty D$, entonces $u = 0$ en $D$.
 \end{corollary}
 
 \begin{corollary}
-    Sea $D$ un dominio en $\mathbb{C}$ y sean $u, v: \bar{D} \to \mathbb{R}$ armónicas en $D$ y continuas en $\bar{D}$.
+    Sea $D$ un dominio en $\mathbb{C}$ y sean $u, v: \overline{D} \to \mathbb{R}$ armónicas en $D$ y continuas en $\overline{D}$.
     Si $u = v$ en $\partial_\infty D$, entonces $u = v$ en $D$.
 \end{corollary}
 
 \begin{remark}
-    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$.
+    Sea $D$ un dominio en $\mathbb{C}$ y sea $u: \overline{D} \to \mathbb{R}$ armónica en $D$ y continua en $\overline{D}$.
     Entonces los valores de $u$ en $D$ están completamente determinados por los valores de $u$ en $\partial_\infty D$.
 \end{remark}
 
 \section{El problema de Dirichlet para el disco unidad}
 Esto da lugar a la siguiente cuestión.
 Sea $D$ un dominio en $\mathbb{C}$ y sea $f: \partial_\infty D \to \mathbb{R}$ continua.
-Queremos estudiar si existe $u: \bar{D} \to \mathbb{R}$ armónica en $D$ y continua en $\bar{D}$ tal que $u = f$ en $D$.
+Queremos estudiar si existe $u: \overline{D} \to \mathbb{R}$ armónica en $D$ y continua en $\overline{D}$ tal que $u = f$ en $\partial_\infty D$.
 Esto es el problema de Dirichlet en $D$ con valores frontera $f$.
 Si existe una solución del problema de Dirichlet en $D$ con valores frontera $f$, esta es única.
 
 Si $D$ es un dominio en $\mathbb{C}$, se dice que $D$ es regular para el problema de Dirichlet si para toda $f: \partial_\infty D \to \mathbb{R}$ continua existe la solución del problema de Dirichlet con valores frontera $f$.
 Queremos resolver el problema de Dirichlet en el disco unidad.
 
-Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+Sea $u: \overline{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\overline{\mathbb{D}}$.
 Vamos a expresar $u(z)$ para $z \in \mathbb{D}$ en función de $u(\xi)$, con $\xi \in \partial\mathbb{D}$.
 Por la propiedad del valor medio, si $0 < r < 1$,
-$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(re^{it})dt$$
+$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(re^{it})dt.$$
 Si consideramos las funciones
-$$u_r(t) = u(re^{it}), \quad t \in [-\pi, \pi]$$
-vemos que $u_r \xrightarrow[r \to 1^-]{} u_1$ uniformemente porque $u$ es uniformemente continua en $\bar{\mathbb{D}}$.
+$$u_r(t) = u(re^{it}), \quad t \in [-\pi, \pi],$$
+vemos que $u_r \xrightarrow[r \to 1^-]{} u_1$ uniformemente porque $u$ es uniformemente continua en $\overline{\mathbb{D}}$.
 Así que:
-$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u_r(t)dt \xrightarrow[r \to 1^-]{} \frac{1}{2\pi} \int_{-\pi}^\pi u_1(t)dt \Rightarrow u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
+$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u_r(t)dt \xrightarrow[r \to 1^-]{} \frac{1}{2\pi} \int_{-\pi}^\pi u_1(t)dt \Rightarrow u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt.$$
 
 \begin{lemma}
     Sean $G_1$ y $G_2$ dos abiertos en $\mathbb{C}$, sea $f$ holomorfa en $G_1$ con $f(G_1) \subset G_2$ y sea $u$ armónica en $G_2$.
@@ -406,76 +406,58 @@ $$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u_r(t)dt \xrightarrow[r \to 1^-]{} \frac
     Como $f$ es continua en $z_0$, existe $\delta > 0$ tal que $D(z_0, \delta) \subset G_1$ y $f(D(z_0, \delta)) \subset D(f(z_0), R)$.
 
     Como $u$ es armónica en $D(f(z_0), R)$, existe $F$ holomorfa en $D(f(z), R)$ tal que $u = \Re(F)$ en $D(f(z_0), R)$.
-    $$D(z_0, \delta) \xrightarrow{f} D(f(z_0), R) \xrightarrow{F} \mathbb{C}$$
+    $$D(z_0, \delta) \xrightarrow{f} D(f(z_0), R) \xrightarrow{F} \mathbb{C}.$$
     $F \circ f$ es holomorfa en $D(z_0, \delta)$, así que $\Re(f \circ F)$ es armónica en $D(z_0, \delta)$.
     Si $z \in D(z_0, \delta)$, tenemos que $f(z) \in D(f(z_0), R)$.
-    $$\Re(F \circ f)(z) = \Re(F(f(z))) = u(f(z))$$
+    $$\Re(F \circ f)(z) = \Re(F(f(z))) = u(f(z)).$$
     Entonces $\Re(F \circ f) = u \circ f$.
     Por tanto $u \circ f$ es armónica en $D(z_0, \delta)$.
     Entonces $u \circ f$ es armónica en $D$.
 
-    Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Sea $u: \overline{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\overline{\mathbb{D}}$.
     Hemos visto que:
-    $$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
+    $$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt.$$
     Sea $a \in \mathbb{D}$.
-    Consideramos $T_a(z) = \frac{z+a}{1+\bar{a}z}$, con $T_a(0) = a$ y $T_a(\bar{\mathbb{D}}) = \bar{\mathbb{D}}$.
+    Consideramos $T_a(z) = \frac{z+a}{1+\overline{a}z}$, con $T_a(0) = a$ y $T_a(\overline{\mathbb{D}}) = \overline{\mathbb{D}}$.
     Sea $v = u \circ T_a$.
-    $$\bar{\mathbb{D}} \xrightarrow{T_a} \bar{\mathbb{D}} \xrightarrow{u} \mathbb{R}$$
-    $v$ es continua en $\bar{\mathbb{D}}$ y armónica en $\mathbb{D}$.
-    $$u(a) = v(0) \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt$$
+    $$\overline{\mathbb{D}} \xrightarrow{T_a} \overline{\mathbb{D}} \xrightarrow{u} \mathbb{R}.$$
+    $v$ es continua en $\overline{\mathbb{D}}$ y armónica en $\mathbb{D}$.
+    $$u(a) = v(0) \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt.$$
     Hacemos el cambio de variable:
-    $$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi})$$
+    $$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi}).$$
     Derivando,
-    $$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi$$
-    Recordamos que $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
-    $$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
+    $$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi.$$
+    Recordamos que $S_a'(z) = \frac{1-|a|^2}{(1-\overline{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\overline{a}e^{i\varphi})^2}$ y entonces:
+    $$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\overline{a}e^{i\varphi})^2}\frac{1-\overline{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\overline{a}e^{i\varphi})(1-ae^{i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi.$$
     Entonces la integral queda de la forma:
-    $$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
+    $$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt.$$
 \end{proof}
 
-Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
-Hemos visto que:
-$$u(0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})dt$$
-Sea $a \in \mathbb{D}$.
-Consideramos $T_a(z) = \frac{z+a}{1+\bar{a}z}$, con $T_a(0) = a$ y $T(\bar{\mathbb{D}}) = \bar{\mathbb{D}}$.
-Sea $v = u \circ T_a$.
-$$\bar{\mathbb{D}} \xrightarrow{T_a} \bar{\mathbb{D}} \xrightarrow{u} \mathbb{R}$$
-$v$ es continua en $\bar{\mathbb{D}}$ y armónica en $\mathbb{D}$.
-$$u(a) = v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(T_a(e^{it}))dt$$
-Hacemos el cambio de variable:
-$$T_a(e^{it}) = e^{i\varphi} \Leftrightarrow e^{it} = T_a^{-1}(e^{i\varphi}) = S_a(e^{i\varphi})$$
-Derivando,
-$$ie^{it}dt = ie^{i\varphi}S_a'(e^{i\varphi})d\varphi \Leftrightarrow dt = \frac{e^{i\varphi}S_a'(e^{i\varphi})}{S_a(e^{i\varphi})}d\varphi$$
-Recordamos que $S_a(z) = \frac{z-a}{1-\bar{a}z}$ y $S_a'(z) = \frac{1-|a|^2}{(1-\bar{a}z)^2}$, así que $S_a'(e^{i\varphi}) = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})^2}$ y entonces:
-$$dt = \frac{e^{i\varphi}(1-|a|^2)}{(1-\bar{a}e^{i\varphi})^2}\frac{1-\bar{a}e^{i\varphi}}{e^{i\varphi}-a}d\varphi = \frac{1-|a|^2}{(1-\bar{a}e^{i\varphi})(1-ae^{-i\varphi})}d\varphi = \frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi$$
-Entonces la integral queda de la forma:
-$$u(a) = \frac{1}{2\pi} \int_{-\pi + \theta_0}^{\pi + \theta_0} u(e^{i\varphi})\frac{1-|a|^2}{|1-ae^{-i\varphi}|^2}d\varphi = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|a|^2}{|1-ae^{-it}|^2}dt$$
-
 \begin{theorem}
-    Sea $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Sea $u: \overline{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D}$ y continua en $\overline{\mathbb{D}}$.
     Entonces
-    $$u(z) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|z|^2}{|1-ze^{-it}|^2}dt, \quad \forall z \in \mathbb{D}$$
+    $$u(z) = \frac{1}{2\pi} \int_{-\pi}^\pi u(e^{it})\frac{1-|z|^2}{|1-ze^{-it}|^2}dt, \quad \forall z \in \mathbb{D}.$$
 \end{theorem}
 
 Si $f: \partial_\infty D \to \mathbb{R}$ es una función continua, sabemos que la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $f$, de existir, es única.
 Además, tendría que ser la siguiente:
-$$u: \bar{\mathbb{D}} \to \mathbb{R}, \quad
+$$u: \overline{\mathbb{D}} \to \mathbb{R}, \quad
     u(z) = \begin{cases}
-        \dfrac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\dfrac{1-|z|^2}{|1-ze^{-it}|^2}dt & \text{si } z \in \mathbb{D}         \\
-        u(z) = f(z)                                                                & \text{si } z \in \partial\mathbb{D}
+        \dfrac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\dfrac{1-|z|^2}{|1-ze^{-it}|^2}dt & \text{si } z \in \mathbb{D},         \\
+        u(z) = f(z)                                                                & \text{si } z \in \partial\mathbb{D}.
     \end{cases}$$
 
 \section{La integral de Poisson}
 Una primera expresión del núcleo de Poisson es
-$$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2}, \quad z \in \mathbb{D}, \; t \in \mathbb{R}$$
+$$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2}, \quad z \in \mathbb{D}, \; t \in \mathbb{R}.$$
 Si $z = re^{i\theta}$, $0 \leq r < 1$, $\theta \in \mathbb{R}$,
-$$P(z, e^{it}) = \frac{1-r^2}{|1-re^{i\theta}e^{-it}|^2} = \frac{1-r^2}{|1-re^{i(\theta-t)}|^2}$$
+$$P(z, e^{it}) = \frac{1-r^2}{|1-re^{i\theta}e^{-it}|^2} = \frac{1-r^2}{|1-re^{i(\theta-t)}|^2}.$$
 De esta forma llegamos a una segunda expresión del núcleo de Poisson:
-$$P_r(t) = \frac{1-r^2}{|1-re^{it}|^2}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+$$P_r(t) = \frac{1-r^2}{|1-re^{it}|^2}, \quad 0 \leq r < 1, \; t \in \mathbb{R}.$$
 Podemos escribir el denominador de otra forma:
-$$|1-re^{it}|^2 = (1-re^{it})(1-re^{-it}) = 1 - re^{-it} - re^{it} + r^2 = 1 - r(e^{it}+e^{-it}) + r^2 = 1 - 2r\cos(t) + r^2$$
+$$|1-re^{it}|^2 = (1-re^{it})(1-re^{-it}) = 1 - re^{-it} - re^{it} + r^2 = 1 - r(e^{it}+e^{-it}) + r^2 = 1 - 2r\cos(t) + r^2.$$
 Luego
-$$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb{R}$$
+$$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq r < 1, \; t \in \mathbb{R}.$$
 
 \begin{remark}
     \hfill
@@ -497,23 +479,23 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
                   \begin{itemize}
                       \item Si $t = 0$ y $z \in \mathbb{D}$,
                             \begin{align*}
-                                P(z, e^{i0}) & = \frac{1-|z|^2}{|1-z|^2} = \frac{1-z\bar{z}}{(1-z)(1-\bar{z})} = \frac{1-z+z-z\bar{z}}{(1-z)(1-\bar{z})} = \frac{1}{1-\bar{z}} + \frac{z}{1-z} = \\
-                                             & = \frac{1}{1-\bar{z}} + \frac{z-1+1}{1-z} = \frac{1}{1-\bar{z}} - 1 + \frac{1}{1-z} = -1 + \Re\left(\frac{1}{1-z}\right) =                        \\
-                                             & = \Re\left(-1 + \frac{2}{1-z}\right) = \Re\left(\frac{1+z}{1-z}\right)
+                                P(z, e^{i0}) & = \frac{1-|z|^2}{|1-z|^2} = \frac{1-z\overline{z}}{(1-z)(1-\overline{z})} = \frac{1-z+z-z\overline{z}}{(1-z)(1-\overline{z})} = \frac{1}{1-\overline{z}} + \frac{z}{1-z} = \\
+                                             & = \frac{1}{1-\overline{z}} + \frac{z-1+1}{1-z} = \frac{1}{1-\overline{z}} - 1 + \frac{1}{1-z} = -1 + \Re\left(\frac{1}{1-z}\right) =                                       \\
+                                             & = \Re\left(-1 + \frac{2}{1-z}\right) = \Re\left(\frac{1+z}{1-z}\right).
                             \end{align*}
                             La función $z \in \mathbb{D} \mapsto P(z, e^{i0}) = \Re\left(\frac{1+z}{1-z}\right)$ es armónica en $\mathbb{D}$.
 
                       \item Si $t \in \mathbb{R}$ y $z \in \mathbb{D}$, tomamos $w = ze^{-it} \in \mathbb{D}$, con $|w| = |z|$.
                             Entonces:
-                            $$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2} = \frac{1-|w|^2}{|1-w|^2} = \Re\left(\frac{1+w}{1-w}\right) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)$$
+                            $$P(z, e^{it}) = \frac{1-|z|^2}{|1-ze^{-it}|^2} = \frac{1-|w|^2}{|1-w|^2} = \Re\left(\frac{1+w}{1-w}\right) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right).$$
                             La función $z \in \mathbb{D} \mapsto P(z, e^{it})$ es armónica en $\mathbb{D}$.
                   \end{itemize}
               \end{proof}
 
         \item Si $z \in \mathbb{D}$ y $t \in \mathbb{R}$,
-              $$P(z, e^{it}) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)$$
+              $$P(z, e^{it}) = \Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right).$$
               Si $0 \leq r < 1$ y $t \in \mathbb{R}$,
-              $$P_r(t) = \Re\left(\frac{1+re^{it}}{1-re^{it}}\right)$$
+              $$P_r(t) = \Re\left(\frac{1+re^{it}}{1-re^{it}}\right).$$
 
         \item Fijado $r \in [0, 1)$, tenemos la función
               \begin{align*}
@@ -523,23 +505,23 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
               que es continua, positiva, periódica de periodo $2\pi$, par y decreciente en $[0, \pi]$.
               Observamos que:
               \begin{align*}
-                  P_r(0)               & = \frac{1-r^2}{(1-r)^2} = \frac{1+r}{1-r} \xrightarrow[r \to 1^-]{} \infty \\
-                  P_r(\pi) = P_r(-\pi) & = \frac{1-r^2}{(1+r)^2} = \frac{1-r}{1+r} \xrightarrow[r \to 1^-]{} 0
+                  P_r(0)               & = \frac{1-r^2}{(1-r)^2} = \frac{1+r}{1-r} \xrightarrow[r \to 1^-]{} \infty, \\
+                  P_r(\pi) = P_r(-\pi) & = \frac{1-r^2}{(1+r)^2} = \frac{1-r}{1+r} \xrightarrow[r \to 1^-]{} 0.
               \end{align*}
               Tenemos entonces la desigualdad:
-              $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+              $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}.$$
               Además, si en el teorema anterior tomamos $u \equiv 1$ y $z = r$, tenemos:
-              $$1 = u(r) = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(\theta - t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt$$
+              $$1 = u(r) = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(\theta - t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt.$$
               Por tanto,
-              $$\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t) = 1$$
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t) = 1.$$
 
         \item Para cada $t \in [-\pi, 0) \cup (0, \pi]$ se tiene que $P_r(t) \xrightarrow[r \to 1^-]{} 0$.
               Además, si $\delta \in (0, \pi)$, se tiene que $P_r(t) \xrightarrow[r \to 1^-]{} 0$ uniformemente en $[-\pi, -\delta] \cup [\delta, \pi]$.
 
               Si $t \in [-\pi, 0) \cup (0, \pi]$, $\cos(t) \neq 1$, así que:
-              $$\lim_{r \to 1^-} P_r(t) = \frac{0}{2-2\cos(t)} = 0$$
+              $$\lim_{r \to 1^-} P_r(t) = \frac{0}{2-2\cos(t)} = 0.$$
               Si $\delta \in [0, \pi)$, entonces:
-              $$P_r(t) \leq P_r(\delta) \xrightarrow[r \to 1^-]{} 0$$
+              $$P_r(t) \leq P_r(\delta) \xrightarrow[r \to 1^-]{} 0.$$
     \end{enumerate}
 \end{properties}
 
@@ -551,20 +533,20 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
         z                & \mapsto P[f](z) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt
     \end{align*}
     Equivalentemente, si $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$, entonces
-    $$P[f](z) = P[f](re^{it}) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta - t)dt$$
+    $$P[f](z) = P[f](re^{it}) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta - t)dt.$$
 \end{definition}
 
 \begin{theorem}
     El disco unidad $\mathbb{D}$ es un dominio regular para el problema de Dirichlet.
     En concreto, si $f: \partial\mathbb{D} \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $f$ es la función:
     \begin{align*}
-        u: \bar{\mathbb{D}} & \to \mathbb{R}                       \\
-        u(z)                & = \begin{cases}
-                                    P[f](z) & z \in \mathbb{D}         \\
-                                    f(z)    & z \in \partial\mathbb{D}
-                                \end{cases}
+        u: \overline{\mathbb{D}} & \to \mathbb{R}                                   \\
+        u(z)                     & = \begin{cases}
+                                         P[f](z) & \text{si } z \in \mathbb{D},         \\
+                                         f(z)    & \text{si } z \in \partial\mathbb{D}.
+                                     \end{cases}
     \end{align*}
-    Es decir, $u$ es armónica en $\mathbb{D}$, continua en $\bar{\mathbb{D}}$ y $u = f$ en $\partial\mathbb{D}$.
+    Es decir, $u$ es armónica en $\mathbb{D}$, continua en $\overline{\mathbb{D}}$ y $u = f$ en $\partial\mathbb{D}$.
 \end{theorem}
 
 \begin{proof}
@@ -573,8 +555,8 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
         \item $P[f]$ es armónica en $\mathbb{D}$.
               Si $z \in \mathbb{D}$, tenemos que
               \begin{align*}
-                  P[f](z) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt =                                \\
-                          & = \frac{1}{2\pi} \int_{-\pi}^\pi \Re\left(f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt\right)
+                  P[f](z) & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P(z, e^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\Re\left(\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt =                                 \\
+                          & = \frac{1}{2\pi} \int_{-\pi}^\pi \Re\left(f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}\right)dt = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt\right).
               \end{align*}
               Veamos que $\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\frac{1+ze^{-it}}{1-ze^{-it}}dt$ es una función holomorfa en $\mathbb{D}$ expresándola como serie de potencias.
 
@@ -582,36 +564,36 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
               $$\frac{1+z}{1-z} = \frac{1}{1-z} + \frac{z}{1-z} = \sum_{n=0}^\infty z^n + \sum_{n=0}^\infty z^{n+1} = 1 + 2\sum_{n=1}^\infty z^n$$
               converge uniformemente en cada subconjunto compacto de $\mathbb{D}$.
               Así que:
-              $$\frac{1+ze^{-it}}{1-ze^{-it}} = 1 + 2\sum_{n=1}^\infty z^ne^{-int}, \quad t \in [-\pi, \pi]$$
+              $$\frac{1+ze^{-it}}{1-ze^{-it}} = 1 + 2\sum_{n=1}^\infty z^ne^{-int}, \quad t \in [-\pi, \pi],$$
               con convergencia uniforme.
               Entonces:
               \begin{align*}
                   P[f](z) & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})\left(1 + 2\sum_{n=1}^\infty z^ne^{-int}\right)dt\right) =                                          \\
                           & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{it}) + 2\sum_{n=1}^\infty f(e^{it})z^ne^{-int}\right)dt\right) =                                  \\
                           & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + \frac{1}{2\pi} \int_{-\pi}^\pi \left(2\sum_{n=1}^\infty f(e^{it})z^ne^{-int}\right)dt\right) = \\
-                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + 2\sum_{n=1}^\infty\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt\right)z^n\right)
+                          & = \Re\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})dt + 2\sum_{n=1}^\infty\left(\frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt\right)z^n\right).
               \end{align*}
 
               Sea
               $$a_n = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})e^{-int}dt, \quad n = 0, 1, 2, \dots$$
               Entonces:
-              $$P[f](z) = \Re\left(a_0 + 2\sum_{n=1}^\infty a_nz^n\right)$$
+              $$P[f](z) = \Re\left(a_0 + 2\sum_{n=1}^\infty a_nz^n\right).$$
               Esta es una serie de potencias centrada en 0 que converge para todo $z \in \mathbb{D}$.
               Su radio de convergencia es mayor o igual que 1.
               Por tanto, define una función holomorfa en $\mathbb{D}$.
               Entonces la función $z \in \mathbb{D} \mapsto P[f](z)$ es armónica en $\mathbb{D}$.
 
         \item Veamos que:
-              $$\lim_{z \to 1, z \in \mathbb{D}} u(z) = f(1)$$
+              $$\lim_{z \to 1, z \in \mathbb{D}} u(z) = f(1).$$
               Si $z \in \mathbb{D}$, $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$.
               \begin{align*}
                   u(z) - f(1) & = P[f](z) - f(1) = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta-t)dt - f(1) =                                         \\
                               & = \frac{1}{2\pi} \int_{-\pi}^\pi f(e^{it})P_r(\theta-t)dt - f(1)\frac{1}{2\pi} \int_{-\pi}^\pi P_r(s)ds =                   \\
                               & = \frac{1}{2\pi} \int_{-\pi+\theta}^{\pi+\theta} f(e^{i(\theta-s)})P_r(s)ds - \frac{1}{2\pi} \int_{-\pi}^\pi f(1)P_r(s)ds = \\
-                              & = \frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{i(\theta-s)}) - f(e^{i0})\right)P_r(s)ds
+                              & = \frac{1}{2\pi} \int_{-\pi}^\pi \left(f(e^{i(\theta-s)}) - f(e^{i0})\right)P_r(s)ds.
               \end{align*}
               Así que
-              $$|u(z)-f(1)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt$$
+              $$|u(z)-f(1)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt.$$
               Sea $\varepsilon > 0$, como la función $t \in [-\pi, \pi] \mapsto f(e^{it})$ es uniformemente continua, existe $\delta_1 \in (0, \pi)$ tal que si $t, s \in [-\pi, \pi]$ con $|t-s| < \delta_1$, entonces $|f(e^{it})-f(e^{is})| < \frac{\varepsilon}{2}$.
               Como $f$ está acotada en $\partial\mathbb{D}$, existe $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in \partial\mathbb{D}$.
               Tomamos $\delta = \frac{\delta_1}{2} \in \left(0, \frac{\pi}{2}\right)$.
@@ -619,88 +601,88 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
               $$\begin{cases}
                       r_0 < r < 1 \\
                       t \in [-\pi, -\delta] \cup [\delta, \pi]
-                  \end{cases} \Rightarrow P_r(t) < \frac{\varepsilon}{4M}$$
+                  \end{cases} \Rightarrow P_r(t) < \frac{\varepsilon}{4M}.$$
               Entonces, si $r_0 < r < 1$ y $|\theta| < \delta$, vamos a ver que $|u(z)-f(1)| < \varepsilon$.
               \begin{align*}
-                  |u(z)-f(1)| \leq & \frac{1}{2\pi} \int_{-\delta}^\delta \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt +                        \\
-                  +                & \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt
+                  |u(z)-f(1)| \leq & \frac{1}{2\pi} \int_{-\delta}^\delta \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt +                         \\
+                  +                & \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} \left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right|P_r(t)dt.
               \end{align*}
               Si $t \in [-\delta, \delta]$, tenemos que
-              $$|\theta-t-0| \leq |\theta| + |t| < \delta + \delta = 2\delta = \delta_1 < \pi$$
+              $$|\theta-t-0| \leq |\theta| + |t| < \delta + \delta = 2\delta = \delta_1 < \pi.$$
               Además, $\theta-t, 0 \in [-\pi, \pi]$.
               Así que:
-              $$\left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right| < \frac{\varepsilon}{2}$$
+              $$\left|f\left(e^{i(\theta-t)}\right) - f\left(e^{i0}\right)\right| < \frac{\varepsilon}{2}.$$
               Luego:
               \begin{align*}
-                  |u(z)-f(1)| & \leq \frac{1}{2\pi} \int_{-\delta}^\delta \frac{\varepsilon}{2}P_r(t)dt + \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} 2M\frac{\varepsilon}{4M}dt =                     \\
-                              & \leq \frac{\varepsilon}{2}\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt + \frac{1}{2\pi} \int_{-\pi}^\pi \frac{\varepsilon}{2}dt = \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+                  |u(z)-f(1)| & \leq \frac{1}{2\pi} \int_{-\delta}^\delta \frac{\varepsilon}{2}P_r(t)dt + \frac{1}{2\pi} \int_{[-\pi, \pi] \setminus [-\delta, \delta]} 2M\frac{\varepsilon}{4M}dt =                      \\
+                              & \leq \frac{\varepsilon}{2}\frac{1}{2\pi} \int_{-\pi}^\pi P_r(t)dt + \frac{1}{2\pi} \int_{-\pi}^\pi \frac{\varepsilon}{2}dt = \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
               \end{align*}
 
         \item Veamos que
-              $$\lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi), \quad \forall \xi \in \partial\mathbb{D}$$
+              $$\lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi), \quad \forall \xi \in \partial\mathbb{D}.$$
               Sea $g: \partial\mathbb{D} \to \mathbb{R}$, $g(z) = f(\xi z)$, es continua.
               Sea $v = P[g]: \mathbb{D} \to \mathbb{R}$.
               Sabemos que $\lim\limits_{z \to 1, z \in \mathbb{D}} v(z) = g(1)$.
               Veamos que $v(z) = u(\xi z)$ para todo $z \in \mathbb{D}$.
 
               Sea $z \in \mathbb{D}$, $z = re^{i\theta}$ con $0 \leq r < 1$ y $\theta \in \mathbb{R}$.
-              $$v(z) = P[g](z) = \frac{1}{2\pi} \int_{-\pi}^\pi g(e^{it})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{it})P_r(\theta-t)dt$$
+              $$v(z) = P[g](z) = \frac{1}{2\pi} \int_{-\pi}^\pi g(e^{it})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{it})P_r(\theta-t)dt.$$
               Si escribimos $\xi = e^{i\theta_0}$, con $\theta_0 \in \mathbb{R}$, entonces:
               \begin{align*}
                   v(z) & = \frac{1}{2\pi} f(\xi e^{i(\theta_0-t)})P_r(\theta-t)dt = \frac{1}{2\pi} f(\xi e^{is})P_r(\theta+\theta_0-s)ds = P[f](re^{i(\theta-\theta_0)}) = \\
-                       & = P[f](\xi z) = u(\xi z)
+                       & = P[f](\xi z) = u(\xi z).
               \end{align*}
               Entonces:
-              $$\lim_{z \to 1, z \in \mathbb{D}} u(\xi z) = f(\xi) \Rightarrow \lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi)$$
+              $$\lim_{z \to 1, z \in \mathbb{D}} u(\xi z) = f(\xi) \Rightarrow \lim_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi).$$
 
-        \item Veamos que $u$ es continua en $\bar{\mathbb{D}}$.
+        \item Veamos que $u$ es continua en $\overline{\mathbb{D}}$.
               $u$ es continua en $\mathbb{D}$ porque es armónica en $\mathbb{D}$.
               Dado $\xi \in \partial\mathbb{D}$, hay que probar que
-              $$\lim_{z \to \xi, z \in \bar{\mathbb{D}}} f(\xi)$$
+              $$\lim_{z \to \xi, z \in \overline{\mathbb{D}}} f(\xi).$$
 
-              Dada $\{z_n\}_{n=1}\infty$ sucesión en $\bar{\mathbb{D}}$ con $z_n \to \xi$, definimos la sucesión $\{w_n\}_{n=1}^\infty$ como sigue.
+              Dada $\{z_n\}_{n=1}\infty$ sucesión en $\overline{\mathbb{D}}$ con $z_n \to \xi$, definimos la sucesión $\{w_n\}_{n=1}^\infty$ como sigue.
               \begin{itemize}
                   \item Si $z_n \in \mathbb{D}$, tomamos $w_n = z_n$.
                   \item Si $z_n \in \partial\mathbb{D}$, tomamos $w_n \in \mathbb{D}$ con $|z_n-w_n| < \frac{1}{n}$ y $|u(z_n)-u(w_n)| < \frac{1}{n}$.
                         Esto se puede hacer porque $\lim\limits_{z \to z_n, z \in \mathbb{D}} u(z) = u(z_n)$.
 
                         Hay que probar que $u(z_n) \to f(\xi)$.
-                        $$|u(z_n)-f(\xi)| \leq |u(z_n)-u(w_n)| + |u(w_n)-f(\xi)|$$
+                        $$|u(z_n)-f(\xi)| \leq |u(z_n)-u(w_n)| + |u(w_n)-f(\xi)|.$$
                         Observamos que
                         $$|w_n-\xi| \leq |w_n-z_n| + |z_n-\xi| \to 0$$
                         Además, sabemos que $\lim\limits_{z \to \xi, z \in \mathbb{D}} u(z) = f(\xi)$, así que $u(w_n) \to f(\xi)$.
                         Por tanto,
-                        $$|u(z_n) - f(\xi)| \to 0$$
+                        $$|u(z_n) - f(\xi)| \to 0.$$
               \end{itemize}
     \end{enumerate}
 \end{proof}
 
 \begin{theorem}
     Sea $D$ un dominio simplemente conexo en $\mathbb{C}$ con $D \neq \mathbb{C}$.
-    Supongamos que existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$ que se puede extender a un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D} = D \cup \partial_\infty D$.
+    Supongamos que existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$ que se puede extender a un homeomorfismo de $\overline{\mathbb{D}}$ sobre $\overline{D} = D \cup \partial_\infty D$.
     Entonces $D$ es regular para el problema de Dirichlet.
 
-    En concreto, si $f: \partial_\infty D \to \mathbb{R} \to \mathbb{R}$ continua, la función $u: \bar{D} \to \mathbb{R}$ definida por
+    En concreto, si $f: \partial_\infty D \to \mathbb{R} \to \mathbb{R}$ continua, la función $u: \overline{D} \to \mathbb{R}$ definida por
     $$u(z) = \begin{cases}
-            f(z)                           & z \in \partial_\infty D \\
-            u(z) = P[f \circ F](F^{-1}(z)) & z \in D
+            f(z)                    & \text{si } z \in \partial_\infty D \\
+            P[f \circ F](F^{-1}(z)) & \text{si } z \in D
         \end{cases}$$
     es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
 \end{theorem}
 
 \begin{proof}
-    $F: \mathbb{D} \to D$ se puede extender a una homeomorfismo $F: \bar{\mathbb{D}} \to \bar{D}$.
+    $F: \mathbb{D} \to D$ se puede extender a una homeomorfismo $F: \overline{\mathbb{D}} \to \overline{D}$.
     Observamos que $F$ es un homeomorfismo de $\partial\mathbb{D}$ sobre $\partial_\infty D$.
     Sea $g = f \circ F$.
-    $$g: \partial\mathbb{D} \xrightarrow{F} \partial_\infty D \xrightarrow{f} \mathbb{R}$$
+    $$g: \partial\mathbb{D} \xrightarrow{F} \partial_\infty D \xrightarrow{f} \mathbb{R}.$$
     $g$ es continua.
     Sea $v$ la solución del problema de Dirichlet en $\mathbb{D}$ con valores frontera $g$.
-    $v: \bar{\mathbb{D}} \to \mathbb{R}$ es armónica en $\mathbb{D}$, continua en $\bar{\mathbb{D}}$ y con $v = g$ en $\partial\mathbb{D}$.
+    $v: \overline{\mathbb{D}} \to \mathbb{R}$ es armónica en $\mathbb{D}$, continua en $\overline{\mathbb{D}}$ y con $v = g$ en $\partial\mathbb{D}$.
 
-    Sea $u: \bar{D} \to \mathbb{R}$, $u = v \circ F^{-1}$.
-    $u$ es continua en $\bar{D}$ y armónica en $D$.
+    Sea $u: \overline{D} \to \mathbb{R}$, $u = v \circ F^{-1}$.
+    $u$ es continua en $\overline{D}$ y armónica en $D$.
     Si $z \in \partial_\infty D$,
-    $$u(z) = v(F^{-1}(z)) = g(F^{-1}(z)) = f(z)$$
+    $$u(z) = v(F^{-1}(z)) = g(F^{-1}(z)) = f(z).$$
     Luego $u = f$ en $\partial_\infty D$.
 \end{proof}
 
@@ -712,31 +694,31 @@ $$P_r(t) = \frac{1-r^2}{1 - 2r\cos(t) + r^2}, \quad 0 \leq < 1, \; t \in \mathbb
     Sea $F: \mathbb{D} \to D$, $F(z) = a + Rz$.
     $D$ es regular para el problema de Dirichlet.
 
-    Si $f: \partial D(a, R) \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $f$ es $u: \bar{D}(a, R) \to \mathbb{R}$, con
-    $$u(z) = f(z), \quad z \in \partial D(a, R)$$
+    Si $f: \partial D(a, R) \to \mathbb{R}$ es continua, entonces la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $f$ es $u: \overline{D}(a, R) \to \mathbb{R}$, con
+    $$u(z) = f(z), \quad z \in \partial D(a, R).$$
     Si $z \in D(a, R)$, $z = a + re^{i\theta}$ con $0 \leq r < R$ y $\theta \in \mathbb{R}$,
     \begin{align*}
         u(z) & = P[f \circ F](F^{-1}(z)) = P[f \circ F]\left(\frac{z-a}{R}\right) = P[f \circ F]\left(\frac{r}{R}e^{i\theta}\right) =                                                                                      \\
              & = \frac{1}{2\pi} \int_{-\pi}^\pi (f \circ F)(e^{it})P_{r/R}(\theta-t)dt = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{1-\left(\frac{r}{R}\right)^2}{\left|1-\frac{r}{R}e^{i(\theta-t)}\right|^2}dt = \\
-             & = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{R^2-r^2}{|R-re^{i(\theta-t)}|^2}dt
+             & = \frac{1}{2\pi} \int_{-\pi}^\pi f(a + Re^{it})\frac{R^2-r^2}{|R-re^{i(\theta-t)}|^2}dt.
     \end{align*}
 \end{example}
 
 Sea $D$ el dominio interior a una curva de Jordan en $\mathbb{C}$.
 Entonces $D$ es un dominio simplemente conexo en $D$, con $D \neq \mathbb{C}$.
-Por el teorema de Riemann, existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$, que se puede extender a un homeomorfismo de $\bar{\mathbb{D}}$ sobre $\bar{D}$ por el teorema de extensión de Carathéodory.
+Por el teorema de Riemann, existe una aplicación conforme $F$ de $\mathbb{D}$ sobre $D$, que se puede extender a un homeomorfismo de $\overline{\mathbb{D}}$ sobre $\overline{D}$ por el teorema de extensión de Carathéodory.
 Por el teorema anterior, $D$ es regular para el problema de Dirichlet.
-Si $f: \partial D \to \mathbb{R}$ es continua, entonces la función $u: \bar{D} \to \mathbb{R}$ dada por
+Si $f: \partial D \to \mathbb{R}$ es continua, entonces la función $u: \overline{D} \to \mathbb{R}$ dada por
 $$u(z) = \begin{cases}
-        f(z)                    & z \in \partial D \\
-        P[f \circ F](F^{-1}(z)) & z \in D
+        f(z)                    & \text{si } z \in \partial D \\
+        P[f \circ F](F^{-1}(z)) & \text{si } z \in D
     \end{cases}$$
 es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
 
 \begin{theorem}[Principio del máximo para funciones armónicas: tercera versión]
     Sea $D$ un dominio acotado en $\mathbb{C}$ y sea $u$ una función armónica y acotada superiormente en $D$.
     Si existen $M \in \mathbb{R}$ y $\{\xi_1, \xi_2, \dots, \xi_n\} \in \partial D$ tales que
-    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial D \setminus \{\xi_1, \xi_2, \dots \xi_n\}$$
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial D \setminus \{\xi_1, \xi_2, \dots \xi_n\},$$
     entonces $u(z) \leq M$ para todo $z \in D$.
 \end{theorem}
 
@@ -744,29 +726,29 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     Sea $\alpha = diam(D) = \sup \{|z-w| : z, w \in D\}$.
     Entonces $0 < \alpha < \infty$.
     Dado $\varepsilon > 0$, sea $u_\varepsilon: D \to \mathbb{R}$ dada por
-    $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{i=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)$$
+    $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{i=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right).$$
     Si $z \in D$ y $j \in \{1, \dots, n\}$, como $|z-w| \leq \alpha$ para todo $w \in D$, se tiene que
-    $$0 < |z-\xi_j| \leq \alpha \Rightarrow 0 < \frac{|z-\xi_j|}{\alpha} \leq 1 \Rightarrow \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq 0$$
+    $$0 < |z-\xi_j| \leq \alpha \Rightarrow 0 < \frac{|z-\xi_j|}{\alpha} \leq 1 \Rightarrow \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq 0.$$
     Entonces $u_\varepsilon \leq u$ en $D$.
     Como la función $z \mapsto \frac{z-\xi_j}{\alpha}$ es holomorfa y nunca nula en $D$, se tiene que $\Log\left(\frac{|z-\xi_j|}{\alpha}\right)$ es armónica en $D$ para cada $j$.
     Por tanto, $u_\varepsilon$ es armónica en $D$.
 
     Sea $\xi \in \partial D \setminus \{\xi_1, \xi_2, \dots, \xi_n\}$.
     Entonces:
-    $$\limsup_{z \to \xi, z \in D} u_\varepsilon(z) \leq \limsup_{z \to \xi, z \in D} u(z) \leq M$$
+    $$\limsup_{z \to \xi, z \in D} u_\varepsilon(z) \leq \limsup_{z \to \xi, z \in D} u(z) \leq M.$$
     Sea $j_0 \in \{1, \dots, n\}$.
-    $$\limsup_{z \to \xi_{j_0}, z \in D} u_\varepsilon(z) = \limsup_{z \to \xi_{j_0}, z \in D} \left(u(z) + \varepsilon\Log\left(\frac{|z-\xi_{j_0}|}{\alpha}\right) + \varepsilon \sum_{j = 1, j \neq j_0}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)\right) = -\infty \leq M$$
+    $$\limsup_{z \to \xi_{j_0}, z \in D} u_\varepsilon(z) = \limsup_{z \to \xi_{j_0}, z \in D} \left(u(z) + \varepsilon\Log\left(\frac{|z-\xi_{j_0}|}{\alpha}\right) + \varepsilon \sum_{j = 1, j \neq j_0}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right)\right) = -\infty \leq M.$$
 
     Por la segunda versión del principio del máximo, $u_\varepsilon(z) \leq M$ para todo $z \in D$.
     Entonces hemos probado que, dado $\varepsilon > 0$, se tiene que
-    $$u(z) + \varepsilon \sum_{j=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq M, \quad \forall z \in D$$
+    $$u(z) + \varepsilon \sum_{j=1}^n \Log\left(\frac{|z-\xi_j|}{\alpha}\right) \leq M, \quad \forall z \in D.$$
     Haciendo $\varepsilon \to 0$, tenemos que $u(z) \leq M$ para todo $z \in D$.
 \end{proof}
 
 \begin{theorem}[Principio del máximo para funciones armónicas: cuarta versión]
     Sea $D$ un dominio en $\mathbb{C}$ con exterior no vacío y sea $u$ una función armónica y acotada superiormente en $D$.
     Supongamos que existen $M \in \mathbb{R}$ y $\{\xi_1, \xi_2, \dots, \xi_n\} \in \partial_\infty D$ tales que
-    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D \setminus \{\xi_1, \xi_2, \dots \xi_n\}$$
+    $$\limsup_{z \to \xi, z \in D} u(z) \leq M, \quad \forall \xi \in \partial_\infty D \setminus \{\xi_1, \xi_2, \dots \xi_n\}.$$
     Entonces $u(z) \leq M$ para todo $z \in D$.
 \end{theorem}
 
@@ -777,22 +759,22 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     Para cada $j \in \{1, \dots, n\}$ vamos a construir una función $h_j$ holomorfa y nunca nula en $D$, con $|h_j| \leq 1$ en $D$ y tal que $\lim\limits_{z \to \xi_j, z \in D} h_j(z) = 0$ y $\lim\limits_{z \to \xi_i, x \in D} h_j(z)$ existe en $\mathbb{C} \setminus \{0\}$ si $i \neq j$.
     \begin{itemize}
         \item Si $\xi_j = \infty$,
-              $$h_j(z) = \frac{R}{z-a}, \quad z \in D$$
+              $$h_j(z) = \frac{R}{z-a}, \quad z \in D.$$
               $h_j$ es holomorfa y nunca nula en $D$ con $|h_j| \leq 1$ en $D$.
 
         \item Si $\xi_j \in \mathbb{C}$,
-              $$\left|\frac{z-\xi_j}{z-a}\right| = \left|\frac{z-a+a-\xi_j}{z-a}\right| \leq \frac{|z-a|+|a-\xi_j|}{|z-a|} = 1 + \frac{|a-\xi_j|}{|z-a|} \leq 1 + \frac{|a-\xi_j|}{R} = K_j > 0$$
+              $$\left|\frac{z-\xi_j}{z-a}\right| = \left|\frac{z-a+a-\xi_j}{z-a}\right| \leq \frac{|z-a|+|a-\xi_j|}{|z-a|} = 1 + \frac{|a-\xi_j|}{|z-a|} \leq 1 + \frac{|a-\xi_j|}{R} = K_j > 0.$$
               Sea
-              $$h_j(z) = \frac{1}{K_j}\frac{z-\xi_j}{z-a}$$
+              $$h_j(z) = \frac{1}{K_j}\frac{z-\xi_j}{z-a}.$$
               $h_j$ es holomorfa y nunca nula en $D$, con
-              $$|h_j(z)| = \frac{1}{K_j}\left|\frac{z-\xi_j}{z-a}\right| \leq \frac{1}{K_j}K_j = 1, \quad \forall z \in D$$
+              $$|h_j(z)| = \frac{1}{K_j}\left|\frac{z-\xi_j}{z-a}\right| \leq \frac{1}{K_j}K_j = 1, \quad \forall z \in D.$$
               Además,
               $$\begin{cases}
-                      \lim_{z \to \xi_j, z \in D} h_j(z) = 0                                                                                  \\
-                      \lim_{z \to \xi_i, z \in D} h_j(z) = \frac{1}{K_j}\frac{\xi_i-\xi_j}{\xi_i-a} \in \mathbb{C} \setminus \{0\} & i \neq j
+                      \lim_{z \to \xi_j, z \in D} h_j(z) = 0,                                                                                  \\
+                      \lim_{z \to \xi_i, z \in D} h_j(z) = \frac{1}{K_j}\frac{\xi_i-\xi_j}{\xi_i-a} \in \mathbb{C} \setminus \{0\} & i \neq j.
                   \end{cases}$$
               Sea $\varepsilon > 0$, definimos:
-              $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{n=1}^\infty \Log|h_j(z)|, \quad z \in D$$
+              $$u_\varepsilon(z) = u(z) + \varepsilon \sum_{n=1}^\infty \Log|h_j(z)|, \quad z \in D.$$
               Se sigue como en la demostración del teorema anterior.
     \end{itemize}
 \end{proof}
@@ -804,18 +786,18 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
 
 \begin{proof}
     Sea $f = u|_{\partial D(a, R/2)}$, $f: \partial D(a, R/2) \to \mathbb{R}$ es continua.
-    Como $D(a, R/2)$ es regular para el problema de Dirichlet, existe $v: \bar{D}(a, R/2) \to \mathbb{R}$ armónica en $D(a, R/2)$, continua en $\bar{D}(a, R/2)$ y con $v = f$ en $\partial D(a, R/2)$.
+    Como $D(a, R/2)$ es regular para el problema de Dirichlet, existe $v: \overline{D}(a, R/2) \to \mathbb{R}$ armónica en $D(a, R/2)$, continua en $\overline{D}(a, R/2)$ y con $v = f$ en $\partial D(a, R/2)$.
 
     Sea $D = D(a, R/2) \setminus \{a\}$.
     $u$ y $v$ son armónicas en $D$, $u-v$ y $v-u$ también.
     Aplicamos la tercera versión del principio del máximo a $u-v$ y $v-u$ en $D$.
-    $D$ es un dominio acotado en $\mathbb{C}$, $u$ está acotada en $D$ y $v$ es continua en $\bar{D}(a, R/2)$, así que $v$ está acotada en $D$.
+    $D$ es un dominio acotado en $\mathbb{C}$, $u$ está acotada en $D$ y $v$ es continua en $\overline{D}(a, R/2)$, así que $v$ está acotada en $D$.
     Luego $u-v$ y $v-u$ están acotadas en $D$.
 
     Si $\xi \in \partial D(a, R/2) = \partial D \setminus \{a\}$,
     \begin{align*}
-        \limsup_{z \to \xi, z \in D} (u(z) - v(z)) & \leq u(\xi) - v(\xi) = 0 \\
-        \limsup_{z \to \xi, z \in D} (v(z) - u(z)) & \leq v(\xi) - u(\xi) = 0
+        \limsup_{z \to \xi, z \in D} (u(z) - v(z)) & \leq u(\xi) - v(\xi) = 0, \\
+        \limsup_{z \to \xi, z \in D} (v(z) - u(z)) & \leq v(\xi) - u(\xi) = 0.
     \end{align*}
 
     Por tanto, $u(z) - v(z) \leq 0$ y $v(z) - u(z) \leq 0$ para todo $z \in D$.
@@ -831,11 +813,11 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     $D = \mathbb{D} \setminus \{0\}$, $\partial D = \partial\mathbb{D} \cup \{0\}$.
     Sea $f: \partial D \to \mathbb{R}$, $f(z) = 0$ si $|z| = 1$ y $f(0) = 1$.
     $f$ es continua en $\partial D$.
-    Supongamos que existe $u: \bar{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D} \setminus \{0\}$, continua en $\bar{\mathbb{D}}$ y con $u = f$ en $\partial D$.
+    Supongamos que existe $u: \overline{\mathbb{D}} \to \mathbb{R}$ armónica en $\mathbb{D} \setminus \{0\}$, continua en $\overline{\mathbb{D}}$ y con $u = f$ en $\partial D$.
     Como $u$ es armónica y acotada en $\mathbb{D} \setminus \{0\}$, por el teorema anterior $u$ se puede extender a una función armónica en $\mathbb{D}$.
-    Entonces $u$ es armónica en $\mathbb{D}$ y continua en $\bar{\mathbb{D}}$.
+    Entonces $u$ es armónica en $\mathbb{D}$ y continua en $\overline{\mathbb{D}}$.
     Por tanto,
-    $$\max_{z \in \bar{\mathbb{D}}} u(z) = \max_{z \in \partial\mathbb{D}} u(z) = 0$$
+    $$\max_{z \in \overline{\mathbb{D}}} u(z) = \max_{z \in \partial\mathbb{D}} u(z) = 0.$$
     Sin embargo, esto contradice que $u(0) = 1 \neq 0$.
 \end{proof}
 
@@ -847,48 +829,48 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     Sea $D = \mathbb{D} \setminus \{0\}$ dominio acotado en $\mathbb{C}$ y sea $u(z) = \Log\left(\frac{1}{|z|}\right)$, $z \in D$.
     Como la función $z \mapsto \frac{1}{z}$ es holomorfa y nunca nula en $D$, entonces $u$ es armónica en $D$.
     $u$ no está acotada superiormente en $D$.
-    $$\partial D = \partial\mathbb{D} \cup \{0\}$$
+    $$\partial D = \partial\mathbb{D} \cup \{0\}.$$
     Si $\xi \in \partial\mathbb{D}$,
-    $$\limsup_{z \to \xi, z \in D} u(z) = \limsup_{z \to \xi, z \in \mathbb{D}} \Log\left(\frac{1}{|z|}\right) = 0 = M$$
+    $$\limsup_{z \to \xi, z \in D} u(z) = \limsup_{z \to \xi, z \in \mathbb{D}} \Log\left(\frac{1}{|z|}\right) = 0 = M.$$
     Pero no es cierto que $u(z) \leq 0$ para todo $z \in D$.
     De hecho, $u(z) > 0$ para todo $z \in D$.
 \end{example}
 
 \begin{lemma}
     Sean $a \in \mathbb{C}$ y $R > 0$.
-    Sea $u: \bar{D}(a, R) \to \mathbb{R}$ una función continua, con $u \equiv 0$ en $\partial D(a, R)$.
+    Sea $u: \overline{D}(a, R) \to \mathbb{R}$ una función continua, con $u \equiv 0$ en $\partial D(a, R)$.
     Supongamos que para cada $z_0 \in D(a, R)$ existe $r_{z_0} > 0$ con $D(z_0, r_{z_0}) \subset D(a, R)$ tal que
-    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad r \in [0, r_{z_0}]$$
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt, \quad r \in [0, r_{z_0}].$$
     Entonces $u \equiv 0$ en $D(a, R)$.
 \end{lemma}
 
 \begin{proof}
-    Sea $M = \max\{u(z) : z \in \bar{D}(a, R)\}$ y sea $K = \{z \in \bar{D}(a, R) : u(z) = M\}$.
-    $K$ es un compacto no vacío con $K \subset \bar{D}(a, R)$.
+    Sea $M = \max\{u(z) : z \in \overline{D}(a, R)\}$ y sea $K = \{z \in \overline{D}(a, R) : u(z) = M\}$.
+    $K$ es un compacto no vacío con $K \subset \overline{D}(a, R)$.
     Como la función $z \in \mathbb{C} \mapsto |z-a|$ es continua, alcanza el máximo en $K$.
     Tomamos $z_0 \in K$ tal que $|z_0-a| = \max\{|z-a| : z \in K\}$.
 
     Supongamos por reducción al absurdo que $z_0 \in D(a, R)$.
     Tomamos $r_{z_0} > 0$, que existe por hipótesis, y fijamos $r \in (0, r_{z_0})$.
     Entonces
-    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt$$
+    $$u(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt.$$
     Sean $E_1 = \{t \in [-\pi, \pi] : |z_0+re^{it}-a| \leq |z_0-a|\}$ y $E_2 = \{t \in [-\pi, \pi] : |z_0+re^{it}-a| > |z_0-a|\}$.
     Observamos que $E_2 \neq \emptyset$.
     Si $t \in E_2$, se tiene que $z_0 + re^{it} \notin K$.
     Así que $u(z_0 + re^{it}) < M$.
     Entonces
-    $$u(z_0) = \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt + \frac{1}{2\pi} \int_{E_2} u(z_0 + re^{it})dt$$
+    $$u(z_0) = \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt + \frac{1}{2\pi} \int_{E_2} u(z_0 + re^{it})dt.$$
     Observamos que:
     \begin{align*}
-        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt \leq \frac{1}{2\pi} \int_{E_1} Mdt \\
-        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt < \frac{1}{2\pi} \int_{E_2} Mdt
+        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt \leq \frac{1}{2\pi} \int_{E_1} Mdt, \\
+        \frac{1}{2\pi} \int_{E_1} u(z_0 + re^{it})dt < \frac{1}{2\pi} \int_{E_2} Mdt.
     \end{align*}
     Por tanto,
-    $$u(z_0) < \frac{1}{2\pi} \int_{E_1} Mdt + \frac{1}{2\pi} \int_{E_2} Mdt = \frac{1}{2\pi} \int_{-\pi}^\pi Mdt = M$$
+    $$u(z_0) < \frac{1}{2\pi} \int_{E_1} Mdt + \frac{1}{2\pi} \int_{E_2} Mdt = \frac{1}{2\pi} \int_{-\pi}^\pi Mdt = M.$$
     Esto contradice que $z_0 \in K$.
     Entonces $z_0 \in \partial D(a, R)$, así que por hipótesis $u(z_0) = 0$.
     Es decir,
-    $$u(z_0) = M = \max\{u(z) : z \in \bar{D}(a, R)\} = 0$$
+    $$u(z_0) = M = \max\{u(z) : z \in \overline{D}(a, R)\} = 0.$$
     Por tanto, $u(z) \leq 0$ para todo $z \in D(a, R)$.
 
     Aplicando la parte del lema que acabamos de ver a la función $-u$, tenemos que $-u(z) \leq 0$ para todo $z \in D(a, R)$.
@@ -898,7 +880,7 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
 \begin{theorem}[Caracterización de la armonicidad por la propiedad del valor medio]
     Sea $D$ un abierto en $\mathbb{C}$ y sea $u: D \to \mathbb{R}$ continua.
     Supongamos que para cada $a \in D$ existe $r_a > 0$ con $D(a, r_a) \subset D$, tal que
-    $$u(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt, \quad r \in [0, r_a]$$
+    $$u(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt, \quad r \in [0, r_a].$$
     Entonces $u$ es armónica en $D$.
 \end{theorem}
 
@@ -906,13 +888,13 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     Sea $a \in D$.
     Tomamos $r_a > 0$ y $R = \frac{r_a}{2}$.
     Sea $v$ la solución del problema de Dirichlet en $D(a, R)$ con valores frontera $u$.
-    Entonces $v: \bar{D}(a, R) \to \mathbb{R}$ es armónica en $D(a, R)$, continua en $\bar{D}(a, R)$ y con $u = v$ en $\partial D(a, R)$.
+    Entonces $v: \overline{D}(a, R) \to \mathbb{R}$ es armónica en $D(a, R)$, continua en $\overline{D}(a, R)$ y con $u = v$ en $\partial D(a, R)$.
     Vamos a aplicar el lema a $u-v$.
-    $u-v: \bar{D}(a, R) \to \mathbb{R}$ es continua y $u-v \equiv 0$ en $\partial D(a, R)$.
+    $u-v: \overline{D}(a, R) \to \mathbb{R}$ es continua y $u-v \equiv 0$ en $\partial D(a, R)$.
     Sea $z_0 \in D(a, R)$.
     Tomamos $r_{z_0} > 0$, que elegimos suficientemente pequeño para que $D(z_0, r_{z_0}) \subset D(a, R)$.
     Si $r \in [0, r_{z_0})$, tenemos que
-    $$u(z_0)-v(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt - frac{1}{2\pi} \int_{-\pi}^\pi v(z_0 + re^{it})dt = frac{1}{2\pi} \int_{-\pi}^\pi (u-v)(z_0 + re^{it})dt$$
+    $$u(z_0)-v(z_0) = \frac{1}{2\pi} \int_{-\pi}^\pi u(z_0 + re^{it})dt - frac{1}{2\pi} \int_{-\pi}^\pi v(z_0 + re^{it})dt = frac{1}{2\pi} \int_{-\pi}^\pi (u-v)(z_0 + re^{it})dt.$$
     Por el lema, $u-v = 0$ en $D(a, R)$.
     Como $v$ es armónica en $D(a, R)$, $u$ es armónica en $D(a, R)$.
     Para cada $a \in D$ hemos encontrado $R > 0$ con $D(a, R) \subset D$ tal que $u$ es armónica en $D(a, R)$.
@@ -938,11 +920,11 @@ es la solución del problema de Dirichlet en $D$ con valores frontera $f$.
     Sea $a \in D$ y sea $R > 0$ con $D(a, R) \subset D$.
     Sea $r \in [0, R)$.
     Tenemos que
-    $$u_n(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt, \quad \forall n \in \mathbb{N}$$
+    $$u_n(a) = \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt, \quad \forall n \in \mathbb{N}.$$
     Haciendo $n \to \infty$,
-    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt$$
+    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt.$$
     Como $u_n \to u$ uniformemente en $\partial D(a, r)$,
-    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi \lim_{n \to \infty} u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt$$
+    $$u(a) = \lim_{n \to \infty} \frac{1}{2\pi} \int_{-\pi}^\pi u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi \lim_{n \to \infty} u_n(a + re^{it})dt = \frac{1}{2\pi} \int_{-\pi}^\pi u(a + re^{it})dt.$$
     Por el teorema anterior, $u$ es armónica en $D$.
 \end{proof}
 
@@ -952,61 +934,61 @@ Vamos a ver qué sucede al cambiar la condición de convergencia uniforme en com
 Sean $a \in \mathbb{C}$ y $R > 0$.
 Sea $u$ una función armónica y no negativa en $D(a, R)$.
 Entonces, si $r \in (0, R)$, se tiene que
-$$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}, \quad \forall z \in \bar{D}(a, R)$$
+$$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}, \quad \forall z \in \overline{D}(a, R).$$
 Por tanto, tomando $r = \frac{R}{2}$, tenemos
-$$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\right)$$
+$$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \overline{D}\left(a, \frac{R}{2}\right).$$
 
 \begin{proof}
     Fijamos $r \in (0, R)$.
     Tomamos $\rho$ con $r < \rho < R$.
-    Sea $v: \bar{\mathbb{D}} \to \mathbb{R}$, $v(z) = u(a + \rho z)$.
+    Sea $v: \overline{\mathbb{D}} \to \mathbb{R}$, $v(z) = u(a + \rho z)$.
     \begin{align*}
         v: \mathbb{D} & \to D(a, R) \xrightarrow{u} \mathbb{R} \\
         z             & \mapsto a + \rho z
     \end{align*}
-    $v$ es continua en $\bar{\mathbb{D}}$, armónica en $\mathbb{D}$ y no negativa en $\bar{\mathbb{D}}$.
+    $v$ es continua en $\overline{\mathbb{D}}$, armónica en $\mathbb{D}$ y no negativa en $\overline{\mathbb{D}}$.
 
     Sea $z \in \partial D\left(0, \frac{r}{\rho}\right)$.
     $z$ es de la forma $z = \frac{r}{\rho}e^{i\theta}$, con $\theta \in \mathbb{R}$.
     Entonces:
-    $$v(z) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt$$
+    $$v(z) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt.$$
     Además,
-    $$v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt$$
+    $$v(0) = \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt.$$
     Recordemos que
-    $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}$$
+    $$\frac{1-r}{1+r} \leq P_r(t) \leq \frac{1+r}{1-r}, \quad 0 \leq r < 1, \; t \in \mathbb{R}.$$
     Entonces, si $\theta \in \mathbb{R}$ y $z = \frac{r}{\rho}e^{i\theta}$, tenemos:
     \begin{align*}
-         & \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1-r/\rho}{1+r/\rho}dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1+r/\rho}{1-r/\rho}dt \Leftrightarrow                    \\
-         & \Leftrightarrow \frac{\rho-r}{\rho+r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \leq v(z) \leq \frac{\rho+r}{\rho-r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \Leftrightarrow \frac{\rho-r}{\rho+r}v(0) \leq v(z) \leq \frac{\rho+r}{\rho-r}v(0)
+         & \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1-r/\rho}{1+r/\rho}dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})P_{r/\rho}(\theta-t)dt \leq \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})\frac{1+r/\rho}{1-r/\rho}dt \Leftrightarrow                     \\
+         & \Leftrightarrow \frac{\rho-r}{\rho+r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \leq v(z) \leq \frac{\rho+r}{\rho-r} \frac{1}{2\pi} \int_{-\pi}^\pi v(e^{it})dt \Leftrightarrow \frac{\rho-r}{\rho+r}v(0) \leq v(z) \leq \frac{\rho+r}{\rho-r}v(0).
     \end{align*}
     En términos de $u$,
-    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R), \; z = \frac{r}{\rho}e^{i\theta}$$
+    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R), \; z = \frac{r}{\rho}e^{i\theta}.$$
     Como $u(a+\rho z) = u\left(a + \rho\frac{r}{\rho}e^{i\theta}\right) = u(a + re^{i\theta})$, entonces
-    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R)$$
+    $$\frac{\rho-r}{\rho+r}u(a) \leq u(a+\rho z) \leq \frac{\rho+r}{\rho-r}u(a), \quad \theta \in \mathbb{R}, \; \rho \in (r, R).$$
 
     Haciendo $\rho \to R^-$, tenemos que:
-    $$\frac{R-r}{R+r}u(a) \leq u(a+re^{i\theta}) \leq \frac{R+r}{R-r}u(a), \quad \forall \theta \in \mathbb{R}$$
+    $$\frac{R-r}{R+r}u(a) \leq u(a+re^{i\theta}) \leq \frac{R+r}{R-r}u(a), \quad \forall \theta \in \mathbb{R}.$$
     Entonces:
-    $$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}u(a), \quad z \in \partial D(a, r)$$
-    Como $u$ es continua en $\bar{D}(a, r)$ y armónica en $D(a, r)$, por el principio del máximo y el principio del mínimo,
+    $$\frac{R-r}{R+r}u(a) \leq u(z) \leq \frac{R+r}{R-r}u(a), \quad z \in \partial D(a, r).$$
+    Como $u$ es continua en $\overline{D}(a, r)$ y armónica en $D(a, r)$, por el principio del máximo y el principio del mínimo,
     \begin{align*}
-        \max_{z \in \bar{D}(a, r)} u(z) & = \max_{z \in \partial D(a, r)} u(z) \\
-        \min_{z \in \bar{D}(a, r)} u(z) & = \min_{z \in \partial D(a, r)} u(z)
+        \max_{z \in \overline{D}(a, r)} u(z) & = \max_{z \in \partial D(a, r)} u(z), \\
+        \min_{z \in \overline{D}(a, r)} u(z) & = \min_{z \in \partial D(a, r)} u(z).
     \end{align*}
-    Entonces tenemos la desigualdad para todo $z \in \bar{D}(a, r)$.
+    Entonces tenemos la desigualdad para todo $z \in \overline{D}(a, r)$.
 \end{proof}
 
 \begin{proposition}
     Sea $D$ un dominio en $\mathbb{C}$ y sea $\{u_n\}_{n=1}^\infty$ una sucesión de funciones armónicas y no negativas en $D$.
     Si existe $z_0 \in D$ tal que $\lim\limits_{n \to \infty} u_n(z_0) = \infty$, entonces
-    $$\lim_{n \to \infty} u_n(z) = \infty, \quad \forall z \in D$$
+    $$\lim_{n \to \infty} u_n(z) = \infty, \quad \forall z \in D.$$
     siendo la convergencia uniforme en cada subconjunto compacto de $D$.
 \end{proposition}
 
 \begin{proof}
     Para cada $n \in \mathbb{N}$ tenemos $u_n: D \to \mathbb{R}$ armónica no negativa.
     Sea
-    $$A = \{z \in D : \lim\limits_{n \to \infty} u_n(z) = \infty\}$$
+    $$A = \{z \in D : \lim\limits_{n \to \infty} u_n(z) = \infty\}.$$
     $A \neq \emptyset$ porque $z_0 \in A$.
     Veamos que $A$ es abierto y cerrado en $D$.
 
@@ -1018,9 +1000,9 @@ $$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\
               Sea $M > 0$, veamos que existe $n_0 \in \mathbb{N}$ tal que si $n \geq n_0$ y $z \in D(a, R/2)$, entonces $u_n(z) > M$.
               Como $a \in A$, tenemos que $\lim\limits_{n \to \infty} u_n(a) = \infty$.
               Por tanto, existe $n_0 \in \mathbb{N}$ tal que
-              $$n \geq n_0 \Rightarrow u_n(a) > 3M$$
+              $$n \geq n_0 \Rightarrow u_n(a) > 3M.$$
               Entonces, si $n \geq n_0$ y $z \in D(a, R/2)$, por las desigualdades de Harnack tenemos
-              $$u_n(z) \geq \frac{1}{3}u_n(a) > \frac{1}{3}3M = M$$
+              $$u_n(z) \geq \frac{1}{3}u_n(a) > \frac{1}{3}3M = M.$$
               Por tanto, $A$ es abierto.
 
         \item Veamos que $A$ es cerrado en $D$, es decir, que $D \setminus A$ es abierto.
@@ -1065,7 +1047,7 @@ $$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\
 
               Sea $\varepsilon > 0$.
               Como $\{u_n(a)\}_{n=1}^\infty$ es una sucesión de Cauchy por ser convergente, tenemos que existe $n_0 \in \mathbb{N}$ tal que
-              $$n \geq m > n_0 \Rightarrow 0 \leq u_n(a)-u_m(a) < \frac{\varepsilon}{3}$$
+              $$n \geq m > n_0 \Rightarrow 0 \leq u_n(a)-u_m(a) < \frac{\varepsilon}{3},$$
               ya que $u_n-u_m$ es armónica en $D(a, R)$ y no negativa.
               Por tanto, $\{u_n\}_{n=1}^\infty$ converge uniformemente en $D(a, R/2)$.
 
@@ -1078,11 +1060,11 @@ $$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\
     Para cada $n \in \mathbb{N}$, sea $v_n = u_n - u_1$.
     Entonces $\{v_n\}_{n=1}^\infty$ es una sucesión creciente de funciones armónicas no negativas.
     Para cada $z \in D$, sea
-    $$v(z) = \lim\limits_{n \to \infty} v_n(z) \in \mathbb{R} \cup \{\infty\}$$
+    $$v(z) = \lim\limits_{n \to \infty} v_n(z) \in \mathbb{R} \cup \{\infty\}.$$
     Si $z \in D$,
     $$v(z) = \lim\limits_{n \to \infty} (u_n(z)-u_1(z)) = \begin{cases}
-            \infty        & \text{si } u(z) = \infty       \\
-            u(z) - u_1(z) & \text{si } u(z) \in \mathbb{R}
+            \infty        & \text{si } u(z) = \infty,       \\
+            u(z) - u_1(z) & \text{si } u(z) \in \mathbb{R}.
         \end{cases}$$
     Por el caso anterior se da una de las dos siguientes posibilidades:
     \begin{itemize}
@@ -1099,7 +1081,7 @@ $$\frac{1}{3}u(a) \leq u(z) \leq 3u(a), \quad z \in \bar{D}\left(a, \frac{R}{2}\
               Veamos que $u$ es armónica y $u_n \xrightarrow[n \to \infty]{} u$ uniformemente en cada subconjunto compacto de $D$.
 
               Sabemos que
-              $$v(z) = u(z) - u_1(z) \Leftrightarrow u(z) = u_1(z) + v(z), \quad z \in D$$
+              $$v(z) = u(z) - u_1(z) \Leftrightarrow u(z) = u_1(z) + v(z), \quad z \in D.$$
               Entonces $u(z) \in \mathbb{R}$ para todo $z \in D$ y $u$ es armónica en $D$.
               Además, $u_n - u_1 \xrightarrow[n \to \infty]{} u-u_1$ uniformemente en cada subconjunto compacto de $D$.
               Por tanto, $u_n \to u$ uniformemente en cada subconjunto compacto de $D$, así que se verifica (2).

@@ -197,7 +197,7 @@ Vamos a ver cómo aplicar la fórmula de Jensen para ver que si el crecimiento d
 \begin{theorem}
     Sea $0 < R \leq \infty$ y sea $f$ holomorfa en $D(0, R)$.
     Sean $s \in (0, R)$ y $z \in D(0, s)$, entonces:
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta = \log|f(z)| + \sum_{\{|a_n| \leq s, a_n \text{ cero de } f\}} \log^+\left|\frac{s^2-\bar{a}_nz}{s(z-a_n)}\right|$$
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta = \log|f(z)| + \sum_{\{|a_n| \leq s, a_n \text{ cero de } f\}} \log^+\left|\frac{s^2-\overline{a}_nz}{s(z-a_n)}\right|$$
 \end{theorem}
 
 % Demostración
@@ -432,7 +432,7 @@ $$\frac{\log(n)}{\log|c_n|^{-1/n}} = \rho \Rightarrow \log(n) = \log|c_n|^{-\rho
     $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{\log(n)}{\frac{1}{\rho}\log(n)} = \rho$$
 \end{proof}
 
-\section{Relación entre el orden de crecimiento y el exponente de convergencia de los ceros de la función}
+\section{Relación entre el orden de crecimiento y el exponente de convergencia de los ceros}
 Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, se definía el exponente de convergencia como
 $$\sigma = \inf\left\{s > 0 : \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty\right\}$$
 El género de $\{a_n\}_{n=1}^\infty$ es el menor $p \in \mathbb{N} \cup \{0\}$ de modo que

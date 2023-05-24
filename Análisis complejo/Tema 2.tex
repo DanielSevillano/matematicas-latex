@@ -335,8 +335,8 @@ Sea $f$ holomorfa en $\mathbb{D}$ con $(\mathbb{D}) \subset \mathbb{D}$.
 Sea $a \in \mathbb{D}$ y $b = f(a) \in \mathbb{D}$.
 Definimos:
 \begin{align*}
-    T_a(z) & = \frac{z+a}{1 + \bar{a}z}, \quad T_a \in \mathcal{M}, \; T_a(\mathbb{D}) = \mathbb{D}, \; T_a(0) = a, \\
-    S_b(z) & = \frac{z-b}{1 - \bar{b}z}, \quad S_b \in \mathcal{M}, \; S_b(\mathbb{D}) = \mathbb{D}, \; S_b(b) = 0.
+    T_a(z) & = \frac{z+a}{1 + \overline{a}z}, \quad T_a \in \mathcal{M}, \; T_a(\mathbb{D}) = \mathbb{D}, \; T_a(0) = a, \\
+    S_b(z) & = \frac{z-b}{1 - \overline{b}z}, \quad S_b \in \mathcal{M}, \; S_b(\mathbb{D}) = \mathbb{D}, \; S_b(b) = 0.
 \end{align*}
 
 Sea $\varphi = S_b \circ f \circ T_a$.
@@ -354,8 +354,8 @@ Desarrollamos las dos expresiones:
     \item Sea $z \in \mathbb{D}$.
           Consideramos $T_a^{-1}(z) \in \mathbb{D}$.
           \begin{align*}
-               & |\varphi(T_a^{-1}(z))| \leq |T_a^{-1}(z)| \Leftrightarrow |S_b(f(z))| \leq |S_a(z)| \Leftrightarrow \left|\frac{f(z)-b}{1-\bar{z}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right| \Leftrightarrow \\
-               & \Leftrightarrow \left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|, \quad \forall z \in \mathbb{D}.
+               & |\varphi(T_a^{-1}(z))| \leq |T_a^{-1}(z)| \Leftrightarrow |S_b(f(z))| \leq |S_a(z)| \Leftrightarrow \left|\frac{f(z)-b}{1-\overline{z}f(z)}\right| \leq \left|\frac{z-a}{1-\overline{a}z}\right| \Leftrightarrow \\
+               & \Leftrightarrow \left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\overline{a}z}\right|, \quad \forall z \in \mathbb{D}.
           \end{align*}
 
           Además, si se da la igualdad para algún $z \in \mathbb{D}$, $z \neq a$, entonces $\varphi$ es una rotación.
@@ -363,8 +363,8 @@ Desarrollamos las dos expresiones:
 
     \item Por la regla de la cadena, $\varphi'(0) = T_a'(0) f'(a) S_b'(b)$.
           \begin{align*}
-              T_a'(z) & = \frac{1 + \bar{a}z - (z+a)\bar{a}}{(1 + \bar{a}z)^2}, \quad T_a'(0) = 1 - |a|^2,                                     \\
-              S_b'(z) & = \frac{1 - \bar{b}z + (z-b)\bar{b}}{(1 - \bar{b}z)^2}, \quad S_b'(b) = \frac{1-|b|^2}{(1-|b|^2)} = \frac{1}{1-|b|^2}.
+              T_a'(z) & = \frac{1 + \overline{a}z - (z+a)\overline{a}}{(1 + \overline{a}z)^2}, \quad T_a'(0) = 1 - |a|^2,                                     \\
+              S_b'(z) & = \frac{1 - \overline{b}z + (z-b)\overline{b}}{(1 - \overline{b}z)^2}, \quad S_b'(b) = \frac{1-|b|^2}{(1-|b|^2)} = \frac{1}{1-|b|^2}.
           \end{align*}
 
           Así que:
@@ -379,7 +379,7 @@ Desarrollamos las dos expresiones:
 Por tanto, hemos probado lo siguiente:
 \begin{enumerate}
     \item Para todo $z \in \mathbb{D}$,
-          $$\left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\bar{a}z}\right|.$$
+          $$\left|\frac{f(z)-f(a)}{1-\overline{f(a)}f(z)}\right| \leq \left|\frac{z-a}{1-\overline{a}z}\right|.$$
           Si se da la igualdad para algún $z \in \mathbb{D}$ con $z \neq a$ entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
     \item $$\frac{|f'(a)|}{1-|f(a)|^2} \leq \frac{1}{1-|a|^2}.$$
           Si se da la igualdad entonces $f \in \mathcal{M}$ y $f(\mathbb{D}) = \mathbb{D}$.
@@ -440,11 +440,11 @@ Vamos a ver que $\rho$ es una distancia en $\mathbb{D}$.
 
 \begin{lemma}
     Para todo $a, z \in \mathbb{D}$,
-    $$\frac{||z|-|a||}{1-|a||z|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|a||z|}.$$
+    $$\frac{||z|-|a||}{1-|a||z|} \leq \left|\frac{z-a}{1-\overline{a}z}\right| \leq \frac{|z|+|a|}{1+|a||z|}.$$
 \end{lemma}
 
 Observamos que si $a, z \in \mathbb{D}$, tenemos:
-$$\rho(a, z) = \left|\frac{z-a}{1-\bar{a}z}\right| = |S_a(z)| < 1, \quad S_a \in \mathcal{M}, S_a(\mathbb{D}) = \mathbb{D}.$$
+$$\rho(a, z) = \left|\frac{z-a}{1-\overline{a}z}\right| = |S_a(z)| < 1, \quad S_a \in \mathcal{M}, S_a(\mathbb{D}) = \mathbb{D}.$$
 
 Dados $a \in \mathbb{D}$ y $0 < r < 1$, denotamos:
 $$\Delta(a, r) = \{z \in \mathbb{D} : \rho(z, a) < r\}.$$
@@ -465,7 +465,7 @@ Si $a = 0$, $T_a(z) = z$ luego $T_a(D(0, r)) = D(0, r)$.
 Supongamos que $a \neq 0$.
 Sea $L$ la recta que pasa por 0 y $a$.
 Calculamos $S_a(L)$ hallando la imagen de tres puntos.
-$$S_a(0) = -a, \quad S_a(a) = 0, \quad S_a\left(\frac{1}{\bar{a}}\right) = \infty.$$
+$$S_a(0) = -a, \quad S_a(a) = 0, \quad S_a\left(\frac{1}{\overline{a}}\right) = \infty.$$
 $L' = S_a(L)$ es la recta que pasa por 0 y por $-a$, luego $L'$ coincide con $L$.
 Como $L'$ es perpendicular a $\partial D(0, r)$ en los dos puntos de corte y $T_a$ preserva ángulos en esos dos puntos, entonces $L$ es perpendicular a $C$.
 Por tanto $c$ está en $L$.
@@ -480,8 +480,8 @@ Entonces:
 
 Calculamos:
 \begin{align*}
-    T_a\left(-r\frac{a}{|a|}\right) = \frac{-r\frac{a}{|a|}+a}{1-\bar{a}r\frac{a}{|a|}} = \frac{-ra+a|a|}{|a|-r|a|^2} = \frac{a(|a|-r)}{|a|(1-r|a|)}, \\
-    T_a\left(r\frac{a}{|a|}\right) = \frac{r\frac{a}{|a|}+a}{1+\bar{a}r\frac{a}{|a|}} = \frac{ra+a|a|}{|a|+r|a|^2} = \frac{a(|a|+r)}{|a|(1+r|a|)}.
+    T_a\left(-r\frac{a}{|a|}\right) = \frac{-r\frac{a}{|a|}+a}{1-\overline{a}r\frac{a}{|a|}} = \frac{-ra+a|a|}{|a|-r|a|^2} = \frac{a(|a|-r)}{|a|(1-r|a|)}, \\
+    T_a\left(r\frac{a}{|a|}\right) = \frac{r\frac{a}{|a|}+a}{1+\overline{a}r\frac{a}{|a|}} = \frac{ra+a|a|}{|a|+r|a|^2} = \frac{a(|a|+r)}{|a|(1+r|a|)}.
 \end{align*}
 Se llega a que:
 \begin{align*}
@@ -500,15 +500,15 @@ $$\left|T_a\left(-r\frac{a}{|a|}\right)\right| = \frac{||a|-r|}{1-r|a|} \leq \fr
 
 Entonces, para todo $z \in \partial D(0, r)$ se tiene que:
 \begin{align*}
-     & \frac{||a|-r|}{1-r|a|} \leq T_a(z) \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \frac{||a|-r|}{1-r|a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \\
-     & \Leftrightarrow \frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z+a}{1+\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|.
+     & \frac{||a|-r|}{1-r|a|} \leq T_a(z) \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \frac{||a|-r|}{1-r|a|} \leq \left|\frac{z+a}{1+\overline{a}z}\right| \leq \frac{r+|a|}{1+r|a|} \Leftrightarrow \\
+     & \Leftrightarrow \frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z+a}{1+\overline{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|.
 \end{align*}
 Hemos probado esto para $a, z \in \mathbb{D}$, $a, z \neq 0$.
 Pero si $a = 0$ o $z = 0$ la desigualdad es trivial.
 Por tanto, esta cadena de desigualdades es cierta para todo $a, z \in \mathbb{D}$.
 
 Cambiando $a$ por $-a$, tenemos:
-$$\frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z-a}{1-\bar{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|, \quad z, a \in \mathbb{D}.$$
+$$\frac{||a|-|z||}{1-|z||a|} \leq \left|\frac{z-a}{1-\overline{a}z}\right| \leq \frac{|z|+|a|}{1+|z||a|} \leq |z|+|a|, \quad z, a \in \mathbb{D}.$$
 Las desigualdades primera y segunda corresponden al último lema.
 
 Por otro lado,
