@@ -11,7 +11,7 @@
 \begin{proof}
     Sea $f(z) = \sum_{n=0}^\infty a_nz^n$.
     Sea $R > 0$,
-    $$a_n = \frac{f^{(n)}(0)}{n!} = \frac{1}{2\pi i} \int_{|z|=R} \frac{f(z)}{z^{n+1}}dz \leq \max_{|z|=R} |f(z)|\frac{1}{R^n} \leq c\frac{|z|^\alpha}{R} = cR^{\alpha-n} \xrightarrow[R \to \infty, n > E(\alpha)]{} 0$$
+    $$a_n = \frac{f^{(n)}(0)}{n!} = \frac{1}{2\pi i} \int_{|z|=R} \frac{f(z)}{z^{n+1}}dz \leq \max_{|z|=R} |f(z)|\frac{1}{R^n} \leq c\frac{|z|^\alpha}{R} = cR^{\alpha-n} \xrightarrow[R \to \infty, n > E(\alpha)]{} 0.$$
     Por tanto, $a_n = 0$ para todo $n > E(\alpha)$.
 \end{proof}
 
@@ -30,11 +30,11 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
 \begin{lemma}
     Sea $s > 0$.
     Entonces
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|1+se^{i\theta}|d\theta = \log^+(s)$$
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|1+se^{i\theta}|d\theta = \log^+(s),$$
     donde
     $$\log^+(s) = \begin{cases}
-            \log(s) & \text{si } s \geq 1  \\
-            0       & \text{si } 0 < s < 1
+            \log(s) & \text{si } s \geq 1,  \\
+            0       & \text{si } 0 < s < 1.
         \end{cases}$$
 \end{lemma}
 
@@ -42,34 +42,34 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
     Sabemos que $\Log(1-z)$ es holomorfa en $\mathbb{D}$.
     \begin{itemize}
         \item Si $s < 1$, entonces por el teorema del valor medio
-              $$\frac{1}{2\pi} \int_{-\pi}^\pi \Log|1-se^{i\theta}|d\theta = 0$$
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi \Log|1-se^{i\theta}|d\theta = 0.$$
 
         \item Si $s > 1$,
               \begin{align*}
-                   & \frac{1}{2\pi} \int_{-\pi}^\pi \log|1-se^{i\theta}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|se^{i\theta}\left(\frac{1}{s}e^{-i\theta}-1\right)\right|d\theta =                                                                   \\
-                   & = \frac{1}{2\pi} \int_{-\pi}^\pi \log(s)d\theta + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{1}{s}e^{-i\theta}\right|d\theta = \log(s) - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{1}{s}e^{i\varphi}\right|d\varphi = \log(s)
+                   & \frac{1}{2\pi} \int_{-\pi}^\pi \log|1-se^{i\theta}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|se^{i\theta}\left(\frac{1}{s}e^{-i\theta}-1\right)\right|d\theta =                                                                    \\
+                   & = \frac{1}{2\pi} \int_{-\pi}^\pi \log(s)d\theta + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{1}{s}e^{-i\theta}\right|d\theta = \log(s) - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{1}{s}e^{i\varphi}\right|d\varphi = \log(s).
               \end{align*}
 
         \item Sea $s = 1$.
-              $$|1-e^{i\theta}|^2 = (1-e^{i\theta})(1-e^{-i\theta}) = 2-2\cos(\theta)$$
+              $$|1-e^{i\theta}|^2 = (1-e^{i\theta})(1-e^{-i\theta}) = 2-2\cos(\theta).$$
               Sabemos que
-              $$\cos(\theta) = \cos\left(2\frac{\theta}{2}\right) = \cos^2\left(\frac{\theta}{2}\right) - \sin^2\left(\frac{\theta}{2}\right) = 1-2\sin^2\left(\frac{\theta}{2}\right)$$
+              $$\cos(\theta) = \cos\left(2\frac{\theta}{2}\right) = \cos^2\left(\frac{\theta}{2}\right) - \sin^2\left(\frac{\theta}{2}\right) = 1-2\sin^2\left(\frac{\theta}{2}\right).$$
               Luego $|1-e^{i\theta}|^2 = 4\sin^2\left(\frac{\theta}{2}\right)$.
               \begin{align*}
                    & \frac{1}{2\pi} \int_{-\pi}^\pi \log|1-e^{i\theta}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(2\left|\sin\left(\frac{\theta}{2}\right)\right|\right)d\theta = \log(2) + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|\sin\left(\frac{\theta}{2}\right)\right|d\theta = \\
-                   & = \log(2) + \frac{1}{\pi} \int_0^{\pi} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta = \log(2) + \frac{2}{\pi} \int_{0}^{\pi/2} \log(\sin(\varphi))d\varphi
+                   & = \log(2) + \frac{1}{\pi} \int_0^{\pi} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta = \log(2) + \frac{2}{\pi} \int_{0}^{\pi/2} \log(\sin(\varphi))d\varphi.
               \end{align*}
               Ahora bien,
               \begin{align*}
                    & \int_0^{\pi/2} \log(\sin(\theta))d\theta = \int_0^{\pi/2} \log\left(2\sin\left(\frac{\theta}{2}\right)\cos\left(\frac{\theta}{2}\right)\right)d\theta =                                        \\
                    & = \frac{\pi}{2}\log(2) + \int_0^{\pi/2} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta + \int_0^{\pi/2} \log\left(\cos\left(\frac{\theta}{2}\right)\right)d\theta =                 \\
                    & = \frac{\pi}{2}\log(2) + \int_0^{\pi/2} \log\left(\sin\left(\frac{\theta}{2}\right)\right)d\theta + \int_0^{\pi/2} \log\left(\sin\left(\frac{\pi}{2} - \frac{\theta}{2}\right)\right)d\theta = \\
-                   & = \frac{\pi}{2}\log(2) + 2\int_0^{\pi/2} \log(\sin(\varphi))d\varphi - 2\int_{\pi/2}^{\pi/4} \log(\sin(\varphi))d\varphi = \frac{\pi}{2}\log(2) + 2\int_0^{\pi/2} \log(\sin(\varphi))d\varphi
+                   & = \frac{\pi}{2}\log(2) + 2\int_0^{\pi/2} \log(\sin(\varphi))d\varphi - 2\int_{\pi/2}^{\pi/4} \log(\sin(\varphi))d\varphi = \frac{\pi}{2}\log(2) + 2\int_0^{\pi/2} \log(\sin(\varphi))d\varphi.
               \end{align*}
               Así que
-              $$\int_0^{\pi/2} \log(\sin(\theta))d\theta = -\frac{\pi}{2}\log(2)$$
+              $$\int_0^{\pi/2} \log(\sin(\theta))d\theta = -\frac{\pi}{2}\log(2).$$
               Por tanto,
-              $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|1-e^{i\theta}|d\theta = 0$$
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|1-e^{i\theta}|d\theta = 0.$$
     \end{itemize}
 \end{proof}
 
@@ -78,50 +78,50 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
     $$|a_1| \leq |a_2| \leq |a_3| \leq \dots$$
     Sea $\rho \in (0, R)$ y $n(\rho, f) = \#\{a_n : |a_n| \leq \rho\}$.
     Entonces
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)$$
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right).$$
 \end{theorem}
 
 \begin{proof}
     Si $\rho = 0$,
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(0)|d\theta = \log|f(0)|$$
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(0)|d\theta = \log|f(0)|.$$
     Sea ahora $\rho \in (0, R)$.
     Supongamos que $f$ no tiene ceros en $\overline{D(0, \rho)}$.
     Entonces existe $\rho'$ con $0 < \rho < \rho' < R$ tal que $f$ es holomorfa en $D(0, \rho')$ y $f$ no tiene ceros en $D(0, \rho')$.
     Así, como $\Log(f(z))$ es holomorfa en $D(0, \rho')$, tenemos que $\log|f(z)|$ es armónica en $D(0, \rho')$.
     Por el teorema del valor medio,
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)|$$
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|f(0)|.$$
     En general, consideramos
-    $$F(z) = \frac{f(z)}{\prod_{k=1}^{n(\rho, f)} (z-a_k)}$$
+    $$F(z) = \frac{f(z)}{\prod_{k=1}^{n(\rho, f)} (z-a_k)}.$$
     Es holomorfa en $D(0, R)$ y no se anula en $\overline{D(0, \rho)}$.
     Por el caso anterior,
     \begin{align*}
          & \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(\frac{|f(\rho e^{i\theta})|}{\prod_{k=1}^{n(\rho, f)} |\rho e^{i\theta} - a_k|}\right)d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left(\prod_{k=1}^{n(\rho, f)} |\rho e^{i\theta} - a_k|\right)d\theta = \\
-         & = \log|f(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{1}{|a_k|}\right)
+         & = \log|f(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{1}{|a_k|}\right).
     \end{align*}
     Sin embargo, para dar este paso es necesario que las integrales converjan por separado.
     Sea $a_k = \rho_ke^{i\theta_k}$.
     \begin{align*}
          & \frac{1}{2\pi} \int_{-\pi}^\pi \log|\rho e^{i\theta} - \rho_ke^{i\theta_k}|d\theta = \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|\rho e^{i\theta}\left(1-\frac{\rho_k}{\rho}e^{i(\theta_k-\theta)}\right)\right|d\theta = \\
          & = \frac{1}{2\pi} \int_{-\pi}^\pi \log|\rho e^{i\theta}|d\theta + \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{\rho_k}{\rho}e^{i(\theta_k-\theta)}\right|d\theta =                                                  \\
-         & = \log(\rho) - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{\rho_k}{\rho}e^{i\varphi}\right|d\varphi = \log(\rho)
+         & = \log(\rho) - \frac{1}{2\pi} \int_{-\pi}^\pi \log\left|1-\frac{\rho_k}{\rho}e^{i\varphi}\right|d\varphi = \log(\rho).
     \end{align*}
 \end{proof}
 
 \begin{definition}
     Se llama función contadora de Nevanlinna a la cantidad
-    $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right)$$
+    $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right).$$
 \end{definition}
 
 \begin{remark}
     \hfill
     \begin{enumerate}
-        \item $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) = \sum_{k=1}^\infty \log^+\left(\frac{\rho}{|a_k|}\right)$$
-        \item $$N(\rho, f) = \int_0^\rho \frac{n(t, f)}{t}dt$$
+        \item $$N(\rho, f) = \sum_{\{n : |a_n| \leq \rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) = \sum_{k=1}^\infty \log^+\left(\frac{\rho}{|a_k|}\right).$$
+        \item $$N(\rho, f) = \int_0^\rho \frac{n(t, f)}{t}dt.$$
               \begin{proof}
                   Sean $f$ y $\rho$.
                   Por simplicidad, llamamos $n(\rho) = n(\rho, f)$.
                   Existen $a_1, \dots, a_{n(\rho)}$ ceros de $f$ de modo que
-                  $$|a_1| \leq |a_2| \leq \dots \leq |a_{n(\rho)}|$$
+                  $$|a_1| \leq |a_2| \leq \dots \leq |a_{n(\rho)}|.$$
                   Van a existir $p$ radios $\rho_1 < \dots < \rho_p$ tal que cada cero $a_k$ va a tener asociado un único $\rho_j$ de la forma $|a_k| = \rho_j$.
                   Entenderemos que $n(\rho_0) = 0$.
                   \begin{align*}
@@ -130,7 +130,7 @@ La fórmula de Jensen permite controlar el número de ceros de una función holo
                        & = \log\left(\frac{\rho}{\rho_1}\right)(n(\rho_1)-n(\rho_0)) + \log\left(\frac{\rho}{\rho_2}\right)(n(\rho_2)-n(\rho_1)) + \dots + \log\left(\frac{\rho}{\rho_p}\right)(n(\rho_p)-n(\rho_{p-1})) =                                                                 \\
                        & = n(\rho_1)\left(\log\left(\frac{\rho}{\rho_1}\right) - \log\left(\frac{\rho}{\rho_2}\right)\right) + n(\rho_2)\left(\log\left(\frac{\rho}{\rho_2}\right) - \log\left(\frac{\rho}{\rho_3}\right)\right) + \dots + n(\rho_p)\log\left(\frac{\rho}{\rho_p}\right) = \\
                        & = n(\rho_1)\log\left(\frac{\rho_2}{\rho_1}\right) + n(\rho_2)\log\left(\frac{\rho_3}{\rho_2}\right) + \dots + n(\rho_{p-1})\log\left(\frac{\rho_p}{\rho_{p-1}}\right) + n(\rho_p)\log\left(\frac{\rho}{\rho_p}\right) =                                           \\
-                       & = \int_{\rho_1}^{\rho_2} \frac{n(t)}{t}dt + \int_{\rho_2}^{\rho^3} \frac{n(t)}{t}dt + \dots + \int_{\rho_{p-1}}^{\rho_p} \frac{n(t)}{dt}dt + \int_{\rho_p}^\rho \frac{n(t)}{t}dt = \int_{\rho_1}^\rho \frac{n(t)}{t}dt = \int_0^\rho \frac{n(t)}{t}dt
+                       & = \int_{\rho_1}^{\rho_2} \frac{n(t)}{t}dt + \int_{\rho_2}^{\rho^3} \frac{n(t)}{t}dt + \dots + \int_{\rho_{p-1}}^{\rho_p} \frac{n(t)}{dt}dt + \int_{\rho_p}^\rho \frac{n(t)}{t}dt = \int_{\rho_1}^\rho \frac{n(t)}{t}dt = \int_0^\rho \frac{n(t)}{t}dt.
                   \end{align*}
               \end{proof}
     \end{enumerate}
@@ -141,19 +141,19 @@ Existen diversas generalizaciones de la fórmula de Jensen.
 \begin{theorem}
     Sea $f(z) = c_Nz^N + c_{N+1}z^{N+1} + \dots$ una función holomorfa en $D(0, R)$ y sea $\rho \in [0, R)$ tal que $\{a_n\}_{n=1}^\infty$ son los ceros de $f$ en $D(0, R)$ y además están ordenados respetando la multiplicidad.
     Entonces:
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)$$
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right).$$
 \end{theorem}
 
 \begin{proof}
     Consideramos
-    $$F(z) = \frac{f(z)}{c_Nz^N}$$
+    $$F(z) = \frac{f(z)}{c_Nz^N}.$$
     $F$ es holomorfa en $D(0, R)$, $F(0) = 1$ y los ceros de $F$ son los mismos que los de $f$.
 
     Aplicando la fórmula de Jensen,
     \begin{align*}
          & \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})d\theta = \log|F(0)| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) \Leftrightarrow                                                             \\
          & \Leftrightarrow \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \frac{1}{2\pi} \int_{-\pi}^\pi \log|c_N\rho^N|d\theta = \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right) \Leftrightarrow \\
-         & \Leftrightarrow \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right)
+         & \Leftrightarrow \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta = \log|c_N\rho^N| + \sum_{k=1}^{n(\rho, f)} \log\left(\frac{\rho}{|a_k|}\right).
     \end{align*}
 \end{proof}
 
@@ -161,58 +161,80 @@ Vamos a ver cómo aplicar la fórmula de Jensen para ver que si el crecimiento d
 
 \begin{definition}
     Llamamos módulo máximo de $f$ a
-    $$M_\infty(\rho, f) = \sup_{|z|=\rho} |f(z)|$$
+    $$M_\infty(\rho, f) = \sup_{|z|=\rho} |f(z)|.$$
 \end{definition}
 
 \begin{remark}
     Si $f$ es holomorfa,
-    $$M_\infty(\rho, f) = \max_{|z|=\rho} |f(z)| = \max_{|z|\leq\rho} |f(z)|$$
+    $$M_\infty(\rho, f) = \max_{|z|=\rho} |f(z)| = \max_{|z|\leq\rho} |f(z)|.$$
 \end{remark}
 
 \begin{theorem}
     Sea $f$ holomorfa en $D(0, R)$ tal que $f(0) \neq 0$ y $0 \leq s \leq \rho < R$.
     Entonces:
-    $$n(s, f)\log\left(\frac{\rho}{s}\right) \leq \log(M_\infty(\rho, f)) - \log|f(0)|$$
+    $$n(s, f)\log\left(\frac{\rho}{s}\right) \leq \log(M_\infty(\rho, f)) - \log|f(0)|.$$
 \end{theorem}
 
 \begin{proof}
     \begin{align*}
-        n(s, f)\log\left(\frac{\rho}{s}\right) & = n(s, f)\int_s^\rho \frac{1}{t}dt \leq \int_s^\rho \frac{n(t, f)}{t}dt \leq \int_0^\rho \frac{n(t, f)}{t}dt =           \\
-                                               & = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \log|f(0)| \leq \log(M_\infty(\rho, f)) - \log|f(0)|
+        n(s, f)\log\left(\frac{\rho}{s}\right) & = n(s, f)\int_s^\rho \frac{1}{t}dt \leq \int_s^\rho \frac{n(t, f)}{t}dt \leq \int_0^\rho \frac{n(t, f)}{t}dt =            \\
+                                               & = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta - \log|f(0)| \leq \log(M_\infty(\rho, f)) - \log|f(0)|.
     \end{align*}
 \end{proof}
 
 \begin{example}
     Sea $f$ entera con $|f(0)| = 1$ y sea $\rho = es$.
     Entonces:
-    $$n(s, f) \leq \log(M_\infty(es, f))$$
+    $$n(s, f) \leq \log(M_\infty(es, f)).$$
 \end{example}
 
 \begin{remark}
     Si $f(z) = c_Nz^N + \dots$, el teorema anterior se puede escribir de la forma:
-    $$n(s, f)\log\left(\frac{\rho}{s}\right) \leq \log(M_\infty(\rho, f)) - \log|c_N\rho^N|$$
+    $$n(s, f)\log\left(\frac{\rho}{s}\right) \leq \log(M_\infty(\rho, f)) - \log|c_N\rho^N|.$$
 \end{remark}
 
 \section{La fórmula de Poisson-Jensen}
 \begin{theorem}
-    Sea $0 < R \leq \infty$ y sea $f$ holomorfa en $D(0, R)$.
-    Sean $s \in (0, R)$ y $z \in D(0, s)$, entonces:
-    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta = \log|f(z)| + \sum_{\{|a_n| \leq s, a_n \text{ cero de } f\}} \log^+\left|\frac{s^2-\overline{a}_nz}{s(z-a_n)}\right|$$
+    Sea $R > 0$ tal que $f$ es holomorfa en $D(0, R)$ con la sucesión de ceros ordenados $\{a_n\}_{n=1}^\infty$.
+    Sea $s \in (0, R)$ y sea $z \in D(0, s)$ con $f(z) \neq 0$.
+    Entonces:
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})|\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta = \log|f(z)| + \sum_{\{n : |a_n| \leq s\}} \log^+\left|\frac{s^2-\overline{a}_nz}{s(z-a_n)}\right|.$$
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $T_a(\xi) = \frac{\xi + a}{1 + \overline{a}\xi}$.
+    Esta transformación manda $\overline{\mathbb{D}} \to \overline{\mathbb{D}}$.
+    Entonces, sea $\psi(\xi) = sT_{z/s}(\xi)$,
+    \begin{align*}
+        \psi(\xi)      & = s\frac{\xi + \frac{Z}{s}}{1 + \frac{\overline{z}}{s}\xi} = \frac{s(\xi s + z)}{s+\overline{z}\xi} \Rightarrow \psi(0) = z,                                 \\
+        \psi^{-1}(\xi) & = S_{z/s}\left(\frac{\xi}{s}\right) = \frac{\frac{\xi}{s}-\frac{z}{s}}{1-\frac{\overline{z}}{s}\frac{\xi}{s}} = \frac{\xi-z}{s - \frac{\overline{z}}{s}\xi}.
+    \end{align*}
+    $f \circ \psi$ es holomorfa en el disco $D(0, \rho)$ con $\rho > 1$ y $\psi(D(0, \rho)) \subset D(0, R)$.
+
+    Aplicamos la fórmula de Jensen a $f \circ \psi$.
+    Como $f \circ \psi(\xi) = 0 \Leftrightarrow f(\psi(\xi)) = 0$ y esto ocurre si y solo si existe $n \in \mathbb{N}$ tal que $\psi(\xi) = a_n$, entonces $\xi = \psi^{-1}(a_n)$.
+    $$\log|f \circ \psi(0)| = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f \circ \psi(e^{i\theta})|d\theta - \sum_{\{n : |a_n| \leq s\}} \log\left(\frac{1}{|\psi^{-1}(a_n)|}\right).$$
+    Si $a_n$ es un cero de $f$ de orden $N$, entonces $\xi = \psi^{-1}(a_n)$ es un cero de $f \circ \psi$ de orden $N$.
+    Además,
+    $$\frac{1}{|\varphi^{-1}(a_n)|} = \left|\frac{s-\frac{\overline{z}}{s}a_n}{a_n-z}\right| = \left|\frac{s^2-\overline{a_n}z}{s(z-a_n)}\right|.$$
+
+    Por otro lado, haciendo el cambio de variable $se^{i\varphi} = \psi(e^{i\theta})$,
+    $$\int_{-\pi}^\pi \log|f \circ \psi(e^{i\theta})|d\theta = \int_{-\pi}^\pi \log|f(se^{i\varphi})|\frac{s^2-|z|^2}{|s-ze^{-i\varphi|^2}}d\varphi.$$
+    Por tanto:
+    $$\log|f \circ \psi(0)| = \log|f(z)| = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\varphi})|\frac{s^2-|z|^2}{|s-ze^{-i\varphi|^2}}d\varphi - \sum_{\{n : |a_n| \leq s\}} \log\left|\frac{s^2-\overline{a_n}z}{s(z-a_n)}\right|.$$
+\end{proof}
 
 \begin{remark}
     \hfill
     \begin{enumerate}
         \item Sea $|z| < s$.
               Entonces:
-              $$\frac{|s^2-a_nz|}{|s(z-a_n)|} = \frac{1}{|\psi^{-1}(a_n)} \geq 1 \Rightarrow \log|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})|\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta$$
+              $$\frac{|s^2-a_nz|}{|s(z-a_n)|} = \frac{1}{|\psi^{-1}(a_n)} \geq 1 \Rightarrow \log|f(z)| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})|\frac{s^2-|z|^2}{|s-ze^{-i\theta}|^2}d\theta.$$
         \item Sea $z = \rho e^{i\varphi}$ con $0 < \varphi < s$.
               Entonces:
               \begin{align*}
                    & \max_{0 \leq \varphi \leq 2\pi} \log|f(\rho e^{i\varphi})| \leq \max_{0 \leq \varphi \leq 2\pi} \int_{-\pi}^\pi \log|f(se^{i\theta})|\frac{s^2-\rho^2}{|s-\rho e^{i\varphi}e^{-i\theta}|^2}d\theta \leq \\
-                   & \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log(M_\infty(s, f))\frac{s+\rho}{s-\rho}d\theta = \log(M_\infty(s, f))\frac{s+\rho}{s-\rho} \leq \log^+(M_\infty(s, f))\frac{s+\rho}{s-\rho}
+                   & \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log(M_\infty(s, f))\frac{s+\rho}{s-\rho}d\theta = \log(M_\infty(s, f))\frac{s+\rho}{s-\rho} \leq \log^+(M_\infty(s, f))\frac{s+\rho}{s-\rho}.
               \end{align*}
     \end{enumerate}
 \end{remark}
@@ -222,60 +244,86 @@ Vamos a ver cómo aplicar la fórmula de Jensen para ver que si el crecimiento d
     Sea $f$ una función holomorfa en $\mathbb{D}$ con la sucesión de ceros ordenados $\{a_n\}_{n=1}^\infty$.
     Entonces son equivalentes:
     \begin{enumerate}
-        \item $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
-        \item $$\sum_{n=1}^\infty (1-|a_n|) < \infty$$
+        \item $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty.$$
+        \item $$\sum_{n=1}^\infty (1-|a_n|) < \infty.$$
     \end{enumerate}
 \end{theorem}
 
 \begin{proof}
     Si $f(z) = c_Nz^N + \dots$, por la fórmula de Jensen generalizada
-    $$\log|c_N\rho^N| + \sum_{\{n : |a_n|\leq\rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta$$
+    $$\log|c_N\rho^N| + \sum_{\{n : |a_n|\leq\rho\}} \log\left(\frac{\rho}{|a_n|}\right) = \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta.$$
     \begin{itemize}
-        \item[$\Rightarrow$] $$\log|c_N\rho^N| + \sum_{\{n : |a_n|\leq\rho\}} \log\left(\frac{\rho}{|a_n|}\right) \leq \sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
+        \item[$\boxed{\Rightarrow}$] $$\log|c_N\rho^N| + \sum_{\{n : |a_n|\leq\rho\}} \log\left(\frac{\rho}{|a_n|}\right) \leq \sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty.$$
             Tomando límite $\rho \to 1$ a la izquierda,
-            $$\log|c_N| + \sum_{n=1}^\infty \log\left(\frac{1}{|a_n|}\right) < \infty \Rightarrow \sum_{n=1}^\infty (1-|a_n|) < \infty$$
-        \item[$\Leftarrow$] $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})d\theta \leq \log|c_N| + \sum_{n=1}^\infty \log\left(\frac{1}{|a_n|}\right) < \infty$$
+            $$\log|c_N| + \sum_{n=1}^\infty \log\left(\frac{1}{|a_n|}\right) < \infty \Rightarrow \sum_{n=1}^\infty (1-|a_n|) < \infty.$$
+        \item[$\boxed{\Leftarrow}$] $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})d\theta \leq \log|c_N| + \sum_{n=1}^\infty \log\left(\frac{1}{|a_n|}\right) < \infty.$$
             Por tanto,
-            $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty$$
+            $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty.$$
     \end{itemize}
 \end{proof}
 
 \begin{definition}
     Se define la función característica de Nevanlinna como
-    $$T(\rho, f) = \frac{1}{2\pi} \int_{-\pi}^\pi \log^+|f(\rho e^{i\theta})|d\theta$$
+    $$T(\rho, f) = \frac{1}{2\pi} \int_{-\pi}^\pi \log^+|f(\rho e^{i\theta})|d\theta.$$
 \end{definition}
 
 \begin{definition}
     Sea $0 < p < \infty$, se define la media integral de orden $p$ como
-    $$M_p(\rho, f) = \left(\frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})|^pd\theta\right)^{1/p}$$
+    $$M_p(\rho, f) = \left(\frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})|^pd\theta\right)^{1/p}.$$
 \end{definition}
 
 \begin{definition}
     Se define el módulo máximo de $f$ como
-    $$M_\infty(\rho, f) = \max_{\theta \in [0, 2\pi]} |f(\rho e^{i\theta})|$$
+    $$M_\infty(\rho, f) = \max_{\theta \in [0, 2\pi]} |f(\rho e^{i\theta})|.$$
 \end{definition}
 
 \begin{definition}
     Se define la clase de Nevanlinna como
-    $$\mathcal{N} = \{f \in Hol(\mathbb{D}) : \sup_{0<\rho<1} T(\rho, f) < \infty\}$$
+    $$\mathcal{N} = \{f \in \Hol(\mathbb{D}) : \sup_{0<\rho<1} T(\rho, f) < \infty\}.$$
 \end{definition}
 
 \begin{definition}
     Sea $0 < p \leq \infty$, se define el espacio de Hardy como
-    $$H^p = \{f \in Hol(\mathbb{D}) : \sup_{0<\rho<1} M_p(\rho, f) < \infty\}$$
+    $$H^p = \{f \in \Hol(\mathbb{D}) : \sup_{0<\rho<1} M_p(\rho, f) < \infty\}.$$
 \end{definition}
 
 \begin{theorem}
     Si $0 < p < q < \infty$, $H^\infty \subset H^q \subset H^p \subset \mathcal{N}$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    \hfill
+    \begin{enumerate}
+        \item Veamos que $H^\infty \subset H^q$, con $0 < q < \infty$.
+              $$M_q^q(\rho, f) = \frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})|^q d\theta \leq M_\infty^q(\rho, f).$$
+              Por tanto, $M_q(\rho, f) \leq M_\infty(\rho, f)$ y tomando supremos se tiene.
+
+        \item Veamos que $H^q \subset H^p$, con $0 < p < q < \infty$.
+              $$M_p^p(\rho, f) = \frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})^p d\theta.$$
+              Usando la desigualdad de Hölder,
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})^p d\theta \leq \left(\frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})|^q d\theta\right)^{p/q} = M_q^{q\frac{p}{q}}(\rho, f) = M_q^p(\rho, f).$$
+              Por tanto, $M_p(\rho, f) \leq M_q(\rho, f)$ y tomando supremos se tiene.
+
+        \item Veamos que $H^p \subset \mathcal{N}$, con $0 < p < \infty$.
+              Como
+              $$\log(x^p) \leq \frac{1}{e}x^p \Leftrightarrow \log(x) \leq \frac{1}{pe}x^p \Rightarrow \log^+(x) \leq \frac{1}{pe}x^p,$$
+              entonces
+              $$\frac{1}{2\pi} \int_{-\pi}^\pi \log^+|f(\rho e^{i\theta})d\theta \leq \frac{1}{pe}\frac{1}{2\pi} \int_{-\pi}^\pi |f(\rho e^{i\theta})|^pd\theta = \frac{1}{pe}M_p^p(\rho, f).$$
+              Tomando supremos se tiene.
+    \end{enumerate}
+\end{proof}
 
 \begin{theorem}
     Sea $f \in \mathcal{N}$, entonces la sucesión de sus ceros cumple la condición de Blaschke.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $f \in \mathcal{N}$ y $\{a_n\}_{n=1}^\infty$ su sucesión de ceros.
+    $$\frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log^+|f(\rho e^{i\theta})|d\theta.$$
+    Tomando supremos tenemos que
+    $$\sup_{0<\rho<1} \frac{1}{2\pi} \int_{-\pi}^\pi \log|f(\rho e^{i\theta})|d\theta < \infty.$$
+    Por un teorema anterior, $\{a_n\}_{n=1}^\infty$ cumple la condición de Blaschke.
+\end{proof}
 
 \begin{remark}
     Si $f \in H^p$ para $0 < p \leq \infty$, entonces $f \in \mathcal{N}$.
@@ -320,11 +368,22 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
     \hfill
     \begin{enumerate}
         \item Si no existe $\alpha \geq 0$ tal que $M_\infty(s, f) = O(e^{s^\alpha})$, diremos que $\rho(f) = \infty$.
+
         \item Si $M_\infty(s, f) = O(e^{s^{\alpha_0}})$, entonces $M_\infty(s, f) = O(e^{s^\alpha})$ con $\alpha \geq \alpha_0$.
+
         \item Si $f$ es un polinomio, entonces $\rho(f) = 0$.
-              % Demostración
+              \begin{proof}
+                  Sea $\alpha > 0$ y $f(z) = \sum_{n=1}^N a_nz^n$.
+                  $$|f(z)| \leq \sum_{n=1}^N |a_n||z|^n \Rightarrow M_\infty(s, f) \leq \sum_{n=1}^N |a_n|s^n.$$
+                  Como
+                  $$\limsup_{s \to \infty} \sum_{n=1}^N |a_n|\frac{s^n}{e^{s^\alpha}} = 0,$$
+                  entonces $\rho(f) < \alpha$ para todo $\alpha > 0$.
+                  Por tanto, $\rho(f) = 0$.
+              \end{proof}
+
         \item Si $a \in \mathbb{C} \setminus \{0\}$, entonces $\rho(e^{az^\alpha}) = \alpha$.
               % Demostración
+
         \item $f(z) = e^{e^z}$ tiene orden infinito.
               $M_\infty(s, f) = e^{e^s}$.
     \end{enumerate}
@@ -365,7 +424,20 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
         \item Si existen constantes $c, c_1, c_2, \beta > 0$ y $s > 0$ tales que
               $$M_\infty(s, f) \leq c + c_1s^\beta + c_2s^\alpha, \quad \forall s \geq s_0$$
               entonces $\rho(f) \leq \alpha$.
-              % Demostración
+              \begin{proof}
+                  Como
+                  $$\lim_{s \to \infty} \frac{c + c_1s^\beta}{e^{s^\alpha}} = 0,$$
+                  entonces existe $s_1 \geq s_0$ tal que
+                  $$c + c_1s^\beta \leq e^{s^\alpha}, \quad \forall s \geq s_1.$$
+                  Por tanto, si $s \geq s_1$, $M_\infty(s, f) \leq (c_2+1)e^{s^\alpha}$.
+                  Luego
+                  $$\log(M_\infty(s, f)) \leq \log(c_2+1) + s^\alpha \Leftrightarrow \log(\log(M_\infty(s, f))) \leq \log(\log(c_1+1) +  s^\alpha).$$
+                  Por el lema previo,
+                  $$\log(\log(c_1+1) +  s^\alpha) \leq \log(2) + \log^+(\log(c_2+1)) + \log^+(s^\alpha).$$
+                  Como existe $s_2 > 0$ tal que $s^\alpha > 1$ si $s \geq s_2$, entonces
+                  $$\log(2) + \log^+(\log(c_2+1)) + \log^+(s^\alpha) = \log(2) + \log^+(\log(c_2+1)) + \alpha\log(s), \quad s \geq s_2.$$
+                  Por tanto, $\rho(f) \leq \alpha$.
+              \end{proof}
 
         \item Si existen constantes $c_1, c_2, c_3, \alpha > 0$ tales que
               $$T(s, f) \leq c_1 + c_2\log(s) + c_3s^\alpha$$
