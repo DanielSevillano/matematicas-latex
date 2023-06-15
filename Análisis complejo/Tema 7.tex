@@ -337,14 +337,23 @@ Queremos ver si existe una función $f \in \mathcal{N}$ tal que $f$ tiene como c
     Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{D}$ tal que $\{a_n\}_{n=1}^\infty$ cumple la condición de Blaschke.
     Definimos:
     $$b_n = \begin{cases}
-            z                                                             & \text{si } a_n = 0    \\
-            \dfrac{\overline{a_n}}{|a_n|}\dfrac{a_n-z}{1-\overline{a_n}z} & \text{si } a_n \neq 0
+            z                                                             & \text{si } a_n = 0,    \\
+            \dfrac{\overline{a_n}}{|a_n|}\dfrac{a_n-z}{1-\overline{a_n}z} & \text{si } a_n \neq 0.
         \end{cases}$$
     Consideramos $B(z) = \prod_{n=1}^\infty b_n$.
     Entonces $B(z)$ converge absoluta y uniformemente en compactos de $\mathbb{D}$ y además $|B(z)| < 1$ para todo $z \in \mathbb{D}$.
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Sea $K$ compacto de $\mathbb{D}$, entonces existe $R < 1$ tal que $K \subset \overline{D(0, R)}$.
+    Si $a_n \neq 0$,
+    \begin{align*}
+         & |1-b_n| = \left|1 - \frac{\overline{a_n}}{|a_n|}\frac{a_n-z}{1-\overline{a_n}z}\right| = \left|1 - \frac{|a_n| - \frac{\overline{a_n}}{|a_n|}z}{1-\overline{a_n}z}\right| = \left|\frac{1 - |a_n| - \overline{a_n}z + \frac{\overline{a_n}}{|a_n|}z}{1 - \overline{a_n}z}\right| = \\
+         & = \left|\frac{1-|a_n| + \frac{\overline{a_n}}{|a_n|}z(1-|a_n|)}{1-\overline{a_n}z}\right| = (1-|a_n|) \left|\frac{1 + \frac{\overline{a_n}}{|a_n|}z}{1-\overline{a_n}z}\right| \leq (1-|a_n|)\frac{1+|z|}{1-|z|} \leq (1-|a_n|)\frac{1+R}{1-R}.
+    \end{align*}
+    Por tanto:
+    $$\sum_{\{n : a_n \neq 0\}} |1-b_n| \leq \frac{1+R}{1-R} \sum_{\{n : a_n \neq 0\}} (1-|a_n|) < \infty.$$
+\end{proof}
 
 \begin{remark}
     Si $\{a_n\}_{n=1}^\infty$ cumple la condición de Blaschke, entonces existe $f \in H^\infty$ que tiene como ceros $\{a_n\}_{n=1}^\infty$.
@@ -361,7 +370,7 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
 
 \begin{definition}
     Sea $f$ una función entera, definimos el orden de crecimiento de $f$ como
-    $$\rho(f) = \inf\{\alpha \geq 0 : M_\infty(s, f) = O(e^{s^\alpha})\}$$
+    $$\rho(f) = \inf\{\alpha \geq 0 : M_\infty(s, f) = O(e^{s^\alpha})\}.$$
 \end{definition}
 
 \begin{remark}
@@ -382,7 +391,26 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
               \end{proof}
 
         \item Si $a \in \mathbb{C} \setminus \{0\}$, entonces $\rho(e^{az^\alpha}) = \alpha$.
-              % Demostración
+              \begin{proof}
+                  \hfill
+                  \begin{itemize}
+                      \item Si $\beta > \alpha$, como $|e^{az^\alpha}| = e^{\Re(az^\alpha)}$, entonces
+                            $$M_\infty(s, e^{az^\alpha}) \leq e^{|a|s^\alpha}.$$
+                            Así que
+                            $$\frac{M_\infty(s, e^{az^\alpha})}{e^{s^\beta}} \leq e^{|a|s^\alpha - s^\beta} \to 0.$$
+                            Luego:
+                            $$M_\infty(s, e^{az^\alpha}) = O(e^{s^\beta}), \quad \forall \beta > \alpha.$$
+                            Por tanto, $\rho(e^{az^\alpha}) \leq \alpha$.
+
+                      \item Si $\beta < \alpha$, como $|e^{az^\alpha}| = e^{\Re(az^\alpha)}$, entonces
+                            $$M_\infty(s, e^{az^\alpha}) \geq e^{|a|s^\alpha}.$$
+                            Así que
+                            $$\frac{M_\infty(s, e^{az^\alpha})}{e^{s\beta}} \geq \frac{e^{|a|s^\alpha}}{e^{s\beta}} \xrightarrow[s \to \infty]{} +\infty.$$
+                            Luego:
+                            $$\limsup_{s \to \infty} \frac{M_\infty(s, e^{az^\alpha})}{e^{s\beta}} = \infty.$$
+                            Por tanto, $\rho(f) \geq \beta$ para todo $\beta < \alpha$, así que $\rho(f) \geq \alpha$.
+                  \end{itemize}
+              \end{proof}
 
         \item $f(z) = e^{e^z}$ tiene orden infinito.
               $M_\infty(s, f) = e^{e^s}$.
@@ -392,9 +420,9 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
 \begin{proposition}
     Sea $f$ entera y no constante.
     Entonces
-    $$\rho(f) = \limsup_{s \to \infty} \frac{\log(\log(M_\infty(s, f)))}{\log(s)} = \limsup_{s \to \infty} \frac{\log(T(s, f))}{\log(s)}$$
+    $$\rho(f) = \limsup_{s \to \infty} \frac{\log(\log(M_\infty(s, f)))}{\log(s)} = \limsup_{s \to \infty} \frac{\log(T(s, f))}{\log(s)},$$
     donde
-    $$T(s, f) = \frac{1}{2\pi} \int_0^{2\pi} \log^+|f(se^{i\theta})|d\theta$$
+    $$T(s, f) = \frac{1}{2\pi} \int_0^{2\pi} \log^+|f(se^{i\theta})|d\theta.$$
 \end{proposition}
 
 % Observaciones y demostración
@@ -415,14 +443,14 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
 
 \begin{remark}
     Veamos un par de observaciones sobre
-    $$\rho(f) = \limsup_{s \to \infty} \frac{\log(\log(M_\infty(s, f)))}{\log(s)} = \limsup_{s \to \infty} \frac{\log(T(s, f))}{\log(s)}$$
+    $$\rho(f) = \limsup_{s \to \infty} \frac{\log(\log(M_\infty(s, f)))}{\log(s)} = \limsup_{s \to \infty} \frac{\log(T(s, f))}{\log(s)}.$$
     \begin{enumerate}
         \item Si $\rho(f) < \alpha$, entonces existe $s_\alpha$ tal que si $s \geq s_\alpha$ entonces
               $$\log(M_\infty(s, f)) \leq s^\alpha \Leftrightarrow M_\infty(s, f) \leq e^{s^\alpha}$$
               y $T(s, f) \leq s^\alpha$.
 
         \item Si existen constantes $c, c_1, c_2, \beta > 0$ y $s > 0$ tales que
-              $$M_\infty(s, f) \leq c + c_1s^\beta + c_2s^\alpha, \quad \forall s \geq s_0$$
+              $$M_\infty(s, f) \leq c + c_1s^\beta + c_2s^\alpha, \quad \forall s \geq s_0,$$
               entonces $\rho(f) \leq \alpha$.
               \begin{proof}
                   Como
@@ -440,8 +468,8 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
               \end{proof}
 
         \item Si existen constantes $c_1, c_2, c_3, \alpha > 0$ tales que
-              $$T(s, f) \leq c_1 + c_2\log(s) + c_3s^\alpha$$
-              si $s \geq s_0 > 1$, entonces $\rho(f) \leq \alpha$.
+              $$T(s, f) \leq c_1 + c_2\log(s) + c_3s^\alpha,$$
+              si $s \geq s_0 > 1$ entonces $\rho(f) \leq \alpha$.
     \end{enumerate}
 \end{remark}
 
@@ -461,14 +489,14 @@ Nos va a interesar $M_\infty(s, f) = O(\varphi(s))$, con $s \to \infty$ y $f$ en
 \section{Orden de los factores primos de Weierstrass}
 Recordemos que los factores primos de Weierstrass son
 \begin{align*}
-    E_0(z) & = 1-z                                                                      \\
-    E_p(z) & = (1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right), \quad p \in \mathbb{N}
+    E_0(z) & = 1-z,                                                                      \\
+    E_p(z) & = (1-z)\exp\left(\sum_{k=1}^p \frac{z^k}{k}\right), \quad p \in \mathbb{N}.
 \end{align*}
 
 Como $E_0$ es un polinomio, $\rho(E_0) = 0$.
 Veamos que $\rho(E_p) = p$.
 Como $\rho(e^c) = 0$ y $\rho(e^{c_1z}) = 1$,
-$$\rho(e^{c+c_1z}) = \rho(e^ce^{c_1z}) = \max\{\rho(e^c), \rho(e^{c_1z})\} = \max\{0, 1\} = 1$$
+$$\rho(e^{c+c_1z}) = \rho(e^ce^{c_1z}) = \max\{\rho(e^c), \rho(e^{c_1z})\} = \max\{0, 1\} = 1.$$
 Por inducción se prueba el resultado.
 
 \section{Orden de una función entera expresada en sus coeficientes de Taylor}
@@ -476,50 +504,50 @@ Queremos ver si existe una función entera con orden cualquier número $\rho > 0
 
 Sea $f(z) = \sum_{n=0}^\infty c_nz^n$ entera.
 Si $R$ es su radio de convergencia, como $R = \infty$,
-$$\frac{1}{R} = \limsup_{n \to \infty} |c_n|^{1/n} \Rightarrow \limsup_{n \to \infty} |c_n|^{1/n} = 0$$
+$$\frac{1}{R} = \limsup_{n \to \infty} |c_n|^{1/n} \Rightarrow \limsup_{n \to \infty} |c_n|^{1/n} = 0.$$
 
 \begin{theorem}
     Sea $f$ una función entera no constante tal que $f(z) = \sum_{n=0}^\infty c_nz^n$.
     Entonces:
-    $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{n\log(n)}{\log\left(\frac{1}{|c_n|}\right)}$$
+    $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{n\log(n)}{\log\left(\frac{1}{|c_n|}\right)}.$$
 \end{theorem}
 
 % Demostración
 
 Sea $\rho > 0$,
-$$\frac{\log(n)}{\log|c_n|^{-1/n}} = \rho \Rightarrow \log(n) = \log|c_n|^{-\rho/n} \Rightarrow |c_n|^{\rho/n} = n^{-1} \Rightarrow |c_n| = n^{-n/\rho}$$
+$$\frac{\log(n)}{\log|c_n|^{-1/n}} = \rho \Rightarrow \log(n) = \log|c_n|^{-\rho/n} \Rightarrow |c_n|^{\rho/n} = n^{-1} \Rightarrow |c_n| = n^{-n/\rho}.$$
 
 \begin{corollary}
     Sea
-    $$F(z) = \sum_{n=1}^\infty n^{-n/\rho}z^n$$
+    $$F(z) = \sum_{n=1}^\infty n^{-n/\rho}z^n,$$
     con $\rho > 0$.
     Entonces $F$ es entera y su orden de crecimiento es $\rho$.
 \end{corollary}
 
 \begin{proof}
     En primer lugar calculamos $\frac{1}{R}$, con $R$ su radio de convergencia.
-    $$\limsup_{n \to \infty} |n^{-n/\rho}|^{1/n} = \limsup_{n \to \infty} \frac{1}{n^{1/\rho}} = 0$$
+    $$\limsup_{n \to \infty} |n^{-n/\rho}|^{1/n} = \limsup_{n \to \infty} \frac{1}{n^{1/\rho}} = 0.$$
     Por tanto, $F$ es entera.
     Por otro lado,
-    $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{\log(n)}{\frac{1}{\rho}\log(n)} = \rho$$
+    $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{\log(n)}{\frac{1}{\rho}\log(n)} = \rho.$$
 \end{proof}
 
 \section{Relación entre el orden de crecimiento y el exponente de convergencia de los ceros}
 Sea $\{a_n\}_{n=1}^\infty \subset \mathbb{C} \setminus \{0\}$, se definía el exponente de convergencia como
-$$\sigma = \inf\left\{s > 0 : \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty\right\}$$
+$$\sigma = \inf\left\{s > 0 : \sum_{n=1}^\infty \frac{1}{|a_n|^s} < \infty\right\}.$$
 El género de $\{a_n\}_{n=1}^\infty$ es el menor $p \in \mathbb{N} \cup \{0\}$ de modo que
-$$\sum_{n=1}^\infty \frac{1}{|a_n|^{p+1}} < \infty$$
+$$\sum_{n=1}^\infty \frac{1}{|a_n|^{p+1}} < \infty.$$
 Teníamos que $p \leq \sigma \leq p+1$.
 
 \begin{example}
     \hfill
     \begin{enumerate}
         \item Si en cada circunferencia de radio $n^2$ ponemos un cero para todo $n \in \mathbb{N}$,
-              $$\sum_{n=1}^\infty \frac{1}{|a_n|^s} = \sum_{n=1}^\infty \frac{1}{n^{2s}} < \infty, \quad \forall s > \frac{1}{2}$$
+              $$\sum_{n=1}^\infty \frac{1}{|a_n|^s} = \sum_{n=1}^\infty \frac{1}{n^{2s}} < \infty, \quad \forall s > \frac{1}{2}.$$
               Por tanto, $\sigma = \frac{1}{2}$.
 
         \item Si en cada circunferencia de radio $n^2$ ponemos dos ceros para todo $n \in \mathbb{N}$,
-              $$\sum_{n=1}^\infty \frac{1}{|a_n|^s} = \sum_{n=1}^\infty \frac{1}{n^{s}} < \infty, \quad \forall s > 1$$
+              $$\sum_{n=1}^\infty \frac{1}{|a_n|^s} = \sum_{n=1}^\infty \frac{1}{n^{s}} < \infty, \quad \forall s > 1.$$
               Por tanto, $\sigma = 1$.
     \end{enumerate}
 \end{example}
@@ -527,7 +555,7 @@ Teníamos que $p \leq \sigma \leq p+1$.
 \begin{lemma}
     Sea $\{a_n\} \subset \mathbb{C} \setminus \{0\}$, con $|a_n| \to \infty$.
     Entonces
-    $$\sigma = \limsup_{R \to \infty} \frac{\log(n(R))}{\log(R)}$$
+    $$\sigma = \limsup_{R \to \infty} \frac{\log(n(R))}{\log(R)},$$
     con $n(R) = \#\{a_n : |a_n| \leq R\}$.
 \end{lemma}
 
@@ -536,7 +564,7 @@ Teníamos que $p \leq \sigma \leq p+1$.
 \begin{theorem}
     Sea $f$ una función entera no constante cuyo orden de crecimiento es $\rho(f)$ y tiene como ceros no nulos la sucesión $\{a_n\}_{n=1}^\infty$.
     Entonces:
-    $$\sigma(\{a_n\}_{n=1}^\infty) \leq \rho(f)$$
+    $$\sigma(\{a_n\}_{n=1}^\infty) \leq \rho(f).$$
 \end{theorem}
 
 % Demostración
@@ -562,7 +590,7 @@ Queremos ver si existen funciones tales que $\sigma(f) = \rho(f)$.
 \section{Factorización de Hadamard}
 Sea $f$ una función entera no constante con $\{a_n\}_{n=1}^\infty$ su sucesión de ceros no nulos, tal que $\sigma(\{a_n\}) < \infty$ y con género $p$.
 Entonces la factorización canónica de Weierstrass permite expresar
-$$f(z) = e^{g(z)}z^N \prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
+$$f(z) = e^{g(z)}z^N \prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right),$$
 donde $N$ es la multiplicidad del origen como 0.
 Además, $g$ es única salvo constantes $2\pi i$.
 
@@ -572,17 +600,17 @@ Además, $g$ es única salvo constantes $2\pi i$.
 
 \begin{proof}
     Por el teorema del álgebra del orden de crecimiento,
-    $$\rho(f) \leq \max\left\{\rho(e^g), \rho\left(\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)\right)\right\} = \max\{\rho(e^g), \sigma\}$$
+    $$\rho(f) \leq \max\left\{\rho(e^g), \rho\left(\prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)\right)\right\} = \max\{\rho(e^g), \sigma\}.$$
     Además, se tiene la igualdad si $\sigma \neq \rho(e^g)$.
     Si $\sigma = \rho(e^g)$, entonces por un teorema previo
-    $$\sigma \leq \rho(f) \leq \sigma \Rightarrow \rho(f) = \sigma = \max\{\rho(e^g), \sigma\}$$
+    $$\sigma \leq \rho(f) \leq \sigma \Rightarrow \rho(f) = \sigma = \max\{\rho(e^g), \sigma\}.$$
 \end{proof}
 
 \begin{theorem}[Factorización de Hadamard]
     Sea $f$ una función entera no constante con ceros no nulos $\{a_n\}_{n=1}^\infty$, $\sigma = \sigma(\{a_n\}) < \infty$ y género $p$.
     Además, sea $N$ la multiplicidad del origen como cero de $f$.
     Entonces existe un polinomio $g$ con $\deg(p) \leq \rho(f)$, satisfaciendo que
-    $$f(z) = e^{g(z)}z^N \prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right)$$
+    $$f(z) = e^{g(z)}z^N \prod_{n=1}^\infty E_p\left(\frac{z}{a_n}\right).$$
     $g$ es única salvo constantes $2\pi i$ y $\rho(f) = \max\{\deg(p), \sigma\}$.
 \end{theorem}
 
