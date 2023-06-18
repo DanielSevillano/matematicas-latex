@@ -512,7 +512,54 @@ $$\frac{1}{R} = \limsup_{n \to \infty} |c_n|^{1/n} \Rightarrow \limsup_{n \to \i
     $$\rho(f) = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} = \limsup_{n \to \infty} \frac{n\log(n)}{\log\left(\frac{1}{|c_n|}\right)}.$$
 \end{theorem}
 
-% Demostración
+\begin{proof}
+    Llamaremos
+    $$\rho_1 = \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}}.$$
+    \begin{enumerate}
+        \item Veamos que $\rho_1 \leq \rho(f)$.
+              Si $\rho(f) = \infty$, es directo.
+              Supongamos ahora que $\rho(f) < \alpha$.
+              Entonces existe $s_\alpha$ tal que $M_\infty(s, f) \leq e^{s^\alpha}$ para todo $s > s_\alpha$.
+              Sabemos que:
+              $$c_n = \frac{f^{(n)}(0)}{n!} = \frac{1}{2\pi i} \int_{|z|=s} \frac{f(z)}{z^{n+1}}dz.$$
+              Entonces, si $s > s_\alpha$,
+              $$|c_n| \leq \frac{2\pi s}{2\pi s^{n+1}}M_\infty(s, f) \leq \frac{1}{s^n}e^{s^\alpha}.$$
+              Tomando logaritmos,
+              $$\log|c_n| \leq -n\log(s) + s^\alpha \Rightarrow \log|c_n|^{-1/n} \geq \log(s) - \frac{s^\alpha}{n}.$$
+              Queremos hallar el valor de $s > s\alpha$ que haga mínima la expresión $h_n(s) = -n\log(s) + s^\alpha$.
+              $$h_n'(s) = -\frac{n}{s} + \alpha s^{\alpha-1} = 0 \Leftrightarrow \frac{n}{s} = \alpha s^{\alpha-1} \Leftrightarrow s = s_n = \left(\frac{n}{\alpha}\right)^{1/\alpha} \xrightarrow[n \to \infty]{} \infty.$$
+              Se puede comprobar que es un mínimo.
+              $$h_n(s_n) = h_n\left(\left(\frac{n}{\alpha}\right)^{1/\alpha}\right) = -\frac{n}{\alpha}\log\left(\frac{n}{\alpha}\right) + \frac{n}{\alpha} = \frac{n}{\alpha}\left(1 - \log\left(\frac{n}{\alpha}\right)\right) \xrightarrow[n \to \infty]{} -\infty.$$
+              Por tanto, existe $n_\alpha \in \mathbb{N}$ tal que $s_n > s_\alpha$ y $h(s_n) < 0$.
+              Entonces:
+              \begin{align*}
+                   & \log|c_n| \leq \frac{n}{\alpha}\left(1 - \log\left(\frac{n}{\alpha}\right)\right) \Rightarrow \log|c_n|^{-1/n} \geq \frac{1}{\alpha}\left(\log\left(\frac{n}{\alpha}\right) - 1\right) \Rightarrow                                      \\
+                   & \Rightarrow \frac{\log|c_n|^{-1/n}}{\log(n)} \geq \frac{1}{\alpha} - \frac{\log(\alpha)}{\alpha\log(n)} - \frac{1}{\alpha\log(n)} \Rightarrow \liminf_{n \to \infty} \frac{\log|c_n|^{-1/n}}{\log(n)} \geq \frac{1}{\alpha} \Rightarrow \\
+                   & \Rightarrow \limsup_{n \to \infty} \frac{\log(n)}{\log|c_n|^{-1/n}} \leq \alpha.
+              \end{align*}
+              Tomando $\alpha \to \rho(f)$, tenemos que $\rho_1 \leq \rho(f)$.
+
+        \item Veamos que $\rho(f) \leq \rho_1$.
+              Si $\rho_1 = \infty$, es evidente.
+              Supongamos ahora que $\rho_1 < \alpha$.
+              Entonces existe $n_\alpha$ tal que, para todo $n \geq n_\alpha$, $\log|c_n|^{-1/n} > 0$ y además
+              $$\frac{\log(n)}{\log|c_n|^{-1/n}} < \alpha.$$
+              Así que
+              $$\log(n) \leq \log|c_n|^{-\alpha/n} \Rightarrow n \leq |c_n|^{-\alpha/n} \Leftrightarrow |c_n|^{\alpha/n} \leq n^{-1} \Leftrightarrow |c_n| \leq n^{-n/\alpha}.$$
+              Si $|z| = s$,
+              $$|f(z)| = \left|\sum_{n=0}^\infty c_nz^n\right| \leq |c_0| + \sum_{n=1}^\infty |c_n|s^n \leq |c_0| + \sum_{n=1}^\infty n^{-n/\alpha}s^n.$$
+              Para un $s$ fijo, $n^{-n/\alpha}s^n \xrightarrow[n \to \infty]{} 0$.
+              $$n^{-n/\alpha}s^n \leq 2^{-n} \Leftrightarrow n^{-1/\alpha}s \leq 2^{-1} \Leftrightarrow (2s)^\alpha \leq n.$$
+              Por tanto,
+              \begin{align*}
+                   & |f(z)| \leq |c_0| + \sum_{n=1}^\infty n^{-n/\alpha}s^n \leq |c_0| + \sum_{n=1}^{E((2s)^\alpha)} n^{-n/\alpha}s^n + \sum_{E((2s)^\alpha)+1}^\infty 2^{-n} \leq |c_0| + 2 + s^{(2s)^\alpha}(2s)^\alpha \Rightarrow \\
+                   & \Rightarrow M_\infty(s, f) \leq M + (2s)^\alpha s^{2^\alpha s^\alpha} \Rightarrow \log(M_\infty(s, f)) \leq \log(2) + \log^+(M) + \log(2s)^\alpha s^{2^\alpha s^\alpha} = \\
+                   & = \log(2) + \log^+(M) + \alpha\log(2s) + 2^\alpha s^\alpha\log(s).
+              \end{align*}
+              Por tanto, $\rho(f) < \alpha$.
+              Tomando $\alpha \to \rho_1$, tenemos que $\rho(f) \leq \rho_1$.
+    \end{enumerate}
+\end{proof}
 
 Sea $\rho > 0$,
 $$\frac{\log(n)}{\log|c_n|^{-1/n}} = \rho \Rightarrow \log(n) = \log|c_n|^{-\rho/n} \Rightarrow |c_n|^{\rho/n} = n^{-1} \Rightarrow |c_n| = n^{-n/\rho}.$$
