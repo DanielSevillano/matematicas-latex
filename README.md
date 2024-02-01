@@ -14,10 +14,10 @@ Una recopilación de apuntes del grado en Matemáticas escritos en $\LaTeX$.
 
 ### En desarrollo
 
+-   [Inferencia estadística](https://github.com/DanielSevillano/matematicas-latex/tree/main/Inferencia%20estadística)
 -   [Optimización](https://github.com/DanielSevillano/matematicas-latex/tree/main/Optimización)
 -   [Análisis complejo](https://github.com/DanielSevillano/matematicas-latex/tree/main/Análisis%20complejo)
 
 ### Próximamente
 
 -   Probabilidad
--   Inferencia estadística

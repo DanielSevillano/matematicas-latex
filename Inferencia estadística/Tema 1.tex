@@ -1,0 +1,240 @@
+\chapter{Introducción a la inferencia}
+
+La estadística inferencial se ocupa de predecir y sacar conclusiones para una población tomando como base una muestra de dicha población.
+Como todas las predicciones, siempre han de hacerse bajo un cierto grado de fiabilidad o confianza.
+
+En un sentido amplio, la inferencia es la parte de la estadística que estudia grandes poblaciones a partir de una pequeña parte de estas.
+
+Existen diversos problemas de inferencia estadística según el tipo de conclusiones que se quieran establecer sobre la situación aleatoria.
+\begin{itemize}
+    \item \textbf{Estimación puntual.}
+    Se pretende obtener un pronóstico numérico único acerca de un determinado parámetro de la distribución.
+    \item \textbf{Estimación por intervalos.}
+    El objetivo es proporcionar un margen de variación para un determinado parámetro de la distribución.
+    \item \textbf{Contrastes de hipótesis.}
+    Se trata de corroborar o invalidar una determinada afirmación acerca de la distribución.
+\end{itemize}
+
+Dependiendo del grado de conocimiento de esta distribución, se distinguen dos métodos para realizar procesos de inferencia.
+\begin{itemize}
+    \item \textbf{Inferencia paramétrica.}
+    Se admite que la distribución de la población pertenece a una cierta familia paramétrica de distribuciones, siendo necesario únicamente precisar el valor de los parámetros para determinar la distribución poblacional.
+    
+    Usaremos el enfoque clásico, en el que los parámetros de la distribución de la población se consideran constantes.
+    También existe el enfoque bayesiano, que considera los parámetros de la distribución como variables aleatorias y permite introducir información sobre ellos.
+    
+    \item \textbf{Inferencia no paramétrica.}
+    No supone ninguna distribución de probabilidad de la población y, en su lugar, exige solo hipótesis muy generales.
+\end{itemize}
+
+\section{Elementos de la inferencia estadística}
+Todo problema de inferencia estadística está motivado por un cierto grado de desconocimiento de la ley de probabilidad que rige cierto fenómeno aleatorio.
+En los casos más simples, se estudia un fenómeno aleatorio que se rige según una variable aleatoria $X$ con función de distribución $F$, que se llama función de distribución teórica.
+
+Los elementos de la inferencia estadística son:
+\begin{itemize}
+    \item \textbf{Población.}
+    Conjunto de elementos sobre los que se observa una característica común.
+    \item \textbf{Muestra.}
+    Conjunto de unidades de una población.
+    \item \textbf{Parámetros poblacionales.}
+    Índices centrales y de dispersión que definen a una población.
+\end{itemize}
+
+En los modelos de inferencia estadística, el grado de desconocimiento acerca de la distribución teórica $F$ se refleja mediante una familia $\mathcal{F}$ de distribuciones.
+La situación más sencilla es aquella en la que la familia $\mathcal{F}$ está compuesta por distribuciones que tienen una forma fija y dependen de un parámetro $\theta$ que varía en un subconjunto $\Theta \subset \mathbb{R}^k$, llamado espacio paramétrico.
+Es decir,
+$$\mathcal{F} = \{ F_{\theta} : \theta \in \Theta \in \mathbb{R}^k \}.$$
+
+\begin{example}
+    Si $X$ es el número de éxitos en 30 pruebas de $\Ber(\theta)$, escribimos
+    $$F_X \equiv F_\theta \in \mathcal{F}, \quad \mathcal{F} = \{ \Bi(n = 30, \theta) : \theta \in (0, 1) \}.$$
+\end{example}
+
+\section{Muestreo aleatorio}
+Para que la muestra sea representativa debe reflejar las similitudes y diferencia encontradas en la población.
+Los errores más comunes que se pueden cometer son:
+\begin{itemize}
+    \item \textbf{Error de muestreo.}
+    Hacer conclusiones muy generales a partir de la observación de solo una parte de la población.
+    \item \textbf{Error de inferencia.}
+    Hacer conclusiones hacia una población de mayor tamaño que de la que se tomó la muestra.
+\end{itemize}
+
+Los métodos para muestreo se clasifican en probabilísticos y no probabilísticos.
+
+\subsection{Muestreo probabilístico}
+Los muestreos probabilísticos se basan en el principio de equiprobabilidad, que establece que todos los individuos tienen la misma probabilidad de ser elegidos para formar parte de una muestra.
+\begin{itemize}
+    \item \textbf{Muestreo aleatoria simple.}
+    Todas las unidades muestrales tienen la misma probabilidad de ser elegidas.
+    Puede ser con o sin reemplazamiento.
+
+    \item \textbf{Muestreo estratificado.}
+    La población está dividida en estratos que contienen elementos parecidos entre sí.
+    La composición de la muestra se distribuye entre los distintos estratos mediante un procedimiento que se llama afijación.
+    Existen dos tipos:
+    \begin{itemize}
+        \item \textbf{Afijación uniforme.}
+        En la muestra hay el mismo número de representantes por cada estrato.
+        \item \textbf{Afijación proporcional.}
+        En la muestra hay un número de representantes de cada estrato proporcional a su tamaño.
+    \end{itemize}
+
+    \item \textbf{Muestreo por conglomerados.}
+    Se establecen grupos de elementos físicamente próximos entre ellos, frecuentemente constituidos por una partición geográfica de la población.
+
+    \item \textbf{Muestreo sistemático.}
+    Se elige un individuo al azar y, a partir de él, se eligen los demás a intervalos constantes hasta completar la muestra.
+\end{itemize}
+
+\subsection{Muestreo no probabilístico}
+Cuando el muestreo probabilístico resulta costoso o no se tiene asegurado que cualquier elemento de la población pueda pertenecer a una muestra, se consideran muestreos no probabilísticos.
+Sin embargo, estos métodos no sirven para realizar generalizaciones debido a que no se tiene la certeza de que la muestra sea representativa.
+
+\begin{itemize}
+    \item \textbf{Muestreo por cuotas.}
+    Se fijan cuotas que consisten en un número de individuos que reúnen determinadas condiciones.
+
+    \item \textbf{Muestreo de conveniencia.}
+    Se intentan obtener muestras representativas mediante la inclusión en la muestra de grupos típicos.
+
+    \item \textbf{Bola de nieve.}
+    Se localiza a algunos individuos que a su vez conducen a otros, y así sucesivamente hasta conseguir una muestra suficiente. Se usa cuando se hacen estudios en poblaciones marginales, delincuentes, sectas, determinados tipos de enfermos, etc.
+\end{itemize}
+
+\section{Muestra aleatoria simple}
+
+\begin{definition}
+    Una muestra aleatoria simple de tamaño $n$ de una variable aleatoria $X$ con distribución teórica $F_X$ es un conjunto de $n$ variables aleatorias independientes $(X_1, \dots, X_n)$ e igualmente distribuidas con distribución común $F_X$.
+\end{definition}
+
+Cada $X_i$ es una variable aleatoria que representa la característica bajo estudio del elemento $i$-ésimo de la muestra.
+Una vez realizado el muestreo, los resultados obtenidos $(x_1, \dots, x_n)$ se denominan realización de la muestra.
+
+Como las variables aleatorias son independientes, la función de distribución conjunta de la muestra aleatoria simple es
+$$F(x_1, \dots, x_n) = F_X(x_1) \dots F_X(x_n).$$
+
+\section{Concepto de estadístico y su distribución}
+
+\begin{definition}
+    Llamamos estadístico a cualquier función medible de las variables aleatorias observables de la muestra aleatoria simple que no depende de ningún parámetro desconocido en el estudio.
+\end{definition}
+
+En general, un estadístico es una función medible $T: \mathbb{R}^n \to \mathbb{R}^k$ aplicada a la muestra aleatoria simple.
+
+Un estadístico $T$ induce una nueva varible aleatoria que tendrá una distribución asociada llamada distribución muestral con una función de distribución llamada función de distribución empírica.
+
+Los estadísticos más utilizados son los siguientes:
+\begin{itemize}
+    \item \textbf{Media muestral.}
+    Estima la media.
+    $$T(X_1, X_2, \dots, X_n) = \overline{X} = \frac{1}{n} \sum_{i=1}^n X_i.$$
+    
+    \item \textbf{Varianza muestral.}
+    Estima la varianza.
+    $$T(X_1, X_2, \dots, X_n) = \Var_n(\vec{X}) = \frac{1}{n} \sum_{i=1}^n (X_i - \overline{X})^2.$$
+
+    \item \textbf{Cuasivarianza muestral.}
+    Estima la varianza.
+    En general, es una mejor aproximación que la varianza muestral.
+    $$T(X_1, X_2, \dots, X_n) = S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \overline{X})^2 = \frac{n}{n-1} \Var_n(\vec{X}).$$
+
+    \item \textbf{Máximo y mínimo.}
+    \begin{align*}
+        & T(X_1, X_2, \dots, X_n) = \max(X_1, X_2, \dots, X_n) = X_{(n)}, \\
+        & T(X_1, X_2, \dots, X_n) = \min(X_1, X_2, \dots, X_n) = X_{(1)}.
+    \end{align*}
+\end{itemize}
+
+\begin{note}
+    Todos estos estadísticos son variables aleatorias.
+\end{note}
+
+\begin{example}
+    Sea $X \sim \{F_\theta : \theta \in \Theta\}$, con $E(X) = \mu$ y $V(X) = \sigma^2$.
+    Consideramos $(X_1, X_2, X_3, X_4, X_5)$ muestra aleatorias simple, con $X_i \sim F_\theta$ para todo $i$.
+    Al realizar la muestra, se obtiene $(3, 8, 4, 5, 5)$.
+
+    Para estimar la media, consideramos la variable aleatoria
+    $$\overline{X} = \frac{1}{5} \sum_{i=1}^5 X_i.$$
+    Podemos aproximar
+    $$\hat{\mu} = \frac{1}{5} \sum_{i=1}^5 x_i = \frac{3++8+4+5+5}{5} = 5.$$
+
+    Para estimar la varianza, consideramos la variable aleatoria
+    $$\Var_5(\vec{X}) = \frac{1}{5} \sum_{i=1}^5 (X_i - \overline{X})^2 = \frac{\sum_{i=1}^5 X_i^2 - 5\overline{X}^2}{5}.$$
+    Obtenemos la estimación
+    $$\hat{\sigma}^2 = \frac{(3^2+8^2+4^2+5^2+5^2) - 5 \cdot 5^2}{5} = 2.8.$$
+
+    También podemos considerar la cuasivarianza.
+    $$S^2 = \frac{1}{4} \sum_{i=1}^5 (X_i - \overline{X})^2 = \frac{\sum_{i=1}^5 X_i^2 - n\overline{X}^2}{4} = \frac{5}{4} \Var_5(\vec{X}).$$
+    De esta forma, $\hat{sigma}^2 = \frac{5}{4} \cdot 2.8 = 3.5$.
+
+    Calculamos el máximo.
+    $$T(X_1, X_2, \dots, X_5) = \max(X_1, X_2, \dots, X_5), \quad T(3, 8, 4, 5, 5) = 8.$$
+
+    Calculamos el mínimo.
+    $$T^\ast(X_1, X_2, \dots, X_5) = \min(X_1, X_2, \dots, X_5), \quad T^\ast(3, 8, 4, 5, 5) = 3.$$
+\end{example}
+
+\subsection{Función de distribución muestral}
+
+Sea $X \sim F_{\theta}$, con $\mathcal{F} = \{F_{\theta} : \theta \in \Theta\}$.
+Identificamos $F_{\theta} \equiv F$.
+
+Tomamos una muestra aleatoria simple $(X_1, X_2, \dots, X_n)$, con $X_i \sim F$ para todo $i$ e independientes.
+Definimos la función de distribución muestral:
+$$F_{(X_1, X_2, \dots, X_n)}^\ast(x) = \frac{\text{número de variables tales que } X_i \leq x}{n}, \quad x \in \mathbb{R}.$$
+Es una nueva variable aleatoria.
+
+Observamos que podemos escribir dicha variable aleatoria de la siguiente forma:
+$$F_{(X_1, X_2, \dots, X_n)}^\ast(x) = \frac{1}{n} \sum_{i=1}^{n} I_{(-\infty, x]}(X_i).$$
+
+Si tomamos
+$$Y_i = I_{(-\infty, x]}(X_i) = \begin{cases}
+    1, & \text{si } X_i \leq x, \\
+    0, & \text{si } X_i > x,
+\end{cases}$$
+tenemos que $Y_i \sim \Ber(p)$ con
+$$p = P(Y_i = 1) = P(X_i \leq x) = F_{X_i}(x) = F(x).$$
+
+Entonces
+$$F_{(X_1, X_2, \dots, X_n)}^\ast(x) = \frac{1}{n}\sum_{i=1}^{n}{Y_i},$$
+
+Como $Y_i$ son variables aleatorias independientes con $Y_i \sim \Ber(F(x))$, entonces
+$$nF_{(X_1, X_2, \dots, X_n)}^\ast(x) = \sum_{i=1}^{n}{Y_i} \sim \Bi(n, F(x)).$$
+
+De esta forma, podemos calcular:
+\begin{align*}
+     & E(F_{(X_1, X_2, \dots, X_n)}^\ast(x)) = \frac{1}{n}nF(x) = F(x), \\
+     & V(F_{(X_1, X_2, \dots, X_n)}^\ast(x)) = \frac{1}{n^2}nF(x)(1 - F(x)) = \frac{1}{n}F(x)(1 - F(X)).
+\end{align*}
+
+Usando el teorema central del límite, podemos aproximarla como
+$$F_{(X_1, X_2, \dots, X_n)}^\ast(x) \sim N\left( F(x), \sqrt{\frac{F(x)(1 - F(x))}{n}}\right).$$
+
+\begin{example}
+    Obtengamos la función de distribución muestral para la realización de la muestra aleatoria simple $(3, 8, 4, 5, 5)$.
+    $$F_{(3, 8, 4, 5, 5)}^\ast(x) = \begin{cases}
+        0, & \text{si } x < 3, \\
+        \frac{1}{5}, & \text{si } 3 \leq x < 4, \\ 
+        \frac{2}{5}, & \text{si } 4 \leq x < 5, \\
+        \frac{4}{5}, & \text{si } 5 \leq x < 8, \\
+        1, & \text{si } x \geq 8.
+    \end{cases}$$
+\end{example}
+
+\subsection{Momentos muestrales centrales y no centrales}
+Sea $X \sim F_X$ y sea $(X_1, X_2, \dots, X_n)$ una muestra aleatoria simple, con $X_i \sim F$ para todo $i$ e independientes.
+
+\begin{itemize}
+    \item El momento ordinario de orden $k$ respecto del origen es
+    $$m_k = \frac{1}{n} \sum_{i=1}^{n}{X_i^k}.$$
+    
+    \item El momento central de orden $k$ viene dado por
+    $$M_k = \frac{1}{n} \sum_{i=1}^{n} (X_i - \overline{X})^k.$$
+\end{itemize}
+
+\begin{note}
+    Estos momentos son variables aleatorias.
+\end{note}

@@ -1,0 +1,38 @@
+\documentclass{report}
+\usepackage[hmargin = 3cm, vmargin = 2.5cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{amssymb, amsmath, amsthm, parskip, hyperref}
+
+\title{Inferencia estadística}
+\author{}
+
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{corollary}[theorem]{Corolario}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposición}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Observación}
+\theoremstyle{remark}
+\newtheorem*{note}{Nota}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[chapter]
+\theoremstyle{definition}
+\newtheorem*{example}{Ejemplo}
+
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Ber}{\mathrm{Ber}}
+\newcommand{\Bi}{\mathrm{Bi}}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\include{Tema 1}
+%\include{Tema 2}
+%\include{Tema 3}
+%\include{Tema 4}
+%\include{Tema 5}
+
+\end{document}
