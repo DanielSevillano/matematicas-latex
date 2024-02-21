@@ -1,0 +1,132 @@
+\chapter{Distribución normal}
+
+\begin{definition}
+    Sea $\vec{X} = (X_1, X_2, \dots, X_n)^t$ un vector aleatorio y sea $\vec{\mu} = (E(X_1),E(X_2), \dots,E(X_n))^t$ el vector de medias.
+    Se define la matriz de varianzas y covarianzas $\Sigma$ como:
+    $$\Sigma = E((\vec{X} - \vec{\mu}) \cdot (\vec{X} - \vec{\mu})^t) = \begin{pmatrix}
+            V(X_1)         & \Cov(X_1, X_2) & \dots  & \Cov(X_1, X_n) \\
+            \Cov(X_2, X_1) & V(X_2)         & \dots  & \Cov(X_2, X_n) \\
+            \vdots         & \vdots         & \ddots & \vdots         \\
+            \Cov(X_n, X_1) & \Cov(X_n, X_2) & \dots  & V(X_n)
+        \end{pmatrix}.$$
+\end{definition}
+
+\section{Distribución chi cuadrada}
+\begin{definition}
+    Una variable aleatoria $X$ se distribuye según una $\chi_{(n)}^2$ si $X \sim \Ga\left(\alpha = \frac{n}{2}, \beta = \frac{1}{2}\right)$, con $n \in \mathbb{N}$.
+    La función de densidad es de la forma
+    $$f(x) = \frac{\left(\frac{1}{2}\right)^{\frac{n}{2}}}{\Gamma\left(\frac{n}{2}\right)}e^{-\frac{1}{2}x}x^{\frac{n}{2} -1}, \quad x > 0.$$
+\end{definition}
+
+\begin{itemize}
+    \item \textbf{Génesis de la distribución.}
+          Sean $X_1,X_2, \dots,X_n$ variables aleatorias independientes con $X_i \sim N(0,1)$.
+          Si consideramos la variable aleatoria $Y = \sum_{i=1}^n X_i^2$, entonces $Y \sim \chi_{(n)}^2$.
+
+          El parámetro $n$ se conoce como grados de libertad y hace referencia al número de sumandos que aportan variabilidad a la suma.
+
+    \item \textbf{Características numéricas.}
+          Si $Y \sim \chi_{(n)}^2$, entonces $E(Y) = n$ y $V(Y) = 2n$.
+
+    \item \textbf{Aproximación por el teorema central del límite.}
+          Si $Y \sim \chi_{(n)}^2$, mediante el teorema central del límite podemos aproximar:
+          $$\frac{Y - n}{\sqrt{2n}} \longrightarrow N(0,1) \Rightarrow \sqrt{2Y} - \sqrt{2n - 1} \longrightarrow N(0,1).$$
+
+    \item \textbf{Reproductividad.}
+          Si $T \sim \chi_{(n)}^2$ y $W \sim \chi_{(m)}^2$ son variables aleatorias independientes, entonces $T + W \sim \chi_{(n+m)}^2$.
+\end{itemize}
+
+\begin{theorem}[Teorema de Fisher]
+    Si $(X_1, X_2, \dots, X_n)$ es una muestra aleatoria simple de una población $N(0,1)$, entonces
+    \begin{enumerate}
+        \item $(n-1)S^2$ y $\overline{X}$ son variables aleatorias independientes.
+        \item La distribución del muestreo es:
+              $$(n-1)S^2 \sim \chi_{(n-1)}^2, \quad \overline{X} \sim N\left( 0, \frac{1}{\sqrt{n}} \right).$$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Teorema de Fisher generalizado]
+    Si $(X_1, X_2, \dots, X_n)$ es una muestra aleatoria simple de una población $N(\mu,\sigma)$, entonces:
+    \begin{enumerate}
+        \item $\frac{(n-1)S^2}{\sigma^2}$ y $\overline{X}$ son variables aleatorias independientes.
+        \item La distribución del muestreo es:
+              $$\frac{(n-1)S^2}{\sigma^2} \sim \chi_{(n-1)}^2, \quad \overline{X} \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right).$$
+    \end{enumerate}
+\end{theorem}
+
+\section{Distribución t de Student}
+Si $(X_1,X_2, \dots,X_n)$ es una muestra aleatoria simple de una población $N(\mu,\sigma)$, entonces la distribución en el muestreo de $\overline{X}$ es $N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)$ o, equivalentemente,
+$$\frac{\overline{X} - \mu}{\frac{\sigma}{\sqrt{n}}} \sim N(0,1).$$
+
+Si sustituimos $\sigma$ por $S$, donde $S^2$ es la cuasivarianza muestral, entonces tenemos el estadístico
+$$t = \sqrt{n -1}\frac{\overline{X} - \mu}{S}.$$
+
+\begin{definition}
+    Sean $X, X_1, X_2, \dots, X_n$ $n +1$ variables aleatorias independientes con distribución $N(0, \sigma)$.
+    Sea $Y = \sum_{i=1}^n X_i^2$ y $U = \sqrt{Y/n}$.
+    Entonces
+    $$t = \frac{X}{U} = \frac{X}{\sqrt{\frac{1}{n} \sum_{i=1}^n X_i^2}}.$$
+
+    La distribución de $t$ se denomina distribución $t$-Student con $n$ grados de libertad y la notaremos $t \sim t_n$.
+\end{definition}
+
+\begin{itemize}
+    \item \textbf{Características numéricas.}
+          Para $n = 1$, la distribución $t_1$ es la distribución de Cauchy con densidad
+          $$f(x) = \frac{1}{\pi(1 + x^2)}, \quad x \in \mathbb{R}.$$
+          Esta distribución no posee momentos de primer orden y por consiguiente carece de varianza.
+          Si $n > 1$, la media es finita y vale cero.
+          Para $n > 2$ la varianza existe y es $\frac{n}{n-2}$.
+
+    \item \textbf{Aproximación por el teorema central del límite.}
+          Mediante el teorema central del límite podemos aproximar la distribución $t_n$ por una distribución $N(0, 1).$
+\end{itemize}
+
+\section{Distribución F de Snedecor}
+Consideremos dos poblaciones normales independientes $X \sim N(\mu_1, \sigma_1)$ e $Y \sim N(\mu_2, \sigma_2)$ que queremos comparar.
+Utilizaremos el estadístico $\frac{S_1^2}{S_2^2}$, cuya distribución en el muestreo se puede calcular de forma explícita.
+
+\begin{definition}
+    Si $X_1, X_2, \dots, X_n, Y_1, Y_2, \dots, Y_m$ son variables aleatorias independientes con distribución $N(0,1)$, entonces la distribución del estadístico
+    $$\frac{\frac{1}{n}\sum_{i=1}^n{X_i^2}}{\frac{1}{m}\sum_{j=1}^m{Y_j^2}}$$
+    es una distribución $F$-Snedecor con $n$ y $m$ grados de libertad y la notaremos $F_{n, m}$.
+\end{definition}
+
+Una distribución $F_{n,m}$ es la distribución del cociente de dos distribuciones $\chi^2$ independientes, de $n$ y $m$ grados de libertad respectivamente, dividadas cada una de ellas por sus grados de libertad.
+
+\begin{itemize}
+    \item \textbf{Características numéricas.}
+          La media de esta distribución es $\frac{m}{m-2}$ si $m > 2$ y su varianza existe si $m > 4$.
+
+    \item \textbf{Propiedad.}
+          Si $\alpha \in (0, 1)$, entonces el percentil $\alpha$ para $F_{n, m}$ es el inverso del percentil $1-\alpha$ para $F_{m, n}$.
+          Es decir,
+          $$F_{n, m; \alpha} = \frac{1}{F_{m, n; 1-\alpha}}, \quad \alpha \in (0, 1).$$
+\end{itemize}
+
+Estas tres distribuciones están tabuladas.
+Las tablas, en general, dan percentiles de la distribución.
+
+\begin{example}
+    Sea $(X_1, X_2) \sim N_2((\mu_1, \mu_2)^t, \Sigma)$, con
+    $$\begin{cases}
+            E(X_1) = \mu_1, \\
+            E(X_2) = \mu_2,
+        \end{cases} \quad
+        \Sigma = \begin{pmatrix}
+            V(X_1)         & \Cov(X_1, X_2) \\
+            \Cov(X_2, X_1) & V(X_2)
+        \end{pmatrix}.$$
+
+    Si $X_1$ y $X_2$ son independientes, entonces
+    $$\rho = \frac{\Cov(X_1, X_2)}{\sqrt{V(X_1) \cdot V(X_2)}} = 0.$$
+
+    En general, $\rho = 0$ no implica que $X_1$ y $X_2$ sean independientes.
+    Sin embargo, si $(X_1, X_2) \sim N_2(\vec{\mu}, \Sigma)$, entonces $\rho = 0$ $\Leftrightarrow$ $X_1$ y $X_2$ son independientes.
+
+    Podemos escribir:
+    $$\Sigma = \begin{pmatrix}
+            \sigma_1^2           & \rho\sigma_1\sigma_2 \\
+            \rho\sigma_1\sigma_2 & \sigma_2^2
+        \end{pmatrix}.$$
+\end{example}

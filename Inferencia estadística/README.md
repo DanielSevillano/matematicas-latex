@@ -25,3 +25,9 @@ Estos apuntes están abiertos a correcciones y mejoras.
 2. Muestreo aleatorio
 3. Muestra aleatoria simple
 4. Concepto de estadístico y su distribución
+
+### 2. Distribución normal
+
+1. Distribución $\chi^2$
+2. Distribución $t$ de Student
+3. Distribución $F$ de Snedecor
