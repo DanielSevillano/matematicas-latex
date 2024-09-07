@@ -1,6 +1,7 @@
 # Matemáticas en Latex
 
 Una recopilación de apuntes del grado en Matemáticas escritos en $\LaTeX$.
+Se pueden encontrar más apuntes en el [repositorio de Jorge](https://github.com/jorgeroddom/matematicas-latex).
 
 ## 📖 Contenidos
 
