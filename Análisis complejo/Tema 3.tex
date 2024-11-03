@@ -138,37 +138,37 @@ Los compactos coinciden con la definición de familia compacta dada.
     \hfill
     \begin{itemize}
         \item[$\boxed{\Rightarrow}$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, con $\mathcal{F}$ finitamente normal.
-            Supongamos por reducción al absurdo que existe $K \subset D$, $K$ compacto, tal que $\mathcal{F}$ no está uniformemente acotada en $K$.
-            Entonces existen $\{z_n\}_{n=1}^\infty$ en $K$ y $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ tales que $|f_n(z_n)| \to \infty$.
+              Supongamos por reducción al absurdo que existe $K \subset D$, $K$ compacto, tal que $\mathcal{F}$ no está uniformemente acotada en $K$.
+              Entonces existen $\{z_n\}_{n=1}^\infty$ en $K$ y $\{f_n\}_{n=1}^\infty$ en $\mathcal{F}$ tales que $|f_n(z_n)| \to \infty$.
 
-            Como $\mathcal{F}$ es una familia finitamente normal, existe $\{f_{n_k}\}_{k=1}^\infty$ subsucesión de $\{f_n\}$ tal que $\{f_{n_k}\}$ converge uniformemente en cada subconjunto compacto de $D$ a una función $f$ holomorfa en $D$.
-            Como $f$ es continua en $K$ y $K$ es compacto, existe $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in K$.
-            Por otro lado, como $f_{n_k} \xrightarrow[k \to \infty]{} f$ uniformemente en $K$, existe $k_0 \in \mathbb{N}$ tal que $k \geq k_0$, $z \in K$ $\Rightarrow$ $|f_{n_k}(z)-f(z)| < 1$.
-            Entonces $|f_{n_k}(z)| \leq |f_{n_k}(z)-f(z)| + |f(z)| < 1 + M$, $z \in K$, $k \geq k_0$.
-            En particular, $|f_{n_k}(z_{n_k})| < 1 + M$ si $k \geq k_0$.
-            Esta es una contradicción.
+              Como $\mathcal{F}$ es una familia finitamente normal, existe $\{f_{n_k}\}_{k=1}^\infty$ subsucesión de $\{f_n\}$ tal que $\{f_{n_k}\}$ converge uniformemente en cada subconjunto compacto de $D$ a una función $f$ holomorfa en $D$.
+              Como $f$ es continua en $K$ y $K$ es compacto, existe $M > 0$ tal que $|f(z)| \leq M$ para todo $z \in K$.
+              Por otro lado, como $f_{n_k} \xrightarrow[k \to \infty]{} f$ uniformemente en $K$, existe $k_0 \in \mathbb{N}$ tal que $k \geq k_0$, $z \in K$ $\Rightarrow$ $|f_{n_k}(z)-f(z)| < 1$.
+              Entonces $|f_{n_k}(z)| \leq |f_{n_k}(z)-f(z)| + |f(z)| < 1 + M$, $z \in K$, $k \geq k_0$.
+              En particular, $|f_{n_k}(z_{n_k})| < 1 + M$ si $k \geq k_0$.
+              Esta es una contradicción.
 
         \item[$\boxed{\Leftarrow}$] Sea $D$ abierto en $\mathbb{C}$ y sea $\mathcal{F}$ una familia de funciones holomorfas en $D$, uniformemente acotada en cada subconjunto compacto de $D$.
-            Tomamos $X_1 = D$ y $X_2 = \mathbb{C}$.
+              Tomamos $X_1 = D$ y $X_2 = \mathbb{C}$.
 
-            \begin{enumerate}
-                \item Sea $z_0 \in \mathbb{C}$.
-                      Dado $\varepsilon > 0$, veamos que existe $\delta > 0$ tal que, si $z_1 \in D$, $|z_1-z_0| < \delta$, $f \in \mathcal{F}$, entonces $|f(z_1) - f(z_0)| < \varepsilon$.
-                      Sea $R > 0$ con $\overline{D}(0, R) \subset D$.
-                      $\mathcal{F}$ está uniformemente acotada en $\overline{D}(z_0, R)$ y por tanto en $D(z_0, R)$.
-                      Sea $K = \overline{D}(z_0, \frac{R}{2})$, que es un subconjunto compacto de $D(z_0, R)$.
-                      Por la proposición anterior, existe $A > 0$ tal que
-                      $$|f(z_2) - f(z_1)| \leq A|z_2-z_1|, \quad \text{si } z_1, z_2 \in K, f \in \mathcal{F}.$$
-                      Entonces, si $\delta = \min \left(\frac{\varepsilon}{A}, \frac{R}{2}\right)$, $z_1 \in D$, $|z_1-z_0| < \delta$ y $f \in \mathcal{F}$, entonces $z_1 \in \overline{D}(z_0, \frac{R}{2}) = K$, así que:
-                      $$|f(z_1) - f(z_0)| \leq A|z_1-z_0| < A\delta \leq A\frac{\varepsilon}{A} = \varepsilon.$$
+              \begin{enumerate}
+                  \item Sea $z_0 \in \mathbb{C}$.
+                        Dado $\varepsilon > 0$, veamos que existe $\delta > 0$ tal que, si $z_1 \in D$, $|z_1-z_0| < \delta$, $f \in \mathcal{F}$, entonces $|f(z_1) - f(z_0)| < \varepsilon$.
+                        Sea $R > 0$ con $\overline{D}(0, R) \subset D$.
+                        $\mathcal{F}$ está uniformemente acotada en $\overline{D}(z_0, R)$ y por tanto en $D(z_0, R)$.
+                        Sea $K = \overline{D}(z_0, \frac{R}{2})$, que es un subconjunto compacto de $D(z_0, R)$.
+                        Por la proposición anterior, existe $A > 0$ tal que
+                        $$|f(z_2) - f(z_1)| \leq A|z_2-z_1|, \quad \text{si } z_1, z_2 \in K, f \in \mathcal{F}.$$
+                        Entonces, si $\delta = \min \left(\frac{\varepsilon}{A}, \frac{R}{2}\right)$, $z_1 \in D$, $|z_1-z_0| < \delta$ y $f \in \mathcal{F}$, entonces $z_1 \in \overline{D}(z_0, \frac{R}{2}) = K$, así que:
+                        $$|f(z_1) - f(z_0)| \leq A|z_1-z_0| < A\delta \leq A\frac{\varepsilon}{A} = \varepsilon.$$
 
-                \item Sea $z \in D$.
-                      El conjunto $\{f(z) : f \in \mathcal{F}\}$ está acotado, ya que $\mathcal{F}$ está uniformemente acotada en $\{z\}$.
-                      Por tanto, su clausura es compacta.
-            \end{enumerate}
+                  \item Sea $z \in D$.
+                        El conjunto $\{f(z) : f \in \mathcal{F}\}$ está acotado, ya que $\mathcal{F}$ está uniformemente acotada en $\{z\}$.
+                        Por tanto, su clausura es compacta.
+              \end{enumerate}
 
-            Entonces, por el teorema de Arzelá-Ascoli, existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$.
-            Por tanto, $\mathcal{F}$ es finitamente normal.
+              Entonces, por el teorema de Arzelá-Ascoli, existe una subsucesión $\{f_{n_k}\}_{k=1}^\infty$ de $\{f_n\}$ que converge uniformemente en cada subconjunto compacto de $D$.
+              Por tanto, $\mathcal{F}$ es finitamente normal.
     \end{itemize}
 \end{proof}
 
@@ -194,7 +194,7 @@ Los compactos coinciden con la definición de familia compacta dada.
 \begin{example}
     \hfill
     \begin{enumerate}
-        \item $\mathcal{F} = \{f : f \text{ es entera y } |f(z)| \leq n \text{ si } |z| = n, n = 1, 2, \dots\}$.
+        \item $\mathcal{F} = \{f : f \text{ es entera y } |f(z)| \leq n \text{ si } |z| = n, n = 1, 2, \ldots\}$.
               Sea $K \subset \mathbb{C}$, $K$ compacto, y sea $f \in \mathcal{F}$.
               Existe $n_0 \in \mathbb{N}$ tal que $K \subset \overline{D}(0, n_0)$.
               Además, $|f(z_0)| \leq n_0$ si $|z| = n_0$.
@@ -215,7 +215,7 @@ Los compactos coinciden con la definición de familia compacta dada.
 
               \begin{remark}
                   Si quitamos la condición $f(0) = 1$ en $\mathcal{P}$, la familia deja de ser finitamente normal.
-                  Por ejemplo, $f_n(z) = n$, $n = 1, 2, \dots$, $\{f_n : n = 1, 2, \dots\} \subset \mathcal{P}$.
+                  Por ejemplo, $f_n(z) = n$, $n = 1, 2, \dots$, $\{f_n : n = 1, 2, \ldots\} \subset \mathcal{P}$.
                   Si tomamos $K = \{0\}$, $\mathcal{P}$ no está uniformemente acotada en $K$, así que $\mathcal{P}$ no es finitamente normal.
               \end{remark}
 
@@ -297,11 +297,11 @@ Los compactos coinciden con la definición de familia compacta dada.
     \begin{itemize}
         \item[$\boxed{\Rightarrow}$] $M_n = \sup_{f \in \mathcal{F}} |a_n(f)|$.
         \item[$\boxed{\Leftarrow}$] Sea $K \subset D(a, R)$, $K$ compacto.
-            Existe $r \in (0, R)$ tal que $K \subset \overline{D}(a, r)$.
-            Si $z \in K$ y $f \in \mathcal{F}$, se tiene que
-            $$|f(z)| = \left|\sum_{n=0}^\infty a_n(f)(z-a)^n\right| \leq \sum_{n=0}^\infty |a_n(f)||z-a|^n \leq \sum_{n=0}^\infty M_n|z-a|^n \leq \sum_{n=0}^\infty M_nr^n < \infty,$$
-            ya que $\sum_{n=0}^\infty M_n(z-a)^n$ converge para $z = a+r$.
-            $\mathcal{F}$ está uniformemente acotada en $K$.
+              Existe $r \in (0, R)$ tal que $K \subset \overline{D}(a, r)$.
+              Si $z \in K$ y $f \in \mathcal{F}$, se tiene que
+              $$|f(z)| = \left|\sum_{n=0}^\infty a_n(f)(z-a)^n\right| \leq \sum_{n=0}^\infty |a_n(f)||z-a|^n \leq \sum_{n=0}^\infty M_n|z-a|^n \leq \sum_{n=0}^\infty M_nr^n < \infty,$$
+              ya que $\sum_{n=0}^\infty M_n(z-a)^n$ converge para $z = a+r$.
+              $\mathcal{F}$ está uniformemente acotada en $K$.
     \end{itemize}
 \end{proof}
 
