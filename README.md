@@ -13,12 +13,8 @@ Se pueden encontrar más apuntes en el [repositorio de Jorge](https://github.com
 -   [Ampliación de teoría de la probabilidad](https://github.com/DanielSevillano/matematicas-latex/tree/main/Ampliación%20de%20teoría%20de%20la%20probabilidad)
 -   [Análisis de datos e inferencia](https://github.com/DanielSevillano/matematicas-latex/tree/main/Análisis%20de%20datos%20e%20inferencia)
 
-### En desarrollo
+### Sin terminar
 
 -   [Inferencia estadística](https://github.com/DanielSevillano/matematicas-latex/tree/main/Inferencia%20estadística)
 -   [Optimización](https://github.com/DanielSevillano/matematicas-latex/tree/main/Optimización)
 -   [Análisis complejo](https://github.com/DanielSevillano/matematicas-latex/tree/main/Análisis%20complejo)
-
-### Próximamente
-
--   Probabilidad
